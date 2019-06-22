@@ -1,23 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>datamanager - easy access to and manipulation of data &mdash; SpacePy v0.1.6 Manual (DRAFT)</title>
-    
+    <title>datamanager - easy access to and manipulation of data &#8212; SpacePy v0.2.0 Manual</title>
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.1.6',
+        VERSION:     '0.2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -25,11 +23,12 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/copybutton.js"></script>
     <link rel="shortcut icon" href="_static/lanl_favicon.ico"/>
-    <link rel="top" title="SpacePy v0.1.6 Manual (DRAFT)" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="datamodel - easy to use general data model" href="datamodel.html" />
     <link rel="prev" title="spacepy.coordinates.Coords" href="autosummary/spacepy.coordinates.Coords.html" /> 
   </head>
-  <body role="document">
+  <body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="index.html"><img src="_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -80,21 +79,18 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/datamanager.txt"
+      <li><a href="_sources/datamanager.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -127,8 +123,8 @@ way.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#spacepy.datamanager.DataManager" title="spacepy.datamanager.DataManager"><code class="xref py py-obj docutils literal"><span class="pre">DataManager</span></code></a>(directories,&nbsp;file_fmt[,&nbsp;...])</td>
-<td>THIS CLASS IS NOT YET COMPLETE, doesn&#8217;t do much useful.</td>
+<tr class="row-odd"><td><a class="reference internal" href="#spacepy.datamanager.DataManager" title="spacepy.datamanager.DataManager"><code class="xref py py-obj docutils literal"><span class="pre">DataManager</span></code></a>(directories,&nbsp;file_fmt[,&nbsp;…])</td>
+<td>THIS CLASS IS NOT YET COMPLETE, doesn’t do much useful.</td>
 </tr>
 </tbody>
 </table>
@@ -151,7 +147,7 @@ way.</p>
 <tr class="row-even"><td><a class="reference internal" href="#spacepy.datamanager.flatten_idx" title="spacepy.datamanager.flatten_idx"><code class="xref py py-obj docutils literal"><span class="pre">flatten_idx</span></code></a>(idx[,&nbsp;axis])</td>
 <td>Convert multidimensional index into index on flattened array.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#spacepy.datamanager.insert_fill" title="spacepy.datamanager.insert_fill"><code class="xref py py-obj docutils literal"><span class="pre">insert_fill</span></code></a>(times,&nbsp;data[,&nbsp;fillval,&nbsp;tol,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#spacepy.datamanager.insert_fill" title="spacepy.datamanager.insert_fill"><code class="xref py py-obj docutils literal"><span class="pre">insert_fill</span></code></a>(times,&nbsp;data[,&nbsp;fillval,&nbsp;tol,&nbsp;…])</td>
 <td>Populate gaps in data with fill.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#spacepy.datamanager.rev_index" title="spacepy.datamanager.rev_index"><code class="xref py py-obj docutils literal"><span class="pre">rev_index</span></code></a>(idx[,&nbsp;axis])</td>
@@ -165,7 +161,7 @@ way.</p>
 <dl class="class">
 <dt id="spacepy.datamanager.DataManager">
 <em class="property">class </em><code class="descclassname">spacepy.datamanager.</code><code class="descname">DataManager</code><span class="sig-paren">(</span><em>directories</em>, <em>file_fmt</em>, <em>descend=False</em>, <em>period=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/spacepy/datamanager.html#DataManager"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.datamanager.DataManager" title="Permalink to this definition">¶</a></dt>
-<dd><p>THIS CLASS IS NOT YET COMPLETE, doesn&#8217;t do much useful.</p>
+<dd><p>THIS CLASS IS NOT YET COMPLETE, doesn’t do much useful.</p>
 <p>Will have to do something that allows the config file to specify regex
 and other things, and then just the directory to be changed (since
 regex, etc.</p>
@@ -188,7 +184,7 @@ with no leading slash.</p>
 <p><strong>period</strong> : string</p>
 <blockquote>
 <div><p>Size of file; can be a number followed by one of d, m, y, H, M, s.
-Anything else is assumed to be &#8220;irregular&#8221; and files treated
+Anything else is assumed to be “irregular” and files treated
 as if there are neither gaps nor overlaps in the sequence.
 If not specified, will be assumed to match one count of the
 smallest unit in the format string.</p>
@@ -236,7 +232,7 @@ creation. Note this is specified in native path format!</p>
 <dt id="spacepy.datamanager.apply_index">
 <code class="descclassname">spacepy.datamanager.</code><code class="descname">apply_index</code><span class="sig-paren">(</span><em>data</em>, <em>idx</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/spacepy/datamanager.html#apply_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.datamanager.apply_index" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply an array of indices to data.</p>
-<p>Most useful in dealing with the output from <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.argsort.html#numpy.argsort" title="(in NumPy v1.16)"><code class="xref py py-func docutils literal"><span class="pre">numpy.argsort()</span></code></a>, and
+<p>Most useful in dealing with the output from <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.argsort.html#numpy.argsort" title="(in NumPy v1.16)"><code class="xref py py-func docutils literal"><span class="pre">numpy.argsort()</span></code></a>, and
 best explained by the example.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -245,14 +241,14 @@ best explained by the example.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : array</p>
 <blockquote>
 <div><p>Input data, at least two dimensional. The 0th dimension is treated as
-a &#8220;time&#8221; or &#8220;record&#8221; dimension.</p>
+a “time” or “record” dimension.</p>
 </div></blockquote>
 <p><strong>idx</strong> : sequence</p>
 <blockquote>
 <div><p>2D index to apply to the import data. The 0th dimension must be the 
-same size as <code class="docutils literal"><span class="pre">data</span></code>&#8216;s 0th dimension. Dimension 1 must be the same
+same size as <code class="docutils literal"><span class="pre">data</span></code>’s 0th dimension. Dimension 1 must be the same
 size as one other dimension in data (the first match found is used);
-this is referred to as the &#8220;index dimension.&#8221;</p>
+this is referred to as the “index dimension.”</p>
 </div></blockquote>
 </td>
 </tr>
@@ -266,13 +262,13 @@ repeated across any other dimensions in <code class="docutils literal"><span cla
 <p class="first admonition-title">Warning</p>
 <p class="last">No guarantee is made whether the returned data is a copy
 of the input data. Modifying values in the input may change
-the values of the input. Call <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.copy.html#numpy.ndarray.copy" title="(in NumPy v1.16)"><code class="xref py py-meth docutils literal"><span class="pre">copy()</span></code></a> if
+the values of the input. Call <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.copy.html#numpy.ndarray.copy" title="(in NumPy v1.16)"><code class="xref py py-meth docutils literal"><span class="pre">copy()</span></code></a> if
 a copy is required.</p>
 </div>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><strong>ValueError</strong> : if can&#8217;t match the shape of data and indices</p>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><strong>ValueError</strong> : if can’t match the shape of data and indices</p>
 </td>
 </tr>
 </tbody>
@@ -284,7 +280,7 @@ constant in time, nor is ordered in the energy dimension. If
 <code class="docutils literal"><span class="pre">energy</span></code> is a 2D array of the energies as a function of energy
 step for each time, then the following will sort the flux at each
 time and pitch angle in energy order.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">energy</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">energy</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">flux_sorted</span> <span class="o">=</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">datamanager</span><span class="o">.</span><span class="n">apply_index</span><span class="p">(</span><span class="n">flux</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -327,7 +323,7 @@ to <code class="docutils literal"><span class="pre">idx</span></code>.</p>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamanager</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
@@ -354,13 +350,13 @@ to <code class="docutils literal"><span class="pre">idx</span></code>.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>idx</strong> : array</p>
 <blockquote>
-<div><p>An array of indices. The value of each element is that element&#8217;s index
+<div><p>An array of indices. The value of each element is that element’s index
 along <code class="docutils literal"><span class="pre">axis</span></code>.</p>
 </div></blockquote>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><strong>axis</strong> : int</p>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><p class="first"><strong>axis</strong> : int</p>
 <blockquote class="last">
 <div><p>Axis along which to return indices, defaults to the last axis.</p>
 </div></blockquote>
@@ -371,7 +367,7 @@ along <code class="docutils literal"><span class="pre">axis</span></code>.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.mgrid.html#numpy.mgrid" title="(in NumPy v1.16)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.mgrid</span></code></a></dt>
+<dt><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.mgrid.html#numpy.mgrid" title="(in NumPy v1.16)"><code class="xref py py-obj docutils literal"><span class="pre">numpy.mgrid</span></code></a></dt>
 <dd>This function is a special case</dd>
 </dl>
 </div>
@@ -380,7 +376,7 @@ along <code class="docutils literal"><span class="pre">axis</span></code>.</p>
 <code class="docutils literal"><span class="pre">idx[i,</span> <span class="pre">j,</span> <span class="pre">k,</span> <span class="pre">:]</span> <span class="pre">=</span> <span class="pre">range(l)</span></code> for all <code class="docutils literal"><span class="pre">i</span></code>, <code class="docutils literal"><span class="pre">j</span></code>, <code class="docutils literal"><span class="pre">k</span></code>.</p>
 <p>Similarly, for the same shape and <code class="docutils literal"><span class="pre">axis</span> <span class="pre">=</span> <span class="pre">1</span></code>,
 <code class="docutils literal"><span class="pre">idx[i,</span> <span class="pre">:,</span> <span class="pre">k,</span> <span class="pre">l]</span> <span class="pre">=</span> <span class="pre">range(j)</span></code> for all <code class="docutils literal"><span class="pre">i</span></code>, <code class="docutils literal"><span class="pre">k</span></code>, <code class="docutils literal"><span class="pre">l</span></code>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamanager</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">datamanager</span><span class="o">.</span><span class="n">axis_index</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="go">array([[0, 1, 2],</span>
@@ -404,7 +400,7 @@ along <code class="docutils literal"><span class="pre">axis</span></code>.</p>
 <dd><p>Convert multidimensional index into index on flattened array.</p>
 <p>Convert a multidimensional index, that is values along a particular axis,
 so that it can derefence the flattened array properly. Note this is not
-the same as <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ravel_multi_index.html#numpy.ravel_multi_index" title="(in NumPy v1.16)"><code class="xref py py-func docutils literal"><span class="pre">ravel_multi_index()</span></code></a>.</p>
+the same as <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ravel_multi_index.html#numpy.ravel_multi_index" title="(in NumPy v1.16)"><code class="xref py py-func docutils literal"><span class="pre">ravel_multi_index()</span></code></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -412,7 +408,7 @@ the same as <a class="reference external" href="http://docs.scipy.org/doc/numpy/
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>idx</strong> : array</p>
 <blockquote>
 <div><p>Input index, i.e. a list of elements along a particular axis,
-in the style of <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.argsort.html#numpy.argsort" title="(in NumPy v1.16)"><code class="xref py py-func docutils literal"><span class="pre">argsort()</span></code></a>.</p>
+in the style of <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.argsort.html#numpy.argsort" title="(in NumPy v1.16)"><code class="xref py py-func docutils literal"><span class="pre">argsort()</span></code></a>.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -424,7 +420,7 @@ array</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><strong>axis</strong> : int</p>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><p class="first"><strong>axis</strong> : int</p>
 <blockquote class="last">
 <div><p>Axis along which <code class="docutils literal"><span class="pre">idx</span></code> operates, defaults to the last axis.</p>
 </div></blockquote>
@@ -437,7 +433,7 @@ array</p>
 <p class="last"><a class="reference internal" href="#spacepy.datamanager.apply_index" title="spacepy.datamanager.apply_index"><code class="xref py py-obj docutils literal"><span class="pre">apply_index</span></code></a></p>
 </div>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamanager</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
@@ -488,7 +484,7 @@ i.e., each value must be scalar. Not modified</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><strong>fillval :</strong></p>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><p class="first"><strong>fillval :</strong></p>
 <blockquote>
 <div><p>Fill value, same type as <code class="docutils literal"><span class="pre">data</span></code>. Default is <code class="docutils literal"><span class="pre">numpy.nan</span></code>. If scalar,
 will be repeated to match the shape of <code class="docutils literal"><span class="pre">data</span></code> (minus the time axis).</p>
@@ -516,14 +512,14 @@ strictly larger than <code class="docutils literal"><span class="pre">absolute</
 <blockquote>
 <div><p>If True (default), will return a tuple of the times (with new values
 inserted for the fill records) and the data with new fill values.
-If False, will only return the data &#8211; useful for applying fill to
+If False, will only return the data – useful for applying fill to
 multiple arrays of data on the same timebase.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>ValueError</strong> : if can&#8217;t identify the time axis of data</p>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>ValueError</strong> : if can’t identify the time axis of data</p>
 <blockquote class="last">
-<div><p>Try using <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.rollaxis.html#numpy.rollaxis" title="(in NumPy v1.16)"><code class="xref py py-func docutils literal"><span class="pre">numpy.rollaxis()</span></code></a> to put the time axis first in both
+<div><p>Try using <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.rollaxis.html#numpy.rollaxis" title="(in NumPy v1.16)"><code class="xref py py-func docutils literal"><span class="pre">numpy.rollaxis()</span></code></a> to put the time axis first in both
 <code class="docutils literal"><span class="pre">data</span></code> and <code class="docutils literal"><span class="pre">times</span></code>.</p>
 </div></blockquote>
 </td>
@@ -534,7 +530,7 @@ multiple arrays of data on the same timebase.</p>
 <p>This example shows simple hourly data with a gap, populated with fill.
 Note that only a single fill value is inserted, to break the sequence
 of valid data rather than trying to match the existing cadence.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">datetime</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">datetime</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamanager</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
@@ -555,8 +551,8 @@ of valid data rather than trying to match the existing cadence.</p>
 <span class="go">array([ 30.,  28.,  27.,  nan,  32.,  35.])</span>
 </pre></div>
 </div>
-<p>This example plots &#8220;gappy&#8221; data with and without explicit fill values.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<p>This example plots “gappy” data with and without explicit fill values.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamanager</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
@@ -592,7 +588,7 @@ vagaries of applying a multidimensional index.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>idx</strong> : array</p>
 <blockquote>
-<div><p>Indices onto an array, often the output of <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.argsort.html#numpy.argsort" title="(in NumPy v1.16)"><code class="xref py py-func docutils literal"><span class="pre">argsort()</span></code></a>.</p>
+<div><p>Indices onto an array, often the output of <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.argsort.html#numpy.argsort" title="(in NumPy v1.16)"><code class="xref py py-func docutils literal"><span class="pre">argsort()</span></code></a>.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -604,7 +600,7 @@ the original array (before the application of <code class="docutils literal"><sp
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><strong>axis</strong> : int</p>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><p class="first"><strong>axis</strong> : int</p>
 <blockquote class="last">
 <div><p>Axis along which to return indices, defaults to the last axis.</p>
 </div></blockquote>
@@ -617,7 +613,7 @@ the original array (before the application of <code class="docutils literal"><sp
 <p class="last"><a class="reference internal" href="#spacepy.datamanager.apply_index" title="spacepy.datamanager.apply_index"><code class="xref py py-obj docutils literal"><span class="pre">apply_index</span></code></a></p>
 </div>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamanager</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -649,13 +645,13 @@ the original array (before the application of <code class="docutils literal"><sp
 <div><p>An array, the same size as <code class="docutils literal"><span class="pre">array</span></code>, with values along <code class="docutils literal"><span class="pre">axis</span></code>
 corresponding to the position of the value in <code class="docutils literal"><span class="pre">array</span></code> in a unique,
 sorted, set of the values in <code class="docutils literal"><span class="pre">array</span></code> along that axis. Differs from
-<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.argsort.html#numpy.argsort" title="(in NumPy v1.16)"><code class="xref py py-func docutils literal"><span class="pre">argsort()</span></code></a> in that identical values will have identical
+<a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.argsort.html#numpy.argsort" title="(in NumPy v1.16)"><code class="xref py py-func docutils literal"><span class="pre">argsort()</span></code></a> in that identical values will have identical
 step numbers in the output.</p>
 </div></blockquote>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><strong>axis</strong> : int</p>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><p class="first"><strong>axis</strong> : int</p>
 <blockquote class="last">
 <div><p>Axis along which to find the steps.</p>
 </div></blockquote>
@@ -664,7 +660,7 @@ step numbers in the output.</p>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamanager</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">10.</span><span class="p">,</span> <span class="mf">12.</span><span class="p">,</span> <span class="mf">11.</span><span class="p">,</span> <span class="mf">9.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">,</span> <span class="mf">12.</span><span class="p">,</span> <span class="mf">11.</span><span class="p">,</span> <span class="mf">9.</span><span class="p">],</span>
 <span class="go">            [10., 12., 11., 9., 14., 16., 15., 13.]]</span>
@@ -706,8 +702,8 @@ step numbers in the output.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2011-2016, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+        &#169; Copyright 2011-2019, The SpacePy Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

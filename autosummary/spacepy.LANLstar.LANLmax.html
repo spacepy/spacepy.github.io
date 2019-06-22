@@ -1,23 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>spacepy.LANLstar.LANLmax &mdash; SpacePy v0.1.6 Manual (DRAFT)</title>
-    
+    <title>spacepy.LANLstar.LANLmax &#8212; SpacePy v0.2.0 Manual</title>
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1.6',
+        VERSION:     '0.2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -25,12 +23,12 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/copybutton.js"></script>
     <link rel="shortcut icon" href="../_static/lanl_favicon.ico"/>
-    <link rel="top" title="SpacePy v0.1.6 Manual (DRAFT)" href="../index.html" />
-    <link rel="up" title="lanlstar - module to calculate Lstar or Lmax using artificial neural network" href="../lanlstar.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="omni - module to read and process NASA OMNIWEB data" href="../omni.html" />
     <link rel="prev" title="spacepy.LANLstar.LANLstar" href="spacepy.LANLstar.LANLstar.html" /> 
   </head>
-  <body role="document">
+  <body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -55,7 +53,7 @@
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../lanlstar.html" accesskey="U">lanlstar - module to calculate Lstar or Lmax using artificial neural network</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../lanlstar.html" accesskey="U">lanlstar - module to calculate Lstar or Lmax using artificial neural network</a> &#187;</li> 
       </ul>
     </div>
 
@@ -73,21 +71,18 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/autosummary/spacepy.LANLstar.LANLmax.txt"
+      <li><a href="../_sources/autosummary/spacepy.LANLstar.LANLmax.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -113,40 +108,40 @@ different magnetospheric field models.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>extMag</strong> : list of string(s)</p>
 <blockquote>
 <div><p>containing one or more of the following external Magnetic field models: 
-&#8216;OPDYN&#8217;, &#8216;OPQUIET&#8217;, &#8216;T89&#8217;, &#8216;T96&#8217;, &#8216;T01QUIET&#8217;, &#8216;T01STORM&#8217;, &#8216;T05&#8217;</p>
+‘OPDYN’, ‘OPQUIET’, ‘T89’, ‘T96’, ‘T01QUIET’, ‘T01STORM’, ‘T05’</p>
 </div></blockquote>
 <p><strong>inputdict</strong> : dictionary</p>
 <blockquote>
 <div><p>containing the following keys, each entry is a list or array. Note the keys for the above models are different.</p>
 <p class="attribution">&mdash;For OPDYN:  
-[&#8216;Year&#8217;, &#8216;DOY&#8217;, &#8216;Hr&#8217;, &#8216;Dst&#8217;, &#8216;dens&#8217;, &#8216;velo&#8217;, &#8216;BzIMF&#8217;, &#8216;PA&#8217;]</p>
+[‘Year’, ‘DOY’, ‘Hr’, ‘Dst’, ‘dens’, ‘velo’, ‘BzIMF’, ‘PA’]</p>
 </div></blockquote>
 <blockquote>
 <div><dl class="docutils">
-<dt>&#8211; For OPQUIET:</dt>
-<dd><p class="first last">[&#8216;Year&#8217;, &#8216;DOY&#8217;, &#8216;Hr&#8217;, &#8216;Dst&#8217;, &#8216;dens&#8217;, &#8216;velo&#8217;, &#8216;BzIMF&#8217;, &#8216;PA&#8217;]</p>
+<dt>– For OPQUIET:</dt>
+<dd><p class="first last">[‘Year’, ‘DOY’, ‘Hr’, ‘Dst’, ‘dens’, ‘velo’, ‘BzIMF’, ‘PA’]</p>
 </dd>
 </dl>
 <p class="attribution">&mdash;For T89:
-[&#8216;Year&#8217;, &#8216;DOY&#8217;, &#8216;Hr&#8217;, &#8216;Kp&#8217;, &#8216;Pdyn&#8217;, &#8216;ByIMF&#8217;, &#8216;BzIMF&#8217;, &#8216;PA&#8217;]</p>
+[‘Year’, ‘DOY’, ‘Hr’, ‘Kp’, ‘Pdyn’, ‘ByIMF’, ‘BzIMF’, ‘PA’]</p>
 </div></blockquote>
 <blockquote>
 <div><dl class="docutils">
-<dt>&#8211; For T96:</dt>
-<dd><p class="first last">[&#8216;Year&#8217;, &#8216;DOY&#8217;, &#8216;Hr&#8217;, &#8216;Dst&#8217;, &#8216;Pdyn&#8217;, &#8216;ByIMF&#8217;, &#8216;BzIMF&#8217;,&#8217;PA&#8217;]</p>
+<dt>– For T96:</dt>
+<dd><p class="first last">[‘Year’, ‘DOY’, ‘Hr’, ‘Dst’, ‘Pdyn’, ‘ByIMF’, ‘BzIMF’,’PA’]</p>
 </dd>
 </dl>
 <p class="attribution">&mdash;For T01QUIET:
-[&#8216;Year&#8217;, &#8216;DOY&#8217;, &#8216;Hr&#8217;, &#8216;Dst&#8217;, &#8216;Pdyn&#8217;, &#8216;ByIMF&#8217;, &#8216;BzIMF&#8217;, &#8216;G1&#8217;, &#8216;G2&#8217;,&#8217;PA&#8217;]</p>
+[‘Year’, ‘DOY’, ‘Hr’, ‘Dst’, ‘Pdyn’, ‘ByIMF’, ‘BzIMF’, ‘G1’, ‘G2’,’PA’]</p>
 </div></blockquote>
 <blockquote>
 <div><dl class="docutils">
-<dt>&#8211; For T01STORM:</dt>
-<dd><p class="first last">[&#8216;Year&#8217;, &#8216;DOY&#8217;, &#8216;Hr&#8217;, &#8216;Dst&#8217;, &#8216;Pdyn&#8217;, &#8216;ByIMF&#8217;, &#8216;BzIMF&#8217;, &#8216;G2&#8217;, &#8216;G3&#8217;, &#8216;PA&#8217;]</p>
+<dt>– For T01STORM:</dt>
+<dd><p class="first last">[‘Year’, ‘DOY’, ‘Hr’, ‘Dst’, ‘Pdyn’, ‘ByIMF’, ‘BzIMF’, ‘G2’, ‘G3’, ‘PA’]</p>
 </dd>
 </dl>
 <p class="attribution">&mdash;For T05:
-[&#8216;Year&#8217;, &#8216;DOY&#8217;, &#8216;Hr&#8217;, &#8216;Dst&#8217;, &#8216;Pdyn&#8217;, &#8216;ByIMF&#8217;, &#8216;BzIMF&#8217;, &#8216;W1&#8217;,&#8217;W2&#8217;,&#8217;W3&#8217;,&#8217;W4&#8217;,&#8217;W5&#8217;,&#8217;W6&#8217;, &#8216;PA&#8217;]</p>
+[‘Year’, ‘DOY’, ‘Hr’, ‘Dst’, ‘Pdyn’, ‘ByIMF’, ‘BzIMF’, ‘W1’,’W2’,’W3’,’W4’,’W5’,’W6’, ‘PA’]</p>
 </div></blockquote>
 <blockquote>
 <div><p>Dictionaries with numpy vectors are allowed.</p>
@@ -162,7 +157,7 @@ different magnetospheric field models.</p>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.LANLstar</span> <span class="kn">as</span> <span class="nn">LS</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.LANLstar</span> <span class="k">as</span> <span class="nn">LS</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">inputdict</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">inputdict</span><span class="p">[</span><span class="s1">&#39;Kp&#39;</span><span class="p">]</span>     <span class="o">=</span> <span class="p">[</span><span class="mf">2.7</span>      <span class="p">]</span>            <span class="c1"># Kp index</span>
@@ -227,12 +222,12 @@ different magnetospheric field models.</p>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../lanlstar.html" >lanlstar - module to calculate Lstar or Lmax using artificial neural network</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../lanlstar.html" >lanlstar - module to calculate Lstar or Lmax using artificial neural network</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2011-2016, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+        &#169; Copyright 2011-2019, The SpacePy Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

@@ -1,23 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>spacepy.pybats.bats.Stream &mdash; SpacePy v0.1.6 Manual (DRAFT)</title>
-    
+    <title>spacepy.pybats.bats.Stream &#8212; SpacePy v0.2.0 Manual</title>
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1.6',
+        VERSION:     '0.2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -25,12 +23,12 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/copybutton.js"></script>
     <link rel="shortcut icon" href="../_static/lanl_favicon.ico"/>
-    <link rel="top" title="SpacePy v0.1.6 Manual (DRAFT)" href="../index.html" />
-    <link rel="up" title="spacepy.pybats.bats" href="spacepy.pybats.bats.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="spacepy.pybats.bats.Bats2d" href="spacepy.pybats.bats.Bats2d.html" />
     <link rel="prev" title="spacepy.pybats.bats.BatsLog" href="spacepy.pybats.bats.BatsLog.html" /> 
   </head>
-  <body role="document">
+  <body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -55,8 +53,8 @@
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pybats.html" >PyBats - SWMF &amp; BATS-R-US Analysis Tools</a> &raquo;</li>
-          <li class="nav-item nav-item-2"><a href="spacepy.pybats.bats.html" accesskey="U">spacepy.pybats.bats</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../pybats.html" >PyBats - SWMF &amp; BATS-R-US Analysis Tools</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.bats.html" accesskey="U">spacepy.pybats.bats</a> &#187;</li> 
       </ul>
     </div>
 
@@ -74,21 +72,18 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/autosummary/spacepy.pybats.bats.Stream.txt"
+      <li><a href="../_sources/autosummary/spacepy.pybats.bats.Stream.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -107,8 +102,8 @@
 <dd><p>A class for streamlines.  Contains all of the information about
 the streamline, including extracted variables.</p>
 <p>Upon instantiation, the object will trace through the vector
-field determined by the &#8220;[x/y]field&#8221; values and the Bats object
-&#8220;bats&#8221;.</p>
+field determined by the “[x/y]field” values and the Bats object
+“bats”.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -136,21 +131,21 @@ field determined by the &#8220;[x/y]field&#8221; values and the Bats object
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><strong>style</strong> : str</p>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first"><strong>style</strong> : str</p>
 <blockquote>
 <div><p>Sets line style, including colors. See <a class="reference internal" href="#spacepy.pybats.bats.Stream.set_style" title="spacepy.pybats.bats.Stream.set_style"><code class="xref py py-meth docutils literal"><span class="pre">set_style()</span></code></a> for details.
-(Default &#8216;mag&#8217;)</p>
+(Default ‘mag’)</p>
 </div></blockquote>
 <p><strong>type</strong> : str</p>
 <blockquote>
-<div><p>(Default &#8216;streamline&#8217;)</p>
+<div><p>(Default ‘streamline’)</p>
 </div></blockquote>
 <p><strong>method</strong> : str</p>
 <blockquote>
-<div><p>Integration method. The default is Runge-Kutta 4 (&#8216;rk4&#8217;) which gives
+<div><p>Integration method. The default is Runge-Kutta 4 (‘rk4’) which gives
 a good blend of speed and accuracy. See the test functions in
 <a class="reference internal" href="spacepy.pybats.trace2d.html#module-spacepy.pybats.trace2d" title="spacepy.pybats.trace2d"><code class="xref py py-mod docutils literal"><span class="pre">trace2d</span></code></a> for more info.  The other option is
-a simple Euler&#8217;s method approach (&#8216;eul&#8217;). (Default &#8216;rk4&#8217;)</p>
+a simple Euler’s method approach (‘eul’). (Default ‘rk4’)</p>
 </div></blockquote>
 <p><strong>extract</strong> : bool</p>
 <blockquote>
@@ -163,8 +158,8 @@ object.</p>
 </div></blockquote>
 <p><strong>var_list</strong> : string or sequence of strings</p>
 <blockquote class="last">
-<div><p>(Default : &#8216;all&#8217;) List of values to extract from <em>dataset</em>.  
-Defaults to &#8216;all&#8217;, for all values within <em>bats</em>.</p>
+<div><p>(Default : ‘all’) List of values to extract from <em>dataset</em>.  
+Defaults to ‘all’, for all values within <em>bats</em>.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -188,7 +183,7 @@ Defaults to &#8216;all&#8217;, for all values within <em>bats</em>.</p>
 <td>Trace through the vector field.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#spacepy.pybats.bats.Stream.plot" title="spacepy.pybats.bats.Stream.plot"><code class="xref py py-obj docutils literal"><span class="pre">plot</span></code></a>(ax,&nbsp;*args,&nbsp;**kwargs)</td>
-<td>Add streamline to axes object &#8220;ax&#8221;.</td>
+<td>Add streamline to axes object “ax”.</td>
 </tr>
 </tbody>
 </table>
@@ -198,7 +193,7 @@ Defaults to &#8216;all&#8217;, for all values within <em>bats</em>.</p>
 <dd><p>Set the line style either using a simple matplotlib-type style
 string or using a preset style type.  Current types include:</p>
 <dl class="docutils">
-<dt>&#8216;mag&#8217; <span class="classifier-delimiter">:</span> <span class="classifier">treat line as a magnetic field line.  Closed lines are</span></dt>
+<dt>‘mag’ <span class="classifier-delimiter">:</span> <span class="classifier">treat line as a magnetic field line.  Closed lines are</span></dt>
 <dd>white, other lines are black.</dd>
 </dl>
 </dd></dl>
@@ -218,7 +213,7 @@ string or using a preset style type.  Current types include:</p>
 <dl class="method">
 <dt id="spacepy.pybats.bats.Stream.plot">
 <code class="descname">plot</code><span class="sig-paren">(</span><em>ax</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#Stream.plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pybats.bats.Stream.plot" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add streamline to axes object &#8220;ax&#8221;.</p>
+<dd><p>Add streamline to axes object “ax”.</p>
 </dd></dl>
 
 </dd></dl>
@@ -250,13 +245,13 @@ string or using a preset style type.  Current types include:</p>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pybats.html" >PyBats - SWMF &amp; BATS-R-US Analysis Tools</a> &raquo;</li>
-          <li class="nav-item nav-item-2"><a href="spacepy.pybats.bats.html" >spacepy.pybats.bats</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../pybats.html" >PyBats - SWMF &amp; BATS-R-US Analysis Tools</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.bats.html" >spacepy.pybats.bats</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2011-2016, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+        &#169; Copyright 2011-2019, The SpacePy Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

@@ -1,23 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>spacepy.seapy &mdash; SpacePy v0.1.6 Manual (DRAFT)</title>
-    
+    <title>spacepy.seapy &#8212; SpacePy v0.2.0 Manual</title>
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.1.6',
+        VERSION:     '0.2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
@@ -25,10 +23,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/copybutton.js"></script>
     <link rel="shortcut icon" href="../../_static/lanl_favicon.ico"/>
-    <link rel="top" title="SpacePy v0.1.6 Manual (DRAFT)" href="../../index.html" />
-    <link rel="up" title="Module code" href="../index.html" /> 
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
   </head>
-  <body role="document">
+  <body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../../index.html"><img src="../../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -47,7 +45,7 @@
         <li><a href="../../search.html">search</a>|&nbsp;</li>
        <li><a href="../../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
       </ul>
     </div>
 
@@ -59,14 +57,11 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -78,7 +73,7 @@
           <div class="body" role="main">
             
   <h1>Source code for spacepy.seapy</h1><div class="highlight"><pre>
-<span class="ch">#!/usr/bin/python</span>
+<span></span><span class="ch">#!/usr/bin/python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="sd">&quot;&quot;&quot;SeaPy -- Superposed Epoch in Python.</span>
@@ -122,22 +117,22 @@
 
 <span class="sd">Copyright 2010 Los Alamos National Security, LLC.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
 
 <span class="kn">import</span> <span class="nn">warnings</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">numpy.ma</span> <span class="kn">as</span> <span class="nn">ma</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy.ma</span> <span class="k">as</span> <span class="nn">ma</span>
 <span class="kn">import</span> <span class="nn">numbers</span>
-<span class="kn">import</span> <span class="nn">datetime</span> <span class="kn">as</span> <span class="nn">dt</span>
-<span class="kn">import</span> <span class="nn">spacepy.toolbox</span> <span class="kn">as</span> <span class="nn">tb</span>
-<span class="kn">from</span> <span class="nn">spacepy</span> <span class="kn">import</span> <span class="n">help</span>
-<span class="kn">import</span> <span class="nn">spacepy.time</span> <span class="kn">as</span> <span class="nn">spt</span>
-<span class="kn">import</span> <span class="nn">spacepy.datamodel</span> <span class="kn">as</span> <span class="nn">dm</span>
+<span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+<span class="kn">import</span> <span class="nn">spacepy.toolbox</span> <span class="k">as</span> <span class="nn">tb</span>
+<span class="kn">from</span> <span class="nn">spacepy</span> <span class="k">import</span> <span class="n">help</span>
+<span class="kn">import</span> <span class="nn">spacepy.time</span> <span class="k">as</span> <span class="nn">spt</span>
+<span class="kn">import</span> <span class="nn">spacepy.datamodel</span> <span class="k">as</span> <span class="nn">dm</span>
 <span class="kn">import</span> <span class="nn">spacepy.plot.apionly</span>
-<span class="kn">import</span> <span class="nn">spacepy.plot</span> <span class="kn">as</span> <span class="nn">spplt</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">matplotlib.dates</span> <span class="kn">import</span> <span class="n">date2num</span><span class="p">,</span> <span class="n">num2date</span>
+<span class="kn">import</span> <span class="nn">spacepy.plot</span> <span class="k">as</span> <span class="nn">spplt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.dates</span> <span class="k">import</span> <span class="n">date2num</span><span class="p">,</span> <span class="n">num2date</span>
 
 <span class="n">__contact__</span> <span class="o">=</span> <span class="s1">&#39;Steve Morley, smorley@lanl.gov&#39;</span>
 
@@ -173,18 +168,18 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">window</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delta</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;window&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="p">:</span>
             <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-                <span class="s1">&#39;Window size changed to {0} (points) to fit resolution ({1})&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="s1">&#39;Window size changed to </span><span class="si">{0}</span><span class="s1"> (points) to fit resolution (</span><span class="si">{1}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">delta</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">bound_type</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bound_type</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Define String Representation of Sea object&quot;&quot;&quot;</span>
 
         <span class="n">strhead</span> <span class="o">=</span> <span class="s1">&#39;Superposed Epoch Object:&#39;</span>
-        <span class="n">strtail</span> <span class="o">=</span> <span class="s1">&#39;Data array - {0}; #Epochs - {1}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs</span><span class="p">))</span>
+        <span class="n">strtail</span> <span class="o">=</span> <span class="s1">&#39;Data array - </span><span class="si">{0}</span><span class="s1">; #Epochs - </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs</span><span class="p">))</span>
         <span class="k">return</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">strhead</span><span class="p">,</span> <span class="n">strtail</span><span class="p">))</span>
 
-    <span class="n">__repr__</span> <span class="o">=</span> <span class="n">__str__</span>
+    <span class="fm">__repr__</span> <span class="o">=</span> <span class="fm">__str__</span>
 
     <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Calling len(obj) will return the number of epochs.&quot;&quot;&quot;</span>
@@ -201,9 +196,9 @@
             <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;No bad epochs to restore&#39;</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">epochs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">union1d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">badepochs</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Bad epochs restored to epochs attribute&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bad epochs restored to epochs attribute&#39;</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">return</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">_timeepoch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delt</span><span class="p">):</span>
         <span class="c1">#check type of time input and throw error message</span>
@@ -214,19 +209,19 @@
             <span class="c1">#both time and epochs are datetime objects</span>
             <span class="c1">#convert to serial time</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
-                <span class="k">print</span><span class="p">(</span><span class="s1">&#39;converting to serial time&#39;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;converting to serial time&#39;</span><span class="p">)</span>
             <span class="n">dum</span> <span class="o">=</span> <span class="n">date2num</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs</span><span class="p">)</span>
             <span class="n">t_epoch</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dum</span><span class="p">)</span>
             <span class="n">dum</span> <span class="o">=</span> <span class="n">date2num</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="p">)</span>
             <span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dum</span><span class="p">)</span>
-            <span class="n">ser_flag</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="n">ser_flag</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">elif</span> <span class="n">el1num</span> <span class="ow">and</span> <span class="n">ep1num</span><span class="p">:</span>
             <span class="c1">#time is serial, do nothing</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
-                <span class="k">print</span><span class="p">(</span><span class="s1">&#39;time is serial&#39;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;time is serial&#39;</span><span class="p">)</span>
             <span class="n">t_epoch</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
             <span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-            <span class="n">ser_flag</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="n">ser_flag</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Time and Epochs must be consistently typed (numeric/datetime)&#39;</span><span class="p">)</span>
 
@@ -236,7 +231,7 @@
             <span class="n">linds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">union1d</span><span class="p">(</span><span class="n">lose0</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">lose1</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">linds</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
-                    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;sea(): {0} out-of-range epochs moved to badepochs attribute&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">linds</span><span class="p">)))</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sea(): </span><span class="si">{0}</span><span class="s1"> out-of-range epochs moved to badepochs attribute&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">linds</span><span class="p">)))</span>
             <span class="k">if</span> <span class="n">ser_flag</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">badepochs</span> <span class="o">=</span> <span class="n">t_epoch</span><span class="p">[</span><span class="n">linds</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
@@ -252,7 +247,7 @@
                 <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;No valid epochs for data supplied&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">time</span><span class="p">,</span> <span class="n">t_epoch</span>
 
-    <span class="k">def</span> <span class="nf">random</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">random</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;Return a new Sea object, of same dimensionality, with a set of random epochs</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">n</span><span class="p">:</span>
@@ -262,11 +257,11 @@
         <span class="n">entime</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_epochs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">dum</span> <span class="o">=</span> <span class="n">sttime</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
-            <span class="n">cflag</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="n">cflag</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
             <span class="n">sttime</span> <span class="o">=</span> <span class="n">date2num</span><span class="p">(</span><span class="n">sttime</span><span class="p">)</span>
             <span class="n">entime</span> <span class="o">=</span> <span class="n">date2num</span><span class="p">(</span><span class="n">entime</span><span class="p">)</span>
-            <span class="n">cflag</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="n">cflag</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">finally</span><span class="p">:</span>
             <span class="n">repochs</span> <span class="o">=</span> <span class="p">(</span><span class="n">entime</span> <span class="o">-</span> <span class="n">sttime</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random_sample</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">sttime</span>
         <span class="k">if</span> <span class="n">cflag</span><span class="p">:</span>
@@ -310,8 +305,8 @@
 <span class="sd">    .. automethod:: sea</span>
 <span class="sd">    .. automethod:: plot</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mf">3.</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">Sea</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> \
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mf">3.</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sea</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> \
               <span class="n">window</span><span class="o">=</span><span class="n">window</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="n">delta</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Sea.sea"><a class="viewcode-back" href="../../autosummary/spacepy.seapy.Sea.html#spacepy.seapy.Sea.sea">[docs]</a>    <span class="k">def</span> <span class="nf">sea</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -340,11 +335,11 @@
         <span class="c1">#check this hasn&#39;t already been done</span>
         <span class="c1">#TODO: find out why doing two .sea() calls back-to-back fails 2nd time</span>
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;semedian&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;semean&#39;</span><span class="p">):</span>
-            <span class="k">return</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="kc">None</span>
 
         <span class="c1">#check defaults</span>
-        <span class="n">defaults</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;storedata&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s1">&#39;quartiles&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s1">&#39;ci&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-                    <span class="s1">&#39;mad&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s1">&#39;ci_quan&#39;</span><span class="p">:</span> <span class="s1">&#39;median&#39;</span><span class="p">}</span>
+        <span class="n">defaults</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;storedata&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;quartiles&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;ci&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                    <span class="s1">&#39;mad&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;ci_quan&#39;</span><span class="p">:</span> <span class="s1">&#39;median&#39;</span><span class="p">}</span>
         <span class="k">for</span> <span class="n">default</span> <span class="ow">in</span> <span class="n">defaults</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">default</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
                 <span class="n">kwargs</span><span class="p">[</span><span class="n">default</span><span class="p">]</span> <span class="o">=</span> <span class="n">defaults</span><span class="p">[</span><span class="n">default</span><span class="p">]</span>
@@ -357,9 +352,9 @@
             <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;ci&#39;</span><span class="p">]:</span>
-            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;quartiles&#39;</span><span class="p">],</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;mad&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">False</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;quartiles&#39;</span><span class="p">],</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;mad&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span>
         <span class="k">if</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;mad&#39;</span><span class="p">]:</span>
-            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;quartiles&#39;</span><span class="p">],</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;ci&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">False</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;quartiles&#39;</span><span class="p">],</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;ci&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span>
 
         <span class="n">time</span><span class="p">,</span> <span class="n">t_epoch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeepoch</span><span class="p">(</span><span class="n">delt</span><span class="p">)</span>
 
@@ -417,7 +412,7 @@
                     <span class="n">ci_level</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;ci&#39;</span><span class="p">])</span>
             <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
                 <span class="n">ci_level</span> <span class="o">=</span> <span class="mi">95</span>
-            <span class="kn">from</span> <span class="nn">spacepy.poppy</span> <span class="kn">import</span> <span class="n">boots_ci</span>
+            <span class="kn">from</span> <span class="nn">spacepy.poppy</span> <span class="k">import</span> <span class="n">boots_ci</span>
             <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;ci_quan&#39;</span><span class="p">],</span> <span class="s2">&quot;__call__&quot;</span><span class="p">):</span> <span class="c1">#ci_quan is a function</span>
                 <span class="n">ci_func</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;ci_quan&#39;</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
@@ -440,10 +435,10 @@
         <span class="k">if</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;storedata&#39;</span><span class="p">]:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">datacube</span> <span class="o">=</span> <span class="n">y_sea_m</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
-                <span class="k">print</span><span class="p">(</span><span class="s1">&#39;sea(): datacube added as new attribute&#39;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sea(): datacube added as new attribute&#39;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Superposed epoch analysis complete&#39;</span><span class="p">)</span></div>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Superposed epoch analysis complete&#39;</span><span class="p">)</span></div>
 
 
     <span class="c1">#def sea_norm(self, epoch2, nbins=100, storedata=False, quartiles=True, ci=False, mad=False,</span>
@@ -549,8 +544,8 @@
         <span class="c1">#return &#39;Superposed epoch analysis complete&#39;</span>
 
 <div class="viewcode-block" id="Sea.plot"><a class="viewcode-back" href="../../autosummary/spacepy.seapy.Sea.html#spacepy.seapy.Sea.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xquan</span> <span class="o">=</span> <span class="s1">&#39;Time Since Epoch&#39;</span><span class="p">,</span> <span class="n">yquan</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">xunits</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
-                <span class="n">yunits</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">epochline</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">usrlimy</span><span class="o">=</span><span class="p">[],</span> <span class="n">show</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-                <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#7F7FFF&#39;</span><span class="p">):</span>
+                <span class="n">yunits</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">epochline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">usrlimy</span><span class="o">=</span><span class="p">[],</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#7F7FFF&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Method called to create basic plot of superposed epoch analysis.</span>
 
 <span class="sd">        Parameters</span>
@@ -588,13 +583,13 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;No superposed epoch results to plot&#39;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">xunits</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">:</span>
-            <span class="n">xlstr</span> <span class="o">=</span> <span class="s1">&#39;{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xquan</span><span class="p">)</span>
+            <span class="n">xlstr</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xquan</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">xlstr</span> <span class="o">=</span> <span class="s1">&#39;{0} [{1}]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xquan</span><span class="p">,</span> <span class="n">xunits</span><span class="p">)</span>
+            <span class="n">xlstr</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> [</span><span class="si">{1}</span><span class="s1">]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xquan</span><span class="p">,</span> <span class="n">xunits</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">yquan</span><span class="p">)</span><span class="o">&gt;=</span><span class="mi">1</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">yunits</span><span class="p">)</span><span class="o">&gt;=</span><span class="mi">1</span><span class="p">:</span>
-            <span class="n">ylstr</span> <span class="o">=</span> <span class="s1">&#39;{0} [{1}]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">yquan</span><span class="p">,</span> <span class="n">yunits</span><span class="p">)</span>
+            <span class="n">ylstr</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> [</span><span class="si">{1}</span><span class="s1">]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">yquan</span><span class="p">,</span> <span class="n">yunits</span><span class="p">)</span>
         <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">yquan</span><span class="p">)</span><span class="o">&gt;=</span><span class="mi">1</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">yunits</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">:</span>
-            <span class="n">ylstr</span> <span class="o">=</span> <span class="s1">&#39;{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">yquan</span><span class="p">)</span>
+            <span class="n">ylstr</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">yquan</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">ylstr</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 
@@ -602,10 +597,10 @@
 
         <span class="k">if</span> <span class="n">transparent</span><span class="p">:</span>
             <span class="n">ax0</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bound_low</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">bound_high</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span>
-                             <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">interpolate</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+                             <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">interpolate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">ax0</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bound_low</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">bound_high</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span>
-                             <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">interpolate</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                             <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">interpolate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">semedian</span><span class="p">,</span> <span class="s1">&#39;k-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
         <span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">semean</span><span class="p">,</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.25</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xlstr</span><span class="p">)</span>
@@ -619,7 +614,7 @@
 
         <span class="k">if</span> <span class="n">show</span><span class="p">:</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-            <span class="k">return</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="kc">None</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">ax0</span></div></div>
 
@@ -660,16 +655,16 @@
 <span class="sd">    .. automethod:: sea</span>
 <span class="sd">    .. automethod:: plot</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mf">3.</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[]):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">Sea2d</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="n">window</span><span class="p">,</span> \
-              <span class="n">delta</span><span class="o">=</span><span class="n">delta</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[])</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mf">3.</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[]):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sea2d</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="n">window</span><span class="p">,</span> \
+              <span class="n">delta</span><span class="o">=</span><span class="n">delta</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[])</span>
 
         <span class="k">if</span> <span class="n">y</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Sea2d.sea"><a class="viewcode-back" href="../../autosummary/spacepy.seapy.Sea2d.html#spacepy.seapy.Sea2d.sea">[docs]</a>    <span class="k">def</span> <span class="nf">sea</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">storedata</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">quartiles</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">mad</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+<div class="viewcode-block" id="Sea2d.sea"><a class="viewcode-back" href="../../autosummary/spacepy.seapy.Sea2d.html#spacepy.seapy.Sea2d.sea">[docs]</a>    <span class="k">def</span> <span class="nf">sea</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">storedata</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">quartiles</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">mad</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">ci_quan</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="n">nmask</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Perform 2D superposed epoch analysis on data in object</span>
 
@@ -750,14 +745,14 @@
 
         <span class="k">if</span> <span class="n">storedata</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">datacube</span> <span class="o">=</span> <span class="n">y_sea_m</span>
-            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;sea(): datacube added as new attribute&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sea(): datacube added as new attribute&#39;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Superposed epoch analysis complete&#39;</span><span class="p">)</span></div>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Superposed epoch analysis complete&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Sea2d.plot"><a class="viewcode-back" href="../../autosummary/spacepy.seapy.Sea2d.html#spacepy.seapy.Sea2d.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xquan</span> <span class="o">=</span> <span class="s1">&#39;Time Since Epoch&#39;</span><span class="p">,</span> <span class="n">yquan</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">xunits</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
-                <span class="n">yunits</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">zunits</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">epochline</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">usrlimy</span><span class="o">=</span><span class="p">[],</span>
-                <span class="n">show</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">zlog</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">):</span>
+                <span class="n">yunits</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">zunits</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">epochline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">usrlimy</span><span class="o">=</span><span class="p">[],</span>
+                <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">zlog</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Method called to create basic plot of 2D superposed epoch analysis.</span>
 
 <span class="sd">        Uses object attributes created by :meth:`sea`.</span>
@@ -790,7 +785,7 @@
         <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
             <span class="k">return</span> <span class="s1">&#39;Error: No superposed epoch results to plot&#39;</span>
 
-        <span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LogNorm</span>
+        <span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="k">import</span> <span class="n">LogNorm</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">xunits</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">:</span>
             <span class="n">xlstr</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">xquan</span>
@@ -835,7 +830,7 @@
 
         <span class="k">if</span> <span class="n">show</span><span class="p">:</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-            <span class="k">return</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="kc">None</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">ax0</span></div></div>
 
@@ -857,7 +852,7 @@
         <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">objlist</span><span class="p">)</span> <span class="o">==</span> \
         <span class="nb">list</span><span class="p">,</span> <span class="s1">&#39;seadict(): Inputs must be in lists&#39;</span>
     <span class="k">except</span> <span class="ne">AssertionError</span> <span class="k">as</span> <span class="n">args</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;{0} -- {1}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="n">args</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> -- </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">args</span><span class="p">))</span>
 
     <span class="n">nobj</span><span class="p">,</span> <span class="n">nname</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">objlist</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">namelist</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">nobj</span><span class="o">!=</span><span class="n">nname</span><span class="p">:</span>
@@ -872,8 +867,8 @@
     <span class="k">return</span> <span class="n">outdict</span></div>
 
 
-<div class="viewcode-block" id="multisea"><a class="viewcode-back" href="../../autosummary/spacepy.seapy.multisea.html#spacepy.seapy.multisea">[docs]</a><span class="k">def</span> <span class="nf">multisea</span><span class="p">(</span><span class="n">dictobj</span><span class="p">,</span> <span class="n">n_cols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">epochline</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">usrlimx</span><span class="o">=</span><span class="p">[],</span> <span class="n">usrlimy</span><span class="o">=</span><span class="p">[],</span>
-    <span class="n">xunits</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">zunits</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">zlog</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="multisea"><a class="viewcode-back" href="../../autosummary/spacepy.seapy.multisea.html#spacepy.seapy.multisea">[docs]</a><span class="k">def</span> <span class="nf">multisea</span><span class="p">(</span><span class="n">dictobj</span><span class="p">,</span> <span class="n">n_cols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">epochline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">usrlimx</span><span class="o">=</span><span class="p">[],</span> <span class="n">usrlimy</span><span class="o">=</span><span class="p">[],</span>
+    <span class="n">xunits</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">zunits</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">zlog</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Function to create multipanel plot of superposed epoch analyses.</span>
 
 <span class="sd">    Parameters</span>
@@ -896,7 +891,7 @@
 <span class="sd">    If keyword &#39;show&#39; is False, output is a plot object.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="kn">as</span> <span class="nn">tik</span>
+    <span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">tik</span>
 
     <span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">dictobj</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
     <span class="n">pld</span><span class="p">,</span> <span class="n">ply</span><span class="p">,</span> <span class="n">plx</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
@@ -913,7 +908,7 @@
             <span class="n">ply</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dictobj</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="c1">#ply (Plot Y)</span>
 
     <span class="k">if</span> <span class="n">n_cols</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;multisea(): Multiple column output not yet implemented&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;multisea(): Multiple column output not yet implemented&#39;</span><span class="p">)</span>
         <span class="n">n_fig</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dictobj</span><span class="p">)</span> <span class="c1">#force single column output for now</span>
         <span class="n">fignum</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n_fig</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
         <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -937,7 +932,7 @@
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">zunits</span><span class="p">)</span><span class="o">&gt;=</span><span class="mi">1</span><span class="p">:</span>
                 <span class="n">hc1</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">zunits</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span> <span class="c1">#else do line plot</span>
-            <span class="n">ax_b</span> <span class="o">=</span> <span class="n">dictobj</span><span class="p">[</span><span class="n">keylist</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xquan</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">yquan</span><span class="o">=</span><span class="n">ylab</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">epochline</span><span class="o">=</span><span class="n">epochline</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">dum</span><span class="p">)</span>
+            <span class="n">ax_b</span> <span class="o">=</span> <span class="n">dictobj</span><span class="p">[</span><span class="n">keylist</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xquan</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">yquan</span><span class="o">=</span><span class="n">ylab</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">epochline</span><span class="o">=</span><span class="n">epochline</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">dum</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="n">n_fig</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
             <span class="c1">#Add x-label to bottom panel</span>
@@ -958,12 +953,12 @@
 
     <span class="k">if</span> <span class="n">show</span><span class="p">:</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-        <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">return</span> <span class="kc">None</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">fig</span></div>
 
 
-<div class="viewcode-block" id="readepochs"><a class="viewcode-back" href="../../autosummary/spacepy.seapy.readepochs.html#spacepy.seapy.readepochs">[docs]</a><span class="k">def</span> <span class="nf">readepochs</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">iso</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">isofmt</span><span class="o">=</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="readepochs"><a class="viewcode-back" href="../../autosummary/spacepy.seapy.readepochs.html#spacepy.seapy.readepochs">[docs]</a><span class="k">def</span> <span class="nf">readepochs</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">iso</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">isofmt</span><span class="o">=</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Read epochs from text file assuming YYYY MM DD hh mm ss format</span>
 
 <span class="sd">    Parameters</span>
@@ -980,8 +975,8 @@
 <span class="sd">    epochs (type=list)</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">iso</span><span class="o">==</span><span class="bp">False</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">loadtxt</span><span class="p">,</span> <span class="n">zeros</span>
+    <span class="k">if</span> <span class="n">iso</span><span class="o">==</span><span class="kc">False</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">loadtxt</span><span class="p">,</span> <span class="n">zeros</span>
 
         <span class="n">intime</span> <span class="o">=</span> <span class="n">loadtxt</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
         <span class="n">dum</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">([</span><span class="n">intime</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">6</span><span class="p">])</span>
@@ -1004,8 +999,8 @@
     <span class="k">return</span> <span class="n">epochs</span></div>
 
 
-<div class="viewcode-block" id="sea_signif"><a class="viewcode-back" href="../../autosummary/spacepy.seapy.sea_signif.html#spacepy.seapy.sea_signif">[docs]</a><span class="k">def</span> <span class="nf">sea_signif</span><span class="p">(</span><span class="n">obj1</span><span class="p">,</span> <span class="n">obj2</span><span class="p">,</span> <span class="n">test</span><span class="o">=</span><span class="s1">&#39;KS&#39;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">xquan</span> <span class="o">=</span> <span class="s1">&#39;Time Since Epoch&#39;</span><span class="p">,</span>
-        <span class="n">yquan</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">xunits</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">yunits</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">epochline</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">usrlimy</span><span class="o">=</span><span class="p">[]):</span>
+<div class="viewcode-block" id="sea_signif"><a class="viewcode-back" href="../../autosummary/spacepy.seapy.sea_signif.html#spacepy.seapy.sea_signif">[docs]</a><span class="k">def</span> <span class="nf">sea_signif</span><span class="p">(</span><span class="n">obj1</span><span class="p">,</span> <span class="n">obj2</span><span class="p">,</span> <span class="n">test</span><span class="o">=</span><span class="s1">&#39;KS&#39;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xquan</span> <span class="o">=</span> <span class="s1">&#39;Time Since Epoch&#39;</span><span class="p">,</span>
+        <span class="n">yquan</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">xunits</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">yunits</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">epochline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">usrlimy</span><span class="o">=</span><span class="p">[]):</span>
     <span class="sd">&quot;&quot;&quot;Test for similarity between distributions at each lag in two 1-D SEAs</span>
 
 <span class="sd">    Parameters</span>
@@ -1057,7 +1052,7 @@
     <span class="k">except</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Test &quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="o">+</span><span class="s2">&quot; not implemented, only &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">keylist</span><span class="p">))</span>
 
-    <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">ks_2samp</span><span class="p">,</span> <span class="n">mannwhitneyu</span>
+    <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">ks_2samp</span><span class="p">,</span> <span class="n">mannwhitneyu</span>
 
     <span class="k">if</span> <span class="n">test</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;KS&#39;</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
@@ -1077,13 +1072,13 @@
             <span class="n">prob</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tprobU</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">xunits</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">:</span>
-        <span class="n">xlstr</span> <span class="o">=</span> <span class="s1">&#39;{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xquan</span><span class="p">)</span>
+        <span class="n">xlstr</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xquan</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">xlstr</span> <span class="o">=</span> <span class="s1">&#39;{0} [{1}]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xquan</span><span class="p">,</span> <span class="n">xunits</span><span class="p">)</span>
+        <span class="n">xlstr</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> [</span><span class="si">{1}</span><span class="s1">]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xquan</span><span class="p">,</span> <span class="n">xunits</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">yquan</span><span class="p">)</span><span class="o">&gt;=</span><span class="mi">1</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">yunits</span><span class="p">)</span><span class="o">&gt;=</span><span class="mi">1</span><span class="p">:</span>
-        <span class="n">ylstr</span> <span class="o">=</span> <span class="s1">&#39;{0} [{1}]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">yquan</span><span class="p">,</span> <span class="n">yunits</span><span class="p">)</span>
+        <span class="n">ylstr</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> [</span><span class="si">{1}</span><span class="s1">]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">yquan</span><span class="p">,</span> <span class="n">yunits</span><span class="p">)</span>
     <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">yquan</span><span class="p">)</span><span class="o">&gt;=</span><span class="mi">1</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">yunits</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">:</span>
-        <span class="n">ylstr</span> <span class="o">=</span> <span class="s1">&#39;{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">yquan</span><span class="p">)</span>
+        <span class="n">ylstr</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">yquan</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">ylstr</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 
@@ -1113,7 +1108,7 @@
 
     <span class="k">if</span> <span class="n">show</span><span class="p">:</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-        <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">return</span> <span class="kc">None</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">fig</span></div>
 
@@ -1139,12 +1134,12 @@
         <li><a href="../../search.html">search</a>|&nbsp;</li>
        <li><a href="../../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2011-2016, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+        &#169; Copyright 2011-2019, The SpacePy Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>
