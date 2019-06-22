@@ -1,23 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>SpacePy Dependencies &mdash; SpacePy v0.1.6 Manual (DRAFT)</title>
-    
+    <title>SpacePy Dependencies &#8212; SpacePy v0.2.0 Manual</title>
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.1.6',
+        VERSION:     '0.2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -25,12 +23,12 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/copybutton.js"></script>
     <link rel="shortcut icon" href="_static/lanl_favicon.ico"/>
-    <link rel="top" title="SpacePy v0.1.6 Manual (DRAFT)" href="index.html" />
-    <link rel="up" title="Installing SpacePy" href="install.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Linux Installation" href="install_linux.html" />
     <link rel="prev" title="Installing SpacePy" href="install.html" /> 
   </head>
-  <body role="document">
+  <body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="index.html"><img src="_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -55,7 +53,7 @@
         <li><a href="search.html">search</a>|&nbsp;</li>
        <li><a href="index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="install.html" accesskey="U">Installing SpacePy</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="install.html" accesskey="U">Installing SpacePy</a> &#187;</li> 
       </ul>
     </div>
 
@@ -97,21 +95,18 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/dependencies.txt"
+      <li><a href="_sources/dependencies.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -125,7 +120,7 @@
   <div class="section" id="spacepy-dependencies">
 <h1>SpacePy Dependencies<a class="headerlink" href="#spacepy-dependencies" title="Permalink to this headline">¶</a></h1>
 <p>SpacePy relies on several other pieces of software for complete
-functionality.  <a class="reference internal" href="install.html"><em>Installing SpacePy</em></a> links to details on
+functionality.  <a class="reference internal" href="install.html"><span class="doc">Installing SpacePy</span></a> links to details on
 installing the required software for each platform.</p>
 <p>Unless otherwise noted, a dependency may be installed <em>after</em>
 SpacePy, and the new functionality will be available the next
@@ -138,7 +133,7 @@ time SpacePy is imported.</p>
 <p><a class="reference external" href="http://www.python.org/">Python</a> is the core language for SpacePy.
 Python 2.6 or later is required. SpacePy works under Python 3, but
 Python 2 is still recommended for most users.  <em>Python 3 is not simply
-a &#8220;newer&#8221; Python 2; there are substantial differences in the
+a “newer” Python 2; there are substantial differences in the
 language</em>. See <a class="reference external" href="http://wiki.python.org/moin/Python2orPython3">Should I use Python 2 or Python 3?</a>.</p>
 <p>Required to install SpacePy.</p>
 </div>
@@ -153,7 +148,7 @@ packaged separately; it is required (at installation time) if
 </div>
 <div class="section" id="dateutil">
 <h3>dateutil<a class="headerlink" href="#dateutil" title="Permalink to this headline">¶</a></h3>
-<p>If you choose not to install <a class="reference internal" href="#dependencies-mpl"><span>matplotlib</span></a>,
+<p>If you choose not to install <a class="reference internal" href="#dependencies-mpl"><span class="std std-ref">matplotlib</span></a>,
 <a class="reference external" href="http://labix.org/python-dateutil">dateutil</a> is required.
 (Installing matplotlib will fulfill this dependency.)</p>
 </div>
@@ -225,7 +220,7 @@ HDF5 files. It is required for the HDF import/export capability of
 </div>
 <div class="section" id="cdf">
 <h3>CDF<a class="headerlink" href="#cdf" title="Permalink to this headline">¶</a></h3>
-<p>NASA&#8217;s <a class="reference external" href="http://cdf.gsfc.nasa.gov/">CDF</a> library provides access to
+<p>NASA’s <a class="reference external" href="http://cdf.gsfc.nasa.gov/">CDF</a> library provides access to
 Common Data Format files. It is required for <a class="reference internal" href="pycdf.html#module-spacepy.pycdf" title="spacepy.pycdf"><code class="xref py py-mod docutils literal"><span class="pre">pycdf</span></code></a>,
 and thus for the CDF import/export capability of
 <a class="reference internal" href="datamodel.html#module-spacepy.datamodel" title="spacepy.datamodel"><code class="xref py py-mod docutils literal"><span class="pre">datamodel</span></code></a>.</p>
@@ -273,12 +268,12 @@ f2py) must be installed before SpacePy.</p>
         <li><a href="search.html">search</a>|&nbsp;</li>
        <li><a href="index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="install.html" >Installing SpacePy</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="install.html" >Installing SpacePy</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2011-2016, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+        &#169; Copyright 2011-2019, The SpacePy Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

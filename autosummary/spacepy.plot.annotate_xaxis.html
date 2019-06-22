@@ -1,23 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>spacepy.plot.annotate_xaxis &mdash; SpacePy v0.1.6 Manual (DRAFT)</title>
-    
+    <title>spacepy.plot.annotate_xaxis &#8212; SpacePy v0.2.0 Manual</title>
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1.6',
+        VERSION:     '0.2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -25,12 +23,12 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/copybutton.js"></script>
     <link rel="shortcut icon" href="../_static/lanl_favicon.ico"/>
-    <link rel="top" title="SpacePy v0.1.6 Manual (DRAFT)" href="../index.html" />
-    <link rel="up" title="plot - Plot, various specialized plotting functions and associated utilities" href="../plot.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="spacepy.plot.applySmartTimeTicks" href="spacepy.plot.applySmartTimeTicks.html" />
     <link rel="prev" title="spacepy.plot.add_logo" href="spacepy.plot.add_logo.html" /> 
   </head>
-  <body role="document">
+  <body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -55,7 +53,7 @@
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../plot.html" accesskey="U">plot - Plot, various specialized plotting functions and associated utilities</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../plot.html" accesskey="U">plot - Plot, various specialized plotting functions and associated utilities</a> &#187;</li> 
       </ul>
     </div>
 
@@ -73,21 +71,18 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/autosummary/spacepy.plot.annotate_xaxis.txt"
+      <li><a href="../_sources/autosummary/spacepy.plot.annotate_xaxis.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -104,7 +99,7 @@
 <dt id="spacepy.plot.annotate_xaxis">
 <code class="descclassname">spacepy.plot.</code><code class="descname">annotate_xaxis</code><span class="sig-paren">(</span><em>txt</em>, <em>ax=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#annotate_xaxis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.plot.annotate_xaxis" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write text in-line and to the right of the x-axis tick labels</p>
-<p>Annotates the x axis of an <a class="reference external" href="http://matplotlib.sourceforge.net/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.1.0)"><code class="xref py py-class docutils literal"><span class="pre">Axes</span></code></a> object with text
+<p>Annotates the x axis of an <a class="reference external" href="https://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.1.0)"><code class="xref py py-class docutils literal"><span class="pre">Axes</span></code></a> object with text
 placed in-line with the tick labels and immediately to the right of the
 last label. This is formatted to match the existing tick marks.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -119,15 +114,15 @@ last label. This is formatted to match the existing tick marks.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : matplotlib.text.Text</p>
 <blockquote>
-<div><p>The <a class="reference external" href="http://matplotlib.sourceforge.net/api/text_api.html#matplotlib.text.Text" title="(in Matplotlib v3.1.0)"><code class="xref py py-class docutils literal"><span class="pre">Text</span></code></a> object for the annotation.</p>
+<div><p>The <a class="reference external" href="https://matplotlib.org/api/text_api.html#matplotlib.text.Text" title="(in Matplotlib v3.1.0)"><code class="xref py py-class docutils literal"><span class="pre">Text</span></code></a> object for the annotation.</p>
 </div></blockquote>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><strong>ax</strong> : matplotlib.axes.Axes</p>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><p class="first"><strong>ax</strong> : matplotlib.axes.Axes</p>
 <blockquote class="last">
 <div><p>The axes to annotate; if not specified, the
-<a class="reference external" href="http://matplotlib.sourceforge.net/api/_as_gen/matplotlib.pyplot.gca.html#matplotlib.pyplot.gca" title="(in Matplotlib v3.1.0)"><code class="xref py py-func docutils literal"><span class="pre">gca()</span></code></a> function will be used.</p>
+<a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.gca.html#matplotlib.pyplot.gca" title="(in Matplotlib v3.1.0)"><code class="xref py py-func docutils literal"><span class="pre">gca()</span></code></a> function will be used.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -137,11 +132,11 @@ last label. This is formatted to match the existing tick marks.</p>
 <p>The annotation is placed <em>immediately</em> to the right of the last tick label.
 Generally the first character of <code class="docutils literal"><span class="pre">txt</span></code> should be a space to allow some
 room.</p>
-<p>Calls <a class="reference external" href="http://matplotlib.sourceforge.net/api/_as_gen/matplotlib.pyplot.draw.html#matplotlib.pyplot.draw" title="(in Matplotlib v3.1.0)"><code class="xref py py-func docutils literal"><span class="pre">draw()</span></code></a> to ensure tick marker locations are
+<p>Calls <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.draw.html#matplotlib.pyplot.draw" title="(in Matplotlib v3.1.0)"><code class="xref py py-func docutils literal"><span class="pre">draw()</span></code></a> to ensure tick marker locations are
 up to date.</p>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.plot.utils</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.plot.utils</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">datetime</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">times</span> <span class="o">=</span> <span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2010</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
@@ -184,12 +179,12 @@ up to date.</p>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../plot.html" >plot - Plot, various specialized plotting functions and associated utilities</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../plot.html" >plot - Plot, various specialized plotting functions and associated utilities</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2011-2016, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+        &#169; Copyright 2011-2019, The SpacePy Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

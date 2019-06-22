@@ -1,23 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>datamodel - easy to use general data model &mdash; SpacePy v0.1.6 Manual (DRAFT)</title>
-    
+    <title>datamodel - easy to use general data model &#8212; SpacePy v0.2.0 Manual</title>
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.1.6',
+        VERSION:     '0.2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -25,11 +23,12 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/copybutton.js"></script>
     <link rel="shortcut icon" href="_static/lanl_favicon.ico"/>
-    <link rel="top" title="SpacePy v0.1.6 Manual (DRAFT)" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="spacepy.datamodel.SpaceData" href="autosummary/spacepy.datamodel.SpaceData.html" />
     <link rel="prev" title="datamanager - easy access to and manipulation of data" href="datamanager.html" /> 
   </head>
-  <body role="document">
+  <body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="index.html"><img src="_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -82,21 +81,18 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/datamodel.txt"
+      <li><a href="_sources/datamodel.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -138,7 +134,7 @@ class is datamodel.dmarray and also carries attributes. The dmarray class is ana
 HDF5 dataset.</p>
 <p>In fact, HDF5 can be loaded directly into a SpacePy datamodel, carrying across all attributes,
 using the function fromHDF5:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamodel</span> <span class="kn">as</span> <span class="nn">dm</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamodel</span> <span class="k">as</span> <span class="nn">dm</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">fromHDF5</span><span class="p">(</span><span class="s1">&#39;test.h5&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -153,7 +149,7 @@ to HDF5 or JSON-headed ASCII. See <code class="xref py py-func docutils literal"
 the mission name and the instrument PI, the variables might be the
 instrument counts [n-dimensional array], timestamps[1-dimensional array and an orbit number [scalar].
 Each variable will have one attribute (for this example).</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamodel</span> <span class="kn">as</span> <span class="nn">dm</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamodel</span> <span class="k">as</span> <span class="nn">dm</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mydata</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;MissionName&#39;</span><span class="p">:</span> <span class="s1">&#39;BigSat1&#39;</span><span class="p">})</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mydata</span><span class="p">[</span><span class="s1">&#39;Counts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmarray</span><span class="p">([[</span><span class="mi">42</span><span class="p">,</span> <span class="mi">69</span><span class="p">,</span> <span class="mi">77</span><span class="p">],</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">250</span><span class="p">]],</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Units&#39;</span><span class="p">:</span> <span class="s1">&#39;cnts/s&#39;</span><span class="p">})</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mydata</span><span class="p">[</span><span class="s1">&#39;Epoch&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmarray</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;minutes&#39;</span><span class="p">})</span>
@@ -164,32 +160,32 @@ Each variable will have one attribute (for this example).</p>
 <p>This has now populated a structure that can map directly to a NASA CDF, HDF5 or JSON-headed ASCII file.
 To visualize our datamodel, we can use tree method (which can be applied to any dictionary-like object
 using <a class="reference internal" href="autosummary/spacepy.toolbox.dictree.html#spacepy.toolbox.dictree" title="spacepy.toolbox.dictree"><code class="xref py py-func docutils literal"><span class="pre">dictree()</span></code></a>).</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mydata</span><span class="o">.</span><span class="n">tree</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mydata</span><span class="o">.</span><span class="n">tree</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>+
-:|____MissionName
-:|____PI
-|____Counts
-     :|____Units
-|____Epoch
-     :|____units
-|____OrbitNumber
-     :|____StartsFrom
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">+</span>
+<span class="p">:</span><span class="o">|</span><span class="n">____MissionName</span>
+<span class="p">:</span><span class="o">|</span><span class="n">____PI</span>
+<span class="o">|</span><span class="n">____Counts</span>
+     <span class="p">:</span><span class="o">|</span><span class="n">____Units</span>
+<span class="o">|</span><span class="n">____Epoch</span>
+     <span class="p">:</span><span class="o">|</span><span class="n">____units</span>
+<span class="o">|</span><span class="n">____OrbitNumber</span>
+     <span class="p">:</span><span class="o">|</span><span class="n">____StartsFrom</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="guide-for-nasa-cdf-users">
 <h2>Guide for NASA CDF users<a class="headerlink" href="#guide-for-nasa-cdf-users" title="Permalink to this headline">¶</a></h2>
-<p>By definition, a NASA CDF only has a single &#8216;layer&#8217;. That is, a CDF contains a series of records
+<p>By definition, a NASA CDF only has a single ‘layer’. That is, a CDF contains a series of records
 (stored variables of various types) and a set of attributes that are either global or local in
-scope. Thus to use SpacePy&#8217;s datamodel to capture the functionality of CDF the two basic data types
+scope. Thus to use SpacePy’s datamodel to capture the functionality of CDF the two basic data types
 are all that is required, and the main constraint is that datamodel.SpaceData objects cannot be
 nested (more on this later, if conversion from a nested datamodel to a flat datamodel is required).</p>
 <p>Opening a CDF and working directly with the contents can be easily done using the PyCDF module, however,
 if you wish to load the entire contents of a CDF directly into a datamodel (complete with attributes)
 the following will make life easier:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamodel</span> <span class="kn">as</span> <span class="nn">dm</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamodel</span> <span class="k">as</span> <span class="nn">dm</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">fromCDF</span><span class="p">(</span><span class="s1">&#39;inFile.cdf&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -213,7 +209,7 @@ If text is absolutely required then it is possible to encode multi-dimensional a
 but this is not recommended.</p>
 <p>This format is best understood by illustration. The following example builds a toy SpacePy datamodel and
 writes it to a JSON-headed ASCII file. The contents of the file are then shown.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamodel</span> <span class="kn">as</span> <span class="nn">dm</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamodel</span> <span class="k">as</span> <span class="nn">dm</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;Global&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;A global attribute&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Var1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmarray</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Local1&#39;</span><span class="p">:</span> <span class="s1">&#39;A local attribute&#39;</span><span class="p">})</span>
@@ -225,7 +221,7 @@ writes it to a JSON-headed ASCII file. The contents of the file are then shown.<
 </pre></div>
 </div>
 <p>The file looks like:</p>
-<div class="highlight-none"><div class="highlight"><pre>#{
+<div class="highlight-none"><div class="highlight"><pre><span></span>#{
 #    &quot;MVar&quot;: {
 #        &quot;Note&quot;: &quot;Metadata&quot;,
 #        &quot;VALUES&quot;: [7.8]
@@ -277,7 +273,7 @@ writes it to a JSON-headed ASCII file. The contents of the file are then shown.<
 <tr class="row-odd"><td><a class="reference internal" href="autosummary/spacepy.datamodel.convertKeysToStr.html#spacepy.datamodel.convertKeysToStr" title="spacepy.datamodel.convertKeysToStr"><code class="xref py py-obj docutils literal"><span class="pre">convertKeysToStr</span></code></a>(SDobject)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="autosummary/spacepy.datamodel.createISTPattrs.html#spacepy.datamodel.createISTPattrs" title="spacepy.datamodel.createISTPattrs"><code class="xref py py-obj docutils literal"><span class="pre">createISTPattrs</span></code></a>(datatype[,&nbsp;ndims,&nbsp;vartype,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="autosummary/spacepy.datamodel.createISTPattrs.html#spacepy.datamodel.createISTPattrs" title="spacepy.datamodel.createISTPattrs"><code class="xref py py-obj docutils literal"><span class="pre">createISTPattrs</span></code></a>(datatype[,&nbsp;ndims,&nbsp;vartype,&nbsp;…])</td>
 <td>Return set of unpopulated attributes for ISTP compliant variable</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="autosummary/spacepy.datamodel.dmcopy.html#spacepy.datamodel.dmcopy" title="spacepy.datamodel.dmcopy"><code class="xref py py-obj docutils literal"><span class="pre">dmcopy</span></code></a>(dobj)</td>
@@ -304,10 +300,10 @@ writes it to a JSON-headed ASCII file. The contents of the file are then shown.<
 <tr class="row-even"><td><a class="reference internal" href="autosummary/spacepy.datamodel.toHDF5.html#spacepy.datamodel.toHDF5" title="spacepy.datamodel.toHDF5"><code class="xref py py-obj docutils literal"><span class="pre">toHDF5</span></code></a>(fname,&nbsp;SDobject,&nbsp;**kwargs)</td>
 <td>Create an HDF5 file from a SpacePy datamodel representation</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="autosummary/spacepy.datamodel.toHTML.html#spacepy.datamodel.toHTML" title="spacepy.datamodel.toHTML"><code class="xref py py-obj docutils literal"><span class="pre">toHTML</span></code></a>(fname,&nbsp;SDobject[,&nbsp;attrs,&nbsp;varLinks,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="autosummary/spacepy.datamodel.toHTML.html#spacepy.datamodel.toHTML" title="spacepy.datamodel.toHTML"><code class="xref py py-obj docutils literal"><span class="pre">toHTML</span></code></a>(fname,&nbsp;SDobject[,&nbsp;attrs,&nbsp;varLinks,&nbsp;…])</td>
 <td>Create an HTML dump of the structure of a spacedata</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="autosummary/spacepy.datamodel.toJSONheadedASCII.html#spacepy.datamodel.toJSONheadedASCII" title="spacepy.datamodel.toJSONheadedASCII"><code class="xref py py-obj docutils literal"><span class="pre">toJSONheadedASCII</span></code></a>(fname,&nbsp;insd[,&nbsp;metadata,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="autosummary/spacepy.datamodel.toJSONheadedASCII.html#spacepy.datamodel.toJSONheadedASCII" title="spacepy.datamodel.toJSONheadedASCII"><code class="xref py py-obj docutils literal"><span class="pre">toJSONheadedASCII</span></code></a>(fname,&nbsp;insd[,&nbsp;metadata,&nbsp;…])</td>
 <td>Write JSON-headed ASCII file of data with metadata from SpaceData object</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="autosummary/spacepy.datamodel.toRecArray.html#spacepy.datamodel.toRecArray" title="spacepy.datamodel.toRecArray"><code class="xref py py-obj docutils literal"><span class="pre">toRecArray</span></code></a>(sdo)</td>
@@ -319,13 +315,13 @@ writes it to a JSON-headed ASCII file. The contents of the file are then shown.<
 <tr class="row-odd"><td><a class="reference internal" href="autosummary/spacepy.datamodel.readJSONMetadata.html#spacepy.datamodel.readJSONMetadata" title="spacepy.datamodel.readJSONMetadata"><code class="xref py py-obj docutils literal"><span class="pre">readJSONMetadata</span></code></a>(fname,&nbsp;**kwargs)</td>
 <td>Read JSON metadata from an ASCII data file</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="autosummary/spacepy.datamodel.readJSONheadedASCII.html#spacepy.datamodel.readJSONheadedASCII" title="spacepy.datamodel.readJSONheadedASCII"><code class="xref py py-obj docutils literal"><span class="pre">readJSONheadedASCII</span></code></a>(fname[,&nbsp;mdata,&nbsp;comment,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="autosummary/spacepy.datamodel.readJSONheadedASCII.html#spacepy.datamodel.readJSONheadedASCII" title="spacepy.datamodel.readJSONheadedASCII"><code class="xref py py-obj docutils literal"><span class="pre">readJSONheadedASCII</span></code></a>(fname[,&nbsp;mdata,&nbsp;comment,&nbsp;…])</td>
 <td>read JSON-headed ASCII data files into a SpacePy datamodel</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="autosummary/spacepy.datamodel.resample.html#spacepy.datamodel.resample" title="spacepy.datamodel.resample"><code class="xref py py-obj docutils literal"><span class="pre">resample</span></code></a>(data[,&nbsp;time,&nbsp;winsize,&nbsp;overlap,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="autosummary/spacepy.datamodel.resample.html#spacepy.datamodel.resample" title="spacepy.datamodel.resample"><code class="xref py py-obj docutils literal"><span class="pre">resample</span></code></a>(data[,&nbsp;time,&nbsp;winsize,&nbsp;overlap,&nbsp;…])</td>
 <td>resample a SpaceData to a new time interval</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="autosummary/spacepy.datamodel.writeJSONMetadata.html#spacepy.datamodel.writeJSONMetadata" title="spacepy.datamodel.writeJSONMetadata"><code class="xref py py-obj docutils literal"><span class="pre">writeJSONMetadata</span></code></a>(fname,&nbsp;insd[,&nbsp;depend0,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="autosummary/spacepy.datamodel.writeJSONMetadata.html#spacepy.datamodel.writeJSONMetadata" title="spacepy.datamodel.writeJSONMetadata"><code class="xref py py-obj docutils literal"><span class="pre">writeJSONMetadata</span></code></a>(fname,&nbsp;insd[,&nbsp;depend0,&nbsp;…])</td>
 <td>Scrape metadata from SpaceData object and make a JSON header</td>
 </tr>
 </tbody>
@@ -360,8 +356,8 @@ writes it to a JSON-headed ASCII file. The contents of the file are then shown.<
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2011-2016, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+        &#169; Copyright 2011-2019, The SpacePy Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

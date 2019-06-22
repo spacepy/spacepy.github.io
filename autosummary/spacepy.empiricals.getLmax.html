@@ -1,23 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>spacepy.empiricals.getLmax &mdash; SpacePy v0.1.6 Manual (DRAFT)</title>
-    
+    <title>spacepy.empiricals.getLmax &#8212; SpacePy v0.2.0 Manual</title>
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.1.6',
+        VERSION:     '0.2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
@@ -25,12 +23,12 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/copybutton.js"></script>
     <link rel="shortcut icon" href="../_static/lanl_favicon.ico"/>
-    <link rel="top" title="SpacePy v0.1.6 Manual (DRAFT)" href="../index.html" />
-    <link rel="up" title="empiricals - module with heliospheric empirical modules" href="../empiricals.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="spacepy.empiricals.getMPstandoff" href="spacepy.empiricals.getMPstandoff.html" />
     <link rel="prev" title="spacepy.empiricals.getExpectedSWTemp" href="spacepy.empiricals.getExpectedSWTemp.html" /> 
   </head>
-  <body role="document">
+  <body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -55,7 +53,7 @@
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../empiricals.html" accesskey="U">empiricals - module with heliospheric empirical modules</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../empiricals.html" accesskey="U">empiricals - module with heliospheric empirical modules</a> &#187;</li> 
       </ul>
     </div>
 
@@ -73,21 +71,18 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/autosummary/spacepy.empiricals.getLmax.txt"
+      <li><a href="../_sources/autosummary/spacepy.empiricals.getLmax.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -106,7 +101,7 @@
 <dd><p>calculate a simple empirical model for Lmax - last closed drift-shell</p>
 <p>Uses the parametrized Lmax from:
 Koller and Morley (2010)
-&#8216;Magnetopause shadowing effects for radiation belt models during high-speed solar wind streams&#8217;
+‘Magnetopause shadowing effects for radiation belt models during high-speed solar wind streams’
 American Geophysical Union, Fall Meeting 2010, abstract #SM13A-1787</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -118,7 +113,7 @@ American Geophysical Union, Fall Meeting 2010, abstract #SM13A-1787</p>
 </div></blockquote>
 <p><strong>model</strong> : string, optional</p>
 <blockquote>
-<div><p>&#8216;JKemp&#8217; (default - empirical model of J. Koller)</p>
+<div><p>‘JKemp’ (default - empirical model of J. Koller)</p>
 </div></blockquote>
 </td>
 </tr>
@@ -135,8 +130,8 @@ American Geophysical Union, Fall Meeting 2010, abstract #SM13A-1787</p>
 <p class="last"><a class="reference internal" href="spacepy.LANLstar.LANLmax.html#spacepy.LANLstar.LANLmax" title="spacepy.LANLstar.LANLmax"><code class="xref py py-obj docutils literal"><span class="pre">spacepy.LANLstar.LANLmax</span></code></a></p>
 </div>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">spacepy.empiricals</span> <span class="kn">import</span> <span class="n">getLmax</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.time</span> <span class="kn">as</span> <span class="nn">st</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">spacepy.empiricals</span> <span class="k">import</span> <span class="n">getLmax</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.time</span> <span class="k">as</span> <span class="nn">st</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">datetime</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ticks</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">tickrange</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">deltadays</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="go">array([ 7.4928412,  8.3585632,  8.6463423])</span>
@@ -171,12 +166,12 @@ American Geophysical Union, Fall Meeting 2010, abstract #SM13A-1787</p>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../empiricals.html" >empiricals - module with heliospheric empirical modules</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../empiricals.html" >empiricals - module with heliospheric empirical modules</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2011-2016, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+        &#169; Copyright 2011-2019, The SpacePy Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

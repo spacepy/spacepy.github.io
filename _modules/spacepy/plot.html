@@ -1,23 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>spacepy.plot &mdash; SpacePy v0.1.6 Manual (DRAFT)</title>
-    
+    <title>spacepy.plot &#8212; SpacePy v0.2.0 Manual</title>
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.1.6',
+        VERSION:     '0.2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
@@ -25,10 +23,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/copybutton.js"></script>
     <link rel="shortcut icon" href="../../_static/lanl_favicon.ico"/>
-    <link rel="top" title="SpacePy v0.1.6 Manual (DRAFT)" href="../../index.html" />
-    <link rel="up" title="Module code" href="../index.html" /> 
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
   </head>
-  <body role="document">
+  <body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../../index.html"><img src="../../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -47,7 +45,7 @@
         <li><a href="../../search.html">search</a>|&nbsp;</li>
        <li><a href="../../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
       </ul>
     </div>
 
@@ -59,14 +57,11 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -78,7 +73,7 @@
           <div class="body" role="main">
             
   <h1>Source code for spacepy.plot</h1><div class="highlight"><pre>
-<span class="ch">#!/usr/bin/env python</span>
+<span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
@@ -151,26 +146,26 @@
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Mapping</span>
+    <span class="kn">from</span> <span class="nn">collections.abc</span> <span class="k">import</span> <span class="n">Mapping</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Mapping</span>
+    <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">Mapping</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="kn">as</span> <span class="nn">mpl</span>
-<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Wedge</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">__version__</span> <span class="k">as</span> <span class="n">mplv</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">spacepy</span> <span class="kn">import</span> <span class="n">__path__</span> <span class="k">as</span> <span class="n">basepath</span>
-<span class="kn">from</span> <span class="nn">spacepy.datamodel</span> <span class="kn">import</span> <span class="n">dmcopy</span>
-<span class="kn">import</span> <span class="nn">spacepy.datamanager</span> <span class="kn">as</span> <span class="nn">dman</span>
-<span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">config</span>
-<span class="kn">from</span> <span class="nn">.spectrogram</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.carrington</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.colourmaps</span> <span class="kn">import</span> <span class="n">plasma</span> <span class="k">as</span> <span class="n">_plasma</span>
-<span class="kn">from</span> <span class="nn">.colourmaps</span> <span class="kn">import</span> <span class="n">plasma_r</span> <span class="k">as</span> <span class="n">_plasma_r</span>
-<span class="kn">from</span> <span class="nn">.colourmaps</span> <span class="kn">import</span> <span class="n">viridis</span> <span class="k">as</span> <span class="n">_viridis</span>
-<span class="kn">from</span> <span class="nn">.colourmaps</span> <span class="kn">import</span> <span class="n">viridis_r</span> <span class="k">as</span> <span class="n">_viridis_r</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="k">import</span> <span class="n">Wedge</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">__version__</span> <span class="k">as</span> <span class="n">mplv</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">spacepy</span> <span class="k">import</span> <span class="n">__path__</span> <span class="k">as</span> <span class="n">basepath</span>
+<span class="kn">from</span> <span class="nn">spacepy.datamodel</span> <span class="k">import</span> <span class="n">dmcopy</span>
+<span class="kn">import</span> <span class="nn">spacepy.datamanager</span> <span class="k">as</span> <span class="nn">dman</span>
+<span class="kn">from</span> <span class="nn">..</span> <span class="k">import</span> <span class="n">config</span>
+<span class="kn">from</span> <span class="nn">.spectrogram</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">.carrington</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">.colourmaps</span> <span class="k">import</span> <span class="n">plasma</span> <span class="k">as</span> <span class="n">_plasma</span>
+<span class="kn">from</span> <span class="nn">.colourmaps</span> <span class="k">import</span> <span class="n">plasma_r</span> <span class="k">as</span> <span class="n">_plasma_r</span>
+<span class="kn">from</span> <span class="nn">.colourmaps</span> <span class="k">import</span> <span class="n">viridis</span> <span class="k">as</span> <span class="n">_viridis</span>
+<span class="kn">from</span> <span class="nn">.colourmaps</span> <span class="k">import</span> <span class="n">viridis_r</span> <span class="k">as</span> <span class="n">_viridis_r</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">register_cmap</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">_plasma</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">register_cmap</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;plasma_r&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">_plasma_r</span><span class="p">)</span>
@@ -198,26 +193,26 @@
         <span class="n">sTT</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;smartTimeTicks&#39;</span><span class="p">]</span>
         <span class="k">del</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;smartTimeTicks&#39;</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">sTT</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">sTT</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="s1">&#39;figsize&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
         <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;figsize&#39;</span><span class="p">])</span>
         <span class="k">del</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;figsize&#39;</span><span class="p">]</span>
     <span class="n">pobj</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">sTT</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">sTT</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
-        <span class="n">applySmartTimeTicks</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dolimit</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">dolabel</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="n">applySmartTimeTicks</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dolimit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dolabel</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">pobj</span></div>
 
-<div class="viewcode-block" id="available"><a class="viewcode-back" href="../../autosummary/spacepy.plot.available.html#spacepy.plot.available">[docs]</a><span class="k">def</span> <span class="nf">available</span><span class="p">(</span><span class="n">returnvals</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+<div class="viewcode-block" id="available"><a class="viewcode-back" href="../../autosummary/spacepy.plot.available.html#spacepy.plot.available">[docs]</a><span class="k">def</span> <span class="nf">available</span><span class="p">(</span><span class="n">returnvals</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;List the available plot styles provided by spacepy.plot</span>
 
 <span class="sd">    Note that some of the available styles have multiple aliases.</span>
 <span class="sd">    To apply an available style, use `spacepy.plot.style`.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">spacepystyle</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">basepath</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;spacepy.mplstyle&#39;</span><span class="p">)</span>
-    <span class="n">spacepyaltstyle</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">basepath</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;spacepy_altgrid.mplstyle&#39;</span><span class="p">)</span>
-    <span class="n">polarstyle</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">basepath</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;spacepy_polar.mplstyle&#39;</span><span class="p">)</span>
+    <span class="n">spacepystyle</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">basepath</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;spacepy.mplstyle&#39;</span><span class="p">)</span>
+    <span class="n">spacepyaltstyle</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">basepath</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;spacepy_altgrid.mplstyle&#39;</span><span class="p">)</span>
+    <span class="n">polarstyle</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">basepath</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;spacepy_polar.mplstyle&#39;</span><span class="p">)</span>
     <span class="n">lookdict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="n">spacepystyle</span><span class="p">,</span>
                 <span class="s1">&#39;spacepy&#39;</span><span class="p">:</span> <span class="n">spacepystyle</span><span class="p">,</span>
                 <span class="s1">&#39;spacepy_altgrid&#39;</span><span class="p">:</span> <span class="n">spacepyaltstyle</span><span class="p">,</span>
@@ -230,7 +225,7 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">lookdict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span></div>
 
-<div class="viewcode-block" id="style"><a class="viewcode-back" href="../../autosummary/spacepy.plot.style.html#spacepy.plot.style">[docs]</a><span class="k">def</span> <span class="nf">style</span><span class="p">(</span><span class="n">look</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="style"><a class="viewcode-back" href="../../autosummary/spacepy.plot.style.html#spacepy.plot.style">[docs]</a><span class="k">def</span> <span class="nf">style</span><span class="p">(</span><span class="n">look</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Apply SpacePy&#39;s matplotlib style settings from a known style sheet.</span>
 
@@ -239,7 +234,7 @@
 <span class="sd">    look : str</span>
 <span class="sd">    Name of style. For a list of available style names, see `spacepy.plot.available`.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">lookdict</span> <span class="o">=</span> <span class="n">available</span><span class="p">(</span><span class="n">returnvals</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">lookdict</span> <span class="o">=</span> <span class="n">available</span><span class="p">(</span><span class="n">returnvals</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">usestyle</span> <span class="o">=</span> <span class="n">lookdict</span><span class="p">[</span><span class="n">look</span><span class="p">]</span>
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
@@ -254,7 +249,7 @@
             <span class="n">styapply</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
             <span class="c1">#remove None values as these seem to cause issues...</span>
             <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">dum</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">dum</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span> <span class="n">styapply</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">dum</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">dum</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="n">styapply</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">dum</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
             <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">styapply</span><span class="p">:</span>
                 <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">styapply</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
     <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;image.cmap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cmap</span></div>
@@ -279,7 +274,7 @@
                 <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="dual_half_circle"><a class="viewcode-back" href="../../autosummary/spacepy.plot.dual_half_circle.html#spacepy.plot.dual_half_circle">[docs]</a><span class="k">def</span> <span class="nf">dual_half_circle</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-                     <span class="n">sun_direction</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">),</span>
+                     <span class="n">sun_direction</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">),</span>
                      <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Plot two half circles to a plot with the specified face colors and</span>
@@ -330,10 +325,10 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="n">angle</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">sun_direction</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-            <span class="k">raise</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Sun_direction was not understood, must be a float or {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sun_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())))</span>
+            <span class="k">raise</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Sun_direction was not understood, must be a float or </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sun_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())))</span>
                 
     <span class="n">theta1</span><span class="p">,</span> <span class="n">theta2</span> <span class="o">=</span> <span class="n">angle</span><span class="p">,</span> <span class="n">angle</span> <span class="o">+</span> <span class="mi">180</span>
-    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
         
     <span class="n">w1</span> <span class="o">=</span> <span class="n">Wedge</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="n">theta1</span><span class="p">,</span> <span class="n">theta2</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transData</span><span class="o">.</span><span class="n">_b</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -342,7 +337,7 @@
         <span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">wedge</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="levelPlot"><a class="viewcode-back" href="../../autosummary/spacepy.plot.levelPlot.html#spacepy.plot.levelPlot">[docs]</a><span class="k">def</span> <span class="nf">levelPlot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">target</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="levelPlot"><a class="viewcode-back" href="../../autosummary/spacepy.plot.levelPlot.html#spacepy.plot.levelPlot">[docs]</a><span class="k">def</span> <span class="nf">levelPlot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Draw a step-plot with up to 5 levels following a color cycle (e.g. Kp index &quot;stoplight&quot;)</span>
 
@@ -382,32 +377,32 @@
 <span class="sd">    &gt;&gt;&gt; splot.levelPlot(omni, var=&#39;Kp&#39;, time=&#39;UTC&#39;, colors=[&#39;seagreen&#39;, &#39;orange&#39;, &#39;crimson&#39;])</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1">#assume dict-like/key-access, before moving to array-like</span>
-    <span class="k">if</span> <span class="n">var</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">var</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">usearr</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">var</span><span class="p">]</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s1">&#39;Key &quot;{1}&quot; not present in data&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">var</span><span class="p">))</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s1">&#39;Key &quot;</span><span class="si">{1}</span><span class="s1">&quot; not present in data&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">var</span><span class="p">))</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="c1">#var is None, so make sure we don&#39;t have a dict-like</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
             <span class="n">usearr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Data appears to be dict-like without a key being given&#39;</span><span class="p">)</span>
-    <span class="n">tflag</span> <span class="o">=</span> <span class="bp">False</span>
-    <span class="k">if</span> <span class="n">time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">mode</span>
+    <span class="n">tflag</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">mode</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">times</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">time</span><span class="p">]</span>
         <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">):</span>
             <span class="n">times</span> <span class="o">=</span> <span class="n">time</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">times</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">dates</span><span class="o">.</span><span class="n">date2num</span><span class="p">(</span><span class="n">times</span><span class="p">)</span>
-            <span class="n">tflag</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="n">tflag</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
             <span class="c1">#the x-data are a non-datetime</span>
             <span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
         <span class="c1">#now add the end-point</span>
-        <span class="n">stepsize</span><span class="p">,</span> <span class="n">dum</span> <span class="o">=</span> <span class="n">mode</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">times</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+        <span class="n">stepsize</span><span class="p">,</span> <span class="n">dum</span> <span class="o">=</span> <span class="n">mode</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">times</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
         <span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">times</span><span class="p">,</span> <span class="n">times</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">stepsize</span><span class="p">])</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">usearr</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
@@ -426,7 +421,7 @@
     <span class="k">if</span> <span class="s1">&#39;alpha&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">]</span><span class="o">=</span><span class="mf">0.75</span>
     <span class="k">if</span> <span class="s1">&#39;legend&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
-        <span class="n">legend</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">legend</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;legend&#39;</span><span class="p">]</span>
         <span class="k">del</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;legend&#39;</span><span class="p">]</span>
@@ -448,14 +443,14 @@
     <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">inds</span> <span class="o">=</span> <span class="n">usearr</span><span class="o">&gt;</span><span class="n">levels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">subset</span><span class="p">[</span><span class="n">inds</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-    <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">u&#39;≤{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">levels</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;≤</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">levels</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
     <span class="n">fill_between_steps</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">subset</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="c1">#for each of the &quot;between&quot; thresholds</span>
     <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">levels</span><span class="p">)):</span>
         <span class="n">subset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">dmcopy</span><span class="p">(</span><span class="n">usearr</span><span class="p">))</span>
         <span class="n">inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bitwise_or</span><span class="p">(</span><span class="n">usearr</span><span class="o">&lt;=</span><span class="n">levels</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">usearr</span><span class="o">&gt;</span><span class="n">levels</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
         <span class="n">subset</span><span class="p">[</span><span class="n">inds</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">u&#39;&gt;{0},≤{1}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">levels</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">levels</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">u</span><span class="s1">&#39;&gt;</span><span class="si">{0}</span><span class="s1">,≤</span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">levels</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">levels</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
         <span class="n">fill_between_steps</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">subset</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">30</span><span class="o">-</span><span class="p">(</span><span class="n">idx</span><span class="o">*</span><span class="mi">2</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="c1">#last</span>
     <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -463,7 +458,7 @@
         <span class="n">inds</span> <span class="o">=</span> <span class="n">usearr</span><span class="o">&lt;=</span><span class="n">levels</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">subset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">dmcopy</span><span class="p">(</span><span class="n">usearr</span><span class="p">))</span>
         <span class="n">subset</span><span class="p">[</span><span class="n">inds</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&gt;{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">levels</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&gt;</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">levels</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
         <span class="n">fill_between_steps</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">subset</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">30</span><span class="o">-</span><span class="p">(</span><span class="n">idx</span><span class="o">*</span><span class="mi">2</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">except</span><span class="p">:</span>
         <span class="k">pass</span>
@@ -503,12 +498,12 @@
         <li><a href="../../search.html">search</a>|&nbsp;</li>
        <li><a href="../../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2011-2016, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+        &#169; Copyright 2011-2019, The SpacePy Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

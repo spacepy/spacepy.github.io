@@ -1,23 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>toolbox - Toolbox of various functions and generic utilities &mdash; SpacePy v0.1.6 Manual (DRAFT)</title>
-    
+    <title>toolbox - Toolbox of various functions and generic utilities &#8212; SpacePy v0.2.0 Manual</title>
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.1.6',
+        VERSION:     '0.2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -25,11 +23,12 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/copybutton.js"></script>
     <link rel="shortcut icon" href="_static/lanl_favicon.ico"/>
-    <link rel="top" title="SpacePy v0.1.6 Manual (DRAFT)" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="spacepy.toolbox.arraybin" href="autosummary/spacepy.toolbox.arraybin.html" />
     <link rel="prev" title="spacepy.time.tickrange" href="autosummary/spacepy.time.tickrange.html" /> 
   </head>
-  <body role="document">
+  <body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="index.html"><img src="_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -84,21 +83,18 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/toolbox.txt"
+      <li><a href="_sources/toolbox.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -208,7 +204,7 @@ Los Alamos National Laboratory</p>
 <tr class="row-odd"><td><a class="reference internal" href="autosummary/spacepy.toolbox.assemble.html#spacepy.toolbox.assemble" title="spacepy.toolbox.assemble"><code class="xref py py-obj docutils literal"><span class="pre">assemble</span></code></a>(fln_pattern,&nbsp;outfln[,&nbsp;sortkey,&nbsp;verbose])</td>
 <td>assembles all pickled files matching fln_pattern into single file and</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="autosummary/spacepy.toolbox.dictree.html#spacepy.toolbox.dictree" title="spacepy.toolbox.dictree"><code class="xref py py-obj docutils literal"><span class="pre">dictree</span></code></a>(in_dict[,&nbsp;verbose,&nbsp;spaces,&nbsp;levels,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="autosummary/spacepy.toolbox.dictree.html#spacepy.toolbox.dictree" title="spacepy.toolbox.dictree"><code class="xref py py-obj docutils literal"><span class="pre">dictree</span></code></a>(in_dict[,&nbsp;verbose,&nbsp;spaces,&nbsp;levels,&nbsp;…])</td>
 <td>pretty print a dictionary tree</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="autosummary/spacepy.toolbox.eventTimer.html#spacepy.toolbox.eventTimer" title="spacepy.toolbox.eventTimer"><code class="xref py py-obj docutils literal"><span class="pre">eventTimer</span></code></a>(Event,&nbsp;Time1)</td>
@@ -247,7 +243,7 @@ Los Alamos National Laboratory</p>
 <tr class="row-even"><td><a class="reference internal" href="autosummary/spacepy.toolbox.rad2mlt.html#spacepy.toolbox.rad2mlt" title="spacepy.toolbox.rad2mlt"><code class="xref py py-obj docutils literal"><span class="pre">rad2mlt</span></code></a>(rad[,&nbsp;midnight])</td>
 <td>Convert radians values to mlt</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="autosummary/spacepy.toolbox.windowMean.html#spacepy.toolbox.windowMean" title="spacepy.toolbox.windowMean"><code class="xref py py-obj docutils literal"><span class="pre">windowMean</span></code></a>(data[,&nbsp;time,&nbsp;winsize,&nbsp;overlap,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="autosummary/spacepy.toolbox.windowMean.html#spacepy.toolbox.windowMean" title="spacepy.toolbox.windowMean"><code class="xref py py-obj docutils literal"><span class="pre">windowMean</span></code></a>(data[,&nbsp;time,&nbsp;winsize,&nbsp;overlap,&nbsp;…])</td>
 <td>Windowing mean function, window overlap is user defined</td>
 </tr>
 </tbody>
@@ -261,7 +257,7 @@ Los Alamos National Laboratory</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="autosummary/spacepy.toolbox.thread_job.html#spacepy.toolbox.thread_job" title="spacepy.toolbox.thread_job"><code class="xref py py-obj docutils literal"><span class="pre">thread_job</span></code></a>(job_size,&nbsp;thread_count,&nbsp;target,&nbsp;...)</td>
+<tr class="row-odd"><td><a class="reference internal" href="autosummary/spacepy.toolbox.thread_job.html#spacepy.toolbox.thread_job" title="spacepy.toolbox.thread_job"><code class="xref py py-obj docutils literal"><span class="pre">thread_job</span></code></a>(job_size,&nbsp;thread_count,&nbsp;target,&nbsp;…)</td>
 <td>Split a job into subjobs and run a thread for each</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="autosummary/spacepy.toolbox.thread_map.html#spacepy.toolbox.thread_map" title="spacepy.toolbox.thread_map"><code class="xref py py-obj docutils literal"><span class="pre">thread_map</span></code></a>(target,&nbsp;iterable[,&nbsp;thread_count])</td>
@@ -299,7 +295,7 @@ Los Alamos National Laboratory</p>
 <tr class="row-odd"><td><a class="reference internal" href="autosummary/spacepy.toolbox.TimeoutError.html#spacepy.toolbox.TimeoutError" title="spacepy.toolbox.TimeoutError"><code class="xref py py-obj docutils literal"><span class="pre">TimeoutError</span></code></a></td>
 <td>Raised when a time-limited process times out</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="autosummary/spacepy.toolbox.update.html#spacepy.toolbox.update" title="spacepy.toolbox.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a>([all,&nbsp;QDomni,&nbsp;omni,&nbsp;omni2,&nbsp;leapsecs,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="autosummary/spacepy.toolbox.update.html#spacepy.toolbox.update" title="spacepy.toolbox.update"><code class="xref py py-obj docutils literal"><span class="pre">update</span></code></a>([all,&nbsp;QDomni,&nbsp;omni,&nbsp;omni2,&nbsp;leapsecs,&nbsp;…])</td>
 <td>Download and update local database for omni, leapsecs etc</td>
 </tr>
 </tbody>
@@ -335,8 +331,8 @@ Los Alamos National Laboratory</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2011-2016, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+        &#169; Copyright 2011-2019, The SpacePy Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>
