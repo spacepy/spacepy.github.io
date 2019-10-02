@@ -1,32 +1,34 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>spacepy.omni &#8212; SpacePy v0.2.0 Manual</title>
+    
+    <title>spacepy.omni &mdash; SpacePy v0.2.1 Manual</title>
+    
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.2.0',
+        VERSION:     '0.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../_static/lanl_favicon.ico"/>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="shortcut icon" href="../../_static/spacepy_favicon.ico"/>
+    <link rel="top" title="SpacePy v0.2.1 Manual" href="../../index.html" />
+    <link rel="up" title="Module code" href="../index.html" /> 
   </head>
-  <body>
+  <body role="document">
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../../index.html"><img src="../../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -45,7 +47,7 @@
         <li><a href="../../search.html">search</a>|&nbsp;</li>
        <li><a href="../../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>
 
@@ -57,11 +59,14 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -73,7 +78,7 @@
           <div class="body" role="main">
             
   <h1>Source code for spacepy.omni</h1><div class="highlight"><pre>
-<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Tools to read and process omni data (Qin-Denton, etc.)</span>
@@ -133,10 +138,10 @@
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">bisect</span><span class="o">,</span> <span class="nn">re</span><span class="o">,</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">spacepy.datamodel</span> <span class="k">import</span> <span class="n">SpaceData</span><span class="p">,</span> <span class="n">dmarray</span><span class="p">,</span> <span class="n">dmcopy</span><span class="p">,</span> <span class="n">unflatten</span><span class="p">,</span> <span class="n">readJSONheadedASCII</span><span class="p">,</span> <span class="n">dmfilled</span><span class="p">,</span> <span class="n">fromHDF5</span>
-<span class="kn">from</span> <span class="nn">spacepy.toolbox</span> <span class="k">import</span> <span class="n">tOverlapHalf</span><span class="p">,</span> <span class="n">indsFromXrange</span>
-<span class="kn">import</span> <span class="nn">spacepy.time</span> <span class="k">as</span> <span class="nn">spt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">spacepy.datamodel</span> <span class="kn">import</span> <span class="n">SpaceData</span><span class="p">,</span> <span class="n">dmarray</span><span class="p">,</span> <span class="n">dmcopy</span><span class="p">,</span> <span class="n">unflatten</span><span class="p">,</span> <span class="n">readJSONheadedASCII</span><span class="p">,</span> <span class="n">dmfilled</span><span class="p">,</span> <span class="n">fromHDF5</span>
+<span class="kn">from</span> <span class="nn">spacepy.toolbox</span> <span class="kn">import</span> <span class="n">tOverlapHalf</span><span class="p">,</span> <span class="n">indsFromXrange</span>
+<span class="kn">import</span> <span class="nn">spacepy.time</span> <span class="kn">as</span> <span class="nn">spt</span>
 
 <span class="n">__contact__</span> <span class="o">=</span> <span class="s1">&#39;Steve Morley, smorley@lanl.gov&#39;</span>
 
@@ -229,26 +234,26 @@
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;get_omni: Input times must be a Ticktock object or a list of datetime objects&#39;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">dbase</span> <span class="ow">in</span> <span class="n">dbase_options</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">spacepy</span> <span class="k">import</span> <span class="n">config</span>
+        <span class="kn">from</span> <span class="nn">spacepy</span> <span class="kn">import</span> <span class="n">config</span>
         <span class="k">if</span> <span class="n">dbase</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
             <span class="c1">#If a dbase is specified that isn&#39;t a default, then it MUST be in the spacepy config</span>
             <span class="n">qdpath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="n">dbase</span><span class="p">])[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">qdpath</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s1">&#39;Specified dbase (</span><span class="si">{0}</span><span class="s1">) does not have a valid location (</span><span class="si">{1}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dbase</span><span class="p">,</span> <span class="n">config</span><span class="p">[</span><span class="n">dbase</span><span class="p">]))</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">qdpath</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s1">&#39;Specified dbase ({0}) does not have a valid location ({1})&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dbase</span><span class="p">,</span> <span class="n">config</span><span class="p">[</span><span class="n">dbase</span><span class="p">]))</span>
             <span class="n">days</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="n">tt</span><span class="o">.</span><span class="n">date</span><span class="p">()</span> <span class="k">for</span> <span class="n">tt</span> <span class="ow">in</span> <span class="n">ticks</span><span class="o">.</span><span class="n">UTC</span><span class="p">]))</span>
             <span class="n">flist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">days</span><span class="p">)</span>
             <span class="n">fnpath</span><span class="p">,</span> <span class="n">fnformat</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="n">dbase</span><span class="p">])</span>
             <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">days</span><span class="p">):</span>
-                <span class="n">dp</span> <span class="o">=</span> <span class="n">fnpath</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;YYYY&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">day</span><span class="o">.</span><span class="n">year</span><span class="p">))</span>
-                <span class="n">df</span> <span class="o">=</span> <span class="n">fnformat</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;YYYY&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">day</span><span class="o">.</span><span class="n">year</span><span class="p">))</span>
-                <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;MM&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{0:02d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">day</span><span class="o">.</span><span class="n">month</span><span class="p">))</span>
-                <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;DD&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{0:02d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">day</span><span class="o">.</span><span class="n">day</span><span class="p">))</span>
+                <span class="n">dp</span> <span class="o">=</span> <span class="n">fnpath</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;YYYY&#39;</span><span class="p">,</span> <span class="s1">&#39;{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">day</span><span class="o">.</span><span class="n">year</span><span class="p">))</span>
+                <span class="n">df</span> <span class="o">=</span> <span class="n">fnformat</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;YYYY&#39;</span><span class="p">,</span> <span class="s1">&#39;{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">day</span><span class="o">.</span><span class="n">year</span><span class="p">))</span>
+                <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;MM&#39;</span><span class="p">,</span> <span class="s1">&#39;{0:02d}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">day</span><span class="o">.</span><span class="n">month</span><span class="p">))</span>
+                <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;DD&#39;</span><span class="p">,</span> <span class="s1">&#39;{0:02d}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">day</span><span class="o">.</span><span class="n">day</span><span class="p">))</span>
                 <span class="n">flist</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
             <span class="k">if</span> <span class="s1">&#39;convert&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
                 <span class="n">convdict</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;convert&#39;</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">convdict</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1">#set to True as default?</span>
+                <span class="n">convdict</span> <span class="o">=</span> <span class="bp">True</span> <span class="c1">#set to True as default?</span>
             <span class="k">if</span> <span class="s1">&#39;interp&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
-                <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;interp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;interp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
             <span class="n">data</span> <span class="o">=</span> <span class="n">readJSONheadedASCII</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">flist</span><span class="p">),</span> <span class="n">convert</span><span class="o">=</span><span class="n">convdict</span><span class="p">)</span>
             <span class="n">omniout</span> <span class="o">=</span> <span class="n">SpaceData</span><span class="p">()</span>
 
@@ -259,7 +264,7 @@
                 <span class="c1">#no obvious time variable in input files ... can&#39;t continue</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;No clear time variable in file&#39;</span><span class="p">)</span>
             
-            <span class="k">if</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;interp&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>    
+            <span class="k">if</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;interp&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>    
                 <span class="n">data</span><span class="p">[</span><span class="s1">&#39;RDT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spt</span><span class="o">.</span><span class="n">Ticktock</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">use_t_var</span><span class="p">])</span><span class="o">.</span><span class="n">RDT</span>
                 <span class="n">keylist</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
                 <span class="n">dum</span> <span class="o">=</span> <span class="n">keylist</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">keylist</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">use_t_var</span><span class="p">))</span>
@@ -273,9 +278,9 @@
                             <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
                                 <span class="n">omniout</span><span class="p">[</span><span class="n">key</span><span class="p">][:,</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">ticks</span><span class="o">.</span><span class="n">RDT</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;RDT&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">][:,</span><span class="n">col</span><span class="p">],</span> <span class="n">left</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">)</span>
                         <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-                            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Failed to interpolate </span><span class="si">{0}</span><span class="s1"> to new time base, skipping variable&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+                            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Failed to interpolate {0} to new time base, skipping variable&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
                         <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
-                            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Variable </span><span class="si">{0}</span><span class="s1"> appears to be non-record varying, skipping interpolation&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+                            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Variable {0} appears to be non-record varying, skipping interpolation&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
                             <span class="n">omniout</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
                 <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;UTC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ticks</span><span class="o">.</span><span class="n">UTC</span> 
             <span class="k">else</span><span class="p">:</span>
@@ -290,7 +295,7 @@
                 <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;UTC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">omniout</span><span class="p">[</span><span class="n">use_t_var</span><span class="p">]</span>
             <span class="k">return</span> <span class="n">omniout</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s1">&#39;Specified dbase (</span><span class="si">{0}</span><span class="s1">) must be specified in spacepy.config&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dbase</span><span class="p">))</span>
+            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s1">&#39;Specified dbase ({0}) must be specified in spacepy.config&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dbase</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">getattrs</span><span class="p">(</span><span class="n">hf</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
         <span class="n">out</span> <span class="o">=</span> <span class="p">{}</span>
@@ -309,7 +314,7 @@
         <span class="n">musecond</span> <span class="o">=</span> <span class="n">indt</span><span class="o">.</span><span class="n">microsecond</span>
         <span class="k">return</span> <span class="n">hour</span><span class="o">+</span><span class="p">(</span><span class="n">minute</span><span class="o">/</span><span class="mf">60.0</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="n">second</span><span class="o">/</span><span class="mf">3600.0</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="n">musecond</span><span class="o">/</span><span class="mf">3600.0e3</span><span class="p">)</span>
 
-    <span class="kn">import</span> <span class="nn">h5py</span> <span class="k">as</span> <span class="nn">h5</span>
+    <span class="kn">import</span> <span class="nn">h5py</span> <span class="kn">as</span> <span class="nn">h5</span>
     <span class="n">fname</span><span class="p">,</span> <span class="n">QDkeylist</span><span class="p">,</span> <span class="n">O2keylist</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="p">[],</span> <span class="p">[]</span>
     <span class="n">omnivals</span> <span class="o">=</span> <span class="n">SpaceData</span><span class="p">()</span>
     <span class="n">dbase_select</span> <span class="o">=</span> <span class="n">dbase_options</span><span class="p">[</span><span class="n">dbase</span><span class="p">]</span>
@@ -328,8 +333,8 @@
             <span class="k">if</span> <span class="p">(</span><span class="n">ticks</span><span class="o">.</span><span class="n">UTC</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">&gt;</span><span class="n">enval</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">ticks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">&lt;</span><span class="n">stval</span><span class="p">):</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Requested dates are outside data range&#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">ticks</span><span class="o">.</span><span class="n">UTC</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">&gt;</span><span class="n">enval</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">ticks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">&lt;</span><span class="n">stval</span><span class="p">):</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning: Some requested dates are outside data range (</span><span class="si">{0}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ldb</span><span class="p">))</span>
-            <span class="n">inds</span> <span class="o">=</span> <span class="n">tOverlapHalf</span><span class="p">([</span><span class="n">st</span><span class="p">,</span> <span class="n">en</span><span class="p">],</span> <span class="n">hfile</span><span class="p">[</span><span class="s1">&#39;RDT&#39;</span><span class="p">],</span> <span class="n">presort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1">#returns an xrange</span>
+                <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Warning: Some requested dates are outside data range ({0})&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ldb</span><span class="p">))</span>
+            <span class="n">inds</span> <span class="o">=</span> <span class="n">tOverlapHalf</span><span class="p">([</span><span class="n">st</span><span class="p">,</span> <span class="n">en</span><span class="p">],</span> <span class="n">hfile</span><span class="p">[</span><span class="s1">&#39;RDT&#39;</span><span class="p">],</span> <span class="n">presort</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="c1">#returns an xrange</span>
             <span class="n">inds</span> <span class="o">=</span> <span class="n">indsFromXrange</span><span class="p">(</span><span class="n">inds</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">inds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span> <span class="n">inds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
             <span class="n">sl_op</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">inds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">inds</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
@@ -340,9 +345,9 @@
                 <span class="n">omnivals</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">hfile</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">sl_op</span><span class="p">])</span> <span class="c1">#TODO: add attrs from h5</span>
                 <span class="n">omnivals</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">getattrs</span><span class="p">(</span><span class="n">hfile</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">hfile</span><span class="p">[</span><span class="s1">&#39;Qbits&#39;</span><span class="p">]:</span>
-                <span class="n">omnivals</span><span class="p">[</span><span class="s1">&#39;Qbits&lt;--</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">)]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">hfile</span><span class="p">[</span><span class="s1">&#39;/Qbits/</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">)][</span><span class="n">sl_op</span><span class="p">])</span>
-                <span class="n">omnivals</span><span class="p">[</span><span class="s1">&#39;Qbits&lt;--</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">)]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">getattrs</span><span class="p">(</span><span class="n">hfile</span><span class="p">,</span> <span class="s1">&#39;/Qbits/</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
-                <span class="n">QDkeylist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Qbits&lt;--</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+                <span class="n">omnivals</span><span class="p">[</span><span class="s1">&#39;Qbits&lt;--{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">)]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">hfile</span><span class="p">[</span><span class="s1">&#39;/Qbits/{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">)][</span><span class="n">sl_op</span><span class="p">])</span>
+                <span class="n">omnivals</span><span class="p">[</span><span class="s1">&#39;Qbits&lt;--{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">)]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">getattrs</span><span class="p">(</span><span class="n">hfile</span><span class="p">,</span> <span class="s1">&#39;/Qbits/{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+                <span class="n">QDkeylist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Qbits&lt;--{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
 
     <span class="k">if</span> <span class="n">dbase_options</span><span class="p">[</span><span class="n">dbase</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">dbase_options</span><span class="p">[</span><span class="n">dbase</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
         <span class="n">ldb</span> <span class="o">=</span> <span class="s1">&#39;OMNI2hourly&#39;</span>
@@ -354,8 +359,8 @@
             <span class="k">if</span> <span class="p">(</span><span class="n">ticks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">UTC</span><span class="o">&gt;</span><span class="n">enval</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">ticks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">&lt;</span><span class="n">stval</span><span class="p">):</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Requested dates are outside data range&#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">ticks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">UTC</span><span class="o">&gt;</span><span class="n">enval</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">ticks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">&lt;</span><span class="n">stval</span><span class="p">):</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning: Some requested dates are outside data range (</span><span class="si">{0}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ldb</span><span class="p">))</span>
-            <span class="n">inds</span> <span class="o">=</span> <span class="n">tOverlapHalf</span><span class="p">([</span><span class="n">st</span><span class="p">,</span> <span class="n">en</span><span class="p">],</span> <span class="n">hfile</span><span class="p">[</span><span class="s1">&#39;RDT&#39;</span><span class="p">],</span> <span class="n">presort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1">#returns an xrange</span>
+                <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Warning: Some requested dates are outside data range ({0})&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ldb</span><span class="p">))</span>
+            <span class="n">inds</span> <span class="o">=</span> <span class="n">tOverlapHalf</span><span class="p">([</span><span class="n">st</span><span class="p">,</span> <span class="n">en</span><span class="p">],</span> <span class="n">hfile</span><span class="p">[</span><span class="s1">&#39;RDT&#39;</span><span class="p">],</span> <span class="n">presort</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="c1">#returns an xrange</span>
             <span class="n">inds</span> <span class="o">=</span> <span class="n">indsFromXrange</span><span class="p">(</span><span class="n">inds</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">inds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span> <span class="n">inds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
             <span class="n">sl_op</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">inds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">inds</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
@@ -390,21 +395,21 @@
         <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;G3&#39;</span><span class="p">:</span> <span class="c1">#then we have all the Gs</span>
             <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;G1&#39;</span><span class="p">],</span> <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;G2&#39;</span><span class="p">],</span> <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;G3&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
             <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">dmcopy</span><span class="p">(</span><span class="n">omnivals</span><span class="p">[</span><span class="s1">&#39;G1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">):</span> <span class="k">del</span> <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;G</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">):</span> <span class="k">del</span> <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;G{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
         <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;W6&#39;</span><span class="p">:</span>
             <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;W&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;W1&#39;</span><span class="p">],</span> <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;W2&#39;</span><span class="p">],</span> <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;W3&#39;</span><span class="p">],</span> <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;W4&#39;</span><span class="p">],</span> <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;W5&#39;</span><span class="p">],</span> <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;W6&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
             <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;W&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">dmcopy</span><span class="p">(</span><span class="n">omnivals</span><span class="p">[</span><span class="s1">&#39;W1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">):</span> <span class="k">del</span> <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;W</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">):</span> <span class="k">del</span> <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;W{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
         <span class="k">if</span> <span class="s1">&#39;Qbits&#39;</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
             <span class="c1">#Qbits are integer vals, higher is better, so floor to get best representation of interpolated val</span>
             <span class="n">omniout</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">omnivals</span><span class="p">[</span><span class="n">key</span><span class="p">])</span> 
             <span class="n">omniout</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">dmcopy</span><span class="p">(</span><span class="n">omnivals</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
             <span class="k">if</span> <span class="s1">&#39;G3&#39;</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span> <span class="c1">#then we have all the Gs</span>
                 <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;Qbits&lt;--G&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;Qbits&lt;--G1&#39;</span><span class="p">],</span> <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;Qbits&lt;--G2&#39;</span><span class="p">],</span> <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;Qbits&lt;--G3&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
-                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">):</span> <span class="k">del</span> <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;Qbits&lt;--G</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">):</span> <span class="k">del</span> <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;Qbits&lt;--G{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
             <span class="k">if</span> <span class="s1">&#39;W6&#39;</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
                 <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;Qbits&lt;--W&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;Qbits&lt;--W1&#39;</span><span class="p">],</span> <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;Qbits&lt;--W2&#39;</span><span class="p">],</span> <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;Qbits&lt;--W3&#39;</span><span class="p">],</span> <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;Qbits&lt;--W4&#39;</span><span class="p">],</span> <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;Qbits&lt;--W5&#39;</span><span class="p">],</span> <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;Qbits&lt;--W6&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
-                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">):</span> <span class="k">del</span> <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;Qbits&lt;--W</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">):</span> <span class="k">del</span> <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;Qbits&lt;--W{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
 
     <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;ticks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ticks</span>
     <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;UTC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ticks</span><span class="o">.</span><span class="n">UTC</span>
@@ -442,7 +447,7 @@
 
 <span class="sd">    &#39;&#39;&#39;</span>
     
-    <span class="kn">import</span> <span class="nn">h5py</span> <span class="k">as</span> <span class="nn">h5</span>
+    <span class="kn">import</span> <span class="nn">h5py</span> <span class="kn">as</span> <span class="nn">h5</span>
     <span class="n">infile</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;QDhourly&#39;</span><span class="p">:</span> <span class="n">omnifln</span><span class="p">,</span>
               <span class="s1">&#39;OMNI2hourly&#39;</span><span class="p">:</span> <span class="n">omni2fln</span><span class="p">,</span>
               <span class="s1">&#39;Test&#39;</span><span class="p">:</span> <span class="n">testfln</span><span class="p">}</span>
@@ -461,8 +466,8 @@
 
 <span class="c1"># check for omni file during import</span>
 <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">datetime</span>
-<span class="kn">from</span> <span class="nn">spacepy</span> <span class="k">import</span> <span class="n">DOT_FLN</span><span class="p">,</span> <span class="n">help</span>
-<span class="kn">from</span> <span class="nn">spacepy.toolbox</span> <span class="k">import</span> <span class="n">loadpickle</span>
+<span class="kn">from</span> <span class="nn">spacepy</span> <span class="kn">import</span> <span class="n">DOT_FLN</span><span class="p">,</span> <span class="n">help</span>
+<span class="kn">from</span> <span class="nn">spacepy.toolbox</span> <span class="kn">import</span> <span class="n">loadpickle</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">h5py</span>
     <span class="n">_ext</span> <span class="o">=</span> <span class="s1">&#39;.h5&#39;</span>
@@ -470,25 +475,25 @@
     <span class="n">_ext</span> <span class="o">=</span> <span class="s1">&#39;.pkl&#39;</span>
 
 <span class="c1">#dotfln = os.environ[&#39;HOME&#39;]+&#39;/.spacepy&#39;</span>
-<span class="n">omnifln</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DOT_FLN</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">,</span><span class="s1">&#39;omnidata</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">_ext</span><span class="p">))</span>
-<span class="n">omni2fln</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DOT_FLN</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">,</span><span class="s1">&#39;omni2data</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">_ext</span><span class="p">))</span>
-<span class="n">testfln</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span><span class="s1">&#39;OMNItest</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">_ext</span><span class="p">))</span>
+<span class="n">omnifln</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DOT_FLN</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">,</span><span class="s1">&#39;omnidata{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">_ext</span><span class="p">))</span>
+<span class="n">omni2fln</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DOT_FLN</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">,</span><span class="s1">&#39;omni2data{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">_ext</span><span class="p">))</span>
+<span class="n">testfln</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span><span class="s1">&#39;OMNItest{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">_ext</span><span class="p">))</span>
 
 <span class="k">if</span> <span class="n">_ext</span><span class="o">==</span><span class="s1">&#39;.h5&#39;</span><span class="p">:</span>
     <span class="n">presentQD</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">is_hdf5</span><span class="p">(</span><span class="n">omnifln</span><span class="p">)</span>
     <span class="n">presentO2</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">is_hdf5</span><span class="p">(</span><span class="n">omni2fln</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">presentQD</span> <span class="ow">and</span> <span class="n">presentO2</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Qin-Denton/OMNI2 data not found in current format. This module has limited functionality.&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run spacepy.toolbox.update(QDomni=True) to download data&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Qin-Denton/OMNI2 data not found in current format. This module has limited functionality.&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Run spacepy.toolbox.update(QDomni=True) to download data&quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">presentQD</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">omnifln</span><span class="p">)</span>
     <span class="n">presentO2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">omni2fln</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">presentQD</span> <span class="ow">and</span> <span class="n">presentO2</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No Qin-Denton/OMNI2 data found. This module has limited functionality.&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run spacepy.toolbox.update(QDomni=True) to download data&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;No Qin-Denton/OMNI2 data found. This module has limited functionality.&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Run spacepy.toolbox.update(QDomni=True) to download data&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Qin-Denton/OMNI2 data not found in current format. This module has limited functionality.&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run spacepy.toolbox.update(QDomni=True) to download data&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Qin-Denton/OMNI2 data not found in current format. This module has limited functionality.&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Run spacepy.toolbox.update(QDomni=True) to download data&quot;</span><span class="p">)</span>
 </pre></div>
 
           </div>
@@ -509,12 +514,12 @@
         <li><a href="../../search.html">search</a>|&nbsp;</li>
        <li><a href="../../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2019, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+        &copy; Copyright 2011-2019, The SpacePy Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
     </div>
   </body>
 </html>

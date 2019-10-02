@@ -1,34 +1,36 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>spacepy.empiricals.getMPstandoff &#8212; SpacePy v0.2.0 Manual</title>
+    
+    <title>spacepy.empiricals.getMPstandoff &mdash; SpacePy v0.2.1 Manual</title>
+    
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.2.0',
+        VERSION:     '0.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../_static/lanl_favicon.ico"/>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
+    <link rel="top" title="SpacePy v0.2.1 Manual" href="../index.html" />
+    <link rel="up" title="empiricals - module with heliospheric empirical modules" href="../empiricals.html" />
     <link rel="next" title="spacepy.empiricals.getPlasmaPause" href="spacepy.empiricals.getPlasmaPause.html" />
     <link rel="prev" title="spacepy.empiricals.getLmax" href="spacepy.empiricals.getLmax.html" /> 
   </head>
-  <body>
+  <body role="document">
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -53,7 +55,7 @@
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../empiricals.html" accesskey="U">empiricals - module with heliospheric empirical modules</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../empiricals.html" accesskey="U">empiricals - module with heliospheric empirical modules</a> &raquo;</li> 
       </ul>
     </div>
 
@@ -71,18 +73,21 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/autosummary/spacepy.empiricals.getMPstandoff.rst.txt"
+      <li><a href="../_sources/autosummary/spacepy.empiricals.getMPstandoff.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -109,7 +114,7 @@ control of the magnetopause size and shape, J. Geophys. Res., 102(A5),
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ticks</strong> : spacepy.time.Ticktock</p>
 <blockquote>
 <div><p>TickTock object of desired times (will be interpolated from hourly OMNI data)
-OR dictionary of form {‘P’: [], ‘Bz’: []}
+OR dictionary of form {&#8216;P&#8217;: [], &#8216;Bz&#8217;: []}
 Where P is SW ram pressure [nPa] and Bz is IMF Bz (GSM) [nT]</p>
 </div></blockquote>
 <p><strong>alpha</strong> : list</p>
@@ -129,8 +134,8 @@ will be modified in place, adding the flaring angles for each time step.</p>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.time</span> <span class="k">as</span> <span class="nn">spt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.empiricals</span> <span class="k">as</span> <span class="nn">emp</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.time</span> <span class="kn">as</span> <span class="nn">spt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.empiricals</span> <span class="kn">as</span> <span class="nn">emp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ticks</span> <span class="o">=</span> <span class="n">spt</span><span class="o">.</span><span class="n">tickrange</span><span class="p">(</span><span class="s1">&#39;2002-01-01T12:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;2002-01-04T00:00:00&#39;</span><span class="p">,</span><span class="o">.</span><span class="mi">25</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">emp</span><span class="o">.</span><span class="n">getMPstandoff</span><span class="p">(</span><span class="n">ticks</span><span class="p">)</span>
 <span class="go">array([ 10.57319537,  10.91327764,  10.75086873,  10.77577207,</span>
@@ -170,12 +175,12 @@ will be modified in place, adding the flaring angles for each time step.</p>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../empiricals.html" >empiricals - module with heliospheric empirical modules</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../empiricals.html" >empiricals - module with heliospheric empirical modules</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2019, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+        &copy; Copyright 2011-2019, The SpacePy Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
     </div>
   </body>
 </html>

@@ -1,34 +1,35 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>SpacePy Configuration &#8212; SpacePy v0.2.0 Manual</title>
+    
+    <title>SpacePy Configuration &mdash; SpacePy v0.2.1 Manual</title>
+    
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.2.0',
+        VERSION:     '0.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="_static/lanl_favicon.ico"/>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="shortcut icon" href="_static/spacepy_favicon.ico"/>
+    <link rel="top" title="SpacePy v0.2.1 Manual" href="index.html" />
     <link rel="next" title="SpacePy Case Studies" href="case_studies.html" />
     <link rel="prev" title="SpacePy Python Programming Tips" href="tips.html" /> 
   </head>
-  <body>
+  <body role="document">
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="index.html"><img src="_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -80,18 +81,21 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/configuration.rst.txt"
+      <li><a href="_sources/configuration.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -110,8 +114,8 @@ the configuration file. These defaults are usually fine for most people and may
 change between SpacePy releases, so we do not recommend changing the
 configuration file without substantial reason.</p>
 <p><code class="docutils literal"><span class="pre">spacepy.rc</span></code> lives in the per-user SpacePy directory, called <code class="docutils literal"><span class="pre">.spacepy</span></code>.
-On Unix-like operating systems, it is in a user’s home directory; on Windows,
-in the user’s Documents and Settings folder. If it doesn’t exist, this directory
+On Unix-like operating systems, it is in a user&#8217;s home directory; on Windows,
+in the user&#8217;s Documents and Settings folder. If it doesn&#8217;t exist, this directory
 (and <code class="docutils literal"><span class="pre">spacepy.rc</span></code>) is automatically created when SpacePy is imported.</p>
 <p><code class="docutils literal"><span class="pre">spacepy.rc</span></code> has an INI-style format, parsed by <code class="xref py py-mod docutils literal"><span class="pre">ConfigParser</span></code>. It
 contains a single section, <code class="docutils literal"><span class="pre">[spacepy]</span></code>.</p>
@@ -128,7 +132,7 @@ contains a single section, <code class="docutils literal"><span class="pre">[spa
 your <code class="docutils literal"><span class="pre">$HOME</span></code> folder. If you prefer a different location for this
 directory, set the environment variable <code class="docutils literal"><span class="pre">$SPACEPY</span></code> to a location of
 your choice. For example, with a <code class="docutils literal"><span class="pre">csh</span></code>, or <code class="docutils literal"><span class="pre">tcsh</span></code> you would:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setenv</span> <span class="n">SPACEPY</span> <span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">different</span><span class="o">/</span><span class="nb">dir</span>
+<div class="highlight-python"><div class="highlight"><pre>setenv SPACEPY /a/different/dir
 </pre></div>
 </div>
 <p>for the <code class="docutils literal"><span class="pre">bash</span></code> shell you would:</p>
@@ -146,7 +150,7 @@ script.</p>
 are called. Starting in Python 2.7, these are ignored. SpacePy adds a warnings
 filter to force display of deprecation warnings from SpacePy the first time a
 deprecated function is called. Set this option to False to retain the default
-Python behavior. (See <a class="reference external" href="https://docs.python.org/3/library/warnings.html#module-warnings" title="(in Python v3.7)"><code class="xref py py-mod docutils literal"><span class="pre">warnings</span></code></a> module for details on custom warning
+Python behavior. (See <a class="reference external" href="https://docs.python.org/library/warnings.html#module-warnings" title="(in Python v3.7)"><code class="xref py py-mod docutils literal"><span class="pre">warnings</span></code></a> module for details on custom warning
 filters.)</dd>
 <dt>leapsec_url</dt>
 <dd>URL of the leapsecond database used by time conversions.
@@ -155,7 +159,7 @@ The default should almost always be acceptable.</dd>
 <dt>ncpus</dt>
 <dd>Number of CPUs to use for computations that can be
 multithreaded/multiprocessed. By default, they will use the number of CPUs
-reported by <a class="reference external" href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.cpu_count" title="(in Python v3.7)"><code class="xref py py-func docutils literal"><span class="pre">multiprocessing.cpu_count()</span></code></a>. You may wish to set this
+reported by <a class="reference external" href="https://docs.python.org/library/multiprocessing.html#multiprocessing.cpu_count" title="(in Python v3.7)"><code class="xref py py-func docutils literal"><span class="pre">multiprocessing.cpu_count()</span></code></a>. You may wish to set this
 to a lower number if you need to reserve other processors on your machine.</dd>
 <dt>notice</dt>
 <dd>True to display the SpacePy license and other information on import (default);
@@ -172,6 +176,10 @@ The default should almost always be acceptable.</dd>
 <dd>URL containing PSD data.
 <a class="reference internal" href="autosummary/spacepy.toolbox.update.html#spacepy.toolbox.update" title="spacepy.toolbox.update"><code class="xref py py-func docutils literal"><span class="pre">update()</span></code></a> will download from the URL if requested.
 The default should almost always be acceptable.</dd>
+<dt>support_notice</dt>
+<dd>True to display a notice on import if not a release version of SpacePy
+(default); False to omit. Those regularly installing from git instead
+of a release may want to set this to False.</dd>
 <dt>user_agent</dt>
 <dd>User Agent for network access. If this is set,
 <a class="reference internal" href="autosummary/spacepy.toolbox.update.html#spacepy.toolbox.update" title="spacepy.toolbox.update"><code class="xref py py-func docutils literal"><span class="pre">update()</span></code></a> will use this User Agent string on all
@@ -180,10 +188,10 @@ HTTP requests. Normally leaving this unset should be fine.</dd>
 </div>
 <div class="section" id="developer-documentation">
 <h2>Developer documentation<a class="headerlink" href="#developer-documentation" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">spacepy.rc</span></code> is loaded into a dictionary (<code class="docutils literal"><span class="pre">spacepy.config</span></code>) by SpacePy’s
+<p><code class="docutils literal"><span class="pre">spacepy.rc</span></code> is loaded into a dictionary (<code class="docutils literal"><span class="pre">spacepy.config</span></code>) by SpacePy&#8217;s
 main <code class="docutils literal"><span class="pre">__init__.py</span></code>. All options from the <code class="docutils literal"><span class="pre">[spacepy]</span></code> section are loaded,
-with no developer intervention needed. Each key is the option’s name; the
-associated value is the option’s value. To specify a default, add to the
+with no developer intervention needed. Each key is the option&#8217;s name; the
+associated value is the option&#8217;s value. To specify a default, add to the
 <code class="docutils literal"><span class="pre">defaults</span></code> dictionary at the top of <code class="docutils literal"><span class="pre">_read_config</span></code>; each default, if not
 overridden by the config file, will be included in the config dict. Values are
 assumed to be strings. The <code class="docutils literal"><span class="pre">caster</span></code> dictionary is keyed by option name; the
@@ -194,10 +202,10 @@ to produce a different type from a string.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Release:</th><td class="field-body">0.2.0</td>
+<tr class="field-odd field"><th class="field-name">Release:</th><td class="field-body">0.2.1</td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">Doc generation date:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body">Jun 22, 2019</td>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">October 02, 2019</td>
 </tr>
 </tbody>
 </table>
@@ -233,8 +241,8 @@ to produce a different type from a string.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2019, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+        &copy; Copyright 2011-2019, The SpacePy Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
     </div>
   </body>
 </html>
