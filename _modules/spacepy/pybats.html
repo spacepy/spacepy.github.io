@@ -1,32 +1,34 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>spacepy.pybats &#8212; SpacePy v0.2.0 Manual</title>
+    
+    <title>spacepy.pybats &mdash; SpacePy v0.2.1 Manual</title>
+    
     <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.2.0',
+        VERSION:     '0.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../../_static/lanl_favicon.ico"/>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="shortcut icon" href="../../_static/spacepy_favicon.ico"/>
+    <link rel="top" title="SpacePy v0.2.1 Manual" href="../../index.html" />
+    <link rel="up" title="Module code" href="../index.html" /> 
   </head>
-  <body>
+  <body role="document">
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../../index.html"><img src="../../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -45,7 +47,7 @@
         <li><a href="../../search.html">search</a>|&nbsp;</li>
        <li><a href="../../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>
 
@@ -57,11 +59,14 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -73,7 +78,7 @@
           <div class="body" role="main">
             
   <h1>Source code for spacepy.pybats</h1><div class="highlight"><pre>
-<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">PyBats!  An open source Python-based interface for reading, manipulating,</span>
 <span class="sd">and visualizing BATS-R-US and SWMF output.</span>
@@ -188,10 +193,10 @@
 <span class="n">__contact__</span> <span class="o">=</span> <span class="s1">&#39;Dan Welling, dwelling@umich.edu&#39;</span>
 
 <span class="c1"># Global imports (used ubiquitously throughout this module.</span>
-<span class="kn">from</span> <span class="nn">spacepy.datamodel</span> <span class="k">import</span> <span class="n">dmarray</span><span class="p">,</span> <span class="n">SpaceData</span>
+<span class="kn">from</span> <span class="nn">spacepy.datamodel</span> <span class="kn">import</span> <span class="n">dmarray</span><span class="p">,</span> <span class="n">SpaceData</span>
 <span class="kn">import</span> <span class="nn">spacepy.plot.apionly</span>
-<span class="kn">import</span> <span class="nn">spacepy.plot</span> <span class="k">as</span> <span class="nn">spu</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">spacepy.plot</span> <span class="kn">as</span> <span class="nn">spu</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
 <span class="c1"># Some common, global functions.</span>
 <span class="k">def</span> <span class="nf">parse_filename_time</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
@@ -236,32 +241,32 @@
 
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="kn">from</span> <span class="nn">dateutil.parser</span> <span class="k">import</span> <span class="n">parse</span>
-    <span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">timedelta</span>
+    <span class="kn">from</span> <span class="nn">dateutil.parser</span> <span class="kn">import</span> <span class="n">parse</span>
+    <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
     <span class="kn">import</span> <span class="nn">re</span>
 
     <span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     
     <span class="c1"># Look for date/time:</span>
     <span class="k">if</span> <span class="s1">&#39;_e&#39;</span> <span class="ow">in</span> <span class="n">filename</span><span class="p">:</span>
-        <span class="n">t_string</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;_e(\d</span><span class="si">{8}</span><span class="s1">\-\d</span><span class="si">{6}</span><span class="s1">)&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">t_string</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;_e(\d{8}\-\d{6})&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">time</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="n">t_string</span><span class="p">)</span>
         <span class="c1">#time += timedelta()</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">time</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="bp">None</span>
 
     <span class="c1"># Look for run time:</span>
     <span class="k">if</span> <span class="s1">&#39;_t&#39;</span> <span class="ow">in</span> <span class="n">filename</span><span class="p">:</span>
         <span class="n">raw</span>     <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;_t(\d+)&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">runtime</span> <span class="o">=</span> <span class="mi">3600</span><span class="o">*</span><span class="nb">float</span><span class="p">(</span><span class="n">raw</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">])</span> <span class="o">+</span> <span class="mi">60</span><span class="o">*</span><span class="nb">float</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:])</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">runtime</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">runtime</span> <span class="o">=</span> <span class="bp">None</span>
 
     <span class="c1"># Look for file iteration:</span>
     <span class="k">if</span> <span class="s1">&#39;_n&#39;</span> <span class="ow">in</span> <span class="n">filename</span><span class="p">:</span>
         <span class="n">i_iter</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;_n(\d+)&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">i_iter</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">i_iter</span> <span class="o">=</span> <span class="bp">None</span>
 
     <span class="k">return</span> <span class="n">i_iter</span><span class="p">,</span> <span class="n">runtime</span><span class="p">,</span> <span class="n">time</span>
 
@@ -277,12 +282,12 @@
     <span class="n">match_b</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;([bj])([xyz])&#39;</span><span class="p">,</span> <span class="n">varname</span><span class="p">)</span>
     
     <span class="k">if</span> <span class="s1">&#39;rho&#39;</span> <span class="ow">in</span> <span class="n">varname</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\rho_{&#39;</span><span class="o">+</span><span class="n">varname</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;rho&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;}$&#39;</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="s1">r&#39;$\rho_{&#39;</span><span class="o">+</span><span class="n">varname</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;rho&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;}$&#39;</span>
     <span class="k">elif</span> <span class="n">varname</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;nt&#39;</span><span class="p">:</span>
         <span class="n">out</span> <span class="o">=</span> <span class="s1">&#39;$nT$&#39;</span>
     <span class="k">elif</span> <span class="n">varname</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;dB&#39;</span><span class="p">:</span>
         <span class="n">subscript</span><span class="o">=</span><span class="n">varname</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;, &#39;</span><span class="o">*</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">varname</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">3</span><span class="p">)</span><span class="o">+</span><span class="n">varname</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\Delta B _{&#39;</span><span class="o">+</span><span class="n">subscript</span><span class="o">+</span><span class="s1">&#39;}$&#39;</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="s1">r&#39;$\Delta B _{&#39;</span><span class="o">+</span><span class="n">subscript</span><span class="o">+</span><span class="s1">&#39;}$&#39;</span>
     <span class="k">elif</span> <span class="n">varname</span><span class="o">.</span><span class="n">lower</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;p&#39;</span><span class="p">:</span>
         <span class="n">out</span> <span class="o">=</span> <span class="s1">&#39;$P_{&#39;</span><span class="o">+</span><span class="n">varname</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;}$&#39;</span>
     <span class="k">elif</span> <span class="n">match_u</span><span class="p">:</span>
@@ -323,7 +328,7 @@
     <span class="k">return</span> <span class="n">ret</span></div>
 
 
-<div class="viewcode-block" id="add_planet"><a class="viewcode-back" href="../../autosummary/spacepy.pybats.add_planet.html#spacepy.pybats.add_planet">[docs]</a><span class="k">def</span> <span class="nf">add_planet</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">rad</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">ang</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">add_night</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+<div class="viewcode-block" id="add_planet"><a class="viewcode-back" href="../../autosummary/spacepy.pybats.add_planet.html#spacepy.pybats.add_planet">[docs]</a><span class="k">def</span> <span class="nf">add_planet</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">rad</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">ang</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">add_night</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
                <span class="o">**</span><span class="n">extra_kwargs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Creates a circle of ``radius=self.para[&#39;rbody&#39;]`` and returns the</span>
@@ -360,7 +365,7 @@
 <span class="sd">    </span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="k">import</span> <span class="n">Circle</span><span class="p">,</span> <span class="n">Wedge</span>
+    <span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Circle</span><span class="p">,</span> <span class="n">Wedge</span>
 
     <span class="n">body</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">rad</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">,</span> <span class="o">**</span><span class="n">extra_kwargs</span><span class="p">)</span>
     <span class="n">arch</span> <span class="o">=</span> <span class="n">Wedge</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">rad</span><span class="p">,</span> <span class="mi">90</span><span class="o">+</span><span class="n">ang</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="o">+</span><span class="n">ang</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> 
@@ -371,8 +376,8 @@
 
     <span class="k">return</span> <span class="n">body</span><span class="p">,</span> <span class="n">arch</span></div>
 
-<div class="viewcode-block" id="add_body"><a class="viewcode-back" href="../../autosummary/spacepy.pybats.add_body.html#spacepy.pybats.add_body">[docs]</a><span class="k">def</span> <span class="nf">add_body</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">rad</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;lightgrey&#39;</span><span class="p">,</span> <span class="n">show_planet</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
-             <span class="n">ang</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">add_night</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="o">**</span><span class="n">extra_kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="add_body"><a class="viewcode-back" href="../../autosummary/spacepy.pybats.add_body.html#spacepy.pybats.add_body">[docs]</a><span class="k">def</span> <span class="nf">add_body</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">rad</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;lightgrey&#39;</span><span class="p">,</span> <span class="n">show_planet</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> 
+             <span class="n">ang</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">add_night</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="o">**</span><span class="n">extra_kwargs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Creates a circle of radius=self.attrs[&#39;rbody&#39;] and returns the</span>
 <span class="sd">    MatPlotLib Ellipse patch object for plotting.  If an axis is specified</span>
@@ -410,7 +415,7 @@
 <span class="sd">       If a planet is added, it is given a zorder of *zorder*+5.</span>
 
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="k">import</span> <span class="n">Ellipse</span>
+    <span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Ellipse</span>
     
     <span class="n">dbody</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">rad</span>
     <span class="n">body</span> <span class="o">=</span> <span class="n">Ellipse</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">dbody</span><span class="p">,</span><span class="n">dbody</span><span class="p">,</span><span class="n">facecolor</span><span class="o">=</span><span class="n">facecolor</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">,</span>
@@ -422,7 +427,7 @@
     <span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">body</span><span class="p">)</span></div>
         
 
-<span class="k">def</span> <span class="nf">_read_idl_ascii</span><span class="p">(</span><span class="n">pbdat</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="s1">&#39;units&#39;</span><span class="p">,</span> <span class="n">keep_case</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_read_idl_ascii</span><span class="p">(</span><span class="n">pbdat</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="s1">&#39;units&#39;</span><span class="p">,</span> <span class="n">keep_case</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Load a SWMF IDL ascii output file and load into a pre-existing PbData</span>
 <span class="sd">    object.  This should only be called by :class:`IdlFile`.</span>
@@ -594,7 +599,7 @@
     <span class="c1"># Check that the record length is consistent with the data type</span>
     <span class="k">if</span> <span class="n">rec_len</span><span class="o">%</span><span class="n">dtype_size_bytes</span><span class="o">!=</span><span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Read error: Data type inconsistent with record&#39;</span> <span class="o">+</span>
-                         <span class="s1">&#39; length (data type size is </span><span class="si">{0:d}</span><span class="s1"> bytes, record length is </span><span class="si">{1:d}</span><span class="s1"> bytes&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">dtype_size_bytes</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">)))</span>
+                         <span class="s1">&#39; length (data type size is {0:d} bytes, record length is {1:d} bytes&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">dtype_size_bytes</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">)))</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">rec_len</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
         <span class="c1"># Zero-length record...file may be truncated</span>
@@ -603,21 +608,21 @@
     <span class="k">try</span><span class="p">:</span>
         <span class="n">startpos</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span>
     <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
-        <span class="n">seekable</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">seekable</span> <span class="o">=</span> <span class="bp">False</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">seekable</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">seekable</span> <span class="o">=</span> <span class="bp">True</span>
     <span class="k">if</span> <span class="n">seekable</span><span class="p">:</span>
         <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
         <span class="n">endpos</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">endpos</span> <span class="o">-</span> <span class="n">startpos</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">rec_len</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="n">inttype</span><span class="p">)</span><span class="o">.</span><span class="n">itemsize</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">endpos</span> <span class="o">-</span> <span class="n">startpos</span> <span class="o">&lt;</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">rec_len</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="n">inttype</span><span class="p">)</span><span class="o">.</span><span class="n">itemsize</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">EOFError</span><span class="p">(</span><span class="s1">&#39;File is shorter than expected data&#39;</span><span class="p">)</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">startpos</span> <span class="o">+</span> <span class="n">rec_len</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">startpos</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">rec_len</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="mi">0</span><span class="p">)</span>
         <span class="n">rec_len_end</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">inttype</span><span class="p">,</span><span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">startpos</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">rec_len_end</span> <span class="o">!=</span> <span class="n">rec_len</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">((</span>
-                <span class="s1">&#39;Read error: End marker length (</span><span class="si">{0:d}</span><span class="s1">) does not match start &#39;</span>
-                <span class="s1">&#39;marker length (</span><span class="si">{1:d}</span><span class="s1">).&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rec_len</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">rec_len_end</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> 
+                <span class="s1">&#39;Read error: End marker length ({0:d}) does not match start &#39;</span>
+                <span class="s1">&#39;marker length ({1:d}).&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rec_len</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">rec_len_end</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> 
                 <span class="s1">&#39;This indicates incorrect endiannes, wrong file type, &#39;</span>
                 <span class="s1">&#39;or file is corrupt.&#39;</span><span class="p">)</span>
     <span class="c1"># Read the data</span>
@@ -636,13 +641,13 @@
         <span class="c1"># End marker is inconsistent with start marker. Something is wrong.</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
             <span class="s1">&#39;Read error: End marker does not match start marker &#39;</span><span class="o">+</span>
-            <span class="s1">&#39;(start marker says record length is </span><span class="si">{0:d}</span><span class="s1"> bytes, end marker says </span><span class="si">{1:d}</span><span class="s1"> bytes).&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">rec_len</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">rec_len_end</span><span class="p">))</span> <span class="o">+</span>
+            <span class="s1">&#39;(start marker says record length is {0:d} bytes, end marker says {1:d} bytes).&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">rec_len</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">rec_len_end</span><span class="p">))</span> <span class="o">+</span>
             <span class="s1">&#39;This indicates incorrect endiannes, wrong file type, &#39;</span><span class="o">+</span>
             <span class="s1">&#39;or file is corrupt&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">rec_len</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">rec_len_end</span><span class="p">)))</span>
 
     <span class="k">return</span> <span class="n">A</span>
 
-<span class="k">def</span> <span class="nf">_read_idl_bin</span><span class="p">(</span><span class="n">pbdat</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="s1">&#39;units&#39;</span><span class="p">,</span> <span class="n">keep_case</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">headeronly</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_read_idl_bin</span><span class="p">(</span><span class="n">pbdat</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="s1">&#39;units&#39;</span><span class="p">,</span> <span class="n">keep_case</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">headeronly</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Load a SWMF IDL binary output file and load into a pre-existing PbData</span>
 <span class="sd">    object.  This should only be called by :class:`IdlFile`.</span>
@@ -792,7 +797,7 @@
                 
                 
         <span class="c1"># Create string representation of time.</span>
-        <span class="n">pbdat</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;strtime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0:04d}</span><span class="s1">h</span><span class="si">{1:02d}</span><span class="s1">m</span><span class="si">{2:06.3f}</span><span class="s1">s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">pbdat</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;strtime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;{0:04d}h{1:02d}m{2:06.3f}s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
             <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">//</span><span class="mi">3600</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">%</span><span class="mi">3600</span><span class="o">//</span><span class="mi">60</span><span class="p">),</span> <span class="n">time</span><span class="o">%</span><span class="mi">60</span><span class="p">)</span>
 
         <span class="c1"># Get the grid points...</span>
@@ -817,7 +822,7 @@
                 <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">pbdat</span><span class="p">[</span><span class="s1">&#39;grid&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])):</span>
                     <span class="n">pbdat</span><span class="p">[</span><span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">tempgrid</span><span class="p">[</span><span class="n">j</span><span class="o">*</span><span class="nb">int</span><span class="p">(</span><span class="n">prod</span><span class="p">[</span><span class="n">i</span><span class="p">])]</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unknown grid type: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pbdat</span><span class="o">.</span><span class="n">gridtype</span><span class="p">))</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unknown grid type: {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pbdat</span><span class="o">.</span><span class="n">gridtype</span><span class="p">))</span>
             <span class="c1"># Add units to grid.</span>
             <span class="k">if</span> <span class="n">units</span><span class="p">:</span> <span class="n">pbdat</span><span class="p">[</span><span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">units</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">nSkip</span><span class="p">)</span>
 
@@ -869,7 +874,7 @@
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">PbData</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># Init as SpaceData.</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">PbData</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># Init as SpaceData.</span>
 
     <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s1">&#39;PyBats data object&#39;</span>
@@ -878,8 +883,8 @@
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Display contents of container.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
         <span class="k">return</span> <span class="s1">&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">listunits</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -894,7 +899,7 @@
         <span class="n">form</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%%%i</span><span class="s2">s:</span><span class="si">%%</span><span class="s2">s&quot;</span><span class="o">%</span><span class="n">length</span>
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
             <span class="k">if</span> <span class="s1">&#39;units&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="n">form</span><span class="o">%</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]))</span>
+                <span class="k">print</span><span class="p">(</span><span class="n">form</span><span class="o">%</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]))</span>
 
     <span class="k">def</span> <span class="nf">timeseries_append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
@@ -906,12 +911,12 @@
 
         <span class="c1"># check to make sure that the append appears feasible:</span>
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Cannot append type </span><span class="si">{}</span><span class="s1"> to type </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Cannot append type {} to type {}.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)))</span>
         <span class="k">if</span> <span class="s1">&#39;time&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;No time vector in </span><span class="si">{}</span><span class="s1"> object&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)))</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;No time vector in {} object&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)))</span>
         <span class="k">if</span> <span class="s1">&#39;time&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;No time fector in </span><span class="si">{}</span><span class="s1"> object&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)))</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;No time fector in {} object&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)))</span>
 
         <span class="n">npts</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
 
@@ -949,11 +954,11 @@
 <span class="sd">    as an &quot;unpack requires a string of argument length &#39;X&#39;&quot;.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span><span class="nb">format</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="s1">&#39;units&#39;</span><span class="p">,</span>
-                 <span class="n">keep_case</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">IdlFile</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># Init as PbData.</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span><span class="n">format</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="s1">&#39;units&#39;</span><span class="p">,</span>
+                 <span class="n">keep_case</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">IdlFile</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># Init as PbData.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span>   <span class="o">=</span> <span class="n">filename</span>   <span class="c1"># Save file name.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;format&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">format</span>     <span class="c1"># Save file format.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;format&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">format</span>     <span class="c1"># Save file format.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">header</span><span class="p">,</span> <span class="n">keep_case</span><span class="p">)</span>   <span class="c1"># Read file.</span>
 
     <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -966,7 +971,7 @@
 <span class="sd">        set when the object is instantiation.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;format&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;format&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">_read_idl_bin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="n">header</span><span class="p">,</span> <span class="n">keep_case</span><span class="o">=</span><span class="n">keep_case</span><span class="p">)</span>
             <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">EOFError</span><span class="p">,</span> <span class="ne">MemoryError</span><span class="p">):</span>
@@ -976,7 +981,7 @@
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;format&#39;</span><span class="p">][:</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;asc&#39;</span><span class="p">:</span>
             <span class="n">_read_idl_ascii</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="n">header</span><span class="p">,</span> <span class="n">keep_case</span><span class="o">=</span><span class="n">keep_case</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unrecognized file format: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unrecognized file format: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;format&#39;</span><span class="p">]))</span></div>
         
 <div class="viewcode-block" id="LogFile"><a class="viewcode-back" href="../../autosummary/spacepy.pybats.LogFile.html#spacepy.pybats.LogFile">[docs]</a><span class="k">class</span> <span class="nc">LogFile</span><span class="p">(</span><span class="n">PbData</span><span class="p">):</span>
@@ -1033,21 +1038,21 @@
 
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+    <span class="kn">import</span> <span class="nn">datetime</span> <span class="kn">as</span> <span class="nn">dt</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">starttime</span><span class="o">=</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">keep_case</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">starttime</span><span class="o">=</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">keep_case</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
                  <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">LogFile</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LogFile</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">filename</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">starttime</span><span class="p">,</span> <span class="n">keep_case</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">starttime</span><span class="p">,</span> <span class="n">keep_case</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">starttime</span><span class="p">,</span> <span class="n">keep_case</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Load the ascii logfile located at self.filename.</span>
 <span class="sd">        This method is automatically called upon instantiation.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-        <span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+        <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+        <span class="kn">import</span> <span class="nn">datetime</span> <span class="kn">as</span> <span class="nn">dt</span>
 
         <span class="c1"># Convert starttime from tuple to datetime object.</span>
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">starttime</span><span class="p">)</span> <span class="o">!=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">:</span>
@@ -1208,9 +1213,9 @@
 
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">load</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">load</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         
-        <span class="nb">super</span><span class="p">(</span><span class="n">NgdcIndex</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">NgdcIndex</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="c1"># Set key information.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">filename</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;comments&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1223,7 +1228,7 @@
 <span class="sd">        Read an existing NGDC file into memory.  Should only be called upon</span>
 <span class="sd">        instantiation.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="kn">from</span> <span class="nn">dateutil.parser</span> <span class="k">import</span> <span class="n">parse</span>
+        <span class="kn">from</span> <span class="nn">dateutil.parser</span> <span class="kn">import</span> <span class="n">parse</span>
 
         <span class="c1"># Start by reading the header.</span>
         <span class="n">infile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">],</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
@@ -1272,12 +1277,12 @@
             <span class="c1"># Make judgement as to whether there is more data or not.</span>
             <span class="k">return</span> <span class="p">(</span><span class="n">temp</span> <span class="o">==</span> <span class="s1">&#39;#&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
-        <span class="n">IsData</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">IsData</span> <span class="o">=</span> <span class="bp">True</span>
         <span class="k">while</span> <span class="n">IsData</span><span class="p">:</span>
             <span class="n">IsData</span> <span class="o">=</span> <span class="n">read_one_var</span><span class="p">()</span>
 
 
-    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outfile</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outfile</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Write the :class:`NgdcIndex` object to file.  Kwarg *outfile* can be</span>
 <span class="sd">        used to specify the path of the output file; if it is not set, </span>
@@ -1285,10 +1290,10 @@
 <span class="sd">        &quot;ngdc_index.dat&quot;.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         
-        <span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+        <span class="kn">import</span> <span class="nn">datetime</span> <span class="kn">as</span> <span class="nn">dt</span>
     
         <span class="k">if</span> <span class="ow">not</span> <span class="n">outfile</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span><span class="o">!=</span><span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span><span class="o">!=</span><span class="bp">None</span><span class="p">:</span>
                 <span class="n">outfile</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">outfile</span><span class="o">=</span><span class="s1">&#39;ngdc_index.dat&#39;</span>
@@ -1359,19 +1364,19 @@
 <span class="sd">    =========== ============================================================</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">load</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">npoints</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">zeros</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">load</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">npoints</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">zeros</span>
 
         <span class="c1"># Initialize data object and required attributes.</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">ImfInput</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ImfInput</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;var&#39;</span><span class="p">]</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;bx&#39;</span><span class="p">,</span> <span class="s1">&#39;by&#39;</span><span class="p">,</span> <span class="s1">&#39;bz&#39;</span><span class="p">,</span> <span class="s1">&#39;ux&#39;</span><span class="p">,</span> <span class="s1">&#39;uy&#39;</span><span class="p">,</span> <span class="s1">&#39;uz&#39;</span><span class="p">,</span> <span class="s1">&#39;rho&#39;</span><span class="p">,</span> <span class="s1">&#39;temp&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;std_var&#39;</span><span class="p">]</span><span class="o">=</span><span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;std_var&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;coor&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;GSM&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;satxyz&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;zerobx&#39;</span><span class="p">]</span><span class="o">=</span><span class="kc">False</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;reread&#39;</span><span class="p">]</span><span class="o">=</span><span class="kc">False</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;delay&#39;</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;plane&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;satxyz&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;zerobx&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;reread&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;delay&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;plane&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;header&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">[]</span>
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">dmarray</span><span class="p">(</span><span class="n">zeros</span><span class="p">(</span><span class="n">npoints</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">))</span>
             
@@ -1379,7 +1384,7 @@
         <span class="k">if</span> <span class="n">filename</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">filename</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
 
         <span class="c1"># Load/create data vectors.</span>
         <span class="k">if</span> <span class="n">filename</span> <span class="ow">and</span> <span class="n">load</span><span class="p">:</span>  <span class="c1"># Load contents from existing file.</span>
@@ -1421,7 +1426,7 @@
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;ux&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;uy&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;uz&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span>
                              <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;km/s&#39;</span><span class="p">}</span> <span class="p">)</span>
 
-        <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="bp">True</span>
 
     <span class="k">def</span> <span class="nf">calc_b</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
@@ -1431,7 +1436,7 @@
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bx&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;by&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bz&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span>
                              <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;nT&#39;</span><span class="p">}</span> <span class="p">)</span>
         
-        <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="bp">True</span>
 
     <span class="k">def</span> <span class="nf">calc_alf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
@@ -1447,7 +1452,7 @@
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;vAlf&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">dmarray</span><span class="p">(</span><span class="n">const</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;rho&#39;</span><span class="p">]),</span>
                             <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;km/s&#39;</span><span class="p">})</span>
 
-        <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="bp">True</span>
         
     <span class="k">def</span> <span class="nf">calc_alfmach</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
@@ -1457,9 +1462,9 @@
 
         <span class="k">if</span> <span class="s1">&#39;vAlf&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">calc_alf</span><span class="p">()</span>
         <span class="k">if</span> <span class="s1">&#39;u&#39;</span>    <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">calc_u</span><span class="p">()</span>
-        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;machA&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">dmarray</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">]</span><span class="o">/</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;vAlf&#39;</span><span class="p">],</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="kc">None</span><span class="p">})</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;machA&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">dmarray</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">]</span><span class="o">/</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;vAlf&#39;</span><span class="p">],</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="bp">None</span><span class="p">})</span>
 
-        <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="bp">True</span>
         
     <span class="k">def</span> <span class="nf">varcheck</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
@@ -1476,28 +1481,28 @@
 
         <span class="c1"># Number of variables check:</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">var</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Not enough variables in IMF object:&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">%i</span><span class="s1"> listed, </span><span class="si">%i</span><span class="s1"> actual.</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">var</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">key</span><span class="p">)))</span>
-            <span class="k">return</span> <span class="kc">False</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Not enough variables in IMF object:&#39;</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">%i</span><span class="s1"> listed, </span><span class="si">%i</span><span class="s1"> actual.</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">var</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">key</span><span class="p">)))</span>
+            <span class="k">return</span> <span class="bp">False</span>
         <span class="c1"># Each variable corresponds to only one in the dict </span>
         <span class="c1"># and occurs only once:</span>
         <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">var</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Variable </span><span class="si">%s</span><span class="s1"> listed but does not exist.</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">v</span><span class="p">)</span>
-                <span class="k">return</span> <span class="kc">False</span>
+                <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Variable </span><span class="si">%s</span><span class="s1"> listed but does not exist.</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">v</span><span class="p">)</span>
+                <span class="k">return</span> <span class="bp">False</span>
             <span class="k">if</span> <span class="n">var</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Variable </span><span class="si">%s</span><span class="s1"> listed multiple times.</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">v</span><span class="p">)</span>
-                <span class="k">return</span> <span class="kc">False</span>
+                <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Variable </span><span class="si">%s</span><span class="s1"> listed multiple times.</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">v</span><span class="p">)</span>
+                <span class="k">return</span> <span class="bp">False</span>
         <span class="c1"># Success!</span>
-        <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="bp">True</span>
 
     <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">infile</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Read an SWMF IMF/solar wind input file into a newly</span>
 <span class="sd">        instantiated imfinput object.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">zeros</span>
-        <span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+        <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">zeros</span>
+        <span class="kn">import</span> <span class="nn">datetime</span> <span class="kn">as</span> <span class="nn">dt</span>
 
         <span class="c1"># Slurp lines into memory.</span>
         <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">infile</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
@@ -1522,16 +1527,16 @@
             <span class="k">if</span> <span class="n">param</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;#COOR&#39;</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;coor&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">lines</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
             <span class="k">elif</span> <span class="n">param</span><span class="p">[:</span><span class="mi">7</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;#REREAD&#39;</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;reread&#39;</span><span class="p">]</span><span class="o">=</span><span class="kc">True</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;reread&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">True</span>
             <span class="k">elif</span> <span class="n">param</span><span class="p">[:</span><span class="mi">7</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;#ZEROBX&#39;</span><span class="p">:</span>
                 <span class="n">setting</span><span class="o">=</span><span class="n">lines</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
                 <span class="k">if</span> <span class="n">setting</span><span class="o">==</span><span class="s1">&#39;T&#39;</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;zerobx&#39;</span><span class="p">]</span><span class="o">=</span><span class="kc">True</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;zerobx&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">True</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;zerobx&#39;</span><span class="p">]</span><span class="o">=</span><span class="kc">False</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;zerobx&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">False</span>
             <span class="k">elif</span> <span class="n">param</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;#VAR&#39;</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;var&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">lines</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;std_var&#39;</span><span class="p">]</span><span class="o">=</span><span class="kc">False</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;std_var&#39;</span><span class="p">]</span><span class="o">=</span><span class="bp">False</span>
             <span class="k">elif</span> <span class="n">param</span><span class="p">[:</span><span class="mi">6</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;#PLANE&#39;</span><span class="p">:</span>
                 <span class="n">xp</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">lines</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
                 <span class="n">yp</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">lines</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
@@ -1573,7 +1578,7 @@
             <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;var&#39;</span><span class="p">]):</span>
                 <span class="bp">self</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">7</span><span class="o">+</span><span class="n">j</span><span class="p">])</span>
 
-    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outfile</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outfile</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Write the :class:`ImfInput` object to file.  Kwarg *outfile* can be</span>
 <span class="sd">        used to specify the path of the output file; if it is not set, </span>
@@ -1581,14 +1586,14 @@
 <span class="sd">        &quot;imfinput.dat&quot;.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         
-        <span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+        <span class="kn">import</span> <span class="nn">datetime</span> <span class="kn">as</span> <span class="nn">dt</span>
     
         <span class="c1"># Check that the var attribute agrees with the data dictionary.</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">varcheck</span><span class="p">():</span>
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Number of variables does not match variable order.&#39;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">outfile</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span><span class="o">!=</span><span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span><span class="o">!=</span><span class="bp">None</span><span class="p">:</span>
                 <span class="n">outfile</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">outfile</span><span class="o">=</span><span class="s1">&#39;imfinput.dat&#39;</span>
@@ -1599,42 +1604,44 @@
         <span class="n">var</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;var&#39;</span><span class="p">]</span>
 
         <span class="c1"># Write the header:</span>
-        <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;File created on </span><span class="si">{}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()))</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;File created on {}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()))</span>
         <span class="k">for</span> <span class="n">head</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;header&#39;</span><span class="p">]:</span>
             <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">head</span><span class="p">)</span>
 
         <span class="c1"># Handle Params:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;coor&#39;</span><span class="p">]:</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;#COOR</span><span class="se">\n</span><span class="s1">{}</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;coor&#39;</span><span class="p">]))</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;zerobx&#39;</span><span class="p">]:</span>
             <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;#ZEROBX</span><span class="se">\n</span><span class="s1">T</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;reread&#39;</span><span class="p">]:</span>
             <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;#REREAD&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;std_var&#39;</span><span class="p">]:</span>
-            <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;#VAR</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">var</span><span class="p">)))</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;satxyz&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">:</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;#VAR</span><span class="se">\n</span><span class="s1">{}</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">var</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;satxyz&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">:</span>
             <span class="n">xyz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;satxyz&#39;</span><span class="p">]</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">xyz</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="kc">None</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">xyz</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
-                <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;#POSITION</span><span class="se">\n</span><span class="si">{0[1]:-6.2f}</span><span class="se">\n</span><span class="si">{0[2]:-6.2f}</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xyz</span><span class="p">))</span>
-            <span class="k">elif</span> <span class="kc">None</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">xyz</span><span class="p">:</span>
-                <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;#SATELLITEXYZ</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                    <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:-6.2f}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">xyz</span><span class="p">)))</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">xyz</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="bp">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">None</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">xyz</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+                <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;#POSITION</span><span class="se">\n</span><span class="s1">{0[1]:-6.2f}</span><span class="se">\n</span><span class="s1">{0[2]:-6.2f}</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xyz</span><span class="p">))</span>
+            <span class="k">elif</span> <span class="bp">None</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">xyz</span><span class="p">:</span>
+                <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;#SATELLITEXYZ</span><span class="se">\n</span><span class="s1">{}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;{:-6.2f}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">xyz</span><span class="p">)))</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;delay&#39;</span><span class="p">]:</span>
-            <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;#DELAY</span><span class="se">\n</span><span class="si">{:-9.2f}</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;delay&#39;</span><span class="p">]))</span>
-        <span class="k">if</span> <span class="kc">None</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;plane&#39;</span><span class="p">]:</span>
-            <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;#PLANE</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:-6.2f}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;#DELAY</span><span class="se">\n</span><span class="s1">{:-9.2f}</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;delay&#39;</span><span class="p">]))</span>
+        <span class="k">if</span> <span class="bp">None</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;plane&#39;</span><span class="p">]:</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;#PLANE</span><span class="se">\n</span><span class="s1">{}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;{:-6.2f}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
                 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;plane&#39;</span><span class="p">])))</span>
 
         <span class="c1"># Write the data:</span>
         <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">#START</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">])):</span>
-            <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;{:%Y %m </span><span class="si">%d</span><span class="s1"> %H %M %S} </span><span class="si">{:03d}</span><span class="s1"> &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;{:%Y %m </span><span class="si">%d</span><span class="s1"> %H %M %S} {:03d} &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">microsecond</span><span class="o">/</span><span class="mf">1000.</span><span class="p">))))</span>
-            <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39; </span><span class="si">{}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:10.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">var</span><span class="p">)))</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39; {}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;{:10.2f}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">var</span><span class="p">)))</span>
         <span class="n">out</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">add_pram_bz</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span> <span class="n">pcol</span><span class="o">=</span><span class="s1">&#39;#CC3300&#39;</span><span class="p">,</span> <span class="n">bcol</span><span class="o">=</span><span class="s1">&#39;#3333CC&#39;</span><span class="p">,</span>
-                    <span class="n">xlim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">plim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">blim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">epoch</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">add_pram_bz</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span> <span class="n">pcol</span><span class="o">=</span><span class="s1">&#39;#CC3300&#39;</span><span class="p">,</span> <span class="n">bcol</span><span class="o">=</span><span class="s1">&#39;#3333CC&#39;</span><span class="p">,</span>
+                    <span class="n">xlim</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">plim</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">blim</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">epoch</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Plot, on a single set of axes, both ram pressure and IMF Bz for a </span>
 <span class="sd">        quick-look summary of an event. </span>
@@ -1675,8 +1682,8 @@
 <span class="sd">        ax  : matplotlib axes object</span>
 <span class="sd">        &#39;&#39;&#39;</span>
 
-        <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-        <span class="kn">from</span> <span class="nn">spacepy.plot</span> <span class="k">import</span> <span class="n">set_target</span><span class="p">,</span> <span class="n">applySmartTimeTicks</span>
+        <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+        <span class="kn">from</span> <span class="nn">spacepy.plot</span> <span class="kn">import</span> <span class="n">set_target</span><span class="p">,</span> <span class="n">applySmartTimeTicks</span>
         
         <span class="c1"># Set ax and fig based on given target.</span>
         <span class="n">fig</span><span class="p">,</span> <span class="n">a1</span> <span class="o">=</span> <span class="n">set_target</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">)</span>
@@ -1690,14 +1697,14 @@
 
         <span class="c1"># Restrict x-range:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">xlim</span><span class="p">:</span> <span class="n">xlim</span><span class="o">=</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span>
-        <span class="n">applySmartTimeTicks</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">xlim</span><span class="p">,</span> <span class="n">dolabel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">applySmartTimeTicks</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">xlim</span><span class="p">,</span> <span class="n">dolabel</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
         <span class="c1"># Zero line for IMF Bz:</span>
         <span class="n">a1</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">xlim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xlim</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">bcol</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
 
         <span class="c1"># Label axes:</span>
-        <span class="n">a1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;IMF B$_</span><span class="si">{Z}</span><span class="s1">$ ($nT$)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">bcol</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-        <span class="n">a2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;P$_</span><span class="si">{dyn}</span><span class="s1">$ ($nPa$)&#39;</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="n">pcol</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+        <span class="n">a1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;IMF B$_{Z}$ ($nT$)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">bcol</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+        <span class="n">a2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;P$_{dyn}$ ($nPa$)&#39;</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="n">pcol</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">a1</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="n">bcol</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">a2</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="n">pcol</span><span class="p">)</span>
 
@@ -1710,26 +1717,26 @@
 
         <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">a1</span>
         
-    <span class="k">def</span> <span class="nf">quicklook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timerange</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">quicklook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timerange</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Generate a quick-look plot of solar wind conditions driving the</span>
 <span class="sd">        SWMF.  Default values show IMF, number density, and Earthward velocity.</span>
 <span class="sd">        Returns a figure object containing the plots.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
 
-        <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-        <span class="kn">from</span> <span class="nn">spacepy.plot</span> <span class="k">import</span> <span class="n">applySmartTimeTicks</span>
+        <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+        <span class="kn">from</span> <span class="nn">spacepy.plot</span> <span class="kn">import</span> <span class="n">applySmartTimeTicks</span>
         
         <span class="k">if</span> <span class="ow">not</span> <span class="n">timerange</span><span class="p">:</span>
             <span class="n">timerange</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
 
-        <span class="k">def</span> <span class="nf">adjust_plots</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">ylab</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">Zero</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-            <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">adjust_plots</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">ylab</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">Zero</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
             <span class="n">applySmartTimeTicks</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">timerange</span><span class="p">)</span>
             <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylab</span><span class="p">)</span>
             <span class="n">labels</span> <span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">()</span>
-            <span class="n">labels</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-            <span class="n">labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">labels</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+            <span class="n">labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">Zero</span><span class="p">:</span>
                 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timerange</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">xlab</span><span class="p">:</span>
@@ -1743,25 +1750,25 @@
         
         <span class="n">a1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">511</span><span class="p">)</span>
         <span class="n">a1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bx&#39;</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;#003366&#39;</span><span class="p">)</span>
-        <span class="n">adjust_plots</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="s1">&#39;IMF $B_</span><span class="si">{X}</span><span class="s1">$ ($nT$)&#39;</span><span class="p">)</span>
+        <span class="n">adjust_plots</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="s1">&#39;IMF $B_{X}$ ($nT$)&#39;</span><span class="p">)</span>
         <span class="n">a1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Solar Wind Drivers (</span><span class="si">%s</span><span class="s1"> Coordinates)&#39;</span> 
                      <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;coor&#39;</span><span class="p">]))</span>
 
         <span class="n">a2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">512</span><span class="p">)</span>
         <span class="n">a2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;by&#39;</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;#333399&#39;</span><span class="p">)</span>
-        <span class="n">adjust_plots</span><span class="p">(</span><span class="n">a2</span><span class="p">,</span> <span class="s1">&#39;IMF $B_</span><span class="si">{Y}</span><span class="s1">$ ($nT$)&#39;</span><span class="p">)</span>
+        <span class="n">adjust_plots</span><span class="p">(</span><span class="n">a2</span><span class="p">,</span> <span class="s1">&#39;IMF $B_{Y}$ ($nT$)&#39;</span><span class="p">)</span>
 
         <span class="n">a3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">513</span><span class="p">)</span>
         <span class="n">a3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bz&#39;</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;#0033CC&#39;</span><span class="p">)</span>
-        <span class="n">adjust_plots</span><span class="p">(</span><span class="n">a3</span><span class="p">,</span> <span class="s1">&#39;IMF $B_</span><span class="si">{Z}</span><span class="s1">$ ($nT$)&#39;</span><span class="p">)</span>
+        <span class="n">adjust_plots</span><span class="p">(</span><span class="n">a3</span><span class="p">,</span> <span class="s1">&#39;IMF $B_{Z}$ ($nT$)&#39;</span><span class="p">)</span>
 
         <span class="n">a4</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">514</span><span class="p">)</span>
         <span class="n">a4</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_denvar</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
-        <span class="n">adjust_plots</span><span class="p">(</span><span class="n">a4</span><span class="p">,</span> <span class="s1">&#39;Density ($cm^{-3}$)&#39;</span><span class="p">,</span> <span class="n">Zero</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">adjust_plots</span><span class="p">(</span><span class="n">a4</span><span class="p">,</span> <span class="s1">&#39;Density ($cm^{-3}$)&#39;</span><span class="p">,</span> <span class="n">Zero</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 
         <span class="n">a5</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">515</span><span class="p">)</span>
         <span class="n">a5</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;ux&#39;</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
-        <span class="n">adjust_plots</span><span class="p">(</span><span class="n">a5</span><span class="p">,</span> <span class="s1">&#39;$|V_</span><span class="si">{X}</span><span class="s1">|$ ($km/s$)&#39;</span><span class="p">,</span> <span class="n">Zero</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">adjust_plots</span><span class="p">(</span><span class="n">a5</span><span class="p">,</span> <span class="s1">&#39;$|V_{X}|$ ($km/s$)&#39;</span><span class="p">,</span> <span class="n">Zero</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">fig</span></div>
 
@@ -1819,15 +1826,15 @@
 <span class="sd">    ...will populate all fields with the data in *a_sat_orbit_file.dat*.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Create a satorbit object.  If I{file} is not given, buid an</span>
 <span class="sd">        empty satorbit object is instantiated for the user to fill</span>
 <span class="sd">        with values of their own creation.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+        <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
-        <span class="nb">super</span><span class="p">(</span><span class="n">SatOrbit</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SatOrbit</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">filename</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;head&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">[]</span>
@@ -1848,8 +1855,8 @@
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Read and parse a satellite orbit input file into the satorbit object.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-        <span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+        <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+        <span class="kn">import</span> <span class="nn">datetime</span> <span class="kn">as</span> <span class="nn">dt</span>
         <span class="c1"># Try to open the file.  If we fail, pass the exception</span>
         <span class="c1"># to the caller.</span>
         <span class="n">infile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">],</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
@@ -1902,17 +1909,17 @@
         <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;head&#39;</span><span class="p">]:</span>
             <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
         <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-        <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;#COOR</span><span class="se">\n</span><span class="si">{}</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;coor&#39;</span><span class="p">]))</span>
+        <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;#COOR</span><span class="se">\n</span><span class="s1">{}</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;coor&#39;</span><span class="p">]))</span>
         <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;#START</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
         <span class="c1"># Write the rest of the orbit.</span>
         <span class="n">npts</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">])</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">npts</span><span class="p">):</span>
             <span class="c1">#Time:</span>
-            <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;{:%Y %m </span><span class="si">%d</span><span class="s1"> %H %M %S} </span><span class="si">{:03.0f}</span><span class="s1"> &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;{:%Y %m </span><span class="si">%d</span><span class="s1"> %H %M %S} {:03.0f} &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">microsecond</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">)</span> <span class="p">)</span>
             <span class="c1">#Position:</span>
-            <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:13.7E}</span><span class="s1"> </span><span class="si">{:13.7E}</span><span class="s1"> </span><span class="si">{:13.7E}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;{:13.7E} {:13.7E} {:13.7E}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;xyz&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;xyz&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;xyz&#39;</span><span class="p">][</span><span class="mi">2</span><span class="p">,</span><span class="n">i</span><span class="p">])</span> <span class="p">)</span>
 
         <span class="n">outfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
@@ -1937,12 +1944,12 @@
         <li><a href="../../search.html">search</a>|&nbsp;</li>
        <li><a href="../../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2019, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+        &copy; Copyright 2011-2019, The SpacePy Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
     </div>
   </body>
 </html>

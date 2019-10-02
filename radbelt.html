@@ -1,34 +1,35 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>radbelt - Functions supporting radiation belt diffusion codes &#8212; SpacePy v0.2.0 Manual</title>
+    
+    <title>radbelt - Functions supporting radiation belt diffusion codes &mdash; SpacePy v0.2.1 Manual</title>
+    
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.2.0',
+        VERSION:     '0.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="_static/lanl_favicon.ico"/>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="shortcut icon" href="_static/spacepy_favicon.ico"/>
+    <link rel="top" title="SpacePy v0.2.1 Manual" href="index.html" />
     <link rel="next" title="spacepy.radbelt.RBmodel" href="autosummary/spacepy.radbelt.RBmodel.html" />
-    <link rel="prev" title="spacepy.pycdf.EpochError" href="autosummary/spacepy.pycdf.EpochError.html" /> 
+    <link rel="prev" title="spacepy.pycdf.istp.format" href="autosummary/autosummary/spacepy.pycdf.istp.format.html" /> 
   </head>
-  <body>
+  <body role="document">
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="index.html"><img src="_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -47,7 +48,7 @@
           <a href="autosummary/spacepy.radbelt.RBmodel.html" title="spacepy.radbelt.RBmodel"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="autosummary/spacepy.pycdf.EpochError.html" title="spacepy.pycdf.EpochError"
+          <a href="autosummary/autosummary/spacepy.pycdf.istp.format.html" title="spacepy.pycdf.istp.format"
              accesskey="P">previous</a> |</li>
         <li><a href="https://github.com/spacepy/spacepy">homepage</a>|&nbsp;</li>
         <li><a href="search.html">search</a>|&nbsp;</li>
@@ -62,26 +63,29 @@
               <img class="logo" src="_static/logo.png" alt="Logo"/>
             </a></p>
   <h4>Previous topic</h4>
-  <p class="topless"><a href="autosummary/spacepy.pycdf.EpochError.html"
-                        title="previous chapter">spacepy.pycdf.EpochError</a></p>
+  <p class="topless"><a href="autosummary/autosummary/spacepy.pycdf.istp.format.html"
+                        title="previous chapter">spacepy.pycdf.istp.format</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="autosummary/spacepy.radbelt.RBmodel.html"
                         title="next chapter">spacepy.radbelt.RBmodel</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/radbelt.rst.txt"
+      <li><a href="_sources/radbelt.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -118,7 +122,7 @@ Contact: <a class="reference external" href="mailto:jkoller&#37;&#52;&#48;lanl&#
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="autosummary/spacepy.radbelt.get_modelop_L.html#spacepy.radbelt.get_modelop_L" title="spacepy.radbelt.get_modelop_L"><code class="xref py py-obj docutils literal"><span class="pre">get_modelop_L</span></code></a>(f,&nbsp;L,&nbsp;Dm_old,&nbsp;Dm_new,&nbsp;Dp_old,&nbsp;…)</td>
+<tr class="row-odd"><td><a class="reference internal" href="autosummary/spacepy.radbelt.get_modelop_L.html#spacepy.radbelt.get_modelop_L" title="spacepy.radbelt.get_modelop_L"><code class="xref py py-obj docutils literal"><span class="pre">get_modelop_L</span></code></a>(f,&nbsp;L,&nbsp;Dm_old,&nbsp;Dm_new,&nbsp;Dp_old,&nbsp;...)</td>
 <td>Advance the distribution function, f, discretized into the Lgrid, L, forward in time by a timestep, Tdelta.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="autosummary/spacepy.radbelt.diff_LL.html#spacepy.radbelt.diff_LL" title="spacepy.radbelt.diff_LL"><code class="xref py py-obj docutils literal"><span class="pre">diff_LL</span></code></a>(r,&nbsp;grid,&nbsp;f,&nbsp;Tdelta,&nbsp;Telapsed[,&nbsp;params])</td>
@@ -150,7 +154,7 @@ Contact: <a class="reference external" href="mailto:jkoller&#37;&#52;&#48;lanl&#
           <a href="autosummary/spacepy.radbelt.RBmodel.html" title="spacepy.radbelt.RBmodel"
              >next</a> |</li>
         <li class="right" >
-          <a href="autosummary/spacepy.pycdf.EpochError.html" title="spacepy.pycdf.EpochError"
+          <a href="autosummary/autosummary/spacepy.pycdf.istp.format.html" title="spacepy.pycdf.istp.format"
              >previous</a> |</li>
         <li><a href="https://github.com/spacepy/spacepy">homepage</a>|&nbsp;</li>
         <li><a href="search.html">search</a>|&nbsp;</li>
@@ -159,8 +163,8 @@ Contact: <a class="reference external" href="mailto:jkoller&#37;&#52;&#48;lanl&#
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2019, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+        &copy; Copyright 2011-2019, The SpacePy Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
     </div>
   </body>
 </html>

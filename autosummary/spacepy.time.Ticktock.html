@@ -1,34 +1,36 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>spacepy.time.Ticktock &#8212; SpacePy v0.2.0 Manual</title>
+    
+    <title>spacepy.time.Ticktock &mdash; SpacePy v0.2.1 Manual</title>
+    
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.2.0',
+        VERSION:     '0.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="../_static/lanl_favicon.ico"/>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
+    <link rel="top" title="SpacePy v0.2.1 Manual" href="../index.html" />
+    <link rel="up" title="time - Time conversion, manipulation and implementation of Ticktock class" href="../time.html" />
     <link rel="next" title="spacepy.time.doy2date" href="spacepy.time.doy2date.html" />
     <link rel="prev" title="time - Time conversion, manipulation and implementation of Ticktock class" href="../time.html" /> 
   </head>
-  <body>
+  <body role="document">
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -53,7 +55,7 @@
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../time.html" accesskey="U">time - Time conversion, manipulation and implementation of Ticktock class</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../time.html" accesskey="U">time - Time conversion, manipulation and implementation of Ticktock class</a> &raquo;</li> 
       </ul>
     </div>
 
@@ -71,18 +73,21 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/autosummary/spacepy.time.Ticktock.rst.txt"
+      <li><a href="../_sources/autosummary/spacepy.time.Ticktock.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -101,7 +106,7 @@
 <dd><p>Ticktock class holding various time coordinate systems
 (TAI, UTC, ISO, JD, MJD, UNX, RDT, CDF, DOY, eDOY)</p>
 <p>Possible input data types:
-ISO: ISO standard format like ‘2002-02-25T12:20:30’
+ISO: ISO standard format like &#8216;2002-02-25T12:20:30&#8217;
 UTC: datetime object with UTC time
 TAI: elapsed seconds since 1958/1/1 (includes leap seconds)
 UNX: elapsed seconds since 1970/1/1 (all days have 86400 secs sometimes unequal lenghts)
@@ -136,7 +141,7 @@ eDOY: Fractional day of year, starts at day 0</p>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">([</span><span class="mf">2452331.0142361112</span><span class="p">,</span> <span class="mf">2452332.0142361112</span><span class="p">],</span> <span class="s1">&#39;JD&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">([</span><span class="mf">2452331.0142361112</span><span class="p">,</span> <span class="mf">2452332.0142361112</span><span class="p">],</span> <span class="s1">&#39;JD&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">ISO</span>
 <span class="go">dmarray([&#39;2002-02-25T12:20:30&#39;, &#39;2002-02-26T12:20:30&#39;], dtype=&#39;|S19&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">DOY</span> <span class="c1"># Day of year</span>
@@ -206,7 +211,7 @@ eDOY: Fractional day of year, starts at day 0</p>
 <td>Creates a Ticktock object with the current time, equivalent to datetime.now()</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#spacepy.time.Ticktock.sort" title="spacepy.time.Ticktock.sort"><code class="xref py py-obj docutils literal"><span class="pre">sort</span></code></a>()</td>
-<td>This will sort the Ticktock values in place, if you need a stable sort use kind=’mergesort’</td>
+<td>This will sort the Ticktock values in place, if you need a stable sort use kind=&#8217;mergesort&#8217;</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#spacepy.time.Ticktock.update_items" title="spacepy.time.Ticktock.update_items"><code class="xref py py-obj docutils literal"><span class="pre">update_items</span></code></a>(b,&nbsp;attrib)</td>
 <td>After changing the self.data attribute by either __setitem__ or __add__ etc this function will update all other attributes.</td>
@@ -276,7 +281,7 @@ eDOY: Fractional day of year, starts at day 0</p>
 <p class="last"><code class="xref py py-obj docutils literal"><span class="pre">CDF</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">ISO</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">UTC</span></code></p>
 </div>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">([</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">],</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">([</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">],</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;TAI&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 <span class="go">&lt;class &#39;time.Ticktock&#39;&gt;</span>
@@ -291,7 +296,7 @@ eDOY: Fractional day of year, starts at day 0</p>
 <code class="descname">getCDF</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/time.html#Ticktock.getCDF"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.time.Ticktock.getCDF" title="Permalink to this definition">¶</a></dt>
 <dd><p>a.getCDF() or a.CDF</p>
 <p>Return CDF time which is milliseconds since 01-Jan-0000 00:00:00.000.
-“Year zero” is a convention chosen by NSSDC to measure epoch values.
+&#8220;Year zero&#8221; is a convention chosen by NSSDC to measure epoch values.
 This date is more commonly referred to as 1 BC. Remember that 1 BC was a leap year.
 The CDF date/time calculations do not take into account the changes to the Gregorian
 calendar, and cannot be directly converted into Julian date/times.</p>
@@ -312,7 +317,7 @@ calendar, and cannot be directly converted into Julian date/times.</p>
 <p class="last"><a class="reference internal" href="#spacepy.time.Ticktock.getUTC" title="spacepy.time.Ticktock.getUTC"><code class="xref py py-obj docutils literal"><span class="pre">getUTC</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getUNX" title="spacepy.time.Ticktock.getUNX"><code class="xref py py-obj docutils literal"><span class="pre">getUNX</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getRDT" title="spacepy.time.Ticktock.getRDT"><code class="xref py py-obj docutils literal"><span class="pre">getRDT</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getJD" title="spacepy.time.Ticktock.getJD"><code class="xref py py-obj docutils literal"><span class="pre">getJD</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getMJD" title="spacepy.time.Ticktock.getMJD"><code class="xref py py-obj docutils literal"><span class="pre">getMJD</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getISO" title="spacepy.time.Ticktock.getISO"><code class="xref py py-obj docutils literal"><span class="pre">getISO</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getTAI" title="spacepy.time.Ticktock.getTAI"><code class="xref py py-obj docutils literal"><span class="pre">getTAI</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getDOY" title="spacepy.time.Ticktock.getDOY"><code class="xref py py-obj docutils literal"><span class="pre">getDOY</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.geteDOY" title="spacepy.time.Ticktock.geteDOY"><code class="xref py py-obj docutils literal"><span class="pre">geteDOY</span></code></a></p>
 </div>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">(</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">(</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">CDF</span>
 <span class="go">array([  6.31798704e+13])</span>
 </pre></div>
@@ -341,7 +346,7 @@ calendar, and cannot be directly converted into Julian date/times.</p>
 <p class="last"><a class="reference internal" href="#spacepy.time.Ticktock.getUTC" title="spacepy.time.Ticktock.getUTC"><code class="xref py py-obj docutils literal"><span class="pre">getUTC</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getUNX" title="spacepy.time.Ticktock.getUNX"><code class="xref py py-obj docutils literal"><span class="pre">getUNX</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getRDT" title="spacepy.time.Ticktock.getRDT"><code class="xref py py-obj docutils literal"><span class="pre">getRDT</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getJD" title="spacepy.time.Ticktock.getJD"><code class="xref py py-obj docutils literal"><span class="pre">getJD</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getMJD" title="spacepy.time.Ticktock.getMJD"><code class="xref py py-obj docutils literal"><span class="pre">getMJD</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getISO" title="spacepy.time.Ticktock.getISO"><code class="xref py py-obj docutils literal"><span class="pre">getISO</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getTAI" title="spacepy.time.Ticktock.getTAI"><code class="xref py py-obj docutils literal"><span class="pre">getTAI</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getDOY" title="spacepy.time.Ticktock.getDOY"><code class="xref py py-obj docutils literal"><span class="pre">getDOY</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.geteDOY" title="spacepy.time.Ticktock.geteDOY"><code class="xref py py-obj docutils literal"><span class="pre">geteDOY</span></code></a></p>
 </div>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">(</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">(</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">DOY</span>
 <span class="go">array([ 33])</span>
 </pre></div>
@@ -370,7 +375,7 @@ calendar, and cannot be directly converted into Julian date/times.</p>
 <p class="last"><a class="reference internal" href="#spacepy.time.Ticktock.getUTC" title="spacepy.time.Ticktock.getUTC"><code class="xref py py-obj docutils literal"><span class="pre">getUTC</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getUNX" title="spacepy.time.Ticktock.getUNX"><code class="xref py py-obj docutils literal"><span class="pre">getUNX</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getRDT" title="spacepy.time.Ticktock.getRDT"><code class="xref py py-obj docutils literal"><span class="pre">getRDT</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getJD" title="spacepy.time.Ticktock.getJD"><code class="xref py py-obj docutils literal"><span class="pre">getJD</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getMJD" title="spacepy.time.Ticktock.getMJD"><code class="xref py py-obj docutils literal"><span class="pre">getMJD</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getCDF" title="spacepy.time.Ticktock.getCDF"><code class="xref py py-obj docutils literal"><span class="pre">getCDF</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getISO" title="spacepy.time.Ticktock.getISO"><code class="xref py py-obj docutils literal"><span class="pre">getISO</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getDOY" title="spacepy.time.Ticktock.getDOY"><code class="xref py py-obj docutils literal"><span class="pre">getDOY</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.geteDOY" title="spacepy.time.Ticktock.geteDOY"><code class="xref py py-obj docutils literal"><span class="pre">geteDOY</span></code></a></p>
 </div>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">(</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">(</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">GPS</span>
 <span class="go">array([])</span>
 </pre></div>
@@ -399,7 +404,7 @@ calendar, and cannot be directly converted into Julian date/times.</p>
 <p class="last"><a class="reference internal" href="#spacepy.time.Ticktock.getUTC" title="spacepy.time.Ticktock.getUTC"><code class="xref py py-obj docutils literal"><span class="pre">getUTC</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getUNX" title="spacepy.time.Ticktock.getUNX"><code class="xref py py-obj docutils literal"><span class="pre">getUNX</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getRDT" title="spacepy.time.Ticktock.getRDT"><code class="xref py py-obj docutils literal"><span class="pre">getRDT</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getJD" title="spacepy.time.Ticktock.getJD"><code class="xref py py-obj docutils literal"><span class="pre">getJD</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getMJD" title="spacepy.time.Ticktock.getMJD"><code class="xref py py-obj docutils literal"><span class="pre">getMJD</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getCDF" title="spacepy.time.Ticktock.getCDF"><code class="xref py py-obj docutils literal"><span class="pre">getCDF</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getTAI" title="spacepy.time.Ticktock.getTAI"><code class="xref py py-obj docutils literal"><span class="pre">getTAI</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getDOY" title="spacepy.time.Ticktock.getDOY"><code class="xref py py-obj docutils literal"><span class="pre">getDOY</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.geteDOY" title="spacepy.time.Ticktock.geteDOY"><code class="xref py py-obj docutils literal"><span class="pre">geteDOY</span></code></a></p>
 </div>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">(</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">(</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">ISO</span>
 <span class="go">dmarray([&#39;2002-02-02T12:00:00&#39;])</span>
 </pre></div>
@@ -428,7 +433,7 @@ calendar, and cannot be directly converted into Julian date/times.</p>
 <p class="last"><a class="reference internal" href="#spacepy.time.Ticktock.getUTC" title="spacepy.time.Ticktock.getUTC"><code class="xref py py-obj docutils literal"><span class="pre">getUTC</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getUNX" title="spacepy.time.Ticktock.getUNX"><code class="xref py py-obj docutils literal"><span class="pre">getUNX</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getRDT" title="spacepy.time.Ticktock.getRDT"><code class="xref py py-obj docutils literal"><span class="pre">getRDT</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getJD" title="spacepy.time.Ticktock.getJD"><code class="xref py py-obj docutils literal"><span class="pre">getJD</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getMJD" title="spacepy.time.Ticktock.getMJD"><code class="xref py py-obj docutils literal"><span class="pre">getMJD</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getISO" title="spacepy.time.Ticktock.getISO"><code class="xref py py-obj docutils literal"><span class="pre">getISO</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getTAI" title="spacepy.time.Ticktock.getTAI"><code class="xref py py-obj docutils literal"><span class="pre">getTAI</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getDOY" title="spacepy.time.Ticktock.getDOY"><code class="xref py py-obj docutils literal"><span class="pre">getDOY</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.geteDOY" title="spacepy.time.Ticktock.geteDOY"><code class="xref py py-obj docutils literal"><span class="pre">geteDOY</span></code></a></p>
 </div>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">(</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">(</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">JD</span>
 <span class="go">array([ 2452308.])</span>
 </pre></div>
@@ -457,7 +462,7 @@ calendar, and cannot be directly converted into Julian date/times.</p>
 <p class="last"><a class="reference internal" href="#spacepy.time.Ticktock.getUTC" title="spacepy.time.Ticktock.getUTC"><code class="xref py py-obj docutils literal"><span class="pre">getUTC</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getUNX" title="spacepy.time.Ticktock.getUNX"><code class="xref py py-obj docutils literal"><span class="pre">getUNX</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getRDT" title="spacepy.time.Ticktock.getRDT"><code class="xref py py-obj docutils literal"><span class="pre">getRDT</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getJD" title="spacepy.time.Ticktock.getJD"><code class="xref py py-obj docutils literal"><span class="pre">getJD</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getISO" title="spacepy.time.Ticktock.getISO"><code class="xref py py-obj docutils literal"><span class="pre">getISO</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getCDF" title="spacepy.time.Ticktock.getCDF"><code class="xref py py-obj docutils literal"><span class="pre">getCDF</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getTAI" title="spacepy.time.Ticktock.getTAI"><code class="xref py py-obj docutils literal"><span class="pre">getTAI</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getDOY" title="spacepy.time.Ticktock.getDOY"><code class="xref py py-obj docutils literal"><span class="pre">getDOY</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.geteDOY" title="spacepy.time.Ticktock.geteDOY"><code class="xref py py-obj docutils literal"><span class="pre">geteDOY</span></code></a></p>
 </div>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">(</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">(</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">MJD</span>
 <span class="go">array([ 52307.5])</span>
 </pre></div>
@@ -486,7 +491,7 @@ calendar, and cannot be directly converted into Julian date/times.</p>
 <p class="last"><a class="reference internal" href="#spacepy.time.Ticktock.getUTC" title="spacepy.time.Ticktock.getUTC"><code class="xref py py-obj docutils literal"><span class="pre">getUTC</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getUNX" title="spacepy.time.Ticktock.getUNX"><code class="xref py py-obj docutils literal"><span class="pre">getUNX</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getISO" title="spacepy.time.Ticktock.getISO"><code class="xref py py-obj docutils literal"><span class="pre">getISO</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getJD" title="spacepy.time.Ticktock.getJD"><code class="xref py py-obj docutils literal"><span class="pre">getJD</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getMJD" title="spacepy.time.Ticktock.getMJD"><code class="xref py py-obj docutils literal"><span class="pre">getMJD</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getCDF" title="spacepy.time.Ticktock.getCDF"><code class="xref py py-obj docutils literal"><span class="pre">getCDF</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getTAI" title="spacepy.time.Ticktock.getTAI"><code class="xref py py-obj docutils literal"><span class="pre">getTAI</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getDOY" title="spacepy.time.Ticktock.getDOY"><code class="xref py py-obj docutils literal"><span class="pre">getDOY</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.geteDOY" title="spacepy.time.Ticktock.geteDOY"><code class="xref py py-obj docutils literal"><span class="pre">geteDOY</span></code></a></p>
 </div>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">(</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">(</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">RDT</span>
 <span class="go">array([ 730883.5])</span>
 </pre></div>
@@ -515,7 +520,7 @@ calendar, and cannot be directly converted into Julian date/times.</p>
 <p class="last"><a class="reference internal" href="#spacepy.time.Ticktock.getUTC" title="spacepy.time.Ticktock.getUTC"><code class="xref py py-obj docutils literal"><span class="pre">getUTC</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getUNX" title="spacepy.time.Ticktock.getUNX"><code class="xref py py-obj docutils literal"><span class="pre">getUNX</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getRDT" title="spacepy.time.Ticktock.getRDT"><code class="xref py py-obj docutils literal"><span class="pre">getRDT</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getJD" title="spacepy.time.Ticktock.getJD"><code class="xref py py-obj docutils literal"><span class="pre">getJD</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getMJD" title="spacepy.time.Ticktock.getMJD"><code class="xref py py-obj docutils literal"><span class="pre">getMJD</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getCDF" title="spacepy.time.Ticktock.getCDF"><code class="xref py py-obj docutils literal"><span class="pre">getCDF</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getISO" title="spacepy.time.Ticktock.getISO"><code class="xref py py-obj docutils literal"><span class="pre">getISO</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getDOY" title="spacepy.time.Ticktock.getDOY"><code class="xref py py-obj docutils literal"><span class="pre">getDOY</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.geteDOY" title="spacepy.time.Ticktock.geteDOY"><code class="xref py py-obj docutils literal"><span class="pre">geteDOY</span></code></a></p>
 </div>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">(</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">(</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">TAI</span>
 <span class="go">array([1391342432])</span>
 </pre></div>
@@ -545,7 +550,7 @@ seconds since 1970-Jan-1 (not counting leap seconds)</p>
 <p class="last"><a class="reference internal" href="#spacepy.time.Ticktock.getUTC" title="spacepy.time.Ticktock.getUTC"><code class="xref py py-obj docutils literal"><span class="pre">getUTC</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getISO" title="spacepy.time.Ticktock.getISO"><code class="xref py py-obj docutils literal"><span class="pre">getISO</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getRDT" title="spacepy.time.Ticktock.getRDT"><code class="xref py py-obj docutils literal"><span class="pre">getRDT</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getJD" title="spacepy.time.Ticktock.getJD"><code class="xref py py-obj docutils literal"><span class="pre">getJD</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getMJD" title="spacepy.time.Ticktock.getMJD"><code class="xref py py-obj docutils literal"><span class="pre">getMJD</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getCDF" title="spacepy.time.Ticktock.getCDF"><code class="xref py py-obj docutils literal"><span class="pre">getCDF</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getTAI" title="spacepy.time.Ticktock.getTAI"><code class="xref py py-obj docutils literal"><span class="pre">getTAI</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getDOY" title="spacepy.time.Ticktock.getDOY"><code class="xref py py-obj docutils literal"><span class="pre">getDOY</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.geteDOY" title="spacepy.time.Ticktock.geteDOY"><code class="xref py py-obj docutils literal"><span class="pre">geteDOY</span></code></a></p>
 </div>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">(</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">(</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">UNX</span>
 <span class="go">array([  1.01265120e+09])</span>
 </pre></div>
@@ -574,7 +579,7 @@ seconds since 1970-Jan-1 (not counting leap seconds)</p>
 <p class="last"><a class="reference internal" href="#spacepy.time.Ticktock.getISO" title="spacepy.time.Ticktock.getISO"><code class="xref py py-obj docutils literal"><span class="pre">getISO</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getUNX" title="spacepy.time.Ticktock.getUNX"><code class="xref py py-obj docutils literal"><span class="pre">getUNX</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getRDT" title="spacepy.time.Ticktock.getRDT"><code class="xref py py-obj docutils literal"><span class="pre">getRDT</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getJD" title="spacepy.time.Ticktock.getJD"><code class="xref py py-obj docutils literal"><span class="pre">getJD</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getMJD" title="spacepy.time.Ticktock.getMJD"><code class="xref py py-obj docutils literal"><span class="pre">getMJD</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getCDF" title="spacepy.time.Ticktock.getCDF"><code class="xref py py-obj docutils literal"><span class="pre">getCDF</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getTAI" title="spacepy.time.Ticktock.getTAI"><code class="xref py py-obj docutils literal"><span class="pre">getTAI</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getDOY" title="spacepy.time.Ticktock.getDOY"><code class="xref py py-obj docutils literal"><span class="pre">getDOY</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.geteDOY" title="spacepy.time.Ticktock.geteDOY"><code class="xref py py-obj docutils literal"><span class="pre">geteDOY</span></code></a></p>
 </div>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">(</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">(</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">UTC</span>
 <span class="go">[datetime.datetime(2002, 2, 2, 12, 0)]</span>
 </pre></div>
@@ -603,7 +608,7 @@ seconds since 1970-Jan-1 (not counting leap seconds)</p>
 <p class="last"><a class="reference internal" href="#spacepy.time.Ticktock.getUTC" title="spacepy.time.Ticktock.getUTC"><code class="xref py py-obj docutils literal"><span class="pre">getUTC</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getUNX" title="spacepy.time.Ticktock.getUNX"><code class="xref py py-obj docutils literal"><span class="pre">getUNX</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getRDT" title="spacepy.time.Ticktock.getRDT"><code class="xref py py-obj docutils literal"><span class="pre">getRDT</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getJD" title="spacepy.time.Ticktock.getJD"><code class="xref py py-obj docutils literal"><span class="pre">getJD</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getMJD" title="spacepy.time.Ticktock.getMJD"><code class="xref py py-obj docutils literal"><span class="pre">getMJD</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getISO" title="spacepy.time.Ticktock.getISO"><code class="xref py py-obj docutils literal"><span class="pre">getISO</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getTAI" title="spacepy.time.Ticktock.getTAI"><code class="xref py py-obj docutils literal"><span class="pre">getTAI</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.getDOY" title="spacepy.time.Ticktock.getDOY"><code class="xref py py-obj docutils literal"><span class="pre">getDOY</span></code></a>, <a class="reference internal" href="#spacepy.time.Ticktock.geteDOY" title="spacepy.time.Ticktock.geteDOY"><code class="xref py py-obj docutils literal"><span class="pre">geteDOY</span></code></a></p>
 </div>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">(</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">(</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">eDOY</span>
 <span class="go">array([ 32.5])</span>
 </pre></div>
@@ -632,7 +637,7 @@ seconds since 1970-Jan-1 (not counting leap seconds)</p>
 <p class="last"><a class="reference internal" href="#spacepy.time.Ticktock.getTAI" title="spacepy.time.Ticktock.getTAI"><code class="xref py py-obj docutils literal"><span class="pre">getTAI</span></code></a></p>
 </div>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">(</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">(</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">leaps</span>
 <span class="go">array([32])</span>
 </pre></div>
@@ -672,14 +677,14 @@ function will update the ISO attribute.</p>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime.now" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">datetime.datetime.now</span></code></a></p>
+<p class="last"><a class="reference external" href="https://docs.python.org/library/datetime.html#datetime.datetime.now" title="(in Python v3.7)"><code class="xref py py-obj docutils literal"><span class="pre">datetime.datetime.now</span></code></a></p>
 </div>
 </dd></dl>
 
 <dl class="method">
 <dt id="spacepy.time.Ticktock.sort">
 <code class="descname">sort</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/time.html#Ticktock.sort"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.time.Ticktock.sort" title="Permalink to this definition">¶</a></dt>
-<dd><p>This will sort the Ticktock values in place, if you need a stable sort use kind=’mergesort’</p>
+<dd><p>This will sort the Ticktock values in place, if you need a stable sort use kind=&#8217;mergesort&#8217;</p>
 </dd></dl>
 
 <dl class="method">
@@ -736,12 +741,12 @@ called automatically in __add__ and __setitem__</p>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../time.html" >time - Time conversion, manipulation and implementation of Ticktock class</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../time.html" >time - Time conversion, manipulation and implementation of Ticktock class</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2019, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+        &copy; Copyright 2011-2019, The SpacePy Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
     </div>
   </body>
 </html>

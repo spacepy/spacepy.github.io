@@ -1,34 +1,35 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Documentation Standard &#8212; SpacePy v0.2.0 Manual</title>
+    
+    <title>Documentation Standard &mdash; SpacePy v0.2.1 Manual</title>
+    
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.2.0',
+        VERSION:     '0.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/copybutton.js"></script>
-    <link rel="shortcut icon" href="_static/lanl_favicon.ico"/>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="shortcut icon" href="_static/spacepy_favicon.ico"/>
+    <link rel="top" title="SpacePy v0.2.1 Manual" href="index.html" />
     <link rel="next" title="SpacePy Python Programming Tips" href="tips.html" />
     <link rel="prev" title="SpacePy - A Quick Start Documentation" href="quickstart.html" /> 
   </head>
-  <body>
+  <body role="document">
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="index.html"><img src="_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -82,18 +83,21 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/doc_standard.rst.txt"
+      <li><a href="_sources/doc_standard.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -117,27 +121,27 @@ documentation.</p>
 <dl class="docutils">
 <dt>In addition to Sphinx, SpacePy uses the following extensions:</dt>
 <dd><ul class="first last simple">
-<li>‘sphinx.ext.autodoc’</li>
-<li>‘sphinx.ext.doctest’‘</li>
-<li>‘sphinx.ext.intersphinx’</li>
-<li>‘sphinx.ext.todo’</li>
-<li>‘sphinx.ext.imgmath’ (falls back to ‘sphinx.ext.pngmath’ if imgmath is not available)</li>
-<li>‘sphinx.ext.ifconfig’</li>
-<li>‘sphinx.ext.viewcode’</li>
-<li>‘numpydoc’</li>
-<li>‘sphinx.ext.inheritance_diagram’</li>
-<li>‘sphinx.ext.autosummary’</li>
-<li>‘sphinx.ext.extlinks’</li>
+<li>&#8216;sphinx.ext.autodoc&#8217;</li>
+<li>&#8216;sphinx.ext.doctest&#8217;&#8216;</li>
+<li>&#8216;sphinx.ext.intersphinx&#8217;</li>
+<li>&#8216;sphinx.ext.todo&#8217;</li>
+<li>&#8216;sphinx.ext.imgmath&#8217; (falls back to &#8216;sphinx.ext.pngmath&#8217; if imgmath is not available)</li>
+<li>&#8216;sphinx.ext.ifconfig&#8217;</li>
+<li>&#8216;sphinx.ext.viewcode&#8217;</li>
+<li>&#8216;numpydoc&#8217;</li>
+<li>&#8216;sphinx.ext.inheritance_diagram&#8217;</li>
+<li>&#8216;sphinx.ext.autosummary&#8217;</li>
+<li>&#8216;sphinx.ext.extlinks&#8217;</li>
 </ul>
 </dd>
 </dl>
 <div class="section" id="so-what-do-i-need-to-do-in-my-code">
 <h2>So what do I need to do in my code?<a class="headerlink" href="#so-what-do-i-need-to-do-in-my-code" title="Permalink to this headline">¶</a></h2>
-<p>Since we are using the ‘numpydoc’ extension there are fixed headings that may
+<p>Since we are using the &#8216;numpydoc&#8217; extension there are fixed headings that may
 appear in your documentation block. There are a few things to note:
 * No other headings can appear in your docstrings
 * Most reStructuredText commands cannot appear in your docstrings either (e.g. .. Note:)
-* Since ‘numpydoc’ is not well documented, the best way of finding out what you can do in your docstrings is to look at the source for the SpacePy documentation or the numpy documentation.</p>
+* Since &#8216;numpydoc&#8217; is not well documented, the best way of finding out what you can do in your docstrings is to look at the source for the SpacePy documentation or the numpy documentation.</p>
 <div class="section" id="allowed-headings">
 <h3>Allowed headings<a class="headerlink" href="#allowed-headings" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
@@ -186,7 +190,7 @@ code in the example and it should work as shown (doctest can help with this)</li
 <h2>Function Example<a class="headerlink" href="#function-example" title="Permalink to this headline">¶</a></h2>
 <p>This code from toolbox shows what a function should look like in your code</p>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">logspace</span><span class="p">(</span><span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">logspace</span><span class="p">(</span><span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns log spaced bins.  Same as numpy logspace except the min and max are the ,min and max</span>
 <span class="sd">    not log10(min) and log10(max)</span>
@@ -261,7 +265,7 @@ not log10(min) and log10(max)</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><p class="first"><strong>kwargs</strong> : dict</p>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><strong>kwargs</strong> : dict</p>
 <blockquote class="last">
 <div><p>additional keywords passed into matplotlib.dates.num2date</p>
 </div></blockquote>
@@ -271,12 +275,12 @@ not log10(min) and log10(max)</p>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="autosummary/spacepy.toolbox.geomspace.html#spacepy.toolbox.geomspace" title="spacepy.toolbox.geomspace"><code class="xref py py-obj docutils literal"><span class="pre">geomspace</span></code></a>, <a class="reference internal" href="autosummary/spacepy.toolbox.linspace.html#spacepy.toolbox.linspace" title="spacepy.toolbox.linspace"><code class="xref py py-obj docutils literal"><span class="pre">linspace</span></code></a></p>
+<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">geomspace</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">linspace</span></code></p>
 </div>
 <p class="rubric">Notes</p>
 <p>This function works on both numbers and datetime objects</p>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.toolbox</span> <span class="k">as</span> <span class="nn">tb</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.toolbox</span> <span class="kn">as</span> <span class="nn">tb</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tb</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="go">array([   1.        ,    3.16227766,   10.        ,   31.6227766 ,  100.        ])</span>
 </pre></div>
@@ -315,8 +319,8 @@ not log10(min) and log10(max)</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2019, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+        &copy; Copyright 2011-2019, The SpacePy Team.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
     </div>
   </body>
 </html>
