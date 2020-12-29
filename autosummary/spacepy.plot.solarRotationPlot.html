@@ -1,36 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>spacepy.plot.solarRotationPlot &mdash; SpacePy v0.2.1 Manual</title>
-    
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>spacepy.plot.solarRotationPlot &#8212; SpacePy v0.2.2 Manual</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
     
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '0.2.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    
     <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
-    <link rel="top" title="SpacePy v0.2.1 Manual" href="../index.html" />
-    <link rel="up" title="plot - Plot, various specialized plotting functions and associated utilities" href="../plot.html" />
-    <link rel="next" title="spacepy.plot.spectrogram" href="spacepy.plot.spectrogram.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="spacepy.plot.Spectrogram" href="spacepy.plot.Spectrogram.html" />
     <link rel="prev" title="spacepy.plot.shared_ylabel" href="spacepy.plot.shared_ylabel.html" /> 
-  </head>
-  <body role="document">
+  </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -46,16 +37,18 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.plot.spectrogram.html" title="spacepy.plot.spectrogram"
+          <a href="spacepy.plot.Spectrogram.html" title="spacepy.plot.Spectrogram"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="spacepy.plot.shared_ylabel.html" title="spacepy.plot.shared_ylabel"
              accesskey="P">previous</a> |</li>
-        <li><a href="https://github.com/spacepy/spacepy">homepage</a>|&nbsp;</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../plot.html" accesskey="U">plot - Plot, various specialized plotting functions and associated utilities</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../plot.html" accesskey="U">plot - Plot, various specialized plotting functions and associated utilities</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.plot.solarRotationPlot</a></li> 
       </ul>
     </div>
 
@@ -68,28 +61,25 @@
   <p class="topless"><a href="spacepy.plot.shared_ylabel.html"
                         title="previous chapter">spacepy.plot.shared_ylabel</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="spacepy.plot.spectrogram.html"
-                        title="next chapter">spacepy.plot.spectrogram</a></p>
+  <p class="topless"><a href="spacepy.plot.Spectrogram.html"
+                        title="next chapter">spacepy.plot.Spectrogram</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/autosummary/spacepy.plot.solarRotationPlot.txt"
+      <li><a href="../_sources/autosummary/spacepy.plot.solarRotationPlot.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -100,15 +90,16 @@
             
   <div class="section" id="spacepy-plot-solarrotationplot">
 <h1>spacepy.plot.solarRotationPlot<a class="headerlink" href="#spacepy-plot-solarrotationplot" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
+<dl class="py function">
 <dt id="spacepy.plot.solarRotationPlot">
-<code class="descclassname">spacepy.plot.</code><code class="descname">solarRotationPlot</code><span class="sig-paren">(</span><em>ticks</em>, <em>data</em>, <em>targ_ax=None</em>, <em>rtype='bartels'</em>, <em>nbins=27</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/carrington.html#solarRotationPlot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.plot.solarRotationPlot" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">spacepy.plot.</code><code class="sig-name descname">solarRotationPlot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ticks</span></em>, <em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">targ_ax</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">rtype</span><span class="o">=</span><span class="default_value">'bartels'</span></em>, <em class="sig-param"><span class="n">nbins</span><span class="o">=</span><span class="default_value">27</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/carrington.html#solarRotationPlot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.plot.solarRotationPlot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plots a 1-D time series as a Carrington or Bartels plot</p>
 </dd></dl>
 
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -124,21 +115,23 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.plot.spectrogram.html" title="spacepy.plot.spectrogram"
+          <a href="spacepy.plot.Spectrogram.html" title="spacepy.plot.Spectrogram"
              >next</a> |</li>
         <li class="right" >
           <a href="spacepy.plot.shared_ylabel.html" title="spacepy.plot.shared_ylabel"
              >previous</a> |</li>
-        <li><a href="https://github.com/spacepy/spacepy">homepage</a>|&nbsp;</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../plot.html" >plot - Plot, various specialized plotting functions and associated utilities</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../plot.html" >plot - Plot, various specialized plotting functions and associated utilities</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.plot.solarRotationPlot</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2011-2019, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+        &#169; Copyright 2011-2020, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
     </div>
   </body>
 </html>

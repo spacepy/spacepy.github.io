@@ -1,36 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>spacepy.time.tickrange &mdash; SpacePy v0.2.1 Manual</title>
-    
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>spacepy.time.tickrange &#8212; SpacePy v0.2.2 Manual</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
     
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '0.2.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    
     <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
-    <link rel="top" title="SpacePy v0.2.1 Manual" href="../index.html" />
-    <link rel="up" title="time - Time conversion, manipulation and implementation of Ticktock class" href="../time.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="toolbox - Toolbox of various functions and generic utilities" href="../toolbox.html" />
     <link rel="prev" title="spacepy.time.sec2hms" href="spacepy.time.sec2hms.html" /> 
-  </head>
-  <body role="document">
+  </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -51,11 +42,13 @@
         <li class="right" >
           <a href="spacepy.time.sec2hms.html" title="spacepy.time.sec2hms"
              accesskey="P">previous</a> |</li>
-        <li><a href="https://github.com/spacepy/spacepy">homepage</a>|&nbsp;</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../time.html" accesskey="U">time - Time conversion, manipulation and implementation of Ticktock class</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../time.html" accesskey="U">time - Time conversion, manipulation and implementation of Ticktock class</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.time.tickrange</a></li> 
       </ul>
     </div>
 
@@ -73,23 +66,20 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/autosummary/spacepy.time.tickrange.txt"
+      <li><a href="../_sources/autosummary/spacepy.time.tickrange.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -100,46 +90,38 @@
             
   <div class="section" id="spacepy-time-tickrange">
 <h1>spacepy.time.tickrange<a class="headerlink" href="#spacepy-time-tickrange" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
+<dl class="py function">
 <dt id="spacepy.time.tickrange">
-<code class="descclassname">spacepy.time.</code><code class="descname">tickrange</code><span class="sig-paren">(</span><em>start</em>, <em>end</em>, <em>deltadays</em>, <em>dtype=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/time.html#tickrange"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.time.tickrange" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">spacepy.time.</code><code class="sig-name descname">tickrange</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">start</span></em>, <em class="sig-param"><span class="n">end</span></em>, <em class="sig-param"><span class="n">deltadays</span></em>, <em class="sig-param"><span class="n">dtype</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/time.html#tickrange"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.time.tickrange" title="Permalink to this definition">¶</a></dt>
 <dd><p>return a Ticktock range given the start, end, and delta</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>start</strong> : string or number</p>
-<blockquote>
-<div><p>start time (ISO standard string and UTC/datetime do not require a dtype)</p>
-</div></blockquote>
-<p><strong>end</strong> : string or number</p>
-<blockquote>
-<div><p>last possible time in series (excluded unless end=start+n*step for integer n)</p>
-</div></blockquote>
-<p><strong>deltadays</strong> : float or timedelta</p>
-<blockquote>
-<div><p>step in units of days (float); or datetime timedelta object</p>
-</div></blockquote>
-<p><strong>dtype</strong> : string (optional)</p>
-<blockquote>
-<div><p>data type for start, end; e.g. ISO, UTC, RTD, etc. see Ticktock for all options</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : Ticktock instance</p>
-<blockquote class="last">
-<div><p>ticks</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>start</strong><span class="classifier">string or number</span></dt><dd><p>start time (ISO standard string and UTC/datetime do not require a dtype)</p>
+</dd>
+<dt><strong>end</strong><span class="classifier">string or number</span></dt><dd><p>last possible time in series (excluded unless end=start+n*step for integer n)</p>
+</dd>
+<dt><strong>deltadays</strong><span class="classifier">float or timedelta</span></dt><dd><p>step in units of days (float); or datetime timedelta object</p>
+</dd>
+<dt><strong>dtype</strong><span class="classifier">string (optional)</span></dt><dd><p>data type for start, end; e.g. ISO, UTC, RTD, etc. see Ticktock for all options</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">Ticktock instance</span></dt><dd><p>ticks</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="spacepy.time.Ticktock.html#spacepy.time.Ticktock" title="spacepy.time.Ticktock"><code class="xref py py-obj docutils literal"><span class="pre">Ticktock</span></code></a></p>
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="spacepy.time.Ticktock.html#spacepy.time.Ticktock" title="spacepy.time.Ticktock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Ticktock</span></code></a></dt><dd></dd>
+</dl>
 </div>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ticks</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">tickrange</span><span class="p">(</span><span class="s1">&#39;2002-02-01T00:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;2002-02-10T00:00:00&#39;</span><span class="p">,</span> <span class="n">deltadays</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ticks</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">tickrange</span><span class="p">(</span><span class="s1">&#39;2002-02-01T00:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;2002-02-10T00:00:00&#39;</span><span class="p">,</span> <span class="n">deltadays</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ticks</span>
 <span class="go">Ticktock( [&#39;2002-02-01T00:00:00&#39;, &#39;2002-02-02T00:00:00&#39;, &#39;2002-02-03T00:00:00&#39;,</span>
 <span class="go">&#39;2002-02-04T00:00:00&#39;] , dtype=ISO)</span>
@@ -150,6 +132,7 @@
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -170,16 +153,18 @@
         <li class="right" >
           <a href="spacepy.time.sec2hms.html" title="spacepy.time.sec2hms"
              >previous</a> |</li>
-        <li><a href="https://github.com/spacepy/spacepy">homepage</a>|&nbsp;</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../time.html" >time - Time conversion, manipulation and implementation of Ticktock class</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../time.html" >time - Time conversion, manipulation and implementation of Ticktock class</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.time.tickrange</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2011-2019, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+        &#169; Copyright 2011-2020, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
     </div>
   </body>
 </html>

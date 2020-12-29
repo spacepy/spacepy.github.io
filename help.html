@@ -1,35 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>SpacePy Help &mdash; SpacePy v0.2.1 Manual</title>
-    
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SpacePy Help &#8212; SpacePy v0.2.2 Manual</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.2.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/copybutton.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/copybutton.js"></script>
+    
     <link rel="shortcut icon" href="_static/spacepy_favicon.ico"/>
-    <link rel="top" title="SpacePy v0.2.1 Manual" href="index.html" />
-    <link rel="next" title="Installing SpacePy" href="install.html" />
-    <link rel="prev" title="SpacePy documentation" href="index.html" /> 
-  </head>
-  <body role="document">
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="SpacePy Capabilities" href="capabilities.html" />
+    <link rel="prev" title="SpacePy - A Quick Start Documentation" href="quickstart.html" /> 
+  </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="index.html"><img src="_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -45,15 +37,17 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="install.html" title="Installing SpacePy"
+          <a href="capabilities.html" title="SpacePy Capabilities"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="SpacePy documentation"
+          <a href="quickstart.html" title="SpacePy - A Quick Start Documentation"
              accesskey="P">previous</a> |</li>
-        <li><a href="https://github.com/spacepy/spacepy">homepage</a>|&nbsp;</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="search.html">search</a>|&nbsp;</li>
        <li><a href="index.html">documentation </a> &raquo;</li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">SpacePy Help</a></li> 
       </ul>
     </div>
 
@@ -62,7 +56,7 @@
             <p class="logo"><a href="index.html">
               <img class="logo" src="_static/logo.png" alt="Logo"/>
             </a></p>
-  <h3><a href="index.html">Table Of Contents</a></h3>
+  <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">SpacePy Help</a><ul>
 <li><a class="reference internal" href="#contributing">Contributing</a></li>
@@ -71,31 +65,28 @@
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">SpacePy documentation</a></p>
+  <p class="topless"><a href="quickstart.html"
+                        title="previous chapter">SpacePy - A Quick Start Documentation</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="install.html"
-                        title="next chapter">Installing SpacePy</a></p>
+  <p class="topless"><a href="capabilities.html"
+                        title="next chapter">SpacePy Capabilities</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/help.txt"
+      <li><a href="_sources/help.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -111,11 +102,11 @@ issues may find other people who have had similar questions. Try
 changing the filters (at the top) to include closed issues, as they
 may have been addressed.</p>
 <p>Most modules also have a contact person listed in the docstring. These
-are built into in the main <a class="reference internal" href="index.html"><em>SpacePy documentation</em></a>, or you can view it from
+are built into in the main <a class="reference internal" href="index.html"><span class="doc">SpacePy documentation</span></a>, or you can view it from
 within Python/IPython:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.pycdf</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.pycdf</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="n">spacepy</span><span class="o">.</span><span class="n">pycdf</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">spacepy</span><span class="o">.</span><span class="n">pycdf</span><span class="o">.</span><span class="n">__contact__</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">spacepy</span><span class="o">.</span><span class="n">pycdf</span><span class="o">.</span><span class="n">__contact__</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>A web version of this documentation is currently hosted at
@@ -123,7 +114,7 @@ within Python/IPython:</p>
 <div class="section" id="contributing">
 <h2>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h2>
 <p>Contributions to SpacePy are welcome! Development is managed via our
-<a class="reference external" href="https://github.com/spacepy/spacepy">github</a>. If you&#8217;re interesting
+<a class="reference external" href="https://github.com/spacepy/spacepy">github</a>. If you’re interesting
 in contributing a new feature or bugfix, it is recommended to open an
 issue to discuss your plans. Once your code is ready, you can <a class="reference external" href="https://github.com/spacepy/spacepy/pulls">open a
 pull request</a>. Thanks for
@@ -132,6 +123,7 @@ helping to improve SpacePy!</p>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -147,20 +139,22 @@ helping to improve SpacePy!</p>
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="install.html" title="Installing SpacePy"
+          <a href="capabilities.html" title="SpacePy Capabilities"
              >next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="SpacePy documentation"
+          <a href="quickstart.html" title="SpacePy - A Quick Start Documentation"
              >previous</a> |</li>
-        <li><a href="https://github.com/spacepy/spacepy">homepage</a>|&nbsp;</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="search.html">search</a>|&nbsp;</li>
        <li><a href="index.html">documentation </a> &raquo;</li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">SpacePy Help</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2011-2019, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+        &#169; Copyright 2011-2020, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
     </div>
   </body>
 </html>

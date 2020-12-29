@@ -1,36 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>spacepy.datamodel.toCDF &mdash; SpacePy v0.2.1 Manual</title>
-    
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>spacepy.datamodel.toCDF &#8212; SpacePy v0.2.2 Manual</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
     
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '0.2.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    
     <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
-    <link rel="top" title="SpacePy v0.2.1 Manual" href="../index.html" />
-    <link rel="up" title="datamodel - easy to use general data model" href="../datamodel.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="spacepy.datamodel.toHDF5" href="spacepy.datamodel.toHDF5.html" />
     <link rel="prev" title="spacepy.datamodel.fromRecArray" href="spacepy.datamodel.fromRecArray.html" /> 
-  </head>
-  <body role="document">
+  </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -51,11 +42,13 @@
         <li class="right" >
           <a href="spacepy.datamodel.fromRecArray.html" title="spacepy.datamodel.fromRecArray"
              accesskey="P">previous</a> |</li>
-        <li><a href="https://github.com/spacepy/spacepy">homepage</a>|&nbsp;</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../datamodel.html" accesskey="U">datamodel - easy to use general data model</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../datamodel.html" accesskey="U">datamodel - easy to use general data model</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.datamodel.toCDF</a></li> 
       </ul>
     </div>
 
@@ -73,23 +66,20 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/autosummary/spacepy.datamodel.toCDF.txt"
+      <li><a href="../_sources/autosummary/spacepy.datamodel.toCDF.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -100,65 +90,49 @@
             
   <div class="section" id="spacepy-datamodel-tocdf">
 <h1>spacepy.datamodel.toCDF<a class="headerlink" href="#spacepy-datamodel-tocdf" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
+<dl class="py function">
 <dt id="spacepy.datamodel.toCDF">
-<code class="descclassname">spacepy.datamodel.</code><code class="descname">toCDF</code><span class="sig-paren">(</span><em>fname</em>, <em>SDobject</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#toCDF"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.datamodel.toCDF" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">spacepy.datamodel.</code><code class="sig-name descname">toCDF</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fname</span></em>, <em class="sig-param"><span class="n">SDobject</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#toCDF"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.datamodel.toCDF" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a CDF file from a SpacePy datamodel representation</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>fname</strong> : str</p>
-<blockquote>
-<div><p>Filename to write to</p>
-</div></blockquote>
-<p><strong>SDobject</strong> : spacepy.datamodel.SpaceData</p>
-<blockquote>
-<div><p>SpaceData with associated attributes and variables in dmarrays</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">None</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><strong>skeleton</strong> : str (optional)</p>
-<blockquote>
-<div><p>create new CDF from a skeleton file (default &#8216;&#8217;)</p>
-</div></blockquote>
-<p><strong>flatten</strong> : bool (optional)</p>
-<blockquote>
-<div><p>flatten incoming datamodel - if SpaceData objects are nested (default False)</p>
-</div></blockquote>
-<p><strong>overwrite</strong> : bool (optional)</p>
-<blockquote>
-<div><p>allow overwrite of an existing target file (default False)</p>
-</div></blockquote>
-<p><strong>autoNRV</strong> : bool (optional)</p>
-<blockquote>
-<div><p>attempt automatic identification of non-record varying entries in CDF</p>
-</div></blockquote>
-<p><strong>backward</strong> : bool (optional)</p>
-<blockquote>
-<div><p>create CDF in backward-compatible format (default is v3+ compatibility only)</p>
-</div></blockquote>
-<p><strong>TT2000</strong> : bool (optional)</p>
-<blockquote>
-<div><p>write variables beginning with &#8216;Epoch&#8217; as datatype CDF_TT2000 (default is automatic selection of EPOCH or EPOCH16)</p>
-</div></blockquote>
-<p><strong>verbose</strong> : bool (optional)</p>
-<blockquote class="last">
-<div><p>verbosity flag</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>fname</strong><span class="classifier">str</span></dt><dd><p>Filename to write to</p>
+</dd>
+<dt><strong>SDobject</strong><span class="classifier">spacepy.datamodel.SpaceData</span></dt><dd><p>SpaceData with associated attributes and variables in dmarrays</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>None</dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>skeleton</strong><span class="classifier">str (optional)</span></dt><dd><p>create new CDF from a skeleton file (default ‘’)</p>
+</dd>
+<dt><strong>flatten</strong><span class="classifier">bool (optional)</span></dt><dd><p>flatten incoming datamodel - if SpaceData objects are nested (default False)</p>
+</dd>
+<dt><strong>overwrite</strong><span class="classifier">bool (optional)</span></dt><dd><p>allow overwrite of an existing target file (default False)</p>
+</dd>
+<dt><strong>autoNRV</strong><span class="classifier">bool (optional)</span></dt><dd><p>attempt automatic identification of non-record varying entries in CDF</p>
+</dd>
+<dt><strong>backward</strong><span class="classifier">bool (optional)</span></dt><dd><p>create CDF in backward-compatible format (default is v3+ compatibility only)</p>
+</dd>
+<dt><strong>TT2000</strong><span class="classifier">bool (optional)</span></dt><dd><p>write variables beginning with ‘Epoch’ as datatype CDF_TT2000 (default is automatic selection of EPOCH or EPOCH16)</p>
+</dd>
+<dt><strong>verbose</strong><span class="classifier">bool (optional)</span></dt><dd><p>verbosity flag</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -179,16 +153,18 @@
         <li class="right" >
           <a href="spacepy.datamodel.fromRecArray.html" title="spacepy.datamodel.fromRecArray"
              >previous</a> |</li>
-        <li><a href="https://github.com/spacepy/spacepy">homepage</a>|&nbsp;</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../datamodel.html" >datamodel - easy to use general data model</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../datamodel.html" >datamodel - easy to use general data model</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.datamodel.toCDF</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2011-2019, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+        &#169; Copyright 2011-2020, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
     </div>
   </body>
 </html>

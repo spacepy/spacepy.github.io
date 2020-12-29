@@ -1,34 +1,25 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>spacepy.plot.utils &mdash; SpacePy v0.2.1 Manual</title>
-    
-    <link rel="stylesheet" href="../../../_static/default.css" type="text/css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>spacepy.plot.utils &#8212; SpacePy v0.2.2 Manual</title>
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
     
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../../',
-        VERSION:     '0.2.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    
     <link rel="shortcut icon" href="../../../_static/spacepy_favicon.ico"/>
-    <link rel="top" title="SpacePy v0.2.1 Manual" href="../../../index.html" />
-    <link rel="up" title="spacepy.plot" href="../plot.html" /> 
-  </head>
-  <body role="document">
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../../../index.html"><img src="../../../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -43,12 +34,15 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="https://github.com/spacepy/spacepy">homepage</a>|&nbsp;</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../../../search.html">search</a>|&nbsp;</li>
        <li><a href="../../../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
-          <li class="nav-item nav-item-2"><a href="../plot.html" accesskey="U">spacepy.plot</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="../plot.html" accesskey="U">spacepy.plot</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.plot.utils</a></li> 
       </ul>
     </div>
 
@@ -58,18 +52,15 @@
               <img class="logo" src="../../../_static/logo.png" alt="Logo"/>
             </a></p>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -79,7 +70,7 @@
           <div class="body" role="main">
             
   <h1>Source code for spacepy.plot.utils</h1><div class="highlight"><pre>
-<span class="sd">&quot;&quot;&quot;</span>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Utility routines for plotting and related activities</span>
 
 <span class="sd">Authors: Jonathan Niehof, Steven Morley, Daniel Welling</span>
@@ -117,6 +108,7 @@
 <span class="sd">    show_used</span>
 <span class="sd">    smartTimeTicks</span>
 <span class="sd">    timestamp</span>
+<span class="sd">    add_arrows</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="n">__contact__</span> <span class="o">=</span> <span class="s1">&#39;Jonathan Niehof: jniehof@lanl.gov&#39;</span>
@@ -131,16 +123,16 @@
 <span class="kn">import</span> <span class="nn">matplotlib.image</span>
 <span class="kn">import</span> <span class="nn">matplotlib.patches</span>
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
     <span class="k">pass</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;add_logo&#39;</span><span class="p">,</span> <span class="s1">&#39;annotate_xaxis&#39;</span><span class="p">,</span> <span class="s1">&#39;applySmartTimeTicks&#39;</span><span class="p">,</span> <span class="s1">&#39;collapse_vertical&#39;</span><span class="p">,</span> <span class="s1">&#39;filter_boxes&#39;</span><span class="p">,</span> 
            <span class="s1">&#39;smartTimeTicks&#39;</span><span class="p">,</span> <span class="s1">&#39;get_biggest_clear&#39;</span><span class="p">,</span> <span class="s1">&#39;get_clear&#39;</span><span class="p">,</span> <span class="s1">&#39;get_used_boxes&#39;</span><span class="p">,</span> <span class="s1">&#39;EventClicker&#39;</span><span class="p">,</span> 
-           <span class="s1">&#39;set_target&#39;</span><span class="p">,</span> <span class="s1">&#39;shared_ylabel&#39;</span><span class="p">,</span> <span class="s1">&#39;show_used&#39;</span><span class="p">,</span> <span class="s1">&#39;timestamp&#39;</span><span class="p">]</span>
+           <span class="s1">&#39;set_target&#39;</span><span class="p">,</span> <span class="s1">&#39;shared_ylabel&#39;</span><span class="p">,</span> <span class="s1">&#39;show_used&#39;</span><span class="p">,</span> <span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="s1">&#39;add_arrows&#39;</span><span class="p">]</span>
 
-<span class="k">class</span> <span class="nc">EventClicker</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="EventClicker"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.EventClicker.html#spacepy.plot.EventClicker">[docs]</a><span class="k">class</span> <span class="nc">EventClicker</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Presents a provided figure (normally a time series) and provides</span>
 <span class="sd">    an interface to mark events shown in the plot. The user interface</span>
@@ -224,6 +216,30 @@
 <span class="sd">    &gt;&gt;&gt; min(troughvals) &lt;= -1.0 #should bottom-out at -1</span>
 <span class="sd">    True</span>
 
+<span class="sd">    &gt;&gt;&gt; import spacepy.plot.utils</span>
+<span class="sd">    &gt;&gt;&gt; import spacepy.time</span>
+<span class="sd">    &gt;&gt;&gt; import datetime</span>
+<span class="sd">    &gt;&gt;&gt; import matplotlib.pyplot as plt</span>
+<span class="sd">    &gt;&gt;&gt; import numpy</span>
+<span class="sd">    &gt;&gt;&gt; t = spacepy.time.tickrange(&#39;2019-01-01&#39;, #get a range of days</span>
+<span class="sd">    ...                            &#39;2019-12-31&#39;,</span>
+<span class="sd">    ...                            deltadays=datetime.timedelta(days=1))</span>
+<span class="sd">    &gt;&gt;&gt; y = numpy.linspace(0, 100, 1001)</span>
+<span class="sd">    &gt;&gt;&gt; seconds = t.TAI - t.TAI[0]</span>
+<span class="sd">    &gt;&gt;&gt; seconds = numpy.asarray(seconds) #normal ndarray so reshape (in meshgrid) works</span>
+<span class="sd">    &gt;&gt;&gt; tt, yy = numpy.meshgrid(seconds, y) #use TAI to get seconds</span>
+<span class="sd">    &gt;&gt;&gt; z = 1 + (numpy.exp(-(yy - 20)**2 / 625) #something like a spectrogram</span>
+<span class="sd">    ...          * numpy.sin(1e-7 * numpy.pi**2 * tt)**2) #pi*1e7 seconds per year</span>
+<span class="sd">    &gt;&gt;&gt; plt.pcolormesh(t.UTC, y, z)</span>
+<span class="sd">    &gt;&gt;&gt; clicker = spacepy.plot.utils.EventClicker(n_phases=1)</span>
+<span class="sd">    &gt;&gt;&gt; clicker.analyze() #double-click on center of peak; close</span>
+<span class="sd">    &gt;&gt;&gt; events = clicker.get_events() #returns an array of the things clicked</span>
+<span class="sd">    &gt;&gt;&gt; len(events) == 10 #10 if you click on the centers, including the last one</span>
+<span class="sd">    True</span>
+<span class="sd">    &gt;&gt;&gt; clicker.get_events_data() is None #should be nothing</span>
+<span class="sd">    True</span>
+
+
 <span class="sd">    .. autosummary::</span>
 <span class="sd">         ~EventClicker.analyze</span>
 <span class="sd">         ~EventClicker.get_events</span>
@@ -237,8 +253,8 @@
     <span class="n">_colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">]</span>
     <span class="n">_styles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="s1">&#39;dotted&#39;</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">n_phases</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">auto_interval</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-                 <span class="n">auto_scale</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_phases</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">auto_interval</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">auto_scale</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialize EventClicker</span>
 
 <span class="sd">        Other Parameters</span>
@@ -290,15 +306,15 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_autointerval</span> <span class="o">=</span> <span class="n">auto_interval</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_autoscale</span> <span class="o">=</span> <span class="n">auto_scale</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_intervalcount</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_intervaltotal</span> <span class="o">=</span> <span class="bp">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_events</span> <span class="o">=</span> <span class="bp">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_data_events</span> <span class="o">=</span> <span class="bp">None</span> <span class="c1">#snap-to-data version of events</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_intervaltotal</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_events</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data_events</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1">#snap-to-data version of events</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ymax</span> <span class="o">=</span> <span class="n">ymax</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ymin</span> <span class="o">=</span> <span class="n">ymin</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_line</span> <span class="o">=</span> <span class="n">line</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span> <span class="o">=</span> <span class="kc">None</span>
 
-    <span class="k">def</span> <span class="nf">analyze</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="EventClicker.analyze"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.EventClicker.html#spacepy.plot.EventClicker.analyze">[docs]</a>    <span class="k">def</span> <span class="nf">analyze</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Displays the figure provided and allows the user to select events.</span>
 
@@ -334,27 +350,33 @@
 <span class="sd">        When finished, close the figure window (if necessary) and call</span>
 <span class="sd">        :meth:`get_events` to get the list of events.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_lastclick_x</span> <span class="o">=</span> <span class="bp">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_lastclick_y</span> <span class="o">=</span> <span class="bp">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_lastclick_button</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lastclick_x</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lastclick_y</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lastclick_button</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_curr_phase</span> <span class="o">=</span> <span class="mi">0</span>
         
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fig</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_figure</span><span class="p">()</span>
         <span class="n">lines</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_lines</span><span class="p">()</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_line</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_line</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_line</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_line</span> <span class="o">=</span> <span class="bp">None</span>
-                
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_line</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_xdata</span> <span class="o">=</span> <span class="bp">None</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_ydata</span> <span class="o">=</span> <span class="bp">None</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_autoscale</span> <span class="o">=</span> <span class="bp">False</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_x_is_datetime</span> <span class="o">=</span> <span class="bp">False</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_line</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_line</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_xdata</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ydata</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_xydata</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_autoscale</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_x_is_datetime</span> <span class="o">=</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">converter</span><span class="p">,</span>
+                                             <span class="n">matplotlib</span><span class="o">.</span><span class="n">dates</span><span class="o">.</span><span class="n">DateConverter</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x_is_datetime</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_tz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_major_formatter</span><span class="p">()</span><span class="o">.</span><span class="n">_tz</span>
+                <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_tz</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_xdata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_line</span><span class="o">.</span><span class="n">get_xdata</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_ydata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_line</span><span class="o">.</span><span class="n">get_ydata</span><span class="p">()</span>
@@ -363,33 +385,43 @@
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x_is_datetime</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_xydata</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">column_stack</span><span class="p">(</span>
                     <span class="p">(</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">dates</span><span class="o">.</span><span class="n">date2num</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_xdata</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ydata</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_tz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_xdata</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tzinfo</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_xydata</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_xdata</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ydata</span><span class="p">))</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ymin</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span> <span class="c1">#Make the clipping comparison always fail</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ymin</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="c1">#Make the clipping comparison always fail</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_ymin</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ydata</span><span class="p">)</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ymax</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ymax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_ymax</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ydata</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_autointerval</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_autointerval</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">interval</span> <span class="ow">is</span> <span class="bp">None</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">interval</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_autointerval</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_autointerval</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">interval</span> <span class="ow">is</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">interval</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">get_view_interval</span><span class="p">()</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x_is_datetime</span><span class="p">:</span>
-                <span class="n">right</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">dates</span><span class="o">.</span><span class="n">num2date</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
-                <span class="n">left</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">dates</span><span class="o">.</span><span class="n">num2date</span><span class="p">(</span><span class="n">left</span><span class="p">)</span>
+                <span class="c1">#For naive datetimes, smash explicitly back to naive;</span>
+                <span class="c1">#otherwise it&#39;s just replacing with the same.</span>
+                <span class="n">right</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">dates</span><span class="o">.</span><span class="n">num2date</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_tz</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+                    <span class="n">tzinfo</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_tz</span><span class="p">)</span>
+                <span class="n">left</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">dates</span><span class="o">.</span><span class="n">num2date</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_tz</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+                    <span class="n">tzinfo</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_tz</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">interval</span> <span class="o">=</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span>
 
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_xdata</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_xdata</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_relim</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_xdata</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x_is_datetime</span><span class="p">:</span>
+            <span class="c1">#Handle the case of no xdata but we are using a datetime, such as</span>
+            <span class="c1">#spectrum data (that&#39;s not a line, hence no xdata):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_relim</span><span class="p">(</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">dates</span><span class="o">.</span><span class="n">num2date</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span>\
+                <span class="o">.</span><span class="n">get_view_interval</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_tz</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_relim</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">get_view_interval</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_cids</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_cids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">mpl_connect</span><span class="p">(</span><span class="s1">&#39;button_press_event&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_onclick</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_cids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">mpl_connect</span><span class="p">(</span><span class="s1">&#39;close_event&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_onclose</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_cids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">mpl_connect</span><span class="p">(</span><span class="s1">&#39;key_press_event&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_onkeypress</span><span class="p">))</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
 
-    <span class="k">def</span> <span class="nf">get_events</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="EventClicker.get_events"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.EventClicker.html#spacepy.plot.EventClicker.get_events">[docs]</a>    <span class="k">def</span> <span class="nf">get_events</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get back the list of events.</span>
 
 <span class="sd">        Call after :meth:`analyze`.</span>
@@ -401,12 +433,12 @@
 <span class="sd">            Shape is (n_events, n_phases, 2), i.e. indexed by event</span>
 <span class="sd">            number, then phase of the event, then (x, y).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_events</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_events</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_events</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_events</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span></div>
 
-    <span class="k">def</span> <span class="nf">get_events_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="EventClicker.get_events_data"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.EventClicker.html#spacepy.plot.EventClicker.get_events_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_events_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get a list of events, &quot;snapped&quot; to the data.</span>
 
 <span class="sd">        For each point selected as a phase of an event, selects the point</span>
@@ -426,10 +458,10 @@
 <span class="sd">            point clicked on. Shape is (n_events, n_phases, 2), i.e. indexed</span>
 <span class="sd">            by event number, then phase of the event, then (x, y).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_events</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_events</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_events</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_events</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span></div>
 
     <span class="k">def</span> <span class="nf">_add_event_phase</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xval</span><span class="p">,</span> <span class="n">yval</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Add a phase of the event&quot;&quot;&quot;</span>
@@ -437,7 +469,7 @@
             <span class="n">xval</span><span class="p">,</span>
             <span class="n">color</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_curr_phase</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="p">)],</span>
             <span class="n">ls</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_styles</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_curr_phase</span> <span class="o">//</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_colors</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_styles</span><span class="p">)])</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_xydata</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_xydata</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">point_disp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">transData</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span>
                 <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">xval</span><span class="p">,</span> <span class="n">yval</span><span class="p">]])</span>
                 <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
@@ -445,14 +477,15 @@
             <span class="n">idx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
                 <span class="p">(</span><span class="n">data_disp</span> <span class="o">-</span> <span class="n">point_disp</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
                 <span class="p">))</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_events</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_events</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_data_events</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
                     <span class="p">[[[</span><span class="bp">self</span><span class="o">.</span><span class="n">_xdata</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ydata</span><span class="p">[</span><span class="mi">0</span><span class="p">]]]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_phases</span><span class="p">])</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_data_events</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_curr_phase</span><span class="p">]</span> <span class="o">=</span> \
                                   <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_xdata</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ydata</span><span class="p">[</span><span class="n">idx</span><span class="p">]]</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x_is_datetime</span><span class="p">:</span>
-            <span class="n">xval</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">dates</span><span class="o">.</span><span class="n">num2date</span><span class="p">(</span><span class="n">xval</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_events</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">xval</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">dates</span><span class="o">.</span><span class="n">num2date</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_tz</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+                <span class="n">tzinfo</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_tz</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_events</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_events</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="n">xval</span><span class="p">,</span> <span class="n">yval</span><span class="p">]]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_phases</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_events</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_curr_phase</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">xval</span><span class="p">,</span> <span class="n">yval</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_curr_phase</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -471,9 +504,10 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_events</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_events</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
                                  <span class="bp">self</span><span class="o">.</span><span class="n">n_phases</span><span class="p">,</span> <span class="mi">2</span>
                                  <span class="p">))</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_data_events</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_data_events</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
-                                      <span class="bp">self</span><span class="o">.</span><span class="n">n_phases</span><span class="p">,</span> <span class="mi">2</span>
-                                      <span class="p">))</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_events</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_data_events</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_data_events</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+                                          <span class="bp">self</span><span class="o">.</span><span class="n">n_phases</span><span class="p">,</span> <span class="mi">2</span>
+                                          <span class="p">))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_relim</span><span class="p">(</span><span class="n">xval</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
@@ -486,7 +520,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">_events</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_events</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
                                      <span class="bp">self</span><span class="o">.</span><span class="n">n_phases</span><span class="p">,</span> <span class="mi">2</span>
                                      <span class="p">))</span>
-                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_events</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_events</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_data_events</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_data_events</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
                                               <span class="bp">self</span><span class="o">.</span><span class="n">n_phases</span><span class="p">,</span> <span class="mi">2</span>
                                               <span class="p">))</span>
@@ -508,9 +542,9 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">_add_event_phase</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">xdata</span><span class="p">,</span> <span class="n">event</span><span class="o">.</span><span class="n">ydata</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_delete_event_phase</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_lastclick_x</span> <span class="o">=</span> <span class="bp">None</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_lastclick_y</span> <span class="o">=</span> <span class="bp">None</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_lastclick_button</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lastclick_x</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lastclick_y</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lastclick_button</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_lastclick_x</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">xdata</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_lastclick_y</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">ydata</span>
@@ -526,7 +560,8 @@
         <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span><span class="p">:</span>
             <span class="n">rightside</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_view_interval</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x_is_datetime</span><span class="p">:</span>
-                <span class="n">rightside</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">dates</span><span class="o">.</span><span class="n">num2date</span><span class="p">(</span><span class="n">rightside</span><span class="p">)</span>
+                <span class="n">rightside</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">dates</span><span class="o">.</span><span class="n">num2date</span><span class="p">(</span><span class="n">rightside</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_tz</span><span class="p">)</span>\
+                    <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_tz</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_relim</span><span class="p">(</span><span class="n">rightside</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;delete&#39;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_delete_event_phase</span><span class="p">()</span>
@@ -558,11 +593,11 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">autoscale_view</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">autoscale_view</span><span class="p">(</span><span class="n">scalex</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">scaley</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">autoscale_view</span><span class="p">(</span><span class="n">scalex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scaley</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="annotate_xaxis"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.annotate_xaxis.html#spacepy.plot.annotate_xaxis">[docs]</a><span class="k">def</span> <span class="nf">annotate_xaxis</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="annotate_xaxis"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.annotate_xaxis.html#spacepy.plot.annotate_xaxis">[docs]</a><span class="k">def</span> <span class="nf">annotate_xaxis</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Write text in-line and to the right of the x-axis tick labels</span>
 
@@ -610,13 +645,13 @@
 <span class="sd">        &gt;&gt;&gt; spacepy.plot.utils.annotate_xaxis(&#39; UT&#39;) #mark that times are UT</span>
 <span class="sd">        &lt;matplotlib.text.Text object at 0x0000000&gt;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
     <span class="c1">#For some reason the last one is sometimes null, so search for non-null</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">get_text</span><span class="p">()),</span> <span class="bp">None</span><span class="p">)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">get_text</span><span class="p">()),</span> <span class="kc">None</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">t</span><span class="p">:</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span> <span class="c1">#force a redraw, try again</span>
-        <span class="n">t</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">get_text</span><span class="p">()),</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">get_text</span><span class="p">()),</span> <span class="kc">None</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">t</span><span class="p">:</span>
             <span class="k">return</span>
     <span class="n">transform</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">get_transform</span><span class="p">()</span>
@@ -629,7 +664,7 @@
                    <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">props</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="applySmartTimeTicks"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.applySmartTimeTicks.html#spacepy.plot.applySmartTimeTicks">[docs]</a><span class="k">def</span> <span class="nf">applySmartTimeTicks</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">dolimit</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">dolabel</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+<div class="viewcode-block" id="applySmartTimeTicks"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.applySmartTimeTicks.html#spacepy.plot.applySmartTimeTicks">[docs]</a><span class="k">def</span> <span class="nf">applySmartTimeTicks</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">dolimit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dolabel</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Given an axis *ax* and a list/array of datetime objects, *time*,</span>
 <span class="sd">    use the smartTimeTicks function to build smart time ticks and</span>
@@ -664,10 +699,10 @@
     <span class="k">if</span> <span class="n">dolimit</span><span class="p">:</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">time</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
     <span class="k">if</span> <span class="n">dolabel</span><span class="p">:</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time from {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()))</span>
-    <span class="k">return</span> <span class="bp">True</span></div>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time from </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()))</span>
+    <span class="k">return</span> <span class="kc">True</span></div>
 
-<span class="k">def</span> <span class="nf">smartTimeTicks</span><span class="p">(</span><span class="n">time</span><span class="p">):</span>
+<div class="viewcode-block" id="smartTimeTicks"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.smartTimeTicks.html#spacepy.plot.smartTimeTicks">[docs]</a><span class="k">def</span> <span class="nf">smartTimeTicks</span><span class="p">(</span><span class="n">time</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns major ticks, minor ticks and format for time-based plots</span>
 
@@ -755,10 +790,10 @@
         <span class="n">Mtick</span> <span class="o">=</span> <span class="n">YearLocator</span><span class="p">()</span>
         <span class="n">mtick</span> <span class="o">=</span> <span class="n">MonthLocator</span><span class="p">(</span><span class="n">bymonth</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
         <span class="n">fmt</span> <span class="o">=</span>  <span class="n">DateFormatter</span><span class="p">(</span><span class="s1">&#39;%Y&#39;</span><span class="p">)</span>
-    <span class="k">return</span><span class="p">(</span><span class="n">Mtick</span><span class="p">,</span> <span class="n">mtick</span><span class="p">,</span> <span class="n">fmt</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">Mtick</span><span class="p">,</span> <span class="n">mtick</span><span class="p">,</span> <span class="n">fmt</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="set_target"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.set_target.html#spacepy.plot.set_target">[docs]</a><span class="k">def</span> <span class="nf">set_target</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">polar</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+<div class="viewcode-block" id="set_target"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.set_target.html#spacepy.plot.set_target">[docs]</a><span class="k">def</span> <span class="nf">set_target</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">polar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Given a *target* on which to plot a figure, determine if that *target*</span>
 <span class="sd">    is **None** or a matplotlib figure or axes object.  Based on the type</span>
@@ -799,23 +834,23 @@
 
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="c1"># Is target an axes?  Make no new items.</span>
-    <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">target</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">):</span>
         <span class="n">ax</span>  <span class="o">=</span> <span class="n">target</span>
         <span class="n">fig</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">figure</span>
     <span class="k">else</span><span class="p">:</span> <span class="c1"># Make a new axis</span>
         <span class="c1"># Make a new figure if target isn&#39;t one</span>
         <span class="n">fig</span> <span class="o">=</span> <span class="n">target</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">plt</span><span class="o">.</span><span class="n">Figure</span><span class="p">)</span> \
               <span class="k">else</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">loc</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">loc</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">polar</span><span class="o">=</span><span class="n">polar</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span> <span class="c1"># matplotlib &lt;3.1, no default subplot position</span>
+            <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="c1"># matplotlib &lt;3.1, no default subplot position</span>
                 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">polar</span><span class="o">=</span><span class="n">polar</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">polar</span><span class="o">=</span><span class="n">polar</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span></div>
 
 
-<div class="viewcode-block" id="collapse_vertical"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.collapse_vertical.html#spacepy.plot.collapse_vertical">[docs]</a><span class="k">def</span> <span class="nf">collapse_vertical</span><span class="p">(</span><span class="n">combine</span><span class="p">,</span> <span class="n">others</span><span class="o">=</span><span class="p">(),</span> <span class="n">leave_axis</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+<div class="viewcode-block" id="collapse_vertical"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.collapse_vertical.html#spacepy.plot.collapse_vertical">[docs]</a><span class="k">def</span> <span class="nf">collapse_vertical</span><span class="p">(</span><span class="n">combine</span><span class="p">,</span> <span class="n">others</span><span class="o">=</span><span class="p">(),</span> <span class="n">leave_axis</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Collapse the vertical spacing between two or more subplots.</span>
 
@@ -884,14 +919,14 @@
     <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sizes</span><span class="p">:</span>
         <span class="n">sizes</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">/=</span> <span class="n">vtotal</span>
     <span class="c1">#get the ones to combine in top-to-bottom order</span>
-    <span class="n">c_sort</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">combine</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">boxes</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">ymax</span><span class="p">),</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">c_sort</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">combine</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">boxes</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">ymax</span><span class="p">),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="c1">#and figure out how much space we&#39;re going to take away</span>
     <span class="n">v_additional</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">c_sort</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
         <span class="n">v_additional</span> <span class="o">+=</span> <span class="p">(</span><span class="n">boxes</span><span class="p">[</span><span class="n">c_sort</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">ymin</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[</span><span class="n">c_sort</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">ymax</span><span class="p">)</span>
     <span class="c1">#get EVERYTHING in top-to-bottom order</span>
     <span class="n">all_sort</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">combine</span> <span class="o">+</span> <span class="n">others</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">boxes</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">ymax</span><span class="p">),</span>
-                      <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                      <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">shift</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c1">#how far UP to move each plot</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">all_sort</span><span class="p">):</span>
         <span class="n">bb</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span>
@@ -903,22 +938,22 @@
         <span class="k">if</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">combine</span><span class="p">:</span> <span class="c1">#This subplot is participating in combination</span>
             <span class="c1">#Combining with one below?</span>
             <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_sort</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">all_sort</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">combine</span><span class="p">:</span>
-                <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">(),</span> <span class="n">visible</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> <span class="c1">#no labels</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">(),</span> <span class="n">visible</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1">#no labels</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">leave_axis</span><span class="p">:</span>
                     <span class="c1">#no bottom ticks</span>
-                    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-                    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span> <span class="c1">#no axis line</span>
+                    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span> <span class="c1">#no axis line</span>
                 <span class="c1">#ALSO slide everything up by difference between these two</span>
                 <span class="n">shift</span> <span class="o">+=</span> <span class="p">(</span><span class="n">bb</span><span class="o">.</span><span class="n">ymin</span> <span class="o">-</span> <span class="n">boxes</span><span class="p">[</span><span class="n">all_sort</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">ymax</span><span class="p">)</span>
             <span class="c1">#combining with one above?</span>
             <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">all_sort</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">combine</span><span class="p">:</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">leave_axis</span><span class="p">:</span>
                     <span class="c1">#no top ticks</span>
-                    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-                    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span> <span class="c1">#no axis line</span></div>
+                    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span> <span class="c1">#no axis line</span></div>
 
 
-<span class="k">def</span> <span class="nf">printfig</span><span class="p">(</span><span class="n">fignum</span><span class="p">,</span> <span class="n">saveonly</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">pngonly</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">clean</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="printfig"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.printfig.html#spacepy.plot.printfig">[docs]</a><span class="k">def</span> <span class="nf">printfig</span><span class="p">(</span><span class="n">fignum</span><span class="p">,</span> <span class="n">saveonly</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pngonly</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">clean</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;save current figure to file and call lpr (print).</span>
 
 <span class="sd">    This routine will create a total of 3 files (png, ps and c.png) in the</span>
@@ -947,7 +982,7 @@
 <span class="sd">    &gt;&gt;&gt; p = plt.plot([1,2,3],[2,3,2])</span>
 <span class="sd">    &gt;&gt;&gt; spacepy.plot.utils.printfig(1, pngonly=True, saveonly=True)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">nfigs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fignum</span><span class="p">)</span>
@@ -959,7 +994,7 @@
         <span class="c1"># active this figure</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">ifig</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">filename</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">filename</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
             <span class="c1"># create a filename for the figure</span>
             <span class="n">cwd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
             <span class="n">num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*.png&#39;</span><span class="p">))</span>
@@ -973,7 +1008,7 @@
             <span class="n">flnstamp</span> <span class="o">=</span> <span class="n">fln</span>
 
         <span class="c1"># save a clean figure without timestamps</span>
-        <span class="k">if</span> <span class="n">clean</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">clean</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">fln</span><span class="o">+</span><span class="s1">&#39;_clean.png&#39;</span><span class="p">)</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">fln</span><span class="o">+</span><span class="s1">&#39;_clena.ps&#39;</span><span class="p">)</span>
 
@@ -982,21 +1017,21 @@
         <span class="n">plt</span><span class="o">.</span><span class="n">figtext</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">timestamp</span><span class="o">+</span><span class="n">flnstamp</span><span class="o">+</span><span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
 
         <span class="c1"># now save the figure to this filename</span>
-        <span class="k">if</span> <span class="n">pngonly</span> <span class="o">==</span> <span class="bp">False</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">pngonly</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">fln</span><span class="o">+</span><span class="s1">&#39;.ps&#39;</span><span class="p">)</span>
 
         <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">fln</span><span class="o">+</span><span class="s1">&#39;.png&#39;</span><span class="p">)</span>
 
         <span class="c1"># send it to the printer</span>
-        <span class="k">if</span> <span class="n">saveonly</span> <span class="o">!=</span> <span class="bp">True</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">pngonly</span> <span class="o">==</span> <span class="bp">False</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">saveonly</span> <span class="o">!=</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">pngonly</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="s1">&#39;lpr &#39;</span><span class="o">+</span><span class="n">fln</span><span class="o">+</span><span class="s1">&#39;.ps&#39;</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="s1">&#39;lpr &#39;</span><span class="o">+</span><span class="n">fln</span><span class="o">+</span><span class="s1">&#39;.png&#39;</span><span class="p">)</span>
-    <span class="k">return</span>
+    <span class="k">return</span></div>
 
 
-<div class="viewcode-block" id="shared_ylabel"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.shared_ylabel.html#spacepy.plot.shared_ylabel">[docs]</a><span class="k">def</span> <span class="nf">shared_ylabel</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">txt</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="shared_ylabel"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.shared_ylabel.html#spacepy.plot.shared_ylabel">[docs]</a><span class="k">def</span> <span class="nf">shared_ylabel</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">txt</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create a ylabel that spans several subplots</span>
 
@@ -1053,7 +1088,7 @@
     <span class="n">boxes</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(((</span><span class="n">ax</span><span class="p">,</span> <span class="n">fig</span><span class="o">.</span><span class="n">transFigure</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_position</span><span class="p">()))</span>
                   <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">))</span>
     <span class="c1">#top-to-bottom by upper edge</span>
-    <span class="n">top</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">boxes</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">top</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">boxes</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
     <span class="c1">#bottom-to-top by lower edge</span>
     <span class="n">bottom</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">boxes</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))[</span><span class="mi">0</span><span class="p">]</span>
     <span class="c1">#get the TOP of the TOP subplot in axes coordinates of BOTTOM subplot</span>
@@ -1070,8 +1105,8 @@
     <span class="k">return</span> <span class="n">lbl</span></div>
 
 
-<div class="viewcode-block" id="timestamp"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.timestamp.html#spacepy.plot.timestamp">[docs]</a><span class="k">def</span> <span class="nf">timestamp</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="p">(</span><span class="mf">1.003</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="s1">&#39;xx-small&#39;</span><span class="p">,</span> <span class="n">draw</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">strnow</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-              <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="timestamp"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.timestamp.html#spacepy.plot.timestamp">[docs]</a><span class="k">def</span> <span class="nf">timestamp</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="p">(</span><span class="mf">1.003</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="s1">&#39;xx-small&#39;</span><span class="p">,</span> <span class="n">draw</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">strnow</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+              <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    print a timestamp on the current plot, vertical lower right</span>
 
@@ -1094,10 +1129,10 @@
 <span class="sd">    [&lt;matplotlib.lines.Line2D object at 0x49072b0&gt;]</span>
 <span class="sd">    &gt;&gt;&gt; spacepy.plot.utils.timestamp()</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">strnow</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">strnow</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
             <span class="n">strnow</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">%b%Y %H:%M&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
     <span class="n">ann</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">strnow</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span>
                     <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="n">rotation</span><span class="p">,</span>
@@ -1106,7 +1141,7 @@
         <span class="n">plt</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">ann</span></div>
 
-<span class="k">def</span> <span class="nf">_used_boxes_helper</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">renderer</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_used_boxes_helper</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">renderer</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Recursively-called helper function for get_used_boxes. Internal.&quot;&quot;&quot;</span>
     <span class="n">boxes</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s1">&#39;get_renderer_cache&#39;</span><span class="p">):</span> <span class="c1">#I know how to render myself</span>
@@ -1121,7 +1156,7 @@
     <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s1">&#39;get_children&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">obj</span><span class="o">.</span><span class="n">get_children</span><span class="p">():</span>
         <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">get_children</span><span class="p">():</span>
             <span class="n">res</span> <span class="o">=</span> <span class="n">_used_boxes_helper</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">renderer</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span> <span class="c1">#Child can&#39;t find its size, just use own bounds</span>
+            <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="c1">#Child can&#39;t find its size, just use own bounds</span>
                 <span class="n">boxes</span> <span class="o">=</span> <span class="p">[]</span>
                 <span class="k">break</span>
             <span class="n">boxes</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
@@ -1131,17 +1166,17 @@
     <span class="k">try</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">obj</span><span class="o">.</span><span class="n">get_window_extent</span><span class="p">()]</span>
     <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">RuntimeError</span><span class="p">):</span> <span class="c1">#need a renderer</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">renderer</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">renderer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">[</span><span class="n">obj</span><span class="o">.</span><span class="n">get_window_extent</span><span class="p">(</span><span class="n">renderer</span><span class="p">)]</span>
         <span class="k">else</span><span class="p">:</span> <span class="c1">#I can&#39;t figure out my size!</span>
-            <span class="k">return</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="kc">None</span>
 
-<span class="k">def</span> <span class="nf">get_used_boxes</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">get_used_boxes</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Go through all elements of a figure and find the &quot;boxes&quot; they occupy,</span>
 <span class="sd">    in figure coordinates. Mostly helper for add_logo</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span> <span class="c1">#invoke the renderer to figure everything out</span>
-    <span class="k">if</span> <span class="n">fig</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">fig</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
     <span class="c1">#Get rid of double-nesting, and don&#39;t include top-level z-order 1</span>
     <span class="c1">#(background rectangle) OR anything completely degenerate (point only)</span>
@@ -1190,7 +1225,7 @@
     <span class="k">if</span> <span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;l&#39;</span><span class="p">:</span> <span class="c1">#sort obstructing boxes on left edge</span>
         <span class="n">sboxes</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">boxes</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">b</span><span class="p">:</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
     <span class="k">else</span><span class="p">:</span> <span class="c1">#sort on right edge, descending (work in from right edge)</span>
-        <span class="n">sboxes</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">boxes</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">b</span><span class="p">:</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">sboxes</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">boxes</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">b</span><span class="p">:</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;t&#39;</span><span class="p">:</span>  <span class="c1">#There&#39;s a clear space across the top of everything</span>
         <span class="n">top</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">sboxes</span><span class="p">])</span>
         <span class="k">if</span> <span class="n">top</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">:</span> <span class="c1"># there is space at the top</span>
@@ -1244,10 +1279,10 @@
             <span class="c1">#no, take the height, correct for figure aspect, and find the</span>
             <span class="c1">#width the image would have at this height and its aspect ratio.</span>
             <span class="k">return</span> <span class="n">real_height</span> <span class="o">*</span> <span class="n">img_aspect</span>
-    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">boxes</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">effective_width</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">boxes</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">effective_width</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
 
-<div class="viewcode-block" id="add_logo"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.add_logo.html#spacepy.plot.add_logo">[docs]</a><span class="k">def</span> <span class="nf">add_logo</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="s1">&#39;br&#39;</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="mf">0.05</span><span class="p">):</span>
+<div class="viewcode-block" id="add_logo"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.add_logo.html#spacepy.plot.add_logo">[docs]</a><span class="k">def</span> <span class="nf">add_logo</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="s1">&#39;br&#39;</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="mf">0.05</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Add an image (logo) to one corner of a plot.</span>
 
@@ -1314,7 +1349,7 @@
     <span class="k">assert</span><span class="p">(</span><span class="n">pos</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;br&#39;</span><span class="p">,</span> <span class="s1">&#39;bl&#39;</span><span class="p">,</span> <span class="s1">&#39;tl&#39;</span><span class="p">,</span> <span class="s1">&#39;tr&#39;</span><span class="p">))</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">):</span>
         <span class="n">img</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">fig</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">fig</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
     <span class="n">width</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="n">height</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -1350,7 +1385,7 @@
     <span class="k">return</span> <span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">axesimg</span><span class="p">)</span></div>
 
 
-<span class="k">def</span> <span class="nf">show_used</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="show_used"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.show_used.html#spacepy.plot.show_used">[docs]</a><span class="k">def</span> <span class="nf">show_used</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Show the areas of a figure which are used/occupied by plot elements.</span>
 
@@ -1425,7 +1460,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">colors</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">cycle</span><span class="p">([</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">])</span>
     <span class="n">rects</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">if</span> <span class="n">fig</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">fig</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
     <span class="n">boxes</span> <span class="o">=</span> <span class="n">get_used_boxes</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
 <span class="c1">#    boxes = [b for b in get_used_boxes(fig)</span>
@@ -1436,10 +1471,160 @@
         <span class="n">rects</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">patches</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">(</span>
             <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
                      <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="nb">next</span><span class="p">(</span><span class="n">colors</span><span class="p">),</span>
-                     <span class="n">fill</span><span class="o">=</span><span class="bp">True</span><span class="p">)))</span>
-    <span class="k">return</span> <span class="n">rects</span>
+                     <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">rects</span></div>
+
+<div class="viewcode-block" id="add_arrows"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.add_arrows.html#spacepy.plot.add_arrows">[docs]</a><span class="k">def</span> <span class="nf">add_arrows</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;-&gt;&#39;</span><span class="p">,</span> <span class="n">dorestrict</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+               <span class="n">positions</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Add directional arrows along a plotted line.  Useful for plotting flow</span>
+<span class="sd">    lines, magnetic field lines, or other directional traces.</span>
+
+<span class="sd">    *lines* can be either :class:`~matplotlib.lines.Line2D`, a list or tuple</span>
+<span class="sd">    of lines, or a :class:`~matplotlib.collections.LineCollection` object.</span>
+
+<span class="sd">    For each line, arrows will be added using </span>
+<span class="sd">    :method:`~matplotlib.axes.Axes.annotate`.  Arrows will be spread evenly</span>
+<span class="sd">    over the line using the number of points in the line as the metric for</span>
+<span class="sd">    spacing.  For example, if a line has 120 points and 3 arrows are requested,</span>
+<span class="sd">    an arrow will be added at point number 30, 60, and 90.</span>
+<span class="sd">    Arrow color and alpha is obtained from the parent line.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ==========</span>
+<span class="sd">    lines : :class:`~matplotlib.lines.Line2D`, a list/tuple, or :class:`~matplotlib.collections.LineCollection`</span>
+<span class="sd">        A single line or group of lines on which to place the arrows.</span>
+<span class="sd">        Arrows inherent color and transparency (alpha) from the line on which</span>
+<span class="sd">        they are placed.</span>
+
+
+<span class="sd">    Other Parameters</span>
+<span class="sd">    ================</span>
+<span class="sd">    n : integer</span>
+<span class="sd">        Number of arrows to add to each line; defaults to 3.</span>
+
+<span class="sd">    size : integer</span>
+<span class="sd">        The size of the arrows in points.  Defaults to 12.</span>
+
+<span class="sd">    style : string</span>
+<span class="sd">        Set the style of the arrow via :class:`~matplotlib.patches.ArrowStyle`,</span>
+<span class="sd">        e.g. &#39;-&gt;&#39; (default) or &#39;-|&gt;&#39;</span>
+
+<span class="sd">    dorestrict : boolean</span>
+<span class="sd">        If True (default), only points along the line within the current</span>
+<span class="sd">        limits of the axes will be considered when distributing arrows.</span>
+
+<span class="sd">    positions : Nx2 array</span>
+<span class="sd">        N must be the number of lines provided via the argument *lines*.</span>
+<span class="sd">        If provided, only one arrow will be placed per line.</span>
+<span class="sd">        *positions* sets the explicit location of each arrow for each line as</span>
+<span class="sd">        X-Y space in Axes coordinates.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    =======</span>
+<span class="sd">    None</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    =====</span>
+<span class="sd">    The algorithm works by dividing the line in to *n*+1 segments and </span>
+<span class="sd">    placing an arrow between each segment, endpoints excluded.  Arrows span</span>
+<span class="sd">    the shortest distance possible, i.e., two adjacent points along a line.</span>
+<span class="sd">    For lines that are long spatially but sparse in points, the arrows will</span>
+<span class="sd">    have long tails that may extend beyond axes bounds.  For explicit positions,</span>
+<span class="sd">    the arrow is placed at the point on the curve closest to that position</span>
+<span class="sd">    and the exact position is not always attainable.  A maximum number of arrows</span>
+<span class="sd">    equal to one-half of the number of points in a line per line will be</span>
+<span class="sd">    created, so not all lines will receive *n* arrows.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    ========</span>
+<span class="sd">    &gt;&gt;&gt; import matplotlib.pyplot as plt</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; x = np.arange(1, 10, .01)</span>
+<span class="sd">    &gt;&gt;&gt; y = np.sin(x)</span>
+<span class="sd">    &gt;&gt;&gt; line = plt.plot(x,y)</span>
+<span class="sd">    &gt;&gt;&gt; add_arrows(line, n=15, style=&#39;-|&gt;&#39;)</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">floor</span><span class="p">,</span> <span class="n">argmin</span>
+    <span class="kn">from</span> <span class="nn">matplotlib.collections</span> <span class="kn">import</span> <span class="n">LineCollection</span>
+    <span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="kn">import</span> <span class="n">Line2D</span>
+    
+    <span class="c1"># Convert our line, lines, or LineCollection into</span>
+    <span class="c1"># a series of arrays with the x/y data.</span>
+    <span class="c1"># Also, grab the axes, colors, and line alpha.</span>
+    <span class="k">def</span> <span class="nf">_parse_line_list</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span> <span class="c1">#handles lists of lines</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">get_xydata</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">]</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">get_color</span><span class="p">()</span>  <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">]</span>
+        <span class="n">alph</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">get_alpha</span><span class="p">()</span>  <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">]</span>
+        <span class="n">ax</span>   <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axes</span>
+        <span class="k">return</span> <span class="n">data</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">alph</span><span class="p">,</span> <span class="n">ax</span>
+    
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="s1">&#39;axes&#39;</span><span class="p">):</span>  <span class="c1"># Matplotlib-like objects:</span>
+        <span class="k">try</span><span class="p">:</span> <span class="c1"># Collection-like: use &quot;get paths&quot; to extract points into list</span>
+            <span class="n">ax</span>   <span class="o">=</span> <span class="n">lines</span><span class="o">.</span><span class="n">axes</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">vertices</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lines</span><span class="o">.</span><span class="n">get_paths</span><span class="p">()]</span>
+            <span class="n">cols</span> <span class="o">=</span> <span class="n">lines</span><span class="o">.</span><span class="n">get_colors</span><span class="p">()</span>
+            <span class="n">alph</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">*</span> <span class="p">[</span><span class="n">lines</span><span class="o">.</span><span class="n">get_alpha</span><span class="p">()]</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span> <span class="c1"># Line2D-like: put in list and parse</span>
+            <span class="n">data</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">alph</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">_parse_line_list</span><span class="p">(</span> <span class="p">[</span><span class="n">lines</span><span class="p">]</span> <span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">)):</span> <span class="c1"># List/tuple of Line-like objects:</span>
+        <span class="k">try</span><span class="p">:</span> 
+            <span class="n">data</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">alph</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">_parse_line_list</span><span class="p">(</span> <span class="n">lines</span> <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Non-Line2d-like item found in list of lines.&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unknown input type for lines.&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Check to make sure that we have as many colors as lines.</span>
+    <span class="c1"># With LineCollections, this isn&#39;t always the case!</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">cols</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">cols</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">cols</span><span class="p">)</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="c1"># Grab plot limits (sometimes needed):</span>
+    <span class="n">xlim</span><span class="p">,</span> <span class="n">ylim</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">(),</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="c1"># Explicitly set positions of arrows, one per line.</span>
+        <span class="k">for</span> <span class="n">l</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">alph</span><span class="p">,</span> <span class="n">positions</span><span class="p">):</span>
+            <span class="c1"># Get x-y points of line:</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">l</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">l</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+            <span class="c1"># Get point on line closest to desired position:</span>
+            <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">argmin</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">])),</span> <span class="n">argmin</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="c1"># Annotate, matching color/alpha:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">j</span><span class="p">]),</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]),</span> <span class="n">alpha</span><span class="o">=</span><span class="n">a</span><span class="p">,</span>
+                        <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="n">style</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">),</span><span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+        <span class="c1"># Nothing else to do at this point.</span>
+        <span class="k">return</span>
+
+    <span class="c1"># Get positions for arrows and add them:</span>
+    <span class="k">for</span> <span class="n">l</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">alph</span><span class="p">):</span>
+        <span class="c1"># Get x-y points of line:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">l</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">l</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># Restrict to axes limits as necessary:</span>
+        <span class="k">if</span> <span class="n">dorestrict</span><span class="p">:</span>
+            <span class="n">loc</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">&gt;=</span><span class="n">xlim</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">&amp;</span><span class="p">(</span><span class="n">x</span><span class="o">&lt;=</span><span class="n">xlim</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">&amp;</span><span class="p">(</span><span class="n">y</span><span class="o">&gt;=</span><span class="n">ylim</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">&amp;</span><span class="p">(</span><span class="n">y</span><span class="o">&lt;=</span><span class="n">ylim</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">loc</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span>
+        
+        <span class="c1"># Get size of lines.  Skip those with too few points:</span>
+        <span class="n">npts</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span>
+        <span class="k">if</span> <span class="n">npts</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">:</span> <span class="k">continue</span>
+        
+        <span class="c1"># If number of arrows is greater than the number of</span>
+        <span class="c1"># points along the line/2, reduce the number of arrows.</span>
+        <span class="c1"># Guarantee at least one arrow per line.</span>
+        <span class="n">n_now</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">floor</span><span class="p">(</span><span class="n">npts</span><span class="o">/</span><span class="mi">2</span><span class="p">)))</span> <span class="p">)</span>
+        
+        <span class="c1"># Place evenly-spaced arrows:</span>
+        <span class="k">for</span> <span class="n">iArr</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_now</span><span class="p">):</span>
+            <span class="c1"># Get location as fraction of no. of points along line:</span>
+            <span class="n">i</span>  <span class="o">=</span> <span class="nb">int</span><span class="p">(</span> <span class="n">floor</span><span class="p">((</span><span class="n">iArr</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">npts</span><span class="o">/</span><span class="p">(</span><span class="n">n_now</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> <span class="p">)</span>
+            <span class="c1"># Place an arrow:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]),</span> <span class="n">alpha</span><span class="o">=</span><span class="n">a</span><span class="p">,</span>
+                        <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="n">style</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">),</span><span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span></div>
 </pre></div>
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -1454,17 +1639,20 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="https://github.com/spacepy/spacepy">homepage</a>|&nbsp;</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../../../search.html">search</a>|&nbsp;</li>
        <li><a href="../../../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &raquo;</li>
-          <li class="nav-item nav-item-2"><a href="../plot.html" >spacepy.plot</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="../plot.html" >spacepy.plot</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.plot.utils</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2011-2019, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+        &#169; Copyright 2011-2020, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
     </div>
   </body>
 </html>

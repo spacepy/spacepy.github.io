@@ -1,36 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>spacepy.data_assimilation.assimilate_JK &mdash; SpacePy v0.2.1 Manual</title>
-    
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>spacepy.data_assimilation.assimilate_JK &#8212; SpacePy v0.2.2 Manual</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
     
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '0.2.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    
     <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
-    <link rel="top" title="SpacePy v0.2.1 Manual" href="../index.html" />
-    <link rel="up" title="data assimilation - data assimilation module" href="../data_assimilation.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="spacepy.data_assimilation.addmodelerror_old2" href="spacepy.data_assimilation.addmodelerror_old2.html" />
     <link rel="prev" title="spacepy.data_assimilation.forecast" href="spacepy.data_assimilation.forecast.html" /> 
-  </head>
-  <body role="document">
+  </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -51,11 +42,13 @@
         <li class="right" >
           <a href="spacepy.data_assimilation.forecast.html" title="spacepy.data_assimilation.forecast"
              accesskey="P">previous</a> |</li>
-        <li><a href="https://github.com/spacepy/spacepy">homepage</a>|&nbsp;</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../data_assimilation.html" accesskey="U">data assimilation - data assimilation module</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../data_assimilation.html" accesskey="U">data assimilation - data assimilation module</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.data_assimilation.assimilate_JK</a></li> 
       </ul>
     </div>
 
@@ -73,23 +66,20 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/autosummary/spacepy.data_assimilation.assimilate_JK.txt"
+      <li><a href="../_sources/autosummary/spacepy.data_assimilation.assimilate_JK.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -100,30 +90,31 @@
             
   <div class="section" id="spacepy-data-assimilation-assimilate-jk">
 <h1>spacepy.data_assimilation.assimilate_JK<a class="headerlink" href="#spacepy-data-assimilation-assimilate-jk" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
+<dl class="py function">
 <dt id="spacepy.data_assimilation.assimilate_JK">
-<code class="descclassname">spacepy.data_assimilation.</code><code class="descname">assimilate_JK</code><span class="sig-paren">(</span><em>dd</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/data_assimilation.html#assimilate_JK"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.data_assimilation.assimilate_JK" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">spacepy.data_assimilation.</code><code class="sig-name descname">assimilate_JK</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dd</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/data_assimilation.html#assimilate_JK"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.data_assimilation.assimilate_JK" title="Permalink to this definition">¶</a></dt>
 <dd><p>this version is currently not working
 main function to assimilate all data provided in init</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>model :</strong></p>
-<p><strong>PSDdata :</strong></p>
-<p><strong>HAp :</strong></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">out :</p>
-</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>model :</strong></dt><dd></dd>
+<dt><strong>PSDdata :</strong></dt><dd></dd>
+<dt><strong>HAp :</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>out :</dt><dd></dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -144,16 +135,18 @@ main function to assimilate all data provided in init</p>
         <li class="right" >
           <a href="spacepy.data_assimilation.forecast.html" title="spacepy.data_assimilation.forecast"
              >previous</a> |</li>
-        <li><a href="https://github.com/spacepy/spacepy">homepage</a>|&nbsp;</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../data_assimilation.html" >data assimilation - data assimilation module</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../data_assimilation.html" >data assimilation - data assimilation module</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.data_assimilation.assimilate_JK</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2011-2019, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+        &#169; Copyright 2011-2020, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
     </div>
   </body>
 </html>

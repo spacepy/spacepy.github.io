@@ -1,35 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>coordinates - module for coordinate transforms &mdash; SpacePy v0.2.1 Manual</title>
-    
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>coordinates - module for coordinate transforms &#8212; SpacePy v0.2.2 Manual</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.2.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/copybutton.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/copybutton.js"></script>
+    
     <link rel="shortcut icon" href="_static/spacepy_favicon.ico"/>
-    <link rel="top" title="SpacePy v0.2.1 Manual" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="spacepy.coordinates.Coords" href="autosummary/spacepy.coordinates.Coords.html" />
     <link rel="prev" title="spacepy.ae9ap9.parseHeader" href="autosummary/spacepy.ae9ap9.parseHeader.html" /> 
-  </head>
-  <body role="document">
+  </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="index.html"><img src="_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -50,10 +42,12 @@
         <li class="right" >
           <a href="autosummary/spacepy.ae9ap9.parseHeader.html" title="spacepy.ae9ap9.parseHeader"
              accesskey="P">previous</a> |</li>
-        <li><a href="https://github.com/spacepy/spacepy">homepage</a>|&nbsp;</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="search.html">search</a>|&nbsp;</li>
        <li><a href="index.html">documentation </a> &raquo;</li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">coordinates - module for coordinate transforms</a></li> 
       </ul>
     </div>
 
@@ -71,23 +65,20 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/coordinates.txt"
+      <li><a href="_sources/coordinates.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -103,20 +94,49 @@
 Institution: Los ALamos National Laboratory
 Contact: <a class="reference external" href="mailto:smorley&#37;&#52;&#48;lanl&#46;gov">smorley<span>&#64;</span>lanl<span>&#46;</span>gov</a></p>
 <p>Copyright 2010 Los Alamos National Security, LLC.</p>
-<table border="1" class="longtable docutils">
+<p class="rubric">Classes</p>
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="autosummary/spacepy.coordinates.Coords.html#spacepy.coordinates.Coords" title="spacepy.coordinates.Coords"><code class="xref py py-obj docutils literal"><span class="pre">Coords</span></code></a>(data,&nbsp;dtype,&nbsp;carsph,&nbsp;[units,&nbsp;ticks])</td>
-<td>A class holding spatial coordinates in Cartesian/spherical</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.coordinates.Coords.html#spacepy.coordinates.Coords" title="spacepy.coordinates.Coords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Coords</span></code></a>(data, dtype, carsph, [units, ticks])</p></td>
+<td><p>A class holding spatial coordinates in Cartesian/spherical in units of Re and degrees</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Functions</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.coordinates.quaternionRotateVector.html#spacepy.coordinates.quaternionRotateVector" title="spacepy.coordinates.quaternionRotateVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quaternionRotateVector</span></code></a>(Qin, Vin[, …])</p></td>
+<td><p>Given quaternions and vectors, return the vectors rotated by the quaternions</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.coordinates.quaternionNormalize.html#spacepy.coordinates.quaternionNormalize" title="spacepy.coordinates.quaternionNormalize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quaternionNormalize</span></code></a>(Qin[, scalarPos])</p></td>
+<td><p>Given an input quaternion (or array of quaternions), return the unit quaternion</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.coordinates.quaternionMultiply.html#spacepy.coordinates.quaternionMultiply" title="spacepy.coordinates.quaternionMultiply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quaternionMultiply</span></code></a>(Qin1, Qin2[, scalarPos])</p></td>
+<td><p>Given quaternions, return the product, i.e. Qin1*Qin2.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.coordinates.quaternionConjugate.html#spacepy.coordinates.quaternionConjugate" title="spacepy.coordinates.quaternionConjugate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quaternionConjugate</span></code></a>(Qin[, scalarPos])</p></td>
+<td><p>Given an input quaternion (or array of quaternions), return the conjugate</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.coordinates.quaternionFromMatrix.html#spacepy.coordinates.quaternionFromMatrix" title="spacepy.coordinates.quaternionFromMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quaternionFromMatrix</span></code></a>(matrix[, scalarPos])</p></td>
+<td><p>Given an input rotation matrix, return the equivalent quaternion</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.coordinates.quaternionToMatrix.html#spacepy.coordinates.quaternionToMatrix" title="spacepy.coordinates.quaternionToMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quaternionToMatrix</span></code></a>(Qin[, scalarPos, normalize])</p></td>
+<td><p>Given an input quaternion, return the equivalent rotation matrix.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -137,15 +157,17 @@ Contact: <a class="reference external" href="mailto:smorley&#37;&#52;&#48;lanl&#
         <li class="right" >
           <a href="autosummary/spacepy.ae9ap9.parseHeader.html" title="spacepy.ae9ap9.parseHeader"
              >previous</a> |</li>
-        <li><a href="https://github.com/spacepy/spacepy">homepage</a>|&nbsp;</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="search.html">search</a>|&nbsp;</li>
        <li><a href="index.html">documentation </a> &raquo;</li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">coordinates - module for coordinate transforms</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2011-2019, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+        &#169; Copyright 2011-2020, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
     </div>
   </body>
 </html>

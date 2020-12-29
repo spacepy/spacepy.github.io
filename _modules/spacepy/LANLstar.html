@@ -1,34 +1,25 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>spacepy.LANLstar &mdash; SpacePy v0.2.1 Manual</title>
-    
-    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>spacepy.LANLstar &#8212; SpacePy v0.2.2 Manual</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
     
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '0.2.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    
     <link rel="shortcut icon" href="../../_static/spacepy_favicon.ico"/>
-    <link rel="top" title="SpacePy v0.2.1 Manual" href="../../index.html" />
-    <link rel="up" title="Module code" href="../index.html" /> 
-  </head>
-  <body role="document">
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../../index.html"><img src="../../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -43,11 +34,14 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="https://github.com/spacepy/spacepy">homepage</a>|&nbsp;</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../../search.html">search</a>|&nbsp;</li>
        <li><a href="../../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../spacepy.html" accesskey="U">spacepy</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.LANLstar</a></li> 
       </ul>
     </div>
 
@@ -57,18 +51,15 @@
               <img class="logo" src="../../_static/logo.png" alt="Logo"/>
             </a></p>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -78,7 +69,7 @@
           <div class="body" role="main">
             
   <h1>Source code for spacepy.LANLstar</h1><div class="highlight"><pre>
-<span class="ch">#!/usr/bin/env python</span>
+<span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Lstar and Lmax calculation using artificial neural network (ANN) technique.</span>
@@ -110,14 +101,14 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
             <span class="s1">&#39;LANLstar requires ffnet (http://ffnet.sourceforge.net/)&#39;</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">toolbox</span>
 
 
 <span class="k">def</span> <span class="nf">_get_net_path</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Gets the full path for a network file given the filename&quot;&quot;&quot;</span>
     <span class="n">fspec</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">__file__</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;LANLstar&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;LANLstar&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">fspec</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">fspec</span> <span class="o">+</span> <span class="s1">&#39;.gz&#39;</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">fspec</span>
     <span class="k">else</span><span class="p">:</span>
@@ -187,13 +178,13 @@
         <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">):</span>
             <span class="n">dum</span> <span class="o">=</span> <span class="n">inputdict</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">][</span><span class="o">...</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">dum</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="n">dum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dum</span><span class="p">])</span>
-            <span class="n">inputdict</span><span class="p">[</span><span class="s1">&#39;G{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span> <span class="o">=</span> <span class="n">dum</span>
+            <span class="n">inputdict</span><span class="p">[</span><span class="s1">&#39;G</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span> <span class="o">=</span> <span class="n">dum</span>
         <span class="k">del</span> <span class="n">inputdict</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">]</span>
     <span class="k">if</span> <span class="s1">&#39;W&#39;</span> <span class="ow">in</span> <span class="n">inputdict</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">):</span>
             <span class="n">dum</span> <span class="o">=</span> <span class="n">inputdict</span><span class="p">[</span><span class="s1">&#39;W&#39;</span><span class="p">][</span><span class="o">...</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">dum</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="n">dum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dum</span><span class="p">])</span>
-            <span class="n">inputdict</span><span class="p">[</span><span class="s1">&#39;W{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span> <span class="o">=</span> <span class="n">dum</span>
+            <span class="n">inputdict</span><span class="p">[</span><span class="s1">&#39;W</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span> <span class="o">=</span> <span class="n">dum</span>
         <span class="k">del</span> <span class="n">inputdict</span><span class="p">[</span><span class="s1">&#39;W&#39;</span><span class="p">]</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">extMag</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span> <span class="n">extMag</span> <span class="o">=</span> <span class="p">[</span><span class="n">extMag</span><span class="p">]</span>
 
@@ -205,11 +196,11 @@
         <span class="c1">#T89 checks Kp, everything else Dst</span>
         <span class="n">specialkey</span> <span class="o">=</span> <span class="s1">&#39;Dst&#39;</span> <span class="k">if</span> <span class="s1">&#39;Dst&#39;</span> <span class="ow">in</span> <span class="n">keylist</span> <span class="k">else</span> <span class="s1">&#39;Kp&#39;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inputdict</span><span class="p">[</span><span class="n">specialkey</span><span class="p">],</span> <span class="nb">float</span><span class="p">):</span>
-            <span class="n">arrayflag</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="n">arrayflag</span> <span class="o">=</span> <span class="kc">False</span>
             <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">inputdict</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
                 <span class="n">inputdict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">inputdict</span><span class="p">[</span><span class="n">key</span><span class="p">]]</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">arrayflag</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="n">arrayflag</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="n">ncalc</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">inputdict</span><span class="p">[</span><span class="s1">&#39;Dst&#39;</span><span class="p">])</span>
 	
         <span class="n">ncalc</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">inputdict</span><span class="p">[</span><span class="n">specialkey</span><span class="p">])</span>
@@ -227,7 +218,7 @@
                 <span class="n">inpar</span><span class="p">[</span><span class="n">ikey</span><span class="p">]</span> <span class="o">=</span> <span class="n">inputdict</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
             <span class="n">Lstar</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">network</span><span class="p">(</span><span class="n">inpar</span><span class="p">)</span>
             
-        <span class="k">if</span> <span class="n">arrayflag</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">arrayflag</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
             <span class="n">Lstar_out</span><span class="p">[</span><span class="n">modelkey</span><span class="p">]</span> <span class="o">=</span> <span class="n">Lstar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">Lstar_out</span><span class="p">[</span><span class="n">modelkey</span><span class="p">]</span> <span class="o">=</span> <span class="n">Lstar</span>
@@ -336,7 +327,7 @@
 <span class="sd">     &#39;TS05&#39;: array([4.7174]),</span>
 <span class="sd">     &#39;RAMSCB&#39;,&#39;array([5.9609])}</span>
 <span class="sd">     &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">_LANLcommon</span><span class="p">(</span><span class="n">inputdict</span><span class="p">,</span> <span class="n">extMag</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">_LANLcommon</span><span class="p">(</span><span class="n">inputdict</span><span class="p">,</span> <span class="n">extMag</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="LANLmax"><a class="viewcode-back" href="../../autosummary/spacepy.LANLstar.LANLmax.html#spacepy.LANLstar.LANLmax">[docs]</a><span class="k">def</span> <span class="nf">LANLmax</span><span class="p">(</span><span class="n">inputdict</span><span class="p">,</span> <span class="n">extMag</span><span class="p">):</span>
 
@@ -420,7 +411,7 @@
 <span class="sd">     &#39;T96&#39;: array([9.2410]),</span>
 <span class="sd">     &#39;T05&#39;: array([9.9295])}</span>
 <span class="sd">     &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">_LANLcommon</span><span class="p">(</span><span class="n">inputdict</span><span class="p">,</span> <span class="n">extMag</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">_LANLcommon</span><span class="p">(</span><span class="n">inputdict</span><span class="p">,</span> <span class="n">extMag</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span></div>
 
 <span class="k">def</span> <span class="nf">addPA</span><span class="p">(</span><span class="n">indict</span><span class="p">,</span> <span class="n">PA</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Function to add pitch angle to input dictionary from, e.g., omni module</span>
@@ -450,6 +441,7 @@
     <span class="k">return</span> <span class="n">indict</span>
 </pre></div>
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -464,16 +456,19 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="https://github.com/spacepy/spacepy">homepage</a>|&nbsp;</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../../search.html">search</a>|&nbsp;</li>
        <li><a href="../../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../spacepy.html" >spacepy</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.LANLstar</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2011-2019, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+        &#169; Copyright 2011-2020, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
     </div>
   </body>
 </html>
