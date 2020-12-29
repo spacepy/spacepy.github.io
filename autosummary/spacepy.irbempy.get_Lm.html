@@ -1,36 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>spacepy.irbempy.get_Lm &mdash; SpacePy v0.2.1 Manual</title>
-    
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>spacepy.irbempy.get_Lm &#8212; SpacePy v0.2.2 Manual</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
     
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '0.2.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    
     <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
-    <link rel="top" title="SpacePy v0.2.1 Manual" href="../index.html" />
-    <link rel="up" title="irbempy - Python interface to irbem/ONERA library" href="../irbempy.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="spacepy.irbempy.get_Lstar" href="spacepy.irbempy.get_Lstar.html" />
     <link rel="prev" title="spacepy.irbempy.get_Bfield" href="spacepy.irbempy.get_Bfield.html" /> 
-  </head>
-  <body role="document">
+  </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -51,11 +42,13 @@
         <li class="right" >
           <a href="spacepy.irbempy.get_Bfield.html" title="spacepy.irbempy.get_Bfield"
              accesskey="P">previous</a> |</li>
-        <li><a href="https://github.com/spacepy/spacepy">homepage</a>|&nbsp;</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../irbempy.html" accesskey="U">irbempy - Python interface to irbem/ONERA library</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../irbempy.html" accesskey="U">irbempy - Python interface to irbem/ONERA library</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.irbempy.get_Lm</a></li> 
       </ul>
     </div>
 
@@ -73,23 +66,20 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/autosummary/spacepy.irbempy.get_Lm.txt"
+      <li><a href="../_sources/autosummary/spacepy.irbempy.get_Lm.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -100,58 +90,50 @@
             
   <div class="section" id="spacepy-irbempy-get-lm">
 <h1>spacepy.irbempy.get_Lm<a class="headerlink" href="#spacepy-irbempy-get-lm" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
+<dl class="py function">
 <dt id="spacepy.irbempy.get_Lm">
-<code class="descclassname">spacepy.irbempy.</code><code class="descname">get_Lm</code><span class="sig-paren">(</span><em>ticks</em>, <em>loci</em>, <em>alpha</em>, <em>extMag='T01STORM'</em>, <em>intMag='IGRF'</em>, <em>IGRFset=0</em>, <em>omnivals=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/irbempy/irbempy.html#get_Lm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.irbempy.get_Lm" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">spacepy.irbempy.</code><code class="sig-name descname">get_Lm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ticks</span></em>, <em class="sig-param"><span class="n">loci</span></em>, <em class="sig-param"><span class="n">alpha</span></em>, <em class="sig-param"><span class="n">extMag</span><span class="o">=</span><span class="default_value">'T01STORM'</span></em>, <em class="sig-param"><span class="n">intMag</span><span class="o">=</span><span class="default_value">'IGRF'</span></em>, <em class="sig-param"><span class="n">IGRFset</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">omnivals</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/irbempy/irbempy.html#get_Lm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.irbempy.get_Lm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the MacIlwain L value for a given location, time and model</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>- ticks (Ticktock class)</strong> : containing time information</p>
-<blockquote>
-<div><ul>
-<li><p class="first">loci (Coords class) : containing spatial information</p>
-</li>
-<li><p class="first">alpha (list or ndarray) : pitch angles in degrees</p>
-</li>
-<li><dl class="first docutils">
-<dt>extMag (string) <span class="classifier-delimiter">:</span> <span class="classifier">optional; will choose the external magnetic field model </span></dt>
-<dd><p class="first last">possible values [&#8216;0&#8217;, &#8216;MEAD&#8217;, &#8216;T87SHORT&#8217;, &#8216;T87LONG&#8217;, &#8216;T89&#8217;, 
-&#8216;OPQUIET&#8217;, &#8216;OPDYN&#8217;, &#8216;T96&#8217;, &#8216;OSTA&#8217;, &#8216;T01QUIET&#8217;, &#8216;T01STORM&#8217;, 
-&#8216;T05&#8217;, &#8216;ALEX&#8217;, &#8216;TS07&#8217;]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>- ticks (Ticktock class)</strong><span class="classifier">containing time information</span></dt><dd><ul class="simple">
+<li><p>loci (Coords class) : containing spatial information</p></li>
+<li><p>alpha (list or ndarray) : pitch angles in degrees</p></li>
+<li><dl class="simple">
+<dt>extMag (string)<span class="classifier">optional; will choose the external magnetic field model </span></dt><dd><p>possible values [‘0’, ‘MEAD’, ‘T87SHORT’, ‘T87LONG’, ‘T89’, 
+‘OPQUIET’, ‘OPDYN’, ‘T96’, ‘OSTA’, ‘T01QUIET’, ‘T01STORM’, 
+‘T05’, ‘ALEX’, ‘TS07’]</p>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>intMag (string) <span class="classifier-delimiter">:</span> <span class="classifier">optional: select the internal field model</span></dt>
-<dd><p class="first last">possible values [&#8216;IGRF&#8217;,&#8217;EDIP&#8217;,&#8217;JC&#8217;,&#8217;GSFC&#8217;,&#8217;DUN&#8217;,&#8217;CDIP&#8217;]
+<li><dl class="simple">
+<dt>intMag (string)<span class="classifier">optional: select the internal field model</span></dt><dd><p>possible values [‘IGRF’,’EDIP’,’JC’,’GSFC’,’DUN’,’CDIP’]
 For full details see get_Lstar</p>
 </dd>
 </dl>
 </li>
-<li><p class="first">omni values as dictionary (optional) : if not provided, will use lookup table</p>
-</li>
+<li><p>omni values as dictionary (optional) : if not provided, will use lookup table</p></li>
 </ul>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>- results (dictionary)</strong> : containing keys: Lm, Bmin, Blocal (or Bmirr), Xj, MLT</p>
-<blockquote class="last">
-<div><p>if pitch angles provided in &#8220;alpha&#8221; then drift shells are calculated and &#8220;Bmirr&#8221; 
-is returned if not provided, then &#8220;Blocal&#8221; at spacecraft is returned. A negative
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>- results (dictionary)</strong><span class="classifier">containing keys: Lm, Bmin, Blocal (or Bmirr), Xj, MLT</span></dt><dd><p>if pitch angles provided in “alpha” then drift shells are calculated and “Bmirr” 
+is returned if not provided, then “Blocal” at spacecraft is returned. A negative
 value for Lm indicates the field line is closed but particles are lost to the
 atmosphere; the absolute value indicates the L value.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -172,16 +154,18 @@ atmosphere; the absolute value indicates the L value.</p>
         <li class="right" >
           <a href="spacepy.irbempy.get_Bfield.html" title="spacepy.irbempy.get_Bfield"
              >previous</a> |</li>
-        <li><a href="https://github.com/spacepy/spacepy">homepage</a>|&nbsp;</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../irbempy.html" >irbempy - Python interface to irbem/ONERA library</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../irbempy.html" >irbempy - Python interface to irbem/ONERA library</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.irbempy.get_Lm</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2011-2019, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+        &#169; Copyright 2011-2020, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
     </div>
   </body>
 </html>

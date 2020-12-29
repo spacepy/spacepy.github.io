@@ -1,34 +1,25 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>spacepy.datamodel &mdash; SpacePy v0.2.1 Manual</title>
-    
-    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>spacepy.datamodel &#8212; SpacePy v0.2.2 Manual</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
     
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '0.2.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    
     <link rel="shortcut icon" href="../../_static/spacepy_favicon.ico"/>
-    <link rel="top" title="SpacePy v0.2.1 Manual" href="../../index.html" />
-    <link rel="up" title="Module code" href="../index.html" /> 
-  </head>
-  <body role="document">
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../../index.html"><img src="../../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -43,11 +34,14 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="https://github.com/spacepy/spacepy">homepage</a>|&nbsp;</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../../search.html">search</a>|&nbsp;</li>
        <li><a href="../../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../spacepy.html" accesskey="U">spacepy</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.datamodel</a></li> 
       </ul>
     </div>
 
@@ -57,18 +51,15 @@
               <img class="logo" src="../../_static/logo.png" alt="Logo"/>
             </a></p>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -78,7 +69,7 @@
           <div class="body" role="main">
             
   <h1>Source code for spacepy.datamodel</h1><div class="highlight"><pre>
-<span class="ch">#!/usr/bin/env python</span>
+<span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">The datamodel classes constitute a data model implementation</span>
@@ -252,21 +243,20 @@
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">StringIO</span> <span class="c1"># can&#39;t use cStringIO as we might have unicode</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">io</span> <span class="kn">as</span> <span class="nn">StringIO</span>
+    <span class="kn">import</span> <span class="nn">io</span> <span class="k">as</span> <span class="nn">StringIO</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">toolbox</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">time</span> <span class="k">as</span> <span class="n">spt</span>
+<span class="c1"># from . import toolbox # handled in functions that use it</span>
 
 
 <span class="n">__contact__</span> <span class="o">=</span> <span class="s1">&#39;Steve Morley, smorley@lanl.gov&#39;</span>
 
 <span class="c1"># python2 python3 string wrangling</span>
 <span class="k">try</span><span class="p">:</span>
-    <span class="n">str_classes</span> <span class="o">=</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">,</span> <span class="nb">unicode</span><span class="p">)</span>
+    <span class="n">str_classes</span> <span class="o">=</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">unicode</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
     <span class="n">str_classes</span> <span class="o">=</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">)</span>
-    <span class="nb">unicode</span> <span class="o">=</span> <span class="nb">str</span>
+    <span class="n">unicode</span> <span class="o">=</span> <span class="nb">str</span>
 
 <div class="viewcode-block" id="DMWarning"><a class="viewcode-back" href="../../autosummary/spacepy.datamodel.DMWarning.html#spacepy.datamodel.DMWarning">[docs]</a><span class="k">class</span> <span class="nc">DMWarning</span><span class="p">(</span><span class="ne">Warning</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -293,12 +283,12 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span>
 
-    <span class="nd">@meta.setter</span>
+    <span class="nd">@meta</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">meta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Set meta as with attrs&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">v</span>
 
-    <span class="nd">@meta.deleter</span>
+    <span class="nd">@meta</span><span class="o">.</span><span class="n">deleter</span>
     <span class="k">def</span> <span class="nf">meta</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Remove meta (and thus attrs)</span>
 
@@ -348,15 +338,15 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">Allowed_Attributes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;attrs&#39;</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">input_array</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">input_array</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
        <span class="c1"># Input array is an already formed ndarray instance</span>
        <span class="c1"># We first cast to be our class type</span>
        <span class="k">if</span> <span class="ow">not</span> <span class="n">dtype</span><span class="p">:</span>
-           <span class="n">obj</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">input_array</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">cls</span><span class="p">)</span>
+           <span class="n">obj</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">input_array</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
        <span class="k">else</span><span class="p">:</span>
-           <span class="n">obj</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">input_array</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">cls</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+           <span class="n">obj</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">input_array</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
        <span class="c1"># add the new attribute to the created instance</span>
-       <span class="k">if</span> <span class="n">attrs</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+       <span class="k">if</span> <span class="n">attrs</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
            <span class="n">obj</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">attrs</span>
        <span class="k">else</span><span class="p">:</span>
            <span class="n">obj</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{}</span>
@@ -365,12 +355,12 @@
 
     <span class="k">def</span> <span class="nf">__array_finalize__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
        <span class="c1"># see InfoArray.__array_finalize__ for comments</span>
-        <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">Allowed_Attributes</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__setattr__</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="p">{})))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="p">{})))</span>
 
-    <span class="k">def</span> <span class="nf">__array_wrap__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_arr</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__array_wrap__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_arr</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="c1">#check for zero-dims (numpy bug means subclass behaviour isn&#39;t consistent with ndarray</span>
         <span class="c1">#this traps most of the bad behaviour ( std() and var() still problems)</span>
         <span class="k">if</span> <span class="n">out_arr</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -385,7 +375,7 @@
 <span class="sd">        Only the attributes in Allowed_Attributes can exist</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">object_state</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="o">.</span><span class="n">__reduce__</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
-        <span class="n">subclass_state</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="nb">tuple</span><span class="p">([</span><span class="n">val</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__getattribute__</span><span class="p">(</span><span class="n">val</span><span class="p">)])</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">Allowed_Attributes</span><span class="p">])</span>
+        <span class="n">subclass_state</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="nb">tuple</span><span class="p">([</span><span class="n">val</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="n">val</span><span class="p">)])</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">Allowed_Attributes</span><span class="p">])</span>
         <span class="n">object_state</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">object_state</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">subclass_state</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">object_state</span><span class="p">)</span>
 
@@ -398,9 +388,9 @@
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">own_state</span><span class="p">):</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">val</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">Allowed_Attributes</span><span class="p">:</span> <span class="c1"># this is attrs</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">Allowed_Attributes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">own_state</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__setattr__</span><span class="p">(</span><span class="n">own_state</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">own_state</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">own_state</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">own_state</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
 
-    <span class="k">def</span> <span class="nf">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Make sure that .attrs is the only attribute that we are allowing</span>
 <span class="sd">        dmarray_ne took 15.324803 s</span>
 <span class="sd">        dmarray_eq took 15.665865 s</span>
@@ -412,18 +402,18 @@
             <span class="k">pass</span>
         <span class="k">elif</span> <span class="ow">not</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">Allowed_Attributes</span><span class="p">:</span>
             <span class="k">raise</span><span class="p">(</span><span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Only attribute listed in Allowed_Attributes can be set&quot;</span><span class="p">))</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">dmarray</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__setattr__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">dmarray</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
-<div class="viewcode-block" id="dmarray.addAttribute"><a class="viewcode-back" href="../../autosummary/spacepy.datamodel.dmarray.html#spacepy.datamodel.dmarray.addAttribute">[docs]</a>    <span class="k">def</span> <span class="nf">addAttribute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="dmarray.addAttribute"><a class="viewcode-back" href="../../autosummary/spacepy.datamodel.dmarray.html#spacepy.datamodel.dmarray.addAttribute">[docs]</a>    <span class="k">def</span> <span class="nf">addAttribute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Method to add an attribute to a dmarray</span>
 <span class="sd">        equivalent to</span>
 <span class="sd">        a = datamodel.dmarray([1,2,3])</span>
 <span class="sd">        a.Allowed_Attributes = a.Allowed_Attributes + [&#39;blabla&#39;]</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">Allowed_Attributes</span><span class="p">:</span>
-            <span class="k">raise</span><span class="p">(</span><span class="ne">NameError</span><span class="p">(</span><span class="s1">&#39;{0} is already an attribute cannot add again&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)))</span>
+            <span class="k">raise</span><span class="p">(</span><span class="ne">NameError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> is already an attribute cannot add again&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">)))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Allowed_Attributes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__setattr__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">count</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">srchval</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -436,66 +426,66 @@
         <span class="n">Allowed_Attributes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Allowed_Attributes</span>
         <span class="n">backup</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">atr</span> <span class="ow">in</span> <span class="n">Allowed_Attributes</span><span class="p">:</span>
-            <span class="n">backup</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="p">(</span><span class="n">atr</span><span class="p">,</span> <span class="n">dmcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__getattribute__</span><span class="p">(</span><span class="n">atr</span><span class="p">))</span> <span class="p">)</span> <span class="p">)</span>
+            <span class="n">backup</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="p">(</span><span class="n">atr</span><span class="p">,</span> <span class="n">dmcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="n">atr</span><span class="p">))</span> <span class="p">)</span> <span class="p">)</span>
         <span class="k">return</span> <span class="n">backup</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">_replaceAttrs</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">arr</span><span class="p">,</span> <span class="n">backup</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_replaceAttrs</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">arr</span><span class="p">,</span> <span class="n">backup</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">backup</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">key</span> <span class="o">!=</span> <span class="s1">&#39;attrs&#39;</span><span class="p">:</span>
                 <span class="k">try</span><span class="p">:</span>
                     <span class="n">arr</span><span class="o">.</span><span class="n">addAttribute</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
                 <span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
                     <span class="k">pass</span>
-            <span class="n">arr</span><span class="o">.</span><span class="n">__setattr__</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+            <span class="n">arr</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">arr</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">one</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">one</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        append data to an existing dmarray</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">backup</span> <span class="o">=</span> <span class="n">one</span><span class="o">.</span><span class="n">_saveAttrs</span><span class="p">()</span>
         <span class="n">outarr</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">one</span><span class="p">,</span> <span class="n">other</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">_replaceAttrs</span><span class="p">(</span><span class="n">outarr</span><span class="p">,</span> <span class="n">backup</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_replaceAttrs</span><span class="p">(</span><span class="n">outarr</span><span class="p">,</span> <span class="n">backup</span><span class="p">)</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">vstack</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">one</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">vstack</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">one</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        vstack data to an existing dmarray</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">backup</span> <span class="o">=</span> <span class="n">one</span><span class="o">.</span><span class="n">_saveAttrs</span><span class="p">()</span>
         <span class="n">outarr</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span> <span class="p">(</span><span class="n">one</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="p">))</span>
-        <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">_replaceAttrs</span><span class="p">(</span><span class="n">outarr</span><span class="p">,</span> <span class="n">backup</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_replaceAttrs</span><span class="p">(</span><span class="n">outarr</span><span class="p">,</span> <span class="n">backup</span><span class="p">)</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">hstack</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">one</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">hstack</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">one</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        hstack data to an existing dmarray</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">backup</span> <span class="o">=</span> <span class="n">one</span><span class="o">.</span><span class="n">_saveAttrs</span><span class="p">()</span>
         <span class="n">outarr</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span> <span class="p">(</span><span class="n">one</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="p">))</span>
-        <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">_replaceAttrs</span><span class="p">(</span><span class="n">outarr</span><span class="p">,</span> <span class="n">backup</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_replaceAttrs</span><span class="p">(</span><span class="n">outarr</span><span class="p">,</span> <span class="n">backup</span><span class="p">)</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">dstack</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">one</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">dstack</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">one</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        dstack data to an existing dmarray</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">backup</span> <span class="o">=</span> <span class="n">one</span><span class="o">.</span><span class="n">_saveAttrs</span><span class="p">()</span>
         <span class="n">outarr</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">dstack</span><span class="p">(</span> <span class="p">(</span><span class="n">one</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="p">))</span>
-        <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">_replaceAttrs</span><span class="p">(</span><span class="n">outarr</span><span class="p">,</span> <span class="n">backup</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_replaceAttrs</span><span class="p">(</span><span class="n">outarr</span><span class="p">,</span> <span class="n">backup</span><span class="p">)</span>
 
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">concatenate</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">one</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">concatenate</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">one</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        concatenate data to an existing dmarray</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">backup</span> <span class="o">=</span> <span class="n">one</span><span class="o">.</span><span class="n">_saveAttrs</span><span class="p">()</span>
         <span class="n">outarr</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span> <span class="p">(</span><span class="n">one</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span> <span class="p">))</span>
-        <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">_replaceAttrs</span><span class="p">(</span><span class="n">outarr</span><span class="p">,</span> <span class="n">backup</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_replaceAttrs</span><span class="p">(</span><span class="n">outarr</span><span class="p">,</span> <span class="n">backup</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="dmfilled"><a class="viewcode-back" href="../../autosummary/spacepy.datamodel.dmfilled.html#spacepy.datamodel.dmfilled">[docs]</a><span class="k">def</span> <span class="nf">dmfilled</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">fillval</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="dmfilled"><a class="viewcode-back" href="../../autosummary/spacepy.datamodel.dmfilled.html#spacepy.datamodel.dmfilled">[docs]</a><span class="k">def</span> <span class="nf">dmfilled</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">fillval</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return a new dmarray of given shape and type, filled with a specified value (default=0).</span>
 
@@ -525,11 +515,7 @@
 <span class="sd">        </span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">order</span><span class="p">),</span> <span class="n">attrs</span><span class="o">=</span><span class="n">attrs</span><span class="p">)</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">a</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">fillval</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-        <span class="n">obj</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">numeric</span><span class="o">.</span><span class="n">_maketup</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">fillval</span><span class="p">)</span>
-        <span class="n">a</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">fillval</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">a</span></div>
 
 
@@ -550,13 +536,13 @@
 <span class="sd">    .. automethod:: toHDF5</span>
 <span class="sd">    .. automethod:: toJSONheadedASCII</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This allows one to make a SpaceData indexed with an iterable of keys to return a new spacedata</span>
 <span class="sd">        made of the subset of keys</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span> 
-            <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">SpaceData</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__getitem__</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">SpaceData</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
         <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">)):</span>
                 <span class="c1"># make a new SpaceData from these keys</span>
@@ -566,9 +552,9 @@
                     <span class="n">out</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
                 <span class="k">return</span> <span class="n">out</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">raise</span><span class="p">(</span><span class="ne">KeyError</span><span class="p">(</span><span class="s1">&#39;{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">)))</span>
+                <span class="k">raise</span><span class="p">(</span><span class="ne">KeyError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">)))</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Base class for &quot;Data Model&quot; representation data</span>
 
@@ -587,22 +573,13 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;attrs&#39;</span><span class="p">]</span>
             <span class="k">del</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;attrs&#39;</span><span class="p">]</span>
 
-        <span class="nb">super</span><span class="p">(</span><span class="n">SpaceData</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">toCDF</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">toCDF</span><span class="p">,</span> <span class="n">SDobject</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">toCDF</span><span class="o">.</span><span class="n">__doc__</span> <span class="o">=</span> <span class="n">toCDF</span><span class="o">.</span><span class="n">__doc__</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">toHDF5</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">toHDF5</span><span class="p">,</span> <span class="n">SDobject</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">toHDF5</span><span class="o">.</span><span class="n">__doc__</span> <span class="o">=</span> <span class="n">toHDF5</span><span class="o">.</span><span class="n">__doc__</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">toJSONheadedASCII</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">toJSONheadedASCII</span><span class="p">,</span> <span class="n">insd</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">toJSONheadedASCII</span><span class="o">.</span><span class="n">__doc__</span> <span class="o">=</span> <span class="n">toJSONheadedASCII</span><span class="o">.</span><span class="n">__doc__</span>
-
-    <span class="c1">#Need to remove the partials on copy, http://bugs.python.org/issue4380</span>
-    <span class="c1">#They will be recreated by __init__</span>
-    <span class="k">def</span> <span class="nf">__getstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">d</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span>
-        <span class="k">if</span> <span class="s1">&#39;toCDF&#39;</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span> <span class="k">del</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;toCDF&#39;</span><span class="p">]</span>
-        <span class="k">if</span> <span class="s1">&#39;toHDF5&#39;</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span> <span class="k">del</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;toHDF5&#39;</span><span class="p">]</span>
-        <span class="k">if</span> <span class="s1">&#39;toJSONheadedASCII&#39;</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span> <span class="k">del</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;toJSONheadedASCII&#39;</span><span class="p">]</span>
-        <span class="k">return</span> <span class="n">d</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SpaceData</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toCDF</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">toCDF</span><span class="p">,</span> <span class="n">SDobject</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toCDF</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">toCDF</span><span class="o">.</span><span class="vm">__doc__</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toHDF5</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">toHDF5</span><span class="p">,</span> <span class="n">SDobject</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toHDF5</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">toHDF5</span><span class="o">.</span><span class="vm">__doc__</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toJSONheadedASCII</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">toJSONheadedASCII</span><span class="p">,</span> <span class="n">insd</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toJSONheadedASCII</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">toJSONheadedASCII</span><span class="o">.</span><span class="vm">__doc__</span>
 
 <span class="c1">## To enable string output of repr, instead of just printing, uncomment his block</span>
 <span class="c1">#    def __repr__(self):</span>
@@ -650,6 +627,7 @@
 <span class="sd">        --------</span>
 <span class="sd">        toolbox.dictree</span>
 <span class="sd">        &#39;&#39;&#39;</span>
+        <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">toolbox</span>
         <span class="n">toolbox</span><span class="o">.</span><span class="n">dictree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="SpaceData.flatten"><a class="viewcode-back" href="../../autosummary/spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData.flatten">[docs]</a>    <span class="k">def</span> <span class="nf">flatten</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -776,7 +754,7 @@
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">addme</span> <span class="o">=</span> <span class="n">dobj</span><span class="o">.</span><span class="n">__class__</span><span class="p">()</span>
+        <span class="n">addme</span> <span class="o">=</span> <span class="n">dobj</span><span class="o">.</span><span class="vm">__class__</span><span class="p">()</span>
     <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">):</span>
         <span class="n">addme</span> <span class="o">=</span> <span class="n">SpaceData</span><span class="p">()</span>
     <span class="n">remlist</span> <span class="o">=</span> <span class="p">[]</span>
@@ -845,7 +823,7 @@
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="c1">#set up a new object for return</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">addme</span> <span class="o">=</span> <span class="n">dobj</span><span class="o">.</span><span class="n">__class__</span><span class="p">()</span>
+        <span class="n">addme</span> <span class="o">=</span> <span class="n">dobj</span><span class="o">.</span><span class="vm">__class__</span><span class="p">()</span>
     <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">):</span>
         <span class="n">addme</span> <span class="o">=</span> <span class="n">SpaceData</span><span class="p">()</span>
     <span class="c1">#the input is assumed to be single level (i.e. it is flat)</span>
@@ -951,13 +929,13 @@
 <span class="sd">    None</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">defaults</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;skeleton&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;flatten&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-                <span class="s1">&#39;overwrite&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-                <span class="s1">&#39;compress&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-                <span class="s1">&#39;autoNRV&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-                <span class="s1">&#39;backward&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-                <span class="s1">&#39;TT2000&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-                <span class="s1">&#39;verbose&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">}</span>
+                <span class="s1">&#39;flatten&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                <span class="s1">&#39;overwrite&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                <span class="s1">&#39;compress&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                <span class="s1">&#39;autoNRV&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                <span class="s1">&#39;backward&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                <span class="s1">&#39;TT2000&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                <span class="s1">&#39;verbose&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
     <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">defaults</span><span class="p">:</span>
             <span class="n">defaults</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
@@ -971,7 +949,7 @@
         <span class="kn">from</span> <span class="nn">spacepy</span> <span class="kn">import</span> <span class="n">pycdf</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;CDF converter requires NASA CDF library and SpacePy&#39;s pyCDF&quot;</span><span class="p">)</span>
-    <span class="n">pycdf</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">set_backward</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">pycdf</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">set_backward</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     <span class="k">with</span> <span class="n">pycdf</span><span class="o">.</span><span class="n">CDF</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">defaults</span><span class="p">[</span><span class="s1">&#39;skeleton&#39;</span><span class="p">])</span> <span class="k">as</span> <span class="n">outdata</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">SDobject</span><span class="p">,</span> <span class="s1">&#39;attrs&#39;</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">akey</span> <span class="ow">in</span> <span class="n">SDobject</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
@@ -992,11 +970,11 @@
                     <span class="n">NRVtest</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">SDobject</span><span class="p">[</span><span class="s1">&#39;Epoch&#39;</span><span class="p">])</span>
                 <span class="k">if</span> <span class="n">shape_tup</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">NRVtest</span><span class="p">:</span> <span class="c1">#naive check for &#39;should-be&#39; NRV</span>
                     <span class="k">try</span><span class="p">:</span>
-                        <span class="n">foo</span> <span class="o">=</span> <span class="n">outdata</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">SDobject</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="o">...</span><span class="p">],</span> <span class="n">recVary</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-                        <span class="k">if</span> <span class="n">defaults</span><span class="p">[</span><span class="s1">&#39;verbose&#39;</span><span class="p">]:</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{0} is being made NRV&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+                        <span class="n">foo</span> <span class="o">=</span> <span class="n">outdata</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">SDobject</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="o">...</span><span class="p">],</span> <span class="n">recVary</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">defaults</span><span class="p">[</span><span class="s1">&#39;verbose&#39;</span><span class="p">]:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> is being made NRV&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
                         <span class="n">outdata</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">dmcopy</span><span class="p">(</span><span class="n">SDobject</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
                     <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-                        <span class="n">foo</span> <span class="o">=</span> <span class="n">outdata</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">SDobject</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">,</span> <span class="n">recVary</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+                        <span class="n">foo</span> <span class="o">=</span> <span class="n">outdata</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">SDobject</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">,</span> <span class="n">recVary</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
                         <span class="n">outdata</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">dmcopy</span><span class="p">(</span><span class="n">SDobject</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">defaults</span><span class="p">[</span><span class="s1">&#39;TT2000&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="s1">&#39;Epoch&#39;</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
                     <span class="n">foo</span> <span class="o">=</span> <span class="n">outdata</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">SDobject</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="o">...</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">pycdf</span><span class="o">.</span><span class="n">const</span><span class="o">.</span><span class="n">CDF_TIME_TT2000</span><span class="p">)</span>
@@ -1027,7 +1005,7 @@
                         <span class="n">outdata</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">([</span><span class="n">SDobject</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()],</span> <span class="n">attrs</span><span class="o">=</span><span class="n">dmcopy</span><span class="p">(</span><span class="n">SDobject</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">))</span>
                     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
                         <span class="k">pass</span>
-    <span class="k">return</span> <span class="bp">None</span></div>
+    <span class="k">return</span> <span class="kc">None</span></div>
 
 
 <div class="viewcode-block" id="fromHDF5"><a class="viewcode-back" href="../../autosummary/spacepy.datamodel.fromHDF5.html#spacepy.datamodel.fromHDF5">[docs]</a><span class="k">def</span> <span class="nf">fromHDF5</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -1066,17 +1044,17 @@
                 <span class="k">try</span><span class="p">:</span>
                     <span class="n">value</span> <span class="o">=</span> <span class="n">hfile</span><span class="p">[</span><span class="n">path</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
                 <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-                    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Unsupported datatype in dataset {0}.attrs[{1}]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">key</span><span class="p">))</span>
+                    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Unsupported datatype in dataset </span><span class="si">{0}</span><span class="s1">.attrs[</span><span class="si">{1}</span><span class="s1">]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">key</span><span class="p">))</span>
                     <span class="k">continue</span>
                 <span class="k">try</span><span class="p">:</span>
                     <span class="n">SDobject</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
                 <span class="k">except</span><span class="p">:</span>
                     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;The following key:value pair is not permitted</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
-                                    <span class="s1">&#39;key = {0} ({1})</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">key</span><span class="p">))</span> <span class="o">+</span>
-                                    <span class="s1">&#39;value = {0} ({1})&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)),</span> <span class="n">DMWarning</span><span class="p">)</span>
+                                    <span class="s1">&#39;key = </span><span class="si">{0}</span><span class="s1"> (</span><span class="si">{1}</span><span class="s1">)</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">key</span><span class="p">))</span> <span class="o">+</span>
+                                    <span class="s1">&#39;value = </span><span class="si">{0}</span><span class="s1"> (</span><span class="si">{1}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)),</span> <span class="n">DMWarning</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">h5py</span> <span class="kn">as</span> <span class="nn">hdf</span>
+        <span class="kn">import</span> <span class="nn">h5py</span> <span class="k">as</span> <span class="nn">hdf</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s1">&#39;HDF5 converter requires h5py&#39;</span><span class="p">)</span>
 
@@ -1105,7 +1083,7 @@
                 <span class="k">try</span><span class="p">:</span>
                     <span class="n">SDobject</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
                 <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ZeroDivisionError</span><span class="p">):</span> <span class="c1">#ZeroDivisionError catches zero-sized DataSets</span>
-                    <span class="n">SDobject</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+                    <span class="n">SDobject</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
                 <span class="n">hdfcarryattrs</span><span class="p">(</span><span class="n">SDobject</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">hfile</span><span class="p">,</span> <span class="n">path</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">key</span><span class="p">)</span>
         <span class="c1">#except:</span>
         <span class="c1">#    raise ValueError(&#39;HDF5 file contains type other than Group or Dataset&#39;)</span>
@@ -1156,35 +1134,35 @@
                     <span class="c1">#test for datetimes in iterables</span>
                     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s1">&#39;__iter__&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">str_classes</span><span class="p">):</span>
                         <span class="n">dumval</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">)</span> <span class="k">else</span> <span class="n">b</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">value</span><span class="p">]</span>
-                    <span class="n">truth</span> <span class="o">=</span> <span class="bp">False</span>
+                    <span class="n">truth</span> <span class="o">=</span> <span class="kc">False</span>
                     <span class="k">try</span><span class="p">:</span>
-                        <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">nbytes</span><span class="p">:</span> <span class="n">truth</span> <span class="o">=</span> <span class="bp">True</span> <span class="c1">#empty arrays of any dimension are nbytes=0</span>
+                        <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">nbytes</span><span class="p">:</span> <span class="n">truth</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1">#empty arrays of any dimension are nbytes=0</span>
                     <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span> <span class="c1">#not an array</span>
-                        <span class="k">if</span> <span class="n">value</span> <span class="ow">or</span> <span class="n">value</span> <span class="ow">is</span> <span class="mi">0</span><span class="p">:</span> <span class="n">truth</span> <span class="o">=</span> <span class="bp">True</span>
+                        <span class="k">if</span> <span class="n">value</span> <span class="ow">or</span> <span class="n">value</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="n">truth</span> <span class="o">=</span> <span class="kc">True</span>
 
                     <span class="k">if</span> <span class="n">truth</span><span class="p">:</span>
                         <span class="k">if</span> <span class="nb">bytes</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
-                            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">unicode</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="ow">is</span> <span class="n">unicode</span><span class="p">:</span>
                                 <span class="n">dumkey</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
-                            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">unicode</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="ow">is</span> <span class="n">unicode</span><span class="p">:</span>
                                 <span class="n">dumval</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
-                        <span class="n">uni</span> <span class="o">=</span> <span class="bp">False</span> <span class="c1">#No special unicode handling</span>
+                        <span class="n">uni</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1">#No special unicode handling</span>
                         <span class="k">if</span> <span class="ow">not</span> <span class="nb">bytes</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span> <span class="c1">#Python 3</span>
                             <span class="n">dumval</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">dumval</span><span class="p">)</span>
                             <span class="k">if</span> <span class="n">dumval</span><span class="o">.</span><span class="n">size</span> <span class="ow">and</span> <span class="n">dumval</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;U&#39;</span><span class="p">:</span>
-                                <span class="n">uni</span> <span class="o">=</span> <span class="bp">True</span> <span class="c1">#Unicode list, special handling</span>
+                                <span class="n">uni</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1">#Unicode list, special handling</span>
                         <span class="k">try</span><span class="p">:</span>
                             <span class="k">if</span> <span class="n">uni</span><span class="p">:</span>
                                 <span class="c1">#Tell hdf5 this is unicode. Numpy is UCS-4, HDF5 is UTF-8</span>
                                 <span class="n">hfile</span><span class="p">[</span><span class="n">path</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">dumkey</span><span class="p">,</span> <span class="n">dumval</span><span class="p">,</span>
-                                    <span class="n">dtype</span><span class="o">=</span><span class="n">hdf</span><span class="o">.</span><span class="n">special_dtype</span><span class="p">(</span><span class="n">vlen</span><span class="o">=</span><span class="nb">unicode</span><span class="p">))</span>
+                                    <span class="n">dtype</span><span class="o">=</span><span class="n">hdf</span><span class="o">.</span><span class="n">special_dtype</span><span class="p">(</span><span class="n">vlen</span><span class="o">=</span><span class="n">unicode</span><span class="p">))</span>
                             <span class="k">else</span><span class="p">:</span>
                                 <span class="n">hfile</span><span class="p">[</span><span class="n">path</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">dumkey</span><span class="p">]</span> <span class="o">=</span> <span class="n">dumval</span>
                         <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
                             <span class="n">hfile</span><span class="p">[</span><span class="n">path</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">dumkey</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">dumval</span><span class="p">)</span>
                             <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
                                 <span class="s1">&#39;The following value is not permitted</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
-                                <span class="s1">&#39;key, value, type = {0}, {1}, {2})</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                                <span class="s1">&#39;key, value, type = </span><span class="si">{0}</span><span class="s1">, </span><span class="si">{1}</span><span class="s1">, </span><span class="si">{2}</span><span class="s1">)</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                                     <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">))</span> <span class="o">+</span>
                                 <span class="s1">&#39;value has been converted to a string for output&#39;</span><span class="p">,</span>
                                 <span class="n">DMWarning</span><span class="p">)</span>
@@ -1192,18 +1170,18 @@
                         <span class="n">hfile</span><span class="p">[</span><span class="n">path</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">dumkey</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
                 <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">):</span>
                     <span class="n">dumval</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
-                    <span class="k">if</span> <span class="nb">bytes</span> <span class="ow">is</span> <span class="nb">str</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">unicode</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="nb">bytes</span> <span class="ow">is</span> <span class="nb">str</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="ow">is</span> <span class="n">unicode</span><span class="p">:</span>
                         <span class="n">dumkey</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
                     <span class="n">hfile</span><span class="p">[</span><span class="n">path</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">dumkey</span><span class="p">]</span> <span class="o">=</span> <span class="n">dumval</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="c1">#TODO: add support for arrays(?) in attrs (convert to isoformat)</span>
                     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;The following key:value pair is not permitted</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
-                                    <span class="s1">&#39;key = {0} ({1})</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">key</span><span class="p">))</span> <span class="o">+</span>
-                                    <span class="s1">&#39;value type {0} is not in the allowed attribute list&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)),</span>
+                                    <span class="s1">&#39;key = </span><span class="si">{0}</span><span class="s1"> (</span><span class="si">{1}</span><span class="s1">)</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">key</span><span class="p">))</span> <span class="o">+</span>
+                                    <span class="s1">&#39;value type </span><span class="si">{0}</span><span class="s1"> is not in the allowed attribute list&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)),</span>
                                         <span class="n">DMWarning</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">h5py</span> <span class="kn">as</span> <span class="nn">hdf</span>
+        <span class="kn">import</span> <span class="nn">h5py</span> <span class="k">as</span> <span class="nn">hdf</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s1">&#39;h5py is required to use HDF5 files&#39;</span><span class="p">)</span>
     
@@ -1217,28 +1195,28 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">wr_mo</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;mode&#39;</span><span class="p">]</span>
     <span class="k">if</span> <span class="s1">&#39;compression&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
-        <span class="n">h5_compr_type</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">h5_compr_type</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">h5_compr_type</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;compression&#39;</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">h5_compr_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;gzip&#39;</span><span class="p">,</span> <span class="s1">&#39;szip&#39;</span><span class="p">,</span> <span class="s1">&#39;lzf&#39;</span><span class="p">,</span> <span class="s1">&#39;shuffle&#39;</span><span class="p">,</span> <span class="s1">&#39;fletcher32&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">h5_compr_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;gzip&#39;</span><span class="p">,</span> <span class="s1">&#39;szip&#39;</span><span class="p">,</span> <span class="s1">&#39;lzf&#39;</span><span class="p">,</span> <span class="s1">&#39;shuffle&#39;</span><span class="p">,</span> <span class="s1">&#39;fletcher32&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
             <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Specified compression type not supported&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;compression_opts&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">h5_compr_type</span> <span class="o">==</span> <span class="s1">&#39;lzf&#39;</span><span class="p">):</span>
-        <span class="n">h5_compr_opts</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">h5_compr_opts</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">h5_compr_opts</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;compression_opts&#39;</span><span class="p">]</span>
 
-    <span class="k">if</span> <span class="s1">&#39;overwrite&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;overwrite&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">if</span> <span class="s1">&#39;overwrite&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;overwrite&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span> <span class="ow">in</span> <span class="n">str_classes</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;overwrite&#39;</span><span class="p">]:</span>
-            <span class="k">raise</span><span class="p">(</span><span class="ne">IOError</span><span class="p">(</span><span class="s1">&#39;Cannot write HDF5, file exists (see overwrite) &quot;{0!s}&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fname</span><span class="p">)))</span>
+            <span class="k">raise</span><span class="p">(</span><span class="ne">IOError</span><span class="p">(</span><span class="s1">&#39;Cannot write HDF5, file exists (see overwrite) &quot;</span><span class="si">{0!s}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fname</span><span class="p">)))</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span> <span class="ow">and</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;overwrite&#39;</span><span class="p">]:</span>
             <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
         <span class="n">hfile</span> <span class="o">=</span> <span class="n">hdf</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">wr_mo</span><span class="p">)</span>
-        <span class="n">must_close</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="n">must_close</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">hfile</span> <span class="o">=</span> <span class="n">fname</span>
         <span class="c1">#should test here for HDF file object</span>
-        <span class="n">must_close</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">must_close</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="s1">&#39;path&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;path&#39;</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
@@ -1247,7 +1225,7 @@
     <span class="c1"># long is a type in python2 not in python3</span>
     <span class="c1"># unicode is a type in python2 not in python3</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">allowed_attrs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">long</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">unicode</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">string_</span><span class="p">]</span>
+        <span class="n">allowed_attrs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">unicode</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">string_</span><span class="p">]</span>
     <span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
         <span class="n">allowed_attrs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">,</span>       <span class="nb">float</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">string_</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">numpy</span><span class="o">.</span><span class="n">typecodes</span><span class="p">[</span><span class="s1">&#39;AllInteger&#39;</span><span class="p">]:</span>
@@ -1279,8 +1257,8 @@
                 <span class="n">SDcarryattrs</span><span class="p">(</span><span class="n">SDobject</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">hfile</span><span class="p">,</span> <span class="n">path</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">key</span><span class="p">,</span> <span class="n">allowed_attrs</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;The following data is not being written as is not of an allowed type</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
-                               <span class="s1">&#39;key = {0} ({1})</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">key</span><span class="p">))</span> <span class="o">+</span>
-                                  <span class="s1">&#39;value type {0} is not in the allowed data type list&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)),</span>
+                               <span class="s1">&#39;key = </span><span class="si">{0}</span><span class="s1"> (</span><span class="si">{1}</span><span class="s1">)</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">key</span><span class="p">))</span> <span class="o">+</span>
+                                  <span class="s1">&#39;value type </span><span class="si">{0}</span><span class="s1"> is not in the allowed data type list&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)),</span>
                                       <span class="n">DMWarning</span><span class="p">)</span>
     <span class="k">finally</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">must_close</span><span class="p">:</span>
@@ -1293,7 +1271,7 @@
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s1">&#39;SciPy is required to import netcdf3&#39;</span><span class="p">)</span>
 
-    <span class="n">ncfile</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">netcdf_file</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">mmap</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">ncfile</span> <span class="o">=</span> <span class="n">nc</span><span class="o">.</span><span class="n">netcdf_file</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">mmap</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
     <span class="n">SDobject</span> <span class="o">=</span> <span class="n">SpaceData</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="n">dmcopy</span><span class="p">(</span><span class="n">ncfile</span><span class="o">.</span><span class="n">_attributes</span><span class="p">))</span>
 
@@ -1309,7 +1287,7 @@
 
 
 <div class="viewcode-block" id="toHTML"><a class="viewcode-back" href="../../autosummary/spacepy.datamodel.toHTML.html#spacepy.datamodel.toHTML">[docs]</a><span class="k">def</span> <span class="nf">toHTML</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">SDobject</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">(),</span>
-           <span class="n">varLinks</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">linkFormat</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">echo</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">tableTag</span><span class="o">=</span><span class="s1">&#39;&lt;table border=&quot;1&quot;&gt;&#39;</span><span class="p">):</span>
+           <span class="n">varLinks</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linkFormat</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">echo</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">tableTag</span><span class="o">=</span><span class="s1">&#39;&lt;table border=&quot;1&quot;&gt;&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create an HTML dump of the structure of a spacedata</span>
 
@@ -1338,9 +1316,9 @@
 
     <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">tableTag</span><span class="p">)</span>
     <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;tr&gt;&lt;th&gt;{0}&lt;/th&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Variable&#39;</span><span class="p">))</span>
+    <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;tr&gt;&lt;th&gt;</span><span class="si">{0}</span><span class="s1">&lt;/th&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Variable&#39;</span><span class="p">))</span>
     <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">:</span>
-        <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;th&gt;{0}&lt;/th&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">attr</span><span class="p">))</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;th&gt;</span><span class="si">{0}</span><span class="s1">&lt;/th&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">attr</span><span class="p">))</span>
     <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;/tr&gt;&#39;</span><span class="p">)</span>
 
     <span class="k">for</span> <span class="n">ii</span><span class="p">,</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">keys</span><span class="p">):</span>
@@ -1350,19 +1328,19 @@
             <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;tr class=&quot;alt&quot;&gt;&#39;</span><span class="p">)</span>
         <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;td&gt;&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">varLinks</span><span class="p">:</span>
-            <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;a href=&quot;{0}.html&quot;&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
-        <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;a href=&quot;</span><span class="si">{0}</span><span class="s1">.html&quot;&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">varLinks</span><span class="p">:</span>
             <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;/a&gt;&#39;</span><span class="p">)</span>
         <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;/td&gt;&#39;</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">SDobject</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">attr</span><span class="p">],</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">unicode</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">SDobject</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">attr</span><span class="p">],</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">unicode</span><span class="p">)):</span>
                     <span class="n">tmp</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">SDobject</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">attr</span><span class="p">])</span>
-                    <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;td&gt;{0}&lt;/td&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">_idl2html</span><span class="p">(</span><span class="n">tmp</span><span class="p">)))</span>
+                    <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;td&gt;</span><span class="si">{0}</span><span class="s1">&lt;/td&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">_idl2html</span><span class="p">(</span><span class="n">tmp</span><span class="p">)))</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;td&gt;{0}&lt;/td&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">_idl2html</span><span class="p">(</span><span class="n">SDobject</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">attr</span><span class="p">])))</span>
+                    <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;td&gt;</span><span class="si">{0}</span><span class="s1">&lt;/td&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">_idl2html</span><span class="p">(</span><span class="n">SDobject</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">attr</span><span class="p">])))</span>
             <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
                 <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;td&gt;&lt;/td&gt;&#39;</span><span class="p">)</span>
         <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;/tr&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -1370,7 +1348,7 @@
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
         <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
     <span class="k">if</span> <span class="n">echo</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
     <span class="n">output</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
 
 <span class="k">def</span> <span class="nf">_idl2html</span><span class="p">(</span><span class="n">idl</span><span class="p">):</span>
@@ -1391,7 +1369,7 @@
     <span class="n">conv</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;!!&#39;</span><span class="p">:</span> <span class="s1">&#39;!&#39;</span><span class="p">,</span>
             <span class="s1">&#39;!E&#39;</span><span class="p">:</span> <span class="s1">&#39;&lt;sup&gt;&#39;</span><span class="p">,</span>
             <span class="s1">&#39;!I&#39;</span><span class="p">:</span> <span class="s1">&#39;&lt;sub&gt;&#39;</span><span class="p">}</span>
-    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span> <span class="c1"># hate it but for now</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span> <span class="c1"># hate it but for now</span>
         <span class="n">ind</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;!&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">ind</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
             <span class="k">break</span>
@@ -1434,13 +1412,13 @@
             <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
     <span class="c1"># isolate header</span>
-    <span class="n">p_srch</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">r&quot;^#(.*)$&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">M</span><span class="p">)</span>
+    <span class="n">p_srch</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^#(.*)$&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">M</span><span class="p">)</span>
     <span class="n">hreg</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">p_srch</span><span class="p">,</span> <span class="n">lines</span><span class="p">)</span>
     <span class="n">header</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hreg</span><span class="p">)</span>
 
     <span class="c1"># isolate JSON field</span>
-    <span class="n">srch</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">r&#39;\{\s*(.*)\s*\}&#39;</span><span class="p">,</span> <span class="n">header</span> <span class="p">)</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">srch</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="bp">None</span><span class="p">)):</span>
+    <span class="n">srch</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\{\s*(.*)\s*\}&#39;</span><span class="p">,</span> <span class="n">header</span> <span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">srch</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)):</span>
         <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s1">&#39;The input file has no valid JSON header. Must be valid JSON bounded by braces &quot;{ }&quot;.&#39;</span><span class="p">)</span>
     <span class="n">js</span> <span class="o">=</span> <span class="n">srch</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">inx</span> <span class="o">=</span> <span class="n">js</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s1">&#39;end JSON&#39;</span><span class="p">)</span>
@@ -1466,10 +1444,10 @@
 
     <span class="k">if</span> <span class="s1">&#39;verbose&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;verbose&#39;</span><span class="p">]:</span>
-            <span class="n">mdata</span><span class="o">.</span><span class="n">tree</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+            <span class="n">mdata</span><span class="o">.</span><span class="n">tree</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">mdata</span></div>
 
-<div class="viewcode-block" id="readJSONheadedASCII"><a class="viewcode-back" href="../../autosummary/spacepy.datamodel.readJSONheadedASCII.html#spacepy.datamodel.readJSONheadedASCII">[docs]</a><span class="k">def</span> <span class="nf">readJSONheadedASCII</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">mdata</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">convert</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">restrict</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="readJSONheadedASCII"><a class="viewcode-back" href="../../autosummary/spacepy.datamodel.readJSONheadedASCII.html#spacepy.datamodel.readJSONheadedASCII">[docs]</a><span class="k">def</span> <span class="nf">readJSONheadedASCII</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">mdata</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">convert</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">restrict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;read JSON-headed ASCII data files into a SpacePy datamodel</span>
 
 <span class="sd">    Parameters</span>
@@ -1496,13 +1474,13 @@
 <span class="sd">    mdata: spacepy.datamodel.SpaceData</span>
 <span class="sd">        SpaceData with the data and metadata from the file</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">import</span> <span class="nn">dateutil.parser</span> <span class="kn">as</span> <span class="nn">dup</span>
-    <span class="n">filelike</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="kn">import</span> <span class="nn">dateutil.parser</span> <span class="k">as</span> <span class="nn">dup</span>
+    <span class="n">filelike</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">str_classes</span><span class="p">):</span>
         <span class="n">fname</span><span class="o">=</span><span class="p">[</span><span class="n">fname</span><span class="p">]</span>
     <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;readlines&#39;</span><span class="p">):</span>
         <span class="n">fname</span> <span class="o">=</span> <span class="p">[</span><span class="n">fname</span><span class="p">]</span>
-        <span class="n">filelike</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="n">filelike</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">mdata</span><span class="p">:</span>
         <span class="n">mdata</span> <span class="o">=</span> <span class="n">readJSONMetadata</span><span class="p">(</span><span class="n">fname</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="k">if</span> <span class="n">restrict</span><span class="p">:</span>
@@ -1542,9 +1520,9 @@
                 <span class="k">if</span> <span class="s1">&#39;DIMENSION&#39;</span> <span class="ow">in</span> <span class="n">mdata_copy</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
                     <span class="n">varDims</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mdata_copy</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;DIMENSION&#39;</span><span class="p">])</span>
                     <span class="k">if</span> <span class="ow">not</span> <span class="n">varDims</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span> <span class="n">varDims</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">varDims</span><span class="p">])</span>
-                    <span class="n">singleDim</span> <span class="o">=</span> <span class="bp">True</span>
+                    <span class="n">singleDim</span> <span class="o">=</span> <span class="kc">True</span>
                     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">varDims</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span> <span class="ow">or</span> <span class="n">varDims</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
-                        <span class="n">singleDim</span> <span class="o">=</span> <span class="bp">False</span>
+                        <span class="n">singleDim</span> <span class="o">=</span> <span class="kc">False</span>
                 <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;DIMENSION&#39;</span> <span class="ow">in</span> <span class="n">mdata_copy</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">singleDim</span><span class="p">:</span>
                     <span class="n">en</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">mdata_copy</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;DIMENSION&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">st</span><span class="p">)</span>
                     <span class="k">try</span><span class="p">:</span>
@@ -1569,7 +1547,7 @@
     <span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">mdata_copy</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
     <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mdata</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">SpaceData</span><span class="p">):</span>
-            <span class="n">mdata</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">mdata_copy</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
+            <span class="n">mdata</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">mdata_copy</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">mdata</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">mdata</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">attrs</span><span class="o">=</span><span class="n">mdata_copy</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
 
@@ -1577,21 +1555,16 @@
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">convert</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
             <span class="n">conversions</span><span class="o">=</span><span class="n">convert</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">conversions</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;DateTime&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">dup</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ignoretz</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+            <span class="n">conversions</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;DateTime&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">dup</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ignoretz</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
                            <span class="s1">&#39;ExtModel&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)}</span>
         <span class="k">for</span> <span class="n">conkey</span> <span class="ow">in</span> <span class="n">conversions</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">name</span> <span class="o">=</span> <span class="n">keys</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">keys</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">conkey</span><span class="p">))</span> <span class="c1">#remove from keylist</span>
             <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Key {0} for conversion not found in file&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">conkey</span><span class="p">),</span> <span class="ne">UserWarning</span><span class="p">)</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Key </span><span class="si">{0}</span><span class="s1"> for conversion not found in file&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">conkey</span><span class="p">),</span> <span class="ne">UserWarning</span><span class="p">)</span>
                 <span class="k">continue</span>
-            <span class="c1">#https://github.com/numpy/numpy/issues/2160</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">mdata</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">element</span> <span class="ow">in</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndenumerate</span><span class="p">(</span><span class="n">mdata</span><span class="p">[</span><span class="n">name</span><span class="p">]):</span>
-                    <span class="n">mdata</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">conversions</span><span class="p">[</span><span class="n">name</span><span class="p">](</span><span class="n">element</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">element</span> <span class="ow">in</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndenumerate</span><span class="p">(</span><span class="n">mdata</span><span class="p">[</span><span class="n">name</span><span class="p">]):</span>
-                    <span class="n">mdata</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">conversions</span><span class="p">[</span><span class="n">name</span><span class="p">](</span><span class="n">element</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">element</span> <span class="ow">in</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndenumerate</span><span class="p">(</span><span class="n">mdata</span><span class="p">[</span><span class="n">name</span><span class="p">]):</span>
+                <span class="n">mdata</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">conversions</span><span class="p">[</span><span class="n">name</span><span class="p">](</span><span class="n">element</span><span class="p">)</span>
 
     <span class="k">for</span> <span class="n">remkey</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
@@ -1600,7 +1573,7 @@
             <span class="k">pass</span> <span class="c1">#this will skip any unspecified string fields</span>
     <span class="k">return</span> <span class="n">mdata</span></div>
 
-<div class="viewcode-block" id="writeJSONMetadata"><a class="viewcode-back" href="../../autosummary/spacepy.datamodel.writeJSONMetadata.html#spacepy.datamodel.writeJSONMetadata">[docs]</a><span class="k">def</span> <span class="nf">writeJSONMetadata</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">insd</span><span class="p">,</span> <span class="n">depend0</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">returnString</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+<div class="viewcode-block" id="writeJSONMetadata"><a class="viewcode-back" href="../../autosummary/spacepy.datamodel.writeJSONMetadata.html#spacepy.datamodel.writeJSONMetadata">[docs]</a><span class="k">def</span> <span class="nf">writeJSONMetadata</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">insd</span><span class="p">,</span> <span class="n">depend0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">returnString</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Scrape metadata from SpaceData object and make a JSON header</span>
 
 <span class="sd">    Parameters</span>
@@ -1634,7 +1607,7 @@
         <span class="k">return</span> <span class="n">out</span>
 
     <span class="c1">#if required, identify depend0 for deciding what&#39;s data/metadata</span>
-    <span class="k">if</span> <span class="n">depend0</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">depend0</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1">#search for DEPEND_0 in metadata</span>
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">insd</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">insd</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="s1">&#39;attrs&#39;</span><span class="p">):</span>
@@ -1645,10 +1618,10 @@
                     <span class="c1">#assume it&#39;s a singleton list</span>
                     <span class="n">depend0</span> <span class="o">=</span> <span class="n">depend0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">depend0</span><span class="p">,</span> <span class="n">str_classes</span><span class="p">):</span>
-                    <span class="n">depend0</span> <span class="o">=</span> <span class="bp">None</span> <span class="c1">#Failed to get a depend0</span>
+                    <span class="n">depend0</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1">#Failed to get a depend0</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="k">break</span> <span class="c1">#we&#39;re done here</span>
-        <span class="k">if</span> <span class="n">depend0</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">depend0</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="c1">#fall back to most common var length</span>
             <span class="n">tmp</span><span class="p">,</span> <span class="n">keylist</span> <span class="o">=</span> <span class="p">[],</span> <span class="nb">list</span><span class="p">(</span><span class="n">insd</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
             <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keylist</span><span class="p">:</span>
@@ -1686,7 +1659,7 @@
     <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keylist</span><span class="p">:</span>
         <span class="n">js_out</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmcopy</span><span class="p">(</span><span class="n">_dateToISO</span><span class="p">(</span><span class="n">insd</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">))</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">insd</span><span class="p">[</span><span class="n">key</span><span class="p">])</span> <span class="o">==</span> <span class="n">datalen</span><span class="p">:</span> <span class="c1">#is data</span>
-            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;data: {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;data: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">js_out</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s1">&#39;DIMENSION&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">insd</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">js_out</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s1">&#39;DIMENSION&#39;</span><span class="p">]:</span> <span class="n">js_out</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s1">&#39;DIMENSION&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -1695,14 +1668,14 @@
                 <span class="n">idx</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">dims</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dims</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
                     <span class="n">l1</span> <span class="o">=</span> <span class="s1">&#39;The data cannot be properly represented in JSON-headed ASCII as it has too high a rank</span><span class="se">\n</span><span class="s1">&#39;</span>
-                    <span class="n">l2</span> <span class="o">=</span> <span class="s1">&#39;key = {0} ({1})</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">insd</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+                    <span class="n">l2</span> <span class="o">=</span> <span class="s1">&#39;key = </span><span class="si">{0}</span><span class="s1"> (</span><span class="si">{1}</span><span class="s1">)</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">insd</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
                     <span class="n">l3</span> <span class="o">=</span> <span class="s1">&#39;Maximum allowed number of dimensions is 2</span><span class="se">\n</span><span class="s1">&#39;</span>
                     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">,</span> <span class="n">l3</span><span class="p">]),</span> <span class="n">DMWarning</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span> <span class="c1">#AttrErr if just metadata</span>
                 <span class="c1">#js_out[key][&#39;DIMENSION&#39;] = insd[key].attrs[&#39;DIMENSION&#39;]</span>
                 <span class="k">pass</span>
         <span class="k">else</span><span class="p">:</span> <span class="c1">#is metadata</span>
-            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="s1">&#39;metadata: {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;metadata: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
             <span class="n">js_out</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s1">&#39;VALUES&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmcopy</span><span class="p">(</span><span class="n">_dateToISO</span><span class="p">(</span><span class="n">insd</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span>
             <span class="n">js_out</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s1">&#39;DIMENSION&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">js_out</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s1">&#39;VALUES&#39;</span><span class="p">])]</span>
         <span class="k">for</span> <span class="n">kk</span> <span class="ow">in</span> <span class="n">js_out</span><span class="p">[</span><span class="n">key</span><span class="p">]:</span>
@@ -1710,8 +1683,8 @@
                 <span class="n">js_out</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">kk</span><span class="p">]</span> <span class="o">=</span> <span class="n">js_out</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">kk</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
             <span class="k">except</span><span class="p">:</span>
                 <span class="k">pass</span>
-    <span class="n">json_str</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">js_out</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">reob</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">r&#39;\[.*?\]&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span><span class="p">)</span>
+    <span class="n">json_str</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">js_out</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">reob</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\[.*?\]&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span><span class="p">)</span>
     <span class="n">json_str</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">reob</span><span class="p">,</span> <span class="n">stripNL</span><span class="p">,</span> <span class="n">json_str</span><span class="p">)</span> <span class="c1">#put lists back onto one line</span>
     <span class="c1">#add comment field for header</span>
     <span class="n">json_str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">json_str</span><span class="p">])</span>
@@ -1723,7 +1696,7 @@
             <span class="n">fh</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">json_str</span><span class="p">)</span>
     <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;writelines&#39;</span><span class="p">):</span>
         <span class="n">fname</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">json_str</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="p">(</span><span class="n">fname</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">returnString</span><span class="p">):</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">fname</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">returnString</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">json_str</span>
 
     <span class="k">if</span> <span class="n">returnString</span><span class="p">:</span> <span class="k">return</span> <span class="n">json_str</span></div>
@@ -1746,14 +1719,14 @@
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">indict</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">):</span>
             <span class="n">retdict</span> <span class="o">=</span> <span class="n">retdict</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
         <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">indict</span><span class="p">,</span> <span class="s1">&#39;__iter__&#39;</span><span class="p">):</span>
-            <span class="n">retdict</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">indict</span><span class="p">)</span>
+            <span class="n">retdict</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">retdict</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndenumerate</span><span class="p">(</span><span class="n">indict</span><span class="p">):</span>
                 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">):</span>
                     <span class="n">retdict</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">el</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">retdict</span>
 
 
-<div class="viewcode-block" id="toJSONheadedASCII"><a class="viewcode-back" href="../../autosummary/spacepy.datamodel.toJSONheadedASCII.html#spacepy.datamodel.toJSONheadedASCII">[docs]</a><span class="k">def</span> <span class="nf">toJSONheadedASCII</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">insd</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">depend0</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="toJSONheadedASCII"><a class="viewcode-back" href="../../autosummary/spacepy.datamodel.toJSONheadedASCII.html#spacepy.datamodel.toJSONheadedASCII">[docs]</a><span class="k">def</span> <span class="nf">toJSONheadedASCII</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">insd</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">depend0</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Write JSON-headed ASCII file of data with metadata from SpaceData object</span>
 
 <span class="sd">    Parameters</span>
@@ -1823,7 +1796,7 @@
             <span class="n">data</span><span class="p">[:,</span> <span class="n">stcol</span><span class="p">]</span> <span class="o">=</span> <span class="n">_dateToISO</span><span class="p">(</span><span class="n">insd</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">data</span><span class="p">[:,</span> <span class="n">stcol</span><span class="p">:</span><span class="n">stcol</span><span class="o">+</span><span class="n">dim</span><span class="p">]</span> <span class="o">=</span> <span class="n">_dateToISO</span><span class="p">(</span><span class="n">insd</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
-    <span class="n">hdstr</span> <span class="o">=</span> <span class="n">writeJSONMetadata</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">hdr</span><span class="p">,</span> <span class="n">depend0</span><span class="o">=</span><span class="n">depend0</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span> <span class="n">returnString</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">hdstr</span> <span class="o">=</span> <span class="n">writeJSONMetadata</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">hdr</span><span class="p">,</span> <span class="n">depend0</span><span class="o">=</span><span class="n">depend0</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span> <span class="n">returnString</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
         <span class="n">fh</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">hdstr</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
@@ -1928,8 +1901,44 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">dobj</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="createISTPattrs"><a class="viewcode-back" href="../../autosummary/spacepy.datamodel.createISTPattrs.html#spacepy.datamodel.createISTPattrs">[docs]</a><span class="k">def</span> <span class="nf">createISTPattrs</span><span class="p">(</span><span class="n">datatype</span><span class="p">,</span> <span class="n">ndims</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vartype</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">NRV</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+<div class="viewcode-block" id="createISTPattrs"><a class="viewcode-back" href="../../autosummary/spacepy.datamodel.createISTPattrs.html#spacepy.datamodel.createISTPattrs">[docs]</a><span class="k">def</span> <span class="nf">createISTPattrs</span><span class="p">(</span><span class="n">datatype</span><span class="p">,</span> <span class="n">ndims</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vartype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">NRV</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Return set of unpopulated attributes for ISTP compliant variable</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    datatype : {&#39;data&#39;, &#39;support_data&#39;, &#39;metadata&#39;}</span>
+<span class="sd">        datatype of variable to create metadata for.</span>
+<span class="sd">    ndims : int</span>
+<span class="sd">        number of dimensions, default=1</span>
+<span class="sd">    vartype : {&#39;float&#39;, &#39;char&#39;, &#39;int&#39;, &#39;epoch&#39;, &#39;tt2000&#39;}</span>
+<span class="sd">        The type of the variable, default=float</span>
+<span class="sd">    units : str</span>
+<span class="sd">        The units of the variable, default=&#39; &#39;</span>
+<span class="sd">    NRV : bool</span>
+<span class="sd">        Is the variable NRV (non-record varying), default=False</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    attrs : dict</span>
+<span class="sd">        dictionary of attributes for the variable</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import spacepy.datamodel as dm</span>
+<span class="sd">    &gt;&gt;&gt; dm.createISTPattrs(&#39;data&#39;, ndims=2, vartype=&#39;float&#39;, units=&#39;MeV&#39;)</span>
+<span class="sd">    {&#39;CATDESC&#39;: &#39;&#39;,</span>
+<span class="sd">     &#39;DISPLAY_TYPE&#39;: &#39;spectrogram&#39;,</span>
+<span class="sd">     &#39;FIELDNAM&#39;: &#39;&#39;,</span>
+<span class="sd">     &#39;FILLVAL&#39;: -1e+31,</span>
+<span class="sd">     &#39;FORMAT&#39;: &#39;F18.6&#39;,</span>
+<span class="sd">     &#39;LABLAXIS&#39;: &#39;&#39;,</span>
+<span class="sd">     &#39;SI_CONVERSION&#39;: &#39; &gt; &#39;,</span>
+<span class="sd">     &#39;UNITS&#39;: &#39;MeV&#39;,</span>
+<span class="sd">     &#39;VALIDMIN&#39;: &#39;&#39;,</span>
+<span class="sd">     &#39;VALIDMAX&#39;: &#39;&#39;,</span>
+<span class="sd">     &#39;VAR_TYPE&#39;: &#39;data&#39;,</span>
+<span class="sd">     &#39;DEPEND_0&#39;: &#39;Epoch&#39;,</span>
+<span class="sd">     &#39;DEPEND_1&#39;: &#39;&#39;}</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">fillvals</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;float&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">1e31</span><span class="p">,</span>
                 <span class="s1">&#39;char&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
@@ -1951,10 +1960,9 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">fill</span> <span class="o">=</span> <span class="n">fillvals</span><span class="p">[</span><span class="n">vartype</span><span class="p">]</span>
         <span class="n">form</span> <span class="o">=</span> <span class="n">formats</span><span class="p">[</span><span class="n">vartype</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">units</span><span class="p">:</span>
-        <span class="n">unit</span> <span class="o">=</span> <span class="n">units</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">unit</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="n">unit</span> <span class="o">=</span> <span class="n">units</span>
+
     <span class="k">if</span> <span class="n">datatype</span> <span class="o">==</span> <span class="s1">&#39;data&#39;</span><span class="p">:</span>
         <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;CATDESC&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
             <span class="s1">&#39;DISPLAY_TYPE&#39;</span><span class="p">:</span> <span class="n">disp</span><span class="p">[</span><span class="n">ndims</span><span class="p">],</span>
@@ -1969,7 +1977,7 @@
             <span class="s1">&#39;VAR_TYPE&#39;</span><span class="p">:</span> <span class="s1">&#39;data&#39;</span>
             <span class="p">}</span>
         <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndims</span><span class="p">):</span>
-            <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;DEPEND_{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dim</span><span class="p">)]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;DEPEND_</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dim</span><span class="p">)]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
         <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;DEPEND_0&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Epoch&#39;</span>
     <span class="k">elif</span> <span class="n">datatype</span> <span class="o">==</span> <span class="s1">&#39;support_data&#39;</span><span class="p">:</span>
         <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;CATDESC&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
@@ -1979,7 +1987,7 @@
             <span class="s1">&#39;VAR_TYPE&#39;</span><span class="p">:</span> <span class="s1">&#39;support_data&#39;</span>
             <span class="p">}</span>
         <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndims</span><span class="p">):</span>
-            <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;DEPEND_{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dim</span><span class="p">)]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;DEPEND_</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dim</span><span class="p">)]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">NRV</span><span class="p">:</span>
             <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;VALIDMIN&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
             <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;VALIDMAX&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
@@ -1995,12 +2003,14 @@
             <span class="s1">&#39;VAR_TYPE&#39;</span><span class="p">:</span> <span class="s1">&#39;metadata&#39;</span>
             <span class="p">}</span>
         <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndims</span><span class="p">):</span>
-            <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;DEPEND_{0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dim</span><span class="p">)]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;DEPEND_</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dim</span><span class="p">)]</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">NRV</span><span class="p">:</span>
             <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;FILLVAL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fill</span>
             <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;DEPEND_0&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Epoch&#39;</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">del</span> <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;DEPEND_0&#39;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid datatype (data|support_data|metadata)&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">attrs</span></div>
 
@@ -2023,7 +2033,7 @@
         <span class="n">ans</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">ans</span>
 
-<div class="viewcode-block" id="resample"><a class="viewcode-back" href="../../autosummary/spacepy.datamodel.resample.html#spacepy.datamodel.resample">[docs]</a><span class="k">def</span> <span class="nf">resample</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="p">[],</span> <span class="n">winsize</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">st_time</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">outtimename</span><span class="o">=</span><span class="s1">&#39;Epoch&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="resample"><a class="viewcode-back" href="../../autosummary/spacepy.datamodel.resample.html#spacepy.datamodel.resample">[docs]</a><span class="k">def</span> <span class="nf">resample</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="p">[],</span> <span class="n">winsize</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">st_time</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">outtimename</span><span class="o">=</span><span class="s1">&#39;Epoch&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    resample a SpaceData to a new time interval</span>
 
@@ -2077,6 +2087,7 @@
 <span class="sd">    #    - the output variables have their DEPEND_0 changed to Epoch (or outtimename)</span>
 <span class="sd">    #    - each dimension of a 2d array is resampled individually </span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">toolbox</span>
     <span class="c1"># check for SpaceData or dmarray input before going to a bunch of work</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="n">SpaceData</span><span class="p">,</span> <span class="n">dmarray</span><span class="p">)):</span>
         <span class="k">raise</span><span class="p">(</span><span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Input must be a SpaceData or dmarray object&#39;</span><span class="p">))</span>
@@ -2089,11 +2100,11 @@
     <span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> <span class="o">==</span> <span class="n">lent</span><span class="p">]</span>
     <span class="n">d2</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">keys</span><span class="p">]</span>
     <span class="c1"># what time are we starting at?</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">spt</span><span class="o">.</span><span class="n">Ticktock</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
         <span class="n">t_int</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">UTC</span>
-    <span class="k">else</span><span class="p">:</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
         <span class="n">t_int</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">t_int</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="ow">and</span> <span class="p">((</span><span class="n">st_time</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t_int</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">t_int</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="ow">and</span> <span class="p">((</span><span class="n">st_time</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t_int</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">)):</span>
         <span class="n">st_time</span> <span class="o">=</span> <span class="n">t_int</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">hour</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">minute</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">second</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">microsecond</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
     <span class="n">ans</span> <span class="o">=</span> <span class="n">SpaceData</span><span class="p">()</span>
@@ -2126,6 +2137,7 @@
     
 </pre></div>
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -2140,16 +2152,19 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="https://github.com/spacepy/spacepy">homepage</a>|&nbsp;</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../../search.html">search</a>|&nbsp;</li>
        <li><a href="../../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../spacepy.html" >spacepy</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.datamodel</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2011-2019, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+        &#169; Copyright 2011-2020, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
     </div>
   </body>
 </html>

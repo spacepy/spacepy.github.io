@@ -1,36 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>spacepy.plot.timestamp &mdash; SpacePy v0.2.1 Manual</title>
-    
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>spacepy.plot.timestamp &#8212; SpacePy v0.2.2 Manual</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
     
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '0.2.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    
     <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
-    <link rel="top" title="SpacePy v0.2.1 Manual" href="../index.html" />
-    <link rel="up" title="plot - Plot, various specialized plotting functions and associated utilities" href="../plot.html" />
-    <link rel="next" title="PoPPy - Point Processes in Python" href="../poppy.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="spacepy.plot.add_arrows" href="spacepy.plot.add_arrows.html" />
     <link rel="prev" title="spacepy.plot.style" href="spacepy.plot.style.html" /> 
-  </head>
-  <body role="document">
+  </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -46,16 +37,18 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="../poppy.html" title="PoPPy - Point Processes in Python"
+          <a href="spacepy.plot.add_arrows.html" title="spacepy.plot.add_arrows"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="spacepy.plot.style.html" title="spacepy.plot.style"
              accesskey="P">previous</a> |</li>
-        <li><a href="https://github.com/spacepy/spacepy">homepage</a>|&nbsp;</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../plot.html" accesskey="U">plot - Plot, various specialized plotting functions and associated utilities</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../plot.html" accesskey="U">plot - Plot, various specialized plotting functions and associated utilities</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.plot.timestamp</a></li> 
       </ul>
     </div>
 
@@ -68,28 +61,25 @@
   <p class="topless"><a href="spacepy.plot.style.html"
                         title="previous chapter">spacepy.plot.style</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../poppy.html"
-                        title="next chapter">PoPPy - Point Processes in Python</a></p>
+  <p class="topless"><a href="spacepy.plot.add_arrows.html"
+                        title="next chapter">spacepy.plot.add_arrows</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/autosummary/spacepy.plot.timestamp.txt"
+      <li><a href="../_sources/autosummary/spacepy.plot.timestamp.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -100,36 +90,26 @@
             
   <div class="section" id="spacepy-plot-timestamp">
 <h1>spacepy.plot.timestamp<a class="headerlink" href="#spacepy-plot-timestamp" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
+<dl class="py function">
 <dt id="spacepy.plot.timestamp">
-<code class="descclassname">spacepy.plot.</code><code class="descname">timestamp</code><span class="sig-paren">(</span><em>position=(1.003</em>, <em>0.01)</em>, <em>size='xx-small'</em>, <em>draw=True</em>, <em>strnow=None</em>, <em>rotation='vertical'</em>, <em>ax=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#timestamp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.plot.timestamp" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">spacepy.plot.</code><code class="sig-name descname">timestamp</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span><span class="o">=</span><span class="default_value">(1.003, 0.01)</span></em>, <em class="sig-param"><span class="n">size</span><span class="o">=</span><span class="default_value">'xx-small'</span></em>, <em class="sig-param"><span class="n">draw</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">strnow</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">rotation</span><span class="o">=</span><span class="default_value">'vertical'</span></em>, <em class="sig-param"><span class="n">ax</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#timestamp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.plot.timestamp" title="Permalink to this definition">¶</a></dt>
 <dd><p>print a timestamp on the current plot, vertical lower right</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>position</strong> : list</p>
-<blockquote>
-<div><p>position for the timestamp</p>
-</div></blockquote>
-<p><strong>size</strong> : string (optional)</p>
-<blockquote>
-<div><p>text size</p>
-</div></blockquote>
-<p><strong>draw</strong> : Boolean (optional)</p>
-<blockquote>
-<div><p>call draw to make sure it appears</p>
-</div></blockquote>
-<p><strong>kwargs</strong> : keywords</p>
-<blockquote class="last">
-<div><p>other keywords to axis.annotate</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>position</strong><span class="classifier">list</span></dt><dd><p>position for the timestamp</p>
+</dd>
+<dt><strong>size</strong><span class="classifier">string (optional)</span></dt><dd><p>text size</p>
+</dd>
+<dt><strong>draw</strong><span class="classifier">Boolean (optional)</span></dt><dd><p>call draw to make sure it appears</p>
+</dd>
+<dt><strong>kwargs</strong><span class="classifier">keywords</span></dt><dd><p>other keywords to axis.annotate</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.plot.utils</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.plot.utils</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="n">plot</span><span class="p">,</span> <span class="n">arange</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">arange</span><span class="p">(</span><span class="mi">11</span><span class="p">))</span>
 <span class="go">[&lt;matplotlib.lines.Line2D object at 0x49072b0&gt;]</span>
@@ -141,6 +121,7 @@
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -156,21 +137,23 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="../poppy.html" title="PoPPy - Point Processes in Python"
+          <a href="spacepy.plot.add_arrows.html" title="spacepy.plot.add_arrows"
              >next</a> |</li>
         <li class="right" >
           <a href="spacepy.plot.style.html" title="spacepy.plot.style"
              >previous</a> |</li>
-        <li><a href="https://github.com/spacepy/spacepy">homepage</a>|&nbsp;</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../plot.html" >plot - Plot, various specialized plotting functions and associated utilities</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../plot.html" >plot - Plot, various specialized plotting functions and associated utilities</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.plot.timestamp</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2011-2019, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+        &#169; Copyright 2011-2020, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
     </div>
   </body>
 </html>

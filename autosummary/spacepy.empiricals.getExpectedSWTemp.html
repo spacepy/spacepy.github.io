@@ -1,36 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>spacepy.empiricals.getExpectedSWTemp &mdash; SpacePy v0.2.1 Manual</title>
-    
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>spacepy.empiricals.getExpectedSWTemp &#8212; SpacePy v0.2.2 Manual</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
     
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '0.2.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    
     <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
-    <link rel="top" title="SpacePy v0.2.1 Manual" href="../index.html" />
-    <link rel="up" title="empiricals - module with heliospheric empirical modules" href="../empiricals.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="spacepy.empiricals.getLmax" href="spacepy.empiricals.getLmax.html" />
     <link rel="prev" title="spacepy.empiricals.getDststar" href="spacepy.empiricals.getDststar.html" /> 
-  </head>
-  <body role="document">
+  </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
 <a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
@@ -51,11 +42,13 @@
         <li class="right" >
           <a href="spacepy.empiricals.getDststar.html" title="spacepy.empiricals.getDststar"
              accesskey="P">previous</a> |</li>
-        <li><a href="https://github.com/spacepy/spacepy">homepage</a>|&nbsp;</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../empiricals.html" accesskey="U">empiricals - module with heliospheric empirical modules</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../empiricals.html" accesskey="U">empiricals - module with heliospheric empirical modules</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.empiricals.getExpectedSWTemp</a></li> 
       </ul>
     </div>
 
@@ -73,23 +66,20 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/autosummary/spacepy.empiricals.getExpectedSWTemp.txt"
+      <li><a href="../_sources/autosummary/spacepy.empiricals.getExpectedSWTemp.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -100,45 +90,38 @@
             
   <div class="section" id="spacepy-empiricals-getexpectedswtemp">
 <h1>spacepy.empiricals.getExpectedSWTemp<a class="headerlink" href="#spacepy-empiricals-getexpectedswtemp" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
+<dl class="py function">
 <dt id="spacepy.empiricals.getExpectedSWTemp">
-<code class="descclassname">spacepy.empiricals.</code><code class="descname">getExpectedSWTemp</code><span class="sig-paren">(</span><em>velo</em>, <em>model='XB15'</em>, <em>units='K'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/empiricals.html#getExpectedSWTemp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.empiricals.getExpectedSWTemp" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">spacepy.empiricals.</code><code class="sig-name descname">getExpectedSWTemp</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">velo</span></em>, <em class="sig-param"><span class="n">model</span><span class="o">=</span><span class="default_value">'XB15'</span></em>, <em class="sig-param"><span class="n">units</span><span class="o">=</span><span class="default_value">'K'</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/empiricals.html#getExpectedSWTemp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.empiricals.getExpectedSWTemp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the expected solar wind temperature based on the bulk velocity</p>
 <p>The formulations used by this function are those given by,
-L87  &#8211; Lopez, R.E., J. Geophys. Res., 92, 11189-11194, 1987
-BS06 &#8211; Borovsky, J.E. and J.T. Steinberg, Geophysical Monograph Series 167, 59-76, 2006
-XB15 &#8211; Xu, F. and J.E. Borovsky, J. Geophys. Res., 120, 70-100, 2015</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>velo</strong> : array-like</p>
-<blockquote>
-<div><p>Array like of solar wind bulk velocity values [km/s]</p>
-</div></blockquote>
-<p><strong>model</strong> : str [optional]</p>
-<blockquote>
-<div><p>Name of model to use. Valid choices are L87, BS06 and XB15. Default is XB15</p>
-</div></blockquote>
-<p><strong>units</strong> : str [optional]</p>
-<blockquote>
-<div><p>Units for output temperature, options are eV or K. Default is Kelvin [K]</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>Texp</strong> : array-like</p>
-<blockquote class="last">
-<div><p>The expected solar wind temperature given the bulk velocity [K] or [eV]</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+L87  – Lopez, R.E., J. Geophys. Res., 92, 11189-11194, 1987
+BS06 – Borovsky, J.E. and J.T. Steinberg, Geophysical Monograph Series 167, 59-76, 2006
+XB15 – Xu, F. and J.E. Borovsky, J. Geophys. Res., 120, 70-100, 2015</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>velo</strong><span class="classifier">array-like</span></dt><dd><p>Array like of solar wind bulk velocity values [km/s]</p>
+</dd>
+<dt><strong>model</strong><span class="classifier">str [optional]</span></dt><dd><p>Name of model to use. Valid choices are L87, BS06 and XB15. Default is XB15</p>
+</dd>
+<dt><strong>units</strong><span class="classifier">str [optional]</span></dt><dd><p>Units for output temperature, options are eV or K. Default is Kelvin [K]</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>Texp</strong><span class="classifier">array-like</span></dt><dd><p>The expected solar wind temperature given the bulk velocity [K] or [eV]</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -159,16 +142,18 @@ XB15 &#8211; Xu, F. and J.E. Borovsky, J. Geophys. Res., 120, 70-100, 2015</p>
         <li class="right" >
           <a href="spacepy.empiricals.getDststar.html" title="spacepy.empiricals.getDststar"
              >previous</a> |</li>
-        <li><a href="https://github.com/spacepy/spacepy">homepage</a>|&nbsp;</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../empiricals.html" >empiricals - module with heliospheric empirical modules</a> &raquo;</li> 
+          <li class="nav-item nav-item-1"><a href="../empiricals.html" >empiricals - module with heliospheric empirical modules</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.empiricals.getExpectedSWTemp</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2011-2019, The SpacePy Team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+        &#169; Copyright 2011-2020, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
     </div>
   </body>
 </html>
