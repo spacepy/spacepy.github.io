@@ -4,13 +4,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.pycdf.Var &#8212; SpacePy v0.2.2 Manual</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>spacepy.pycdf.Var &#8212; SpacePy v0.2.3 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -74,7 +76,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -88,15 +90,15 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="spacepy-pycdf-var">
+  <section id="spacepy-pycdf-var">
 <h1>spacepy.pycdf.Var<a class="headerlink" href="#spacepy-pycdf-var" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="spacepy.pycdf.Var">
-<em class="property">class </em><code class="sig-prename descclassname">spacepy.pycdf.</code><code class="sig-name descname">Var</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cdf_file</span></em>, <em class="sig-param"><span class="n">var_name</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pycdf.Var" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pycdf.Var">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">spacepy.pycdf.</span></span><span class="sig-name descname"><span class="pre">Var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdf_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Var" title="Permalink to this definition">¶</a></dt>
 <dd><p>A CDF variable.</p>
 <p>This object does not directly store the data from the CDF; rather,
 it provides access to the data in a format that much like a Python
-list or numpy <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.19)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>.
+list or numpy <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>.
 General list information is available in the python docs:
 <a class="reference external" href="http://docs.python.org/tutorial/introduction.html#lists">1</a>,
 <a class="reference external" href="http://docs.python.org/tutorial/datastructures.html#more-on-lists">2</a>,
@@ -213,19 +215,20 @@ specifically the desired data from the CDF.</p>
 <p>The C CDF library allows reading records which have not been
 written to a file, returning a pad value. pycdf checks the
 size of a variable and will raise <cite>IndexError</cite> for most
-attempts to read past the end. If these checks fail, a value
-is returned with a warning <code class="docutils literal notranslate"><span class="pre">VIRTUAL_RECORD_DATA</span></code>. Please
-<a class="reference external" href="https://github.com/spacepy/spacepy/issues/new">open an issue</a> if this
-occurs. See pg. 39 and following of the <a class="reference external" href="https://cdf.gsfc.nasa.gov/html/cdf_docs.html">CDF User’s Guide</a> for more on
+attempts to read past the end, except for variables with sparse
+records. If these checks fail, a value is returned with a warning
+<code class="docutils literal notranslate"><span class="pre">VIRTUAL_RECORD_DATA</span></code>. Please <a class="reference external" href="https://github.com/spacepy/spacepy/issues/new">open an issue</a> if this
+occurs for variables without sparse records. See pg. 39 and
+following of the <a class="reference external" href="https://cdf.gsfc.nasa.gov/html/cdf_docs.html">CDF User’s Guide</a> for more on
 virtual records.</p>
 </div>
 <p>All data are, on read, converted to appropriate Python data
 types; EPOCH, EPOCH16, and TIME_TT2000 types are converted to
-<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></a>. Data are returned in numpy arrays.</p>
+<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></a>. Data are returned in numpy arrays.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Although pycdf supports TIME_TT2000 variables, the Python
-<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></a> object does not support leap
+<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></a> object does not support leap
 seconds. Thus, on read, any seconds past 59 are truncated
 to 59.999999 (59 seconds, 999 milliseconds, 999 microseconds).</p>
 </div>
@@ -317,6 +320,13 @@ can be quite slow.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<p>Variables using sparse records do not support insertion and only
+support deletion of a single record at a time. See
+<a class="reference internal" href="#spacepy.pycdf.Var.sparse" title="spacepy.pycdf.Var.sparse"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sparse()</span></code></a> and section 2.3.12 of the CDF user’s guide for
+more information on sparse records.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>Although this interface only directly supports zVariables, zMode is
 set on opening the CDF so rVars appear as zVars. See p.24 of the
 CDF user’s guide; pyCDF uses zMode 2.</p>
@@ -351,14 +361,20 @@ CDF user’s guide; pyCDF uses zMode 2.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pycdf.Var.nelems" title="spacepy.pycdf.Var.nelems"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nelems</span></code></a>()</p></td>
 <td><p>Number of elements for each value in this variable</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pycdf.Var.rename" title="spacepy.pycdf.Var.rename"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rename</span></code></a>(new_name)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pycdf.Var.pad" title="spacepy.pycdf.Var.pad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pad</span></code></a>([value])</p></td>
+<td><p>Gets or sets this variable's pad value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pycdf.Var.rename" title="spacepy.pycdf.Var.rename"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rename</span></code></a>(new_name)</p></td>
 <td><p>Renames this variable</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pycdf.Var.rv" title="spacepy.pycdf.Var.rv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rv</span></code></a>([new_rv])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pycdf.Var.rv" title="spacepy.pycdf.Var.rv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rv</span></code></a>([new_rv])</p></td>
 <td><p>Gets or sets whether this variable has record variance</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pycdf.Var.shape" title="spacepy.pycdf.Var.shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shape</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pycdf.Var.shape" title="spacepy.pycdf.Var.shape"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shape</span></code></a></p></td>
 <td><p>Provides the numpy array-like shape of this variable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pycdf.Var.sparse" title="spacepy.pycdf.Var.sparse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sparse</span></code></a>([sparsetype])</p></td>
+<td><p>Gets or sets this variable's sparse records mode.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pycdf.Var.type" title="spacepy.pycdf.Var.type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a>([new_type])</p></td>
 <td><p>Returns or sets the CDF type of this variable</p></td>
@@ -366,15 +382,15 @@ CDF user’s guide; pyCDF uses zMode 2.</p>
 </tbody>
 </table>
 <dl class="py attribute">
-<dt id="spacepy.pycdf.Var.attrs">
-<code class="sig-name descname">attrs</code><a class="headerlink" href="#spacepy.pycdf.Var.attrs" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pycdf.Var.attrs">
+<span class="sig-name descname"><span class="pre">attrs</span></span><a class="headerlink" href="#spacepy.pycdf.Var.attrs" title="Permalink to this definition">¶</a></dt>
 <dd><p>zAttributes for this zVariable in a dict-like format.
 See <a class="reference internal" href="spacepy.pycdf.zAttrList.html#spacepy.pycdf.zAttrList" title="spacepy.pycdf.zAttrList"><code class="xref py py-class docutils literal notranslate"><span class="pre">zAttrList</span></code></a> for details.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.pycdf.Var.compress">
-<code class="sig-name descname">compress</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">comptype</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">param</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var.compress"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pycdf.Var.compress" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pycdf.Var.compress">
+<span class="sig-name descname"><span class="pre">compress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">comptype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var.compress"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Var.compress" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set or check the compression of this variable</p>
 <p>Compression may not be changeable on variables with data already
 written; even deleting the data may not permit the change.</p>
@@ -405,8 +421,8 @@ gzip; other types have only one possible parameter.)</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.pycdf.Var.copy">
-<code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var.copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pycdf.Var.copy" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pycdf.Var.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Var.copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Copies all data and attributes from this variable</p>
 <dl class="field-list">
 <dt class="field-odd">Returns</dt>
@@ -419,8 +435,8 @@ gzip; other types have only one possible parameter.)</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="spacepy.pycdf.Var.dtype">
-<code class="sig-name descname">dtype</code><a class="headerlink" href="#spacepy.pycdf.Var.dtype" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pycdf.Var.dtype">
+<span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#spacepy.pycdf.Var.dtype" title="Permalink to this definition">¶</a></dt>
 <dd><p>Provide the numpy dtype equivalent to the CDF type of this variable.</p>
 <p>Data from this variable will be returned in numpy arrays of this type.</p>
 <div class="admonition seealso">
@@ -432,8 +448,8 @@ gzip; other types have only one possible parameter.)</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.pycdf.Var.dv">
-<code class="sig-name descname">dv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">new_dv</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var.dv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pycdf.Var.dv" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pycdf.Var.dv">
+<span class="sig-name descname"><span class="pre">dv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_dv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var.dv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Var.dv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets or sets dimension variance of each dimension of variable.</p>
 <p>If the variance is unknown, True is assumed
 (this replicates the apparent behavior of the
@@ -457,8 +473,8 @@ variance, False to change to not dimension variance.
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.pycdf.Var.insert">
-<code class="sig-name descname">insert</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var.insert"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pycdf.Var.insert" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pycdf.Var.insert">
+<span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var.insert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Var.insert" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inserts a <em>single</em> record before an index</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -473,8 +489,8 @@ variance, False to change to not dimension variance.
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.pycdf.Var.name">
-<code class="sig-name descname">name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var.name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pycdf.Var.name" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pycdf.Var.name">
+<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var.name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Var.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the name of this variable</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -487,8 +503,8 @@ variance, False to change to not dimension variance.
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.pycdf.Var.nelems">
-<code class="sig-name descname">nelems</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var.nelems"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pycdf.Var.nelems" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pycdf.Var.nelems">
+<span class="sig-name descname"><span class="pre">nelems</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var.nelems"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Var.nelems" title="Permalink to this definition">¶</a></dt>
 <dd><p>Number of elements for each value in this variable</p>
 <p>This is the length of strings for CHAR and UCHAR,
 should be 1 otherwise.</p>
@@ -503,8 +519,37 @@ should be 1 otherwise.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.pycdf.Var.rename">
-<code class="sig-name descname">rename</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">new_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var.rename"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pycdf.Var.rename" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pycdf.Var.pad">
+<span class="sig-name descname"><span class="pre">pad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var.pad"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Var.pad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets or sets this variable’s pad value.</p>
+<p>See section 2.3.20 of the CDF user’s guide for more information on
+pad values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>out :</dt><dd><p>Current pad value for this variable. <code class="docutils literal notranslate"><span class="pre">None</span></code> if it has never been
+set. This rarely happens; the pad value is usually set by the CDF
+library on variable creation.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Other Parameters</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>value :</strong></dt><dd><p>If specified, should be an appropriate pad value. If not
+specified, the pad value will not be set or changed.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.2.3.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pycdf.Var.rename">
+<span class="sig-name descname"><span class="pre">rename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var.rename"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Var.rename" title="Permalink to this definition">¶</a></dt>
 <dd><p>Renames this variable</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -517,8 +562,8 @@ should be 1 otherwise.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.pycdf.Var.rv">
-<code class="sig-name descname">rv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">new_rv</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var.rv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pycdf.Var.rv" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pycdf.Var.rv">
+<span class="sig-name descname"><span class="pre">rv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_rv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var.rv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Var.rv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets or sets whether this variable has record variance</p>
 <p>If the variance is unknown, True is assumed
 (this replicates the apparent behavior of the CDF library on
@@ -541,8 +586,8 @@ unspecified to simply check variance.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="spacepy.pycdf.Var.shape">
-<code class="sig-name descname">shape</code><a class="headerlink" href="#spacepy.pycdf.Var.shape" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pycdf.Var.shape">
+<span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#spacepy.pycdf.Var.shape" title="Permalink to this definition">¶</a></dt>
 <dd><p>Provides the numpy array-like shape of this variable.</p>
 <p>Returns a tuple; first element is number of records (RV variable
 only) And the rest provide the dimensionality of the variable.</p>
@@ -553,8 +598,39 @@ only) And the rest provide the dimensionality of the variable.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.pycdf.Var.type">
-<code class="sig-name descname">type</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">new_type</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var.type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pycdf.Var.type" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pycdf.Var.sparse">
+<span class="sig-name descname"><span class="pre">sparse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sparsetype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var.sparse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Var.sparse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets or sets this variable’s sparse records mode.</p>
+<p>Sparse records mode may not be changeable on variables with data
+already written; even deleting the data may not permit the change.</p>
+<p>See section 2.3.12 of the CDF user’s guide for more information on
+sparse records.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">ctypes.c_long</span></dt><dd><p>Sparse record mode for this variable.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Other Parameters</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>sparsetype</strong><span class="classifier">ctypes.c_long</span></dt><dd><p>If specified, should be a sparse record mode from
+<a class="reference internal" href="spacepy.pycdf.const.html#module-spacepy.pycdf.const" title="spacepy.pycdf.const"><code class="xref py py-mod docutils literal notranslate"><span class="pre">const</span></code></a>; see also CDF C reference manual
+section 4.11.1. If not specified, the sparse record mode for this
+variable will not change.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.2.3.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pycdf.Var.type">
+<span class="sig-name descname"><span class="pre">type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var.type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Var.type" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns or sets the CDF type of this variable</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -574,7 +650,7 @@ only) And the rest provide the dimensionality of the variable.</p>
 
 </dd></dl>
 
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -608,8 +684,8 @@ only) And the rest provide the dimensionality of the variable.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2020, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
+        &#169; Copyright 2011-2021, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

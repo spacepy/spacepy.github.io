@@ -5,12 +5,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.toolbox &#8212; SpacePy v0.2.2 Manual</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <title>spacepy.toolbox &#8212; SpacePy v0.2.3 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
@@ -54,7 +55,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -1848,6 +1849,10 @@
 <span class="sd">    All other keyword arguments are passed to :func:`numpy.histogram`</span>
 <span class="sd">    or :func:`matplotlib.pyplot.bar`.</span>
 
+<span class="sd">    .. versionchanged:: 0.2.3</span>
+<span class="sd">       This argument pass-through did not work in earlier versions of</span>
+<span class="sd">       SpacePy.</span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ==========</span>
 
@@ -1885,6 +1890,8 @@
 
 <span class="sd">    Notes</span>
 <span class="sd">    =====</span>
+<span class="sd">    .. versionadded:: 0.2.1</span>
+
 <span class="sd">    The confidence intervals are calculated for each bin individually and thus</span>
 <span class="sd">    the resulting low/high histograms may not have actually occurred in the</span>
 <span class="sd">    calculation from the surrogates. If using a probability density histogram,</span>
@@ -1912,9 +1919,9 @@
     <span class="kn">import</span> <span class="nn">spacepy.poppy</span>
     <span class="n">histogram_allowed_kwargs</span> <span class="o">=</span> <span class="p">(</span>
         <span class="s1">&#39;bins&#39;</span><span class="p">,</span> <span class="s1">&#39;range&#39;</span><span class="p">,</span> <span class="s1">&#39;normed&#39;</span><span class="p">,</span> <span class="s1">&#39;weights&#39;</span><span class="p">,</span> <span class="s1">&#39;density&#39;</span><span class="p">)</span>
-    <span class="n">histogram_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span>
+    <span class="n">histogram_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
                         <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">histogram_allowed_kwargs</span><span class="p">}</span>
-    <span class="n">bar_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span>
+    <span class="n">bar_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
                   <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">histogram_allowed_kwargs</span><span class="p">}</span>
     <span class="n">sample</span><span class="p">,</span> <span class="n">bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">histogram_kwargs</span><span class="p">)</span>
     <span class="n">histogram_kwargs</span><span class="p">[</span><span class="s1">&#39;bins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bin_edges</span>
@@ -3157,8 +3164,8 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2020, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
+        &#169; Copyright 2011-2021, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

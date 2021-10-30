@@ -4,13 +4,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pycdf - Python interface to CDF files &#8212; SpacePy v0.2.2 Manual</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>pycdf - Python interface to CDF files &#8212; SpacePy v0.2.3 Manual</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
     
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -94,7 +96,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -108,7 +110,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-spacepy.pycdf">
+  <section id="module-spacepy.pycdf">
 <span id="pycdf-python-interface-to-cdf-files"></span><h1>pycdf - Python interface to CDF files<a class="headerlink" href="#module-spacepy.pycdf" title="Permalink to this headline">¶</a></h1>
 <p>This package provides a Python interface to the Common Data Format (CDF)
 library used for many NASA missions, available at <a class="reference external" href="http://cdf.gsfc.nasa.gov/">http://cdf.gsfc.nasa.gov/</a>.
@@ -143,7 +145,7 @@ sessions; use <code class="docutils literal notranslate"><span class="pre">.cshr
 <p>Institution: University of New Hampshire</p>
 <p>Contact: <a class="reference external" href="mailto:Jonathan&#46;Niehof&#37;&#52;&#48;unh&#46;edu">Jonathan<span>&#46;</span>Niehof<span>&#64;</span>unh<span>&#46;</span>edu</a></p>
 <p>Copyright 2010-2015 Los Alamos National Security, LLC.</p>
-<div class="section" id="contents">
+<section id="contents">
 <h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><dl class="simple">
@@ -162,10 +164,10 @@ sessions; use <code class="docutils literal notranslate"><span class="pre">.cshr
 <li><p><a class="reference internal" href="#submodules">Submodules</a></p></li>
 <li><p><a class="reference internal" href="#data">Data</a></p></li>
 </ul>
-</div>
-<div class="section" id="quickstart">
+</section>
+<section id="quickstart">
 <h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="create-a-cdf">
+<section id="create-a-cdf">
 <h3>Create a CDF<a class="headerlink" href="#create-a-cdf" title="Permalink to this headline">¶</a></h3>
 <p>This example presents the entire sequence of creating a CDF and populating
 it with some data; the parts are explained individually below.</p>
@@ -187,7 +189,7 @@ it with some data; the parts are explained individually below.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">spacepy</span> <span class="kn">import</span> <span class="n">pycdf</span>
 </pre></div>
 </div>
-<p>Make a data set of <a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></a>. These will be converted into
+<p>Make a data set of <a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></a>. These will be converted into
 CDF_EPOCH types.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">datetime</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># make a dataset every minute for a hour</span>
@@ -197,7 +199,7 @@ CDF_EPOCH types.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>If you create a CDF in backwards compatibility mode (default),
-then <a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></a> objects are degraded to CDF_EPOCH
+then <a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></a> objects are degraded to CDF_EPOCH
 (millisecond resolution), not CDF_EPOCH16 (microsecond resolution).</p>
 </div>
 <p>Create some random data.</p>
@@ -242,8 +244,8 @@ CDF objects behave like Python dictionaries.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1">#cdf_file is automatically closed here</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="read-a-cdf">
+</section>
+<section id="read-a-cdf">
 <h3>Read a CDF<a class="headerlink" href="#read-a-cdf" title="Permalink to this headline">¶</a></h3>
 <p>Reading a CDF is very similar: the CDF object behaves like a dictionary.
 The file is only accessed when data are requested. A full example using the above CDF:</p>
@@ -295,8 +297,8 @@ attributes, as a <a class="reference internal" href="autosummary/spacepy.datamod
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cdf</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="modify-a-cdf">
+</section>
+<section id="modify-a-cdf">
 <h3>Modify a CDF<a class="headerlink" href="#modify-a-cdf" title="Permalink to this headline">¶</a></h3>
 <p>An example modifying the CDF created above:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">spacepy</span> <span class="kn">import</span> <span class="n">pycdf</span>
@@ -337,8 +339,8 @@ before modification:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cdf</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="non-record-varying">
+</section>
+<section id="non-record-varying">
 <h3>Non record-varying<a class="headerlink" href="#non-record-varying" title="Permalink to this headline">¶</a></h3>
 <p>Non record-varying (NRV) variables are usually used for data that does not vary
 with time, such as the energy channels for an instrument.</p>
@@ -353,12 +355,12 @@ with time, such as the energy channels for an instrument.</p>
 <span class="go">    [1]</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="slicing-and-indexing">
+</section>
+<section id="slicing-and-indexing">
 <h3>Slicing and indexing<a class="headerlink" href="#slicing-and-indexing" title="Permalink to this headline">¶</a></h3>
 <p>Subsets of data in a variable can be easily referenced with Python’s slicing
 and indexing notation.</p>
-<p>This example uses <a class="reference external" href="https://docs.python.org/3/library/bisect.html#module-bisect" title="(in Python v3.9)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bisect</span></code></a> to read a subset of the data from the
+<p>This example uses <a class="reference external" href="https://docs.python.org/3/library/bisect.html#module-bisect" title="(in Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bisect</span></code></a> to read a subset of the data from the
 hourly data file created in earlier examples.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">spacepy</span> <span class="kn">import</span> <span class="n">pycdf</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cdf</span> <span class="o">=</span> <span class="n">pycdf</span><span class="o">.</span><span class="n">CDF</span><span class="p">(</span><span class="s1">&#39;MyCDF.cdf&#39;</span><span class="p">)</span>
@@ -374,16 +376,16 @@ hourly data file created in earlier examples.</p>
 </pre></div>
 </div>
 <p>The <a class="reference internal" href="autosummary/spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-class docutils literal notranslate"><span class="pre">Var</span></code></a> documentation has several additional examples.</p>
-</div>
-<div class="section" id="access-to-cdf-constants-and-the-c-library">
+</section>
+<section id="access-to-cdf-constants-and-the-c-library">
 <h3>Access to CDF constants and the C library<a class="headerlink" href="#access-to-cdf-constants-and-the-c-library" title="Permalink to this headline">¶</a></h3>
 <p>Constants defined in cdf.h and occasionally useful in accessing CDFs are
 available in the <a class="reference internal" href="autosummary/spacepy.pycdf.const.html#module-spacepy.pycdf.const" title="spacepy.pycdf.const"><code class="xref py py-mod docutils literal notranslate"><span class="pre">const</span></code></a> module.</p>
 <p>The underlying C library is represented by the <a class="reference internal" href="#spacepy.pycdf.lib" title="spacepy.pycdf.lib"><code class="xref py py-attr docutils literal notranslate"><span class="pre">lib</span></code></a>
 variable.</p>
-</div>
-</div>
-<div class="section" id="classes">
+</section>
+</section>
+<section id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -438,8 +440,8 @@ variable.</p>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="functions">
+</section>
+<section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -452,8 +454,8 @@ variable.</p>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="submodules">
+</section>
+<section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -469,12 +471,12 @@ variable.</p>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="data">
+</section>
+<section id="data">
 <h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
 <dl class="py attribute">
-<dt id="spacepy.pycdf.lib">
-<code class="sig-prename descclassname">spacepy.pycdf.</code><code class="sig-name descname">lib</code><a class="headerlink" href="#spacepy.pycdf.lib" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pycdf.lib">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pycdf.</span></span><span class="sig-name descname"><span class="pre">lib</span></span><a class="headerlink" href="#spacepy.pycdf.lib" title="Permalink to this definition">¶</a></dt>
 <dd><p>Module global <a class="reference internal" href="autosummary/spacepy.pycdf.Library.html#spacepy.pycdf.Library" title="spacepy.pycdf.Library"><code class="xref py py-class docutils literal notranslate"><span class="pre">Library</span></code></a> object.</p>
 <p>Initalized at <a class="reference internal" href="#module-spacepy.pycdf" title="spacepy.pycdf"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pycdf</span></code></a> load time so all classes have ready
 access to the CDF library and a common state. E.g:</p>
@@ -485,8 +487,8 @@ access to the CDF library and a common state. E.g:</p>
 </div>
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -519,8 +521,8 @@ access to the CDF library and a common state. E.g:</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2020, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
+        &#169; Copyright 2011-2021, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

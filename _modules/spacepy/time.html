@@ -5,12 +5,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.time &#8212; SpacePy v0.2.2 Manual</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <title>spacepy.time &#8212; SpacePy v0.2.3 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
@@ -54,7 +55,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -71,8 +72,7 @@
   <h1>Source code for spacepy.time</h1><div class="highlight"><pre>
 <span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Time conversion, manipulation and implementation of Ticktock class</span>
+<span class="sd">&quot;&quot;&quot;Time conversion, manipulation and implementation of Ticktock class</span>
 
 <span class="sd">Notes</span>
 <span class="sd">=====</span>
@@ -101,20 +101,32 @@
 <span class="sd">Unix time. Details are also discussed in the individual time representations.</span>
 
 <span class="sd">UTC times more than six months in the future are not well-defined, since</span>
-<span class="sd">the sechedule of leap second insertion is not known in advance. SpacePy</span>
+<span class="sd">the schedule of leap second insertion is not known in advance. SpacePy</span>
 <span class="sd">performs conversions assuming there are no leapseconds after those which have</span>
 <span class="sd">been announced by IERS.</span>
 
-<span class="sd">Between 1960 and 1972, UTC was defined by means of fractional leap seconds</span>
-<span class="sd">and a varying-length second. SpacePy treats UTC time in this period similar</span>
-<span class="sd">to after 1972, with a consistent second the same length of the SI second.</span>
-<span class="sd">It applies leap seconds wherever there is an entry in the USNO record of</span>
-<span class="sd">TAI-UTC, rounding fractional total leap second countss to the integer (0.5</span>
-<span class="sd">rounds up). This results in the application of six leap seconds at the</span>
-<span class="sd">beginning of 1972. The discrepancy with other means of calculating TAI-UTC</span>
-<span class="sd">may be as much as five seconds at the end of this period.</span>
+<span class="sd">Between 1960 and 1972, UTC was defined by means of fractional leap</span>
+<span class="sd">seconds and a varying-length second. From 1958 (when UTC was set equal</span>
+<span class="sd">to TAI) and 1972, SpacePy treats UTC time similar to after 1972, with</span>
+<span class="sd">a consistent second the same length of the SI second, and applying a</span>
+<span class="sd">full leap second before the beginning of January and July if UTC - UT1</span>
+<span class="sd">exceeded 0.4s. The difference with other methods of calculating UTC is</span>
+<span class="sd">less than half a second.</span>
 
-<span class="sd">Before 1960, UTC is not defined. SpacePy assumes days of constant length</span>
+<span class="sd">.. versionchanged:: 0.2.3</span>
+<span class="sd">   The application of post-1972 rules to 1958-1927 is new in</span>
+<span class="sd">   0.2.3. Before, SpacePy applied leap seconds wherever there was an</span>
+<span class="sd">   entry in the USNO record of TAI-UTC, rounding fractional total leap</span>
+<span class="sd">   second counts to the integer (0.5 rounds up). The UTC second was still</span>
+<span class="sd">   treated as the same length as the SI second (i.e., rate changed were</span>
+<span class="sd">   not applied.) This resulted in the application of six leap seconds at</span>
+<span class="sd">   the beginning of 1972. The discrepancy with other means of calculating</span>
+<span class="sd">   TAI-UTC was as much as five seconds by the end of this period.</span>
+
+<span class="sd">.. versionchanged:: 0.2.2</span>
+<span class="sd">   Before 0.2.2, SpacePy truncated fractional leapseconds rather than rounding.</span>
+
+<span class="sd">Before 1958, UTC is not defined. SpacePy assumes days of constant length</span>
 <span class="sd">86400 seconds, equal to the SI second. This is almost guaranteed to be wrong;</span>
 <span class="sd">for times well out of the space era, it is strongly recommended to work</span>
 <span class="sd">consistently in either a continuous time system (e.g. TAI) or a day-based</span>
@@ -125,7 +137,7 @@
 <span class="sd">10-14 do not exist. This change is ignored for continuously-running non leap</span>
 <span class="sd">second aware timebases: CDF and RDT.</span>
 
-<span class="sd">See the ``Ticktock`` documentation and its various ``get`` functions for</span>
+<span class="sd">See the :class:`Ticktock` documentation and its various ``get`` functions for</span>
 <span class="sd">more details on the exact definitions of time systems used by SpacePy.</span>
 
 <span class="sd">Examples:</span>
@@ -210,6 +222,7 @@
 
 
 <span class="sd">Copyright 2010 Los Alamos National Security, LLC.</span>
+
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
 
@@ -1216,7 +1229,7 @@
 
 <span class="sd">        Notes</span>
 <span class="sd">        =====</span>
-<span class="sd">        This is based on the UTC day, defined as JD(UTC) - 2 400 000.5,</span>
+<span class="sd">        This is based on the UTC day, defined as JD(UTC),</span>
 <span class="sd">        per the recommendation</span>
 <span class="sd">        of `IAU General Assembly XXIII resolution B1</span>
 <span class="sd">        &lt;https://www.iers.org/IERS/EN/Science/Recommendations/</span>
@@ -2320,30 +2333,92 @@
         <span class="k">return</span> <span class="kc">False</span>
 
 
-<span class="k">def</span> <span class="nf">_read_leaps</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">_leapsgood</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="n">filetime</span><span class="p">,</span> <span class="n">lastleap</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Determines if leap seconds are up-to-date</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    now : datetime.datetime</span>
+<span class="sd">        Current time (UTC assumed)</span>
+<span class="sd">    filetime : datetime.datetime</span>
+<span class="sd">        Timestamp (mtime) of the leapsecond file</span>
+<span class="sd">    lastleap : datetime.datetime</span>
+<span class="sd">        Last leapsecond in the file (really the moment after the leap)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">        True if leap second file is up-to-date, False if might not be.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># There cannot be a leap second until AFTER the ls after the</span>
+    <span class="c1"># bulletin (e.g. once past 1 Jan, know the next possible is next 1 Jan)</span>
+    <span class="n">goodto_mtime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span>
+        <span class="n">filetime</span><span class="o">.</span><span class="n">year</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span> <span class="k">if</span> <span class="n">filetime</span><span class="o">.</span><span class="n">month</span> <span class="o">&gt;</span> <span class="mi">6</span> <span class="k">else</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># The next possible leapsecond is 6mo after the previous known leap,</span>
+    <span class="c1"># which is (technically just before) 1 Jan or 1 July</span>
+    <span class="n">goodto_ls</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span>
+        <span class="n">lastleap</span><span class="o">.</span><span class="n">year</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">lastleap</span><span class="o">.</span><span class="n">month</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">),</span>
+        <span class="mi">1</span> <span class="k">if</span> <span class="n">lastleap</span><span class="o">.</span><span class="n">month</span> <span class="o">&gt;</span> <span class="mi">6</span> <span class="k">else</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">goodto</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">goodto_ls</span><span class="p">,</span> <span class="n">goodto_mtime</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">now</span> <span class="o">&lt;</span> <span class="n">goodto</span>
+
+
+<span class="k">def</span> <span class="nf">_read_leaps</span><span class="p">(</span><span class="n">oldstyle</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Read leapseconds in from spacepy tai-utc file</span>
 
 <span class="sd">    Populates module-global variables with leapsecond information:</span>
 <span class="sd">    secs, year, mon, day, TAIleaps.</span>
-<span class="sd">    Called on first initialization of Ticktock.</span>
+<span class="sd">    Called on import of this module.</span>
+
+<span class="sd">    Other Parameters</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    oldstyle : bool</span>
+
+<span class="sd">        .. versionadded:: 0.2.3</span>
+
+<span class="sd">        Treat leapseconds as in SpacePy 0.2.2 (default False). Default is</span>
+<span class="sd">        to ignore the file contents through 1 Jan 1972 and use SpacePy&#39;s own</span>
+<span class="sd">        list of integral leapseconds, which uses the post-1972 standard</span>
+<span class="sd">        (add a leapsecond on January 1/July 1 if UTC - UT1 &gt; 0.4s).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">global</span> <span class="n">secs</span><span class="p">,</span> <span class="n">year</span><span class="p">,</span> <span class="n">mon</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">TAIleaps</span>
     <span class="c1"># load current file</span>
     <span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">spacepy</span><span class="o">.</span><span class="n">DOT_FLN</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;tai-utc.dat&#39;</span><span class="p">)</span>
-    <span class="n">mtime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="o">*</span><span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getmtime</span><span class="p">(</span><span class="n">fname</span><span class="p">))[:</span><span class="mi">6</span><span class="p">])</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
-        <span class="n">text</span> <span class="o">=</span> <span class="n">fh</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">fh</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+        <span class="n">mtime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="o">*</span><span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getmtime</span><span class="p">(</span><span class="n">fname</span><span class="p">))[:</span><span class="mi">6</span><span class="p">])</span>
+    <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Cannot read leapsecond file. Use&#39;</span>
+                      <span class="s1">&#39; spacepy.toolbox.update(leapsecs=True).&#39;</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># Use built-in pre-1972 leaps</span>
+        <span class="n">mtime</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1"># Some files have a &quot;last checked&quot; line at the top</span>
-    <span class="k">if</span> <span class="n">text</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Checked&#39;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">text</span> <span class="ow">and</span> <span class="n">text</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Checked&#39;</span><span class="p">):</span>
         <span class="k">del</span> <span class="n">text</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
+    <span class="n">months</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;JAN&#39;</span><span class="p">,</span> <span class="s1">&#39;FEB&#39;</span><span class="p">,</span> <span class="s1">&#39;MAR&#39;</span><span class="p">,</span> <span class="s1">&#39;APR&#39;</span><span class="p">,</span> <span class="s1">&#39;MAY&#39;</span><span class="p">,</span> <span class="s1">&#39;JUN&#39;</span><span class="p">,</span>
+                       <span class="s1">&#39;JUL&#39;</span><span class="p">,</span> <span class="s1">&#39;AUG&#39;</span><span class="p">,</span> <span class="s1">&#39;SEP&#39;</span><span class="p">,</span> <span class="s1">&#39;OCT&#39;</span><span class="p">,</span> <span class="s1">&#39;NOV&#39;</span><span class="p">,</span> <span class="s1">&#39;DEC&#39;</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">oldstyle</span><span class="p">:</span> <span class="c1"># Use internal integral leapsecond count until 1972</span>
+        <span class="n">keep_idx</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+                         <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">l</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">1972</span>
+                         <span class="ow">or</span> <span class="nb">int</span><span class="p">(</span><span class="n">l</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1972</span> <span class="ow">and</span> <span class="n">l</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;JUL&#39;</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+        <span class="n">leaps</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1959</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">36569</span><span class="p">),</span> <span class="p">(</span><span class="mi">1961</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">37300</span><span class="p">),</span> <span class="p">(</span><span class="mi">1963</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">38211</span><span class="p">),</span>
+                 <span class="p">(</span><span class="mi">1965</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">38761</span><span class="p">),</span> <span class="p">(</span><span class="mi">1966</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">39307</span><span class="p">),</span> <span class="p">(</span><span class="mi">1967</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">39672</span><span class="p">),</span>
+                 <span class="p">(</span><span class="mi">1968</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">40038</span><span class="p">),</span> <span class="p">(</span><span class="mi">1969</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">40403</span><span class="p">),</span> <span class="p">(</span><span class="mi">1970</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">40768</span><span class="p">),</span>
+                 <span class="p">(</span><span class="mi">1971</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">41133</span><span class="p">)]</span>
+        <span class="c1"># 1972 Jan NOT a leapsecond in this formulation; TAI-UTC=10s at 71 Jul</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39; </span><span class="si">{Y}</span><span class="s1"> </span><span class="si">{M}</span><span class="s1">  1 =JD </span><span class="si">{JD}</span><span class="s1">  TAI-UTC=</span><span class="si">{L:12.7f}</span><span class="s1"> S &#39;</span>
+            <span class="s1">&#39;+ (MJD - 00000.) X 0.0000000 S   ACTUAL</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">Y</span><span class="o">=</span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">M</span><span class="o">=</span><span class="n">months</span><span class="p">[</span><span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">JD</span><span class="o">=</span><span class="n">l</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="mf">2400000.5</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">leaps</span><span class="p">)]</span> \
+                <span class="o">+</span> <span class="n">text</span><span class="p">[</span><span class="n">keep_idx</span><span class="p">:]</span>
     <span class="n">secs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
     <span class="n">year</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
     <span class="n">mon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
     <span class="n">day</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
-
-    <span class="n">months</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;JAN&#39;</span><span class="p">,</span> <span class="s1">&#39;FEB&#39;</span><span class="p">,</span> <span class="s1">&#39;MAR&#39;</span><span class="p">,</span> <span class="s1">&#39;APR&#39;</span><span class="p">,</span> <span class="s1">&#39;MAY&#39;</span><span class="p">,</span> <span class="s1">&#39;JUN&#39;</span><span class="p">,</span>
-                       <span class="s1">&#39;JUL&#39;</span><span class="p">,</span> <span class="s1">&#39;AUG&#39;</span><span class="p">,</span> <span class="s1">&#39;SEP&#39;</span><span class="p">,</span> <span class="s1">&#39;OCT&#39;</span><span class="p">,</span> <span class="s1">&#39;NOV&#39;</span><span class="p">,</span> <span class="s1">&#39;DEC&#39;</span><span class="p">])</span>
 
     <span class="k">for</span> <span class="n">line</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">secs</span><span class="p">))):</span>
         <span class="c1"># Round float seconds (0.5 always rounds up.)</span>
@@ -2355,13 +2430,10 @@
     <span class="c1"># Check for out of date. The leap second bulletin comes every</span>
     <span class="c1"># six months, and that contains information through the following</span>
     <span class="c1"># leap second (end of June/Dec)</span>
-    <span class="k">if</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;enable_old_data_warning&#39;</span><span class="p">]:</span>
-        <span class="n">lastknown</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span>
-            <span class="n">mtime</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">year</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">mon</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">day</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])))</span>
-        <span class="n">goodthrough</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span>
-            <span class="n">lastknown</span><span class="o">.</span><span class="n">year</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">lastknown</span><span class="o">.</span><span class="n">month</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">),</span>
-            <span class="mi">1</span> <span class="k">if</span> <span class="n">lastknown</span><span class="o">.</span><span class="n">month</span> <span class="o">&gt;</span> <span class="mi">6</span> <span class="k">else</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">goodthrough</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">mtime</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;enable_old_data_warning&#39;</span><span class="p">]</span> \
+       <span class="ow">and</span> <span class="ow">not</span> <span class="n">_leapsgood</span><span class="p">(</span>
+           <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">(),</span> <span class="n">mtime</span><span class="p">,</span>
+           <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">year</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">mon</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">day</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))):</span>
             <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Leapseconds may be out of date.&#39;</span>
                           <span class="s1">&#39; Use spacepy.toolbox.update(leapsecs=True)&#39;</span><span class="p">)</span>
 
@@ -2460,10 +2532,10 @@
         <span class="n">inleap</span> <span class="o">=</span> <span class="n">dtai</span> <span class="o">-</span> <span class="n">leap_dtai</span><span class="p">[</span><span class="n">lidx</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">1</span>
         <span class="k">if</span> <span class="n">inleap</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">():</span> <span class="c1"># Scalar</span>
             <span class="k">if</span> <span class="n">inleap</span><span class="p">:</span>
-                <span class="n">dtai</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">dtai</span><span class="p">)</span> <span class="o">-</span> <span class="o">.</span><span class="mi">000001</span>
+                <span class="n">dtai</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">dtai</span><span class="p">)</span> <span class="o">-</span> <span class="mf">.000001</span>
                 <span class="n">lidx</span> <span class="o">-=</span> <span class="mi">1</span> <span class="c1"># Associated with previous TAI - UTC</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">dtai</span><span class="p">[</span><span class="n">inleap</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">dtai</span><span class="p">[</span><span class="n">inleap</span><span class="p">])</span> <span class="o">-</span> <span class="o">.</span><span class="mi">000001</span>
+            <span class="n">dtai</span><span class="p">[</span><span class="n">inleap</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">dtai</span><span class="p">[</span><span class="n">inleap</span><span class="p">])</span> <span class="o">-</span> <span class="mf">.000001</span>
             <span class="c1"># Already subtracted ~1sec, now associated with previous TAI - UTC</span>
             <span class="n">lidx</span><span class="p">[</span><span class="n">inleap</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
         <span class="c1"># Remove all of the TAI seconds that &quot;disappeared&quot;.</span>
@@ -2557,13 +2629,13 @@
     <span class="c1"># Seconds from the start of naive day.</span>
     <span class="n">ssd</span> <span class="o">=</span> <span class="p">(</span><span class="n">days</span> <span class="o">-</span> <span class="n">dayint</span><span class="p">)</span> <span class="o">*</span> <span class="n">daylen</span> <span class="c1"># Mod does wrong thing if negative</span>
     <span class="c1"># Index TAIUTC for every input. Start of day w/LS is still previous value.</span>
-    <span class="n">taiutcidx</span> <span class="o">=</span> <span class="n">ldidx</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="n">leap_sec_day</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">intc</span><span class="p">)</span>
+    <span class="n">taiutcidx</span> <span class="o">=</span> <span class="n">ldidx</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="n">leap_sec_day</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">intp</span><span class="p">)</span>
     <span class="c1"># Keep small number adds together: ssd and leapseconds.</span>
     <span class="n">taiout</span> <span class="o">=</span> <span class="n">daystart</span> <span class="o">+</span> <span class="p">(</span><span class="n">ssd</span> <span class="o">+</span> <span class="n">off</span> <span class="o">+</span> <span class="n">taiutc</span><span class="p">[</span><span class="n">taiutcidx</span><span class="p">])</span>
     <span class="k">if</span> <span class="n">leaps</span> <span class="o">==</span> <span class="s1">&#39;drop&#39;</span><span class="p">:</span>
         <span class="c1"># Any times after leap-second skip need an extra second.</span>
         <span class="n">taiutcidx</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="n">leap_sec_day</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">taiout</span> <span class="o">&gt;=</span> <span class="n">leap_tai</span><span class="p">[</span><span class="n">ldidx</span><span class="p">]),</span>
-                                <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">integer</span><span class="p">)</span>
+                                <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">intp</span><span class="p">)</span>
         <span class="c1"># Recalculate to keep small-number addition together</span>
         <span class="n">taiout</span> <span class="o">=</span> <span class="n">daystart</span> <span class="o">+</span> <span class="p">(</span><span class="n">ssd</span> <span class="o">+</span> <span class="n">off</span> <span class="o">+</span> <span class="n">taiutc</span><span class="p">[</span><span class="n">taiutcidx</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">taiout</span>
@@ -2650,7 +2722,7 @@
     <span class="n">inleap</span> <span class="o">=</span> <span class="n">tai</span> <span class="o">&lt;</span> <span class="n">leap_tai</span><span class="p">[</span><span class="n">lidx</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">taiutc</span><span class="p">)[</span><span class="n">lidx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
     <span class="n">naive_tai</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">choose</span><span class="p">(</span><span class="n">inleap</span><span class="p">,</span> <span class="p">(</span>
         <span class="n">tai</span> <span class="o">-</span> <span class="n">taiutc</span><span class="p">[</span><span class="n">lidx</span><span class="p">],</span> <span class="c1"># Just subtract off LS</span>
-        <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">tai</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="o">.</span><span class="mi">999</span> <span class="o">-</span> <span class="n">taiutc</span><span class="p">[</span><span class="n">lidx</span><span class="p">])</span> <span class="c1"># Peg to end of sec</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">tai</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mf">.999</span> <span class="o">-</span> <span class="n">taiutc</span><span class="p">[</span><span class="n">lidx</span><span class="p">])</span> <span class="c1"># Peg to end of sec</span>
         <span class="p">))</span>
     <span class="c1"># Anything before 1582-10-15 needs to skip 10 CDF days backward,</span>
     <span class="c1"># since naive has ten days that are not in TAI</span>
@@ -2687,8 +2759,8 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2020, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
+        &#169; Copyright 2011-2021, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

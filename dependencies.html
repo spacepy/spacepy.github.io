@@ -4,13 +4,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SpacePy Dependencies &#8212; SpacePy v0.2.2 Manual</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>SpacePy Dependencies &#8212; SpacePy v0.2.3 Manual</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
     
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -100,7 +102,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -114,7 +116,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="spacepy-dependencies">
+  <section id="spacepy-dependencies">
 <h1>SpacePy Dependencies<a class="headerlink" href="#spacepy-dependencies" title="Permalink to this headline">¶</a></h1>
 <p>SpacePy relies on several other pieces of software for complete
 functionality.  <a class="reference internal" href="install.html"><span class="doc">Installing SpacePy</span></a> links to details on
@@ -124,18 +126,18 @@ SpacePy, and the new functionality will be available the next
 time SpacePy is imported.</p>
 <p>Currently required versions are documented
 here. <a class="reference internal" href="dep_versions.html"><span class="doc">Dependency version support</span></a> describes future support.</p>
-<div class="section" id="hard-dependencies">
+<section id="hard-dependencies">
 <h2>Hard Dependencies<a class="headerlink" href="#hard-dependencies" title="Permalink to this headline">¶</a></h2>
 <p>Without these packages installed, SpacePy will not function.</p>
-<div class="section" id="python-2-7">
+<section id="python-2-7">
 <h3>Python 2.7+<a class="headerlink" href="#python-2-7" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://www.python.org/">Python</a> is the core language for SpacePy.
 Python 3 is strongly recommended; while SpacePy currently supports
 Python 2.7, this support will be phased out over the course
 of 2020. See <a class="reference internal" href="py2k_eol.html"><span class="doc">Python 2 End of Support</span></a>.</p>
 <p>Required to install SpacePy.</p>
-</div>
-<div class="section" id="numpy-1-10">
+</section>
+<section id="numpy-1-10">
 <h3>NumPy 1.10+<a class="headerlink" href="#numpy-1-10" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://numpy.scipy.org/">NumPy</a> provides the
 high-performance array data structure used throughout SpacePy. Version
@@ -145,27 +147,27 @@ packaged separately; it is required (at installation time) if
 <a class="reference internal" href="irbempy.html#module-spacepy.irbempy" title="spacepy.irbempy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">irbempy</span></code></a> is to be used.</p>
 <p>Due to a numpy bug, numpy 1.15.0 is not supported. Use 1.15.1 or later.</p>
 <p>On Python 3.9, numpy 1.18 or later is required.</p>
-</div>
-<div class="section" id="dateutil">
+</section>
+<section id="dateutil">
 <h3>dateutil<a class="headerlink" href="#dateutil" title="Permalink to this headline">¶</a></h3>
 <p>If you choose not to install <a class="reference internal" href="#dependencies-mpl"><span class="std std-ref">matplotlib</span></a>,
 <a class="reference external" href="http://labix.org/python-dateutil">dateutil</a> 1.4 or later is required.
 (Installing matplotlib will fulfill this dependency.)</p>
-</div>
-<div class="section" id="c-compiler">
+</section>
+<section id="c-compiler">
 <h3>C compiler<a class="headerlink" href="#c-compiler" title="Permalink to this headline">¶</a></h3>
 <p>If you are installing SpacePy from source, a working C compiler
 is required. (Not necessary for the Windows binary installer.)</p>
-</div>
-</div>
-<div class="section" id="soft-dependencies">
+</section>
+</section>
+<section id="soft-dependencies">
 <h2>Soft Dependencies<a class="headerlink" href="#soft-dependencies" title="Permalink to this headline">¶</a></h2>
 <p>Without these packages, SpacePy will install, but certain features may
 not be available. Usually an ImportError means a dependency is missing.</p>
 <p>These are simply marked as dependencies in SpacePy metadata and thus
 will be automatically installed when using dependency-resolving
 methods such as pip.</p>
-<div class="section" id="scipy-0-11">
+<section id="scipy-0-11">
 <span id="dependencies-scipy"></span><h3>SciPy 0.11+<a class="headerlink" href="#scipy-0-11" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://www.scipy.org/">SciPy</a> provides several useful scientific
 and numerical functions build on top of NumPy.  It is highly
@@ -178,8 +180,8 @@ without SciPy:</p>
 <li><p><a class="reference internal" href="toolbox.html#module-spacepy.toolbox" title="spacepy.toolbox"><code class="xref py py-mod docutils literal notranslate"><span class="pre">toolbox</span></code></a></p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="matplotlib-1-5-0">
+</section>
+<section id="matplotlib-1-5-0">
 <span id="dependencies-mpl"></span><h3>matplotlib 1.5.0+<a class="headerlink" href="#matplotlib-1-5-0" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://matplotlib.sourceforge.net/">matplotlib</a> is the preferred
 plotting package for Python. It is highly recommended. Without it, you
@@ -195,24 +197,24 @@ modules may have limited functionality or fail entirely:</p>
 <li><p><a class="reference internal" href="toolbox.html#module-spacepy.toolbox" title="spacepy.toolbox"><code class="xref py py-mod docutils literal notranslate"><span class="pre">toolbox</span></code></a></p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="ffnet-0-7">
+</section>
+<section id="ffnet-0-7">
 <span id="dependencies-ffnet"></span><h3>ffnet 0.7+<a class="headerlink" href="#ffnet-0-7" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://ffnet.sourceforge.net/">ffnet</a> is a neural network package,
-required for <a class="reference internal" href="lanlstar.html#module-spacepy.LANLstar" title="spacepy.LANLstar"><code class="xref py py-mod docutils literal notranslate"><span class="pre">LANLstar</span></code></a>.</p>
-</div>
-<div class="section" id="networkx-1-0">
+required for <code class="xref py py-mod docutils literal notranslate"><span class="pre">LANLstar</span></code>.</p>
+</section>
+<section id="networkx-1-0">
 <span id="dependencies-networkx"></span><h3>networkx 1.0+<a class="headerlink" href="#networkx-1-0" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://networkx.lanl.gov/">networkx</a> is a requirement for ffnet,
-and thus <a class="reference internal" href="lanlstar.html#module-spacepy.LANLstar" title="spacepy.LANLstar"><code class="xref py py-mod docutils literal notranslate"><span class="pre">LANLstar</span></code></a>.</p>
-</div>
-<div class="section" id="h5py-2-6">
+and thus <code class="xref py py-mod docutils literal notranslate"><span class="pre">LANLstar</span></code>.</p>
+</section>
+<section id="h5py-2-6">
 <span id="dependencies-h5py"></span><h3>h5py 2.6+<a class="headerlink" href="#h5py-2-6" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://code.google.com/p/h5py/">h5py</a> provides a Python interface to
 HDF5 files. It is required for the HDF import/export capability of
 <a class="reference internal" href="datamodel.html#module-spacepy.datamodel" title="spacepy.datamodel"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datamodel</span></code></a> and for use of the <a class="reference internal" href="omni.html#module-spacepy.omni" title="spacepy.omni"><code class="xref py py-mod docutils literal notranslate"><span class="pre">omni</span></code></a> module.</p>
-</div>
-<div class="section" id="cdf-2-7">
+</section>
+<section id="cdf-2-7">
 <span id="dependencies-cdf"></span><h3>CDF 2.7+<a class="headerlink" href="#cdf-2-7" title="Permalink to this headline">¶</a></h3>
 <p>NASA’s <a class="reference external" href="http://cdf.gsfc.nasa.gov/">CDF</a> library provides access to
 Common Data Format files. It is required for <a class="reference internal" href="pycdf.html#module-spacepy.pycdf" title="spacepy.pycdf"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pycdf</span></code></a>,
@@ -224,8 +226,8 @@ and thus for the CDF import/export capability of
 installed if pycdf support is needed; it will not be automatically
 installed.</p>
 </div>
-</div>
-<div class="section" id="fortran-compiler">
+</section>
+<section id="fortran-compiler">
 <span id="dependencies-fortran"></span><h3>Fortran compiler<a class="headerlink" href="#fortran-compiler" title="Permalink to this headline">¶</a></h3>
 <p>If installing from source, <a class="reference internal" href="irbempy.html#module-spacepy.irbempy" title="spacepy.irbempy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">irbempy</span></code></a> requires a Fortran
 compiler. (This is not required for the Windows binary installer).
@@ -234,14 +236,16 @@ compiler <code class="docutils literal notranslate"><span class="pre">g77</span>
 <p>If <a class="reference internal" href="irbempy.html#module-spacepy.irbempy" title="spacepy.irbempy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">irbempy</span></code></a> is to be used, the Fortran compiler (and
 f2py) must be installed before SpacePy.</p>
 <p><a class="reference internal" href="coordinates.html#module-spacepy.coordinates" title="spacepy.coordinates"><code class="xref py py-mod docutils literal notranslate"><span class="pre">coordinates</span></code></a> requires <a class="reference internal" href="irbempy.html#module-spacepy.irbempy" title="spacepy.irbempy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">irbempy</span></code></a>.</p>
-</div>
-<div class="section" id="astropy-1-0">
+</section>
+<section id="astropy-1-0">
 <span id="dependencies-astropy"></span><h3>Astropy 1.0+<a class="headerlink" href="#astropy-1-0" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference internal" href="time.html#module-spacepy.time" title="spacepy.time"><code class="xref py py-mod docutils literal notranslate"><span class="pre">time</span></code></a> requires AstroPy if conversion to/from
-AstroPy <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.time.Time.html#astropy.time.Time" title="(in Astropy v4.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Time</span></code></a> is desired.</p>
-</div>
-</div>
-<div class="section" id="soft-dependency-summary">
+<p><a class="reference internal" href="time.html#module-spacepy.time" title="spacepy.time"><code class="xref py py-mod docutils literal notranslate"><span class="pre">time</span></code></a> requires Astropy if conversion to/from
+Astropy <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.time.Time.html#astropy.time.Time" title="(in Astropy v4.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Time</span></code></a> is desired.</p>
+<p><a class="reference internal" href="coordinates.html#module-spacepy.coordinates" title="spacepy.coordinates"><code class="xref py py-mod docutils literal notranslate"><span class="pre">coordinates</span></code></a> requires Astropy if conversion to/from
+Astropy <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.coordinates.SkyCoord.html#astropy.coordinates.SkyCoord" title="(in Astropy v4.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SkyCoord</span></code></a> is desired.</p>
+</section>
+</section>
+<section id="soft-dependency-summary">
 <h2>Soft Dependency Summary<a class="headerlink" href="#soft-dependency-summary" title="Permalink to this headline">¶</a></h2>
 <p>The following table summarizes, by SpacePy module, the functionality
 that is <em>lost</em> if a soft dependency is not installed. If there is
@@ -327,13 +331,13 @@ unaffected by that dependency.</p>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><th class="stub"><p><a class="reference internal" href="lanlstar.html#module-spacepy.LANLstar" title="spacepy.LANLstar"><code class="xref py py-mod docutils literal notranslate"><span class="pre">LANLstar</span></code></a></p></th>
+<tr class="row-even"><th class="stub"><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">LANLstar</span></code></p></th>
 <td></td>
 <td><p>May be required to install <a class="reference internal" href="#dependencies-ffnet"><span class="std std-ref">ffnet</span></a></p></td>
-<td><p><a class="reference internal" href="lanlstar.html#module-spacepy.LANLstar" title="spacepy.LANLstar"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Entire</span> <span class="pre">module</span></code></a></p></td>
+<td><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">Entire</span> <span class="pre">module</span></code></p></td>
 <td></td>
 <td></td>
-<td><p><a class="reference internal" href="lanlstar.html#module-spacepy.LANLstar" title="spacepy.LANLstar"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Entire</span> <span class="pre">module</span></code></a></p></td>
+<td><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">Entire</span> <span class="pre">module</span></code></p></td>
 <td></td>
 <td></td>
 </tr>
@@ -475,9 +479,9 @@ unaffected by that dependency.</p>
 <td><ul class="simple">
 <li><p><a class="reference internal" href="autosummary/spacepy.toolbox.tCommon.html#spacepy.toolbox.tCommon" title="spacepy.toolbox.tCommon"><code class="xref py py-func docutils literal notranslate"><span class="pre">tCommon()</span></code></a></p></li>
 <li><p><a class="reference internal" href="autosummary/spacepy.toolbox.linspace.html#spacepy.toolbox.linspace" title="spacepy.toolbox.linspace"><code class="xref py py-func docutils literal notranslate"><span class="pre">linspace()</span></code></a> if using
-<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></a> inputs</p></li>
+<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></a> inputs</p></li>
 <li><p><a class="reference internal" href="autosummary/spacepy.toolbox.logspace.html#spacepy.toolbox.logspace" title="spacepy.toolbox.logspace"><code class="xref py py-func docutils literal notranslate"><span class="pre">logspace()</span></code></a> if using
-<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></a> inputs</p></li>
+<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></a> inputs</p></li>
 </ul>
 </td>
 <td></td>
@@ -491,8 +495,8 @@ unaffected by that dependency.</p>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -526,8 +530,8 @@ unaffected by that dependency.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2020, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
+        &#169; Copyright 2011-2021, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

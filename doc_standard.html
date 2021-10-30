@@ -4,13 +4,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Documentation Standard &#8212; SpacePy v0.2.2 Manual</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Documentation Standard &#8212; SpacePy v0.2.3 Manual</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
     
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -19,7 +21,7 @@
     <link rel="shortcut icon" href="_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="spacepy - main SpacePy module" href="spacepy.html" />
+    <link rel="next" title="Unit tests" href="tests.html" />
     <link rel="prev" title="Dependency version support" href="dep_versions.html" /> 
   </head><body>
 
@@ -37,7 +39,7 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.html" title="spacepy - main SpacePy module"
+          <a href="tests.html" title="Unit tests"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="dep_versions.html" title="Dependency version support"
@@ -72,8 +74,8 @@
   <p class="topless"><a href="dep_versions.html"
                         title="previous chapter">Dependency version support</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="spacepy.html"
-                        title="next chapter">spacepy - main SpacePy module</a></p>
+  <p class="topless"><a href="tests.html"
+                        title="next chapter">Unit tests</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -85,7 +87,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -99,7 +101,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="documentation-standard">
+  <section id="documentation-standard">
 <h1>Documentation Standard<a class="headerlink" href="#documentation-standard" title="Permalink to this headline">¶</a></h1>
 <p>SpacePy aims to be a high quality product, and as such we (the SpacePy Team) encourage
 a a high degree of uniformity in the documentation across included modules.  If you are
@@ -125,14 +127,14 @@ documentation.</p>
 </ul>
 </dd>
 </dl>
-<div class="section" id="so-what-do-i-need-to-do-in-my-code">
+<section id="so-what-do-i-need-to-do-in-my-code">
 <h2>So what do I need to do in my code?<a class="headerlink" href="#so-what-do-i-need-to-do-in-my-code" title="Permalink to this headline">¶</a></h2>
 <p>Since we are using the ‘numpydoc’ extension there are fixed headings that may
 appear in your documentation block. There are a few things to note:
 * No other headings can appear in your docstrings
 * Most reStructuredText commands cannot appear in your docstrings either (e.g. .. Note:)
 * Since ‘numpydoc’ is not well documented, the best way of finding out what you can do in your docstrings is to look at the source for the SpacePy documentation or the numpy documentation.</p>
-<div class="section" id="allowed-headings">
+<section id="allowed-headings">
 <h3>Allowed headings<a class="headerlink" href="#allowed-headings" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
 <dt><strong>Always use</strong></dt><dd><ul class="simple">
@@ -169,9 +171,9 @@ code in the example and it should work as shown (doctest can help with this)</p>
 </ul>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="function-example">
+</section>
+</section>
+<section id="function-example">
 <h2>Function Example<a class="headerlink" href="#function-example" title="Permalink to this headline">¶</a></h2>
 <p>This code from toolbox shows what a function should look like in your code</p>
 <blockquote>
@@ -221,8 +223,8 @@ code in the example and it should work as shown (doctest can help with this)</p>
 <p>Which then renders as:</p>
 <blockquote>
 <div><dl class="py function">
-<dt>
-<code class="sig-prename descclassname">spacepy.toolbox.</code><code class="sig-name descname">logspace</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">min</span></em>, <em class="sig-param"><span class="n">max</span></em>, <em class="sig-param"><span class="n">num</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/spacepy/toolbox.html#logspace"><span class="viewcode-link">[source]</span></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">spacepy.toolbox.</span></span><span class="sig-name descname"><span class="pre">logspace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/spacepy/toolbox.html#logspace"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Returns log-spaced bins. Same as numpy.logspace except the min and max are the min and max
 not log10(min) and log10(max)</p>
 <dl class="field-list simple">
@@ -267,8 +269,8 @@ not log10(min) and log10(max)</p>
 </dd></dl>
 
 </div></blockquote>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -287,7 +289,7 @@ not log10(min) and log10(max)</p>
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.html" title="spacepy - main SpacePy module"
+          <a href="tests.html" title="Unit tests"
              >next</a> |</li>
         <li class="right" >
           <a href="dep_versions.html" title="Dependency version support"
@@ -301,8 +303,8 @@ not log10(min) and log10(max)</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2020, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
+        &#169; Copyright 2011-2021, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

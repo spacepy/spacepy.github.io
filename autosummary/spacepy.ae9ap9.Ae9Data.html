@@ -4,13 +4,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.ae9ap9.Ae9Data &#8212; SpacePy v0.2.2 Manual</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>spacepy.ae9ap9.Ae9Data &#8212; SpacePy v0.2.3 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -74,7 +76,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -88,11 +90,11 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="spacepy-ae9ap9-ae9data">
+  <section id="spacepy-ae9ap9-ae9data">
 <h1>spacepy.ae9ap9.Ae9Data<a class="headerlink" href="#spacepy-ae9ap9-ae9data" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="spacepy.ae9ap9.Ae9Data">
-<em class="property">class </em><code class="sig-prename descclassname">spacepy.ae9ap9.</code><code class="sig-name descname">Ae9Data</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/ae9ap9.html#Ae9Data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.ae9ap9.Ae9Data" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.ae9ap9.Ae9Data">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">spacepy.ae9ap9.</span></span><span class="sig-name descname"><span class="pre">Ae9Data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/ae9ap9.html#Ae9Data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.ae9ap9.Ae9Data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dictionary-like container for AE9/AP9/SPM data, derived from SpacePy’s datamodel</p>
 <p>To inspect the variables within this class, use the tree method.
 To export the data to a CDF, HDF5 or JSON-headed ASCII file use the relevant “to” method
@@ -106,10 +108,10 @@ To export the data to a CDF, HDF5 or JSON-headed ASCII file use the relevant “
 <tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.ae9ap9.Ae9Data.getLm" title="spacepy.ae9ap9.Ae9Data.getLm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getLm</span></code></a>([alpha, model])</p></td>
 <td><p>Calculate McIlwain L for the imported AE9/AP9 run and add to object</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.ae9ap9.Ae9Data.plotOrbit" title="spacepy.ae9ap9.Ae9Data.plotOrbit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plotOrbit</span></code></a>([timerange, coord_sys, landscape, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.ae9ap9.Ae9Data.plotOrbit" title="spacepy.ae9ap9.Ae9Data.plotOrbit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plotOrbit</span></code></a>([timerange, coord_sys, landscape, ...])</p></td>
 <td><p>Plot X-Y and X-Z projections of satellite orbit in requested coordinate system</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.ae9ap9.Ae9Data.plotSummary" title="spacepy.ae9ap9.Ae9Data.plotSummary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plotSummary</span></code></a>([timerange, coord_sys, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.ae9ap9.Ae9Data.plotSummary" title="spacepy.ae9ap9.Ae9Data.plotSummary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plotSummary</span></code></a>([timerange, coord_sys, ...])</p></td>
 <td><p>Generate summary plot of AE9/AP9/SPM data loaded</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#spacepy.ae9ap9.Ae9Data.plotSpectrogram" title="spacepy.ae9ap9.Ae9Data.plotSpectrogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plotSpectrogram</span></code></a>([ecol, pvars])</p></td>
@@ -121,27 +123,27 @@ To export the data to a CDF, HDF5 or JSON-headed ASCII file use the relevant “
 </tbody>
 </table>
 <dl class="py method">
-<dt id="spacepy.ae9ap9.Ae9Data.getLm">
-<code class="sig-name descname">getLm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">alpha</span><span class="o">=</span><span class="default_value">[90]</span></em>, <em class="sig-param"><span class="n">model</span><span class="o">=</span><span class="default_value">'T89'</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/ae9ap9.html#Ae9Data.getLm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.ae9ap9.Ae9Data.getLm" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.ae9ap9.Ae9Data.getLm">
+<span class="sig-name descname"><span class="pre">getLm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[90]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'T89'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/ae9ap9.html#Ae9Data.getLm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.ae9ap9.Ae9Data.getLm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate McIlwain L for the imported AE9/AP9 run and add to object</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.ae9ap9.Ae9Data.plotOrbit">
-<code class="sig-name descname">plotOrbit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">timerange</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">coord_sys</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">landscape</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">fig_target</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/ae9ap9.html#Ae9Data.plotOrbit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.ae9ap9.Ae9Data.plotOrbit" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.ae9ap9.Ae9Data.plotOrbit">
+<span class="sig-name descname"><span class="pre">plotOrbit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timerange</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coord_sys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">landscape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig_target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/ae9ap9.html#Ae9Data.plotOrbit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.ae9ap9.Ae9Data.plotOrbit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot X-Y and X-Z projections of satellite orbit in requested coordinate system</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.ae9ap9.Ae9Data.plotSummary">
-<code class="sig-name descname">plotSummary</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">timerange</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">coord_sys</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">fig_target</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">spec</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">orbit_params</span><span class="o">=</span><span class="default_value">(False, True)</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/ae9ap9.html#Ae9Data.plotSummary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.ae9ap9.Ae9Data.plotSummary" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.ae9ap9.Ae9Data.plotSummary">
+<span class="sig-name descname"><span class="pre">plotSummary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timerange</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coord_sys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig_target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orbit_params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(False,</span> <span class="pre">True)</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/ae9ap9.html#Ae9Data.plotSummary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.ae9ap9.Ae9Data.plotSummary" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate summary plot of AE9/AP9/SPM data loaded</p>
 <p>spec : if True, plot spectrogram instead of flux/fluence lineplot, requires ‘ecol’ keyword</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.ae9ap9.Ae9Data.plotSpectrogram">
-<code class="sig-name descname">plotSpectrogram</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ecol</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">pvars</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/ae9ap9.html#Ae9Data.plotSpectrogram"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.ae9ap9.Ae9Data.plotSpectrogram" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.ae9ap9.Ae9Data.plotSpectrogram">
+<span class="sig-name descname"><span class="pre">plotSpectrogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ecol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pvars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/ae9ap9.html#Ae9Data.plotSpectrogram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.ae9ap9.Ae9Data.plotSpectrogram" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot a spectrogram of the flux along the requested orbit, as a function of Lm and time</p>
 <dl class="field-list simple">
 <dt class="field-odd">Other Parameters</dt>
@@ -164,8 +166,8 @@ To export the data to a CDF, HDF5 or JSON-headed ASCII file use the relevant “
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.ae9ap9.Ae9Data.setUnits">
-<code class="sig-name descname">setUnits</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">per</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/ae9ap9.html#Ae9Data.setUnits"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.ae9ap9.Ae9Data.setUnits" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.ae9ap9.Ae9Data.setUnits">
+<span class="sig-name descname"><span class="pre">setUnits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">per</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/ae9ap9.html#Ae9Data.setUnits"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.ae9ap9.Ae9Data.setUnits" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set units of energy and flux/fluence</p>
 <p>If keyword ‘per’ is set to None, this method reports the units currently set.
 To set energy in MeV and flux/fluence in ‘per MeV’, set ‘per=MeV’. Valid options are
@@ -182,7 +184,7 @@ To set energy in MeV and flux/fluence in ‘per MeV’, set ‘per=MeV’. Valid
 
 </dd></dl>
 
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -216,8 +218,8 @@ To set energy in MeV and flux/fluence in ‘per MeV’, set ‘per=MeV’. Valid
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2020, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
+        &#169; Copyright 2011-2021, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>
