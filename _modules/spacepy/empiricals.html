@@ -5,12 +5,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.empiricals &#8212; SpacePy v0.2.2 Manual</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <title>spacepy.empiricals &#8212; SpacePy v0.2.3 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
@@ -54,7 +55,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -83,10 +84,12 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
 <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
 <span class="kn">import</span> <span class="nn">scipy.integrate</span> <span class="k">as</span> <span class="nn">integ</span>
+
 <span class="kn">from</span> <span class="nn">spacepy</span> <span class="kn">import</span> <span class="n">help</span>
 <span class="kn">import</span> <span class="nn">spacepy.datamodel</span> <span class="k">as</span> <span class="nn">dm</span>
 <span class="kn">import</span> <span class="nn">spacepy.toolbox</span> <span class="k">as</span> <span class="nn">tb</span>
@@ -144,12 +147,12 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Plasmapause location model(s)</span>
 
-<span class="sd">    CA1992 -- Carpenter, D. L., and R. R. Anderson, An ISEE/whistler </span>
-<span class="sd">    model of equatorial electron density in the magnetosphere, </span>
+<span class="sd">    CA1992 -- Carpenter, D. L., and R. R. Anderson, An ISEE/whistler</span>
+<span class="sd">    model of equatorial electron density in the magnetosphere,</span>
 <span class="sd">    J. Geophys. Res., 97, 1097, 1992.</span>
-<span class="sd">    M2002 -- Moldwin, M. B., L. Downward, H. K. Rassoul, R. Amin, </span>
-<span class="sd">    and R. R. Anderson, A new model of the location of the plasmapause: </span>
-<span class="sd">    CRRES results, J. Geophys. Res., 107(A11), 1339, </span>
+<span class="sd">    M2002 -- Moldwin, M. B., L. Downward, H. K. Rassoul, R. Amin,</span>
+<span class="sd">    and R. R. Anderson, A new model of the location of the plasmapause:</span>
+<span class="sd">    CRRES results, J. Geophys. Res., 107(A11), 1339,</span>
 <span class="sd">    doi:10.1029/2001JA009211, 2002.</span>
 <span class="sd">    RT1970 -- Rycroft, M. J., and J. O. Thomas, The magnetospheric</span>
 <span class="sd">    plasmapause and the electron density trough at the alouette i</span>
@@ -168,6 +171,11 @@
 <span class="sd">        requested local time sector, &#39;all&#39; is valid option</span>
 <span class="sd">    omnivals : spacepy.datamodel.SpaceData, dict</span>
 <span class="sd">        dict-like containing UTC (datetimes) and Kp keys</span>
+
+<span class="sd">    Warns</span>
+<span class="sd">    =====</span>
+<span class="sd">    RuntimeWarning</span>
+<span class="sd">        If the CA1992 model is called with LT as it is not implemented </span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    =======</span>
@@ -191,8 +199,8 @@
     <span class="n">model_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CA1992&#39;</span><span class="p">,</span> <span class="s1">&#39;M2002&#39;</span><span class="p">,</span> <span class="s1">&#39;RT1970&#39;</span><span class="p">]</span>
 
     <span class="k">if</span> <span class="n">model</span> <span class="o">==</span> <span class="s1">&#39;CA1992&#39;</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">LT</span><span class="o">!=</span><span class="s1">&#39;all&#39;</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No LT dependence currently supported for this model&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">LT</span> <span class="o">!=</span> <span class="s1">&#39;all&#39;</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;No LT dependence currently supported for CA1992 model&#39;</span><span class="p">,</span> <span class="ne">RuntimeWarning</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">model</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">model_list</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Please specify a valid model:</span><span class="se">\n</span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39; or &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">model_list</span><span class="p">)))</span>
 
@@ -262,7 +270,7 @@
     <span class="k">return</span> <span class="n">Lpp</span></div>
 
 
-<span class="k">def</span> <span class="nf">getMagnetopause</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">LTs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dbase</span><span class="o">=</span><span class="s1">&#39;QDhourly&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="getMagnetopause"><a class="viewcode-back" href="../../autosummary/spacepy.empiricals.getMagnetopause.html#spacepy.empiricals.getMagnetopause">[docs]</a><span class="k">def</span> <span class="nf">getMagnetopause</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">LTs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dbase</span><span class="o">=</span><span class="s1">&#39;QDhourly&#39;</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Calculates the Shue et al. (1997) position in equatorial plane</span>
 
 <span class="sd">    Shue et al. (1997), A new functional form to study the solar wind </span>
@@ -337,7 +345,7 @@
     <span class="n">out</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="n">costheta</span> <span class="c1">#Xgse</span>
     <span class="n">out</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="n">sintheta</span> <span class="c1">#Ygse</span>
 
-    <span class="k">return</span> <span class="n">out</span>
+    <span class="k">return</span> <span class="n">out</span></div>
 
 
 <div class="viewcode-block" id="getMPstandoff"><a class="viewcode-back" href="../../autosummary/spacepy.empiricals.getMPstandoff.html#spacepy.empiricals.getMPstandoff">[docs]</a><span class="k">def</span> <span class="nf">getMPstandoff</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">dbase</span><span class="o">=</span><span class="s1">&#39;QDhourly&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="p">[]):</span>
@@ -795,7 +803,7 @@
         <span class="n">date</span> <span class="o">=</span> <span class="n">elapsed</span> <span class="o">+</span> <span class="n">start_date</span>
         <span class="k">return</span> <span class="n">date</span></div>
 
-<div class="viewcode-block" id="getSolarProtonSpectra"><a class="viewcode-back" href="../../autosummary/spacepy.empiricals.getSolarProtonSpectra.html#spacepy.empiricals.getSolarProtonSpectra">[docs]</a><span class="k">def</span> <span class="nf">getSolarProtonSpectra</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="mf">3.20e7</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=-</span><span class="mf">0.96</span><span class="p">,</span> <span class="n">E0</span><span class="o">=</span><span class="mf">15.0</span><span class="p">,</span> <span class="n">Emin</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span> <span class="n">Emax</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">nsteps</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+<div class="viewcode-block" id="getSolarProtonSpectra"><a class="viewcode-back" href="../../autosummary/spacepy.empiricals.getSolarProtonSpectra.html#spacepy.empiricals.getSolarProtonSpectra">[docs]</a><span class="k">def</span> <span class="nf">getSolarProtonSpectra</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="mf">3.20e7</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=-</span><span class="mf">0.96</span><span class="p">,</span> <span class="n">E0</span><span class="o">=</span><span class="mf">15.0</span><span class="p">,</span> <span class="n">Emin</span><span class="o">=</span><span class="mf">.1</span><span class="p">,</span> <span class="n">Emax</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">nsteps</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Returns a SpaceData with energy and fluence spectra of solar particle events</span>
 
 <span class="sd">    The formulation follows that of:</span>
@@ -869,8 +877,8 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2020, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
+        &#169; Copyright 2011-2021, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

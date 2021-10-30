@@ -4,13 +4,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.pybats.bats.Stream &#8212; SpacePy v0.2.2 Manual</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>spacepy.pybats.bats.Stream &#8212; SpacePy v0.2.3 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -75,7 +77,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -89,11 +91,11 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="spacepy-pybats-bats-stream">
+  <section id="spacepy-pybats-bats-stream">
 <h1>spacepy.pybats.bats.Stream<a class="headerlink" href="#spacepy-pybats-bats-stream" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="spacepy.pybats.bats.Stream">
-<em class="property">class </em><code class="sig-prename descclassname">spacepy.pybats.bats.</code><code class="sig-name descname">Stream</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bats</span></em>, <em class="sig-param"><span class="n">xstart</span></em>, <em class="sig-param"><span class="n">ystart</span></em>, <em class="sig-param"><span class="n">xfield</span></em>, <em class="sig-param"><span class="n">yfield</span></em>, <em class="sig-param"><span class="n">style</span><span class="o">=</span><span class="default_value">'mag'</span></em>, <em class="sig-param"><span class="n">type</span><span class="o">=</span><span class="default_value">'streamline'</span></em>, <em class="sig-param"><span class="n">method</span><span class="o">=</span><span class="default_value">'rk4'</span></em>, <em class="sig-param"><span class="n">var_list</span><span class="o">=</span><span class="default_value">'all'</span></em>, <em class="sig-param"><span class="n">extract</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">maxPoints</span><span class="o">=</span><span class="default_value">20000</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#Stream"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pybats.bats.Stream" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pybats.bats.Stream">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">spacepy.pybats.bats.</span></span><span class="sig-name descname"><span class="pre">Stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xstart</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ystart</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xfield</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yfield</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mag'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'streamline'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rk4'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extract</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxPoints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20000</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#Stream"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.bats.Stream" title="Permalink to this definition">¶</a></dt>
 <dd><p>A class for streamlines.  Contains all of the information about
 the streamline, including extracted variables.</p>
 <p>Upon instantiation, the object will trace through the vector
@@ -131,7 +133,7 @@ object.</p>
 </dd>
 <dt><strong>maxPoints</strong><span class="classifier">int</span></dt><dd><p>(Default : 20000) Maximum number of integration steps to take.</p>
 </dd>
-<dt><strong>var_list</strong><span class="classifier">string or sequence of strings</span></dt><dd><p>(Default : ‘all’) List of values to extract from <em>dataset</em>.  
+<dt><strong>var_list</strong><span class="classifier">string or sequence of strings</span></dt><dd><p>(Default : ‘all’) List of values to extract from <em>dataset</em>.
 Defaults to ‘all’, for all values within <em>bats</em>.</p>
 </dd>
 </dl>
@@ -155,13 +157,13 @@ Defaults to ‘all’, for all values within <em>bats</em>.</p>
 <td><p>Trace through the vector field.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.bats.Stream.plot" title="spacepy.pybats.bats.Stream.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>(ax, *args, **kwargs)</p></td>
-<td><p>Add streamline to axes object “ax”.</p></td>
+<td><p>Add streamline to axes object &quot;ax&quot;.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="spacepy.pybats.bats.Stream.set_style">
-<code class="sig-name descname">set_style</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">style</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#Stream.set_style"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pybats.bats.Stream.set_style" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pybats.bats.Stream.set_style">
+<span class="sig-name descname"><span class="pre">set_style</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">style</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#Stream.set_style"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.bats.Stream.set_style" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the line style either using a simple matplotlib-type style
 string or using a preset style type.  Current types include:</p>
 <dl class="simple">
@@ -171,26 +173,26 @@ string or using a preset style type.  Current types include:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.pybats.bats.Stream.treetrace">
-<code class="sig-name descname">treetrace</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bats</span></em>, <em class="sig-param"><span class="n">maxPoints</span><span class="o">=</span><span class="default_value">20000</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#Stream.treetrace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pybats.bats.Stream.treetrace" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pybats.bats.Stream.treetrace">
+<span class="sig-name descname"><span class="pre">treetrace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxPoints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#Stream.treetrace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.bats.Stream.treetrace" title="Permalink to this definition">¶</a></dt>
 <dd><p>Trace through the vector field using the quad tree.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.pybats.bats.Stream.trace">
-<code class="sig-name descname">trace</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bats</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#Stream.trace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pybats.bats.Stream.trace" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pybats.bats.Stream.trace">
+<span class="sig-name descname"><span class="pre">trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bats</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#Stream.trace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.bats.Stream.trace" title="Permalink to this definition">¶</a></dt>
 <dd><p>Trace through the vector field.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.pybats.bats.Stream.plot">
-<code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ax</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#Stream.plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pybats.bats.Stream.plot" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pybats.bats.Stream.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#Stream.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.bats.Stream.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add streamline to axes object “ax”.</p>
 </dd></dl>
 
 </dd></dl>
 
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -225,8 +227,8 @@ string or using a preset style type.  Current types include:</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2020, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
+        &#169; Copyright 2011-2021, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

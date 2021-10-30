@@ -4,13 +4,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.empiricals.getLmax &#8212; SpacePy v0.2.2 Manual</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>spacepy.empiricals.getLmax &#8212; SpacePy v0.2.3 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -19,7 +21,7 @@
     <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="spacepy.empiricals.getMPstandoff" href="spacepy.empiricals.getMPstandoff.html" />
+    <link rel="next" title="spacepy.empiricals.getMagnetopause" href="spacepy.empiricals.getMagnetopause.html" />
     <link rel="prev" title="spacepy.empiricals.getExpectedSWTemp" href="spacepy.empiricals.getExpectedSWTemp.html" /> 
   </head><body>
 
@@ -37,7 +39,7 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.empiricals.getMPstandoff.html" title="spacepy.empiricals.getMPstandoff"
+          <a href="spacepy.empiricals.getMagnetopause.html" title="spacepy.empiricals.getMagnetopause"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="spacepy.empiricals.getExpectedSWTemp.html" title="spacepy.empiricals.getExpectedSWTemp"
@@ -61,8 +63,8 @@
   <p class="topless"><a href="spacepy.empiricals.getExpectedSWTemp.html"
                         title="previous chapter">spacepy.empiricals.getExpectedSWTemp</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="spacepy.empiricals.getMPstandoff.html"
-                        title="next chapter">spacepy.empiricals.getMPstandoff</a></p>
+  <p class="topless"><a href="spacepy.empiricals.getMagnetopause.html"
+                        title="next chapter">spacepy.empiricals.getMagnetopause</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -74,7 +76,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -88,11 +90,11 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="spacepy-empiricals-getlmax">
+  <section id="spacepy-empiricals-getlmax">
 <h1>spacepy.empiricals.getLmax<a class="headerlink" href="#spacepy-empiricals-getlmax" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
-<dt id="spacepy.empiricals.getLmax">
-<code class="sig-prename descclassname">spacepy.empiricals.</code><code class="sig-name descname">getLmax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ticks</span></em>, <em class="sig-param"><span class="n">model</span><span class="o">=</span><span class="default_value">'JKemp'</span></em>, <em class="sig-param"><span class="n">dbase</span><span class="o">=</span><span class="default_value">'QDhourly'</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/empiricals.html#getLmax"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.empiricals.getLmax" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.empiricals.getLmax">
+<span class="sig-prename descclassname"><span class="pre">spacepy.empiricals.</span></span><span class="sig-name descname"><span class="pre">getLmax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'JKemp'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dbase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'QDhourly'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/empiricals.html#getLmax"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.empiricals.getLmax" title="Permalink to this definition">¶</a></dt>
 <dd><p>calculate a simple empirical model for Lmax - last closed drift-shell</p>
 <p>Uses the parametrized Lmax from:
 Koller and Morley (2010)
@@ -117,7 +119,7 @@ American Geophysical Union, Fall Meeting 2010, abstract #SM13A-1787</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="spacepy.LANLstar.LANLmax.html#spacepy.LANLstar.LANLmax" title="spacepy.LANLstar.LANLmax"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spacepy.LANLstar.LANLmax</span></code></a></dt><dd></dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">spacepy.LANLstar.LANLmax</span></code></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Examples</p>
@@ -130,7 +132,7 @@ American Geophysical Union, Fall Meeting 2010, abstract #SM13A-1787</p>
 </div>
 </dd></dl>
 
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -149,7 +151,7 @@ American Geophysical Union, Fall Meeting 2010, abstract #SM13A-1787</p>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.empiricals.getMPstandoff.html" title="spacepy.empiricals.getMPstandoff"
+          <a href="spacepy.empiricals.getMagnetopause.html" title="spacepy.empiricals.getMagnetopause"
              >next</a> |</li>
         <li class="right" >
           <a href="spacepy.empiricals.getExpectedSWTemp.html" title="spacepy.empiricals.getExpectedSWTemp"
@@ -164,8 +166,8 @@ American Geophysical Union, Fall Meeting 2010, abstract #SM13A-1787</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2020, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
+        &#169; Copyright 2011-2021, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

@@ -4,13 +4,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.pycdf.AttrList &#8212; SpacePy v0.2.2 Manual</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>spacepy.pycdf.AttrList &#8212; SpacePy v0.2.3 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -74,7 +76,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -88,11 +90,11 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="spacepy-pycdf-attrlist">
+  <section id="spacepy-pycdf-attrlist">
 <h1>spacepy.pycdf.AttrList<a class="headerlink" href="#spacepy-pycdf-attrlist" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="spacepy.pycdf.AttrList">
-<em class="property">class </em><code class="sig-prename descclassname">spacepy.pycdf.</code><code class="sig-name descname">AttrList</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cdf_file</span></em>, <em class="sig-param"><span class="n">special_entry</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#AttrList"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pycdf.AttrList" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pycdf.AttrList">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">spacepy.pycdf.</span></span><span class="sig-name descname"><span class="pre">AttrList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdf_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">special_entry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#AttrList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.AttrList" title="Permalink to this definition">¶</a></dt>
 <dd><p>Object representing a list of attributes.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -124,8 +126,8 @@ Methods listed here are safe to use from the subclasses.</p>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="spacepy.pycdf.AttrList.clone">
-<code class="sig-name descname">clone</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">master</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">new_name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#AttrList.clone"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pycdf.AttrList.clone" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pycdf.AttrList.clone">
+<span class="sig-name descname"><span class="pre">clone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">master</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#AttrList.clone"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.AttrList.clone" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clones another attribute list, or one attribute from it, into this
 list.</p>
 <dl class="field-list simple">
@@ -147,8 +149,8 @@ list.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.pycdf.AttrList.copy">
-<code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#AttrList.copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pycdf.AttrList.copy" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pycdf.AttrList.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#AttrList.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.AttrList.copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a copy of this attribute list</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -161,8 +163,8 @@ list.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.pycdf.AttrList.from_dict">
-<code class="sig-name descname">from_dict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">in_dict</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#AttrList.from_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pycdf.AttrList.from_dict" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pycdf.AttrList.from_dict">
+<span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#AttrList.from_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.AttrList.from_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fill this list of attributes from a dictionary</p>
 <div class="deprecated">
 <p><span class="versionmodified deprecated">Deprecated since version 0.1.5: </span>Use <a class="reference internal" href="#spacepy.pycdf.AttrList.clone" title="spacepy.pycdf.AttrList.clone"><code class="xref py py-meth docutils literal notranslate"><span class="pre">clone()</span></code></a> instead; it supports
@@ -180,8 +182,8 @@ all existing attributes are deleted.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.pycdf.AttrList.new">
-<code class="sig-name descname">new</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">data</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">type</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#AttrList.new"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pycdf.AttrList.new" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pycdf.AttrList.new">
+<span class="sig-name descname"><span class="pre">new</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#AttrList.new"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.AttrList.new" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new Attr in this AttrList</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -208,8 +210,8 @@ Only used if data are specified.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.pycdf.AttrList.rename">
-<code class="sig-name descname">rename</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">old_name</span></em>, <em class="sig-param"><span class="n">new_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#AttrList.rename"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pycdf.AttrList.rename" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pycdf.AttrList.rename">
+<span class="sig-name descname"><span class="pre">rename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#AttrList.rename"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.AttrList.rename" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rename an attribute in this list</p>
 <p>Renaming a zAttribute renames it for <em>all</em> zVariables in this CDF!</p>
 <dl class="field-list simple">
@@ -226,7 +228,7 @@ Only used if data are specified.</p>
 
 </dd></dl>
 
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -260,8 +262,8 @@ Only used if data are specified.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2020, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
+        &#169; Copyright 2011-2021, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

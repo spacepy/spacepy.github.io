@@ -5,12 +5,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.irbempy.irbempy &#8212; SpacePy v0.2.2 Manual</title>
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/default.css" type="text/css" />
+    <title>spacepy.irbempy.irbempy &#8212; SpacePy v0.2.3 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/plot_directive.css" />
     
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
@@ -54,7 +55,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -80,7 +81,7 @@
 
 <span class="sd">Authors</span>
 <span class="sd">-------</span>
-<span class="sd">Josef Koller, Steve Morley </span>
+<span class="sd">Josef Koller, Steve Morley</span>
 
 <span class="sd">Copyright 2010 Los Alamos National Security, LLC.</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -98,14 +99,7 @@
 <span class="kn">from</span> <span class="nn">spacepy</span> <span class="kn">import</span> <span class="n">help</span><span class="p">,</span> <span class="n">config</span>
 <span class="kn">import</span> <span class="nn">spacepy.coordinates</span> <span class="k">as</span> <span class="nn">spc</span>
 <span class="kn">import</span> <span class="nn">spacepy.datamodel</span> <span class="k">as</span> <span class="nn">dm</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">irbempylib</span> <span class="k">as</span> <span class="n">oplib</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="k">if</span> <span class="s1">&#39;sphinx&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Could not import irbempylib. &#39;</span>
-                      <span class="s1">&#39;You appear to be building docs, so ignoring this error.&#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">irbempylib</span> <span class="k">as</span> <span class="n">oplib</span>
 <span class="kn">import</span> <span class="nn">spacepy.toolbox</span> <span class="k">as</span> <span class="nn">tb</span>
 
 <span class="c1">#check whether TS07_DATA_PATH is set, if not then set to spacepy&#39;s installed data directory</span>
@@ -171,7 +165,7 @@
             <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="mo">0o777</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s1">&#39;updateTS07Coeffs: Specified path for TS07 is not valid - to force creation use &quot;force&quot; keyword&#39;</span><span class="p">)</span>
-    
+
     <span class="k">if</span> <span class="s1">&#39;start&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
         <span class="n">firstDate</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2007</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
@@ -180,7 +174,7 @@
         <span class="n">lastDate</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">lastDate</span> <span class="o">=</span> <span class="n">spt</span><span class="o">.</span><span class="n">Ticktock</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">UTC</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        
+
     <span class="n">baseURL</span> <span class="o">=</span> <span class="s1">&#39;http://rbspgway.jhuapl.edu/models/magneticfieldmodeling/ts07d/coeffs_v02/&#39;</span>
 
     <span class="c1">#make inventory of current TS07 data</span>
@@ -218,21 +212,21 @@
             <span class="n">tar</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
         <span class="c1">#now remove tgz file</span>
         <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
-        
+
 
 <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="get_Bfield"><a class="viewcode-back" href="../../../autosummary/spacepy.irbempy.get_Bfield.html#spacepy.irbempy.get_Bfield">[docs]</a><span class="k">def</span> <span class="nf">get_Bfield</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">loci</span><span class="p">,</span> <span class="n">extMag</span><span class="o">=</span><span class="s1">&#39;T01STORM&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">omnivals</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    call get_bfield in irbem lib and return a dictionary with the B-field vector and </span>
+<span class="sd">    call get_bfield in irbem lib and return a dictionary with the B-field vector and</span>
 <span class="sd">    strenght.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ==========</span>
 <span class="sd">        - ticks (Ticktock class) : containing time information</span>
 <span class="sd">        - loci (Coords class) : containing spatial information</span>
-<span class="sd">        - extMag (string) : optional; will choose the external magnetic field model </span>
-<span class="sd">                            possible values [&#39;0&#39;, &#39;MEAD&#39;, &#39;T87SHORT&#39;, &#39;T87LONG&#39;, &#39;T89&#39;, </span>
-<span class="sd">                            &#39;OPQUIET&#39;, &#39;OPDYN&#39;, &#39;T96&#39;, &#39;OSTA&#39;, &#39;T01QUIET&#39;, &#39;T01STORM&#39;, </span>
+<span class="sd">        - extMag (string) : optional; will choose the external magnetic field model</span>
+<span class="sd">                            possible values [&#39;0&#39;, &#39;MEAD&#39;, &#39;T87SHORT&#39;, &#39;T87LONG&#39;, &#39;T89&#39;,</span>
+<span class="sd">                            &#39;OPQUIET&#39;, &#39;OPDYN&#39;, &#39;T96&#39;, &#39;OSTA&#39;, &#39;T01QUIET&#39;, &#39;T01STORM&#39;,</span>
 <span class="sd">                            &#39;T05&#39;, &#39;ALEX&#39;, &#39;TS07&#39;]</span>
 <span class="sd">        - options (optional list or array of integers length=5) : explained in Lstar</span>
 <span class="sd">        - omni values as dictionary (optional) : if not provided, will use lookup table</span>
@@ -294,7 +288,7 @@
 <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="find_Bmirror"><a class="viewcode-back" href="../../../autosummary/spacepy.irbempy.find_Bmirror.html#spacepy.irbempy.find_Bmirror">[docs]</a><span class="k">def</span> <span class="nf">find_Bmirror</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">loci</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">extMag</span><span class="o">=</span><span class="s1">&#39;T01STORM&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">omnivals</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    call find_mirror_point from irbem library and return a dictionary with values for </span>
+<span class="sd">    call find_mirror_point from irbem library and return a dictionary with values for</span>
 <span class="sd">    Blocal, Bmirr and the GEO (cartesian) coordinates of the mirror point</span>
 
 <span class="sd">    Parameters</span>
@@ -306,14 +300,14 @@
 <span class="sd">    alpha : array-like</span>
 <span class="sd">        containing the pitch angles</span>
 <span class="sd">    extMag : str</span>
-<span class="sd">        optional; will choose the external magnetic field model </span>
-<span class="sd">        possible values [&#39;0&#39;, &#39;MEAD&#39;, &#39;T87SHORT&#39;, &#39;T87LONG&#39;, &#39;T89&#39;, </span>
-<span class="sd">        OPQUIET&#39;, &#39;OPDYN&#39;, &#39;T96&#39;, &#39;OSTA&#39;, &#39;T01QUIET&#39;, &#39;T01STORM&#39;, </span>
+<span class="sd">        optional; will choose the external magnetic field model</span>
+<span class="sd">        possible values [&#39;0&#39;, &#39;MEAD&#39;, &#39;T87SHORT&#39;, &#39;T87LONG&#39;, &#39;T89&#39;,</span>
+<span class="sd">        OPQUIET&#39;, &#39;OPDYN&#39;, &#39;T96&#39;, &#39;OSTA&#39;, &#39;T01QUIET&#39;, &#39;T01STORM&#39;,</span>
 <span class="sd">        &#39;T05&#39;, &#39;ALEX&#39;, &#39;TS07&#39;]</span>
 <span class="sd">    options : array-like (optional)</span>
 <span class="sd">        length=5 : explained in Lstar</span>
 <span class="sd">    omnivals : dict (optional)</span>
-<span class="sd">        if not provided, will use lookup table </span>
+<span class="sd">        if not provided, will use lookup table</span>
 <span class="sd">        (see get_Lstar documentation for further explanation)</span>
 
 <span class="sd">    Returns</span>
@@ -367,7 +361,7 @@
         <span class="n">GEOcoord</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">GEOcoord</span><span class="p">,</span><span class="n">badval</span><span class="p">))</span> <span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">NaN</span>
 
         <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Blocal&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">blocal</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Bmirr&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">bmirr</span>	
+        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Bmirr&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">bmirr</span>
         <span class="n">results</span><span class="p">[</span><span class="s1">&#39;loci&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">GEOcoord</span>
 
     <span class="n">results</span><span class="p">[</span><span class="s1">&#39;loci&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spc</span><span class="o">.</span><span class="n">Coords</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;loci&#39;</span><span class="p">],</span> <span class="s1">&#39;GEO&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">)</span>
@@ -385,17 +379,17 @@
 <span class="sd">    ==========</span>
 <span class="sd">        - ticks (Ticktock class) : containing time information</span>
 <span class="sd">        - loci (Coords class) : containing spatial information</span>
-<span class="sd">        - extMag (string) : optional; will choose the external magnetic field model </span>
-<span class="sd">                            possible values [&#39;0&#39;, &#39;MEAD&#39;, &#39;T87SHORT&#39;, &#39;T87LONG&#39;, &#39;T89&#39;, </span>
-<span class="sd">                            &#39;OPQUIET&#39;, &#39;OPDYN&#39;, &#39;T96&#39;, &#39;OSTA&#39;, &#39;T01QUIET&#39;, &#39;T01STORM&#39;, </span>
+<span class="sd">        - extMag (string) : optional; will choose the external magnetic field model</span>
+<span class="sd">                            possible values [&#39;0&#39;, &#39;MEAD&#39;, &#39;T87SHORT&#39;, &#39;T87LONG&#39;, &#39;T89&#39;,</span>
+<span class="sd">                            &#39;OPQUIET&#39;, &#39;OPDYN&#39;, &#39;T96&#39;, &#39;OSTA&#39;, &#39;T01QUIET&#39;, &#39;T01STORM&#39;,</span>
 <span class="sd">                            &#39;T05&#39;, &#39;ALEX&#39;, &#39;TS07&#39;]</span>
 <span class="sd">        - options (optional list or array of integers length=5) : explained in Lstar</span>
-<span class="sd">        - omni values as dictionary (optional) : if not provided, will use lookup table </span>
+<span class="sd">        - omni values as dictionary (optional) : if not provided, will use lookup table</span>
 <span class="sd">        - (see Lstar documentation for further explanation)</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    =======</span>
-<span class="sd">        - results (dictionary) : containing keys: Bmin, Coords instance with GEO coordinates of </span>
+<span class="sd">        - results (dictionary) : containing keys: Bmin, Coords instance with GEO coordinates of</span>
 <span class="sd">            the magnetic equator</span>
 
 <span class="sd">    Examples</span>
@@ -456,12 +450,12 @@
 <span class="sd">    ==========</span>
 <span class="sd">        - ticks (Ticktock class) : containing time information **for a single time**</span>
 <span class="sd">        - alpha (numeric) : equatorial pitch angle for search</span>
-<span class="sd">        - extMag (string) : optional; will choose the external magnetic field model </span>
-<span class="sd">                            possible values [&#39;0&#39;, &#39;MEAD&#39;, &#39;T87SHORT&#39;, &#39;T87LONG&#39;, &#39;T89&#39;, </span>
-<span class="sd">                            &#39;OPQUIET&#39;, &#39;OPDYN&#39;, &#39;T96&#39;, &#39;OSTA&#39;, &#39;T01QUIET&#39;, &#39;T01STORM&#39;, </span>
+<span class="sd">        - extMag (string) : optional; will choose the external magnetic field model</span>
+<span class="sd">                            possible values [&#39;0&#39;, &#39;MEAD&#39;, &#39;T87SHORT&#39;, &#39;T87LONG&#39;, &#39;T89&#39;,</span>
+<span class="sd">                            &#39;OPQUIET&#39;, &#39;OPDYN&#39;, &#39;T96&#39;, &#39;OSTA&#39;, &#39;T01QUIET&#39;, &#39;T01STORM&#39;,</span>
 <span class="sd">                            &#39;T05&#39;, &#39;ALEX&#39;, &#39;TS07&#39;]</span>
 <span class="sd">        - options (optional list or array of integers length=5) : explained in Lstar</span>
-<span class="sd">        - omni values as dictionary (optional) : if not provided, will use lookup table </span>
+<span class="sd">        - omni values as dictionary (optional) : if not provided, will use lookup table</span>
 <span class="sd">        - (see Lstar documentation for further explanation)</span>
 <span class="sd">        - tol (float) : tolerance for search in radial distance</span>
 <span class="sd">        - bracket (list): X-GSM coordinates to bracket bisection search</span>
@@ -507,10 +501,10 @@
     <span class="n">results</span><span class="p">[</span><span class="s1">&#39;K&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;DEPEND_1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;AlphaEq&quot;</span>
     <span class="n">results</span><span class="p">[</span><span class="s1">&#39;K&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;MODEL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> (IRBEM implementation)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">extMag</span><span class="p">)</span>
     <span class="n">results</span><span class="p">[</span><span class="s1">&#39;UTC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ticks</span><span class="o">.</span><span class="n">UTC</span>
-    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;AlphaEq&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmarray</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> 
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;AlphaEq&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmarray</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span>
                                     <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;DESCRIPTION&#39;</span><span class="p">:</span> <span class="s1">&#39;Equatorial pitch angle for LCDS calculation&#39;</span><span class="p">,</span>
                                            <span class="s1">&#39;UNITS&#39;</span><span class="p">:</span> <span class="s1">&#39;degrees&#39;</span><span class="p">})</span>
-    
+
     <span class="n">mlt</span> <span class="o">*=</span> <span class="mi">15</span> <span class="c1">#hours to degrees</span>
     <span class="n">mlt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">mlt</span><span class="p">)</span>
 
@@ -555,7 +549,7 @@
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Specified inner bracket (</span><span class="si">{0}</span><span class="s1">) is on an open drift shell&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loci_brac1</span><span class="p">))</span>
             <span class="c1">#print(&#39;L* at inner bracket: {0}&#39;.format(LS1[&#39;Lstar&#39;]))</span>
             <span class="n">LCDS</span><span class="p">,</span> <span class="n">LCDS_K</span> <span class="o">=</span> <span class="n">LS1</span><span class="p">[</span><span class="s1">&#39;Lstar&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">LS1</span><span class="p">[</span><span class="s1">&#39;K&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-                
+
             <span class="c1">#Set outer bracket (default to R of 12)</span>
             <span class="n">b2x</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="n">bracket</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">mlt</span><span class="p">)</span>
             <span class="n">b2y</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="n">bracket</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">mlt</span><span class="p">)</span>
@@ -589,7 +583,7 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">LS2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Lstar&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">}</span>
             <span class="c1">#print(&#39;L* at outer bracket: {0}; Xgsm = {1}&#39;.format(LS2[&#39;Lstar&#39;], loci_brac2.x))</span>
-            
+
             <span class="c1">#now search by bisection</span>
             <span class="k">while</span> <span class="p">(</span><span class="n">tb</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">loci_brac2</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">loci_brac2</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">tb</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">loci_brac1</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">loci_brac1</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">tol</span><span class="p">):</span>
                 <span class="n">newdist</span> <span class="o">=</span> <span class="p">(</span><span class="n">tb</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">loci_brac2</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">loci_brac2</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="n">tb</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">loci_brac1</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">loci_brac1</span><span class="o">.</span><span class="n">y</span><span class="p">))</span><span class="o">/</span><span class="mf">2.0</span>
@@ -653,12 +647,12 @@
 <span class="sd">    ==========</span>
 <span class="sd">        - ticks (Ticktock class) : containing time information **for a single time**</span>
 <span class="sd">        - alpha (numeric) : equatorial pitch angle for search</span>
-<span class="sd">        - extMag (string) : optional; will choose the external magnetic field model </span>
-<span class="sd">                            possible values [&#39;0&#39;, &#39;MEAD&#39;, &#39;T87SHORT&#39;, &#39;T87LONG&#39;, &#39;T89&#39;, </span>
-<span class="sd">                            &#39;OPQUIET&#39;, &#39;OPDYN&#39;, &#39;T96&#39;, &#39;OSTA&#39;, &#39;T01QUIET&#39;, &#39;T01STORM&#39;, </span>
+<span class="sd">        - extMag (string) : optional; will choose the external magnetic field model</span>
+<span class="sd">                            possible values [&#39;0&#39;, &#39;MEAD&#39;, &#39;T87SHORT&#39;, &#39;T87LONG&#39;, &#39;T89&#39;,</span>
+<span class="sd">                            &#39;OPQUIET&#39;, &#39;OPDYN&#39;, &#39;T96&#39;, &#39;OSTA&#39;, &#39;T01QUIET&#39;, &#39;T01STORM&#39;,</span>
 <span class="sd">                            &#39;T05&#39;, &#39;ALEX&#39;, &#39;TS07&#39;]</span>
 <span class="sd">        - options (optional list or array of integers length=5) : explained in Lstar</span>
-<span class="sd">        - omni values as dictionary (optional) : if not provided, will use lookup table </span>
+<span class="sd">        - omni values as dictionary (optional) : if not provided, will use lookup table</span>
 <span class="sd">        - (see Lstar documentation for further explanation)</span>
 <span class="sd">        - tol (float) : tolerance for search in radial distance</span>
 <span class="sd">        - bracket (list): X-GSM coordinates to bracket bisection search</span>
@@ -707,7 +701,7 @@
     <span class="n">results</span><span class="p">[</span><span class="s1">&#39;UTC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ticks</span><span class="o">.</span><span class="n">UTC</span>
     <span class="n">results</span><span class="p">[</span><span class="s1">&#39;K&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmarray</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;DESCRIPTION&#39;</span><span class="p">:</span> <span class="s1">&#39;Equatorial pitch angle for LCDS calculation&#39;</span><span class="p">,</span>
                                            <span class="s1">&#39;UNITS&#39;</span><span class="p">:</span> <span class="s1">&#39;degrees&#39;</span><span class="p">})</span>
-    
+
     <span class="n">mlt</span> <span class="o">*=</span> <span class="mi">15</span> <span class="c1">#hours to degrees</span>
     <span class="n">mlt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">mlt</span><span class="p">)</span>
 
@@ -771,7 +765,7 @@
 
             <span class="c1">#print(&#39;L* at inner bracket: {0}&#39;.format(LS1[&#39;Lstar&#39;]))</span>
             <span class="n">LCDS</span><span class="p">,</span> <span class="n">LCDS_PA</span> <span class="o">=</span> <span class="n">LS1</span><span class="p">[</span><span class="s1">&#39;Lstar&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">pa</span>
-                
+
             <span class="c1">#Set outer bracket (default to R of 12)</span>
             <span class="n">b2x</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="n">bracket</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">mlt</span><span class="p">)</span>
             <span class="n">b2y</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="n">bracket</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">mlt</span><span class="p">)</span>
@@ -814,7 +808,7 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">LS2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Lstar&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">}</span>
             <span class="c1">#print(&#39;L* at outer bracket: {0}; Xgsm = {1}&#39;.format(LS2[&#39;Lstar&#39;], loci_brac2.x))</span>
-            
+
             <span class="c1">#now search by bisection</span>
             <span class="k">while</span> <span class="p">(</span><span class="n">tb</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">loci_brac2</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">loci_brac2</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">tb</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">loci_brac1</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">loci_brac1</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">tol</span><span class="p">):</span>
                 <span class="n">newdist</span> <span class="o">=</span> <span class="p">(</span><span class="n">tb</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">loci_brac2</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">loci_brac2</span><span class="o">.</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="n">tb</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">loci_brac1</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">loci_brac1</span><span class="o">.</span><span class="n">y</span><span class="p">))</span><span class="o">/</span><span class="mf">2.0</span>
@@ -879,12 +873,12 @@
 <span class="sd">        - ticks (Ticktock class) : containing time information **for a single time**</span>
 <span class="sd">        - loci (Coords class) : containing position information **for a single point**</span>
 <span class="sd">        - K (numeric) : value of second invariant (K) for search</span>
-<span class="sd">        - extMag (string) : optional; will choose the external magnetic field model </span>
-<span class="sd">                            possible values [&#39;0&#39;, &#39;MEAD&#39;, &#39;T87SHORT&#39;, &#39;T87LONG&#39;, &#39;T89&#39;, </span>
-<span class="sd">                            &#39;OPQUIET&#39;, &#39;OPDYN&#39;, &#39;T96&#39;, &#39;OSTA&#39;, &#39;T01QUIET&#39;, &#39;T01STORM&#39;, </span>
+<span class="sd">        - extMag (string) : optional; will choose the external magnetic field model</span>
+<span class="sd">                            possible values [&#39;0&#39;, &#39;MEAD&#39;, &#39;T87SHORT&#39;, &#39;T87LONG&#39;, &#39;T89&#39;,</span>
+<span class="sd">                            &#39;OPQUIET&#39;, &#39;OPDYN&#39;, &#39;T96&#39;, &#39;OSTA&#39;, &#39;T01QUIET&#39;, &#39;T01STORM&#39;,</span>
 <span class="sd">                            &#39;T05&#39;, &#39;ALEX&#39;, &#39;TS07&#39;]</span>
 <span class="sd">        - options (optional list or array of integers length=5) : explained in Lstar</span>
-<span class="sd">        - omni values as dictionary (optional) : if not provided, will use lookup table </span>
+<span class="sd">        - omni values as dictionary (optional) : if not provided, will use lookup table</span>
 <span class="sd">        - (see Lstar documentation for further explanation)</span>
 <span class="sd">        - tol (float) : tolerance for search in radial distance</span>
 <span class="sd">        - bracket (list): X-GSM coordinates to bracket bisection search</span>
@@ -975,10 +969,10 @@
             <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="k">if</span> <span class="n">count</span><span class="o">&gt;</span><span class="mi">20</span><span class="p">:</span> <span class="k">break</span>
     <span class="k">return</span> <span class="n">outvals</span>
-        
+
 
 <span class="c1"># -----------------------------------------------</span>
-<span class="k">def</span> <span class="nf">find_footpoint</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">loci</span><span class="p">,</span> <span class="n">extMag</span><span class="o">=</span><span class="s1">&#39;T01STORM&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">hemi</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="n">alt</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">omnivals</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="find_footpoint"><a class="viewcode-back" href="../../../autosummary/spacepy.irbempy.find_footpoint.html#spacepy.irbempy.find_footpoint">[docs]</a><span class="k">def</span> <span class="nf">find_footpoint</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">loci</span><span class="p">,</span> <span class="n">extMag</span><span class="o">=</span><span class="s1">&#39;T01STORM&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">hemi</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="n">alt</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">omnivals</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    call find_foot_point1 from irbem library and return a dictionary with values for</span>
 <span class="sd">    Bmin and the GEO (cartesian) coordinates of the magnetic equator</span>
@@ -987,12 +981,12 @@
 <span class="sd">    ==========</span>
 <span class="sd">        - ticks (Ticktock class) : containing time information</span>
 <span class="sd">        - loci (Coords class) : containing spatial information</span>
-<span class="sd">        - extMag (string) : optional; will choose the external magnetic field model </span>
-<span class="sd">                            possible values [&#39;0&#39;, &#39;MEAD&#39;, &#39;T87SHORT&#39;, &#39;T87LONG&#39;, &#39;T89&#39;, </span>
-<span class="sd">                            &#39;OPQUIET&#39;, &#39;OPDYN&#39;, &#39;T96&#39;, &#39;OSTA&#39;, &#39;T01QUIET&#39;, &#39;T01STORM&#39;, </span>
+<span class="sd">        - extMag (string) : optional; will choose the external magnetic field model</span>
+<span class="sd">                            possible values [&#39;0&#39;, &#39;MEAD&#39;, &#39;T87SHORT&#39;, &#39;T87LONG&#39;, &#39;T89&#39;,</span>
+<span class="sd">                            &#39;OPQUIET&#39;, &#39;OPDYN&#39;, &#39;T96&#39;, &#39;OSTA&#39;, &#39;T01QUIET&#39;, &#39;T01STORM&#39;,</span>
 <span class="sd">                            &#39;T05&#39;, &#39;ALEX&#39;, &#39;TS07&#39;]</span>
 <span class="sd">        - options (optional list or array of integers length=5) : explained in Lstar</span>
-<span class="sd">        - omni values as dictionary (optional) : if not provided, will use lookup table </span>
+<span class="sd">        - omni values as dictionary (optional) : if not provided, will use lookup table</span>
 <span class="sd">        - (see Lstar documentation for further explanation)</span>
 <span class="sd">        - hemi (string) : optional (valid cases are &#39;same&#39;, &#39;other&#39;, &#39;north&#39; or &#39;south&#39;)</span>
 <span class="sd">                          will set the target hemisphere for tracing the footpoint</span>
@@ -1060,7 +1054,7 @@
 
     <span class="n">results</span><span class="p">[</span><span class="s1">&#39;loci&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spc</span><span class="o">.</span><span class="n">Coords</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;loci&#39;</span><span class="p">],</span> <span class="s1">&#39;GDZ&#39;</span><span class="p">,</span> <span class="s1">&#39;sph&#39;</span><span class="p">)</span>
     <span class="n">results</span><span class="o">.</span><span class="n">attrs</span>
-    <span class="k">return</span> <span class="n">results</span>
+    <span class="k">return</span> <span class="n">results</span></div>
 
 
 <span class="c1"># -----------------------------------------------</span>
@@ -1074,11 +1068,11 @@
 <span class="sd">        - loci (Coords instance) : containing coordinate information, can contain n points</span>
 <span class="sd">        - returntype (str) : describing system as GDZ, GEO, GSM, GSE, SM, GEI, MAG, SPH, RLL</span>
 <span class="sd">        - returncarsph (str) : cartesian or spherical units &#39;car&#39;, &#39;sph&#39;</span>
-<span class="sd">        </span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    =======</span>
 <span class="sd">        - xout (ndarray) : values after transformation in (n,3) dimensions</span>
-<span class="sd">        </span>
+
 <span class="sd">    Examples</span>
 <span class="sd">    ========</span>
 <span class="sd">    &gt;&gt;&gt; c = Coords([[3,0,0],[2,0,0]], &#39;GEO&#39;, &#39;car&#39;)</span>
@@ -1111,10 +1105,10 @@
         <span class="n">idoy</span> <span class="o">=</span> <span class="n">loci</span><span class="o">.</span><span class="n">ticks</span><span class="o">.</span><span class="n">DOY</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
         <span class="n">secs</span> <span class="o">=</span> <span class="n">loci</span><span class="o">.</span><span class="n">ticks</span><span class="o">.</span><span class="n">UTC</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">hour</span><span class="o">*</span><span class="mf">3600.</span> <span class="o">+</span> <span class="n">loci</span><span class="o">.</span><span class="n">ticks</span><span class="o">.</span><span class="n">UTC</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">minute</span><span class="o">*</span><span class="mf">60.</span> <span class="o">+</span> \
             <span class="n">loci</span><span class="o">.</span><span class="n">ticks</span><span class="o">.</span><span class="n">UTC</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">second</span>
-            
+
         <span class="n">xout</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">oplib</span><span class="o">.</span><span class="n">coord_trans1</span><span class="p">(</span><span class="n">sysaxesin</span><span class="p">,</span> <span class="n">sysaxesout</span><span class="p">,</span> \
             <span class="n">iyear</span><span class="p">,</span> <span class="n">idoy</span><span class="p">,</span> <span class="n">secs</span><span class="p">,</span> <span class="n">loci</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-        
+
     <span class="c1"># add  sph to car or v/v convertion if initial sysaxesout was None</span>
     <span class="k">if</span>  <span class="n">aflag</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">returncarsph</span> <span class="o">==</span> <span class="s1">&#39;sph&#39;</span><span class="p">:</span>
@@ -1133,12 +1127,12 @@
 <span class="sd">    ==========</span>
 <span class="sd">        - CARin (list or ndarray) : coordinate points in (n,3) shape with n coordinate points in</span>
 <span class="sd">            units of [Re, Re, Re] = [x,y,z]</span>
-<span class="sd">        </span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    =======</span>
 <span class="sd">        - results (ndarray) : values after conversion to spherical coordinates in</span>
 <span class="sd">            radius, latitude, longitude in units of [Re, deg, deg]</span>
-<span class="sd">        </span>
+
 <span class="sd">    Examples</span>
 <span class="sd">    ========</span>
 <span class="sd">    &gt;&gt;&gt; sph2car([1,45,0])</span>
@@ -1147,7 +1141,7 @@
 <span class="sd">    See Also</span>
 <span class="sd">    ========</span>
 <span class="sd">    sph2car</span>
-<span class="sd">    &quot;&quot;&quot;</span>	
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">CARin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">):</span>
         <span class="n">CAR</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">CARin</span><span class="p">])</span>
@@ -1169,7 +1163,7 @@
             <span class="n">longi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="mf">180.</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>
             <span class="n">lati</span> <span class="o">=</span> <span class="mf">90.</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">sq</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span><span class="o">*</span><span class="mf">180.</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>
         <span class="n">res</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="n">lati</span><span class="p">,</span> <span class="n">longi</span><span class="p">]</span>
-        
+
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">CARin</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
@@ -1184,11 +1178,11 @@
 <span class="sd">    ==========</span>
 <span class="sd">        - SPHin (list or ndarray) : coordinate points in (n,3) shape with n coordinate points in</span>
 <span class="sd">            units of [Re, deg, deg] = [r, latitude, longitude]</span>
-<span class="sd">        </span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    =======</span>
 <span class="sd">        - results (ndarray) : values after conversion to cartesian coordinates x,y,z</span>
-<span class="sd">        </span>
+
 <span class="sd">    Examples</span>
 <span class="sd">    ========</span>
 <span class="sd">    &gt;&gt;&gt; sph2car([1,45,45])</span>
@@ -1220,17 +1214,17 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">res</span></div>
 
-<span class="c1"># -----------------------------------------------    </span>
+<span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="get_sysaxes"><a class="viewcode-back" href="../../../autosummary/spacepy.irbempy.get_sysaxes.html#spacepy.irbempy.get_sysaxes">[docs]</a><span class="k">def</span> <span class="nf">get_sysaxes</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">carsph</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    will return the sysaxes according to the irbem library</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ==========</span>
-<span class="sd">    - dtype (str) : coordinate system, possible values: GDZ, GEO, GSM, GSE, SM, </span>
+<span class="sd">    - dtype (str) : coordinate system, possible values: GDZ, GEO, GSM, GSE, SM,</span>
 <span class="sd">            GEI, MAG, SPH, RLL</span>
 <span class="sd">    - carsph (str) : cartesian or spherical, possible values: &#39;sph&#39;, &#39;car&#39;</span>
-<span class="sd">        </span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    =======</span>
 <span class="sd">    - sysaxes (int) : value after oner_desp library from 0-8 (or None if not available)</span>
@@ -1251,13 +1245,13 @@
         <span class="c1">#&#39;GSE&#39;: {&#39;sph&#39;: 23, &#39;car&#39;: 3}, &#39;SM&#39;: {&#39;sph&#39;: 24, &#39;car&#39;: 4},</span>
         <span class="c1">#&#39;GEI&#39;: {&#39;sph&#39;: 25, &#39;car&#39;: 5}, &#39;MAG&#39;: {&#39;sph&#39;: 26, &#39;car&#39;: 6},</span>
         <span class="c1">#&#39;SPH&#39;: {&#39;sph&#39;: 7, &#39;car&#39;: 17}, &#39;RLL&#39;: {&#39;sph&#39;: 8, &#39;car&#39;: 18}}</span>
-        
-    
+
+
     <span class="n">sysaxes</span> <span class="o">=</span> <span class="n">SYSAXES_TYPES</span><span class="p">[</span><span class="n">dtype</span><span class="p">][</span><span class="n">carsph</span><span class="p">]</span>
 
     <span class="k">return</span> <span class="n">sysaxes</span></div>
-    
-<span class="c1"># -----------------------------------------------    </span>
+
+<span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="get_dtype"><a class="viewcode-back" href="../../../autosummary/spacepy.irbempy.get_dtype.html#spacepy.irbempy.get_dtype">[docs]</a><span class="k">def</span> <span class="nf">get_dtype</span><span class="p">(</span><span class="n">sysaxes</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    will return the coordinate system type as string</span>
@@ -1265,7 +1259,7 @@
 <span class="sd">    Parameters</span>
 <span class="sd">    ==========</span>
 <span class="sd">        - sysaxes (int) : number according to the irbem, possible values: 0-8</span>
-<span class="sd">        </span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    =======</span>
 <span class="sd">        - dtype (str) : coordinate system GDZ, GEO, GSM, GSE, SM, GEI, MAG, SPH, RLL</span>
@@ -1290,7 +1284,7 @@
 
     <span class="k">return</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">carsph</span></div>
 
-<span class="c1"># -----------------------------------------------    </span>
+<span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="get_AEP8"><a class="viewcode-back" href="../../../autosummary/spacepy.irbempy.get_AEP8.html#spacepy.irbempy.get_AEP8">[docs]</a><span class="k">def</span> <span class="nf">get_AEP8</span><span class="p">(</span><span class="n">energy</span><span class="p">,</span> <span class="n">loci</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="n">fluxtype</span><span class="o">=</span><span class="s1">&#39;diff&#39;</span><span class="p">,</span> <span class="n">particles</span><span class="o">=</span><span class="s1">&#39;e&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    will return the flux from the AE8-AP8 model</span>
@@ -1303,11 +1297,11 @@
 <span class="sd">        - model (str)    : MIN or MAX for solar cycle dependence</span>
 <span class="sd">        - fluxtype (str) : DIFF, RANGE, INT are possible types</span>
 <span class="sd">        - particles (str): e or p or electrons or protons</span>
-<span class="sd">        </span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    =======</span>
 <span class="sd">        - float : flux from AE8/AP8 model</span>
-<span class="sd">        </span>
+
 <span class="sd">    Examples</span>
 <span class="sd">    ========</span>
 <span class="sd">    &gt;&gt;&gt; spacepy.irbempy.get_aep8()</span>
@@ -1324,7 +1318,7 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># find bad values and dimensions</span>
-    
+
     <span class="k">if</span> <span class="n">particles</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="c1"># then choose electron model</span>
         <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;MIN&#39;</span><span class="p">:</span>
             <span class="n">whichm</span> <span class="o">=</span> <span class="mi">1</span>
@@ -1341,7 +1335,7 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning: model=&#39;</span><span class="o">+</span><span class="n">model</span><span class="o">+</span><span class="s1">&#39; is not implemented: Choose MIN or MAX&#39;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning: particles=&#39;</span><span class="o">+</span><span class="n">particles</span><span class="o">+</span><span class="s1">&#39; is not available: choose e or p&#39;</span><span class="p">)</span>
-    
+
     <span class="k">if</span> <span class="n">fluxtype</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;DIFF&#39;</span><span class="p">:</span>
         <span class="n">whatf</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="k">elif</span> <span class="n">fluxtype</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;RANGE&#39;</span><span class="p">:</span>
@@ -1350,7 +1344,7 @@
         <span class="n">whatf</span> <span class="o">=</span> <span class="mi">3</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning: fluxtype=&#39;</span><span class="o">+</span><span class="n">fluxtype</span><span class="o">+</span><span class="s1">&#39; is not implemented: Choose DIFF, INT or RANGE&#39;</span><span class="p">)</span>
-    
+
     <span class="c1"># need range if whatf=2</span>
     <span class="n">Nene</span>  <span class="o">=</span> <span class="mi">1</span>
     <span class="k">if</span> <span class="n">whatf</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span> <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">energy</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Need energy range with this choice of fluxtype=RANGE&#39;</span>
@@ -1362,7 +1356,7 @@
                     <span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;G2&#39;</span><span class="p">,</span> <span class="s1">&#39;G3&#39;</span><span class="p">,</span> <span class="s1">&#39;W1&#39;</span><span class="p">,</span> <span class="s1">&#39;W2&#39;</span><span class="p">,</span> <span class="s1">&#39;W3&#39;</span><span class="p">,</span> <span class="s1">&#39;W4&#39;</span><span class="p">,</span> <span class="s1">&#39;W5&#39;</span><span class="p">,</span> <span class="s1">&#39;W6&#39;</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">magkeys</span><span class="p">:</span>
         <span class="n">dum_omni</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">loci</span><span class="p">)</span>
-    
+
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">loci</span><span class="p">,</span> <span class="n">spc</span><span class="o">.</span><span class="n">Coords</span><span class="p">):</span>
         <span class="k">assert</span> <span class="n">loci</span><span class="o">.</span><span class="n">ticks</span><span class="p">,</span> <span class="s1">&#39;Coords require time information with a Ticktock object&#39;</span>
         <span class="n">d</span> <span class="o">=</span> <span class="n">prep_irbem</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="n">loci</span><span class="o">.</span><span class="n">ticks</span><span class="p">,</span> <span class="n">loci</span><span class="o">=</span><span class="n">loci</span><span class="p">,</span> <span class="n">omnivals</span><span class="o">=</span><span class="n">dum_omni</span><span class="p">)</span>
@@ -1382,18 +1376,18 @@
         <span class="n">L_array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">L</span>
         <span class="c1"># now get the flux</span>
         <span class="n">flux</span> <span class="o">=</span>  <span class="n">oplib</span><span class="o">.</span><span class="n">get_ae8_ap8_flux</span><span class="p">(</span><span class="n">ntmax</span><span class="p">,</span> <span class="n">whichm</span><span class="p">,</span> <span class="n">whatf</span><span class="p">,</span> <span class="n">Nene</span><span class="p">,</span> <span class="n">E_array</span><span class="p">,</span> <span class="n">B_array</span><span class="p">,</span> <span class="n">L_array</span><span class="p">)</span>
-    
+
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning: coords need to be either a spacepy.coordinates.Coords instance or a list of [BBo, L]&#39;</span><span class="p">)</span>
-        
-    
+
+
     <span class="n">flux</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">flux</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;badval&#39;</span><span class="p">]))</span> <span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">NaN</span>
-    
+
     <span class="k">return</span> <span class="n">flux</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span></div>
-    
+
 
 <span class="c1"># -----------------------------------------------</span>
-<span class="k">def</span> <span class="nf">_get_Lstar</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">loci</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">extMag</span><span class="o">=</span><span class="s1">&#39;T01STORM&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">omnivals</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">landi2lstar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span> 
+<span class="k">def</span> <span class="nf">_get_Lstar</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">loci</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">extMag</span><span class="o">=</span><span class="s1">&#39;T01STORM&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">omnivals</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">landi2lstar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This will call make_lstar1 or make_lstar_shell_splitting_1 from the irbem library</span>
 <span class="sd">    and will lookup omni values for given time if not provided (optional). If pitch angles</span>
@@ -1404,22 +1398,22 @@
 <span class="sd">    ==========</span>
 <span class="sd">        - ticks (Ticktock class) : containing time information</span>
 <span class="sd">        - loci (Coords class) : containing spatial information</span>
-<span class="sd">        - alpha (list or ndarray) : pitch angles in degrees; if provided will </span>
+<span class="sd">        - alpha (list or ndarray) : pitch angles in degrees; if provided will</span>
 <span class="sd">            calculate shell splitting; max 25 values</span>
-<span class="sd">        - extMag (string) : optional; will choose the external magnetic field model </span>
-<span class="sd">                            possible values [&#39;0&#39;, &#39;MEAD&#39;, &#39;T87SHORT&#39;, &#39;T87LONG&#39;, &#39;T89&#39;, </span>
-<span class="sd">                            &#39;OPQUIET&#39;, &#39;OPDYN&#39;, &#39;T96&#39;, &#39;OSTA&#39;, &#39;T01QUIET&#39;, &#39;T01STORM&#39;, </span>
+<span class="sd">        - extMag (string) : optional; will choose the external magnetic field model</span>
+<span class="sd">                            possible values [&#39;0&#39;, &#39;MEAD&#39;, &#39;T87SHORT&#39;, &#39;T87LONG&#39;, &#39;T89&#39;,</span>
+<span class="sd">                            &#39;OPQUIET&#39;, &#39;OPDYN&#39;, &#39;T96&#39;, &#39;OSTA&#39;, &#39;T01QUIET&#39;, &#39;T01STORM&#39;,</span>
 <span class="sd">                            &#39;T05&#39;, &#39;ALEX&#39;, &#39;TS07&#39;]</span>
 <span class="sd">        - options (optional list or array of integers length=5) : explained below</span>
-<span class="sd">        - omni values as dictionary (optional) : if not provided, will use lookup table </span>
-<span class="sd">        - landi2lstar : if True, will use the faster landi2lstar routine if possible. This </span>
+<span class="sd">        - omni values as dictionary (optional) : if not provided, will use lookup table</span>
+<span class="sd">        - landi2lstar : if True, will use the faster landi2lstar routine if possible. This</span>
 <span class="sd">            routine can only be used with OPQUIET+IGRF magnetic field models.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    =======</span>
-<span class="sd">        - results (dictionary) : containing keys: Lm, Lstar, Bmin, Blocal (or Bmirr), </span>
+<span class="sd">        - results (dictionary) : containing keys: Lm, Lstar, Bmin, Blocal (or Bmirr),</span>
 <span class="sd">            Xj (I - the 2nd invariant), MLT</span>
-<span class="sd">            if pitch angles provided in &quot;alpha&quot; then drift shells are calculated and &quot;Bmirr&quot; </span>
+<span class="sd">            if pitch angles provided in &quot;alpha&quot; then drift shells are calculated and &quot;Bmirr&quot;</span>
 <span class="sd">            is returned if not provided, then &quot;Blocal&quot; at spacecraft is returned.</span>
 
 <span class="sd">    Examples</span>
@@ -1444,16 +1438,16 @@
 <span class="sd">        - T87LONG : Tsyganenko long [1987] (uses 0&lt;=Kp&lt;=9 - Valid for rGEO&lt;=70. Re)</span>
 <span class="sd">        - T89	 : Tsyganenko [1989] (uses 0&lt;=Kp&lt;=9 - Valid for rGEO&lt;=70. Re)</span>
 <span class="sd">        - OPQUIET : Olson &amp; Pfitzer quiet [1977] (default - Valid for rGEO&lt;=15. Re)</span>
-<span class="sd">        - OPDYN   : Olson &amp; Pfitzer dynamic [1988] (uses 5.&lt;=dens&lt;=50., 300.&lt;=velo&lt;=500., </span>
+<span class="sd">        - OPDYN   : Olson &amp; Pfitzer dynamic [1988] (uses 5.&lt;=dens&lt;=50., 300.&lt;=velo&lt;=500.,</span>
 <span class="sd">            -100.&lt;=Dst&lt;=20. - Valid for rGEO&lt;=60. Re)</span>
-<span class="sd">        - T96	 : Tsyganenko [1996] (uses -100.&lt;=Dst (nT)&lt;=20., 0.5&lt;=Pdyn (nPa)&lt;10., </span>
+<span class="sd">        - T96	 : Tsyganenko [1996] (uses -100.&lt;=Dst (nT)&lt;=20., 0.5&lt;=Pdyn (nPa)&lt;10.,</span>
 <span class="sd">            |ByIMF| (nT)&lt;1=0., |BzIMF| (nT)&lt;=10. - Valid for rGEO&lt;=40. Re)</span>
 <span class="sd">        - OSTA	: Ostapenko &amp; Maltsev [1997] (uses dst,Pdyn,BzIMF, Kp)</span>
-<span class="sd">            T01QUIET: Tsyganenko [2002a,b] (uses -50.&lt;Dst (nT)&lt;20., 0.5&lt;Pdyn (nPa)&lt;=5., </span>
+<span class="sd">            T01QUIET: Tsyganenko [2002a,b] (uses -50.&lt;Dst (nT)&lt;20., 0.5&lt;Pdyn (nPa)&lt;=5.,</span>
 <span class="sd">            |ByIMF| (nT)&lt;=5., |BzIMF| (nT)&lt;=5., 0.&lt;=G1&lt;=10., 0.&lt;=G2&lt;=10. - Valid for xGSM&gt;=-15. Re)</span>
-<span class="sd">        - T01STORM: Tsyganenko, Singer &amp; Kasper [2003] storm  (uses Dst, Pdyn, ByIMF, BzIMF, G2, G3 - </span>
+<span class="sd">        - T01STORM: Tsyganenko, Singer &amp; Kasper [2003] storm  (uses Dst, Pdyn, ByIMF, BzIMF, G2, G3 -</span>
 <span class="sd">            there is no upper or lower limit for those inputs - Valid for xGSM&gt;=-15. Re)</span>
-<span class="sd">        - T05	 : Tsyganenko &amp; Sitnov [2005] storm  (uses Dst, Pdyn, ByIMF, BzIMF, </span>
+<span class="sd">        - T05	 : Tsyganenko &amp; Sitnov [2005] storm  (uses Dst, Pdyn, ByIMF, BzIMF,</span>
 <span class="sd">            W1, W2, W3, W4, W5, W6 - no upper or lower limit for inputs - Valid for xGSM&gt;=-15. Re)</span>
 <span class="sd">        - TS07   : Tsyganenko and Sitnov [2007] model. Uses specially calculated coefficient files.</span>
 
@@ -1465,34 +1459,34 @@
 <span class="sd">        - Pdyn: Solar Wind dynamic pressure (nPa)</span>
 <span class="sd">        - ByIMF: GSM y component of IMF mag. field (nT)</span>
 <span class="sd">        - BzIMF: GSM z component of IMF mag. field (nT)</span>
-<span class="sd">        - G1:  G1=&lt; Vsw*(Bperp/40)2/(1+Bperp/40)*sin3(theta/2) &gt; where the &lt;&gt; mean an average over the </span>
-<span class="sd">            previous 1 hour, Vsw is the solar wind speed, Bperp is the transverse IMF </span>
+<span class="sd">        - G1:  G1=&lt; Vsw*(Bperp/40)2/(1+Bperp/40)*sin3(theta/2) &gt; where the &lt;&gt; mean an average over the</span>
+<span class="sd">            previous 1 hour, Vsw is the solar wind speed, Bperp is the transverse IMF</span>
 <span class="sd">            component (GSM) and theta it&#39;s clock angle.</span>
-<span class="sd">        - G2: G2=&lt; a*Vsw*Bs &gt; where the &lt;&gt; mean an average over the previous 1 hour, </span>
+<span class="sd">        - G2: G2=&lt; a*Vsw*Bs &gt; where the &lt;&gt; mean an average over the previous 1 hour,</span>
 <span class="sd">                Vsw is solar wind speed, Bs=|IMF Bz| when IMF Bz &lt; 0 and Bs=0 when IMF Bz &gt; 0, a=0.005.</span>
-<span class="sd">        - G3:  G3=&lt; Vsw*Dsw*Bs /2000.&gt; where the &lt;&gt; mean an average over the previous 1 hour, </span>
-<span class="sd">                Vsw is the solar wind speed, Dsw is the solar wind density, Bs=|IMF Bz| when IMF </span>
+<span class="sd">        - G3:  G3=&lt; Vsw*Dsw*Bs /2000.&gt; where the &lt;&gt; mean an average over the previous 1 hour,</span>
+<span class="sd">                Vsw is the solar wind speed, Dsw is the solar wind density, Bs=|IMF Bz| when IMF</span>
 <span class="sd">                Bz &lt; 0 and Bs=0 when IMF Bz &gt; 0.</span>
 <span class="sd">        - W1 - W6: see definition in (JGR-A, v.110(A3), 2005.) (PDF 1.2MB)</span>
 <span class="sd">        - AL: the auroral index</span>
 
 <span class="sd">    Options</span>
 <span class="sd">        - 1st element: 0 - don&#39;t compute L* or phi ;  1 - compute L*; 2- compute phi</span>
-<span class="sd">        - 2nd element: 0 - initialize IGRF field once per year (year.5);  </span>
-<span class="sd">            n - n is the  frequency (in days) starting on January 1st of each year </span>
-<span class="sd">            (i.e. if options(2nd element)=15 then IGRF will be updated on the following days of the </span>
+<span class="sd">        - 2nd element: 0 - initialize IGRF field once per year (year.5);</span>
+<span class="sd">            n - n is the  frequency (in days) starting on January 1st of each year</span>
+<span class="sd">            (i.e. if options(2nd element)=15 then IGRF will be updated on the following days of the</span>
 <span class="sd">            year: 1, 15, 30, 45 ...)</span>
-<span class="sd">        - 3rd element: resolution to compute L* (0 to 9) where 0 is the recomended value to ensure a </span>
+<span class="sd">        - 3rd element: resolution to compute L* (0 to 9) where 0 is the recomended value to ensure a</span>
 <span class="sd">            good ratio precision/computation time</span>
-<span class="sd">            (i.e. an error of ~2% at L=6). The higher the value the better will be the precision, the </span>
-<span class="sd">            longer will be the computing time. Generally there is not much improvement for values </span>
-<span class="sd">            larger than 4. Note that this parameter defines the integration step (theta) </span>
+<span class="sd">            (i.e. an error of ~2% at L=6). The higher the value the better will be the precision, the</span>
+<span class="sd">            longer will be the computing time. Generally there is not much improvement for values</span>
+<span class="sd">            larger than 4. Note that this parameter defines the integration step (theta)</span>
 <span class="sd">            along the field line such as dtheta=(2pi)/(720*[options(3rd element)+1])</span>
-<span class="sd">        - 4th element: resolution to compute L* (0 to 9). The higher the value the better will be </span>
-<span class="sd">            the precision, the longer will be </span>
-<span class="sd">            the computing time. It is recommended to use 0 (usually sufficient) unless L* is not </span>
-<span class="sd">            computed on a LEO orbit. For LEO orbit higher values are recommended. Note that this </span>
-<span class="sd">            parameter defines the integration step (phi) along the drift shell such as </span>
+<span class="sd">        - 4th element: resolution to compute L* (0 to 9). The higher the value the better will be</span>
+<span class="sd">            the precision, the longer will be</span>
+<span class="sd">            the computing time. It is recommended to use 0 (usually sufficient) unless L* is not</span>
+<span class="sd">            computed on a LEO orbit. For LEO orbit higher values are recommended. Note that this</span>
+<span class="sd">            parameter defines the integration step (phi) along the drift shell such as</span>
 <span class="sd">            dphi=(2pi)/(25*[options(4th element)+1])</span>
 <span class="sd">        - 5th element: allows to select an internal magnetic field model (default is set to IGRF)</span>
 <span class="sd">            - 0 = IGRF</span>
@@ -1501,7 +1495,7 @@
 <span class="sd">            - 3 = GSFC 12/66 updated to 1970</span>
 <span class="sd">            - 4 = User-defined model (Default: Centred dipole + uniform [Dungey open model] )</span>
 <span class="sd">            - 5 = Centred dipole</span>
-<span class="sd">            </span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">nTAI</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ticks</span><span class="p">)</span>
     <span class="n">d</span> <span class="o">=</span> <span class="n">prep_irbem</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">loci</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">extMag</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">omnivals</span><span class="p">)</span>
@@ -1542,7 +1536,7 @@
         <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Bmin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bmin</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">nTAI</span><span class="p">]</span>
         <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Xj&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xj</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">nTAI</span><span class="p">][:,</span><span class="kc">None</span><span class="p">]</span>
         <span class="n">results</span><span class="p">[</span><span class="s1">&#39;MLT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mlt</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">nTAI</span><span class="p">]</span>
-    <span class="k">else</span><span class="p">:</span>		
+    <span class="k">else</span><span class="p">:</span>
         <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Lm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lm</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">nTAI</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">nalpha</span><span class="p">]</span>
         <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Lstar&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lstar</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">nTAI</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">nalpha</span><span class="p">]</span>
         <span class="n">bmirr</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">bmirr</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;badval&#39;</span><span class="p">]))</span> <span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">NaN</span>
@@ -1550,7 +1544,7 @@
         <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Bmin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bmin</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">nTAI</span><span class="p">]</span>
         <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Xj&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xj</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">nTAI</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">nalpha</span><span class="p">]</span>
         <span class="n">results</span><span class="p">[</span><span class="s1">&#39;MLT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mlt</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">nTAI</span><span class="p">]</span>
-        
+
     <span class="k">return</span> <span class="n">results</span>
 
 <span class="c1"># -----------------------------------------------</span>
@@ -1563,20 +1557,20 @@
 <span class="sd">        - ticks (Ticktock class) : containing time information</span>
 <span class="sd">        - loci (Coords class) : containing spatial information</span>
 <span class="sd">        - alpha (list or ndarray) : pitch angles in degrees</span>
-<span class="sd">        - extMag (string) : optional; will choose the external magnetic field model </span>
-<span class="sd">                            possible values [&#39;0&#39;, &#39;MEAD&#39;, &#39;T87SHORT&#39;, &#39;T87LONG&#39;, &#39;T89&#39;, </span>
-<span class="sd">                            &#39;OPQUIET&#39;, &#39;OPDYN&#39;, &#39;T96&#39;, &#39;OSTA&#39;, &#39;T01QUIET&#39;, &#39;T01STORM&#39;, </span>
+<span class="sd">        - extMag (string) : optional; will choose the external magnetic field model</span>
+<span class="sd">                            possible values [&#39;0&#39;, &#39;MEAD&#39;, &#39;T87SHORT&#39;, &#39;T87LONG&#39;, &#39;T89&#39;,</span>
+<span class="sd">                            &#39;OPQUIET&#39;, &#39;OPDYN&#39;, &#39;T96&#39;, &#39;OSTA&#39;, &#39;T01QUIET&#39;, &#39;T01STORM&#39;,</span>
 <span class="sd">                            &#39;T05&#39;, &#39;ALEX&#39;, &#39;TS07&#39;]</span>
 <span class="sd">        - intMag (string) : optional: select the internal field model</span>
 <span class="sd">                            possible values [&#39;IGRF&#39;,&#39;EDIP&#39;,&#39;JC&#39;,&#39;GSFC&#39;,&#39;DUN&#39;,&#39;CDIP&#39;]</span>
 <span class="sd">                            For full details see get_Lstar</span>
-<span class="sd">        - omni values as dictionary (optional) : if not provided, will use lookup table </span>
+<span class="sd">        - omni values as dictionary (optional) : if not provided, will use lookup table</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    =======</span>
 
-<span class="sd">        - results (dictionary) : containing keys: Lm, Bmin, Blocal (or Bmirr), Xj, MLT </span>
-<span class="sd">            if pitch angles provided in &quot;alpha&quot; then drift shells are calculated and &quot;Bmirr&quot; </span>
+<span class="sd">        - results (dictionary) : containing keys: Lm, Bmin, Blocal (or Bmirr), Xj, MLT</span>
+<span class="sd">            if pitch angles provided in &quot;alpha&quot; then drift shells are calculated and &quot;Bmirr&quot;</span>
 <span class="sd">            is returned if not provided, then &quot;Blocal&quot; at spacecraft is returned. A negative</span>
 <span class="sd">            value for Lm indicates the field line is closed but particles are lost to the</span>
 <span class="sd">            atmosphere; the absolute value indicates the L value.</span>
@@ -1600,7 +1594,7 @@
             <span class="c1">##TODO: test for numeric type</span>
         <span class="k">except</span> <span class="ne">AssertionError</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;IGRFset must be positive-valued and numeric&#39;</span><span class="p">)</span>
-        
+
     <span class="n">opts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">IGRFset</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">intMaglookup</span><span class="p">[</span><span class="n">intMag</span><span class="p">]]</span>
 
     <span class="n">results</span> <span class="o">=</span> <span class="n">get_Lstar</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">loci</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">extMag</span><span class="o">=</span><span class="n">extMag</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">opts</span><span class="p">,</span> <span class="n">omnivals</span><span class="o">=</span><span class="n">omnivals</span><span class="p">)</span>
@@ -1621,19 +1615,19 @@
 <span class="sd">        - loci (Coords class) : containing spatial information</span>
 <span class="sd">        - alpha (list or ndarray) : optional pitch angles in degrees (default is 90);</span>
 <span class="sd">            if provided will calculate shell splitting; max 25 values</span>
-<span class="sd">        - extMag (string) : optional; will choose the external magnetic field model </span>
-<span class="sd">                            possible values [&#39;0&#39;, &#39;MEAD&#39;, &#39;T87SHORT&#39;, &#39;T87LONG&#39;, &#39;T89&#39;, </span>
-<span class="sd">                            &#39;OPQUIET&#39;, &#39;OPDYN&#39;, &#39;T96&#39;, &#39;OSTA&#39;, &#39;T01QUIET&#39;, &#39;T01STORM&#39;, </span>
+<span class="sd">        - extMag (string) : optional; will choose the external magnetic field model</span>
+<span class="sd">                            possible values [&#39;0&#39;, &#39;MEAD&#39;, &#39;T87SHORT&#39;, &#39;T87LONG&#39;, &#39;T89&#39;,</span>
+<span class="sd">                            &#39;OPQUIET&#39;, &#39;OPDYN&#39;, &#39;T96&#39;, &#39;OSTA&#39;, &#39;T01QUIET&#39;, &#39;T01STORM&#39;,</span>
 <span class="sd">                            &#39;T05&#39;, &#39;ALEX&#39;, &#39;TS07&#39;]</span>
 <span class="sd">        - options (optional list or array of integers length=5) : explained below</span>
-<span class="sd">        - omni values as dictionary (optional) : if not provided, will use lookup table </span>
-<span class="sd">        - landi2lstar : if True, will use the faster landi2lstar routine if possible. This </span>
+<span class="sd">        - omni values as dictionary (optional) : if not provided, will use lookup table</span>
+<span class="sd">        - landi2lstar : if True, will use the faster landi2lstar routine if possible. This</span>
 <span class="sd">            routine can only be used with OPQUIET+IGRF magnetic field models.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    =======</span>
-<span class="sd">        - results (dictionary) : containing keys: Lm, Lstar, Bmin, Blocal (or Bmirr), Xj, MLT </span>
-<span class="sd">            if pitch angles provided in &quot;alpha&quot; then drift shells are calculated and &quot;Bmirr&quot; </span>
+<span class="sd">        - results (dictionary) : containing keys: Lm, Lstar, Bmin, Blocal (or Bmirr), Xj, MLT</span>
+<span class="sd">            if pitch angles provided in &quot;alpha&quot; then drift shells are calculated and &quot;Bmirr&quot;</span>
 <span class="sd">            is returned if not provided, then &quot;Blocal&quot; at spacecraft is returned. A negative</span>
 <span class="sd">            value for Lm indicates the field line is closed but particles are lost to the</span>
 <span class="sd">            atmosphere; the absolute value indicates the L value. A negative value for Lstar</span>
@@ -1662,16 +1656,16 @@
 <span class="sd">        - T87LONG : Tsyganenko long [1987] (uses 0&lt;=Kp&lt;=9 - Valid for rGEO&lt;=70. Re)</span>
 <span class="sd">        - T89	 : Tsyganenko [1989] (uses 0&lt;=Kp&lt;=9 - Valid for rGEO&lt;=70. Re)</span>
 <span class="sd">        - OPQUIET : Olson &amp; Pfitzer quiet [1977] (default - Valid for rGEO&lt;=15. Re)</span>
-<span class="sd">        - OPDYN   : Olson &amp; Pfitzer dynamic [1988] (uses 5.&lt;=dens&lt;=50., 300.&lt;=velo&lt;=500., </span>
+<span class="sd">        - OPDYN   : Olson &amp; Pfitzer dynamic [1988] (uses 5.&lt;=dens&lt;=50., 300.&lt;=velo&lt;=500.,</span>
 <span class="sd">            -100.&lt;=Dst&lt;=20. - Valid for rGEO&lt;=60. Re)</span>
-<span class="sd">        - T96	 : Tsyganenko [1996] (uses -100.&lt;=Dst (nT)&lt;=20., 0.5&lt;=Pdyn (nPa)&lt;10., </span>
+<span class="sd">        - T96	 : Tsyganenko [1996] (uses -100.&lt;=Dst (nT)&lt;=20., 0.5&lt;=Pdyn (nPa)&lt;10.,</span>
 <span class="sd">            abs(ByIMF) (nT)&lt;1=0., abs(BzIMF) (nT)&lt;=10. - Valid for rGEO&lt;=40. Re)</span>
 <span class="sd">        - OSTA	: Ostapenko &amp; Maltsev [1997] (uses dst,Pdyn,BzIMF, Kp)</span>
-<span class="sd">            T01QUIET: Tsyganenko [2002a,b] (uses -50.&lt;Dst (nT)&lt;20., 0.5&lt;Pdyn (nPa)&lt;=5., </span>
+<span class="sd">            T01QUIET: Tsyganenko [2002a,b] (uses -50.&lt;Dst (nT)&lt;20., 0.5&lt;Pdyn (nPa)&lt;=5.,</span>
 <span class="sd">            abs(ByIMF) (nT)&lt;=5., abs(BzIMF) (nT)&lt;=5., 0.&lt;=G1&lt;=10., 0.&lt;=G2&lt;=10. - Valid for xGSM&gt;=-15. Re)</span>
-<span class="sd">        - T01STORM: Tsyganenko, Singer &amp; Kasper [2003] storm  (uses Dst, Pdyn, ByIMF, BzIMF, G2, G3 - </span>
+<span class="sd">        - T01STORM: Tsyganenko, Singer &amp; Kasper [2003] storm  (uses Dst, Pdyn, ByIMF, BzIMF, G2, G3 -</span>
 <span class="sd">            there is no upper or lower limit for those inputs - Valid for xGSM&gt;=-15. Re)</span>
-<span class="sd">        - T05	 : Tsyganenko &amp; Sitnov [2005] storm  (uses Dst, Pdyn, ByIMF, BzIMF, </span>
+<span class="sd">        - T05	 : Tsyganenko &amp; Sitnov [2005] storm  (uses Dst, Pdyn, ByIMF, BzIMF,</span>
 <span class="sd">            W1, W2, W3, W4, W5, W6 - no upper or lower limit for inputs - Valid for xGSM&gt;=-15. Re)</span>
 
 <span class="sd">    OMNI contents</span>
@@ -1682,34 +1676,34 @@
 <span class="sd">        - Pdyn: Solar Wind dynamic pressure (nPa)</span>
 <span class="sd">        - ByIMF: GSM y component of IMF mag. field (nT)</span>
 <span class="sd">        - BzIMF: GSM z component of IMF mag. field (nT)</span>
-<span class="sd">        - G1:  G1=&lt; Vsw*(Bperp/40)2/(1+Bperp/40)*sin3(theta/2) &gt; where the &lt;&gt; mean an average over the </span>
-<span class="sd">            previous 1 hour, Vsw is the solar wind speed, Bperp is the transverse IMF </span>
+<span class="sd">        - G1:  G1=&lt; Vsw*(Bperp/40)2/(1+Bperp/40)*sin3(theta/2) &gt; where the &lt;&gt; mean an average over the</span>
+<span class="sd">            previous 1 hour, Vsw is the solar wind speed, Bperp is the transverse IMF</span>
 <span class="sd">            component (GSM) and theta it&#39;s clock angle.</span>
-<span class="sd">        - G2: G2=&lt; a*Vsw*Bs &gt; where the &lt;&gt; mean an average over the previous 1 hour, </span>
+<span class="sd">        - G2: G2=&lt; a*Vsw*Bs &gt; where the &lt;&gt; mean an average over the previous 1 hour,</span>
 <span class="sd">                Vsw is solar wind speed, Bs=|IMF Bz| when IMF Bz &lt; 0 and Bs=0 when IMF Bz &gt; 0, a=0.005.</span>
-<span class="sd">        - G3:  G3=&lt; Vsw*Dsw*Bs /2000.&gt; where the &lt;&gt; mean an average over the previous 1 hour, </span>
-<span class="sd">                Vsw is the solar wind speed, Dsw is the solar wind density, Bs=|IMF Bz| when IMF </span>
+<span class="sd">        - G3:  G3=&lt; Vsw*Dsw*Bs /2000.&gt; where the &lt;&gt; mean an average over the previous 1 hour,</span>
+<span class="sd">                Vsw is the solar wind speed, Dsw is the solar wind density, Bs=|IMF Bz| when IMF</span>
 <span class="sd">                Bz &lt; 0 and Bs=0 when IMF Bz &gt; 0.</span>
 <span class="sd">        - W1 - W6: see definition in (JGR-A, v.110(A3), 2005.) (PDF 1.2MB)</span>
 <span class="sd">        - AL: the auroral index</span>
 
 <span class="sd">    Options</span>
 <span class="sd">        - 1st element: 0 - don&#39;t compute L* or phi ;  1 - compute L*; 2- compute phi</span>
-<span class="sd">        - 2nd element: 0 - initialize IGRF field once per year (year.5);  </span>
-<span class="sd">            n - n is the  frequency (in days) starting on January 1st of each year </span>
-<span class="sd">            (i.e. if options(2nd element)=15 then IGRF will be updated on the following days of the </span>
+<span class="sd">        - 2nd element: 0 - initialize IGRF field once per year (year.5);</span>
+<span class="sd">            n - n is the  frequency (in days) starting on January 1st of each year</span>
+<span class="sd">            (i.e. if options(2nd element)=15 then IGRF will be updated on the following days of the</span>
 <span class="sd">            year: 1, 15, 30, 45 ...)</span>
-<span class="sd">        - 3rd element: resolution to compute L* (0 to 9) where 0 is the recomended value to ensure a </span>
+<span class="sd">        - 3rd element: resolution to compute L* (0 to 9) where 0 is the recomended value to ensure a</span>
 <span class="sd">            good ratio precision/computation time</span>
-<span class="sd">            (i.e. an error of ~2% at L=6). The higher the value the better will be the precision, the </span>
-<span class="sd">            longer will be the computing time. Generally there is not much improvement for values </span>
-<span class="sd">            larger than 4. Note that this parameter defines the integration step (theta) </span>
+<span class="sd">            (i.e. an error of ~2% at L=6). The higher the value the better will be the precision, the</span>
+<span class="sd">            longer will be the computing time. Generally there is not much improvement for values</span>
+<span class="sd">            larger than 4. Note that this parameter defines the integration step (theta)</span>
 <span class="sd">            along the field line such as dtheta=(2pi)/(720*[options(3rd element)+1])</span>
-<span class="sd">        - 4th element: resolution to compute L* (0 to 9). The higher the value the better will be </span>
-<span class="sd">            the precision, the longer will be </span>
-<span class="sd">            the computing time. It is recommended to use 0 (usually sufficient) unless L* is not </span>
-<span class="sd">            computed on a LEO orbit. For LEO orbit higher values are recommended. Note that this </span>
-<span class="sd">            parameter defines the integration step (phi) along the drift shell such as </span>
+<span class="sd">        - 4th element: resolution to compute L* (0 to 9). The higher the value the better will be</span>
+<span class="sd">            the precision, the longer will be</span>
+<span class="sd">            the computing time. It is recommended to use 0 (usually sufficient) unless L* is not</span>
+<span class="sd">            computed on a LEO orbit. For LEO orbit higher values are recommended. Note that this</span>
+<span class="sd">            parameter defines the integration step (phi) along the drift shell such as</span>
 <span class="sd">            dphi=(2pi)/(25*[options(4th element)+1])</span>
 <span class="sd">        - 5th element: allows to select an internal magnetic field model (default is set to IGRF)</span>
 <span class="sd">            - 0 = IGRF</span>
@@ -1718,7 +1712,7 @@
 <span class="sd">            - 3 = GSFC 12/66 updated to 1970</span>
 <span class="sd">            - 4 = User-defined model (Default: Centred dipole + uniform [Dungey open model] )</span>
 <span class="sd">            - 5 = Centred dipole</span>
-<span class="sd">            </span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="kn">from</span> <span class="nn">spacepy</span> <span class="kn">import</span> <span class="n">config</span> <span class="k">as</span> <span class="n">config_dict</span>
@@ -1727,13 +1721,15 @@
         <span class="sd">&#39;&#39;&#39;Chop up omni data for multiprocessing&#39;&#39;&#39;</span>
         <span class="n">out</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">()</span>
         <span class="n">keylist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">fullov</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-        <span class="n">dum</span> <span class="o">=</span> <span class="n">keylist</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">keylist</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;Qbits&#39;</span><span class="p">))</span>
+        <span class="n">dum</span> <span class="o">=</span> <span class="n">keylist</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">keylist</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;Qbits&#39;</span><span class="p">))</span> <span class="k">if</span> <span class="s1">&#39;Qbits&#39;</span> <span class="ow">in</span> <span class="n">keylist</span> <span class="k">else</span> <span class="kc">None</span>
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keylist</span><span class="p">:</span>
             <span class="n">out</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">fullov</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">stind</span><span class="p">:</span><span class="n">enind</span><span class="p">]</span>
-        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">fullov</span><span class="p">[</span><span class="s1">&#39;Qbits&#39;</span><span class="p">]:</span>
-            <span class="n">out</span><span class="p">[</span><span class="s1">&#39;Qbits&#39;</span><span class="p">][</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">fullov</span><span class="p">[</span><span class="s1">&#39;Qbits&#39;</span><span class="p">][</span><span class="n">key</span><span class="p">][</span><span class="n">stind</span><span class="p">:</span><span class="n">enind</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;Qbits&#39;</span> <span class="ow">in</span> <span class="n">fullov</span><span class="p">:</span>
+            <span class="n">out</span><span class="p">[</span><span class="s1">&#39;Qbits&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">fullov</span><span class="p">[</span><span class="s1">&#39;Qbits&#39;</span><span class="p">]:</span>
+                <span class="n">out</span><span class="p">[</span><span class="s1">&#39;Qbits&#39;</span><span class="p">][</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">fullov</span><span class="p">[</span><span class="s1">&#39;Qbits&#39;</span><span class="p">][</span><span class="n">key</span><span class="p">][</span><span class="n">stind</span><span class="p">:</span><span class="n">enind</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">out</span>
-    
+
     <span class="k">def</span> <span class="nf">reassemble</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;Reassemble the results from the multiprocessing&#39;&#39;&#39;</span>
         <span class="n">funcs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Bmin&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">,</span>
@@ -1743,7 +1739,7 @@
                  <span class="s1">&#39;Lstar&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">,</span>
                  <span class="s1">&#39;MLT&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">,</span>
                  <span class="s1">&#39;Xj&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">}</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">()</span> 
+        <span class="n">out</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
                 <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span> <span class="c1">#not first chunk</span>
@@ -1779,18 +1775,19 @@
         <span class="k">if</span> <span class="n">omnivals</span><span class="p">:</span>
             <span class="n">ov</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">ov</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">ov</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">nblocks</span>
         <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nblocks</span><span class="p">):</span>
             <span class="n">startind</span> <span class="o">=</span> <span class="n">block</span><span class="o">*</span><span class="n">blocklen</span>
             <span class="k">if</span> <span class="n">block</span> <span class="o">!=</span> <span class="n">nblocks</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="c1">#not last block</span>
                 <span class="n">endind</span> <span class="o">=</span> <span class="n">block</span><span class="o">*</span><span class="n">blocklen</span> <span class="o">+</span> <span class="n">blocklen</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">endind</span> <span class="o">=</span> <span class="n">block</span><span class="o">*</span><span class="n">blocklen</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">blocklen</span> <span class="c1">#going past the end of an array in a slice is fine</span>
+                <span class="n">endind</span> <span class="o">=</span> <span class="n">ncalc</span>  <span class="c1"># in last block, go to index of final time</span>
             <span class="n">tt</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ticks</span><span class="p">[</span><span class="n">startind</span><span class="p">:</span><span class="n">endind</span><span class="p">])</span> <span class="c1">#chunk time tags</span>
             <span class="n">cc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loci</span><span class="p">[</span><span class="n">startind</span><span class="p">:</span><span class="n">endind</span><span class="p">])</span> <span class="c1">#chunk positions</span>
             <span class="k">if</span> <span class="n">omnivals</span><span class="p">:</span>
                 <span class="n">ov</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">get_ov</span><span class="p">(</span><span class="n">omnivals</span><span class="p">,</span> <span class="n">startind</span><span class="p">,</span> <span class="n">endind</span><span class="p">))</span>
-        <span class="n">inputs</span> <span class="o">=</span> <span class="p">[[</span><span class="n">tch</span><span class="p">,</span> <span class="n">cch</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">extMag</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">ov</span><span class="p">,</span> <span class="n">landi2lstar</span><span class="p">]</span> <span class="k">for</span> <span class="n">tch</span><span class="p">,</span> <span class="n">cch</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">tt</span><span class="p">,</span><span class="n">cc</span><span class="p">)]</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="p">[[</span><span class="n">tch</span><span class="p">,</span> <span class="n">cch</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">extMag</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">oval</span><span class="p">,</span> <span class="n">landi2lstar</span><span class="p">]</span>
+                  <span class="k">for</span> <span class="n">tch</span><span class="p">,</span> <span class="n">cch</span><span class="p">,</span> <span class="n">oval</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">tt</span><span class="p">,</span> <span class="n">cc</span><span class="p">,</span> <span class="n">ov</span><span class="p">)]</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">_multi_get_Lstar</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
         <span class="n">pool</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
         <span class="n">pool</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
@@ -1812,11 +1809,11 @@
     <span class="n">omnivals</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
     <span class="n">landi2lstar</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
     <span class="n">DALL</span> <span class="o">=</span> <span class="n">_get_Lstar</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">loci</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">extMag</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">omnivals</span><span class="p">,</span> <span class="n">landi2lstar</span><span class="p">)</span>
-    
+
     <span class="k">return</span> <span class="n">DALL</span>
 
 <span class="c1"># -----------------------------------------------</span>
-<div class="viewcode-block" id="prep_irbem"><a class="viewcode-back" href="../../../autosummary/spacepy.irbempy.prep_irbem.html#spacepy.irbempy.prep_irbem">[docs]</a><span class="k">def</span> <span class="nf">prep_irbem</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loci</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="p">[],</span> <span class="n">extMag</span><span class="o">=</span><span class="s1">&#39;T01STORM&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">omnivals</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span> 
+<div class="viewcode-block" id="prep_irbem"><a class="viewcode-back" href="../../../autosummary/spacepy.irbempy.prep_irbem.html#spacepy.irbempy.prep_irbem">[docs]</a><span class="k">def</span> <span class="nf">prep_irbem</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loci</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="p">[],</span> <span class="n">extMag</span><span class="o">=</span><span class="s1">&#39;T01STORM&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">omnivals</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Prepare inputs for direct IRBEM-LIB calls. Not expected to be called by the user.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1872,7 +1869,7 @@
             <span class="k">if</span> <span class="n">dum</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="n">dum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dum</span><span class="p">])</span>
             <span class="n">omnivals</span><span class="p">[</span><span class="s1">&#39;W</span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span> <span class="o">=</span> <span class="n">dum</span>
         <span class="k">del</span> <span class="n">omnivals</span><span class="p">[</span><span class="s1">&#39;W&#39;</span><span class="p">]</span>
-        
+
     <span class="k">for</span> <span class="n">iTAI</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nTAI</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">ikey</span><span class="p">,</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">magkeys</span><span class="p">):</span>
             <span class="n">magin</span><span class="p">[</span><span class="n">ikey</span><span class="p">,</span> <span class="n">iTAI</span><span class="p">]</span> <span class="o">=</span> <span class="n">omnivals</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">iTAI</span><span class="p">]</span>
@@ -1880,7 +1877,7 @@
     <span class="c1"># multiply Kp*10 to look like omni database</span>
     <span class="c1"># this is what irbem lib is looking for</span>
     <span class="n">magin</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">magin</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span><span class="o">*</span><span class="mf">10.</span>
-    
+
     <span class="n">d</span><span class="p">[</span><span class="s1">&#39;magin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">magin</span>
 
     <span class="c1"># setup time array</span>
@@ -1908,7 +1905,7 @@
     <span class="n">d</span><span class="p">[</span><span class="s1">&#39;sysaxes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">posi</span><span class="o">.</span><span class="n">sysaxes</span>
     <span class="n">xin1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">ntime_max</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
     <span class="n">xin2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">ntime_max</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-    <span class="n">xin3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">ntime_max</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span> 
+    <span class="n">xin3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">ntime_max</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">posi</span><span class="o">.</span><span class="n">carsph</span> <span class="o">==</span> <span class="s1">&#39;sph&#39;</span><span class="p">:</span>
         <span class="n">xin1</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">nTAI</span><span class="p">]</span> <span class="o">=</span> <span class="n">posi</span><span class="o">.</span><span class="n">radi</span><span class="p">[:]</span>
         <span class="n">xin2</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">nTAI</span><span class="p">]</span> <span class="o">=</span> <span class="n">posi</span><span class="o">.</span><span class="n">lati</span><span class="p">[:]</span>
@@ -1941,7 +1938,7 @@
     <span class="k">if</span> <span class="n">nalpha</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">degalpha</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">nalpha</span><span class="p">]</span> <span class="o">=</span> <span class="n">alpha</span>
     <span class="n">d</span><span class="p">[</span><span class="s1">&#39;degalpha&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">degalpha</span>
-        
+
     <span class="k">return</span> <span class="n">d</span></div>
 
 
@@ -1976,8 +1973,8 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2020, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
+        &#169; Copyright 2011-2021, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

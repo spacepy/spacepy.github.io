@@ -4,13 +4,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>omni - module to read and process NASA OMNIWEB data &#8212; SpacePy v0.2.2 Manual</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>omni - module to read and process NASA OMNIWEB data &#8212; SpacePy v0.2.3 Manual</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
     
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -20,7 +22,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="spacepy.omni.get_omni" href="autosummary/spacepy.omni.get_omni.html" />
-    <link rel="prev" title="spacepy.LANLstar.LANLmax" href="autosummary/spacepy.LANLstar.LANLmax.html" /> 
+    <link rel="prev" title="lanlstar - module to calculate Lstar or Lmax using artificial neural network" href="lanlstar.html" /> 
   </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
@@ -40,7 +42,7 @@
           <a href="autosummary/spacepy.omni.get_omni.html" title="spacepy.omni.get_omni"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="autosummary/spacepy.LANLstar.LANLmax.html" title="spacepy.LANLstar.LANLmax"
+          <a href="lanlstar.html" title="lanlstar - module to calculate Lstar or Lmax using artificial neural network"
              accesskey="P">previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
@@ -66,8 +68,8 @@
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="autosummary/spacepy.LANLstar.LANLmax.html"
-                        title="previous chapter">spacepy.LANLstar.LANLmax</a></p>
+  <p class="topless"><a href="lanlstar.html"
+                        title="previous chapter">lanlstar - module to calculate Lstar or Lmax using artificial neural network</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="autosummary/spacepy.omni.get_omni.html"
                         title="next chapter">spacepy.omni.get_omni</a></p>
@@ -82,7 +84,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -96,14 +98,14 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-spacepy.omni">
+  <section id="module-spacepy.omni">
 <span id="omni-module-to-read-and-process-nasa-omniweb-data"></span><h1>omni - module to read and process NASA OMNIWEB data<a class="headerlink" href="#module-spacepy.omni" title="Permalink to this headline">¶</a></h1>
 <p>Tools to read and process omni data (Qin-Denton, etc.)</p>
 <p>Authors: Steve Morley, Josef Koller
 Institution: Los Alamos National Laboratory
 Contact: <a class="reference external" href="mailto:smorley&#37;&#52;&#48;lanl&#46;gov">smorley<span>&#64;</span>lanl<span>&#46;</span>gov</a></p>
 <p>Copyright 2010-2014 Los Alamos National Security, LLC.</p>
-<div class="section" id="about-omni">
+<section id="about-omni">
 <h2>About omni<a class="headerlink" href="#about-omni" title="Permalink to this headline">¶</a></h2>
 <p>The omni module primarily manages the hourly OMNI2 and Qin-Denton data, which
 are sourced from the Virtual Radiation Belt Observatory (<a class="reference external" href="http://virbo.org">ViRBO</a>), 
@@ -117,8 +119,8 @@ models. The later Tsyganenko magnetic field models require subsidiary parameters
 (G- and W-parameters) that are pre-calculated in the Qin-Denton data. Further,
 the Qin-Denton data contains no data gaps – all gaps are filled (for details on
 the gap filling, see the paper by <a class="reference external" href="http://dx.doi.org/10.1029/2006SW000296">Qin et al.</a>.)</p>
-</div>
-<div class="section" id="advanced-features">
+</section>
+<section id="advanced-features">
 <h2>Advanced features<a class="headerlink" href="#advanced-features" title="Permalink to this headline">¶</a></h2>
 <p>Higher resolution data, or custom data sources, can also be managed/accessed 
 with this module, although this is considered an advanced use for this module.
@@ -141,7 +143,7 @@ functions must be supplied via the convert keyword argument. See
 Additionally, by default this will interpolate the data to the requested time 
 ticks. To return only the actual recorded data values for the specified time 
 range set the keyword argument interp to False.</p>
-</div>
+</section>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -156,7 +158,7 @@ range set the keyword argument interp to False.</p>
 </tr>
 </tbody>
 </table>
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -178,7 +180,7 @@ range set the keyword argument interp to False.</p>
           <a href="autosummary/spacepy.omni.get_omni.html" title="spacepy.omni.get_omni"
              >next</a> |</li>
         <li class="right" >
-          <a href="autosummary/spacepy.LANLstar.LANLmax.html" title="spacepy.LANLstar.LANLmax"
+          <a href="lanlstar.html" title="lanlstar - module to calculate Lstar or Lmax using artificial neural network"
              >previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
@@ -189,8 +191,8 @@ range set the keyword argument interp to False.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2020, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
+        &#169; Copyright 2011-2021, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

@@ -4,13 +4,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.irbempy.get_Lm &#8212; SpacePy v0.2.2 Manual</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>spacepy.irbempy.get_Lm &#8212; SpacePy v0.2.3 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -74,7 +76,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -88,11 +90,11 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="spacepy-irbempy-get-lm">
+  <section id="spacepy-irbempy-get-lm">
 <h1>spacepy.irbempy.get_Lm<a class="headerlink" href="#spacepy-irbempy-get-lm" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
-<dt id="spacepy.irbempy.get_Lm">
-<code class="sig-prename descclassname">spacepy.irbempy.</code><code class="sig-name descname">get_Lm</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ticks</span></em>, <em class="sig-param"><span class="n">loci</span></em>, <em class="sig-param"><span class="n">alpha</span></em>, <em class="sig-param"><span class="n">extMag</span><span class="o">=</span><span class="default_value">'T01STORM'</span></em>, <em class="sig-param"><span class="n">intMag</span><span class="o">=</span><span class="default_value">'IGRF'</span></em>, <em class="sig-param"><span class="n">IGRFset</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">omnivals</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/irbempy/irbempy.html#get_Lm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.irbempy.get_Lm" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.irbempy.get_Lm">
+<span class="sig-prename descclassname"><span class="pre">spacepy.irbempy.</span></span><span class="sig-name descname"><span class="pre">get_Lm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loci</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extMag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'T01STORM'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intMag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'IGRF'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">IGRFset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omnivals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/irbempy/irbempy.html#get_Lm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.irbempy.get_Lm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the MacIlwain L value for a given location, time and model</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -101,8 +103,8 @@
 <li><p>loci (Coords class) : containing spatial information</p></li>
 <li><p>alpha (list or ndarray) : pitch angles in degrees</p></li>
 <li><dl class="simple">
-<dt>extMag (string)<span class="classifier">optional; will choose the external magnetic field model </span></dt><dd><p>possible values [‘0’, ‘MEAD’, ‘T87SHORT’, ‘T87LONG’, ‘T89’, 
-‘OPQUIET’, ‘OPDYN’, ‘T96’, ‘OSTA’, ‘T01QUIET’, ‘T01STORM’, 
+<dt>extMag (string)<span class="classifier">optional; will choose the external magnetic field model</span></dt><dd><p>possible values [‘0’, ‘MEAD’, ‘T87SHORT’, ‘T87LONG’, ‘T89’,
+‘OPQUIET’, ‘OPDYN’, ‘T96’, ‘OSTA’, ‘T01QUIET’, ‘T01STORM’,
 ‘T05’, ‘ALEX’, ‘TS07’]</p>
 </dd>
 </dl>
@@ -120,7 +122,7 @@ For full details see get_Lstar</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>- results (dictionary)</strong><span class="classifier">containing keys: Lm, Bmin, Blocal (or Bmirr), Xj, MLT</span></dt><dd><p>if pitch angles provided in “alpha” then drift shells are calculated and “Bmirr” 
+<dt><strong>- results (dictionary)</strong><span class="classifier">containing keys: Lm, Bmin, Blocal (or Bmirr), Xj, MLT</span></dt><dd><p>if pitch angles provided in “alpha” then drift shells are calculated and “Bmirr”
 is returned if not provided, then “Blocal” at spacecraft is returned. A negative
 value for Lm indicates the field line is closed but particles are lost to the
 atmosphere; the absolute value indicates the L value.</p>
@@ -130,7 +132,7 @@ atmosphere; the absolute value indicates the L value.</p>
 </dl>
 </dd></dl>
 
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -164,8 +166,8 @@ atmosphere; the absolute value indicates the L value.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2020, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
+        &#169; Copyright 2011-2021, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

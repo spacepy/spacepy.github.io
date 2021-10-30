@@ -13,6 +13,58 @@ contains more detail.
 0.2 Series
 ==========
 
+0.2.3 (2021-10-30)
+------------------
+This is the last release of the 0.2 series and the last with full
+support for :doc:`Python 2 <py2k_eol>`. Binary installers (including
+wheels) for :doc:`32-bit Windows <install_windows>` will also end
+after the 0.2 series, as will Windows installers. The only binaries
+for Windows will be 64-bit wheels, installable with ``pip``.
+
+New features
+************
+:mod:`~spacepy.pycdf` now supports variables with sparse records, including
+enabling/disabling sparse records (:meth:`~spacepy.pycdf.Var.sparse`) and
+setting the pad value (:meth:`~spacepy.pycdf.Var.pad`). Thanks Antoine Brunet.
+
+Deprecations and removals
+*************************
+The colourmaps provided in the :mod:`~spacepy.plot` module have been
+deprecated. The same colourmaps have been available in matplotlib since
+at least 1.5, and users who do not directly import the colourmaps should
+see no impact.
+
+Major bugfixes
+**************
+The passing of keyword arguments from :func:`~spacepy.toolbox.bootHisto`
+to :func:`numpy.histogram` and :func:`matplotlib.pyplot.bar` has been fixed.
+
+The check for out-of-date leapseconds in :mod:`~spacepy.time` has been
+fixed (previously warned even when the file was up to date.)
+
+Fixed installation on new versions of setuptools, which removed
+``bdist_wininst`` support (`#530
+<https://github.com/spacepy/spacepy/issues/530>`_).
+
+The handling of library paths on Windows has been updated. This should
+fix situations where :mod:`~spacepy.irbempy` would not import on
+Windows with Python 3.8 or later. This did not seem to be a problem
+with Anaconda, but would sometimes manifest with Python from the app
+store or from `<http://python.org/>`_ (`#507
+<https://github.com/spacepy/spacepy/issues/507>`_)
+
+Other changes
+*************
+Modern leapsecond rules are applied from 1958-1972 rather than
+rounding fractional leapseconds. See :mod:`~spacepy.time` for full
+discussion of leap seconds and other conversion considerations.
+
+The handling of the ``.spacepy`` directory (see :doc:`configuration`)
+has been improved. If the ``SPACEPY`` environment variable is used,
+the directory will be created. The import process also is less fragile
+in the case of a partially-created ``.spacepy`` directory or an
+invalid (e.g. empty) ``spacepy.rc``.
+
 0.2.2 (2020-12-29)
 ------------------
 

@@ -4,13 +4,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.datamodel.SpaceData &#8212; SpacePy v0.2.2 Manual</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>spacepy.datamodel.SpaceData &#8212; SpacePy v0.2.3 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -74,7 +76,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -88,11 +90,11 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="spacepy-datamodel-spacedata">
+  <section id="spacepy-datamodel-spacedata">
 <h1>spacepy.datamodel.SpaceData<a class="headerlink" href="#spacepy-datamodel-spacedata" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="spacepy.datamodel.SpaceData">
-<em class="property">class </em><code class="sig-prename descclassname">spacepy.datamodel.</code><code class="sig-name descname">SpaceData</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#SpaceData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.datamodel.SpaceData" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.datamodel.SpaceData">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">spacepy.datamodel.</span></span><span class="sig-name descname"><span class="pre">SpaceData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#SpaceData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.SpaceData" title="Permalink to this definition">¶</a></dt>
 <dd><p>Datamodel class extending dict by adding attributes.</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -109,8 +111,8 @@
 </tbody>
 </table>
 <dl class="py method">
-<dt id="spacepy.datamodel.SpaceData.flatten">
-<code class="sig-name descname">flatten</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#SpaceData.flatten"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.datamodel.SpaceData.flatten" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.datamodel.SpaceData.flatten">
+<span class="sig-name descname"><span class="pre">flatten</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#SpaceData.flatten"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.SpaceData.flatten" title="Permalink to this definition">¶</a></dt>
 <dd><p>Method to collapse datamodel to one level deep</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamodel</span> <span class="k">as</span> <span class="nn">dm</span>
@@ -155,8 +157,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.datamodel.SpaceData.tree">
-<code class="sig-name descname">tree</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#SpaceData.tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.datamodel.SpaceData.tree" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.datamodel.SpaceData.tree">
+<span class="sig-name descname"><span class="pre">tree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#SpaceData.tree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.SpaceData.tree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print the contents of the SpaceData object in a visual tree</p>
 <dl class="field-list simple">
 <dt class="field-odd">Other Parameters</dt>
@@ -198,7 +200,7 @@
 
 </dd></dl>
 
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -232,8 +234,8 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2020, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
+        &#169; Copyright 2011-2021, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

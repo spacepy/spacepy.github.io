@@ -4,13 +4,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SpacePy Configuration &#8212; SpacePy v0.2.2 Manual</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>SpacePy Configuration &#8212; SpacePy v0.2.3 Manual</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
     
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -83,7 +85,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -97,7 +99,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="spacepy-configuration">
+  <section id="spacepy-configuration">
 <h1>SpacePy Configuration<a class="headerlink" href="#spacepy-configuration" title="Permalink to this headline">¶</a></h1>
 <p>SpacePy has a few tunable options that can be altered through the <code class="docutils literal notranslate"><span class="pre">spacepy.rc</span></code>
 configuration file. All options have defaults which will be used if not specified in
@@ -123,7 +125,7 @@ contains a single section, <code class="docutils literal notranslate"><span clas
 <li><p><a class="reference internal" href="#developer-documentation">Developer documentation</a></p></li>
 </ul>
 </div></blockquote>
-<div class="section" id="the-spacepy-directory">
+<section id="the-spacepy-directory">
 <h2>The spacepy directory<a class="headerlink" href="#the-spacepy-directory" title="Permalink to this headline">¶</a></h2>
 <p>If you prefer a different location for the SpacePy
 directory, set the environment variable <code class="docutils literal notranslate"><span class="pre">$SPACEPY</span></code> to a location of
@@ -132,23 +134,31 @@ your choice. For example, with a <code class="docutils literal notranslate"><spa
 </pre></div>
 </div>
 <p>for the <code class="docutils literal notranslate"><span class="pre">bash</span></code> shell you would:</p>
-<blockquote>
-<div><p>export SPACEPY=/a/different/dir</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">SPACEPY</span><span class="o">=/</span><span class="n">a</span><span class="o">/</span><span class="n">different</span><span class="o">/</span><span class="nb">dir</span>
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">$SPACEPY</span></code> is not an absolute path, it is treated as relative to
+the working directory at the time of import. In particular, that means
+if it is defined as an empty string (rather than an undefined
+variable), <code class="docutils literal notranslate"><span class="pre">.spacepy</span></code> is made directly in the current
+directory. Home directory references (<code class="docutils literal notranslate"><span class="pre">~</span></code>) are expanded via
+<a class="reference external" href="https://docs.python.org/3/library/os.path.html#os.path.expanduser" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">expanduser()</span></code></a>.</p>
 <p>If you change the default location, make sure you add the environment
 variable <code class="docutils literal notranslate"><span class="pre">$SPACEPY</span></code> to your <code class="docutils literal notranslate"><span class="pre">.cshrc,</span> <span class="pre">.tcshrc,</span></code> or <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>
-script.</p>
+script. If this directory does not exist, it will be created.</p>
+<p>The actual <code class="docutils literal notranslate"><span class="pre">.spacepy</span></code> directory is made inside the directory
+specified by <code class="docutils literal notranslate"><span class="pre">$SPACEPY</span></code>.</p>
 <p>This directory contains the configuration file and also SpacePy-related
 data, which can be updated with <a class="reference internal" href="autosummary/spacepy.toolbox.update.html#spacepy.toolbox.update" title="spacepy.toolbox.update"><code class="xref py py-func docutils literal notranslate"><span class="pre">update()</span></code></a>.</p>
-</div>
-<div class="section" id="available-configuration-options">
+</section>
+<section id="available-configuration-options">
 <h2>Available configuration options<a class="headerlink" href="#available-configuration-options" title="Permalink to this headline">¶</a></h2>
 <dl class="simple">
 <dt>enable_deprecation_warning</dt><dd><p>SpacePy raises <code class="xref py py-exc docutils literal notranslate"><span class="pre">DeprecationWarning</span></code> when deprecated functions
 are called. Starting in Python 2.7, these are ignored. SpacePy adds a warnings
 filter to force display of deprecation warnings from SpacePy the first time a
 deprecated function is called. Set this option to False to retain the default
-Python behavior. (See <a class="reference external" href="https://docs.python.org/3/library/warnings.html#module-warnings" title="(in Python v3.9)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">warnings</span></code></a> module for details on custom warning
+Python behavior. (See <a class="reference external" href="https://docs.python.org/3/library/warnings.html#module-warnings" title="(in Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">warnings</span></code></a> module for details on custom warning
 filters.)</p>
 </dd>
 <dt>enable_old_data_warning</dt><dd><p>SpacePy maintains certain databases from external sources, notably the
@@ -169,7 +179,7 @@ The default should almost always be acceptable.</p>
 </dd>
 <dt>ncpus</dt><dd><p>Number of CPUs to use for computations that can be
 multithreaded/multiprocessed. By default, they will use the number of CPUs
-reported by <a class="reference external" href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.cpu_count" title="(in Python v3.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">multiprocessing.cpu_count()</span></code></a>. You may wish to set this
+reported by <a class="reference external" href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.cpu_count" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">multiprocessing.cpu_count()</span></code></a>. You may wish to set this
 to a lower number if you need to reserve other processors on your machine.</p>
 </dd>
 <dt>notice</dt><dd><p>True to display the SpacePy license and other information on import (default);
@@ -201,8 +211,8 @@ of a release may want to set this to False.</p>
 HTTP requests. Normally leaving this unset should be fine.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="developer-documentation">
+</section>
+<section id="developer-documentation">
 <h2>Developer documentation<a class="headerlink" href="#developer-documentation" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">spacepy.rc</span></code> is loaded into a dictionary (<code class="docutils literal notranslate"><span class="pre">spacepy.config</span></code>) by SpacePy’s
 main <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>. All options from the <code class="docutils literal notranslate"><span class="pre">[spacepy]</span></code> section are loaded,
@@ -216,15 +226,15 @@ to produce a different type from a string.</p>
 <hr class="docutils" />
 <dl class="field-list simple">
 <dt class="field-odd">Release</dt>
-<dd class="field-odd"><p>0.2.2</p>
+<dd class="field-odd"><p>0.2.3</p>
 </dd>
 <dt class="field-even">Doc generation date</dt>
-<dd class="field-even"><p>Dec 29, 2020</p>
+<dd class="field-even"><p>Oct 29, 2021</p>
 </dd>
 </dl>
 <p>For additions or fixes to this page, contact the SpacePy Team at Los Alamos.</p>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -257,8 +267,8 @@ to produce a different type from a string.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2020, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
+        &#169; Copyright 2011-2021, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

@@ -4,13 +4,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>time - Time conversion, manipulation and implementation of Ticktock class &#8212; SpacePy v0.2.2 Manual</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>time - Time conversion, manipulation and implementation of Ticktock class &#8212; SpacePy v0.2.3 Manual</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
     
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -82,7 +84,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -96,10 +98,10 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-spacepy.time">
+  <section id="module-spacepy.time">
 <span id="time-time-conversion-manipulation-and-implementation-of-ticktock-class"></span><h1>time - Time conversion, manipulation and implementation of Ticktock class<a class="headerlink" href="#module-spacepy.time" title="Permalink to this headline">¶</a></h1>
 <p>Time conversion, manipulation and implementation of Ticktock class</p>
-<div class="section" id="notes">
+<section id="notes">
 <h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
 <p>The handling of time, in particular the conversions between representations,
 can be more complicated than it seems on the surface. This can result in
@@ -124,18 +126,30 @@ considered not to exist. For example, from 23:59:59 on 2008-12-31 to 00:00:00
 on 2009-01-01 is two seconds, but only represents a one-second increment in
 Unix time. Details are also discussed in the individual time representations.</p>
 <p>UTC times more than six months in the future are not well-defined, since
-the sechedule of leap second insertion is not known in advance. SpacePy
+the schedule of leap second insertion is not known in advance. SpacePy
 performs conversions assuming there are no leapseconds after those which have
 been announced by IERS.</p>
-<p>Between 1960 and 1972, UTC was defined by means of fractional leap seconds
-and a varying-length second. SpacePy treats UTC time in this period similar
-to after 1972, with a consistent second the same length of the SI second.
-It applies leap seconds wherever there is an entry in the USNO record of
-TAI-UTC, rounding fractional total leap second countss to the integer (0.5
-rounds up). This results in the application of six leap seconds at the
-beginning of 1972. The discrepancy with other means of calculating TAI-UTC
-may be as much as five seconds at the end of this period.</p>
-<p>Before 1960, UTC is not defined. SpacePy assumes days of constant length
+<p>Between 1960 and 1972, UTC was defined by means of fractional leap
+seconds and a varying-length second. From 1958 (when UTC was set equal
+to TAI) and 1972, SpacePy treats UTC time similar to after 1972, with
+a consistent second the same length of the SI second, and applying a
+full leap second before the beginning of January and July if UTC - UT1
+exceeded 0.4s. The difference with other methods of calculating UTC is
+less than half a second.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.2.3: </span>The application of post-1972 rules to 1958-1927 is new in
+0.2.3. Before, SpacePy applied leap seconds wherever there was an
+entry in the USNO record of TAI-UTC, rounding fractional total leap
+second counts to the integer (0.5 rounds up). The UTC second was still
+treated as the same length as the SI second (i.e., rate changed were
+not applied.) This resulted in the application of six leap seconds at
+the beginning of 1972. The discrepancy with other means of calculating
+TAI-UTC was as much as five seconds by the end of this period.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.2.2: </span>Before 0.2.2, SpacePy truncated fractional leapseconds rather than rounding.</p>
+</div>
+<p>Before 1958, UTC is not defined. SpacePy assumes days of constant length
 86400 seconds, equal to the SI second. This is almost guaranteed to be wrong;
 for times well out of the space era, it is strongly recommended to work
 consistently in either a continuous time system (e.g. TAI) or a day-based
@@ -144,10 +158,10 @@ system (e.g. JD).</p>
 calendar and dates including and before 1582-10-04 to be Julian. 10-05 through
 10-14 do not exist. This change is ignored for continuously-running non leap
 second aware timebases: CDF and RDT.</p>
-<p>See the <code class="docutils literal notranslate"><span class="pre">Ticktock</span></code> documentation and its various <code class="docutils literal notranslate"><span class="pre">get</span></code> functions for
+<p>See the <a class="reference internal" href="autosummary/spacepy.time.Ticktock.html#spacepy.time.Ticktock" title="spacepy.time.Ticktock"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ticktock</span></code></a> documentation and its various <code class="docutils literal notranslate"><span class="pre">get</span></code> functions for
 more details on the exact definitions of time systems used by SpacePy.</p>
-</div>
-<div class="section" id="examples">
+</section>
+<section id="examples">
 <h2>Examples:<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.time</span> <span class="k">as</span> <span class="nn">spt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
@@ -227,7 +241,7 @@ more details on the exact definitions of time systems used by SpacePy.</p>
 Institution: Los Alamos National Laboratory
 Contact: <a class="reference external" href="mailto:smorley&#37;&#52;&#48;lanl&#46;gov">smorley<span>&#64;</span>lanl<span>&#46;</span>gov</a>,</p>
 <p>Copyright 2010 Los Alamos National Security, LLC.</p>
-</div>
+</section>
 <p class="rubric">Classes</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -267,7 +281,7 @@ Contact: <a class="reference external" href="mailto:smorley&#37;&#52;&#48;lanl&#
 </tr>
 </tbody>
 </table>
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -300,8 +314,8 @@ Contact: <a class="reference external" href="mailto:smorley&#37;&#52;&#48;lanl&#
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2020, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
+        &#169; Copyright 2011-2021, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

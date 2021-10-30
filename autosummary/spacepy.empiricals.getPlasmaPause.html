@@ -4,13 +4,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.empiricals.getPlasmaPause &#8212; SpacePy v0.2.2 Manual</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>spacepy.empiricals.getPlasmaPause &#8212; SpacePy v0.2.3 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -74,7 +76,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -88,18 +90,18 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="spacepy-empiricals-getplasmapause">
+  <section id="spacepy-empiricals-getplasmapause">
 <h1>spacepy.empiricals.getPlasmaPause<a class="headerlink" href="#spacepy-empiricals-getplasmapause" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
-<dt id="spacepy.empiricals.getPlasmaPause">
-<code class="sig-prename descclassname">spacepy.empiricals.</code><code class="sig-name descname">getPlasmaPause</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ticks</span></em>, <em class="sig-param"><span class="n">model</span><span class="o">=</span><span class="default_value">'M2002'</span></em>, <em class="sig-param"><span class="n">LT</span><span class="o">=</span><span class="default_value">'all'</span></em>, <em class="sig-param"><span class="n">omnivals</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/empiricals.html#getPlasmaPause"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.empiricals.getPlasmaPause" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.empiricals.getPlasmaPause">
+<span class="sig-prename descclassname"><span class="pre">spacepy.empiricals.</span></span><span class="sig-name descname"><span class="pre">getPlasmaPause</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'M2002'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">LT</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omnivals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/empiricals.html#getPlasmaPause"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.empiricals.getPlasmaPause" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plasmapause location model(s)</p>
-<p>CA1992 – Carpenter, D. L., and R. R. Anderson, An ISEE/whistler 
-model of equatorial electron density in the magnetosphere, 
+<p>CA1992 – Carpenter, D. L., and R. R. Anderson, An ISEE/whistler
+model of equatorial electron density in the magnetosphere,
 J. Geophys. Res., 97, 1097, 1992.
-M2002 – Moldwin, M. B., L. Downward, H. K. Rassoul, R. Amin, 
-and R. R. Anderson, A new model of the location of the plasmapause: 
-CRRES results, J. Geophys. Res., 107(A11), 1339, 
+M2002 – Moldwin, M. B., L. Downward, H. K. Rassoul, R. Amin,
+and R. R. Anderson, A new model of the location of the plasmapause:
+CRRES results, J. Geophys. Res., 107(A11), 1339,
 doi:10.1029/2001JA009211, 2002.
 RT1970 – Rycroft, M. J., and J. O. Thomas, The magnetospheric
 plasmapause and the electron density trough at the alouette i
@@ -125,11 +127,17 @@ M2002 returns the Moldwin et al. model</p>
 </dd>
 </dl>
 </dd>
+<dt class="field-odd">Warns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>RuntimeWarning</dt><dd><p>If the CA1992 model is called with LT as it is not implemented</p>
+</dd>
+</dl>
+</dd>
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.time</span> <span class="k">as</span> <span class="nn">spt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.empiricals</span> <span class="k">as</span> <span class="nn">emp</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ticks</span> <span class="o">=</span> <span class="n">spt</span><span class="o">.</span><span class="n">tickrange</span><span class="p">(</span><span class="s1">&#39;2002-01-01T12:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;2002-01-04T00:00:00&#39;</span><span class="p">,</span><span class="o">.</span><span class="mi">25</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ticks</span> <span class="o">=</span> <span class="n">spt</span><span class="o">.</span><span class="n">tickrange</span><span class="p">(</span><span class="s1">&#39;2002-01-01T12:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;2002-01-04T00:00:00&#39;</span><span class="p">,</span><span class="mf">.25</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">emp</span><span class="o">.</span><span class="n">getPlasmaPause</span><span class="p">(</span><span class="n">ticks</span><span class="p">)</span>
 <span class="go">array([ 6.42140002,  6.42140002,  6.42140002,  6.42140002,  6.42140002,</span>
 <span class="go">    6.42140002,  6.42140002,  6.26859998,  5.772     ,  5.6574    ,</span>
@@ -138,7 +146,7 @@ M2002 returns the Moldwin et al. model</p>
 </div>
 </dd></dl>
 
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -172,8 +180,8 @@ M2002 returns the Moldwin et al. model</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2020, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
+        &#169; Copyright 2011-2021, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

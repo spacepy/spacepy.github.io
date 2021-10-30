@@ -4,13 +4,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.pycdf.istp.FileChecks &#8212; SpacePy v0.2.2 Manual</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>spacepy.pycdf.istp.FileChecks &#8212; SpacePy v0.2.3 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -75,7 +77,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -89,11 +91,11 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="spacepy-pycdf-istp-filechecks">
+  <section id="spacepy-pycdf-istp-filechecks">
 <h1>spacepy.pycdf.istp.FileChecks<a class="headerlink" href="#spacepy-pycdf-istp-filechecks" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="spacepy.pycdf.istp.FileChecks">
-<em class="property">class </em><code class="sig-prename descclassname">spacepy.pycdf.istp.</code><code class="sig-name descname">FileChecks</code><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#FileChecks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pycdf.istp.FileChecks" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pycdf.istp.FileChecks">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">spacepy.pycdf.istp.</span></span><span class="sig-name descname"><span class="pre">FileChecks</span></span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#FileChecks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.FileChecks" title="Permalink to this definition">¶</a></dt>
 <dd><p>ISTP compliance checks for a CDF file.</p>
 <p>Checks a file’s compliance with ISTP standards. This mostly
 performs checks that are not currently performed by the <a class="reference external" href="https://spdf.gsfc.nasa.gov/skteditor/">ISTP
@@ -125,8 +127,8 @@ tests and concatenate all errors.</p>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="spacepy.pycdf.istp.FileChecks.all">
-<em class="property">classmethod </em><code class="sig-name descname">all</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em>, <em class="sig-param"><span class="n">catch</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#FileChecks.all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pycdf.istp.FileChecks.all" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pycdf.istp.FileChecks.all">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">catch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#FileChecks.all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.FileChecks.all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform all variable and file-level tests</p>
 <p>In addition to calling every test in this class, will also call
 <a class="reference internal" href="spacepy.pycdf.istp.VariableChecks.html#spacepy.pycdf.istp.VariableChecks.all" title="spacepy.pycdf.istp.VariableChecks.all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">VariableChecks.all()</span></code></a> for every variable in the file.</p>
@@ -164,8 +166,8 @@ Calling the individual test will reveal the full traceback.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.pycdf.istp.FileChecks.empty_entry">
-<em class="property">classmethod </em><code class="sig-name descname">empty_entry</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#FileChecks.empty_entry"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pycdf.istp.FileChecks.empty_entry" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pycdf.istp.FileChecks.empty_entry">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">empty_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#FileChecks.empty_entry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.FileChecks.empty_entry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check for attributes with empty string</p>
 <p>Checks global attributes for this variable for any entries consisting
 of an empty string. These should be replaced with a single space.</p>
@@ -186,8 +188,8 @@ of an empty string. These should be replaced with a single space.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.pycdf.istp.FileChecks.filename">
-<em class="property">classmethod </em><code class="sig-name descname">filename</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#FileChecks.filename"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pycdf.istp.FileChecks.filename" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pycdf.istp.FileChecks.filename">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">filename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#FileChecks.filename"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.FileChecks.filename" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compare filename to global attributes</p>
 <p>Check global attribute <a class="reference external" href="https://spdf.gsfc.nasa.gov/istp_guide/gattributes.html#Logical_file_id">Logical_file_id</a>
 and <a class="reference external" href="https://spdf.gsfc.nasa.gov/istp_guide/gattributes.html#Logical_source">Logical_source</a>
@@ -209,8 +211,8 @@ for consistency with CDF filename.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.pycdf.istp.FileChecks.time_monoton">
-<em class="property">classmethod </em><code class="sig-name descname">time_monoton</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#FileChecks.time_monoton"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pycdf.istp.FileChecks.time_monoton" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pycdf.istp.FileChecks.time_monoton">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">time_monoton</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#FileChecks.time_monoton"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.FileChecks.time_monoton" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks that times are monotonic</p>
 <p>Check that all <a class="reference external" href="https://spdf.gsfc.nasa.gov/istp_guide/variables.html#support_data_eg1">Epoch</a>
 variables are monotonically increasing.</p>
@@ -231,8 +233,8 @@ variables are monotonically increasing.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.pycdf.istp.FileChecks.times">
-<em class="property">classmethod </em><code class="sig-name descname">times</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#FileChecks.times"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pycdf.istp.FileChecks.times" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pycdf.istp.FileChecks.times">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">times</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#FileChecks.times"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.FileChecks.times" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compare filename to times</p>
 <p>Check that all <a class="reference external" href="https://spdf.gsfc.nasa.gov/istp_guide/variables.html#support_data_eg1">Epoch</a>
 variables only contain times matching filename.</p>
@@ -258,7 +260,7 @@ check to have.)</p>
 
 </dd></dl>
 
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -293,8 +295,8 @@ check to have.)</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2020, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
+        &#169; Copyright 2011-2021, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

@@ -35,13 +35,23 @@ your choice. For example, with a ``csh``, or ``tcsh`` you would::
 
 	setenv SPACEPY /a/different/dir
 
-for the ``bash`` shell you would:
+for the ``bash`` shell you would::
 
 	export SPACEPY=/a/different/dir
 
+If ``$SPACEPY`` is not an absolute path, it is treated as relative to
+the working directory at the time of import. In particular, that means
+if it is defined as an empty string (rather than an undefined
+variable), ``.spacepy`` is made directly in the current
+directory. Home directory references (``~``) are expanded via
+:func:`~os.path.expanduser`.
+
 If you change the default location, make sure you add the environment
 variable ``$SPACEPY`` to your ``.cshrc, .tcshrc,`` or ``.bashrc``
-script.
+script. If this directory does not exist, it will be created.
+
+The actual ``.spacepy`` directory is made inside the directory
+specified by ``$SPACEPY``.
 
 This directory contains the configuration file and also SpacePy-related
 data, which can be updated with :func:`~spacepy.toolbox.update`.

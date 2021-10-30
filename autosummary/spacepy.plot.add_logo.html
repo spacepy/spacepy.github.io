@@ -4,13 +4,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.plot.add_logo &#8212; SpacePy v0.2.2 Manual</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>spacepy.plot.add_logo &#8212; SpacePy v0.2.3 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -74,7 +76,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -88,11 +90,11 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="spacepy-plot-add-logo">
+  <section id="spacepy-plot-add-logo">
 <h1>spacepy.plot.add_logo<a class="headerlink" href="#spacepy-plot-add-logo" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
-<dt id="spacepy.plot.add_logo">
-<code class="sig-prename descclassname">spacepy.plot.</code><code class="sig-name descname">add_logo</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">img</span></em>, <em class="sig-param"><span class="n">fig</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">pos</span><span class="o">=</span><span class="default_value">'br'</span></em>, <em class="sig-param"><span class="n">margin</span><span class="o">=</span><span class="default_value">0.05</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#add_logo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.plot.add_logo" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.plot.add_logo">
+<span class="sig-prename descclassname"><span class="pre">spacepy.plot.</span></span><span class="sig-name descname"><span class="pre">add_logo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'br'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#add_logo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.plot.add_logo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add an image (logo) to one corner of a plot.</p>
 <p>The provided image will be placed in a corner of the plot and sized
 to maintain its aspect ratio and be as large as possible without
@@ -102,7 +104,7 @@ be the last call in constructing a figure.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>img</strong><span class="classifier">str or numpy.ndarray</span></dt><dd><p>The image to place on the figure. If a string, assumed to be a
-filename to be read with <a class="reference external" href="https://matplotlib.org/api/image_api.html#matplotlib.image.imread" title="(in Matplotlib v3.3.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">imread()</span></code></a>; if
+filename to be read with <a class="reference external" href="https://matplotlib.org/api/image_api.html#matplotlib.image.imread" title="(in Matplotlib v3.4.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">imread()</span></code></a>; if
 a numpy array, assumed to be the image itself
 (in a simliar format).</p>
 </dd>
@@ -110,8 +112,8 @@ a numpy array, assumed to be the image itself
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>(axes, axesimg)</strong><span class="classifier">tuple of Axes and AxesImage</span></dt><dd><p>The <a class="reference external" href="https://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.3.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Axes</span></code></a> object created to hold the iamge,
-and the <a class="reference external" href="https://matplotlib.org/api/image_api.html#matplotlib.image.AxesImage" title="(in Matplotlib v3.3.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AxesImage</span></code></a> object for the image
+<dt><strong>(axes, axesimg)</strong><span class="classifier">tuple of Axes and AxesImage</span></dt><dd><p>The <a class="reference external" href="https://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.4.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Axes</span></code></a> object created to hold the iamge,
+and the <a class="reference external" href="https://matplotlib.org/api/image_api.html#matplotlib.image.AxesImage" title="(in Matplotlib v3.4.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AxesImage</span></code></a> object for the image
 itself.</p>
 </dd>
 </dl>
@@ -119,7 +121,7 @@ itself.</p>
 <dt class="field-odd">Other Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>fig</strong><span class="classifier">matplotlib.figure.Figure</span></dt><dd><p>The figure on which to place the logo; if not specified, the
-<a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.gcf.html#matplotlib.pyplot.gcf" title="(in Matplotlib v3.3.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">gcf()</span></code></a> function will be used.</p>
+<a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.gcf.html#matplotlib.pyplot.gcf" title="(in Matplotlib v3.4.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">gcf()</span></code></a> function will be used.</p>
 </dd>
 <dt><strong>pos</strong><span class="classifier">str</span></dt><dd><p>The position to place the logo.
 br: bottom right;
@@ -134,7 +136,7 @@ dimension of the figure (width or height). Default is 0.05 (5%).</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>Calls <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.draw.html#matplotlib.pyplot.draw" title="(in Matplotlib v3.3.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw()</span></code></a> to ensure locations are
+<p>Calls <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.draw.html#matplotlib.pyplot.draw" title="(in Matplotlib v3.4.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw()</span></code></a> to ensure locations are
 up to date.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.plot.utils</span>
@@ -153,7 +155,7 @@ up to date.</p>
 </div>
 </dd></dl>
 
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -187,8 +189,8 @@ up to date.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2020, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
+        &#169; Copyright 2011-2021, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

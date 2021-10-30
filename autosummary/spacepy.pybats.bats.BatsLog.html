@@ -4,13 +4,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.pybats.bats.BatsLog &#8212; SpacePy v0.2.2 Manual</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>spacepy.pybats.bats.BatsLog &#8212; SpacePy v0.2.3 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -75,7 +77,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -89,11 +91,11 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="spacepy-pybats-bats-batslog">
+  <section id="spacepy-pybats-bats-batslog">
 <h1>spacepy.pybats.bats.BatsLog<a class="headerlink" href="#spacepy-pybats-bats-batslog" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="spacepy.pybats.bats.BatsLog">
-<em class="property">class </em><code class="sig-prename descclassname">spacepy.pybats.bats.</code><code class="sig-name descname">BatsLog</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">starttime</span><span class="o">=</span><span class="default_value">(2000, 1, 1, 0, 0, 0)</span></em>, <em class="sig-param"><span class="n">keep_case</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#BatsLog"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pybats.bats.BatsLog" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.pybats.bats.BatsLog">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">spacepy.pybats.bats.</span></span><span class="sig-name descname"><span class="pre">BatsLog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starttime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(2000,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_case</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#BatsLog"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.bats.BatsLog" title="Permalink to this definition">¶</a></dt>
 <dd><p>A specialized version of <a class="reference internal" href="spacepy.pybats.LogFile.html#spacepy.pybats.LogFile" title="spacepy.pybats.LogFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogFile</span></code></a> that includes
 special methods for plotting common BATS-R-US log file values, such as
 D$_{ST}$.</p>
@@ -103,31 +105,31 @@ D$_{ST}$.</p>
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.bats.BatsLog.add_dst_quicklook" title="spacepy.pybats.bats.BatsLog.add_dst_quicklook"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_dst_quicklook</span></code></a>([target, loc, plot_obs, …])</p></td>
-<td><p>Create a quick-look plot of Dst (if variable present in file)  and compare against observations.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.bats.BatsLog.add_dst_quicklook" title="spacepy.pybats.bats.BatsLog.add_dst_quicklook"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_dst_quicklook</span></code></a>([target, loc, plot_obs, ...])</p></td>
+<td><p>Create a quick-look plot of Dst (if variable present in file) and compare against observations.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
-<dt id="spacepy.pybats.bats.BatsLog.add_dst_quicklook">
-<code class="sig-name descname">add_dst_quicklook</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">target</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">loc</span><span class="o">=</span><span class="default_value">111</span></em>, <em class="sig-param"><span class="n">plot_obs</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">epoch</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">add_legend</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">plot_sym</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">dstvar</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">obs_kwargs</span><span class="o">=</span><span class="default_value">{'c': 'k', 'ls': '--'}</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#BatsLog.add_dst_quicklook"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.pybats.bats.BatsLog.add_dst_quicklook" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a quick-look plot of Dst (if variable present in file) 
+<dt class="sig sig-object py" id="spacepy.pybats.bats.BatsLog.add_dst_quicklook">
+<span class="sig-name descname"><span class="pre">add_dst_quicklook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">111</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_obs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epoch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_sym</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dstvar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'c':</span> <span class="pre">'k',</span> <span class="pre">'ls':</span> <span class="pre">'--'}</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#BatsLog.add_dst_quicklook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.bats.BatsLog.add_dst_quicklook" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a quick-look plot of Dst (if variable present in file)
 and compare against observations.</p>
 <p>Like all <em>add_* * methods in Pybats, the *target</em> kwarg determines
 where to place the plot.
-If kwarg <em>target</em> is <strong>None</strong> (default), a new figure is 
+If kwarg <em>target</em> is <strong>None</strong> (default), a new figure is
 generated from scratch.  If <em>target</em> is a matplotlib Figure
 object, a new axis is created to fill that figure at subplot location
-<em>loc</em> (defaults to 111).  If target is a matplotlib Axes object, 
+<em>loc</em> (defaults to 111).  If target is a matplotlib Axes object,
 the plot is placed into that axis at subplot location <em>loc</em>.</p>
 <p>With newer versions of BATS-R-US, new dst-like variables are included,
 named ‘dst’, ‘dst-sm’, ‘dstflx’, etc.  This subroutine will attempt
-to first use ‘dst-sm’ as it is calculated consistently with 
+to first use ‘dst-sm’ as it is calculated consistently with
 observations.  If not found, ‘dst’ is used.  Users may choose which
 value to use via the <em>dstvar</em> kwarg.</p>
-<p>Observed Dst and SYM-H is automatically fetched from the Kyoto World 
-Data Center via the <a class="reference internal" href="spacepy.pybats.kyoto.html#module-spacepy.pybats.kyoto" title="spacepy.pybats.kyoto"><code class="xref py py-mod docutils literal notranslate"><span class="pre">spacepy.pybats.kyoto</span></code></a> module.  The associated 
-<code class="xref py py-class docutils literal notranslate"><span class="pre">spacepy.pybats.kyoto.KyotoDst</span></code> or 
+<p>Observed Dst and SYM-H is automatically fetched from the Kyoto World
+Data Center via the <a class="reference internal" href="spacepy.pybats.kyoto.html#module-spacepy.pybats.kyoto" title="spacepy.pybats.kyoto"><code class="xref py py-mod docutils literal notranslate"><span class="pre">spacepy.pybats.kyoto</span></code></a> module.  The associated
+<code class="xref py py-class docutils literal notranslate"><span class="pre">spacepy.pybats.kyoto.KyotoDst</span></code> or
 <code class="xref py py-class docutils literal notranslate"><span class="pre">spacepy.pybats.kyoto.KyotoSym</span></code> object, which holds the observed
 Dst/SYM-H, is stored as <em>self.obs_dst</em> for future use.
 The observed line can be customized via the <em>obs_kwargs</em> kwarg, which
@@ -139,7 +141,7 @@ will be placed at that time.</p>
 
 </dd></dl>
 
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -174,8 +176,8 @@ will be placed at that time.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2020, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
+        &#169; Copyright 2011-2021, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

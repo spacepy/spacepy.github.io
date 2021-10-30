@@ -5,12 +5,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.pycdf &#8212; SpacePy v0.2.2 Manual</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <title>spacepy.pycdf &#8212; SpacePy v0.2.3 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
@@ -54,7 +55,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -2306,7 +2307,8 @@
         <span class="k">return</span> <span class="n">_compress</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">comptype</span><span class="p">,</span> <span class="n">param</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="CDF.new"><a class="viewcode-back" href="../../autosummary/spacepy.pycdf.CDF.html#spacepy.pycdf.CDF.new">[docs]</a>    <span class="k">def</span> <span class="nf">new</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">recVary</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dimVarys</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-            <span class="n">dims</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_elements</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">compress</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">compress_param</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+            <span class="n">dims</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_elements</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">compress</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">compress_param</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">sparse</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Create a new zVariable in this CDF</span>
 
 <span class="sd">        .. note::</span>
@@ -2352,6 +2354,18 @@
 <span class="sd">        compress_param : ctypes.c_long</span>
 <span class="sd">            Compression parameter if compression used; reasonable default</span>
 <span class="sd">            is chosen. See :py:meth:`Var.compress`.</span>
+<span class="sd">        sparse : ctypes.c_long</span>
+
+<span class="sd">            .. versionadded:: 0.2.3</span>
+
+<span class="sd">            Sparse records type for this variable, default None (no sparse</span>
+<span class="sd">            records). See :meth:`Var.sparse`.</span>
+<span class="sd">        pad :</span>
+
+<span class="sd">            .. versionadded:: 0.2.3</span>
+
+<span class="sd">            Pad value for this variable, default None (do not set). See</span>
+<span class="sd">            :meth:`Var.pad`.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        =======</span>
@@ -2369,7 +2383,7 @@
 <span class="sd">            if no type is provided and data is datetime, warning that</span>
 <span class="sd">            the default will change in the future.</span>
 
-<span class="sd">            .. versionadded:: 0.2.2</span>
+<span class="sd">            .. versionadded:: 0.2.3</span>
 
 <span class="sd">        Notes</span>
 <span class="sd">        =====</span>
@@ -2417,8 +2431,13 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">compress</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                     <span class="n">compress</span> <span class="o">=</span> <span class="n">c</span>
-                <span class="k">if</span> <span class="n">compress_param</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="n">compress_param</span> <span class="o">=</span> <span class="n">cp</span>
+                <span class="c1"># Ignore data&#39;s compress_param if using compress argument</span>
+                    <span class="k">if</span> <span class="n">compress_param</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">compress_param</span> <span class="o">=</span> <span class="n">cp</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;sparse&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">sparse</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">sparse</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">sparse</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;pad&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">pad</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">pad</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pad</span><span class="p">()</span>
         <span class="c1">#Get defaults from VarCopy if data looks like a VarCopy</span>
         <span class="k">if</span> <span class="n">recVary</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">recVary</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">rv</span><span class="p">()</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;rv&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">True</span>
@@ -2481,8 +2500,12 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Data requires EPOCH16, INT8, or TIME_TT2000; &#39;</span>
                              <span class="s1">&#39;incompatible with backward-compatible CDF&#39;</span><span class="p">)</span>
         <span class="n">new_var</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">n_elements</span><span class="p">,</span> <span class="n">dims</span><span class="p">,</span> <span class="n">recVary</span><span class="p">,</span> <span class="n">dimVarys</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">compress</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">compress</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">new_var</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">compress</span><span class="p">,</span> <span class="n">compress_param</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">sparse</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">new_var</span><span class="o">.</span><span class="n">sparse</span><span class="p">(</span><span class="n">sparse</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">pad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">new_var</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">pad</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">new_var</span><span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
             <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;attrs&#39;</span><span class="p">):</span>
@@ -2955,11 +2978,12 @@
 <span class="sd">        The C CDF library allows reading records which have not been</span>
 <span class="sd">        written to a file, returning a pad value. pycdf checks the</span>
 <span class="sd">        size of a variable and will raise `IndexError` for most</span>
-<span class="sd">        attempts to read past the end. If these checks fail, a value</span>
-<span class="sd">        is returned with a warning ``VIRTUAL_RECORD_DATA``. Please</span>
-<span class="sd">        `open an issue</span>
+<span class="sd">        attempts to read past the end, except for variables with sparse</span>
+<span class="sd">        records. If these checks fail, a value is returned with a warning</span>
+<span class="sd">        ``VIRTUAL_RECORD_DATA``. Please `open an issue</span>
 <span class="sd">        &lt;https://github.com/spacepy/spacepy/issues/new&gt;`_ if this</span>
-<span class="sd">        occurs. See pg. 39 and following of the `CDF User&#39;s Guide</span>
+<span class="sd">        occurs for variables without sparse records. See pg. 39 and</span>
+<span class="sd">        following of the `CDF User&#39;s Guide</span>
 <span class="sd">        &lt;https://cdf.gsfc.nasa.gov/html/cdf_docs.html&gt;`_ for more on</span>
 <span class="sd">        virtual records.</span>
 
@@ -3063,6 +3087,12 @@
 <span class="sd">    &gt;&gt;&gt; del Flux[...]</span>
 
 <span class="sd">    .. note::</span>
+<span class="sd">        Variables using sparse records do not support insertion and only</span>
+<span class="sd">        support deletion of a single record at a time. See</span>
+<span class="sd">        :meth:`~Var.sparse` and section 2.3.12 of the CDF user&#39;s guide for</span>
+<span class="sd">        more information on sparse records.</span>
+
+<span class="sd">    .. note::</span>
 <span class="sd">        Although this interface only directly supports zVariables, zMode is</span>
 <span class="sd">        set on opening the CDF so rVars appear as zVars. See p.24 of the</span>
 <span class="sd">        CDF user&#39;s guide; pyCDF uses zMode 2.</span>
@@ -3078,9 +3108,11 @@
 <span class="sd">        ~Var.insert</span>
 <span class="sd">        ~Var.name</span>
 <span class="sd">        ~Var.nelems</span>
+<span class="sd">        ~Var.pad</span>
 <span class="sd">        ~Var.rename</span>
 <span class="sd">        ~Var.rv</span>
 <span class="sd">        ~Var.shape</span>
+<span class="sd">        ~Var.sparse</span>
 <span class="sd">        ~Var.type</span>
 <span class="sd">    .. attribute:: Var.attrs</span>
 
@@ -3093,9 +3125,11 @@
 <span class="sd">    .. automethod:: insert</span>
 <span class="sd">    .. automethod:: name</span>
 <span class="sd">    .. automethod:: nelems</span>
+<span class="sd">    .. automethod:: pad</span>
 <span class="sd">    .. automethod:: rename</span>
 <span class="sd">    .. automethod:: rv</span>
 <span class="sd">    .. autoattribute:: shape</span>
+<span class="sd">    .. automethod:: sparse</span>
 <span class="sd">    .. automethod:: type</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cdf_file</span><span class="p">,</span> <span class="n">var_name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
@@ -3178,7 +3212,7 @@
         <span class="k">if</span> <span class="n">hslice</span><span class="o">.</span><span class="n">counts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">hslice</span><span class="o">.</span><span class="n">select</span><span class="p">()</span>
             <span class="n">lib</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">const</span><span class="o">.</span><span class="n">GET_</span><span class="p">,</span> <span class="n">const</span><span class="o">.</span><span class="n">zVAR_HYPERDATA_</span><span class="p">,</span>
-                     <span class="n">result</span><span class="o">.</span><span class="n">ctypes</span><span class="o">.</span><span class="n">data_as</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">))</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">ctypes</span><span class="o">.</span><span class="n">data_as</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">hslice</span><span class="o">.</span><span class="n">convert_input_array</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
@@ -3207,6 +3241,9 @@
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Can only delete entire records.&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">hslice</span><span class="o">.</span><span class="n">counts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span>
+        <span class="k">if</span> <span class="n">hslice</span><span class="o">.</span><span class="n">sr</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">hslice</span><span class="o">.</span><span class="n">degen</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+                <span class="s1">&#39;Sparse records do not support multi-record delete.&#39;</span><span class="p">)</span>
         <span class="n">start</span> <span class="o">=</span> <span class="n">hslice</span><span class="o">.</span><span class="n">starts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">count</span> <span class="o">=</span> <span class="n">hslice</span><span class="o">.</span><span class="n">counts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">interval</span> <span class="o">=</span> <span class="n">hslice</span><span class="o">.</span><span class="n">intervals</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -3246,20 +3283,22 @@
                 <span class="n">lib</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">const</span><span class="o">.</span><span class="n">DELETE_</span><span class="p">,</span> <span class="n">const</span><span class="o">.</span><span class="n">zVAR_RECORDS_</span><span class="p">,</span>
                          <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="n">recno</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="n">recno</span><span class="p">))</span>
 
-    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Puts a slice into the data array. Details under :py:class:`pycdf.Var`.</span>
+    <span class="k">def</span> <span class="nf">_prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convert data to numpy array for writing to CDF</span>
 
-<span class="sd">        @param key: index or slice to store</span>
-<span class="sd">        @type key: int or slice</span>
-<span class="sd">        @param data: data to store</span>
-<span class="sd">        @type data: numpy.array</span>
-<span class="sd">        @raise IndexError: if L{key} is out of range, mismatches dimensions,</span>
-<span class="sd">                           or simply unparseable. IndexError will</span>
-<span class="sd">        @raise CDFError: for errors from the CDF library</span>
+<span class="sd">        Converts input data intended for CDF writing into a numpy array,</span>
+<span class="sd">        so the array&#39;s buffer can be used directly for the output buffer</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ==========</span>
+<span class="sd">        data : various</span>
+<span class="sd">            data to write</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        =======</span>
+<span class="sd">        numpy.ndarray</span>
+<span class="sd">            `data` converted, including time conversions</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">hslice</span> <span class="o">=</span> <span class="n">_Hyperslice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
-        <span class="n">n_recs</span> <span class="o">=</span> <span class="n">hslice</span><span class="o">.</span><span class="n">counts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">hslice</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="n">cdf_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">cdf_type</span> <span class="o">==</span> <span class="n">const</span><span class="o">.</span><span class="n">CDF_EPOCH16</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raw</span><span class="p">:</span>
@@ -3288,6 +3327,24 @@
         <span class="k">else</span><span class="p">:</span>
              <span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">requirements</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">),</span>
                                   <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_np_type</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">data</span>
+
+    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Puts a slice into the data array. Details under :py:class:`pycdf.Var`.</span>
+
+<span class="sd">        @param key: index or slice to store</span>
+<span class="sd">        @type key: int or slice</span>
+<span class="sd">        @param data: data to store</span>
+<span class="sd">        @type data: numpy.array</span>
+<span class="sd">        @raise IndexError: if L{key} is out of range, mismatches dimensions,</span>
+<span class="sd">                           or simply unparseable. IndexError will</span>
+<span class="sd">        @raise CDFError: for errors from the CDF library</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">hslice</span> <span class="o">=</span> <span class="n">_Hyperslice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+        <span class="n">n_recs</span> <span class="o">=</span> <span class="n">hslice</span><span class="o">.</span><span class="n">counts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">hslice</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">cdf_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">()</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prepare</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">cdf_type</span> <span class="o">==</span> <span class="n">const</span><span class="o">.</span><span class="n">CDF_EPOCH16</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
             <span class="n">datashape</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
@@ -3303,12 +3360,18 @@
         <span class="k">if</span> <span class="n">hslice</span><span class="o">.</span><span class="n">counts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">n_recs</span> <span class="ow">and</span> \
                <span class="n">hslice</span><span class="o">.</span><span class="n">starts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">n_recs</span> <span class="o">&lt;</span> <span class="n">hslice</span><span class="o">.</span><span class="n">dimsizes</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
             <span class="c1">#Specified slice ends before last record, so insert in middle</span>
+            <span class="k">if</span> <span class="n">hslice</span><span class="o">.</span><span class="n">sr</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+                    <span class="s1">&#39;Sparse records do not support insertion.&#39;</span><span class="p">)</span>
             <span class="n">saved_data</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">hslice</span><span class="o">.</span><span class="n">starts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">n_recs</span><span class="p">:]</span>
         <span class="k">if</span> <span class="n">hslice</span><span class="o">.</span><span class="n">counts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">hslice</span><span class="o">.</span><span class="n">select</span><span class="p">()</span>
             <span class="n">lib</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">const</span><span class="o">.</span><span class="n">PUT_</span><span class="p">,</span> <span class="n">const</span><span class="o">.</span><span class="n">zVAR_HYPERDATA_</span><span class="p">,</span>
                      <span class="n">data</span><span class="o">.</span><span class="n">ctypes</span><span class="o">.</span><span class="n">data_as</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">hslice</span><span class="o">.</span><span class="n">counts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">n_recs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">hslice</span><span class="o">.</span><span class="n">sr</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+                    <span class="s1">&#39;Sparse records do not support truncation on write.&#39;</span><span class="p">)</span>
             <span class="n">first_rec</span> <span class="o">=</span> <span class="n">hslice</span><span class="o">.</span><span class="n">starts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">hslice</span><span class="o">.</span><span class="n">counts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="n">last_rec</span> <span class="o">=</span> <span class="n">hslice</span><span class="o">.</span><span class="n">dimsizes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
             <span class="n">lib</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">const</span><span class="o">.</span><span class="n">DELETE_</span><span class="p">,</span> <span class="n">const</span><span class="o">.</span><span class="n">zVAR_RECORDS_</span><span class="p">,</span>
@@ -3534,6 +3597,87 @@
         <span class="n">vary</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_call</span><span class="p">(</span><span class="n">const</span><span class="o">.</span><span class="n">GET_</span><span class="p">,</span> <span class="n">const</span><span class="o">.</span><span class="n">zVAR_RECVARY_</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">vary</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">vary</span><span class="o">.</span><span class="n">value</span> <span class="o">!=</span> <span class="n">const</span><span class="o">.</span><span class="n">NOVARY</span><span class="o">.</span><span class="n">value</span></div>
+
+<div class="viewcode-block" id="Var.sparse"><a class="viewcode-back" href="../../autosummary/spacepy.pycdf.Var.html#spacepy.pycdf.Var.sparse">[docs]</a>    <span class="k">def</span> <span class="nf">sparse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sparsetype</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets or sets this variable&#39;s sparse records mode.</span>
+
+<span class="sd">        Sparse records mode may not be changeable on variables with data</span>
+<span class="sd">        already written; even deleting the data may not permit the change.</span>
+
+<span class="sd">        See section 2.3.12 of the CDF user&#39;s guide for more information on</span>
+<span class="sd">        sparse records.</span>
+
+<span class="sd">        Other Parameters</span>
+<span class="sd">        ================</span>
+<span class="sd">        sparsetype : ctypes.c_long</span>
+<span class="sd">            If specified, should be a sparse record mode from</span>
+<span class="sd">            :mod:`~spacepy.pycdf.const`; see also CDF C reference manual</span>
+<span class="sd">            section 4.11.1. If not specified, the sparse record mode for this</span>
+<span class="sd">            variable will not change.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        =======</span>
+<span class="sd">        out : ctypes.c_long</span>
+<span class="sd">            Sparse record mode for this variable.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        =====</span>
+<span class="sd">        .. versionadded:: 0.2.3</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">valid_sr</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">const</span><span class="o">.</span><span class="n">NO_SPARSERECORDS</span><span class="p">,</span> 
+            <span class="n">const</span><span class="o">.</span><span class="n">PREV_SPARSERECORDS</span><span class="p">,</span>
+            <span class="n">const</span><span class="o">.</span><span class="n">PAD_SPARSERECORDS</span>
+        <span class="p">]</span>
+        <span class="k">if</span> <span class="n">sparsetype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">sparsetype</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">):</span>
+                <span class="n">comptype</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="n">sparsetype</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_call</span><span class="p">(</span><span class="n">const</span><span class="o">.</span><span class="n">PUT_</span><span class="p">,</span> <span class="n">const</span><span class="o">.</span><span class="n">zVAR_SPARSERECORDS_</span><span class="p">,</span> <span class="n">sparsetype</span><span class="p">)</span>
+        <span class="n">sr</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_call</span><span class="p">(</span><span class="n">const</span><span class="o">.</span><span class="n">GET_</span><span class="p">,</span> <span class="n">const</span><span class="o">.</span><span class="n">zVAR_SPARSERECORDS_</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">sr</span><span class="p">))</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="o">.</span><span class="n">value</span> <span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">valid_sr</span><span class="p">}</span>
+        <span class="k">return</span> <span class="n">values</span><span class="p">[</span><span class="n">sr</span><span class="o">.</span><span class="n">value</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Var.pad"><a class="viewcode-back" href="../../autosummary/spacepy.pycdf.Var.html#spacepy.pycdf.Var.pad">[docs]</a>    <span class="k">def</span> <span class="nf">pad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets or sets this variable&#39;s pad value.</span>
+
+<span class="sd">        See section 2.3.20 of the CDF user&#39;s guide for more information on</span>
+<span class="sd">        pad values.</span>
+
+<span class="sd">        Other Parameters</span>
+<span class="sd">        ================</span>
+<span class="sd">        value : </span>
+<span class="sd">            If specified, should be an appropriate pad value. If not</span>
+<span class="sd">            specified, the pad value will not be set or changed.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        =======</span>
+<span class="sd">        out : </span>
+<span class="sd">            Current pad value for this variable. ``None`` if it has never been</span>
+<span class="sd">            set. This rarely happens; the pad value is usually set by the CDF</span>
+<span class="sd">            library on variable creation.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        =====</span>
+<span class="sd">        .. versionadded:: 0.2.3</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prepare</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_call</span><span class="p">(</span><span class="n">const</span><span class="o">.</span><span class="n">PUT_</span><span class="p">,</span> <span class="n">const</span><span class="o">.</span><span class="n">zVAR_PADVALUE_</span><span class="p">,</span> 
+                    <span class="n">data</span><span class="o">.</span><span class="n">ctypes</span><span class="o">.</span><span class="n">data_as</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">))</span>
+
+        <span class="c1"># Prepare buffer for return, to get array of correct type</span>
+        <span class="c1"># pretend it&#39;s [0, 0, 0, 0...] of the variable</span>
+        <span class="n">hslice</span> <span class="o">=</span> <span class="n">_Hyperslice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,)</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_n_dims</span><span class="p">()</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rv</span><span class="p">())))</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">hslice</span><span class="o">.</span><span class="n">create_array</span><span class="p">()</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call</span><span class="p">(</span><span class="n">const</span><span class="o">.</span><span class="n">GET_</span><span class="p">,</span> <span class="n">const</span><span class="o">.</span><span class="n">zVAR_PADVALUE_</span><span class="p">,</span>
+                            <span class="n">result</span><span class="o">.</span><span class="n">ctypes</span><span class="o">.</span><span class="n">data_as</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">),</span>
+                            <span class="n">ignore</span><span class="o">=</span><span class="p">(</span><span class="n">const</span><span class="o">.</span><span class="n">NO_PADVALUE_SPECIFIED</span><span class="p">,))</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">const</span><span class="o">.</span><span class="n">NO_PADVALUE_SPECIFIED</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">hslice</span><span class="o">.</span><span class="n">convert_input_array</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Var.dv"><a class="viewcode-back" href="../../autosummary/spacepy.pycdf.Var.html#spacepy.pycdf.Var.dv">[docs]</a>    <span class="k">def</span> <span class="nf">dv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_dv</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -3835,8 +3979,10 @@
 <span class="sd">        compress</span>
 <span class="sd">        dv</span>
 <span class="sd">        nelems</span>
+<span class="sd">        pad</span>
 <span class="sd">        rv</span>
 <span class="sd">        set</span>
+<span class="sd">        sparse</span>
 <span class="sd">        type</span>
 
 <span class="sd">    .. attribute:: attrs</span>
@@ -3846,8 +3992,10 @@
 <span class="sd">    .. automethod:: compress</span>
 <span class="sd">    .. automethod:: dv</span>
 <span class="sd">    .. automethod:: nelems</span>
+<span class="sd">    .. automethod:: pad</span>
 <span class="sd">    .. automethod:: rv</span>
 <span class="sd">    .. automethod:: set</span>
+<span class="sd">    .. automethod:: sparse</span>
 <span class="sd">    .. automethod:: type</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -3861,13 +4009,9 @@
 <span class="sd">        @type zVar: :py:class:`pycdf.Var`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">obj</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">VarCopy</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">zVar</span><span class="p">[</span><span class="o">...</span><span class="p">],</span> <span class="n">zVar</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
-        <span class="n">obj</span><span class="o">.</span><span class="n">_cdf_meta</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;compress&#39;</span><span class="p">:</span> <span class="n">zVar</span><span class="o">.</span><span class="n">compress</span><span class="p">(),</span>
-            <span class="s1">&#39;dv&#39;</span><span class="p">:</span> <span class="n">zVar</span><span class="o">.</span><span class="n">dv</span><span class="p">(),</span>
-            <span class="s1">&#39;nelems&#39;</span><span class="p">:</span> <span class="n">zVar</span><span class="o">.</span><span class="n">nelems</span><span class="p">(),</span>
-            <span class="s1">&#39;rv&#39;</span><span class="p">:</span> <span class="n">zVar</span><span class="o">.</span><span class="n">rv</span><span class="p">(),</span>
-            <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">zVar</span><span class="o">.</span><span class="n">type</span><span class="p">(),</span>
-            <span class="p">}</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">_cdf_meta</span> <span class="o">=</span> <span class="p">{</span> <span class="n">k</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">zVar</span><span class="p">,</span> <span class="n">k</span><span class="p">)()</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">(</span>
+            <span class="s1">&#39;compress&#39;</span><span class="p">,</span> <span class="s1">&#39;dv&#39;</span><span class="p">,</span> <span class="s1">&#39;nelems&#39;</span><span class="p">,</span> <span class="s1">&#39;rv&#39;</span><span class="p">,</span> <span class="s1">&#39;sparse&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">)</span> <span class="p">}</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">_cdf_meta</span><span class="p">[</span><span class="s1">&#39;pad&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">zVar</span><span class="o">.</span><span class="n">pad</span><span class="p">()</span> <span class="k">if</span> <span class="n">obj</span><span class="o">.</span><span class="n">_cdf_meta</span><span class="p">[</span><span class="s1">&#39;rv&#39;</span><span class="p">]</span> <span class="k">else</span> <span class="kc">None</span>
         <span class="k">return</span> <span class="n">obj</span>
 
 <div class="viewcode-block" id="VarCopy.compress"><a class="viewcode-back" href="../../autosummary/spacepy.pycdf.VarCopy.html#spacepy.pycdf.VarCopy.compress">[docs]</a>    <span class="k">def</span> <span class="nf">compress</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -3917,6 +4061,26 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cdf_meta</span><span class="p">[</span><span class="s1">&#39;nelems&#39;</span><span class="p">]</span></div>
 
+<div class="viewcode-block" id="VarCopy.pad"><a class="viewcode-back" href="../../autosummary/spacepy.pycdf.VarCopy.html#spacepy.pycdf.VarCopy.pad">[docs]</a>    <span class="k">def</span> <span class="nf">pad</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Gets pad value of the copied variable.</span>
+
+<span class="sd">        This copy does *not* preserve which records were written, i.e.</span>
+<span class="sd">        the entire copy is read, including pad values, and the pad values</span>
+<span class="sd">        are treated as real data (if, e.g. writing to another CDF).</span>
+
+<span class="sd">        For details on padding, see :meth:`spacepy.pycdf.Var.pad`.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        =======</span>
+<span class="sd">        various</span>
+<span class="sd">            Pad value, matching type of the variable.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        =====</span>
+<span class="sd">        .. versionadded:: 0.2.3</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cdf_meta</span><span class="p">[</span><span class="s1">&#39;pad&#39;</span><span class="p">]</span></div>
+
 <div class="viewcode-block" id="VarCopy.rv"><a class="viewcode-back" href="../../autosummary/spacepy.pycdf.VarCopy.html#spacepy.pycdf.VarCopy.rv">[docs]</a>    <span class="k">def</span> <span class="nf">rv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Gets record variance of the variable this was copied from.</span>
 
@@ -3948,6 +4112,26 @@
         <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cdf_meta</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s1">&#39;Invalid CDF metadata key </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_cdf_meta</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span></div>
+
+<div class="viewcode-block" id="VarCopy.sparse"><a class="viewcode-back" href="../../autosummary/spacepy.pycdf.VarCopy.html#spacepy.pycdf.VarCopy.sparse">[docs]</a>    <span class="k">def</span> <span class="nf">sparse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Gets sparse records mode of the copied variable.</span>
+
+<span class="sd">        This copy does *not* preserve which records were written, i.e.</span>
+<span class="sd">        the entire copy is read, including pad values, and the pad values</span>
+<span class="sd">        are treated as real data (if, e.g. writing to another CDF).</span>
+
+<span class="sd">        For details on sparse records, see :meth:`spacepy.pycdf.Var.sparse`.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        =======</span>
+<span class="sd">        ctypes.c_long</span>
+<span class="sd">            Sparse record type</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        =====</span>
+<span class="sd">        .. versionadded:: 0.2.3</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cdf_meta</span><span class="p">[</span><span class="s1">&#39;sparse&#39;</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="VarCopy.type"><a class="viewcode-back" href="../../autosummary/spacepy.pycdf.VarCopy.html#spacepy.pycdf.VarCopy.type">[docs]</a>    <span class="k">def</span> <span class="nf">type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns CDF type of the variable this was copied from.</span>
@@ -4017,6 +4201,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">zvar</span> <span class="o">=</span> <span class="n">zvar</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">rv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">zvar</span><span class="o">.</span><span class="n">rv</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">zvar</span><span class="o">.</span><span class="n">sparse</span><span class="p">()</span> <span class="o">!=</span> <span class="n">const</span><span class="o">.</span><span class="n">NO_SPARSERECORDS</span>
         <span class="c1">#dim of records, + 1 record dim (NRV always is record 0)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dims</span> <span class="o">=</span> <span class="n">zvar</span><span class="o">.</span><span class="n">_n_dims</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dimsizes</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">zvar</span><span class="p">)]</span> <span class="o">+</span> \
@@ -4025,8 +4210,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">counts</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">counts</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">intervals</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dims</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">degen</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">rev</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">degen</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rev</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
         <span class="c1">#key is:</span>
         <span class="c1">#1. a single value (integer or slice object) if called 1D</span>
         <span class="c1">#2. a tuple (of integers and/or slice objects) if called nD</span>
@@ -4048,14 +4233,20 @@
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="p">):</span>
                 <span class="n">idx</span> <span class="o">=</span> <span class="n">key</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
                 <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="s1">&#39;start&#39;</span><span class="p">):</span> <span class="c1">#slice</span>
+                    <span class="c1"># Allow read-off-end for record dim if sparse</span>
+                    <span class="n">off_end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sr</span> <span class="ow">and</span> <span class="n">idx</span><span class="o">.</span><span class="n">stop</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> \
+                              <span class="ow">and</span> <span class="n">idx</span><span class="o">.</span><span class="n">stop</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">dimsizes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span>
                     <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">starts</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">counts</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
                      <span class="bp">self</span><span class="o">.</span><span class="n">intervals</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">rev</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">=</span> \
-                     <span class="bp">self</span><span class="o">.</span><span class="n">convert_range</span><span class="p">(</span><span class="n">idx</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="n">stop</span><span class="p">,</span>
-                                              <span class="n">idx</span><span class="o">.</span><span class="n">step</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dimsizes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                     <span class="bp">self</span><span class="o">.</span><span class="n">convert_range</span><span class="p">(</span>
+                         <span class="n">idx</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="n">stop</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="n">step</span><span class="p">,</span>
+                         <span class="n">idx</span><span class="o">.</span><span class="n">stop</span> <span class="k">if</span> <span class="n">off_end</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">dimsizes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
                 <span class="k">else</span><span class="p">:</span> <span class="c1">#Single degenerate value</span>
                     <span class="k">if</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
                         <span class="n">idx</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dimsizes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-                    <span class="k">if</span> <span class="n">idx</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="p">(</span><span class="n">idx</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dimsizes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">or</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
+                    <span class="n">out_of_range</span> <span class="o">=</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> \
+                        <span class="p">(</span><span class="n">idx</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dimsizes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">sr</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">idx</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">out_of_range</span><span class="p">:</span>
                         <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s1">&#39;list index out of range&#39;</span><span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">starts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">degen</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
@@ -4268,7 +4459,7 @@
     <span class="k">def</span> <span class="nf">check_well_formed</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Checks if input data is well-formed, regular array&quot;&quot;&quot;</span>
         <span class="n">d</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">numpy</span><span class="o">.</span><span class="n">object</span><span class="p">:</span> <span class="c1">#this is probably going to be bad</span>
+        <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">object</span><span class="p">:</span> <span class="c1">#this is probably going to be bad</span>
             <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
                 <span class="c1">#Completely empty, so &quot;well-formed&quot; enough</span>
                 <span class="k">return</span>
@@ -5886,8 +6077,8 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2020, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
+        &#169; Copyright 2011-2021, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

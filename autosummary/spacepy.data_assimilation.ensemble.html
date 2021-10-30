@@ -4,13 +4,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.data_assimilation.ensemble &#8212; SpacePy v0.2.2 Manual</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>spacepy.data_assimilation.ensemble &#8212; SpacePy v0.2.3 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -74,7 +76,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -88,11 +90,11 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="spacepy-data-assimilation-ensemble">
+  <section id="spacepy-data-assimilation-ensemble">
 <h1>spacepy.data_assimilation.ensemble<a class="headerlink" href="#spacepy-data-assimilation-ensemble" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="spacepy.data_assimilation.ensemble">
-<em class="property">class </em><code class="sig-prename descclassname">spacepy.data_assimilation.</code><code class="sig-name descname">ensemble</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ensembles</span><span class="o">=</span><span class="default_value">50</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/data_assimilation.html#ensemble"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.data_assimilation.ensemble" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.data_assimilation.ensemble">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">spacepy.data_assimilation.</span></span><span class="sig-name descname"><span class="pre">ensemble</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ensembles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/data_assimilation.html#ensemble"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.data_assimilation.ensemble" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ensemble-based data assimilation subroutines for the Radiation Belt Model</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -116,13 +118,13 @@
 <td><p>compute HA provided L vector of observations and ensemble matrix A</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#spacepy.data_assimilation.ensemble.getHAprime" title="spacepy.data_assimilation.ensemble.getHAprime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getHAprime</span></code></a>(HA)</p></td>
-<td><p>calculate ensemble perturbation of HA HA’ = HA-HA_mean</p></td>
+<td><p>calculate ensemble perturbation of HA HA' = HA-HA_mean</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.data_assimilation.ensemble.getHPH" title="spacepy.data_assimilation.ensemble.getHPH"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getHPH</span></code></a>(Lobs, Pfxx)</p></td>
 <td><p>compute HPH</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#spacepy.data_assimilation.ensemble.getInnovation" title="spacepy.data_assimilation.ensemble.getInnovation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getInnovation</span></code></a>(y, Psi, HA)</p></td>
-<td><p>compute innovation ensemble D’</p></td>
+<td><p>compute innovation ensemble D'</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.data_assimilation.ensemble.getperturb" title="spacepy.data_assimilation.ensemble.getperturb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getperturb</span></code></a>(model, y)</p></td>
 <td><p>compute perturbations of observational vector</p></td>
@@ -130,8 +132,8 @@
 </tbody>
 </table>
 <dl class="py method">
-<dt id="spacepy.data_assimilation.ensemble.EnKF">
-<code class="sig-name descname">EnKF</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">A</span></em>, <em class="sig-param"><span class="n">Psi</span></em>, <em class="sig-param"><span class="n">Inn</span></em>, <em class="sig-param"><span class="n">HAp</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/data_assimilation.html#ensemble.EnKF"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.data_assimilation.ensemble.EnKF" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.data_assimilation.ensemble.EnKF">
+<span class="sig-name descname"><span class="pre">EnKF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Psi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">HAp</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/data_assimilation.html#ensemble.EnKF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.data_assimilation.ensemble.EnKF" title="Permalink to this definition">¶</a></dt>
 <dd><p>analysis subroutine after code example in
 Evensen 2003 this will take the prepared
 matrices and calculate the analysis most
@@ -154,8 +156,8 @@ efficiently, A will be returned</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.data_assimilation.ensemble.EnKF_oneobs">
-<code class="sig-name descname">EnKF_oneobs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">A</span></em>, <em class="sig-param"><span class="n">Psi</span></em>, <em class="sig-param"><span class="n">Inn</span></em>, <em class="sig-param"><span class="n">HAp</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/data_assimilation.html#ensemble.EnKF_oneobs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.data_assimilation.ensemble.EnKF_oneobs" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.data_assimilation.ensemble.EnKF_oneobs">
+<span class="sig-name descname"><span class="pre">EnKF_oneobs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Psi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Inn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">HAp</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/data_assimilation.html#ensemble.EnKF_oneobs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.data_assimilation.ensemble.EnKF_oneobs" title="Permalink to this definition">¶</a></dt>
 <dd><p>analysis subroutine for a single observations
 with the EnKF. This is a special case.</p>
 <dl class="field-list simple">
@@ -176,8 +178,8 @@ with the EnKF. This is a special case.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.data_assimilation.ensemble.add_model_error">
-<code class="sig-name descname">add_model_error</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">A</span></em>, <em class="sig-param"><span class="n">PSDdata</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/data_assimilation.html#ensemble.add_model_error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.data_assimilation.ensemble.add_model_error" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.data_assimilation.ensemble.add_model_error">
+<span class="sig-name descname"><span class="pre">add_model_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PSDdata</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/data_assimilation.html#ensemble.add_model_error"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.data_assimilation.ensemble.add_model_error" title="Permalink to this definition">¶</a></dt>
 <dd><p>this routine will add a standard error to the ensemble states</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -196,8 +198,8 @@ with the EnKF. This is a special case.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.data_assimilation.ensemble.add_model_error_obs">
-<code class="sig-name descname">add_model_error_obs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">A</span></em>, <em class="sig-param"><span class="n">Lobs</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/data_assimilation.html#ensemble.add_model_error_obs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.data_assimilation.ensemble.add_model_error_obs" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.data_assimilation.ensemble.add_model_error_obs">
+<span class="sig-name descname"><span class="pre">add_model_error_obs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Lobs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/data_assimilation.html#ensemble.add_model_error_obs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.data_assimilation.ensemble.add_model_error_obs" title="Permalink to this definition">¶</a></dt>
 <dd><p>this routine will add a standard error to the ensemble states</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -217,8 +219,8 @@ with the EnKF. This is a special case.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.data_assimilation.ensemble.getHA">
-<code class="sig-name descname">getHA</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">Lobs</span></em>, <em class="sig-param"><span class="n">A</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/data_assimilation.html#ensemble.getHA"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.data_assimilation.ensemble.getHA" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.data_assimilation.ensemble.getHA">
+<span class="sig-name descname"><span class="pre">getHA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Lobs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/data_assimilation.html#ensemble.getHA"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.data_assimilation.ensemble.getHA" title="Permalink to this definition">¶</a></dt>
 <dd><p>compute HA provided L vector of observations
 and ensemble matrix A</p>
 <dl class="field-list simple">
@@ -238,8 +240,8 @@ and ensemble matrix A</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.data_assimilation.ensemble.getHAprime">
-<code class="sig-name descname">getHAprime</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">HA</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/data_assimilation.html#ensemble.getHAprime"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.data_assimilation.ensemble.getHAprime" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.data_assimilation.ensemble.getHAprime">
+<span class="sig-name descname"><span class="pre">getHAprime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">HA</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/data_assimilation.html#ensemble.getHAprime"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.data_assimilation.ensemble.getHAprime" title="Permalink to this definition">¶</a></dt>
 <dd><p>calculate ensemble perturbation of HA
 HA’ = HA-HA_mean</p>
 <dl class="field-list simple">
@@ -257,8 +259,8 @@ HA’ = HA-HA_mean</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.data_assimilation.ensemble.getHPH">
-<code class="sig-name descname">getHPH</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Lobs</span></em>, <em class="sig-param"><span class="n">Pfxx</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/data_assimilation.html#ensemble.getHPH"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.data_assimilation.ensemble.getHPH" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.data_assimilation.ensemble.getHPH">
+<span class="sig-name descname"><span class="pre">getHPH</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Lobs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Pfxx</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/data_assimilation.html#ensemble.getHPH"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.data_assimilation.ensemble.getHPH" title="Permalink to this definition">¶</a></dt>
 <dd><p>compute HPH</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -276,8 +278,8 @@ HA’ = HA-HA_mean</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.data_assimilation.ensemble.getInnovation">
-<code class="sig-name descname">getInnovation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">Psi</span></em>, <em class="sig-param"><span class="n">HA</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/data_assimilation.html#ensemble.getInnovation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.data_assimilation.ensemble.getInnovation" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.data_assimilation.ensemble.getInnovation">
+<span class="sig-name descname"><span class="pre">getInnovation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Psi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">HA</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/data_assimilation.html#ensemble.getInnovation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.data_assimilation.ensemble.getInnovation" title="Permalink to this definition">¶</a></dt>
 <dd><p>compute innovation ensemble D’</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -296,8 +298,8 @@ HA’ = HA-HA_mean</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="spacepy.data_assimilation.ensemble.getperturb">
-<code class="sig-name descname">getperturb</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/data_assimilation.html#ensemble.getperturb"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spacepy.data_assimilation.ensemble.getperturb" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spacepy.data_assimilation.ensemble.getperturb">
+<span class="sig-name descname"><span class="pre">getperturb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/data_assimilation.html#ensemble.getperturb"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.data_assimilation.ensemble.getperturb" title="Permalink to this definition">¶</a></dt>
 <dd><p>compute perturbations of observational vector</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -316,7 +318,7 @@ HA’ = HA-HA_mean</p>
 
 </dd></dl>
 
-</div>
+</section>
 
 
             <div class="clearer"></div>
@@ -350,8 +352,8 @@ HA’ = HA-HA_mean</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2020, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
+        &#169; Copyright 2011-2021, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

@@ -5,12 +5,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.pybats.bats &#8212; SpacePy v0.2.2 Manual</title>
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/default.css" type="text/css" />
+    <title>spacepy.pybats.bats &#8212; SpacePy v0.2.3 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/plot_directive.css" />
     
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
@@ -55,7 +56,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -93,7 +94,7 @@
 <span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">spacepy.pybats</span> <span class="kn">import</span> <span class="n">PbData</span><span class="p">,</span> <span class="n">IdlFile</span><span class="p">,</span> <span class="n">LogFile</span>
+<span class="kn">from</span> <span class="nn">spacepy.pybats</span> <span class="kn">import</span> <span class="n">PbData</span><span class="p">,</span> <span class="n">IdlFile</span><span class="p">,</span> <span class="n">LogFile</span><span class="p">,</span> <span class="n">calc_wrapper</span>
 <span class="kn">import</span> <span class="nn">spacepy.plot.apionly</span>
 <span class="kn">from</span> <span class="nn">spacepy.plot</span> <span class="kn">import</span> <span class="n">set_target</span><span class="p">,</span> <span class="n">applySmartTimeTicks</span>
 <span class="kn">from</span> <span class="nn">spacepy.datamodel</span> <span class="kn">import</span> <span class="n">dmarray</span>
@@ -106,6 +107,7 @@
 <span class="n">RE</span> <span class="o">=</span> <span class="mi">6371000</span> <span class="c1"># Earth radius in meters.</span>
 
 <span class="c1">#### Module-level functions:</span>
+
 
 <span class="k">def</span> <span class="nf">_calc_ndens</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -158,13 +160,14 @@
     <span class="n">rho</span> <span class="o">=</span> <span class="s1">&#39;Rho&#39;</span><span class="o">*</span><span class="p">(</span><span class="s1">&#39;Rho&#39;</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;rho&#39;</span><span class="o">*</span><span class="p">(</span><span class="s1">&#39;rho&#39;</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">)</span>
     
     <span class="c1"># Find all species: the variable names end or begin with &quot;rho&quot;.</span>
+    <span class="c1"># Take care not to double-count.</span>
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">:</span>
         <span class="c1"># Ends with rho?</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">k</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="o">==</span> <span class="n">rho</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">k</span><span class="o">!=</span><span class="n">rho</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">k</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;N&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">k</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="o">==</span> <span class="n">rho</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">k</span> <span class="o">!=</span> <span class="n">rho</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">k</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;N&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">):</span>
             <span class="n">species</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
             <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">])</span>
         <span class="c1"># Begins with rho?</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">k</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>  <span class="o">==</span> <span class="n">rho</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">k</span><span class="o">!=</span><span class="n">rho</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">k</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span> <span class="o">+</span><span class="s1">&#39;N&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">k</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">rho</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">k</span> <span class="o">!=</span> <span class="n">rho</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">k</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span> <span class="o">+</span> <span class="s1">&#39;N&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">):</span>
             <span class="n">species</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
             <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="p">[</span><span class="mi">3</span><span class="p">:])</span>
 
@@ -178,18 +181,18 @@
                                               <span class="s1">&#39;amu mass&#39;</span><span class="p">:</span><span class="n">m</span><span class="p">})</span>
 
     <span class="c1"># Total N is sum of individual  number densities.</span>
-    <span class="n">obj</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="n">rho</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span> 
-                       <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;$cm^{-3}$&#39;</span><span class="p">})</span> 
+    <span class="n">obj</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="n">rho</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span>
+                       <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;$cm^{-3}$&#39;</span><span class="p">})</span>
     <span class="k">if</span> <span class="n">species</span><span class="p">:</span>
         <span class="c1"># Total number density:</span>
-        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span> <span class="n">obj</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]</span><span class="o">+=</span><span class="n">obj</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="s1">&#39;N&#39;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span> <span class="n">obj</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">obj</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="s1">&#39;N&#39;</span><span class="p">]</span>
         <span class="c1"># Composition as fraction of total per species:</span>
         <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
             <span class="n">obj</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="s1">&#39;Frac&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="mf">100.</span><span class="o">*</span><span class="n">obj</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="s1">&#39;N&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">obj</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">],</span>
                                     <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;Percent&#39;</span><span class="p">})</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># No individual species =&gt; no composition, simple ndens.</span>
-        <span class="n">obj</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="n">rho</span><span class="p">],</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;$cm^{-3}$&#39;</span><span class="p">})</span> 
+        <span class="n">obj</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="n">rho</span><span class="p">],</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;$cm^{-3}$&#39;</span><span class="p">})</span>
 
 
 <span class="c1">#### Classes:</span>
@@ -209,11 +212,11 @@
 
     <span class="k">def</span> <span class="nf">fetch_obs_dst</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Fetch the observed Dst index for the time period covered in the </span>
+<span class="sd">        Fetch the observed Dst index for the time period covered in the</span>
 <span class="sd">        logfile.  Return *True* on success.</span>
 
 <span class="sd">        Observed Dst is automatically fetched from the Kyoto World Data Center</span>
-<span class="sd">        via the :mod:`spacepy.pybats.kyoto` module.  The associated </span>
+<span class="sd">        via the :mod:`spacepy.pybats.kyoto` module.  The associated</span>
 <span class="sd">        :class:`spacepy.pybats.kyoto.KyotoDst` object, which holds the observed</span>
 <span class="sd">        Dst, is stored as *self.obs_dst* for future use.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
@@ -224,7 +227,8 @@
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;obs_dst&#39;</span><span class="p">):</span> <span class="k">return</span> <span class="kc">True</span>
 
         <span class="c1"># Start and end time to collect observations:</span>
-        <span class="n">stime</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span> <span class="n">etime</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">stime</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">etime</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
         <span class="c1"># Attempt to fetch from Kyoto website:</span>
         <span class="k">try</span><span class="p">:</span>
@@ -238,11 +242,11 @@
 
     <span class="k">def</span> <span class="nf">fetch_obs_sym</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Fetch the observed SYM-H index for the time period covered in the </span>
+<span class="sd">        Fetch the observed SYM-H index for the time period covered in the</span>
 <span class="sd">        logfile.  Return *True* on success.</span>
 
 <span class="sd">        Observed SYM-H is automatically fetched from the Kyoto World Data Center</span>
-<span class="sd">        via the :mod:`spacepy.pybats.kyoto` module.  The associated </span>
+<span class="sd">        via the :mod:`spacepy.pybats.kyoto` module.  The associated</span>
 <span class="sd">        :class:`spacepy.pybats.kyoto.KyotoSym` object, which holds the observed</span>
 <span class="sd">        Dst, is stored as *self.obs_sym* for future use.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
@@ -253,7 +257,8 @@
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;obs_sym&#39;</span><span class="p">):</span> <span class="k">return</span> <span class="kc">True</span>
 
         <span class="c1"># Start and end time to collect observations:</span>
-        <span class="n">stime</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span> <span class="n">etime</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">stime</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">etime</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
         <span class="c1"># Attempt to fetch from Kyoto website:</span>
         <span class="k">try</span><span class="p">:</span>
@@ -270,26 +275,26 @@
                           <span class="n">dstvar</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">obs_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;ls&#39;</span><span class="p">:</span><span class="s1">&#39;--&#39;</span><span class="p">},</span>
                           <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Create a quick-look plot of Dst (if variable present in file) </span>
+<span class="sd">        Create a quick-look plot of Dst (if variable present in file)</span>
 <span class="sd">        and compare against observations.</span>
 <span class="sd">        </span>
 <span class="sd">        Like all *add_\* * methods in Pybats, the *target* kwarg determines</span>
 <span class="sd">        where to place the plot.</span>
-<span class="sd">        If kwarg *target* is **None** (default), a new figure is </span>
+<span class="sd">        If kwarg *target* is **None** (default), a new figure is</span>
 <span class="sd">        generated from scratch.  If *target* is a matplotlib Figure</span>
 <span class="sd">        object, a new axis is created to fill that figure at subplot location</span>
-<span class="sd">        *loc* (defaults to 111).  If target is a matplotlib Axes object, </span>
+<span class="sd">        *loc* (defaults to 111).  If target is a matplotlib Axes object,</span>
 <span class="sd">        the plot is placed into that axis at subplot location *loc*.</span>
 
 <span class="sd">        With newer versions of BATS-R-US, new dst-like variables are included,</span>
 <span class="sd">        named &#39;dst&#39;, &#39;dst-sm&#39;, &#39;dstflx&#39;, etc.  This subroutine will attempt</span>
-<span class="sd">        to first use &#39;dst-sm&#39; as it is calculated consistently with </span>
+<span class="sd">        to first use &#39;dst-sm&#39; as it is calculated consistently with</span>
 <span class="sd">        observations.  If not found, &#39;dst&#39; is used.  Users may choose which</span>
 <span class="sd">        value to use via the *dstvar* kwarg.</span>
 
-<span class="sd">        Observed Dst and SYM-H is automatically fetched from the Kyoto World </span>
-<span class="sd">        Data Center via the :mod:`spacepy.pybats.kyoto` module.  The associated </span>
-<span class="sd">        :class:`spacepy.pybats.kyoto.KyotoDst` or </span>
+<span class="sd">        Observed Dst and SYM-H is automatically fetched from the Kyoto World</span>
+<span class="sd">        Data Center via the :mod:`spacepy.pybats.kyoto` module.  The associated</span>
+<span class="sd">        :class:`spacepy.pybats.kyoto.KyotoDst` or</span>
 <span class="sd">        :class:`spacepy.pybats.kyoto.KyotoSym` object, which holds the observed</span>
 <span class="sd">        Dst/SYM-H, is stored as *self.obs_dst* for future use.</span>
 <span class="sd">        The observed line can be customized via the *obs_kwargs* kwarg, which</span>
@@ -313,10 +318,10 @@
         <span class="k">if</span> <span class="n">dstvar</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
 
-        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">set_target</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">)</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">set_target</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="s1">&#39;label&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
-            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;BATS-R-US $D_</span><span class="si">{ST}</span><span class="s1">$ (Biot-Savart)&#39;</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;BATS-R-US $D_</span><span class="si">{ST}</span><span class="s1">$ (Biot-Savart)&#39;</span>
 
         <span class="k">if</span> <span class="s1">&#39;label&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">obs_kwargs</span><span class="p">:</span>
             <span class="n">obs_kwargs</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Obs. Dst&#39;</span>
@@ -327,7 +332,7 @@
                   <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;_nolegend_&#39;</span><span class="p">)</span>
         <span class="n">applySmartTimeTicks</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">])</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;D$_</span><span class="si">{ST}</span><span class="s1">$ ($nT$)&#39;</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time from &#39;</span><span class="o">+</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span><span class="o">+</span><span class="s1">&#39; UTC&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time from &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span><span class="o">+</span><span class="s1">&#39; UTC&#39;</span><span class="p">)</span>
 
         <span class="c1"># Add observations (Dst and/or SYM-H):</span>
         <span class="k">if</span><span class="p">(</span><span class="n">plot_obs</span><span class="p">):</span>
@@ -338,7 +343,7 @@
         <span class="k">if</span><span class="p">(</span><span class="n">plot_sym</span><span class="p">):</span>
             <span class="c1"># Attempt to fetch SYM-h observations, plot if success.</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fetch_obs_sym</span><span class="p">():</span>
-                <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obs_sym</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span><span class="bp">self</span><span class="o">.</span><span class="n">obs_sym</span><span class="p">[</span><span class="s1">&#39;sym-h&#39;</span><span class="p">],</span><span class="o">**</span><span class="n">obs_kwargs</span><span class="p">)</span>
+                <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">obs_sym</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">obs_sym</span><span class="p">[</span><span class="s1">&#39;sym-h&#39;</span><span class="p">],</span> <span class="o">**</span><span class="n">obs_kwargs</span><span class="p">)</span>
                 <span class="n">applySmartTimeTicks</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">])</span>
 
         <span class="c1"># Place vertical line at epoch:</span>
@@ -350,18 +355,18 @@
                 
         <span class="c1"># Apply legend</span>
         <span class="k">if</span> <span class="n">add_legend</span><span class="p">:</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">target</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span> <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">target</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
         
         <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span></div></div>
     
 <span class="k">class</span> <span class="nc">Extraction</span><span class="p">(</span><span class="n">PbData</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    A class for creating and visualizing extractions from other</span>
-<span class="sd">    :class:`~spacepy.pybats.PbData` 2D data sets.  Bilinear interpolation is </span>
+<span class="sd">    :class:`~spacepy.pybats.PbData` 2D data sets.  Bilinear interpolation is</span>
 <span class="sd">    used to obtain data between points.  At present, this class only</span>
 <span class="sd">    works with :class:`~spacepy.pybats.bats.Bats2d` objects, but will be</span>
-<span class="sd">    generalized in the future.  Though it can be instantiated in typical </span>
-<span class="sd">    fashion, It is best to create these objects via other object methods (e.g., </span>
+<span class="sd">    generalized in the future.  Though it can be instantiated in typical</span>
+<span class="sd">    fashion, It is best to create these objects via other object methods (e.g.,</span>
 <span class="sd">    :func:`~spacepy.pybats.bats.Bats2d.extract`)</span>
 
 <span class="sd">    Parameters</span>
@@ -389,8 +394,8 @@
         <span class="c1"># If our x, y locations are not numpy arrays, fix that.</span>
         <span class="c1"># Additionally, convert scalars to 1-element vectors.</span>
         <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
         <span class="c1"># Default: all variables are extracted except coordinates.</span>
         <span class="k">if</span> <span class="n">var_list</span> <span class="o">==</span> <span class="s1">&#39;all&#39;</span><span class="p">:</span>
@@ -424,7 +429,7 @@
         <span class="c1"># Create data object for holding extracted values.</span>
         <span class="c1"># One vector for each value w/ same units as parent object.</span>
         <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_var_list</span><span class="p">:</span>
-            <span class="bp">self</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">=</span><span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span> <span class="n">attrs</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
+            <span class="bp">self</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span> <span class="n">attrs</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
 
         <span class="c1"># Some helpers:</span>
         <span class="n">xAll</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;grid&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;dims&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span>
@@ -485,12 +490,12 @@
 <span class="sd">    maxPoints : int</span>
 <span class="sd">        (Default : 20000) Maximum number of integration steps to take.</span>
 <span class="sd">    var_list : string or sequence of strings</span>
-<span class="sd">        (Default : &#39;all&#39;) List of values to extract from *dataset*.  </span>
+<span class="sd">        (Default : &#39;all&#39;) List of values to extract from *dataset*.</span>
 <span class="sd">        Defaults to &#39;all&#39;, for all values within *bats*.</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    .. Not really &quot;notes&quot; but need to keep this section from being parsed </span>
+<span class="sd">    .. Not really &quot;notes&quot; but need to keep this section from being parsed</span>
 <span class="sd">       as parameters</span>
 
 <span class="sd">    .. rubric:: Methods</span>
@@ -593,7 +598,8 @@
 
         <span class="c1"># Find starting block and set starting locations.</span>
         <span class="n">block</span> <span class="o">=</span> <span class="n">bats</span><span class="o">.</span><span class="n">find_block</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xstart</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ystart</span><span class="p">)</span>
-        <span class="n">xfwd</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">xstart</span><span class="p">];</span> <span class="n">yfwd</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ystart</span><span class="p">]</span>
+        <span class="n">xfwd</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">xstart</span><span class="p">]</span>
+        <span class="n">yfwd</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ystart</span><span class="p">]</span>
         <span class="n">xnow</span><span class="p">,</span> <span class="n">ynow</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xstart</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ystart</span>
 
         <span class="c1"># Trace forwards.</span>
@@ -606,20 +612,20 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">loc</span> <span class="o">=</span> <span class="n">bats</span><span class="o">.</span><span class="n">qtree</span><span class="p">[</span><span class="n">block</span><span class="p">]</span><span class="o">.</span><span class="n">locs</span>
             <span class="c1"># Trace through this block.</span>
-            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">trc</span><span class="p">(</span><span class="n">bats</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">xvar</span><span class="p">][</span><span class="n">loc</span><span class="p">],</span> <span class="n">bats</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">yvar</span><span class="p">][</span><span class="n">loc</span><span class="p">],</span> 
-                       <span class="n">xnow</span><span class="p">,</span> <span class="n">ynow</span><span class="p">,</span> <span class="n">bats</span><span class="p">[</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">loc</span><span class="p">][</span><span class="mi">0</span><span class="p">,:],</span> 
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">trc</span><span class="p">(</span><span class="n">bats</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">xvar</span><span class="p">][</span><span class="n">loc</span><span class="p">],</span> <span class="n">bats</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">yvar</span><span class="p">][</span><span class="n">loc</span><span class="p">],</span>
+                       <span class="n">xnow</span><span class="p">,</span> <span class="n">ynow</span><span class="p">,</span> <span class="n">bats</span><span class="p">[</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">loc</span><span class="p">][</span><span class="mi">0</span><span class="p">,:],</span>
                        <span class="n">bats</span><span class="p">[</span><span class="n">grid</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="n">loc</span><span class="p">][:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">ds</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
             <span class="c1"># Update location and block:</span>
             <span class="n">xnow</span><span class="p">,</span> <span class="n">ynow</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
             <span class="n">newblock</span> <span class="o">=</span> <span class="n">bats</span><span class="o">.</span><span class="n">find_block</span><span class="p">(</span><span class="n">xnow</span><span class="p">,</span><span class="n">ynow</span><span class="p">)</span>
             <span class="c1"># If we didn&#39;t leave the block, stop tracing.</span>
             <span class="c1"># Additionally, if inside rBody, stop.</span>
-            <span class="k">if</span><span class="p">(</span><span class="n">block</span><span class="o">==</span><span class="n">newblock</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">xnow</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">ynow</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">&lt;</span><span class="n">bats</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;rbody&#39;</span><span class="p">]</span><span class="o">*.</span><span class="mi">8</span> <span class="p">:</span>
-                <span class="n">block</span><span class="o">=</span><span class="kc">False</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">block</span> <span class="o">==</span> <span class="n">newblock</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">xnow</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">ynow</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">bats</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;rbody&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">.8</span> <span class="p">:</span>
+                <span class="n">block</span> <span class="o">=</span> <span class="kc">False</span>
             <span class="k">elif</span> <span class="n">newblock</span><span class="p">:</span>
-                <span class="n">block</span><span class="o">=</span><span class="n">newblock</span>
+                <span class="n">block</span> <span class="o">=</span> <span class="n">newblock</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">block</span><span class="o">=</span><span class="kc">False</span>
+                <span class="n">block</span> <span class="o">=</span> <span class="kc">False</span>
             <span class="c1"># Append to full trace vectors.</span>
             <span class="n">xfwd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xfwd</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
             <span class="n">yfwd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">yfwd</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
@@ -627,33 +633,34 @@
             <span class="c1"># It&#39;s possible to get stuck swirling around across</span>
             <span class="c1"># a few blocks.  If we spend a lot of time tracing,</span>
             <span class="c1"># call it quits.</span>
-            <span class="k">if</span> <span class="n">xfwd</span><span class="o">.</span><span class="n">size</span><span class="o">&gt;</span><span class="n">maxPoints</span><span class="p">:</span> <span class="n">block</span><span class="o">=</span><span class="kc">False</span>
+            <span class="k">if</span> <span class="n">xfwd</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="n">maxPoints</span><span class="p">:</span> <span class="n">block</span> <span class="o">=</span> <span class="kc">False</span>
 
         <span class="c1"># Trace backwards.  Same Procedure as above.</span>
         <span class="n">block</span> <span class="o">=</span> <span class="n">bats</span><span class="o">.</span><span class="n">find_block</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xstart</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ystart</span><span class="p">)</span>
-        <span class="n">xbwd</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">xstart</span><span class="p">];</span> <span class="n">ybwd</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ystart</span><span class="p">]</span>
+        <span class="n">xbwd</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">xstart</span><span class="p">]</span>
+        <span class="n">ybwd</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ystart</span><span class="p">]</span>
         <span class="n">xnow</span><span class="p">,</span> <span class="n">ynow</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xstart</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ystart</span>
         <span class="k">while</span><span class="p">(</span><span class="n">block</span><span class="p">):</span>
             <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">bats</span><span class="o">.</span><span class="n">qtree</span><span class="p">[</span><span class="n">block</span><span class="p">],</span> <span class="s1">&#39;ghost&#39;</span><span class="p">):</span>
                 <span class="n">loc</span> <span class="o">=</span> <span class="n">bats</span><span class="o">.</span><span class="n">qtree</span><span class="p">[</span><span class="n">block</span><span class="p">]</span><span class="o">.</span><span class="n">ghost</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">loc</span> <span class="o">=</span> <span class="n">bats</span><span class="o">.</span><span class="n">qtree</span><span class="p">[</span><span class="n">block</span><span class="p">]</span><span class="o">.</span><span class="n">locs</span>
-            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">trc</span><span class="p">(</span><span class="n">bats</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">xvar</span><span class="p">][</span><span class="n">loc</span><span class="p">],</span> <span class="n">bats</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">yvar</span><span class="p">][</span><span class="n">loc</span><span class="p">],</span> 
-                       <span class="n">xnow</span><span class="p">,</span> <span class="n">ynow</span><span class="p">,</span> <span class="n">bats</span><span class="p">[</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">loc</span><span class="p">][</span><span class="mi">0</span><span class="p">,:],</span> 
-                       <span class="n">bats</span><span class="p">[</span><span class="n">grid</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="n">loc</span><span class="p">][:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">ds</span><span class="o">=-</span><span class="mf">0.01</span><span class="p">)</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">trc</span><span class="p">(</span><span class="n">bats</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">xvar</span><span class="p">][</span><span class="n">loc</span><span class="p">],</span> <span class="n">bats</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">yvar</span><span class="p">][</span><span class="n">loc</span><span class="p">],</span>
+                       <span class="n">xnow</span><span class="p">,</span> <span class="n">ynow</span><span class="p">,</span> <span class="n">bats</span><span class="p">[</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">loc</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span> <span class="p">:],</span>
+                       <span class="n">bats</span><span class="p">[</span><span class="n">grid</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="n">loc</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">ds</span><span class="o">=-</span><span class="mf">0.01</span><span class="p">)</span>
             <span class="n">xnow</span><span class="p">,</span> <span class="n">ynow</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-            <span class="n">newblock</span> <span class="o">=</span> <span class="n">bats</span><span class="o">.</span><span class="n">find_block</span><span class="p">(</span><span class="n">xnow</span><span class="p">,</span><span class="n">ynow</span><span class="p">)</span>
-            <span class="k">if</span><span class="p">(</span><span class="n">block</span><span class="o">==</span><span class="n">newblock</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">xnow</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">ynow</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">&lt;</span><span class="n">bats</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;rbody&#39;</span><span class="p">]</span><span class="o">*.</span><span class="mi">8</span> <span class="p">:</span>
-                <span class="n">block</span><span class="o">=</span><span class="kc">False</span>
+            <span class="n">newblock</span> <span class="o">=</span> <span class="n">bats</span><span class="o">.</span><span class="n">find_block</span><span class="p">(</span><span class="n">xnow</span><span class="p">,</span> <span class="n">ynow</span><span class="p">)</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">block</span> <span class="o">==</span> <span class="n">newblock</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">xnow</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">ynow</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">bats</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;rbody&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">.8</span><span class="p">:</span>
+                <span class="n">block</span> <span class="o">=</span> <span class="kc">False</span>
             <span class="k">elif</span> <span class="n">newblock</span><span class="p">:</span>
-                <span class="n">block</span><span class="o">=</span><span class="n">newblock</span>
+                <span class="n">block</span> <span class="o">=</span> <span class="n">newblock</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">block</span><span class="o">=</span><span class="kc">False</span>
+                <span class="n">block</span> <span class="o">=</span> <span class="kc">False</span>
             <span class="c1"># Append to full trace vectors.</span>
             <span class="n">xbwd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">xbwd</span><span class="p">)</span>
             <span class="n">ybwd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ybwd</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">xbwd</span><span class="o">.</span><span class="n">size</span><span class="o">&gt;</span><span class="n">maxPoints</span><span class="p">:</span> 
-                <span class="n">block</span><span class="o">=</span><span class="kc">False</span>
+            <span class="k">if</span> <span class="n">xbwd</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="n">maxPoints</span><span class="p">:</span>
+                <span class="n">block</span> <span class="o">=</span> <span class="kc">False</span>
 
         <span class="c1"># Trim duplicate points created when backwards tracing.</span>
         <span class="c1"># There&#39;s always at least 1 duplicate.</span>
@@ -661,15 +668,15 @@
             <span class="k">if</span> <span class="n">xbwd</span><span class="p">[</span><span class="o">-</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span><span class="o">-</span><span class="n">xfwd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span> <span class="k">break</span>
         
         <span class="c1"># Combine foward and backward traces.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xbwd</span><span class="p">[:</span><span class="o">-</span><span class="n">i</span><span class="p">],</span><span class="n">xfwd</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ybwd</span><span class="p">[:</span><span class="o">-</span><span class="n">i</span><span class="p">],</span><span class="n">yfwd</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xbwd</span><span class="p">[:</span><span class="o">-</span><span class="n">i</span><span class="p">],</span> <span class="n">xfwd</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ybwd</span><span class="p">[:</span><span class="o">-</span><span class="n">i</span><span class="p">],</span> <span class="n">yfwd</span><span class="p">)</span>
 
         <span class="c1"># If planetary run w/ body:</span>
         <span class="c1"># 1) Check if line is closed to body.</span>
         <span class="c1"># 2) Trim points within body.</span>
         <span class="k">if</span> <span class="s1">&#39;rbody&#39;</span> <span class="ow">in</span> <span class="n">bats</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
             <span class="c1"># Radial distance:</span>
-            <span class="n">r</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="o">**</span><span class="mf">2.0</span>  <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="o">**</span><span class="mf">2.0</span><span class="p">)</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="o">**</span><span class="mf">2.0</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="o">**</span><span class="mf">2.0</span><span class="p">)</span>
             <span class="c1"># Closed field line?  Lobe line?  Set status:</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">bats</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;rbody&#39;</span><span class="p">])</span> <span class="ow">and</span> <span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">bats</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;rbody&#39;</span><span class="p">]):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">open</span>   <span class="o">=</span> <span class="kc">False</span>
@@ -681,8 +688,8 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">open</span>   <span class="o">=</span> <span class="kc">True</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s1">&#39;south lobe&#39;</span>
             <span class="c1"># Trim the fat!</span>
-            <span class="n">limit</span> <span class="o">=</span> <span class="n">bats</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;rbody&#39;</span><span class="p">]</span><span class="o">*.</span><span class="mi">8</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">r</span><span class="o">&gt;</span><span class="n">limit</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">r</span><span class="o">&gt;</span><span class="n">limit</span><span class="p">]</span></div>
+            <span class="n">limit</span> <span class="o">=</span> <span class="n">bats</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;rbody&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">.8</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">r</span> <span class="o">&gt;</span> <span class="n">limit</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">r</span> <span class="o">&gt;</span> <span class="n">limit</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="Stream.trace"><a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Stream.html#spacepy.pybats.bats.Stream.trace">[docs]</a>    <span class="k">def</span> <span class="nf">trace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bats</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
@@ -712,40 +719,119 @@
 
         <span class="c1"># Check if line is closed to body.</span>
         <span class="k">if</span> <span class="s1">&#39;rbody&#39;</span> <span class="ow">in</span> <span class="n">bats</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
-            <span class="n">r1</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mf">2.0</span>  <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mf">2.0</span><span class="p">)</span>
+            <span class="n">r1</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">[</span> <span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mf">2.0</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mf">2.0</span><span class="p">)</span>
             <span class="n">r2</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mf">2.0</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mf">2.0</span><span class="p">)</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">r1</span> <span class="o">&lt;</span> <span class="n">bats</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;rbody&#39;</span><span class="p">])</span> <span class="ow">and</span> <span class="p">(</span><span class="n">r2</span> <span class="o">&lt;</span> <span class="n">bats</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;rbody&#39;</span><span class="p">]):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">open</span> <span class="o">=</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="Stream.plot"><a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Stream.html#spacepy.pybats.bats.Stream.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Add streamline to axes object &quot;ax&quot;. </span>
+<span class="sd">        Add streamline to axes object &quot;ax&quot;.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div></div>
 
+
 <div class="viewcode-block" id="Bats2d"><a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d">[docs]</a><span class="k">class</span> <span class="nc">Bats2d</span><span class="p">(</span><span class="n">IdlFile</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    A child class of :class:`~pybats.IdlFile` taylored to BATS-R-US output.</span>
+<span class="sd">    A child class of :class:`~pybats.IdlFile` tailored to 2D BATS-R-US output.</span>
+
+<span class="sd">    Calculations</span>
+<span class="sd">    ------------</span>
+<span class="sd">    New values can be added via the addition of new keys.  For example, </span>
+<span class="sd">    a user could add radial distance to an equatorial Bats2d object as follows:</span>
+
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; from spacepy.pybats import bats</span>
+<span class="sd">    &gt;&gt;&gt; mhd = bats.Bats2d(&#39;z=0_example.out&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; mhd[&#39;rad&#39;] = np.sqrt( mhd[&#39;x&#39;]**2 + mhd[&#39;y&#39;]**2 )</span>
+
+<span class="sd">    Note, however, that if the user switches the data frame in a *.outs file</span>
+<span class="sd">    to access data from a different epoch, these values will need to be</span>
+<span class="sd">    updated.</span>
+
+<span class="sd">    An exception to this is built-in `calc_*` methods, which perform common</span>
+<span class="sd">    MHD/fluid dynamic calculations (i.e., Alfven wave speed, vorticity, and</span>
+<span class="sd">    more.)  These values are updated when the data frame is switched (see the</span>
+<span class="sd">    `switch_frame` method).</span>
+
+<span class="sd">    Plotting</span>
+<span class="sd">    --------</span>
+<span class="sd">    While users can employ Matplotlib to plot values, a set of built-in</span>
+<span class="sd">    methods are available to expedite plotting.  These are the</span>
+<span class="sd">    `add_&lt;plot type&gt;` methods.  These methods always have the following</span>
+<span class="sd">    keyword arguments that allow users to optionally build more complicated</span>
+<span class="sd">    plots: *target* and *loc*.  The *target* kwarg tells the plotting method</span>
+<span class="sd">    where to place the plot and can either be a Matplotlib figure or axes</span>
+<span class="sd">    object.  If it&#39;s an axes object, *loc* sets the subplot location using</span>
+<span class="sd">    the typical matplotlib syntax (e.g., `loc=121`).  The default behavior is</span>
+<span class="sd">    to create a new figure and axes object.</span>
+
+<span class="sd">    This approach allows a user to over-plot contours, field lines, and</span>
+<span class="sd">    other plot artists as well as combine different subplots onto a single</span>
+<span class="sd">    figure.  Continuing with our example above, let&#39;s plot the grid layout</span>
+<span class="sd">    for our file as well as equatorial pressure and flow streamlines:</span>
+
+<span class="sd">    &gt;&gt;&gt; import matplotlib.pyplot as plt</span>
+<span class="sd">    &gt;&gt;&gt; fig = plt.Figure(figsize=(8,6))</span>
+<span class="sd">    &gt;&gt;&gt; mhd.add_grid_plot(target=fig, loc=121)</span>
+<span class="sd">    &gt;&gt;&gt; mhd.add_contour(&#39;x&#39;,&#39;y&#39;,&#39;p&#39;, target=fig, loc=122)</span>
+<span class="sd">    &gt;&gt;&gt; mhd.add_stream_scatter(&#39;ux&#39;, &#39;uy&#39;, target=fig, loc=122)</span>
+
+<span class="sd">    Useful plotting methods include the following:</span>
+
+<span class="sd">    | Plot Method        | Description                                    |</span>
+<span class="sd">    | ------------------ | ---------------------------------------------- |</span>
+<span class="sd">    | add_grid_plot      | Create a quick-look diagram of the grid layout |</span>
+<span class="sd">    | add_contour        | Create a contour plot of a given variable      |</span>
+<span class="sd">    | add_pcolor         | Add a p-color (no-interpolation contour) plot  |</span>
+<span class="sd">    | add_stream_scatter | Scatter stream traces (any vector field)       |</span>
+<span class="sd">    | add_b_magsphere    | Add magnetic field lines for X-Z plane cuts    |</span>
+<span class="sd">    | add_planet         | Add a simple black/white planet at the origin  |</span>
+<span class="sd">    | add_body           | Add an inner boundary at the origin            |</span>
+
+<span class="sd">    Extracting and Stream Tracing</span>
+<span class="sd">    -----------------------------</span>
+<span class="sd">    Extracting values via interpolation to arbitrary points and creating</span>
+<span class="sd">    stream traces through any vector field (e.g., velocity or magnetic field)</span>
+<span class="sd">    are aided via the use of the following object methods:</span>
+
+<span class="sd">    | Method     | Description                                        |</span>
+<span class="sd">    | ---------- | -------------------------------------------------- |</span>
+<span class="sd">    | extract    | Interpolate to arbitrary points and extract values |</span>
+<span class="sd">    | get_stream | Integrate stream lines through vector fields       |</span>
+
+
+<span class="sd">    Be sure to read the docstring information of :class:`~pybats.IdlFile` to</span>
+<span class="sd">    see how to handle multi-frame files (*.outs) and for a list of critical</span>
+<span class="sd">    attributes.</span>
+<span class="sd">    </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="c1"># Init by calling IdlFile init and then building qotree, etc.</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
-        <span class="kn">from</span> <span class="nn">spacepy.pybats</span> <span class="kn">import</span> <span class="n">parse_filename_time</span>
+        <span class="c1"># Create quad tree object attribute:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_qtree</span> <span class="o">=</span> <span class="kc">None</span>
         
         <span class="c1"># Read file.</span>
-        <span class="n">IdlFile</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="nb">format</span><span class="p">,</span> <span class="n">keep_case</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">_qtree</span><span class="o">=</span><span class="kc">None</span>
-
-        <span class="c1"># Extract time from file name:</span>
-        <span class="n">i_iter</span><span class="p">,</span> <span class="n">runtime</span><span class="p">,</span> <span class="n">time</span> <span class="o">=</span> <span class="n">parse_filename_time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">])</span>
-        <span class="k">if</span> <span class="s1">&#39;time&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">time</span>
-        <span class="k">if</span> <span class="s1">&#39;iter&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;iter&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">i_iter</span>
-
+        <span class="n">IdlFile</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">keep_case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        
         <span class="c1"># Behavior of output files changed Jan. 2017:</span>
         <span class="c1"># Check for &#39;r&#39; instead of &#39;rbody&#39; in attrs.</span>
         <span class="k">if</span> <span class="s1">&#39;r&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span> <span class="ow">and</span> <span class="s1">&#39;rbody&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;rbody&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">switch_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        For files that have more than one data frame (i.e., `*.outs` files),</span>
+<span class="sd">        load data from the *iframe*-th frame into the object replacing what is</span>
+<span class="sd">        currently loaded.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="c1"># Reset our quad tree before reading our file:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_qtree</span> <span class="o">=</span> <span class="kc">None</span>
+        
+        <span class="c1"># Switch frames using parent method:</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Bats2d</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">switch_frame</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">qtree</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -759,16 +845,15 @@
             <span class="k">if</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;grid&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;gtype&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;Regular&#39;</span><span class="p">:</span>
                 <span class="n">xdim</span><span class="p">,</span> <span class="n">ydim</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;grid&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;dims&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
                 <span class="k">try</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_qtree</span><span class="o">=</span><span class="n">qo</span><span class="o">.</span><span class="n">QTree</span><span class="p">(</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="p">[</span><span class="n">xdim</span><span class="p">],</span><span class="bp">self</span><span class="p">[</span><span class="n">ydim</span><span class="p">]]))</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_qtree</span> <span class="o">=</span> <span class="n">qo</span><span class="o">.</span><span class="n">QTree</span><span class="p">(</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="p">[</span><span class="n">xdim</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="n">ydim</span><span class="p">]]))</span>
                 <span class="k">except</span><span class="p">:</span>
                     <span class="kn">from</span> <span class="nn">traceback</span> <span class="kn">import</span> <span class="n">print_exc</span>
                     <span class="n">print_exc</span><span class="p">()</span>
-                    <span class="c1">#print &#39;On dataset:&#39;,self.filename</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">_qtree</span><span class="o">=</span><span class="kc">False</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">find_block</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="kc">False</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_qtree</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">find_block</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="kc">False</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_qtree</span><span class="o">=</span><span class="kc">False</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">find_block</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="kc">False</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_qtree</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">find_block</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="kc">False</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qtree</span>
 
@@ -783,6 +868,7 @@
     <span class="c1"># CALCULATIONS</span>
     <span class="c1">####################</span>
 
+    <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_temp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;eV&#39;</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Calculate plasma temperature for each fluid.  Number density is</span>
@@ -805,7 +891,7 @@
                  <span class="s1">&#39;k&#39;</span>  <span class="p">:</span> <span class="mf">72429626.47</span><span class="p">}</span> <span class="c1"># nPa/cm^3 --&gt; K.</span>
 
         <span class="c1"># Calculate number density if not done already.</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="s1">&#39;N&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;N&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">calc_ndens</span><span class="p">()</span>
         
         <span class="c1"># Find all number density variables.</span>
@@ -818,8 +904,9 @@
                 <span class="k">continue</span>
             <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;t&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span>
                 <span class="n">conv</span><span class="p">[</span><span class="n">units</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;p&#39;</span><span class="p">]</span><span class="o">/</span><span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">],</span>
-                <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="n">units</span><span class="p">})</span>
+                <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="n">units</span><span class="p">})</span>
 
+    <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_b</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Calculates total B-field strength using all three B components.</span>
@@ -829,16 +916,17 @@
         <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sqrt</span>
 
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bx&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">2.0</span> <span class="o">+</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;by&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">2.0</span> <span class="o">+</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bz&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">2.0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]}</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]}</span>
 
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bx_hat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bx&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;by_hat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;by&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bz_hat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bz&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
 
-        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bx_hat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;unitless&#39;</span><span class="p">}</span>
-        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;by_hat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;unitless&#39;</span><span class="p">}</span>
-        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bz_hat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;unitless&#39;</span><span class="p">}</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bx_hat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;unitless&#39;</span><span class="p">}</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;by_hat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;unitless&#39;</span><span class="p">}</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bz_hat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;unitless&#39;</span><span class="p">}</span>
 
+    <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_j</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Calculates total current density strength using all three J components.</span>
@@ -847,40 +935,41 @@
         <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sqrt</span>
 
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;j&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jx&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">2.0</span> <span class="o">+</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jy&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">2.0</span> <span class="o">+</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jz&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">2.0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;j&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]}</span>
-        
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;j&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]}</span>
+    
+    <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_E</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Calculates the MHD electric field, -UxB.  Works for default</span>
 <span class="sd">        MHD units of nT and km/s; if these units are not correct, an </span>
 <span class="sd">        exception will be raised.  Stores E in mV/m.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span>
 
         <span class="c1"># Some quick declarations for more readable code.</span>
         <span class="n">ux</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;ux&#39;</span><span class="p">];</span> <span class="n">uy</span><span class="o">=</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;uy&#39;</span><span class="p">];</span> <span class="n">uz</span><span class="o">=</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;uz&#39;</span><span class="p">]</span>
         <span class="n">bx</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bx&#39;</span><span class="p">];</span> <span class="n">by</span><span class="o">=</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;by&#39;</span><span class="p">];</span> <span class="n">bz</span><span class="o">=</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bz&#39;</span><span class="p">]</span>
 
         <span class="c1"># Check units.  Should be nT(=Volt*s/m^2) and km/s.</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">bx</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;nT&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">ux</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;km/s&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">bx</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;nT&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">ux</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;km/s&#39;</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Incorrect units!  Should be km/s and nT.&#39;</span><span class="p">)</span>
 
         <span class="c1"># Calculate; return in millivolts per meter</span>
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Ex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="p">(</span><span class="n">uy</span><span class="o">*</span><span class="n">bz</span> <span class="o">-</span> <span class="n">uz</span><span class="o">*</span><span class="n">by</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1000.0</span>
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Ey&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="p">(</span><span class="n">uz</span><span class="o">*</span><span class="n">bx</span> <span class="o">-</span> <span class="n">ux</span><span class="o">*</span><span class="n">bz</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1000.0</span>
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Ez&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="p">(</span><span class="n">ux</span><span class="o">*</span><span class="n">by</span> <span class="o">-</span> <span class="n">uy</span><span class="o">*</span><span class="n">bx</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1000.0</span>
-        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Ex&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;mV/m&#39;</span><span class="p">}</span>
-        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Ey&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;mV/m&#39;</span><span class="p">}</span>
-        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Ez&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;mV/m&#39;</span><span class="p">}</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Ex&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;mV/m&#39;</span><span class="p">}</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Ey&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;mV/m&#39;</span><span class="p">}</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Ez&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;mV/m&#39;</span><span class="p">}</span>
 
         <span class="c1"># Total magnitude.</span>
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Ex&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Ey&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Ez&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
         
+    <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_ndens</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Calculate number densities for each fluid.  Species mass is ascertained </span>
+<span class="sd">        Calculate number densities for each fluid.  Species mass is ascertained</span>
 <span class="sd">        via recognition of fluid name (e.g. OpRho is clearly oxygen).  A full</span>
-<span class="sd">        list of recognized fluids/species can be found by exploring the </span>
+<span class="sd">        list of recognized fluids/species can be found by exploring the</span>
 <span class="sd">        dictionary *mass* found in :mod:`~spacepy.pybats.bats`.  Composition is</span>
 <span class="sd">        also calculated as percent of total number density.</span>
 
@@ -890,10 +979,11 @@
 
         <span class="c1"># Use shared function.</span>
         <span class="n">_calc_ndens</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-                                
+
+    <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_beta</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Calculates plasma beta (ratio of plasma to magnetic pressure, </span>
+<span class="sd">        Calculates plasma beta (ratio of plasma to magnetic pressure,</span>
 <span class="sd">        indicative of who - plasma or B-field - is &quot;in charge&quot; with regards</span>
 <span class="sd">        to flow.</span>
 <span class="sd">        Assumes:</span>
@@ -904,16 +994,16 @@
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">pi</span>
 
-        <span class="k">if</span> <span class="ow">not</span> <span class="s1">&#39;b&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;b&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">calc_b</span><span class="p">()</span>
-        <span class="n">mu_naught</span> <span class="o">=</span> <span class="mf">4.0E2</span> <span class="o">*</span> <span class="n">pi</span> <span class="c1"># Mu_0 x unit conversion (nPa-&gt;Pa, nT-&gt;T)</span>
+        <span class="n">mu_naught</span> <span class="o">=</span> <span class="mf">4.0E2</span> <span class="o">*</span> <span class="n">pi</span>  <span class="c1"># Mu_0 x unit conversion (nPa-&gt;Pa, nT-&gt;T)</span>
         <span class="n">temp_b</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">2.0</span>
-        <span class="n">temp_b</span><span class="p">[</span><span class="n">temp_b</span><span class="o">&lt;</span><span class="mf">1E-8</span><span class="p">]</span> <span class="o">=</span>  <span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="n">mu_naught</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">][</span><span class="n">temp_b</span><span class="o">==</span><span class="mf">0.0</span><span class="p">]</span>
-        <span class="n">temp_beta</span><span class="o">=</span><span class="n">mu_naught</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">temp_b</span>
-        <span class="c1">#temp_beta[self[&#39;b&#39;]&lt;1E-9] = -1.0</span>
-        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">temp_beta</span>
-        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;unitless&#39;</span><span class="p">}</span>
+        <span class="n">temp_b</span><span class="p">[</span><span class="n">temp_b</span> <span class="o">&lt;</span> <span class="mf">1E-8</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="n">mu_naught</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">][</span><span class="n">temp_b</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">]</span>
+        <span class="n">temp_beta</span> <span class="o">=</span> <span class="n">mu_naught</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">temp_b</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp_beta</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;unitless&#39;</span><span class="p">}</span>
 
+    <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_jxb</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Calculates the JxB force assuming:</span>
@@ -926,26 +1016,27 @@
         <span class="c1"># Unit conversion (nT, uA, cm^-3 -&gt; nT, A, m^-3) to nN/m^3.</span>
         <span class="n">conv</span> <span class="o">=</span> <span class="mf">1E-6</span>
         <span class="c1"># Calculate cross product, convert units.</span>
-        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jbx&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">dmarray</span><span class="p">(</span> <span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jy&#39;</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bz&#39;</span><span class="p">]</span><span class="o">-</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jz&#39;</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;by&#39;</span><span class="p">])</span><span class="o">*</span><span class="n">conv</span><span class="p">,</span>
-                             <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;nN/m^3&#39;</span><span class="p">})</span>
-        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jby&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">dmarray</span><span class="p">(</span> <span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jz&#39;</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bx&#39;</span><span class="p">]</span><span class="o">-</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jx&#39;</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bz&#39;</span><span class="p">])</span><span class="o">*</span><span class="n">conv</span><span class="p">,</span>
-                             <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;nN/m^3&#39;</span><span class="p">})</span>
-        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jbz&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">dmarray</span><span class="p">(</span> <span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jx&#39;</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;by&#39;</span><span class="p">]</span><span class="o">-</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jy&#39;</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bx&#39;</span><span class="p">])</span><span class="o">*</span><span class="n">conv</span><span class="p">,</span>
-                             <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;nN/m^3&#39;</span><span class="p">})</span>
-        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jb&#39;</span><span class="p">]</span> <span class="o">=</span><span class="n">dmarray</span><span class="p">(</span> <span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jbx&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jbx&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">((</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jy&#39;</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bz&#39;</span><span class="p">]</span><span class="o">-</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jz&#39;</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;by&#39;</span><span class="p">])</span><span class="o">*</span><span class="n">conv</span><span class="p">,</span>
+                              <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;nN/m^3&#39;</span><span class="p">})</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jby&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">((</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jz&#39;</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bx&#39;</span><span class="p">]</span><span class="o">-</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jx&#39;</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bz&#39;</span><span class="p">])</span><span class="o">*</span><span class="n">conv</span><span class="p">,</span>
+                              <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;nN/m^3&#39;</span><span class="p">})</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jbz&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">((</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jx&#39;</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;by&#39;</span><span class="p">]</span><span class="o">-</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jy&#39;</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bx&#39;</span><span class="p">])</span><span class="o">*</span><span class="n">conv</span><span class="p">,</span>
+                              <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;nN/m^3&#39;</span><span class="p">})</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jbx&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span>
                                   <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jby&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span>
                                   <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jbz&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;nN/m^3&#39;</span><span class="p">})</span>
 
+    <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_alfven</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Calculate the Alfven speed, B/(mu*rho)^(1/2) in km/s.  This is performed</span>
-<span class="sd">        for each species and the total fluid.</span>
+<span class="sd">        Calculate the Alfven speed, B/(mu*rho)^(1/2) in km/s.  This is</span>
+<span class="sd">        performed for each species and the total fluid.</span>
 <span class="sd">        The variable is saved under key &quot;alfven&quot; in self.data.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">pi</span>
         <span class="kn">from</span> <span class="nn">spacepy.datamodel</span> <span class="kn">import</span> <span class="n">dmarray</span>
         
-        <span class="k">if</span> <span class="ow">not</span> <span class="s1">&#39;b&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;b&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">calc_b</span><span class="p">()</span>
         <span class="c1">#M_naught * conversion from #/cm^3 to kg/m^3</span>
         <span class="n">mu_naught</span> <span class="o">=</span> <span class="mf">4.0E-7</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="mf">1.6726E-27</span> <span class="o">*</span> <span class="mf">1.0E6</span>
@@ -959,13 +1050,14 @@
         <span class="c1"># Calculate Alfven speed in km/s.  Separate step to avoid</span>
         <span class="c1"># changing dictionary while looping over keys.</span>
         <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">rho_names</span><span class="p">:</span>
-            <span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;alfven&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">1E-12</span> <span class="o">/</span> 
+            <span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;alfven&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">1E-12</span> <span class="o">/</span>
                                             <span class="n">sqrt</span><span class="p">(</span><span class="n">mu_naught</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">]),</span>
                                             <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;km/s&#39;</span><span class="p">})</span>
-
+    
+    <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">_calc_divmomen</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Calculate the divergence of momentum, i.e. </span>
+<span class="sd">        Calculate the divergence of momentum, i.e.</span>
 <span class="sd">        $\rho(u \dot \nabla)u$.</span>
 <span class="sd">        This is currently exploratory.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
@@ -973,7 +1065,7 @@
         <span class="kn">from</span> <span class="nn">spacepy.datamodel</span> <span class="kn">import</span> <span class="n">dmarray</span>
         <span class="kn">from</span> <span class="nn">spacepy.pybats.batsmath</span> <span class="kn">import</span> <span class="n">d_dx</span><span class="p">,</span> <span class="n">d_dy</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">qtree</span><span class="o">==</span><span class="kc">False</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">qtree</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;calc_divmomen requires a valid qtree&#39;</span><span class="p">)</span>
         
         <span class="c1"># Create empty arrays to hold new values.</span>
@@ -982,9 +1074,9 @@
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;divmomz&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">size</span><span class="p">),</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;nN/m3&#39;</span><span class="p">})</span>
 
         <span class="c1"># Units!</span>
-        <span class="n">c1</span> <span class="o">=</span> <span class="mf">1000.</span><span class="o">/</span><span class="mf">6371.0</span> <span class="c1"># km2/Re/s2 -&gt; m/s2</span>
-        <span class="n">c2</span> <span class="o">=</span> <span class="mf">1.6726E-21</span>   <span class="c1"># AMU/cm3 -&gt; kg/m3</span>
-        <span class="n">c3</span> <span class="o">=</span> <span class="mf">1E9</span>          <span class="c1"># N/m3 -&gt; nN/m3.</span>
+        <span class="n">c1</span> <span class="o">=</span> <span class="mf">1000.</span> <span class="o">/</span> <span class="mf">6371.0</span>  <span class="c1"># km2/Re/s2 -&gt; m/s2</span>
+        <span class="n">c2</span> <span class="o">=</span> <span class="mf">1.6726E-21</span>      <span class="c1"># AMU/cm3 -&gt; kg/m3</span>
+        <span class="n">c3</span> <span class="o">=</span> <span class="mf">1E9</span>             <span class="c1"># N/m3 -&gt; nN/m3.</span>
 
         <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">qtree</span><span class="p">:</span>
             <span class="c1"># Calculate only on leafs of quadtree.</span>
@@ -992,20 +1084,21 @@
             
             <span class="c1"># Extract values from current leaf.</span>
             <span class="n">leaf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qtree</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
-            <span class="n">ux</span>   <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;ux&#39;</span><span class="p">][</span><span class="n">leaf</span><span class="o">.</span><span class="n">locs</span><span class="p">]</span>
-            <span class="n">uz</span>   <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;uz&#39;</span><span class="p">][</span><span class="n">leaf</span><span class="o">.</span><span class="n">locs</span><span class="p">]</span>
+            <span class="n">ux</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;ux&#39;</span><span class="p">][</span><span class="n">leaf</span><span class="o">.</span><span class="n">locs</span><span class="p">]</span>
+            <span class="n">uz</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;uz&#39;</span><span class="p">][</span><span class="n">leaf</span><span class="o">.</span><span class="n">locs</span><span class="p">]</span>
 
-            <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;divmomx&#39;</span><span class="p">][</span><span class="n">leaf</span><span class="o">.</span><span class="n">locs</span><span class="p">]</span><span class="o">=</span><span class="n">ux</span><span class="o">*</span><span class="n">d_dx</span><span class="p">(</span><span class="n">ux</span><span class="p">,</span> <span class="n">leaf</span><span class="o">.</span><span class="n">dx</span><span class="p">)</span><span class="o">+</span><span class="n">uz</span><span class="o">*</span><span class="n">d_dy</span><span class="p">(</span><span class="n">ux</span><span class="p">,</span> <span class="n">leaf</span><span class="o">.</span><span class="n">dx</span><span class="p">)</span>
-            <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;divmomz&#39;</span><span class="p">][</span><span class="n">leaf</span><span class="o">.</span><span class="n">locs</span><span class="p">]</span><span class="o">=</span><span class="n">ux</span><span class="o">*</span><span class="n">d_dx</span><span class="p">(</span><span class="n">uz</span><span class="p">,</span> <span class="n">leaf</span><span class="o">.</span><span class="n">dx</span><span class="p">)</span><span class="o">+</span><span class="n">uz</span><span class="o">*</span><span class="n">d_dy</span><span class="p">(</span><span class="n">uz</span><span class="p">,</span> <span class="n">leaf</span><span class="o">.</span><span class="n">dx</span><span class="p">)</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;divmomx&#39;</span><span class="p">][</span><span class="n">leaf</span><span class="o">.</span><span class="n">locs</span><span class="p">]</span> <span class="o">=</span> <span class="n">ux</span><span class="o">*</span><span class="n">d_dx</span><span class="p">(</span><span class="n">ux</span><span class="p">,</span> <span class="n">leaf</span><span class="o">.</span><span class="n">dx</span><span class="p">)</span><span class="o">+</span><span class="n">uz</span><span class="o">*</span><span class="n">d_dy</span><span class="p">(</span><span class="n">ux</span><span class="p">,</span> <span class="n">leaf</span><span class="o">.</span><span class="n">dx</span><span class="p">)</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;divmomz&#39;</span><span class="p">][</span><span class="n">leaf</span><span class="o">.</span><span class="n">locs</span><span class="p">]</span> <span class="o">=</span> <span class="n">ux</span><span class="o">*</span><span class="n">d_dx</span><span class="p">(</span><span class="n">uz</span><span class="p">,</span> <span class="n">leaf</span><span class="o">.</span><span class="n">dx</span><span class="p">)</span><span class="o">+</span><span class="n">uz</span><span class="o">*</span><span class="n">d_dy</span><span class="p">(</span><span class="n">uz</span><span class="p">,</span> <span class="n">leaf</span><span class="o">.</span><span class="n">dx</span><span class="p">)</span>
 
         <span class="c1"># Unit conversion.</span>
-        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;divmomx&#39;</span><span class="p">]</span><span class="o">*=</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;rho&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">c1</span><span class="o">*</span><span class="n">c2</span><span class="o">*</span><span class="n">c3</span>
-        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;divmomz&#39;</span><span class="p">]</span><span class="o">*=</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;rho&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">c1</span><span class="o">*</span><span class="n">c2</span><span class="o">*</span><span class="n">c3</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;divmomx&#39;</span><span class="p">]</span> <span class="o">*=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;rho&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">c1</span><span class="o">*</span><span class="n">c2</span><span class="o">*</span><span class="n">c3</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;divmomz&#39;</span><span class="p">]</span> <span class="o">*=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;rho&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">c1</span><span class="o">*</span><span class="n">c2</span><span class="o">*</span><span class="n">c3</span>
 
+    <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_vort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conv</span><span class="o">=</span><span class="mf">1000.</span><span class="o">/</span><span class="n">RE</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Calculate the vorticity (curl of bulk velocity) for the direction</span>
-<span class="sd">        orthogonal to the cut plane.  For example, if output file is </span>
+<span class="sd">        orthogonal to the cut plane.  For example, if output file is</span>
 <span class="sd">        a cut in the equatorial plane (GSM X-Y plane), only the z-component</span>
 <span class="sd">        of the curl is calculated.</span>
 
@@ -1019,16 +1112,15 @@
 <span class="sd">        Other Parameters</span>
 <span class="sd">        ================</span>
 <span class="sd">        conv : float</span>
-<span class="sd">           Required unit conversion such that output units are 1/s.  </span>
-<span class="sd">           Defaults to 1/RE (in km), which assumes grid is in RE and </span>
+<span class="sd">           Required unit conversion such that output units are 1/s.</span>
+<span class="sd">           Defaults to 1/RE (in km), which assumes grid is in RE and</span>
 <span class="sd">           velocity is in km/s.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
 
         <span class="kn">from</span> <span class="nn">spacepy.pybats.batsmath</span> <span class="kn">import</span> <span class="n">d_dx</span><span class="p">,</span> <span class="n">d_dy</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">qtree</span><span class="o">==</span><span class="kc">False</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">qtree</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;calc_vort requires a valid qtree&#39;</span><span class="p">)</span>
-
 
         <span class="c1"># Determine which direction to calculate based on what direction</span>
         <span class="c1"># is not present.  Save appropriate derivative operators, order</span>
@@ -1047,7 +1139,6 @@
             <span class="n">dim1</span><span class="p">,</span> <span class="n">dim2</span> <span class="o">=</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span>
             <span class="n">dx1</span><span class="p">,</span>  <span class="n">dx2</span>  <span class="o">=</span> <span class="n">d_dy</span><span class="p">,</span> <span class="n">d_dx</span>
 
-        
         <span class="c1"># Create new arrays to hold curl.</span>
         <span class="n">size</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;ux&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
         <span class="bp">self</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">size</span><span class="p">),</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;1/s&#39;</span><span class="p">})</span>
@@ -1058,14 +1149,14 @@
             <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">qtree</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">isLeaf</span><span class="p">:</span> <span class="k">continue</span>
 
             <span class="c1"># Get location of points and extract velocity:</span>
-            <span class="n">leaf</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">qtree</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
-            <span class="n">u1</span><span class="o">=</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="o">+</span><span class="n">dim1</span><span class="p">][</span><span class="n">leaf</span><span class="o">.</span><span class="n">locs</span><span class="p">]</span>
-            <span class="n">u2</span><span class="o">=</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="o">+</span><span class="n">dim2</span><span class="p">][</span><span class="n">leaf</span><span class="o">.</span><span class="n">locs</span><span class="p">]</span>
+            <span class="n">leaf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qtree</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+            <span class="n">u1</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="o">+</span><span class="n">dim1</span><span class="p">][</span><span class="n">leaf</span><span class="o">.</span><span class="n">locs</span><span class="p">]</span>
+            <span class="n">u2</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="o">+</span><span class="n">dim2</span><span class="p">][</span><span class="n">leaf</span><span class="o">.</span><span class="n">locs</span><span class="p">]</span>
 
             <span class="c1"># Calculate curl</span>
             <span class="bp">self</span><span class="p">[</span><span class="n">w</span><span class="p">][</span><span class="n">leaf</span><span class="o">.</span><span class="n">locs</span><span class="p">]</span> <span class="o">=</span> <span class="n">conv</span> <span class="o">*</span> <span class="p">(</span><span class="n">dx1</span><span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">leaf</span><span class="o">.</span><span class="n">dx</span><span class="p">)</span> <span class="o">-</span> <span class="n">dx2</span><span class="p">(</span><span class="n">u2</span><span class="p">,</span> <span class="n">leaf</span><span class="o">.</span><span class="n">dx</span><span class="p">))</span>
         
-        
+    <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_gradP</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Calculate the pressure gradient force.</span>
@@ -1074,7 +1165,7 @@
         <span class="kn">from</span> <span class="nn">spacepy.datamodel</span> <span class="kn">import</span> <span class="n">dmarray</span>
         <span class="kn">from</span> <span class="nn">spacepy.pybats.batsmath</span> <span class="kn">import</span> <span class="n">d_dx</span><span class="p">,</span> <span class="n">d_dy</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">qtree</span><span class="o">==</span><span class="kc">False</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">qtree</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;calc_gradP requires a valid qtree&#39;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="s1">&#39;p&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
@@ -1092,8 +1183,8 @@
             <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">qtree</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">isLeaf</span><span class="p">:</span> <span class="k">continue</span>
 
             <span class="c1"># Extract leaf; place pressure into 2D array.</span>
-            <span class="n">leaf</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">qtree</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
-            <span class="n">z</span><span class="o">=</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">][</span><span class="n">leaf</span><span class="o">.</span><span class="n">locs</span><span class="p">]</span>
+            <span class="n">leaf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qtree</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">][</span><span class="n">leaf</span><span class="o">.</span><span class="n">locs</span><span class="p">]</span>
             
             <span class="c1"># Calculate derivatives; place into new dmarrays.</span>
             <span class="c1"># Unit conversion: P in nPa =&gt; gradP in nN/m3, dx=Re</span>
@@ -1104,12 +1195,12 @@
             <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;gradP_&#39;</span><span class="o">+</span><span class="n">dims</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">leaf</span><span class="o">.</span><span class="n">locs</span><span class="p">]</span> <span class="o">=</span> <span class="n">d_dx</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">leaf</span><span class="o">.</span><span class="n">dx</span><span class="p">)</span><span class="o">*</span><span class="n">conv</span>
             <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;gradP_&#39;</span><span class="o">+</span><span class="n">dims</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="n">leaf</span><span class="o">.</span><span class="n">locs</span><span class="p">]</span> <span class="o">=</span> <span class="n">d_dy</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">leaf</span><span class="o">.</span><span class="n">dx</span><span class="p">)</span><span class="o">*</span><span class="n">conv</span>
 
-        
         <span class="c1"># Scalar magnitude:</span>
         <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dims</span><span class="p">:</span>
             <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;gradP&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;gradP_&#39;</span><span class="o">+</span><span class="n">d</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;gradP&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;gradP&#39;</span><span class="p">])</span>
 
+    <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_utotal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Calculate bulk velocity magnitude: $u^2 = u_X^2 + u_Y^2 + u_Z^2$.</span>
@@ -1129,14 +1220,15 @@
         <span class="n">units</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;ux&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span>
 
         <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">species</span><span class="p">:</span>
-            <span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;u&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span> <span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;ux&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span>
-                                        <span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;uy&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span>
-                                        <span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;uz&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> 
+            <span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;u&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;ux&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span>
+                                       <span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;uy&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span>
+                                       <span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;uz&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span>
                                   <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="n">units</span><span class="p">})</span>
 
+    <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">_calc_Ekin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;eV&#39;</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Calculate average kinetic energy per particle using </span>
+<span class="sd">        Calculate average kinetic energy per particle using</span>
 <span class="sd">        $E=\frac{1}{2}mv^2$.  Note that this is not the same as energy</span>
 <span class="sd">        density.  Units are $eV$.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
@@ -1145,23 +1237,22 @@
 
         <span class="k">raise</span> <span class="ne">Warning</span><span class="p">(</span><span class="s2">&quot;This calculation is unverified.&quot;</span><span class="p">)</span>
         
-        <span class="n">conv</span> <span class="o">=</span>  <span class="mf">0.5</span> <span class="o">*</span> <span class="mf">0.0103783625</span> <span class="c1"># km^2--&gt;m^2, amu--&gt;kg, J--&gt;eV.</span>
+        <span class="n">conv</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="mf">0.0103783625</span>  <span class="c1"># km^2--&gt;m^2, amu--&gt;kg, J--&gt;eV.</span>
         <span class="k">if</span> <span class="n">units</span><span class="o">.</span><span class="n">lower</span> <span class="o">==</span> <span class="s1">&#39;kev&#39;</span><span class="p">:</span>
-            <span class="n">conv</span><span class="o">=</span><span class="n">conv</span><span class="o">/</span><span class="mf">1000.0</span>
+            <span class="n">conv</span> <span class="o">=</span> <span class="n">conv</span><span class="o">/</span><span class="mf">1000.0</span>
 
         <span class="n">species</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="c1"># Find all species, the variable names end in &quot;rho&quot;.</span>
         <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
-            <span class="c1">#and (k!=&#39;rho&#39;) \</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">k</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="o">==</span> <span class="s1">&#39;rho&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">k</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;Ekin&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">):</span>
                 <span class="n">species</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">])</span>
 
         <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">species</span><span class="p">:</span>
             <span class="c1">#THIS IS WRONG HERE: 1/2mV**2?  Notsomuch.</span>
-            <span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;Ekin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span> <span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;ux&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span>
-                                           <span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;uy&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span>
-                                           <span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;uz&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+            <span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;Ekin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;ux&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span>
+                                          <span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;uy&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span>
+                                          <span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;uz&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
                                      <span class="o">*</span> <span class="n">conv</span> <span class="o">*</span> <span class="n">mass</span><span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()],</span>
                                      <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="n">units</span><span class="p">})</span>
 
@@ -1187,8 +1278,8 @@
     <span class="k">def</span> <span class="nf">gradP_regular</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cellsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim1range</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim2range</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Calculate pressure gradient on a regular grid.</span>
-<span class="sd">        Note that if the Bats2d object is not on a regular grid, one of </span>
-<span class="sd">        two things will happen.  If kwarg cellsize is set, the value of </span>
+<span class="sd">        Note that if the Bats2d object is not on a regular grid, one of</span>
+<span class="sd">        two things will happen.  If kwarg cellsize is set, the value of</span>
 <span class="sd">        cellsize will be used to call self.regrid and the object will</span>
 <span class="sd">        be regridded using a cellsize of cellsize.  Kwargs dim1range and</span>
 <span class="sd">        dim2range can be used in the same way they are used in self.regrid</span>
@@ -1200,7 +1291,7 @@
 <span class="sd">        are force density (N/m^3).  Three variables are added to self.data:</span>
 <span class="sd">        gradp(dim1), gradp(dim2), gradp.  For example, if the object is an</span>
 <span class="sd">        equatorial cut, the variables gradpx, gradpy, and gradp would be</span>
-<span class="sd">        added representing the gradient in each direction and then the </span>
+<span class="sd">        added representing the gradient in each direction and then the</span>
 <span class="sd">        magnitude of the vector.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">gradient</span><span class="p">,</span> <span class="n">sqrt</span>
@@ -1931,8 +2022,8 @@
         <span class="c1"># Useful parameters for the following traces:</span>
         <span class="n">R</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;rbody&#39;</span><span class="p">]</span>
         <span class="n">dTheta</span>  <span class="o">=</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">180.</span>
-        <span class="n">dThetaN</span> <span class="o">=</span> <span class="o">.</span><span class="mi">05</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">thetaN</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">thetaD</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-        <span class="n">dThetaS</span> <span class="o">=</span> <span class="o">.</span><span class="mi">05</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">thetaN</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">thetaD</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">dThetaN</span> <span class="o">=</span> <span class="mf">.05</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">thetaN</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">thetaD</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">dThetaS</span> <span class="o">=</span> <span class="mf">.05</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">thetaN</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">thetaD</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
         
         <span class="c1">## Do closed field lines ##</span>
         <span class="k">if</span> <span class="n">DoClosed</span><span class="p">:</span>
@@ -2563,7 +2654,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">phi</span>   <span class="o">=</span> <span class="n">d2r</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">lon</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="n">d2r</span><span class="o">*</span><span class="p">(</span><span class="mi">90</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">lat</span><span class="p">)</span>
 
-        
+    <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_urad</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Calculate radial velocity.</span>
@@ -2575,6 +2666,7 @@
 
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;ur&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">ur</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;ux&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]})</span>
 
+    <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_radflux</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">conv</span><span class="o">=</span><span class="mf">1000.</span> <span class="o">*</span> <span class="p">(</span><span class="mf">100.0</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        For variable *var*, calculate the radial flux of *var* through each</span>
@@ -2590,6 +2682,7 @@
         <span class="c1"># Calc flux:</span>
         <span class="bp">self</span><span class="p">[</span><span class="n">var</span><span class="o">+</span><span class="s1">&#39;_rflx&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;ur&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">conv</span>
 
+    <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_radflu</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        For variable *var*, calculate the radial fluence, or the </span>
@@ -2687,7 +2780,7 @@
 
         <span class="c1"># Add cbar if necessary.</span>
         <span class="k">if</span> <span class="n">add_cbar</span><span class="p">:</span>
-            <span class="n">cbar</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cnt</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">ticks</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">fmt</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=.</span><span class="mi">85</span><span class="p">)</span>
+            <span class="n">cbar</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cnt</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">ticks</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">fmt</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">.85</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">clabel</span><span class="o">==</span><span class="kc">None</span><span class="p">:</span> 
                 <span class="n">clabel</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> (</span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="n">value</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">])</span>
             <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">clabel</span><span class="p">)</span>
@@ -2845,7 +2938,7 @@
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
             <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">varmap</span><span class="p">:</span>
                 <span class="bp">self</span><span class="p">[</span> <span class="n">varmap</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-            
+
     <span class="k">def</span> <span class="nf">calc_h</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Calculate the total horizontal perturbation, &#39;H&#39;, using the pythagorean</span>
@@ -3300,7 +3393,8 @@
         <span class="c1">#if coord == &#39;GEO&#39;:</span>
         <span class="c1">#    self[&#39;Lat_geo&#39;]=self[&#39;Lat&#39;]</span>
         <span class="c1">#    self[&#39;Lon_geo&#39;]=self[&#39;Lon&#39;]</span>
-                
+
+    <span class="nd">@calc_wrapper</span>                
     <span class="k">def</span> <span class="nf">calc_h</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Calculate the total horizontal perturbation, &#39;h&#39;, using the pythagorean</span>
@@ -3824,7 +3918,7 @@
     <span class="k">def</span> <span class="nf">add_orbit_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plane</span><span class="o">=</span><span class="s1">&#39;XY&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span> <span class="n">rbody</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
                        <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">trange</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">add_grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;g.&#39;</span><span class="p">,</span>
                        <span class="n">adjust_axes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">add_arrow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                       <span class="n">arrow_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">:</span><span class="o">.</span><span class="mi">05</span><span class="p">,</span> <span class="s1">&#39;ec&#39;</span><span class="p">:</span><span class="s1">&#39;k&#39;</span><span class="p">},</span>
+                       <span class="n">arrow_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">:</span><span class="mf">.05</span><span class="p">,</span> <span class="s1">&#39;ec&#39;</span><span class="p">:</span><span class="s1">&#39;k&#39;</span><span class="p">},</span>
                        <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Create a 2D orbit plot in the given plane (e.g. &#39;XY&#39; or &#39;ZY&#39;).</span>
@@ -3937,8 +4031,8 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2020, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.0.
+        &#169; Copyright 2011-2021, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>
