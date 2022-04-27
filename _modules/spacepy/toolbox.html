@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.toolbox &#8212; SpacePy v0.2.3 Manual</title>
+    <title>spacepy.toolbox &#8212; SpacePy v0.3.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -152,12 +152,10 @@
     <span class="n">xrange</span> <span class="o">=</span> <span class="nb">range</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tOverlap&#39;</span><span class="p">,</span> <span class="s1">&#39;tOverlapHalf&#39;</span><span class="p">,</span> <span class="s1">&#39;tCommon&#39;</span><span class="p">,</span> <span class="s1">&#39;loadpickle&#39;</span><span class="p">,</span> <span class="s1">&#39;savepickle&#39;</span><span class="p">,</span> <span class="s1">&#39;assemble&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;human_sort&#39;</span><span class="p">,</span> <span class="s1">&#39;feq&#39;</span><span class="p">,</span> <span class="s1">&#39;dictree&#39;</span><span class="p">,</span> <span class="s1">&#39;update&#39;</span><span class="p">,</span> <span class="s1">&#39;progressbar&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;human_sort&#39;</span><span class="p">,</span> <span class="s1">&#39;dictree&#39;</span><span class="p">,</span> <span class="s1">&#39;update&#39;</span><span class="p">,</span> <span class="s1">&#39;progressbar&#39;</span><span class="p">,</span>
            <span class="s1">&#39;windowMean&#39;</span><span class="p">,</span> <span class="s1">&#39;medAbsDev&#39;</span><span class="p">,</span> <span class="s1">&#39;binHisto&#39;</span><span class="p">,</span> <span class="s1">&#39;bootHisto&#39;</span><span class="p">,</span>
            <span class="s1">&#39;logspace&#39;</span><span class="p">,</span> <span class="s1">&#39;geomspace&#39;</span><span class="p">,</span> <span class="s1">&#39;linspace&#39;</span><span class="p">,</span> <span class="s1">&#39;arraybin&#39;</span><span class="p">,</span> <span class="s1">&#39;mlt2rad&#39;</span><span class="p">,</span>
            <span class="s1">&#39;rad2mlt&#39;</span><span class="p">,</span> <span class="s1">&#39;pmm&#39;</span><span class="p">,</span> <span class="s1">&#39;getNamedPath&#39;</span><span class="p">,</span> <span class="s1">&#39;query_yes_no&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;quaternionNormalize&#39;</span><span class="p">,</span> <span class="s1">&#39;quaternionRotateVector&#39;</span><span class="p">,</span> <span class="s1">&#39;quaternionMultiply&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;quaternionConjugate&#39;</span><span class="p">,</span>
            <span class="s1">&#39;interpol&#39;</span><span class="p">,</span> <span class="s1">&#39;normalize&#39;</span><span class="p">,</span> <span class="s1">&#39;intsolve&#39;</span><span class="p">,</span> <span class="s1">&#39;dist_to_list&#39;</span><span class="p">,</span>
            <span class="s1">&#39;bin_center_to_edges&#39;</span><span class="p">,</span> <span class="s1">&#39;bin_edges_to_center&#39;</span><span class="p">,</span> <span class="s1">&#39;thread_job&#39;</span><span class="p">,</span> <span class="s1">&#39;thread_map&#39;</span><span class="p">,</span>
            <span class="s1">&#39;eventTimer&#39;</span><span class="p">,</span> <span class="s1">&#39;isview&#39;</span><span class="p">,</span> <span class="s1">&#39;interweave&#39;</span><span class="p">,</span> <span class="s1">&#39;indsFromXrange&#39;</span><span class="p">,</span> <span class="s1">&#39;hypot&#39;</span><span class="p">,</span>
@@ -673,49 +671,6 @@
         <span class="n">l</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">l</span></div>
 
-<div class="viewcode-block" id="feq"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.feq.html#spacepy.toolbox.feq">[docs]</a><span class="nd">@spacepy</span><span class="o">.</span><span class="n">deprecated</span><span class="p">(</span>
-    <span class="s1">&#39;0.2.2&#39;</span><span class="p">,</span> <span class="s1">&#39;use numpy.isclose&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;use :func:`numpy.isclose`; the ``rtol`` keyword is equivalent to&#39;</span>
-    <span class="s1">&#39; ``precision``.&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">feq</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">0.0000005</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    compare two floating point values if they are equal</span>
-<span class="sd">    after: http://www.lahey.com/float.htm</span>
-
-<span class="sd">    See Also</span>
-<span class="sd">    --------</span>
-<span class="sd">    numpy.allclose</span>
-<span class="sd">    numpy.isclose</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    x : float</span>
-<span class="sd">        a number</span>
-<span class="sd">    y : float or array of floats</span>
-<span class="sd">        other numbers to compare</span>
-<span class="sd">    precision : float (optional)</span>
-<span class="sd">        Relative precision for equal (default 0.0000005)</span>
-<span class="sd">        Specified as a fraction of the sum of ``x`` and ``y``.</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    out : bool</span>
-<span class="sd">        True (equal) or False (not equal)</span>
-
-<span class="sd">    Examples</span>
-<span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; import spacepy.toolbox as tb</span>
-<span class="sd">    &gt;&gt;&gt; x = 1 + 1e-4</span>
-<span class="sd">    &gt;&gt;&gt; y = 1 + 2e-4</span>
-<span class="sd">    &gt;&gt;&gt; tb.feq(x, y)</span>
-<span class="sd">    False</span>
-<span class="sd">    &gt;&gt;&gt; tb.feq(x, y, 1e-3)</span>
-<span class="sd">    True</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-    <span class="n">boolean</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="n">precision</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">boolean</span></div>
 
 <div class="viewcode-block" id="dictree"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.dictree.html#spacepy.toolbox.dictree">[docs]</a><span class="k">def</span> <span class="nf">dictree</span><span class="p">(</span><span class="n">in_dict</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">spaces</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1131,7 +1086,7 @@
     <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Epoch&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Epoch&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
     <span class="c1">#Castings to match ViRBO: everything is an int, and fill turns to NaN</span>
     <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">object</span><span class="p">:</span> <span class="c1">#Skip epoch</span>
+        <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">object</span><span class="p">:</span> <span class="c1">#Skip epoch</span>
             <span class="k">continue</span>
         <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">:</span>
             <span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
@@ -2424,42 +2379,6 @@
 
 <span class="c1"># -----------------------------------------------</span>
 
-<div class="viewcode-block" id="quaternionNormalize"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.quaternionNormalize.html#spacepy.toolbox.quaternionNormalize">[docs]</a><span class="nd">@spacepy</span><span class="o">.</span><span class="n">deprecated</span><span class="p">(</span>
-    <span class="s1">&#39;0.2.2&#39;</span><span class="p">,</span> <span class="s1">&#39;moved to spacepy.coordinates&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;use :func:`spacepy.coordinates.quaternionNormalize`&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">quaternionNormalize</span><span class="p">(</span><span class="n">Qin</span><span class="p">,</span> <span class="n">scalarPos</span><span class="o">=</span><span class="s1">&#39;last&#39;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Given an input quaternion, return the unit quaternion.&quot;&quot;&quot;</span>
-    <span class="kn">import</span> <span class="nn">spacepy.coordinates</span>
-    <span class="k">return</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">coordinates</span><span class="o">.</span><span class="n">quaternionNormalize</span><span class="p">(</span><span class="n">Qin</span><span class="p">,</span> <span class="n">scalarPos</span><span class="o">=</span><span class="n">scalarPos</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="quaternionRotateVector"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.quaternionRotateVector.html#spacepy.toolbox.quaternionRotateVector">[docs]</a><span class="nd">@spacepy</span><span class="o">.</span><span class="n">deprecated</span><span class="p">(</span>
-    <span class="s1">&#39;0.2.2&#39;</span><span class="p">,</span> <span class="s1">&#39;moved to spacepy.coordinates&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;use :func:`spacepy.coordinates.quaternionRotateVector`&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">quaternionRotateVector</span><span class="p">(</span><span class="n">Qin</span><span class="p">,</span> <span class="n">Vin</span><span class="p">,</span> <span class="n">scalarPos</span><span class="o">=</span><span class="s1">&#39;last&#39;</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Given quaternion and vector, return vector rotated by quaternion.&quot;&quot;&quot;</span>
-    <span class="kn">import</span> <span class="nn">spacepy.coordinates</span>
-    <span class="k">return</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">coordinates</span><span class="o">.</span><span class="n">quaternionRotateVector</span><span class="p">(</span>
-        <span class="n">Qin</span><span class="p">,</span> <span class="n">Vin</span><span class="p">,</span> <span class="n">scalarPos</span><span class="o">=</span><span class="n">scalarPos</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="n">normalize</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="quaternionMultiply"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.quaternionMultiply.html#spacepy.toolbox.quaternionMultiply">[docs]</a><span class="nd">@spacepy</span><span class="o">.</span><span class="n">deprecated</span><span class="p">(</span>
-    <span class="s1">&#39;0.2.2&#39;</span><span class="p">,</span> <span class="s1">&#39;moved to spacepy.coordinates&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;use :func:`spacepy.coordinates.quaternionMultiply`&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">quaternionMultiply</span><span class="p">(</span><span class="n">Qin1</span><span class="p">,</span> <span class="n">Qin2</span><span class="p">,</span> <span class="n">scalarPos</span><span class="o">=</span><span class="s1">&#39;last&#39;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Given quaternions, return the product.&quot;&quot;&quot;</span>
-    <span class="kn">import</span> <span class="nn">spacepy.coordinates</span>
-    <span class="k">return</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">coordinates</span><span class="o">.</span><span class="n">quaternionMultiply</span><span class="p">(</span>
-        <span class="n">Qin1</span><span class="p">,</span> <span class="n">Qin2</span><span class="p">,</span> <span class="n">scalarPos</span><span class="o">=</span><span class="n">scalarPos</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="quaternionConjugate"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.quaternionConjugate.html#spacepy.toolbox.quaternionConjugate">[docs]</a><span class="nd">@spacepy</span><span class="o">.</span><span class="n">deprecated</span><span class="p">(</span>
-    <span class="s1">&#39;0.2.2&#39;</span><span class="p">,</span> <span class="s1">&#39;moved to spacepy.coordinates&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;use :func:`spacepy.coordinates.quaternionConjugate`&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">quaternionConjugate</span><span class="p">(</span><span class="n">Qin</span><span class="p">,</span> <span class="n">scalarPos</span><span class="o">=</span><span class="s1">&#39;last&#39;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Given an input quaternion, return the conjugated.&quot;&quot;&quot;</span>
-    <span class="kn">import</span> <span class="nn">spacepy.coordinates</span>
-    <span class="k">return</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">coordinates</span><span class="o">.</span><span class="n">quaternionConjugate</span><span class="p">(</span><span class="n">Qin</span><span class="p">,</span> <span class="n">scalarPos</span><span class="o">=</span><span class="n">scalarPos</span><span class="p">)</span></div>
-
-<span class="c1"># -----------------------------------------------</span>
-
 <div class="viewcode-block" id="normalize"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.normalize.html#spacepy.toolbox.normalize">[docs]</a><span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="n">low</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Given an input vector normalize the vector to a given range</span>
@@ -3164,8 +3083,8 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2021, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+        &#169; Copyright 2011-2022, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>

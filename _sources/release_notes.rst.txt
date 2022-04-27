@@ -2,13 +2,135 @@
 Release Notes
 =============
 
-This document presents the most notable user-level changes in each
-release of SpacePy. The CHANGELOG file in the source distribution
-contains more detail.
+This document presents user-visible changes in each release of SpacePy.
 
 .. contents::
    :depth: 2
    :local:
+
+
+0.3 Series
+==========
+0.3.0 (2022-04-27)
+------------------
+This release continues the phaseout of :doc:`Python 2 <py2k_eol>`
+support. No Python 2 binaries are provided, and 0.3.0 will not install
+on Python 2 with ``pip``. Installation via ``setup.py`` from a source
+distribution is still available.
+
+This is the last release with Python 2 bugfix support. SpacePy 0.4.0
+will make no attempt to maintain functionality for Python 2 and
+SpacePy 0.5.0 will not function without Python 3.
+
+Windows binaries are only provided as 64-bit wheels, installable with
+``pip``, for Python 3.6 and later. Windows executable installers and
+32-bit binaries are no longer provided.
+
+
+New features
+************
+The :mod:`~spacepy.coordinates` module has been overhauled with a new,
+Python-based backend. This provides comparable performance to the
+existing :mod:`~spacepy.irbempy` backend with higher precision and
+reduces the dependence on Fortran. By default, irbemlib will still be
+built at installation time. The default backend remains IRBEM; in
+0.4.0, this will switch to the new :mod:`~spacepy.ctrans` based
+backend. The new :mod:`~spacepy.igrf` module is part of this support
+but may be of interest on its own.
+
+In accordance with a change from NASA, :mod:`~spacepy.pycdf` now
+assumes strings in CDFs are UTF-8. It will no longer raise errors on
+reading non-ASCII data from a CDF. See :ref:`pycdf_string_handling` in
+the pycdf documentation for details.
+
+:mod:`~spacepy.ae9ap9` now supports the new ephem model file format
+(>=1.50.001) via :func:`~spacepy.ae9ap9.parseHeader`. The old file
+format is deprecated.
+
+Deprecations and removals
+*************************
+HTML documentation is no longer installed with
+SpacePy. :func:`~spacepy.help` now opens the latest `online
+documentation <https://spacepy.github.io/>`_. Offline documentation
+are available separately (files named like ``spacepy-x.y.z-doc.zip``
+and ``spacepy-x.y.z-doc.pdf``) and as part of the source distribution
+(``spacepy-x.y.z.tar.gz`` or ``spacepy-x.y.z.zip``). These files can
+be downloaded from SpacePy's `releases on GitHub
+<https://github.com/spacepy/spacepy/releases>`_; the source can also
+be found on `PyPI <https://pypi.org/project/spacepy/#files>`_.
+
+``LANLstar`` requires `ffnet <http://ffnet.sourceforge.net/>`_, which
+does not install properly with current `setuptools
+<https://github.com/pypa/setuptools>`_ (version 58).  The SpacePy team
+is working on replacing this dependency, but in the meantime
+``LANLstar`` is unsupported and will require manually installing
+``ffnet`` and `networkx <http://networkx.lanl.gov/>`_.
+
+As mentioned above, :mod:`~spacepy.ae9ap9` support for the old ephem
+model file format is deprecated.
+
+Colourmaps have been removed from :class:`~spacepy.plot`. The same
+colourmaps (``plasma`` and ``viridis``) have been available in
+matplotlib since at least 1.5. (Deprecated in 0.2.3.)
+
+The old name ``spectrogram`` for :class:`~spacepy.plot.Spectrogram`
+has been removed. (Deprecated in 0.2.2.)
+
+The ``read_ram_dst`` function has been removed from
+:mod:`~spacepy.pybats.ram`, as it operates on files that are no longer
+written by RAM-SCB. (Deprecated in 0.1.6.)
+
+The ``fix_format`` function has been removed from
+:mod:`~spacepy.pybats.rim`; :class:`~spacepy.pybats.rim.Iono` can now
+read these files directly. (Deprecated in 0.2.2.)
+
+The ``from_dict`` method of CDF attribute lists
+(:meth:`~spacepy.pycdf.gAttrList`, :meth:`~spacepy.pycdf.zAttrList`)
+has been removed. Use :meth:`~spacepy.pycdf.AttrList.clone`, which
+supports cloning from dictionaries. (Deprecated in 0.1.5.)
+
+The ``feq`` function has been removed from :mod:`~spacepy.toolbox`;
+use :func:`numpy.isclose`. (Deprecated in 0.2.2.)
+
+Quaternion math functions have been removed from
+:mod:`~spacepy.toolbox`; they are available in
+:mod:`~spacepy.coordinates`. (Deprecated in 0.2.2.)
+
+Dependency requirements
+***********************
+Due to the new backend, scipy is now required for
+:mod:`~spacepy.coordinates` (even if using the old backend). 0.11
+remains the minimum version.
+
+Since ``LANLstar`` is not currently supported, ``ffnet`` and
+``networkx`` are no longer treated as SpacePy dependencies.
+
+Other changes
+*************
+:mod:`~spacepy.pycdf` now defaults to creating version 3 (not
+backward-compatible) CDFs if the backward compatible mode is not
+explicitly set (:meth:`~spacepy.pycdf.Library.set_backward`). It still
+issues a warning when creating a CDF if this is not set; this warning
+will be removed in 0.4.0. (Warning added in 0.2.2.)
+
+Similarly, :mod:`~spacepy.pycdf` defaults to TIME_TT2000 when creating
+a time variable or attribute without specifying a type (EPOCH or
+EPOCH16 are used if TT2000 isn't available). A warning is issued when
+doing so; this warning will be removed in 0.4.0. (Warning added in 0.2.2.)
+
+On Windows, :mod:`~spacepy.pycdf` now looks in more locations for the
+NASA CDF library. Newer versions of the library by default install to
+a different location (``Program Files``). The DLL is also now placed
+in the ``bin`` directory instead of ``lib``, so ``bin`` is searched
+and the value of environment variable ``CDF_BIN`` in addition to
+``lib`` and ``CDF_LIB``. The net effect should be to increase the
+chance of successfully loading the library, with a small chance of
+accidentally loading the wrong one.
+
+The default data source for leapsecond files has been reverted from
+NASA/MODIS to the USNO, as USNO data services are back online. If
+present, entries in the :doc:`configuration file <configuration>` will
+still be used instead of the default.
 
 0.2 Series
 ==========

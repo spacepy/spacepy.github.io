@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>toolbox - Toolbox of various functions and generic utilities &#8212; SpacePy v0.2.3 Manual</title>
+    <title>toolbox - Toolbox of various functions and generic utilities &#8212; SpacePy v0.3.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -58,8 +58,9 @@
             <p class="logo"><a href="index.html">
               <img class="logo" src="_static/logo.png" alt="Logo"/>
             </a></p>
-  <h3><a href="index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">toolbox - Toolbox of various functions and generic utilities</a><ul>
 <li><a class="reference internal" href="#array-binning">Array binning</a></li>
 <li><a class="reference internal" href="#array-creation">Array creation</a></li>
@@ -67,17 +68,21 @@
 <li><a class="reference internal" href="#other-functions">Other functions</a></li>
 <li><a class="reference internal" href="#multithreading-and-multiprocessing">Multithreading and multiprocessing</a></li>
 <li><a class="reference internal" href="#system-tools">System tools</a></li>
-<li><a class="reference internal" href="#quaternion-math">Quaternion math</a></li>
 </ul>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="autosummary/spacepy.time.tickrange.html"
-                        title="previous chapter">spacepy.time.tickrange</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="autosummary/spacepy.toolbox.arraybin.html"
-                        title="next chapter">spacepy.toolbox.arraybin</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="autosummary/spacepy.time.tickrange.html"
+                          title="previous chapter">spacepy.time.tickrange</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="autosummary/spacepy.toolbox.arraybin.html"
+                          title="next chapter">spacepy.toolbox.arraybin</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -118,7 +123,6 @@ Los Alamos National Laboratory</p>
 <li><p><a class="reference internal" href="#other-functions">Other functions</a></p></li>
 <li><p><a class="reference internal" href="#multithreading-and-multiprocessing">Multithreading and multiprocessing</a></p></li>
 <li><p><a class="reference internal" href="#system-tools">System tools</a></p></li>
-<li><p><a class="reference internal" href="#quaternion-math">Quaternion math</a></p></li>
 </ul>
 <section id="array-binning">
 <h2>Array binning<a class="headerlink" href="#array-binning" title="Permalink to this headline">¶</a></h2>
@@ -212,46 +216,43 @@ Los Alamos National Laboratory</p>
 <tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.eventTimer.html#spacepy.toolbox.eventTimer" title="spacepy.toolbox.eventTimer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eventTimer</span></code></a>(Event, Time1)</p></td>
 <td><p>Times an event then prints out the time and the name of the event, nice for debugging and seeing that the code is progressing</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.feq.html#spacepy.toolbox.feq" title="spacepy.toolbox.feq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">feq</span></code></a>(x, y[, precision])</p></td>
-<td><p>compare two floating point values if they are equal after: <a class="reference external" href="http://www.lahey.com/float.htm">http://www.lahey.com/float.htm</a></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.getNamedPath.html#spacepy.toolbox.getNamedPath" title="spacepy.toolbox.getNamedPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getNamedPath</span></code></a>(name)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.getNamedPath.html#spacepy.toolbox.getNamedPath" title="spacepy.toolbox.getNamedPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getNamedPath</span></code></a>(name)</p></td>
 <td><p>Return the full path of a parent directory with name as the leaf</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.human_sort.html#spacepy.toolbox.human_sort" title="spacepy.toolbox.human_sort"><code class="xref py py-obj docutils literal notranslate"><span class="pre">human_sort</span></code></a>(l)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.human_sort.html#spacepy.toolbox.human_sort" title="spacepy.toolbox.human_sort"><code class="xref py py-obj docutils literal notranslate"><span class="pre">human_sort</span></code></a>(l)</p></td>
 <td><p>Sort the given list in the way that humans expect.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.hypot.html#spacepy.toolbox.hypot" title="spacepy.toolbox.hypot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hypot</span></code></a>(*args)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.hypot.html#spacepy.toolbox.hypot" title="spacepy.toolbox.hypot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hypot</span></code></a>(*args)</p></td>
 <td><p>compute the N-dimensional hypot of an iterable or many arguments</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.indsFromXrange.html#spacepy.toolbox.indsFromXrange" title="spacepy.toolbox.indsFromXrange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">indsFromXrange</span></code></a>(inxrange)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.indsFromXrange.html#spacepy.toolbox.indsFromXrange" title="spacepy.toolbox.indsFromXrange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">indsFromXrange</span></code></a>(inxrange)</p></td>
 <td><p>return the start and end indices implied by an xrange, useful when xrange is zero-length</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.interpol.html#spacepy.toolbox.interpol" title="spacepy.toolbox.interpol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpol</span></code></a>(newx, x, y[, wrap])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.interpol.html#spacepy.toolbox.interpol" title="spacepy.toolbox.interpol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpol</span></code></a>(newx, x, y[, wrap])</p></td>
 <td><p>1-D linear interpolation with interpolation of hours/longitude</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.intsolve.html#spacepy.toolbox.intsolve" title="spacepy.toolbox.intsolve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">intsolve</span></code></a>(func, value[, start, stop, maxit])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.intsolve.html#spacepy.toolbox.intsolve" title="spacepy.toolbox.intsolve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">intsolve</span></code></a>(func, value[, start, stop, maxit])</p></td>
 <td><p>Find the function input such that definite integral is desired value.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.medAbsDev.html#spacepy.toolbox.medAbsDev" title="spacepy.toolbox.medAbsDev"><code class="xref py py-obj docutils literal notranslate"><span class="pre">medAbsDev</span></code></a>(series[, scale])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.medAbsDev.html#spacepy.toolbox.medAbsDev" title="spacepy.toolbox.medAbsDev"><code class="xref py py-obj docutils literal notranslate"><span class="pre">medAbsDev</span></code></a>(series[, scale])</p></td>
 <td><p>Calculate median absolute deviation of a given input series</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.mlt2rad.html#spacepy.toolbox.mlt2rad" title="spacepy.toolbox.mlt2rad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mlt2rad</span></code></a>(mlt[, midnight])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.mlt2rad.html#spacepy.toolbox.mlt2rad" title="spacepy.toolbox.mlt2rad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mlt2rad</span></code></a>(mlt[, midnight])</p></td>
 <td><p>Convert mlt values to radians for polar plotting transform mlt angles to radians from -pi to pi referenced from noon by default</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.normalize.html#spacepy.toolbox.normalize" title="spacepy.toolbox.normalize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalize</span></code></a>(vec[, low, high])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.normalize.html#spacepy.toolbox.normalize" title="spacepy.toolbox.normalize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalize</span></code></a>(vec[, low, high])</p></td>
 <td><p>Given an input vector normalize the vector to a given range</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.pmm.html#spacepy.toolbox.pmm" title="spacepy.toolbox.pmm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pmm</span></code></a>(*args)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.pmm.html#spacepy.toolbox.pmm" title="spacepy.toolbox.pmm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pmm</span></code></a>(*args)</p></td>
 <td><p>print min and max of input arrays</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.poisson_fit.html#spacepy.toolbox.poisson_fit" title="spacepy.toolbox.poisson_fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">poisson_fit</span></code></a>(data[, initial, method])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.poisson_fit.html#spacepy.toolbox.poisson_fit" title="spacepy.toolbox.poisson_fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">poisson_fit</span></code></a>(data[, initial, method])</p></td>
 <td><p>Fit a Poisson distribution to data using the method and initial guess provided.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.rad2mlt.html#spacepy.toolbox.rad2mlt" title="spacepy.toolbox.rad2mlt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rad2mlt</span></code></a>(rad[, midnight])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.rad2mlt.html#spacepy.toolbox.rad2mlt" title="spacepy.toolbox.rad2mlt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rad2mlt</span></code></a>(rad[, midnight])</p></td>
 <td><p>Convert radians values to mlt transform radians from -pi to pi to mlt referenced from noon by default</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.windowMean.html#spacepy.toolbox.windowMean" title="spacepy.toolbox.windowMean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">windowMean</span></code></a>(data[, time, winsize, overlap, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.windowMean.html#spacepy.toolbox.windowMean" title="spacepy.toolbox.windowMean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">windowMean</span></code></a>(data[, time, winsize, overlap, ...])</p></td>
 <td><p>Windowing mean function, window overlap is user defined</p></td>
 </tr>
 </tbody>
@@ -312,31 +313,6 @@ Los Alamos National Laboratory</p>
 </tbody>
 </table>
 </section>
-<section id="quaternion-math">
-<span id="toolbox-quaternions"></span><h2>Quaternion math<a class="headerlink" href="#quaternion-math" title="Permalink to this headline">¶</a></h2>
-<p>Quaternion functions have moved to <a class="reference internal" href="coordinates.html#module-spacepy.coordinates" title="spacepy.coordinates"><code class="xref py py-mod docutils literal notranslate"><span class="pre">coordinates</span></code></a>;
-new functions are also added there.</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.quaternionRotateVector.html#spacepy.toolbox.quaternionRotateVector" title="spacepy.toolbox.quaternionRotateVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quaternionRotateVector</span></code></a>(Qin, Vin[, ...])</p></td>
-<td><p>Given quaternion and vector, return vector rotated by quaternion.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.quaternionNormalize.html#spacepy.toolbox.quaternionNormalize" title="spacepy.toolbox.quaternionNormalize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quaternionNormalize</span></code></a>(Qin[, scalarPos])</p></td>
-<td><p>Given an input quaternion, return the unit quaternion.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.quaternionMultiply.html#spacepy.toolbox.quaternionMultiply" title="spacepy.toolbox.quaternionMultiply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quaternionMultiply</span></code></a>(Qin1, Qin2[, scalarPos])</p></td>
-<td><p>Given quaternions, return the product.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.toolbox.quaternionConjugate.html#spacepy.toolbox.quaternionConjugate" title="spacepy.toolbox.quaternionConjugate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quaternionConjugate</span></code></a>(Qin[, scalarPos])</p></td>
-<td><p>Given an input quaternion, return the conjugated.</p></td>
-</tr>
-</tbody>
-</table>
-</section>
 </section>
 
 
@@ -370,8 +346,8 @@ new functions are also added there.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2021, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+        &#169; Copyright 2011-2022, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>

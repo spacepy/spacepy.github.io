@@ -64,6 +64,17 @@ Note that a PR will not trigger the CI `if there is a merge conflict
 <https://github.community/t/run-actions-on-pull-requests-with-merge-conflicts/
 17104>`_.
 
+Cacheing
+========
+Dependencies for CI are stored in two caches: one for all pip
+dependencies, and one for the NASA CDF library. This minimizes CI time
+use for building dependencies.
+
+Caches expire weekly (the week begins at 00 Monday, UTC). Caches can
+also be force-expired by incrementing the versions in ``ci.yml`` for
+the pip and/or CDF cache. Unfortunately this does require pushing a
+commit.
+
 Usage
 =====
 

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.time.Ticktock &#8212; SpacePy v0.2.3 Manual</title>
+    <title>spacepy.time.Ticktock &#8212; SpacePy v0.3.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -59,12 +59,16 @@
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/logo.png" alt="Logo"/>
             </a></p>
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="../time.html"
-                        title="previous chapter">time - Time conversion, manipulation and implementation of Ticktock class</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="spacepy.time.dtstr2iso.html"
-                        title="next chapter">spacepy.time.dtstr2iso</a></p>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../time.html"
+                          title="previous chapter">time - Time conversion, manipulation and implementation of Ticktock class</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="spacepy.time.dtstr2iso.html"
+                          title="next chapter">spacepy.time.dtstr2iso</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -94,7 +98,7 @@
 <h1>spacepy.time.Ticktock<a class="headerlink" href="#spacepy-time-ticktock" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="spacepy.time.Ticktock">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">spacepy.time.</span></span><span class="sig-name descname"><span class="pre">Ticktock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/time.html#Ticktock"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.time.Ticktock" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.time.</span></span><span class="sig-name descname"><span class="pre">Ticktock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/time.html#Ticktock"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.time.Ticktock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ticktock class holding various time coordinate systems
 (TAI, UTC, ISO, JD, MJD, UNX, RDT, CDF, DOY, eDOY, APT)</p>
 <p>Possible input data types:</p>
@@ -116,7 +120,7 @@
 </dd>
 <dt>CDF</dt><dd><p>CDF Epoch type: float milliseconds since 0000-1-1 ignoring leapseconds</p>
 </dd>
-<dt>APT</dt><dd><p>AstroPy <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.time.Time.html#astropy.time.Time" title="(in Astropy v4.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Time</span></code></a>. Requires AstroPy 1.0.
+<dt>APT</dt><dd><p>AstroPy <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.time.Time.html#astropy.time.Time" title="(in Astropy v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Time</span></code></a>. Requires AstroPy 1.0.
 (New in version 0.2.2.)</p>
 </dd>
 </dl>
@@ -312,7 +316,7 @@ previously was ‘mergesort’.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="#spacepy.time.Ticktock.argsort" title="spacepy.time.Ticktock.argsort"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argsort</span></code></a>, <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.argsort.html#numpy.argsort" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.argsort</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#spacepy.time.Ticktock.argsort" title="spacepy.time.Ticktock.argsort"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argsort</span></code></a>, <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.argsort.html#numpy.argsort" title="(in NumPy v1.22)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.argsort</span></code></a></dt><dd></dd>
 </dl>
 </div>
 </dd></dl>
@@ -383,8 +387,8 @@ will be created if necessary.</p>
 </div>
 <p>Requires AstroPy 1.0. The returned value will be on the <code class="docutils literal notranslate"><span class="pre">tai</span></code>
 scale in <code class="docutils literal notranslate"><span class="pre">gps</span></code> format (unless the <a class="reference internal" href="#spacepy.time.Ticktock" title="spacepy.time.Ticktock"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ticktock</span></code></a> was created
-from a <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.time.Time.html#astropy.time.Time" title="(in Astropy v4.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Time</span></code></a> object, in which case it will
-be the original input.) See the <a class="reference external" href="https://docs.astropy.org/en/stable/time/index.html#module-astropy.time" title="(in Astropy v4.3)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">astropy.time</span></code></a> docs for
+from a <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.time.Time.html#astropy.time.Time" title="(in Astropy v5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Time</span></code></a> object, in which case it will
+be the original input.) See the <a class="reference external" href="https://docs.astropy.org/en/stable/time/index.html#module-astropy.time" title="(in Astropy v5.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">astropy.time</span></code></a> docs for
 conversion to other scales and formats.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">(</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
@@ -880,7 +884,7 @@ function will update the ISO attribute.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="spacepy.time.Ticktock.now">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">now</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/time.html#Ticktock.now"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.time.Ticktock.now" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">now</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/time.html#Ticktock.now"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.time.Ticktock.now" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create Ticktock with the current UTC time.</p>
 <p>Equivalent to datetime.utcnow()</p>
 <div class="versionchanged">
@@ -920,14 +924,14 @@ in <cite>data</cite>. If you need a stable sort use kind=’mergesort’</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="#spacepy.time.Ticktock.argsort" title="spacepy.time.Ticktock.argsort"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argsort</span></code></a>, <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.argsort.html#numpy.argsort" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.argsort</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#spacepy.time.Ticktock.argsort" title="spacepy.time.Ticktock.argsort"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argsort</span></code></a>, <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.argsort.html#numpy.argsort" title="(in NumPy v1.22)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.argsort</span></code></a></dt><dd></dd>
 </dl>
 </div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="spacepy.time.Ticktock.today">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">today</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/time.html#Ticktock.today"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.time.Ticktock.today" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">today</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/time.html#Ticktock.today"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.time.Ticktock.today" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create Ticktock with the current UTC date and time set to 00:00:00</p>
 <p>Similar to date.today() with time included but in UTC and with the
 time included (zero hours, minutes, seconds)</p>
@@ -1021,8 +1025,8 @@ called automatically in __add__, __init__, and __setitem__.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2021, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+        &#169; Copyright 2011-2022, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>

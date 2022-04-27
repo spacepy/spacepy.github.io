@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.plot.spectrogram &#8212; SpacePy v0.2.3 Manual</title>
+    <title>spacepy.plot.spectrogram &#8212; SpacePy v0.3.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
@@ -135,7 +135,7 @@
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Spectrogram&#39;</span><span class="p">,</span> <span class="s1">&#39;simpleSpectrogram&#39;</span><span class="p">]</span>
 
-<div class="viewcode-block" id="Spectrogram"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.Spectrogram.html#spacepy.plot.Spectrogram">[docs]</a><span class="k">class</span> <span class="nc">Spectrogram</span><span class="p">(</span><span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">):</span>
+<div class="viewcode-block" id="Spectrogram"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.Spectrogram.html#spacepy.plot.spectrogram.Spectrogram">[docs]</a><span class="k">class</span> <span class="nc">Spectrogram</span><span class="p">(</span><span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This class rebins data to produce a 2D data map that can be plotted as a spectrogram</span>
 
@@ -319,7 +319,7 @@
         <span class="c1"># this is here for in the future when we take a list a SpaceData objects</span>
         <span class="n">sz</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">specSettings</span><span class="p">[</span><span class="s1">&#39;bins&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">specSettings</span><span class="p">[</span><span class="s1">&#39;bins&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">overall_sum</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">sz</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">double</span><span class="p">))</span>
-        <span class="n">overall_count</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">sz</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">long</span><span class="p">))</span>
+        <span class="n">overall_count</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">sz</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int_</span><span class="p">))</span>
 
         <span class="c1"># the valid range for the histograms</span>
         <span class="n">_range</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">specSettings</span><span class="p">[</span><span class="s1">&#39;xlim&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">specSettings</span><span class="p">[</span><span class="s1">&#39;ylim&#39;</span><span class="p">]]</span>
@@ -444,7 +444,7 @@
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;spectrogram&#39;</span><span class="p">][</span><span class="s1">&#39;sum&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">b</span><span class="p">[</span><span class="s1">&#39;spectrogram&#39;</span><span class="p">][</span><span class="s1">&#39;sum&#39;</span><span class="p">]</span>
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;spectrogram&#39;</span><span class="p">][</span><span class="s1">&#39;spectrogram&#39;</span><span class="p">][</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;spectrogram&#39;</span><span class="p">][</span><span class="s1">&#39;sum&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;spectrogram&#39;</span><span class="p">][</span><span class="s1">&#39;count&#39;</span><span class="p">])</span>
 
-    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="Spectrogram.plot"><a class="viewcode-back" href="../../../autosummary/autosummary/spacepy.plot.spectrogram.Spectrogram.html#spacepy.plot.spectrogram.Spectrogram.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Plot the spectrogram</span>
 
@@ -556,7 +556,7 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">plotSettings</span><span class="p">[</span><span class="s1">&#39;colorbar&#39;</span><span class="p">]:</span>
             <span class="n">cb</span> <span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">pcm</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
             <span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">plotSettings</span><span class="p">[</span><span class="s1">&#39;colorbar_label&#39;</span><span class="p">])</span>
-        <span class="k">return</span> <span class="n">ax</span>
+        <span class="k">return</span> <span class="n">ax</span></div>
 
     <span class="k">def</span> <span class="nf">vslice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -634,7 +634,7 @@
 
 
 
-<span class="k">def</span> <span class="nf">simpleSpectrogram</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="simpleSpectrogram"><a class="viewcode-back" href="../../../autosummary/autosummary/spacepy.plot.spectrogram.simpleSpectrogram.html#spacepy.plot.spectrogram.simpleSpectrogram">[docs]</a><span class="k">def</span> <span class="nf">simpleSpectrogram</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Plot a spectrogram given Z or X,Y,Z. This is a wrapper around pcolormesh()</span>
 <span class="sd">    that can handle Y being a 2d array of time dependent bins. Like in the</span>
@@ -742,7 +742,7 @@
         <span class="n">cb_</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">pc</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">cbtitle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">cb_</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">cbtitle</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ax</span>
+    <span class="k">return</span> <span class="n">ax</span></div>
 </pre></div>
 
             <div class="clearer"></div>
@@ -772,8 +772,8 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2021, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+        &#169; Copyright 2011-2022, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>lanlstar - module to calculate Lstar or Lmax using artificial neural network &#8212; SpacePy v0.2.3 Manual</title>
+    <title>igrf - IGRF magnetic field model &#8212; SpacePy v0.3.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -21,8 +21,8 @@
     <link rel="shortcut icon" href="_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="omni - module to read and process NASA OMNIWEB data" href="omni.html" />
-    <link rel="prev" title="spacepy.irbempy.prep_irbem" href="autosummary/spacepy.irbempy.prep_irbem.html" /> 
+    <link rel="next" title="spacepy.igrf.IGRFCoefficients" href="autosummary/spacepy.igrf.IGRFCoefficients.html" />
+    <link rel="prev" title="spacepy.empiricals.vampolaPA" href="autosummary/spacepy.empiricals.vampolaPA.html" /> 
   </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
@@ -39,17 +39,17 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="omni.html" title="omni - module to read and process NASA OMNIWEB data"
+          <a href="autosummary/spacepy.igrf.IGRFCoefficients.html" title="spacepy.igrf.IGRFCoefficients"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="autosummary/spacepy.irbempy.prep_irbem.html" title="spacepy.irbempy.prep_irbem"
+          <a href="autosummary/spacepy.empiricals.vampolaPA.html" title="spacepy.empiricals.vampolaPA"
              accesskey="P">previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="search.html">search</a>|&nbsp;</li>
        <li><a href="index.html">documentation </a> &raquo;</li>
 
-        <li class="nav-item nav-item-this"><a href="">lanlstar - module to calculate Lstar or Lmax using artificial neural network</a></li> 
+        <li class="nav-item nav-item-this"><a href="">igrf - IGRF magnetic field model</a></li> 
       </ul>
     </div>
 
@@ -58,16 +58,30 @@
             <p class="logo"><a href="index.html">
               <img class="logo" src="_static/logo.png" alt="Logo"/>
             </a></p>
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="autosummary/spacepy.irbempy.prep_irbem.html"
-                        title="previous chapter">spacepy.irbempy.prep_irbem</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="omni.html"
-                        title="next chapter">omni - module to read and process NASA OMNIWEB data</a></p>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">igrf - IGRF magnetic field model</a><ul>
+<li><a class="reference internal" href="#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="autosummary/spacepy.empiricals.vampolaPA.html"
+                          title="previous chapter">spacepy.empiricals.vampolaPA</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="autosummary/spacepy.igrf.IGRFCoefficients.html"
+                          title="next chapter">spacepy.igrf.IGRFCoefficients</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/lanlstar.rst.txt"
+      <li><a href="_sources/igrf.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -89,8 +103,28 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="lanlstar-module-to-calculate-lstar-or-lmax-using-artificial-neural-network">
-<h1>lanlstar - module to calculate Lstar or Lmax using artificial neural network<a class="headerlink" href="#lanlstar-module-to-calculate-lstar-or-lmax-using-artificial-neural-network" title="Permalink to this headline">¶</a></h1>
+  <section id="module-spacepy.igrf">
+<span id="igrf-igrf-magnetic-field-model"></span><h1>igrf - IGRF magnetic field model<a class="headerlink" href="#module-spacepy.igrf" title="Permalink to this headline">¶</a></h1>
+<p>International Geomagnetic Reference Field model</p>
+<p>This module is intended primarily to support <a class="reference internal" href="coordinates.html#module-spacepy.coordinates" title="spacepy.coordinates"><code class="xref py py-mod docutils literal notranslate"><span class="pre">coordinates</span></code></a>
+rather than for direct end use, and the interface is subject to change.</p>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.igrf.IGRFCoefficients.html#spacepy.igrf.IGRFCoefficients" title="spacepy.igrf.IGRFCoefficients"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IGRFCoefficients</span></code></a>([fname])</p></td>
+<td><p>Read and store IGRF coefficients from data file</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.igrf.IGRF.html#spacepy.igrf.IGRF" title="spacepy.igrf.IGRF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IGRF</span></code></a>()</p></td>
+<td><p>International Geomagnetic Reference Field model</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 
 
@@ -110,22 +144,22 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="omni.html" title="omni - module to read and process NASA OMNIWEB data"
+          <a href="autosummary/spacepy.igrf.IGRFCoefficients.html" title="spacepy.igrf.IGRFCoefficients"
              >next</a> |</li>
         <li class="right" >
-          <a href="autosummary/spacepy.irbempy.prep_irbem.html" title="spacepy.irbempy.prep_irbem"
+          <a href="autosummary/spacepy.empiricals.vampolaPA.html" title="spacepy.empiricals.vampolaPA"
              >previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="search.html">search</a>|&nbsp;</li>
        <li><a href="index.html">documentation </a> &raquo;</li>
 
-        <li class="nav-item nav-item-this"><a href="">lanlstar - module to calculate Lstar or Lmax using artificial neural network</a></li> 
+        <li class="nav-item nav-item-this"><a href="">igrf - IGRF magnetic field model</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2021, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+        &#169; Copyright 2011-2022, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>

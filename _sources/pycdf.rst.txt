@@ -1,27 +1,16 @@
-
 ######################################
 pycdf - Python interface to CDF files
 ######################################
 
 .. automodule:: spacepy.pycdf
 
-
 Contents
 --------
 
-- `Quickstart`_
-    - `Create a CDF`_
-    - `Read a CDF`_
-    - `Modify a CDF`_
-    - `Non record-varying`_
-    - `Slicing and indexing`_
-- `Classes`_
-- `Functions`_
-- `Submodules`_
-- `Data`_
+.. contents::
+   :depth: 2
+   :local:
 
-Quickstart
-----------
 Create a CDF
 ============
 This example presents the entire sequence of creating a CDF and populating
@@ -45,16 +34,18 @@ Import the pycdf module.
 >>> from spacepy import pycdf
 
 Make a data set of :class:`~datetime.datetime`. These will be converted into
-CDF_EPOCH types.
+CDF_TIME_TT2000 types.
 
 >>> import datetime
 >>> # make a dataset every minute for a hour
 >>> time = [datetime.datetime(2000, 10, 1, 1, val) for val in range(60)]
 
 .. warning::
-    If you create a CDF in backwards compatibility mode (default),
+    If you create a CDF in backwards compatibility mode (using
+    :meth:`~spacepy.pycdf.Library.set_backward`),
     then :class:`~datetime.datetime` objects are degraded to CDF_EPOCH
     (millisecond resolution), not CDF_EPOCH16 (microsecond resolution).
+    Use :meth:`~spacepy.pycdf.CDF.new` to specify a data type.
 
 Create some random data.
 
@@ -107,7 +98,7 @@ The file is only accessed when data are requested. A full example using the abov
 >>> from spacepy import pycdf
 >>> cdf = pycdf.CDF('MyCDF.cdf')
 >>> print(cdf)
-    Epoch: CDF_EPOCH [60]
+    Epoch: CDF_TIME_TT2000 [60]
     data: CDF_FLOAT [60]
 >>> cdf['data'][4]
     0.8609974384307861
@@ -128,7 +119,7 @@ Then open the CDF, this looks the same and creation, but without mention of a ma
 The default ``__str__()`` and ``__repr__()`` behavior explains the contents, type, and size but not the data.
 
 >>> print(cdf)
-    Epoch: CDF_EPOCH [60]
+    Epoch: CDF_TIME_TT2000 [60]
     data: CDF_FLOAT [60]
 
 To access the data one has to request specific elements of the variable, similar to a Python list.
@@ -162,7 +153,7 @@ An example modifying the CDF created above:
     False
 >>> cdf['newVar'] = [1.0, 2.0]
 >>> print(cdf)
-    Epoch: CDF_EPOCH [60]
+    Epoch: CDF_TIME_TT2000 [60]
     data: CDF_FLOAT [60]
     newVar: CDF_FLOAT [2]
 >>> cdf.close()
@@ -174,18 +165,34 @@ before modification:
 >>> cdf.readonly(False)
     False
 
-Then new variables can be added
+Then new variables can be added:
 
 >>> cdf['newVar'] = [1.0, 2.0]
 
-Or contents can be changed
+Or contents can be changed:
 
 >>> cdf['data'][0] = 8675309
+
+You can write all new data to an existing variable, leaving the
+variable type, dimensionality, and attributes unchanged:
+
+>>> cdf['Epoch'][...] = [datetime.datetime(2010, 10, 1, 1, val)
+...     for val in range(60)]
+
+This is the common usage when using a CDF file containing all the
+variables and attributes but no data, sometimes called a "master
+CDF". Although the ``[...]`` makes this explicit (writing new records
+not a new variable), the same syntax as for a new variable can also be
+used:
+
+>>> # Either create a new variable or overwrite data in existing
+>>> cdf['Epoch'] = [datetime.datetime(2010, 10, 1, 1, val)
+...     for val in range(60)]
 
 The new variables appear immediately:
 
 >>> print(cdf)
-    Epoch: CDF_EPOCH [60]
+    Epoch: CDF_TIME_TT2000 [60]
     data: CDF_FLOAT [60]
     newVar: CDF_FLOAT [2]
 
@@ -231,6 +238,49 @@ hourly data file created in earlier examples.
 
 The :class:`Var` documentation has several additional examples.
 
+.. _pycdf_string_handling:
+
+String handling
+===============
+
+   .. versionchanged:: 0.3.0
+
+   Prior to SpacePy 0.3.0, pycdf treated all strings as ASCII-encoded, and
+   would raise errors when writing or reading strings that were not valid
+   ASCII.
+
+Per the NASA CDF library, variable and attribute names must be in
+ASCII. The contents of ``CDF_CHAR`` and ``CDF_UCHAR`` were redefined
+to be UTF-8 as of CDF 3.8.1. As of SpacePy 0.3.0, pycdf treats all
+``CHAR`` variables with a default encoding of UTF-8. This is true
+regardless of the version of the underlying CDF library.
+
+UTF-8 is a variable-length encoding, so the number of elements in the
+variable may not correspond to the number of characters if data are
+not restricted to the ASCII range.
+
+A different encoding can be specified with the ``encoding`` argument
+to :class:`~spacepy.pycdf.CDF.open` and this encoding will be used on
+all reads and writes to that file. Opening a CDF read-write with
+``encoding`` other than ``utf-8`` or ``ascii`` will issue a warning.
+
+Writing strings which cannot be represented in the desired encoding
+will raise an error. When reading from a CDF, characters which cannot
+be decoded will be replaced with the Unicode "replacement character"
+U+FFFD, which usually displays as a question mark.
+
+It is always possible to write raw bytes data to a variable, if it is
+desired to use a different encoding for one time. For arrays of data,
+this will usually involve :func:`numpy.char.encode`:
+
+   >>> cdf['Variable'] = data.encode('latin-1')
+   >>> cdf['Variable'] = numpy.char.encode(data, encoding='latin-1')
+
+All encoding and decoding can also be skipped using the
+:meth:`~spacepy.pycdf.CDF.raw_var` method to access a variable;
+however, without encoding, only :class:`bytes` can be written to
+string variables.
+
 Access to CDF constants and the C library
 =========================================
 Constants defined in cdf.h and occasionally useful in accessing CDFs are
@@ -240,7 +290,7 @@ The underlying C library is represented by the :attr:`~spacepy.pycdf.lib`
 variable.
 
 Classes
--------
+=======
 
 .. autosummary::
     :template: clean_class.rst
@@ -263,7 +313,7 @@ Classes
     EpochError
 
 Functions
----------
+=========
 
 .. autosummary::
     :template: clean_function.rst
@@ -272,7 +322,7 @@ Functions
     concatCDF
 
 Submodules
-----------
+==========
 
 .. autosummary::
     :toctree: autosummary  
@@ -282,7 +332,7 @@ Submodules
     istp
 
 Data
-----
+====
 
 .. attribute:: lib
 

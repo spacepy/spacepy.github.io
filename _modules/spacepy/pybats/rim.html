@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.pybats.rim &#8212; SpacePy v0.2.3 Manual</title>
+    <title>spacepy.pybats.rim &#8212; SpacePy v0.3.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
@@ -93,7 +93,6 @@
 <span class="sd">.. autosummary::</span>
 <span class="sd">    :toctree:</span>
 
-<span class="sd">    fix_format</span>
 <span class="sd">    get_iono_cb</span>
 <span class="sd">    tex_label</span>
 <span class="sd">&#39;&#39;&#39;</span>
@@ -104,68 +103,6 @@
 <span class="kn">import</span> <span class="nn">spacepy.plot.apionly</span>
 <span class="kn">from</span> <span class="nn">spacepy.plot</span> <span class="kn">import</span> <span class="n">set_target</span>
 <span class="kn">from</span> <span class="nn">spacepy.pybats</span> <span class="kn">import</span> <span class="n">PbData</span><span class="p">,</span> <span class="n">dmarray</span>
-
-<div class="viewcode-block" id="fix_format"><a class="viewcode-back" href="../../../autosummary/spacepy.pybats.rim.fix_format.html#spacepy.pybats.rim.fix_format">[docs]</a><span class="nd">@deprecated</span><span class="p">(</span><span class="s1">&#39;0.2.2&#39;</span><span class="p">,</span> <span class="s1">&#39;Functionality integrated into `rim.Iono`.&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">fix_format</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">finalize</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Some 2D output files for RIM/RidleySerial have a broken format: values for</span>
-<span class="sd">    the same lat-lon entry are split across two lines.  This function</span>
-<span class="sd">    detects and fixes such files in-place.</span>
-
-<span class="sd">    The original file will not be overwritten if kwarg *finalize* is set</span>
-<span class="sd">    to **False**.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ==========</span>
-<span class="sd">    filename : str</span>
-<span class="sd">       The file to repair.</span>
-<span class="sd">    </span>
-<span class="sd">    Other Parameters</span>
-<span class="sd">    ================</span>
-<span class="sd">    finalize : bool</span>
-<span class="sd">       If **True**, overwrite the original file.  If **False**, perform a dry</span>
-<span class="sd">       run for testing purposes.  Defaults to **True**.</span>
-
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="c1"># Slurp in entire file.  This is necessary to detect the number of f.</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
-    <span class="n">raw</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-    <span class="n">i</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;NUMERICAL VALUES</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">nvars</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">ntheta</span><span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">nphi</span>  <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
-
-    <span class="c1"># A broken file will have more than 4X lines than nTheta*nPhi.</span>
-    <span class="c1"># This is because nLines = header + 2*nTheta*nPhi in a two-hemisphere file.</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="o">*</span><span class="n">ntheta</span><span class="o">*</span><span class="n">nphi</span><span class="p">:</span>
-        <span class="k">return</span>
-
-    <span class="n">out</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;temp_iono_fix.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
-    <span class="n">iNorth</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;BEGIN NORTHERN HEMISPHERE</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">iSouth</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;BEGIN SOUTHERN HEMISPHERE</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-    
-    <span class="c1"># Rewrite header:</span>
-    <span class="n">out</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">iNorth</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
-
-    <span class="c1"># Rewrite northern hemisphere.</span>
-    <span class="k">for</span> <span class="n">l1</span><span class="p">,</span> <span class="n">l2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="n">iNorth</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">iSouth</span><span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="n">raw</span><span class="p">[</span><span class="n">iNorth</span><span class="o">+</span><span class="mi">2</span><span class="p">:</span><span class="n">iSouth</span><span class="p">:</span><span class="mi">2</span><span class="p">]):</span>
-        <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">l1</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">+</span><span class="n">l2</span><span class="p">)</span>
-
-    <span class="c1"># Rewrite southern hemisphere.</span>
-    <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="n">iSouth</span><span class="p">])</span>
-    <span class="k">for</span> <span class="n">l1</span><span class="p">,</span> <span class="n">l2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="n">iSouth</span><span class="o">+</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">],</span> <span class="n">raw</span><span class="p">[</span><span class="n">iSouth</span><span class="o">+</span><span class="mi">2</span><span class="p">::</span><span class="mi">2</span><span class="p">]):</span>
-        <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">l1</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">+</span><span class="n">l2</span><span class="p">)</span>
-
-    <span class="n">out</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-    <span class="c1"># Move files.</span>
-    <span class="k">if</span> <span class="n">finalize</span><span class="p">:</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="kc">True</span></div>
 
 <div class="viewcode-block" id="get_iono_cb"><a class="viewcode-back" href="../../../autosummary/spacepy.pybats.rim.get_iono_cb.html#spacepy.pybats.rim.get_iono_cb">[docs]</a><span class="k">def</span> <span class="nf">get_iono_cb</span><span class="p">(</span><span class="n">ct_name</span><span class="o">=</span><span class="s1">&#39;bwr&#39;</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -787,8 +724,8 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2021, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+        &#169; Copyright 2011-2022, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>
