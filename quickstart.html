@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>SpacePy - A Quick Start Documentation &#8212; SpacePy v0.2.3 Manual</title>
+    <title>SpacePy - A Quick Start Documentation &#8212; SpacePy v0.3.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -58,8 +58,9 @@
             <p class="logo"><a href="index.html">
               <img class="logo" src="_static/logo.png" alt="Logo"/>
             </a></p>
-  <h3><a href="index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">SpacePy - A Quick Start Documentation</a><ul>
 <li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#toolbox-a-box-full-of-tools">Toolbox - A Box Full of Tools</a></li>
@@ -85,12 +86,17 @@
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="install_windows.html"
-                        title="previous chapter">Windows Installation</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="help.html"
-                        title="next chapter">SpacePy Help</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="install_windows.html"
+                          title="previous chapter">Windows Installation</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="help.html"
+                          title="next chapter">SpacePy Help</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -116,155 +122,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <span class="target" id="module-spacepy"></span><p>SpacePy: Space Science Tools for Python</p>
-<p>SpacePy is a package of tools primarily aimed at the space science community.
-This __init__.py file sets the parameters for import statements.</p>
-<p>If running the ipython shell, simply type ‘?’ after any command for help.
-ipython also offers tab completion, so hitting tab after ‘&lt;module name&gt;.’
-will list all available functions, classes and variables.</p>
-<p>Detailed HTML documentation is available locally in the spacepy/doc directory
-and can be launched by typing:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">help</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>Most functionality is in spacepy’s submodules. Each module has specific
-help available:</p>
-<p class="rubric">Submodules</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="coordinates.html#module-spacepy.coordinates" title="spacepy.coordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coordinates</span></code></a></p></td>
-<td><p>Implementation of Coords class functions for coordinate transformations</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="data_assimilation.html#module-spacepy.data_assimilation" title="spacepy.data_assimilation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_assimilation</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="datamodel.html#module-spacepy.datamodel" title="spacepy.datamodel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datamodel</span></code></a></p></td>
-<td><p>The datamodel classes constitute a data model implementation meant to mirror the functionality of the data model output from pycdf, though implemented slightly differently.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="empiricals.html#module-spacepy.empiricals" title="spacepy.empiricals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">empiricals</span></code></a></p></td>
-<td><p>Module with some useful empirical models (plasmapause, magnetopause, Lmax)</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="irbempy.html#module-spacepy.irbempy" title="spacepy.irbempy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">irbempy</span></code></a></p></td>
-<td><p>module wrapper for irbem_lib Reference for this library <a class="reference external" href="https://sourceforge.net/projects/irbem/">https://sourceforge.net/projects/irbem/</a> D.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="omni.html#module-spacepy.omni" title="spacepy.omni"><code class="xref py py-obj docutils literal notranslate"><span class="pre">omni</span></code></a></p></td>
-<td><p>Tools to read and process omni data (Qin-Denton, etc.)</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="poppy.html#module-spacepy.poppy" title="spacepy.poppy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">poppy</span></code></a></p></td>
-<td><p>PoPPy -- Point Processes in Python.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybats.html#module-spacepy.pybats" title="spacepy.pybats"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pybats</span></code></a></p></td>
-<td><p>PyBats!  An open source Python-based interface for reading, manipulating, and visualizing BATS-R-US and SWMF output.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pycdf.html#module-spacepy.pycdf" title="spacepy.pycdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pycdf</span></code></a></p></td>
-<td><p>This package provides a Python interface to the Common Data Format (CDF) library used for many NASA missions, available at <a class="reference external" href="http://cdf.gsfc.nasa.gov/">http://cdf.gsfc.nasa.gov/</a>.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="radbelt.html#module-spacepy.radbelt" title="spacepy.radbelt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">radbelt</span></code></a></p></td>
-<td><p>Functions supporting radiation belt diffusion codes</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="seapy.html#module-spacepy.seapy" title="spacepy.seapy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">seapy</span></code></a></p></td>
-<td><p>SeaPy -- Superposed Epoch in Python.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="time.html#module-spacepy.time" title="spacepy.time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">time</span></code></a></p></td>
-<td><p>Time conversion, manipulation and implementation of Ticktock class</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="toolbox.html#module-spacepy.toolbox" title="spacepy.toolbox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toolbox</span></code></a></p></td>
-<td><p>Toolbox of various functions and generic utilities.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="ae9ap9.html#module-spacepy.ae9ap9" title="spacepy.ae9ap9"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ae9ap9</span></code></a></p></td>
-<td><p>Module for reading and dealing with AE9AP9 data files.</p></td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Functions</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.html#spacepy.deprecated" title="spacepy.deprecated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deprecated</span></code></a>(version, message[, docstring])</p></td>
-<td><p>Decorator to deprecate a function/method</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="spacepy.html#spacepy.help" title="spacepy.help"><code class="xref py py-obj docutils literal notranslate"><span class="pre">help</span></code></a>()</p></td>
-<td><p>Launches web browser with local HTML help</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="py function">
-<dt class="sig sig-object py" id="spacepy.deprecated">
-<span class="sig-prename descclassname"><span class="pre">spacepy.</span></span><span class="sig-name descname"><span class="pre">deprecated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">docstring</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/spacepy.html#deprecated"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.deprecated" title="Permalink to this definition">¶</a></dt>
-<dd><p>Decorator to deprecate a function/method</p>
-<p>Modifies a function so that calls to it raise
-<code class="docutils literal notranslate"><span class="pre">DeprecationWarning</span></code> and the docstring has a deprecation
-note added in accordance with <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html#sections">numpydoc format</a></p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>version</strong><span class="classifier">str</span></dt><dd><p>What is the first version where this was deprecated?</p>
-</dd>
-<dt><strong>message</strong><span class="classifier">str</span></dt><dd><p>Message to include in the deprecation warning and in the
-docstring.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Other Parameters</dt>
-<dd class="field-even"><dl>
-<dt><strong>docstring</strong><span class="classifier">str</span></dt><dd><div class="versionadded">
-<p><span class="versionmodified added">New in version 0.2.2.</span></p>
-</div>
-<p>If specified, <code class="docutils literal notranslate"><span class="pre">docstring</span></code> will be added to the modified function’s
-docstring instead of <code class="docutils literal notranslate"><span class="pre">message</span></code> (which will only be used in the
-deprecation warning.) It can be a multi-line string (separated with
-<code class="docutils literal notranslate"><span class="pre">\n</span></code>). It will be indented to match the existing docstring.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>On Python 2, the deprecated function’s signature won’t be preserved.
-The function will work but will not have proper argument names listed
-in e.g. <code class="docutils literal notranslate"><span class="pre">help</span></code>.</p>
-<p>This warning will show as coming from SpacePy, not the deprecated
-function.</p>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nd">@spacepy</span><span class="o">.</span><span class="n">deprecated</span><span class="p">(</span><span class="s1">&#39;0.2.1&#39;</span><span class="p">,</span> <span class="s1">&#39;Use a different function instead&#39;</span><span class="p">,</span>
-<span class="gp">... </span>                    <span class="n">docstring</span><span class="o">=</span><span class="s1">&#39;A different function is better</span><span class="se">\n</span><span class="s1">&#39;</span>
-<span class="gp">... </span>                              <span class="s1">&#39;because of reasons xyz&#39;</span><span class="p">)</span>
-<span class="gp">... </span><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="sd">&#39;&#39;&#39;This is a test function</span>
-<span class="gp">...</span><span class="sd"></span>
-<span class="gp">... </span><span class="sd">    It may do many useful things.</span>
-<span class="gp">... </span><span class="sd">    &#39;&#39;&#39;</span>
-<span class="gp">... </span>    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>
-<span class="go">Help on function foo in module __main__:</span>
-<span class="go">foo(x)</span>
-<span class="go">    This is a test function</span>
-<span class="go">    .. deprecated:: 0.2.1</span>
-<span class="go">       A different function is better</span>
-<span class="go">       because of reasons xyz</span>
-<span class="go">    It may do many useful things.</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">foo</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="go">DeprecationWarning: Use a different function instead</span>
-<span class="go">3</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="spacepy.help">
-<span class="sig-prename descclassname"><span class="pre">spacepy.</span></span><span class="sig-name descname"><span class="pre">help</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/spacepy.html#help"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.help" title="Permalink to this definition">¶</a></dt>
-<dd><p>Launches web browser with local HTML help</p>
-</dd></dl>
-
-<p>Copyright 2010-2016 Los Alamos National Security, LLC.</p>
-<section id="spacepy-a-quick-start-documentation">
+  <section id="spacepy-a-quick-start-documentation">
 <h1>SpacePy - A Quick Start Documentation<a class="headerlink" href="#spacepy-a-quick-start-documentation" title="Permalink to this headline">¶</a></h1>
 <p>The SpacePy Team
 (Steve Morley, Josef Koller, Dan Welling, Brian Larsen, Jon Niehof,
@@ -289,7 +147,7 @@ useful. The following functions are a selection of those implemented:</p>
 <li><p><a class="reference internal" href="autosummary/spacepy.toolbox.binHisto.html#spacepy.toolbox.binHisto" title="spacepy.toolbox.binHisto"><code class="xref py py-func docutils literal notranslate"><span class="pre">binHisto()</span></code></a>: calculate number of bins for a histogram</p></li>
 <li><p><a class="reference internal" href="autosummary/spacepy.toolbox.medAbsDev.html#spacepy.toolbox.medAbsDev" title="spacepy.toolbox.medAbsDev"><code class="xref py py-func docutils literal notranslate"><span class="pre">medAbsDev()</span></code></a>: find the median absolute deviation of a data series</p></li>
 <li><p><a class="reference internal" href="autosummary/spacepy.toolbox.normalize.html#spacepy.toolbox.normalize" title="spacepy.toolbox.normalize"><code class="xref py py-func docutils literal notranslate"><span class="pre">normalize()</span></code></a>: normalize a data series</p></li>
-<li><p><a class="reference internal" href="autosummary/spacepy.toolbox.feq.html#spacepy.toolbox.feq" title="spacepy.toolbox.feq"><code class="xref py py-func docutils literal notranslate"><span class="pre">feq()</span></code></a>: floating point equals</p></li>
+<li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">feq()</span></code>: floating point equals</p></li>
 </ul>
 </div></blockquote>
 <p>Import this module as:</p>
@@ -586,7 +444,7 @@ The module can then be imported, e.g.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.pycdf</span> <span class="k">as</span> <span class="nn">cdf</span>
 </pre></div>
 </div>
-<p>To open and close a CDF file, we use the <a class="reference internal" href="autosummary/spacepy.pycdf.CDF.html#spacepy.pycdf.CDF" title="spacepy.pycdf.CDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CDF</span></code></a> class:</p>
+<p>To open and close a CDF file, we use the <code class="xref py py-class docutils literal notranslate"><span class="pre">CDF</span></code> class:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cdf_file</span> <span class="o">=</span> <span class="n">cdf</span><span class="o">.</span><span class="n">CDF</span><span class="p">(</span><span class="s1">&#39;filename.cdf&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cdf_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
@@ -610,7 +468,7 @@ by the variable name:</p>
 record number. Multidimensional CDF variables can be subscripted using
 numpy’s multidimensional slice notation. Many common list operations are also
 implemented, where each record acts as one element of the list and can be
-independently deleted, inserted, etc. Creating a Python <a class="reference internal" href="autosummary/spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-class docutils literal notranslate"><span class="pre">Var</span></code></a>
+independently deleted, inserted, etc. Creating a Python <code class="xref py py-class docutils literal notranslate"><span class="pre">Var</span></code>
 object does not read the data from disc; data are only read as they are
 accessed:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">epoch</span> <span class="o">=</span> <span class="n">cdf_file</span><span class="p">[</span><span class="s1">&#39;Epoch&#39;</span><span class="p">]</span> <span class="c1">#Python object created, nothing read from disc</span>
@@ -630,10 +488,10 @@ accessed:</p>
 data model easy. The concepts are very similar to those used in standards like HDF5, netCDF and
 NASA CDF.</p>
 <p>The basic container type is analogous to a folder (on a filesystem; HDF5 calls this a
-group): Here we implement this as a dictionary-like object, a <a class="reference internal" href="autosummary/spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData" title="spacepy.datamodel.SpaceData"><code class="xref py py-class docutils literal notranslate"><span class="pre">datamodel.SpaceData</span></code></a> object, which
+group): Here we implement this as a dictionary-like object, a <code class="xref py py-class docutils literal notranslate"><span class="pre">datamodel.SpaceData</span></code> object, which
 also carries attributes. These attributes can be considered to be global, i.e. relevant for the
 entire folder. The next container type is for storing data and is based on a numpy array, this
-class is <a class="reference internal" href="autosummary/spacepy.datamodel.dmarray.html#spacepy.datamodel.dmarray" title="spacepy.datamodel.dmarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">datamodel.dmarray</span></code></a> and also carries attributes. The dmarray class is analogous to an
+class is <code class="xref py py-class docutils literal notranslate"><span class="pre">datamodel.dmarray</span></code> and also carries attributes. The dmarray class is analogous to an
 HDF5 dataset.</p>
 <section id="guide-for-nasa-cdf-users">
 <h3>Guide for NASA CDF users<a class="headerlink" href="#guide-for-nasa-cdf-users" title="Permalink to this headline">¶</a></h3>
@@ -655,7 +513,7 @@ Each variable will have one attribute (for this example).</p>
 </pre></div>
 </div>
 <p>This has now populated a structure that can map directly to a NASA CDF. To visualize our datamodel,
-we can use the <a class="reference internal" href="autosummary/spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData.tree" title="spacepy.datamodel.SpaceData.tree"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tree()</span></code></a> method, which is equivalent to <a class="reference internal" href="autosummary/spacepy.toolbox.dictree.html#spacepy.toolbox.dictree" title="spacepy.toolbox.dictree"><code class="xref py py-func docutils literal notranslate"><span class="pre">toolbox.dictree()</span></code></a>
+we can use the <a class="reference internal" href="autosummary/spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData.tree" title="spacepy.datamodel.SpaceData.tree"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tree()</span></code></a> method, which is equivalent to <code class="xref py py-func docutils literal notranslate"><span class="pre">toolbox.dictree()</span></code>
 (which works for any dictionary-like object, including PyCDF file objects).</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mydata</span><span class="o">.</span><span class="n">tree</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">+</span>
@@ -874,8 +732,8 @@ the temporal resolution is 1 hr and the window is +/- 3 days</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2021, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+        &#169; Copyright 2011-2022, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>

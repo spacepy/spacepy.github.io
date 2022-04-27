@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.pybats.rim.fix_format &#8212; SpacePy v0.2.3 Manual</title>
+    <title>spacepy.ctrans.Ellipsoid &#8212; SpacePy v0.3.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -21,8 +21,8 @@
     <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="spacepy.pybats.rim.get_iono_cb" href="spacepy.pybats.rim.get_iono_cb.html" />
-    <link rel="prev" title="spacepy.pybats.rim.OvalDebugFile" href="spacepy.pybats.rim.OvalDebugFile.html" /> 
+    <link rel="next" title="spacepy.ctrans.convert_multitime" href="spacepy.ctrans.convert_multitime.html" />
+    <link rel="prev" title="spacepy.ctrans.CTrans" href="spacepy.ctrans.CTrans.html" /> 
   </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
@@ -39,19 +39,18 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.rim.get_iono_cb.html" title="spacepy.pybats.rim.get_iono_cb"
+          <a href="spacepy.ctrans.convert_multitime.html" title="spacepy.ctrans.convert_multitime"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.rim.OvalDebugFile.html" title="spacepy.pybats.rim.OvalDebugFile"
+          <a href="spacepy.ctrans.CTrans.html" title="spacepy.ctrans.CTrans"
              accesskey="P">previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pybats.html" >PyBats - SWMF &amp; BATS-R-US Analysis Tools</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="spacepy.pybats.rim.html" accesskey="U">spacepy.pybats.rim</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">spacepy.pybats.rim.fix_format</a></li> 
+          <li class="nav-item nav-item-1"><a href="../ctrans.html" accesskey="U">ctrans - Coordinate transformation backend</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.ctrans.Ellipsoid</a></li> 
       </ul>
     </div>
 
@@ -60,16 +59,20 @@
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/logo.png" alt="Logo"/>
             </a></p>
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="spacepy.pybats.rim.OvalDebugFile.html"
-                        title="previous chapter">spacepy.pybats.rim.OvalDebugFile</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="spacepy.pybats.rim.get_iono_cb.html"
-                        title="next chapter">spacepy.pybats.rim.get_iono_cb</a></p>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="spacepy.ctrans.CTrans.html"
+                          title="previous chapter">spacepy.ctrans.CTrans</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="spacepy.ctrans.convert_multitime.html"
+                          title="next chapter">spacepy.ctrans.convert_multitime</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/autosummary/spacepy.pybats.rim.fix_format.rst.txt"
+      <li><a href="../_sources/autosummary/spacepy.ctrans.Ellipsoid.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -91,34 +94,37 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="spacepy-pybats-rim-fix-format">
-<h1>spacepy.pybats.rim.fix_format<a class="headerlink" href="#spacepy-pybats-rim-fix-format" title="Permalink to this headline">¶</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="spacepy.pybats.rim.fix_format">
-<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.rim.</span></span><span class="sig-name descname"><span class="pre">fix_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">finalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/rim.html#fix_format"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.rim.fix_format" title="Permalink to this definition">¶</a></dt>
-<dd><p>Some 2D output files for RIM/RidleySerial have a broken format: values for
-the same lat-lon entry are split across two lines.  This function
-detects and fixes such files in-place.</p>
-<div class="deprecated">
-<p><span class="versionmodified deprecated">Deprecated since version 0.2.2: </span>Functionality integrated into <cite>rim.Iono</cite>.</p>
-</div>
-<p>The original file will not be overwritten if kwarg <em>finalize</em> is set
-to <strong>False</strong>.</p>
+  <section id="spacepy-ctrans-ellipsoid">
+<h1>spacepy.ctrans.Ellipsoid<a class="headerlink" href="#spacepy-ctrans-ellipsoid" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="spacepy.ctrans.Ellipsoid">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.ctrans.</span></span><span class="sig-name descname"><span class="pre">Ellipsoid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'WGS84'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6378.137</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iFlat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">298.257223563</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/ctrans.html#Ellipsoid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.ctrans.Ellipsoid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ellipsoid definition class for geodetic coordinates</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Returns</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>filename</strong><span class="classifier">str</span></dt><dd><p>The file to repair.</p>
+<dt><strong>out</strong><span class="classifier">Ellipsoid</span></dt><dd><p>Ellipsoid instance storing all relevant paramters for geodetic conversion</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Other Parameters</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>finalize</strong><span class="classifier">bool</span></dt><dd><p>If <strong>True</strong>, overwrite the original file.  If <strong>False</strong>, perform a dry
-run for testing purposes.  Defaults to <strong>True</strong>.</p>
+<dt><strong>name</strong><span class="classifier">str</span></dt><dd><p>Name for ellipsoid, stored in attrs of returned Ellipsoid instance.
+Default is ‘WGS84’</p>
+</dd>
+<dt><strong>A</strong><span class="classifier">float</span></dt><dd><p>Semi-major axis (equatorial radius) of ellipsoid in km.
+Default is 6378.137km (WGS84_A)</p>
+</dd>
+<dt><strong>iFlat</strong><span class="classifier">float</span></dt><dd><p>Inverse flattening of ellipsoid. Default is WGS84 value
+of 298.257223563.</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.3.0.</span></p>
+</div>
 </dd></dl>
 
 </section>
@@ -140,24 +146,23 @@ run for testing purposes.  Defaults to <strong>True</strong>.</p>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.rim.get_iono_cb.html" title="spacepy.pybats.rim.get_iono_cb"
+          <a href="spacepy.ctrans.convert_multitime.html" title="spacepy.ctrans.convert_multitime"
              >next</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.rim.OvalDebugFile.html" title="spacepy.pybats.rim.OvalDebugFile"
+          <a href="spacepy.ctrans.CTrans.html" title="spacepy.ctrans.CTrans"
              >previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pybats.html" >PyBats - SWMF &amp; BATS-R-US Analysis Tools</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="spacepy.pybats.rim.html" >spacepy.pybats.rim</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">spacepy.pybats.rim.fix_format</a></li> 
+          <li class="nav-item nav-item-1"><a href="../ctrans.html" >ctrans - Coordinate transformation backend</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.ctrans.Ellipsoid</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2021, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+        &#169; Copyright 2011-2022, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>

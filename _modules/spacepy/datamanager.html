@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.datamanager &#8212; SpacePy v0.2.3 Manual</title>
+    <title>spacepy.datamanager &#8212; SpacePy v0.3.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -157,7 +157,7 @@
 <span class="sd">        smallest unit in the format string.</span>
 
 <span class="sd">    Examples</span>
-<span class="sd">    =======</span>
+<span class="sd">    ========</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directories</span><span class="p">,</span> <span class="n">file_fmt</span><span class="p">,</span> <span class="n">descend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1108,20 +1108,23 @@
 <span class="sd">    also be used to rebin on the time axis, e.g. for transforming time</span>
 <span class="sd">    base.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">makefloat</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span>\
+                <span class="ow">and</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">floating</span><span class="p">)</span>\
+                <span class="k">else</span> <span class="n">numpy</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">float_</span><span class="p">)</span>
     <span class="n">bintype</span> <span class="o">=</span> <span class="n">bintype</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
     <span class="k">assert</span> <span class="n">bintype</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="s1">&#39;unc&#39;</span><span class="p">)</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">floating</span><span class="p">)</span>
-    <span class="n">bindata</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="n">bindata</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">floating</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">makefloat</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">bindata</span> <span class="o">=</span> <span class="n">makefloat</span><span class="p">(</span><span class="n">bindata</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">axis</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">axis</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="n">axis</span>
     <span class="n">binnedshape</span> <span class="o">=</span> <span class="n">_find_shape</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">bindata</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">weights</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">weights</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">floating</span><span class="p">)</span>
+        <span class="n">weights</span> <span class="o">=</span> <span class="n">makefloat</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
         <span class="k">assert</span> <span class="n">weights</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">bindata</span><span class="o">.</span><span class="n">shape</span>
         <span class="n">weights</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">binnedshape</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">bindatadelta</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">bindatadelta</span><span class="p">):</span>
-            <span class="n">bindatadelta</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="n">bindatadelta</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">floating</span><span class="p">)</span>
+            <span class="n">bindatadelta</span> <span class="o">=</span> <span class="n">makefloat</span><span class="p">(</span><span class="n">bindatadelta</span><span class="p">)</span>
             <span class="k">assert</span> <span class="n">bindata</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">bindatadelta</span><span class="o">.</span><span class="n">shape</span>
             <span class="n">bindatadelta</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">bindatadelta</span><span class="p">,</span> <span class="n">binnedshape</span><span class="p">)</span>
             <span class="n">bindatadelta</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">rollaxis</span><span class="p">(</span>
@@ -1148,8 +1151,8 @@
         <span class="n">select</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">require</span><span class="p">(</span>
             <span class="n">numpy</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">whichbin</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
             <span class="o">==</span> <span class="n">numpy</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span>
-                <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nbins</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">int</span><span class="p">),</span> <span class="n">outbin_shape</span><span class="p">),</span>
-            <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
+                <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nbins</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">),</span> <span class="n">outbin_shape</span><span class="p">),</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">bindatamin</span> <span class="o">=</span> <span class="n">bindata</span> <span class="o">-</span> <span class="n">bindatadelta</span>
         <span class="n">bindatamax</span> <span class="o">=</span> <span class="n">bindata</span> <span class="o">+</span> <span class="n">bindatadelta</span>
@@ -1169,8 +1172,7 @@
         <span class="c1"># No overlap if top &lt; bottom</span>
         <span class="n">overlap</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">overlap_top</span> <span class="o">-</span> <span class="n">overlap_bottom</span> <span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
         <span class="c1"># Normalize the overlap to fraction of the input bin</span>
-        <span class="n">select</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="n">overlap</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">float</span><span class="p">)</span> \
-                                               <span class="o">/</span> <span class="p">(</span><span class="n">bindatamax</span> <span class="o">-</span> <span class="n">bindatamin</span><span class="p">)</span>
+        <span class="n">select</span> <span class="o">=</span> <span class="n">overlap</span> <span class="o">/</span> <span class="p">(</span><span class="n">bindatamax</span> <span class="o">-</span> <span class="n">bindatamin</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">weights</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="c1"># Apply weights to the inputs</span>
         <span class="n">select</span> <span class="o">=</span> <span class="n">select</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
     <span class="c1"># Add a degenerate dimension to the end of data, so now</span>
@@ -1223,8 +1225,8 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2021, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+        &#169; Copyright 2011-2022, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>

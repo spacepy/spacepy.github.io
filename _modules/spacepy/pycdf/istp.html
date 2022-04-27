@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.pycdf.istp &#8212; SpacePy v0.2.3 Manual</title>
+    <title>spacepy.pycdf.istp &#8212; SpacePy v0.3.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
@@ -1219,7 +1219,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1">#If input is a zVar, read all the data; if not, this is a no-copy operation</span>
     <span class="n">indata</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="o">...</span><span class="p">]</span>
-    <span class="n">badidx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
+    <span class="n">badidx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">v</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
     <span class="k">if</span> <span class="s1">&#39;FILLVAL&#39;</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
         <span class="n">badidx</span> <span class="o">|=</span> <span class="p">(</span><span class="n">indata</span> <span class="o">==</span> <span class="n">v</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;FILLVAL&#39;</span><span class="p">][</span><span class="o">...</span><span class="p">])</span>
     <span class="k">if</span> <span class="s1">&#39;VALIDMIN&#39;</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
@@ -2280,8 +2280,8 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2021, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+        &#169; Copyright 2011-2022, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>

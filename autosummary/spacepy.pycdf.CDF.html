@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.pycdf.CDF &#8212; SpacePy v0.2.3 Manual</title>
+    <title>spacepy.pycdf.CDF &#8212; SpacePy v0.3.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -59,12 +59,16 @@
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/logo.png" alt="Logo"/>
             </a></p>
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="../pycdf.html"
-                        title="previous chapter">pycdf - Python interface to CDF files</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="spacepy.pycdf.Var.html"
-                        title="next chapter">spacepy.pycdf.Var</a></p>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../pycdf.html"
+                          title="previous chapter">pycdf - Python interface to CDF files</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="spacepy.pycdf.Var.html"
+                          title="next chapter">spacepy.pycdf.Var</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -94,7 +98,7 @@
 <h1>spacepy.pycdf.CDF<a class="headerlink" href="#spacepy-pycdf-cdf" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="spacepy.pycdf.CDF">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">spacepy.pycdf.</span></span><span class="sig-name descname"><span class="pre">CDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pathname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masterpath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">readonly</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#CDF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.CDF" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pycdf.</span></span><span class="sig-name descname"><span class="pre">CDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pathname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masterpath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">readonly</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf-8'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#CDF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.CDF" title="Permalink to this definition">¶</a></dt>
 <dd><p>Python object representing a CDF file.</p>
 <p>Open or create a CDF file by creating an object of this class.</p>
 <dl class="field-list simple">
@@ -111,8 +115,11 @@ opened; if provided but evaluates to <code class="docutils literal notranslate">
 </dd>
 <dt><strong>readonly</strong><span class="classifier">bool</span></dt><dd><p>Open the CDF read-only. Default True if opening an
 existing CDF; False if creating a new one. A readonly
-CDF with many variables may be slow to close. See
-<a class="reference internal" href="#spacepy.pycdf.CDF.readonly" title="spacepy.pycdf.CDF.readonly"><code class="xref py py-meth docutils literal notranslate"><span class="pre">readonly()</span></code></a>.</p>
+CDF with many variables may be slow to close on CDF library
+versions before 3.8.1. See <a class="reference internal" href="#spacepy.pycdf.CDF.readonly" title="spacepy.pycdf.CDF.readonly"><code class="xref py py-meth docutils literal notranslate"><span class="pre">readonly()</span></code></a>.</p>
+</dd>
+<dt><strong>encoding</strong><span class="classifier">str, optional</span></dt><dd><p>Text encoding to use when reading and writing strings. Default
+<code class="docutils literal notranslate"><span class="pre">'utf-8'</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -629,7 +636,7 @@ other types have only one possible parameter.)</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="spacepy.pycdf.CDF.from_data">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sd</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#CDF.from_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.CDF.from_data" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sd</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#CDF.from_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.CDF.from_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new CDF file from a SpaceData object or similar</p>
 <p>The CDF named <code class="docutils literal notranslate"><span class="pre">filename</span></code> is created, opened, filled with the
 contents of <code class="docutils literal notranslate"><span class="pre">sd</span></code> (including attributes), and closed.</p>
@@ -661,6 +668,13 @@ and no <code class="xref py py-class docutils literal notranslate"><span class="
 <p class="admonition-title">Note</p>
 <p>Either <code class="docutils literal notranslate"><span class="pre">data</span></code> or <code class="docutils literal notranslate"><span class="pre">type</span></code> must be specified. If type is not
 specified, it is guessed from <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
+</div>
+<p>This creates a new variable. If using a “master CDF” with
+existing variables and no records, simply assign the new data
+to the variable, or the “whole variable” slice:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cdf</span><span class="p">[</span><span class="s1">&#39;ExistingVariable&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cdf</span><span class="p">[</span><span class="s1">&#39;ExistingVariable&#39;</span><span class="p">][</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+</pre></div>
 </div>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -715,7 +729,7 @@ is chosen. See <a class="reference internal" href="spacepy.pycdf.Var.html#spacep
 <p>Sparse records type for this variable, default None (no sparse
 records). See <a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var.sparse" title="spacepy.pycdf.Var.sparse"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Var.sparse()</span></code></a>.</p>
 </dd>
-<dt><strong>pad :</strong></dt><dd><div class="versionadded">
+<dt><strong>pad</strong></dt><dd><div class="versionadded">
 <p><span class="versionmodified added">New in version 0.2.3.</span></p>
 </div>
 <p>Pad value for this variable, default None (do not set). See
@@ -731,8 +745,12 @@ records). See <a class="reference internal" href="spacepy.pycdf.Var.html#spacepy
 </dd>
 <dt class="field-odd">Warns</dt>
 <dd class="field-odd"><dl>
-<dt>DeprecationWarning</dt><dd><p>if no type is provided and data is datetime, warning that
-the default will change in the future.</p>
+<dt>DeprecationWarning</dt><dd><p>if no type is provided and data is datetime, warn
+that a default type was chosen (usually TIME_TT2000).</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.3.0: </span>Before 0.3.0 (when the default changed from EPOCH/EPOCH16
+to TIME_TT2000), this warned that the default would change.</p>
+</div>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.2.3.</span></p>
 </div>
@@ -749,8 +767,8 @@ the CDF types which can represent this data. This breaks down to:</p>
 <li><p>If input data is a numpy array, match the type of that array</p></li>
 <li><p>Proper kind (numerical, string, time)</p></li>
 <li><p>Proper range (stores highest and lowest number provided)</p></li>
-<li><p>Sufficient resolution (EPOCH16 required if datetime has
-microseconds or below.)</p></li>
+<li><p>Sufficient resolution (EPOCH16 or TIME_TT2000 required if datetime
+has microseconds or below.)</p></li>
 </ol>
 </div></blockquote>
 <p>If more than one value satisfies the requirements, types are returned
@@ -764,11 +782,14 @@ in preferred order:</p>
 <li><p>specifically-named (CDF_BYTE) vs. generically named (CDF_INT1)</p></li>
 </ol>
 </div></blockquote>
-<p>So for example, EPOCH_16 is preferred over EPOCH if <code class="docutils literal notranslate"><span class="pre">data</span></code> specifies
+<p>TIME_TT2000 is always the preferred time type if it is available.
+Otherwise, EPOCH_16 is preferred over EPOCH if <code class="docutils literal notranslate"><span class="pre">data</span></code> specifies
 below the millisecond level (rule 1), but otherwise EPOCH is preferred
 (rule 2).</p>
-<p>In the future, CDF_TIME_TT2000 will be the preferred EPOCH type if
-not specified.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.3.0: </span>Before 0.3.0, EPOCH or EPOCH_16 were used if not specified. Now
+TIME_TT2000 is always the preferred type.</p>
+</div>
 <p>For floats, four-byte is preferred unless eight-byte is required:</p>
 <blockquote>
 <div><ol class="arabic simple">
@@ -810,12 +831,13 @@ to the same zVariable.</p>
 will have no effect.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Closing a CDF that has been opened readonly, or setting readonly
+<p>Before version 3.8.1 of the NASA CDF library,
+closing a CDF that has been opened readonly, or setting readonly
 False, may take a substantial amount of time if there are many
 variables in the CDF, as a (potentially large) cache needs to
-be cleared. Consider specifying <code class="docutils literal notranslate"><span class="pre">readonly=False</span></code> when opening
-the file if this is an issue. However, this may make some reading
-operations slower.</p>
+be cleared. If upgrading to a newer CDF library is not possible,
+specifying <code class="docutils literal notranslate"><span class="pre">readonly=False</span></code> when opening the file is an option.
+However, this may make some reading operations slower.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -943,8 +965,8 @@ an internal function.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2021, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+        &#169; Copyright 2011-2022, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>

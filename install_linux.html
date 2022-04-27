@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Linux Installation &#8212; SpacePy v0.2.3 Manual</title>
+    <title>Linux Installation &#8212; SpacePy v0.3.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -59,24 +59,29 @@
             <p class="logo"><a href="index.html">
               <img class="logo" src="_static/logo.png" alt="Logo"/>
             </a></p>
-  <h3><a href="index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Linux Installation</a><ul>
 <li><a class="reference internal" href="#dependencies-via-conda">Dependencies via conda</a></li>
 <li><a class="reference internal" href="#dependencies-via-system-packages">Dependencies via system packages</a></li>
 <li><a class="reference internal" href="#cdf">CDF</a></li>
-<li><a class="reference internal" href="#ffnet">ffnet</a></li>
 <li><a class="reference internal" href="#compiling">Compiling</a></li>
 </ul>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="dependencies.html"
-                        title="previous chapter">SpacePy Dependencies</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="install_mac.html"
-                        title="next chapter">MacOS Installation</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="dependencies.html"
+                          title="previous chapter">SpacePy Dependencies</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="install_mac.html"
+                          title="next chapter">MacOS Installation</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -128,8 +133,7 @@ and <a class="reference internal" href="#linux-dep-apt"><span class="std std-ref
 <li><p><a class="reference internal" href="#dependencies-via-conda" id="id1">Dependencies via conda</a></p></li>
 <li><p><a class="reference internal" href="#dependencies-via-system-packages" id="id2">Dependencies via system packages</a></p></li>
 <li><p><a class="reference internal" href="#cdf" id="id3">CDF</a></p></li>
-<li><p><a class="reference internal" href="#ffnet" id="id4">ffnet</a></p></li>
-<li><p><a class="reference internal" href="#compiling" id="id5">Compiling</a></p></li>
+<li><p><a class="reference internal" href="#compiling" id="id4">Compiling</a></p></li>
 </ul>
 </div>
 <section id="dependencies-via-conda">
@@ -137,18 +141,18 @@ and <a class="reference internal" href="#linux-dep-apt"><span class="std std-ref
 <p>Installation via <code class="docutils literal notranslate"><span class="pre">pip</span></code> will automatically install most Python
 dependencies (but not the <a class="reference internal" href="#linux-cdf"><span class="std std-ref">NASA CDF library</span></a>). They
 can also be installed from conda:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">numpy</span> <span class="n">scipy</span> <span class="n">matplotlib</span> <span class="n">networkx</span> <span class="n">h5py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">numpy</span> <span class="n">scipy</span> <span class="n">matplotlib</span> <span class="n">h5py</span>
 </pre></div>
 </div>
 </section>
 <section id="dependencies-via-system-packages">
 <span id="linux-dep-apt"></span><h2><a class="toc-backref" href="#id2">Dependencies via system packages</a><a class="headerlink" href="#dependencies-via-system-packages" title="Permalink to this headline">¶</a></h2>
 <p>SpacePy usually works with the system Python on Linux. To install dependencies via the package manager on Debian or Ubuntu:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">dev</span> <span class="n">python</span><span class="o">-</span><span class="n">h5py</span> <span class="n">python</span><span class="o">-</span><span class="n">matplotlib</span> <span class="n">python</span><span class="o">-</span><span class="n">networkx</span> <span class="n">python</span><span class="o">-</span><span class="n">numpy</span> <span class="n">python</span><span class="o">-</span><span class="n">scipy</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">dev</span> <span class="n">python</span><span class="o">-</span><span class="n">h5py</span> <span class="n">python</span><span class="o">-</span><span class="n">matplotlib</span> <span class="n">python</span><span class="o">-</span><span class="n">numpy</span> <span class="n">python</span><span class="o">-</span><span class="n">scipy</span>
 </pre></div>
 </div>
 <p>For Python 3, use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">dev</span> <span class="n">python3</span><span class="o">-</span><span class="n">h5py</span> <span class="n">python3</span><span class="o">-</span><span class="n">matplotlib</span> <span class="n">python3</span><span class="o">-</span><span class="n">networkx</span> <span class="n">python3</span><span class="o">-</span><span class="n">numpy</span> <span class="n">python3</span><span class="o">-</span><span class="n">scipy</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">dev</span> <span class="n">python3</span><span class="o">-</span><span class="n">h5py</span> <span class="n">python3</span><span class="o">-</span><span class="n">matplotlib</span> <span class="n">python3</span><span class="o">-</span><span class="n">numpy</span> <span class="n">python3</span><span class="o">-</span><span class="n">scipy</span>
 </pre></div>
 </div>
 <p>For other distributions, check <a class="reference internal" href="dependencies.html"><span class="doc">SpacePy Dependencies</span></a> and install by hand
@@ -177,43 +181,10 @@ SpacePy can find it. If you choose to install elsewhere, see the CDF documentati
 particularly the notes on the <code class="docutils literal notranslate"><span class="pre">CDF_BASE</span></code> and <code class="docutils literal notranslate"><span class="pre">CDF_LIB</span></code> environment variables.
 SpacePy uses these variables to find the library.</p>
 </section>
-<section id="ffnet">
-<span id="linux-ffnet"></span><h2><a class="toc-backref" href="#id4">ffnet</a><a class="headerlink" href="#ffnet" title="Permalink to this headline">¶</a></h2>
-<p>ffnet is required for <code class="xref py py-mod docutils literal notranslate"><span class="pre">LANLstar</span></code>. Installing SpacePy
-from <code class="docutils literal notranslate"><span class="pre">pip</span></code> will automatically attempt to compile and install
-<code class="docutils literal notranslate"><span class="pre">ffnet</span></code> on Linux (it is not automatically installed by binary
-installers, but SpacePy does not currently provide binaries for
-Linux.)  Otherwise <code class="docutils literal notranslate"><span class="pre">ffnet</span></code> can be installed from <code class="docutils literal notranslate"><span class="pre">pip</span></code>. In either
-case, if the wrong Fortran compiler is found try:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FC_VENDOR</span><span class="o">=</span><span class="n">gfortran</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">ffnet</span>
-</pre></div>
-</div>
-<p>It can also be installed from
-<a class="reference external" href="http://ffnet.sourceforge.net/install.html">source</a>.
-Compilation requires f2py (from numpy), installed per the
-distribution-specific directions above. Untar and cd into the
-resulting directory. Then build:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">build</span>
-</pre></div>
-</div>
-<p>Either install just for one user:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span>
-</pre></div>
-</div>
-<p>Or install for all users on the system:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
-</pre></div>
-</div>
-<p>Normally the correct Fortran compiler will be found; if compilation
-fails, try specifying the older GNU compiler at the build step:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">build</span> <span class="o">--</span><span class="n">fcompiler</span><span class="o">=</span><span class="n">gnu</span>
-</pre></div>
-</div>
-</section>
 <section id="compiling">
-<h2><a class="toc-backref" href="#id5">Compiling</a><a class="headerlink" href="#compiling" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id4">Compiling</a><a class="headerlink" href="#compiling" title="Permalink to this headline">¶</a></h2>
 <p>With the dependencies installed, SpacePy can be built from source.
-This uses the same basic setup as ffnet (standard Python distutils).
+This uses standard Python distutils.
 You can always get the latest source code for SpacePy from our <a class="reference external" href="https://github.com/spacepy/spacepy">github
 repository</a> and the latest
 release from <a class="reference external" href="https://pypi.org/project/SpacePy/#files">PyPI</a></p>
@@ -294,8 +265,8 @@ easiest way is via pip:</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2021, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+        &#169; Copyright 2011-2022, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>

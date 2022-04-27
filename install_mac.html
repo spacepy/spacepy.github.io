@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>MacOS Installation &#8212; SpacePy v0.2.3 Manual</title>
+    <title>MacOS Installation &#8212; SpacePy v0.3.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -59,20 +59,26 @@
             <p class="logo"><a href="index.html">
               <img class="logo" src="_static/logo.png" alt="Logo"/>
             </a></p>
-  <h3><a href="index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">MacOS Installation</a><ul>
 <li><a class="reference internal" href="#dependencies-via-conda-and-pip">Dependencies via conda and pip</a></li>
 </ul>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="install_linux.html"
-                        title="previous chapter">Linux Installation</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="install_windows.html"
-                        title="next chapter">Windows Installation</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="install_linux.html"
+                          title="previous chapter">Linux Installation</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="install_windows.html"
+                          title="next chapter">Windows Installation</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -117,8 +123,7 @@ stack. Another excellent distribution is <a class="reference external" href="htt
 <p>Installation via <code class="docutils literal notranslate"><span class="pre">pip</span></code> will automatically install most Python
 dependencies (but not the <a class="reference internal" href="install_linux.html#linux-cdf"><span class="std std-ref">NASA CDF library</span></a>). They
 can also be installed from conda:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">numpy</span> <span class="n">scipy</span> <span class="n">matplotlib</span> <span class="n">networkx</span> <span class="n">h5py</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="n">ffnet</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">numpy</span> <span class="n">scipy</span> <span class="n">matplotlib</span> <span class="n">h5py</span>
 </pre></div>
 </div>
 <p>Once this is set up, <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">spacepy</span></code> should just work. If
@@ -126,13 +131,6 @@ you’re installing as a single user (not in a virtual environment) then
 add the <code class="docutils literal notranslate"><span class="pre">--user</span></code> flag.</p>
 <p>You will also need the <a class="reference internal" href="install_linux.html#linux-cdf"><span class="std std-ref">NASA CDF library</span></a> to use
 <a class="reference internal" href="pycdf.html#module-spacepy.pycdf" title="spacepy.pycdf"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pycdf</span></code></a>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">ffnet</span></code> is required for <code class="xref py py-mod docutils literal notranslate"><span class="pre">LANLstar</span></code>. It is
-automatically installed when SpacePy is installed from source
-(currently the only supported means on Mac). It can also be explicitly
-installed via pip:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">ffnet</span>
-</pre></div>
-</div>
 <p>To install the latest code from the repository, rather than
 the latest stable release, use:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">spacepy</span><span class="o">/</span><span class="n">spacepy</span>
@@ -173,8 +171,8 @@ the latest stable release, use:</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2021, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+        &#169; Copyright 2011-2022, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>

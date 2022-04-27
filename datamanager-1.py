@@ -1,5 +1,5 @@
 # This example plots "gappy" data with and without explicit fill values.
-
+#
 import matplotlib.pyplot as plt
 import numpy
 import spacepy.datamanager

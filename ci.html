@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Continuous Integration &#8212; SpacePy v0.2.3 Manual</title>
+    <title>Continuous Integration &#8212; SpacePy v0.3.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -58,23 +58,30 @@
             <p class="logo"><a href="index.html">
               <img class="logo" src="_static/logo.png" alt="Logo"/>
             </a></p>
-  <h3><a href="index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Continuous Integration</a><ul>
 <li><a class="reference internal" href="#initial-run">Initial run</a></li>
 <li><a class="reference internal" href="#merging-rules">Merging rules</a></li>
 <li><a class="reference internal" href="#rerunning-ci-on-a-pr">Rerunning CI on a PR</a></li>
+<li><a class="reference internal" href="#cacheing">Cacheing</a></li>
 <li><a class="reference internal" href="#usage">Usage</a></li>
 </ul>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="autosummary/spacepy_testing.testsdir.html"
-                        title="previous chapter">spacepy_testing.testsdir</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="spacepy.html"
-                        title="next chapter">spacepy - main SpacePy module</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="autosummary/spacepy_testing.testsdir.html"
+                          title="previous chapter">spacepy_testing.testsdir</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="spacepy.html"
+                          title="next chapter">spacepy - main SpacePy module</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -115,7 +122,8 @@ opening a pull request.</p>
 <li><p><a class="reference internal" href="#initial-run" id="id2">Initial run</a></p></li>
 <li><p><a class="reference internal" href="#merging-rules" id="id3">Merging rules</a></p></li>
 <li><p><a class="reference internal" href="#rerunning-ci-on-a-pr" id="id4">Rerunning CI on a PR</a></p></li>
-<li><p><a class="reference internal" href="#usage" id="id5">Usage</a></p></li>
+<li><p><a class="reference internal" href="#cacheing" id="id5">Cacheing</a></p></li>
+<li><p><a class="reference internal" href="#usage" id="id6">Usage</a></p></li>
 </ul>
 </div>
 <section id="initial-run">
@@ -151,17 +159,27 @@ SpacePy’s CI workflow is set up to <a class="reference external" href="https:/
 force a run is to mark the PR as a draft, and then as ready again.</p>
 <p>Note that a PR will not trigger the CI <a class="reference external" href="https://github.community/t/run-actions-on-pull-requests-with-merge-conflicts/17104">if there is a merge conflict</a>.</p>
 </section>
+<section id="cacheing">
+<h2><a class="toc-backref" href="#id5">Cacheing</a><a class="headerlink" href="#cacheing" title="Permalink to this headline">¶</a></h2>
+<p>Dependencies for CI are stored in two caches: one for all pip
+dependencies, and one for the NASA CDF library. This minimizes CI time
+use for building dependencies.</p>
+<p>Caches expire weekly (the week begins at 00 Monday, UTC). Caches can
+also be force-expired by incrementing the versions in <code class="docutils literal notranslate"><span class="pre">ci.yml</span></code> for
+the pip and/or CDF cache. Unfortunately this does require pushing a
+commit.</p>
+</section>
 <section id="usage">
-<h2><a class="toc-backref" href="#id5">Usage</a><a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id6">Usage</a><a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <p>SpacePy administrators can view the usage minutes, storage (for caches),
 etc. on our <a class="reference external" href="https://github.com/organizations/spacepy/settings/billing">billing page</a>.</p>
 <hr class="docutils" />
 <dl class="field-list simple">
 <dt class="field-odd">Release</dt>
-<dd class="field-odd"><p>0.2.3</p>
+<dd class="field-odd"><p>0.3.0</p>
 </dd>
 <dt class="field-even">Doc generation date</dt>
-<dd class="field-even"><p>Oct 29, 2021</p>
+<dd class="field-even"><p>Apr 27, 2022</p>
 </dd>
 </dl>
 </section>
@@ -198,8 +216,8 @@ etc. on our <a class="reference external" href="https://github.com/organizations
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2021, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+        &#169; Copyright 2011-2022, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>

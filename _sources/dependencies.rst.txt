@@ -21,9 +21,7 @@ Python 2.7+
 -----------
 
 `Python <http://www.python.org/>`_ is the core language for SpacePy.
-Python 3 is strongly recommended; while SpacePy currently supports
-Python 2.7, this support will be phased out over the course
-of 2020. See :doc:`py2k_eol`.
+Python 3 is strongly recommended and will be required soon. See :doc:`py2k_eol`.
 
 Required to install SpacePy.
 
@@ -70,6 +68,8 @@ and numerical functions build on top of NumPy.  It is highly
 recommended. The following modules may have limited functionality
 without SciPy:
 
+    * :mod:`~spacepy.coordinates`
+    * :mod:`~spacepy.ctrans`
     * :mod:`~spacepy.empiricals`
     * :mod:`~spacepy.seapy`
     * :mod:`~spacepy.toolbox`
@@ -90,20 +90,6 @@ modules may have limited functionality or fail entirely:
     * :mod:`~spacepy.radbelt`
     * :mod:`~spacepy.seapy`
     * :mod:`~spacepy.toolbox`
-
-.. _dependencies_ffnet:
-
-ffnet 0.7+
-----------
-`ffnet <http://ffnet.sourceforge.net/>`_ is a neural network package,
-required for :mod:`~spacepy.LANLstar`.
-
-.. _dependencies_networkx:
-
-networkx 1.0+
--------------
-`networkx <http://networkx.lanl.gov/>`_ is a requirement for ffnet,
-and thus :mod:`~spacepy.LANLstar`.
 
 .. _dependencies_h5py:
 
@@ -139,7 +125,10 @@ compiler ``g77``, and the Portland Group PGI compiler.
 If :mod:`~spacepy.irbempy` is to be used, the Fortran compiler (and
 f2py) must be installed before SpacePy.
 
-:mod:`~spacepy.coordinates` requires :mod:`~spacepy.irbempy`.
+:mod:`~spacepy.coordinates` requires :mod:`~spacepy.irbempy` to use
+the IRBEM-based backend, but the new CTrans-based backend can be used
+without Fortran. See the :mod:`~spacepy.coordinates` documentation for
+the ``use_irbem`` option.
 
 .. _dependencies_astropy:
 
@@ -166,26 +155,29 @@ unaffected by that dependency.
    * -
      - :ref:`CDF <dependencies_cdf>`
      - :ref:`Fortran compiler <dependencies_fortran>`
-     - :ref:`ffnet <dependencies_ffnet>`
      - :ref:`h5py <dependencies_h5py>`
      - :ref:`matplotlib <dependencies_mpl>`
-     - :ref:`networkx <dependencies_networkx>`
      - :ref:`SciPy <dependencies_scipy>`
      - :ref:`AstroPy <dependencies_astropy>`
    * - :mod:`~spacepy.coordinates`
      -
-     - :class:`~spacepy.coordinates.Coords` (except Windows binaries)
+     - :class:`~spacepy.coordinates.Coords` IRBEM backend (except Windows binaries)
+     -
+     -
+     - :mod:`Entire module <spacepy.coordinates>`
+     - * :meth:`~spacepy.coordinates.Coords.from_skycoord`
+       * :meth:`~spacepy.coordinates.Coords.to_skycoord`
+   * - :mod:`~spacepy.ctrans`
      -
      -
      -
      -
-     -
+     - :mod:`Entire module <spacepy.ctrans>`
      -
    * - :mod:`~spacepy.datamodel`
      - * :meth:`~spacepy.datamodel.SpaceData.toCDF`
        * :func:`~spacepy.datamodel.fromCDF`
        * :func:`~spacepy.datamodel.toCDF`
-     -
      -
      - * :meth:`~spacepy.datamodel.SpaceData.toHDF5`
        * :func:`~spacepy.datamodel.fromHDF5`
@@ -193,10 +185,7 @@ unaffected by that dependency.
      -
      -
      -
-     -
    * - :mod:`~spacepy.empiricals`
-     -
-     -
      -
      -
      -
@@ -211,23 +200,17 @@ unaffected by that dependency.
      -
      -
      -
-     -
-     -
    * - :mod:`~spacepy.LANLstar`
      -
-     - May be required to install :ref:`ffnet <dependencies_ffnet>`
-     - :mod:`Entire module <spacepy.LANLstar>`
+     - May be required to install ffnet.
      -
      -
-     - :mod:`Entire module <spacepy.LANLstar>`
      -
      -
    * - :mod:`~spacepy.omni`
      -
      -
-     -
      - :mod:`Entire module <spacepy.omni>`
-     -
      -
      -
      -
@@ -235,13 +218,10 @@ unaffected by that dependency.
      -
      -
      -
-     -
      - :mod:`Entire module <spacepy.plot>`
      -
      -
-     -
    * - :mod:`~spacepy.poppy`
-     -
      -
      -
      -
@@ -251,9 +231,7 @@ unaffected by that dependency.
        * :func:`~spacepy.poppy.plot_two_ppro`
      -
      -
-     -
    * - :mod:`~spacepy.pybats`
-     -
      -
      -
      -
@@ -294,11 +272,8 @@ unaffected by that dependency.
        * :func:`~spacepy.pybats.trace2d.test_dipole`
      -
      -
-     -
    * - :mod:`~spacepy.pycdf`
      - :mod:`Entire module <spacepy.pycdf>`
-     -
-     -
      -
      -
      -
@@ -308,24 +283,18 @@ unaffected by that dependency.
      -
      -
      -
-     -
      - * :meth:`~spacepy.radbelt.RBmodel.plot`
        * :meth:`~spacepy.radbelt.RBmodel.plot_obs`
-     -
      -
      -
    * - :mod:`~spacepy.seapy`
      -
      -
      -
-     -
      - :mod:`Entire module <spacepy.seapy>`
-     -
      - * :func:`~spacepy.seapy.sea_signif`
      -
    * - :mod:`~spacepy.time`
-     -
-     -
      -
      -
      -
@@ -336,15 +305,12 @@ unaffected by that dependency.
      -
      -
      -
-     -
      - * :func:`~spacepy.toolbox.tCommon`
        * :func:`~spacepy.toolbox.linspace` if using
          :class:`~datetime.datetime` inputs
        * :func:`~spacepy.toolbox.logspace` if using
          :class:`~datetime.datetime` inputs
-     -
      - * :func:`~spacepy.toolbox.dist_to_list`
        * :func:`~spacepy.toolbox.intsolve`
        * :func:`~spacepy.toolbox.poisson_fit`
      -
-

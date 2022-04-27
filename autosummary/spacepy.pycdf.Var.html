@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.pycdf.Var &#8212; SpacePy v0.2.3 Manual</title>
+    <title>spacepy.pycdf.Var &#8212; SpacePy v0.3.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -59,12 +59,16 @@
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/logo.png" alt="Logo"/>
             </a></p>
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="spacepy.pycdf.CDF.html"
-                        title="previous chapter">spacepy.pycdf.CDF</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="spacepy.pycdf.gAttrList.html"
-                        title="next chapter">spacepy.pycdf.gAttrList</a></p>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="spacepy.pycdf.CDF.html"
+                          title="previous chapter">spacepy.pycdf.CDF</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="spacepy.pycdf.gAttrList.html"
+                          title="next chapter">spacepy.pycdf.gAttrList</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -94,11 +98,11 @@
 <h1>spacepy.pycdf.Var<a class="headerlink" href="#spacepy-pycdf-var" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="spacepy.pycdf.Var">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">spacepy.pycdf.</span></span><span class="sig-name descname"><span class="pre">Var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdf_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Var" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pycdf.</span></span><span class="sig-name descname"><span class="pre">Var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdf_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Var" title="Permalink to this definition">¶</a></dt>
 <dd><p>A CDF variable.</p>
 <p>This object does not directly store the data from the CDF; rather,
 it provides access to the data in a format that much like a Python
-list or numpy <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>.
+list or numpy <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.22)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>.
 General list information is available in the python docs:
 <a class="reference external" href="http://docs.python.org/tutorial/introduction.html#lists">1</a>,
 <a class="reference external" href="http://docs.python.org/tutorial/datastructures.html#more-on-lists">2</a>,
@@ -173,6 +177,13 @@ of zero length. The scalar is, again, a special case: due to the
 inability to have a numpy array which is both zero-dimensional and empty,
 reading an NRV scalar variable with no data will return an empty
 one-dimensional array. This is really not recommended.</p>
+<p>Variables with no records (RV) or no data (NRV) are considered to be
+“false”; those with records or data written are considered to be
+“true”, allowing for an easy check of data existence:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">testcdf</span><span class="p">[</span><span class="s1">&#39;variable&#39;</span><span class="p">]:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># do things that require data to exist</span>
+</pre></div>
+</div>
 <p>As a list type, variables are also <a class="reference external" href="http://docs.python.org/tutorial/classes.html#iterators">iterable</a>; iterating
 over a variable returns a single complete record at a time.</p>
 <p>This is all clearer with examples. Consider a variable <code class="docutils literal notranslate"><span class="pre">B_GSM</span></code>, with
@@ -481,7 +492,7 @@ variance, False to change to not dimension variance.
 <dd class="field-odd"><dl class="simple">
 <dt><strong>index</strong><span class="classifier">int</span></dt><dd><p>index before which to insert the new record</p>
 </dd>
-<dt><strong>data :</strong></dt><dd><p>the record to insert</p>
+<dt><strong>data</strong></dt><dd><p>the record to insert</p>
 </dd>
 </dl>
 </dd>
@@ -527,7 +538,7 @@ pad values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><dl class="simple">
-<dt>out :</dt><dd><p>Current pad value for this variable. <code class="docutils literal notranslate"><span class="pre">None</span></code> if it has never been
+<dt><strong>out</strong><span class="classifier"></span></dt><dd><p>Current pad value for this variable. <code class="docutils literal notranslate"><span class="pre">None</span></code> if it has never been
 set. This rarely happens; the pad value is usually set by the CDF
 library on variable creation.</p>
 </dd>
@@ -535,7 +546,7 @@ library on variable creation.</p>
 </dd>
 <dt class="field-even">Other Parameters</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>value :</strong></dt><dd><p>If specified, should be an appropriate pad value. If not
+<dt><strong>value</strong></dt><dd><p>If specified, should be an appropriate pad value. If not
 specified, the pad value will not be set or changed.</p>
 </dd>
 </dl>
@@ -684,8 +695,8 @@ variable will not change.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2021, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+        &#169; Copyright 2011-2022, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>
