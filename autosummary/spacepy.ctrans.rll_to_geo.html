@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.ctrans.rll_to_geo &#8212; SpacePy v0.3.0 Manual</title>
+    <title>spacepy.ctrans.rll_to_geo &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -15,6 +15,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/copybutton.js"></script>
     
@@ -85,7 +86,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -95,26 +96,26 @@
           <div class="body" role="main">
             
   <section id="spacepy-ctrans-rll-to-geo">
-<h1>spacepy.ctrans.rll_to_geo<a class="headerlink" href="#spacepy-ctrans-rll-to-geo" title="Permalink to this headline">¶</a></h1>
+<h1>spacepy.ctrans.rll_to_geo<a class="headerlink" href="#spacepy-ctrans-rll-to-geo" title="Permalink to this heading">¶</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="spacepy.ctrans.rll_to_geo">
 <span class="sig-prename descclassname"><span class="pre">spacepy.ctrans.</span></span><span class="sig-name descname"><span class="pre">rll_to_geo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rllvec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'km'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geoid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'1mE2':</span> <span class="pre">0.9933056200098587,</span> <span class="pre">'A':</span> <span class="pre">6378.137,</span> <span class="pre">'A2':</span> <span class="pre">40680631.59076899,</span> <span class="pre">'A2mB2':</span> <span class="pre">272331.60610755533,</span> <span class="pre">'B':</span> <span class="pre">6356.752314245179,</span> <span class="pre">'B2':</span> <span class="pre">40408299.98466144,</span> <span class="pre">'E2':</span> <span class="pre">0.0066943799901413165,</span> <span class="pre">'E4':</span> <span class="pre">4.481472345240445e-05,</span> <span class="pre">'EP2':</span> <span class="pre">0.0067394967422764514,</span> <span class="pre">'Flat':</span> <span class="pre">0.0033528106647474805,</span> <span class="pre">'iFlat':</span> <span class="pre">298.257223563}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/ctrans.html#rll_to_geo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.ctrans.rll_to_geo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate geocentric geographic (GEO) from RLL coordinates</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>rllvec</strong><span class="classifier">array-like</span></dt><dd><p>Nx3 array of geocentric radius, geodetic latitude, geodetic longitude
 (in specified units)</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>geoarr</strong><span class="classifier">numpy.ndarray</span></dt><dd><p>Nx3 array of [altitude, geodetic latitude, geodetic longitude]</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">Other Parameters</dt>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>units</strong><span class="classifier">str</span></dt><dd><p>Units for input geocentric radii. Options are ‘km’ or ‘Re’. Default is ‘km’.
 Output units will be the same as input units.</p>
@@ -166,7 +167,7 @@ Default is WGS84.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

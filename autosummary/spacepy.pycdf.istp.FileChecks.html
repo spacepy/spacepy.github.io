@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.pycdf.istp.FileChecks &#8212; SpacePy v0.3.0 Manual</title>
+    <title>spacepy.pycdf.istp.FileChecks &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -15,6 +15,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/copybutton.js"></script>
     
@@ -86,7 +87,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -96,7 +97,7 @@
           <div class="body" role="main">
             
   <section id="spacepy-pycdf-istp-filechecks">
-<h1>spacepy.pycdf.istp.FileChecks<a class="headerlink" href="#spacepy-pycdf-istp-filechecks" title="Permalink to this headline">¶</a></h1>
+<h1>spacepy.pycdf.istp.FileChecks<a class="headerlink" href="#spacepy-pycdf-istp-filechecks" title="Permalink to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="spacepy.pycdf.istp.FileChecks">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pycdf.istp.</span></span><span class="sig-name descname"><span class="pre">FileChecks</span></span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#FileChecks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.FileChecks" title="Permalink to this definition">¶</a></dt>
@@ -107,11 +108,7 @@ skeleton editor</a>.  All
 tests return a list, one error string for every noncompliance
 found (empty list if compliant). <a class="reference internal" href="#spacepy.pycdf.istp.FileChecks.all" title="spacepy.pycdf.istp.FileChecks.all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">all()</span></code></a> will perform all
 tests and concatenate all errors.</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pycdf.istp.FileChecks.all" title="spacepy.pycdf.istp.FileChecks.all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">all</span></code></a>(f[, catch])</p></td>
 <td><p>Perform all variable and file-level tests</p></td>
@@ -137,7 +134,7 @@ tests and concatenate all errors.</p>
 <p>In addition to calling every test in this class, will also call
 <a class="reference internal" href="spacepy.pycdf.istp.VariableChecks.html#spacepy.pycdf.istp.VariableChecks.all" title="spacepy.pycdf.istp.VariableChecks.all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">VariableChecks.all()</span></code></a> for every variable in the file.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>f</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.CDF.html#spacepy.pycdf.CDF" title="spacepy.pycdf.CDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CDF</span></code></a></span></dt><dd><p>Open CDF file to check</p>
 </dd>
@@ -148,7 +145,7 @@ Calling the individual test will reveal the full traceback.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>list of str</dt><dd><p>Description of each validation failure.</p>
 </dd>
@@ -176,13 +173,13 @@ Calling the individual test will reveal the full traceback.</p>
 <p>Checks global attributes for this variable for any entries consisting
 of an empty string. These should be replaced with a single space.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>f</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.CDF.html#spacepy.pycdf.CDF" title="spacepy.pycdf.CDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CDF</span></code></a></span></dt><dd><p>Open CDF file to check</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>list of str</dt><dd><p>Description of each validation failure.</p>
 </dd>
@@ -199,13 +196,13 @@ of an empty string. These should be replaced with a single space.</p>
 and <a class="reference external" href="https://spdf.gsfc.nasa.gov/istp_guide/gattributes.html#Logical_source">Logical_source</a>
 for consistency with CDF filename.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>f</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.CDF.html#spacepy.pycdf.CDF" title="spacepy.pycdf.CDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CDF</span></code></a></span></dt><dd><p>Open CDF file to check</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>list of str</dt><dd><p>Description of each validation failure.</p>
 </dd>
@@ -221,13 +218,13 @@ for consistency with CDF filename.</p>
 <p>Check that all <a class="reference external" href="https://spdf.gsfc.nasa.gov/istp_guide/variables.html#support_data_eg1">Epoch</a>
 variables are monotonically increasing.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>f</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.CDF.html#spacepy.pycdf.CDF" title="spacepy.pycdf.CDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CDF</span></code></a></span></dt><dd><p>Open CDF file to check</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>list of str</dt><dd><p>Description of each validation failure.</p>
 </dd>
@@ -243,13 +240,13 @@ variables are monotonically increasing.</p>
 <p>Check that all <a class="reference external" href="https://spdf.gsfc.nasa.gov/istp_guide/variables.html#support_data_eg1">Epoch</a>
 variables only contain times matching filename.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>f</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.CDF.html#spacepy.pycdf.CDF" title="spacepy.pycdf.CDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CDF</span></code></a></span></dt><dd><p>Open CDF file to check</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>list of str</dt><dd><p>Description of each validation failure.</p>
 </dd>
@@ -300,7 +297,7 @@ check to have.)</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

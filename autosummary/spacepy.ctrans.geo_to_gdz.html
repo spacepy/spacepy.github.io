@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.ctrans.geo_to_gdz &#8212; SpacePy v0.3.0 Manual</title>
+    <title>spacepy.ctrans.geo_to_gdz &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -15,6 +15,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/copybutton.js"></script>
     
@@ -85,7 +86,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -95,21 +96,21 @@
           <div class="body" role="main">
             
   <section id="spacepy-ctrans-geo-to-gdz">
-<h1>spacepy.ctrans.geo_to_gdz<a class="headerlink" href="#spacepy-ctrans-geo-to-gdz" title="Permalink to this headline">¶</a></h1>
+<h1>spacepy.ctrans.geo_to_gdz<a class="headerlink" href="#spacepy-ctrans-geo-to-gdz" title="Permalink to this heading">¶</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="spacepy.ctrans.geo_to_gdz">
 <span class="sig-prename descclassname"><span class="pre">spacepy.ctrans.</span></span><span class="sig-name descname"><span class="pre">geo_to_gdz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geovec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'km'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geoid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'1mE2':</span> <span class="pre">0.9933056200098587,</span> <span class="pre">'A':</span> <span class="pre">6378.137,</span> <span class="pre">'A2':</span> <span class="pre">40680631.59076899,</span> <span class="pre">'A2mB2':</span> <span class="pre">272331.60610755533,</span> <span class="pre">'B':</span> <span class="pre">6356.752314245179,</span> <span class="pre">'B2':</span> <span class="pre">40408299.98466144,</span> <span class="pre">'E2':</span> <span class="pre">0.0066943799901413165,</span> <span class="pre">'E4':</span> <span class="pre">4.481472345240445e-05,</span> <span class="pre">'EP2':</span> <span class="pre">0.0067394967422764514,</span> <span class="pre">'Flat':</span> <span class="pre">0.0033528106647474805,</span> <span class="pre">'iFlat':</span> <span class="pre">298.257223563}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/ctrans.html#geo_to_gdz"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.ctrans.geo_to_gdz" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert geocentric geographic (cartesian GEO) to geodetic (spherical GDZ)</p>
-<p>Uses Heikkinen’s exact solution <a class="footnote-reference brackets" href="#heikkinen" id="id1">1</a>, see Zhu et al. [#Zhu] for
+<p>Uses Heikkinen’s exact solution <a class="footnote-reference brackets" href="#heikkinen" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, see Zhu et al. [#Zhu] for
 details.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>geovec</strong><span class="classifier">array-like</span></dt><dd><p>Nx3 array (or array-like) of geocentric geographic [x, y, z] coordinates</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">numpy.ndarray</span></dt><dd><p>Nx3 array of geodetic altitude, latitude, and longitude</p>
 </dd>
@@ -121,18 +122,18 @@ details.</p>
 <p><span class="versionmodified added">New in version 0.3.0.</span></p>
 </div>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="heikkinen"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Heikkinen, M., “Geschlossene formeln zur berechnung raumlicher geodatischer
+<aside class="footnote brackets" id="heikkinen" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Heikkinen, M., “Geschlossene formeln zur berechnung raumlicher geodatischer
 koordinaten aus rechtwinkligen koordinaten”, Z. Vermess., vol. 107, pp. 207-211,
 1982.</p>
-</dd>
-<dt class="label" id="zhu"><span class="brackets">2</span></dt>
-<dd><p>J. Zhu, “Conversion of Earth-centered Earth-fixed coordinates to geodetic
+</aside>
+<aside class="footnote brackets" id="zhu" role="note">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<p>J. Zhu, “Conversion of Earth-centered Earth-fixed coordinates to geodetic
 coordinates,” in IEEE Transactions on Aerospace and Electronic Systems, vol. 30,
 no. 3, pp. 957-961, July 1994, doi: 10.1109/7.303772.</p>
-</dd>
-</dl>
+</aside>
 </dd></dl>
 
 </section>
@@ -170,7 +171,7 @@ no. 3, pp. 957-961, July 1994, doi: 10.1109/7.303772.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

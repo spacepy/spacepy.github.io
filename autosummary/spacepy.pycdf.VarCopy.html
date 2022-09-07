@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.pycdf.VarCopy &#8212; SpacePy v0.3.0 Manual</title>
+    <title>spacepy.pycdf.VarCopy &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -15,6 +15,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/copybutton.js"></script>
     
@@ -85,7 +86,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -95,7 +96,7 @@
           <div class="body" role="main">
             
   <section id="spacepy-pycdf-varcopy">
-<h1>spacepy.pycdf.VarCopy<a class="headerlink" href="#spacepy-pycdf-varcopy" title="Permalink to this headline">¶</a></h1>
+<h1>spacepy.pycdf.VarCopy<a class="headerlink" href="#spacepy-pycdf-varcopy" title="Permalink to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="spacepy.pycdf.VarCopy">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pycdf.</span></span><span class="sig-name descname"><span class="pre">VarCopy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">zVar</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#VarCopy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.VarCopy" title="Permalink to this definition">¶</a></dt>
@@ -111,11 +112,7 @@ reproduce the variable by passing it to
 <a class="reference internal" href="spacepy.pycdf.CDF.html#spacepy.pycdf.CDF.new" title="spacepy.pycdf.CDF.new"><code class="xref py py-meth docutils literal notranslate"><span class="pre">new()</span></code></a>. Operations that e.g. change the
 dimensionality of the copy may make this (or any) metadata out of
 date; see <a class="reference internal" href="#spacepy.pycdf.VarCopy.set" title="spacepy.pycdf.VarCopy.set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set()</span></code></a> to update.</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pycdf.VarCopy.compress" title="spacepy.pycdf.VarCopy.compress"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compress</span></code></a>(*args, **kwargs)</p></td>
 <td><p>Gets compression of the variable this was copied from.</p></td>
@@ -156,9 +153,9 @@ date; see <a class="reference internal" href="#spacepy.pycdf.VarCopy.set" title=
 <p>For details on CDF compression, see
 <a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var.compress" title="spacepy.pycdf.Var.compress"><code class="xref py py-meth docutils literal notranslate"><span class="pre">spacepy.pycdf.Var.compress()</span></code></a>.</p>
 <p>If any arguments are specified, calls
-<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.compress.html#numpy.ndarray.compress" title="(in NumPy v1.22)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">numpy.ndarray.compress()</span></code></a> instead (as the names conflict)</p>
+<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.compress.html#numpy.ndarray.compress" title="(in NumPy v1.23)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">numpy.ndarray.compress()</span></code></a> instead (as the names conflict)</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt>tuple</dt><dd><p>compression type, parameter currently in effect.</p>
 </dd>
@@ -174,7 +171,7 @@ date; see <a class="reference internal" href="#spacepy.pycdf.VarCopy.set" title=
 <p>Each dimension other than the record dimension may either vary
 or not.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt>list of boolean</dt><dd><p>True if that dimension has variance, else False</p>
 </dd>
@@ -190,7 +187,7 @@ or not.</p>
 <p>This is usually 1 except for strings, where it is the length of the
 string.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt>int</dt><dd><p>Number of elements in parent variable</p>
 </dd>
@@ -208,7 +205,7 @@ the entire copy is read, including pad values, and the pad values
 are treated as real data (if, e.g. writing to another CDF).</p>
 <p>For details on padding, see <a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var.pad" title="spacepy.pycdf.Var.pad"><code class="xref py py-meth docutils literal notranslate"><span class="pre">spacepy.pycdf.Var.pad()</span></code></a>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt>various</dt><dd><p>Pad value, matching type of the variable.</p>
 </dd>
@@ -226,7 +223,7 @@ are treated as real data (if, e.g. writing to another CDF).</p>
 <span class="sig-name descname"><span class="pre">rv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#VarCopy.rv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.VarCopy.rv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets record variance of the variable this was copied from.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt>boolean</dt><dd><p>True if parent variable was record varying, False if NRV</p>
 </dd>
@@ -245,7 +242,7 @@ transformation of the copy has made it out of date (e.g. by
 removing dimensions.) There is very little checking done and
 this function should only be used with care.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>key</strong><span class="classifier">str</span></dt><dd><p>Which metadata to set; this matches the name of the method
 used to retrieve it (e.g. use <code class="docutils literal notranslate"><span class="pre">type</span></code> to set the CDF type, which
@@ -267,7 +264,7 @@ the entire copy is read, including pad values, and the pad values
 are treated as real data (if, e.g. writing to another CDF).</p>
 <p>For details on sparse records, see <a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var.sparse" title="spacepy.pycdf.Var.sparse"><code class="xref py py-meth docutils literal notranslate"><span class="pre">spacepy.pycdf.Var.sparse()</span></code></a>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt>ctypes.c_long</dt><dd><p>Sparse record type</p>
 </dd>
@@ -285,7 +282,7 @@ are treated as real data (if, e.g. writing to another CDF).</p>
 <span class="sig-name descname"><span class="pre">type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#VarCopy.type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.VarCopy.type" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns CDF type of the variable this was copied from.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt>int</dt><dd><p>CDF type</p>
 </dd>
@@ -331,7 +328,7 @@ are treated as real data (if, e.g. writing to another CDF).</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

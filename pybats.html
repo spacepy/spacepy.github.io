@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>PyBats - SWMF &amp; BATS-R-US Analysis Tools &#8212; SpacePy v0.3.0 Manual</title>
+    <title>PyBats - SWMF &amp; BATS-R-US Analysis Tools &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -15,6 +15,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/copybutton.js"></script>
     
@@ -100,7 +101,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -110,13 +111,13 @@
           <div class="body" role="main">
             
   <section id="module-spacepy.pybats">
-<span id="pybats-swmf-bats-r-us-analysis-tools"></span><h1>PyBats - SWMF &amp; BATS-R-US Analysis Tools<a class="headerlink" href="#module-spacepy.pybats" title="Permalink to this headline">¶</a></h1>
+<span id="pybats-swmf-bats-r-us-analysis-tools"></span><h1>PyBats - SWMF &amp; BATS-R-US Analysis Tools<a class="headerlink" href="#module-spacepy.pybats" title="Permalink to this heading">¶</a></h1>
 <p>PyBats!  An open source Python-based interface for reading, manipulating,
 and visualizing BATS-R-US and SWMF output.
 For more information on the SWMF, please visit the
 <a class="reference external" href="http://csem.engin.umich.edu">Center for Space Environment Modeling</a>.</p>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>At its most fundamental level, PyBats provides access to output files written
 by the Space Weather Modeling Framework and the codes contained within.
 The key task performed by PyBats is loading simulation data into a Spacepy
@@ -127,7 +128,7 @@ most SWMF output can be opened and visualized using only a few lines of code.
 Many complicated tasks, such as field line integration, is included as well.</p>
 </section>
 <section id="organization">
-<h2>Organization<a class="headerlink" href="#organization" title="Permalink to this headline">¶</a></h2>
+<h2>Organization<a class="headerlink" href="#organization" title="Permalink to this heading">¶</a></h2>
 <p>Many output files in the SWMF share a common format.  Objects to handle broad
 formats like these are found in the base module.  The base module has classes
 to handle SWMF <em>input</em> files, as well.</p>
@@ -138,7 +139,7 @@ requires a independent class or a subclass from the PyBats base module, it
 will receive its own submodule.</p>
 </section>
 <section id="conventions-and-prefixes">
-<h2>Conventions and Prefixes<a class="headerlink" href="#conventions-and-prefixes" title="Permalink to this headline">¶</a></h2>
+<h2>Conventions and Prefixes<a class="headerlink" href="#conventions-and-prefixes" title="Permalink to this heading">¶</a></h2>
 <p>Nearly every class in PyBats inherits from <a class="reference internal" href="autosummary/spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData" title="spacepy.datamodel.SpaceData"><code class="xref py py-class docutils literal notranslate"><span class="pre">spacepy.datamodel.SpaceData</span></code></a>,
 so it is important for users to understand how to employ and explore SpaceData
 objects.  There are a few exceptions, so always pay close attention to the
@@ -158,17 +159,13 @@ class methods with the <em>calc_</em> prefix and call them.</p>
 <p>Copyright ©2010 Los Alamos National Security, LLC.</p>
 </section>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
 <p>There are submodules for most models included within the SWMF.  The classes
 and methods contained within are code-specific, yielding power and
 convenience at the cost of flexibility.  A few of the submodules are helper
 modules- they are not code specific, but rather provide functionality not
 related to an SWMF-included code.</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.pybats.bats.html#module-spacepy.pybats.bats" title="spacepy.pybats.bats"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bats</span></code></a></p></td>
 <td><p>A PyBats module for handling input, output, and visualization of  binary SWMF output files taylored to BATS-R-US-type data.</p></td>
@@ -201,21 +198,17 @@ related to an SWMF-included code.</p>
 </table>
 </section>
 <section id="top-level-classes-functions">
-<h2>Top-Level Classes &amp; Functions<a class="headerlink" href="#top-level-classes-functions" title="Permalink to this headline">¶</a></h2>
+<h2>Top-Level Classes &amp; Functions<a class="headerlink" href="#top-level-classes-functions" title="Permalink to this heading">¶</a></h2>
 <p>Top-level PyBats classes handle common-format input and output from the SWMF
 and are very flexible.  However, they do little beyond open files for the user.</p>
 <p>There are several functions found in the top-level module.  These are mostly
 convenience functions for customizing plots.</p>
 <p class="rubric">Classes</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.pybats.IdlFile.html#spacepy.pybats.IdlFile" title="spacepy.pybats.IdlFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IdlFile</span></code></a>(filename[, iframe, header, keep_case])</p></td>
 <td><p><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 </dl>
 </p></td>
@@ -238,11 +231,7 @@ convenience functions for customizing plots.</p>
 </tbody>
 </table>
 <p class="rubric">Functions</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.pybats.add_body.html#spacepy.pybats.add_body" title="spacepy.pybats.add_body"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_body</span></code></a>(ax[, rad, facecolor, show_planet, ...])</p></td>
 <td><p>Creates a circle of radius=self.attrs['rbody'] and returns the MatPlotLib Ellipse patch object for plotting.</p></td>
@@ -290,7 +279,7 @@ convenience functions for customizing plots.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

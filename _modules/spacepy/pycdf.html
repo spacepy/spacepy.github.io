@@ -1,11 +1,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.pycdf &#8212; SpacePy v0.3.0 Manual</title>
+    <title>spacepy.pycdf &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -14,6 +14,7 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/copybutton.js"></script>
     
@@ -60,7 +61,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -131,6 +132,7 @@
 <span class="kn">import</span> <span class="nn">operator</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">import</span> <span class="nn">platform</span>
 <span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">tempfile</span>
@@ -154,6 +156,15 @@
     <span class="n">str_classes</span> <span class="o">=</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">unicode</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
     <span class="n">str_classes</span> <span class="o">=</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_cast_ll</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Reinterpret-cast a float to a long long</span>
+
+<span class="sd">    Used for typepunning ARM32 arguments.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">pointer</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span>
+                       <span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_longlong</span><span class="p">))</span><span class="o">.</span><span class="n">contents</span>
 
 
 <div class="viewcode-block" id="Library"><a class="viewcode-back" href="../../autosummary/spacepy.pycdf.Library.html#spacepy.pycdf.Library">[docs]</a><span class="k">class</span> <span class="nc">Library</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -294,6 +305,34 @@
 
 <span class="sd">       Version of the CDF library, (version, release, increment, subincrement)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_arm32</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">uname</span><span class="p">()[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;arm&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">32</span>
+    <span class="sd">&quot;&quot;&quot;Excuting on 32-bit ARM, which requires typepunned arguments&quot;&quot;&quot;</span>
+
+    <span class="n">_signatures</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;breakdownTT2000&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_longlong</span><span class="p">]</span>
+            <span class="o">+</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">)]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="s1">&#39;CDF_TT2000_from_UTC_EPOCH&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_longlong</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">],</span>
+        <span class="s1">&#39;CDF_TT2000_from_UTC_EPOCH16&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_longlong</span><span class="p">,</span>
+                                        <span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)],</span>
+        <span class="s1">&#39;CDF_TT2000_to_UTC_EPOCH&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_longlong</span><span class="p">],</span>
+        <span class="s1">&#39;CDF_TT2000_to_UTC_EPOCH16&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_longlong</span><span class="p">,</span>
+                                      <span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)],</span>
+        <span class="s1">&#39;CDFlib&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">],</span>
+        <span class="s1">&#39;CDFsetFileBackward&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">],</span>
+        <span class="s1">&#39;computeEPOCH&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">]</span> <span class="o">*</span> <span class="mi">7</span><span class="p">,</span>
+        <span class="s1">&#39;computeEPOCH16&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span>\
+            <span class="o">+</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)],</span>
+        <span class="s1">&#39;computeTT2000&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_longlong</span><span class="p">]</span>
+            <span class="o">+</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_longlong</span> <span class="k">if</span> <span class="n">_arm32</span> <span class="k">else</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="s1">&#39;EPOCH16breakdown&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span> <span class="o">*</span> <span class="mi">2</span><span class="p">]</span>\
+            <span class="o">+</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">)]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s1">&#39;EPOCHbreakdown&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">]</span>\
+            <span class="o">+</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">)]</span> <span class="o">*</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="sd">&quot;&quot;&quot;Call signatures for functions in C library. Keyed by function name;</span>
+<span class="sd">       values are return type (first element) and then argument types.&quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">libpath</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">library</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Load the CDF C library.</span>
 
@@ -321,49 +360,22 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_library</span> <span class="o">=</span> <span class="n">library</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">libpath</span> <span class="o">=</span> <span class="n">libpath</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">CDFlib</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span> <span class="c1">#commonly used, so set it up here</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">EPOCHbreakdown</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">computeEPOCH</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">computeEPOCH</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">]</span> <span class="o">*</span> <span class="mi">7</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">computeEPOCH16</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">computeEPOCH16</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> \
-            <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)]</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="p">,</span> <span class="s1">&#39;CDFsetFileBackward&#39;</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">CDFsetFileBackward</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">CDFsetFileBackward</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">]</span>
         <span class="c1">#Map old name to the 3.7.1+ name</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="p">,</span> <span class="s1">&#39;computeTT2000&#39;</span><span class="p">)</span> \
            <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="p">,</span> <span class="s1">&#39;CDF_TT2000_from_UTC_parts&#39;</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">computeTT2000</span> \
                 <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">CDF_TT2000_from_UTC_parts</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="p">,</span> <span class="s1">&#39;computeTT2000&#39;</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">computeTT2000</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_longlong</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">computeTT2000</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> \
-                <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">]</span> <span class="o">*</span><span class="mi">9</span>
-        <span class="c1">#Map old name to the 3.7.1+ name</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="p">,</span> <span class="s1">&#39;breakdownTT2000&#39;</span><span class="p">)</span> \
            <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="p">,</span> <span class="s1">&#39;CDF_TT2000_to_UTC_parts&#39;</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">breakdownTT2000</span> \
                 <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">CDF_TT2000_to_UTC_parts</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="p">,</span> <span class="s1">&#39;breakdownTT2000&#39;</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">breakdownTT2000</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">breakdownTT2000</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> \
-                <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_longlong</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">)]</span> <span class="o">*</span> <span class="mi">9</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="p">,</span> <span class="s1">&#39;CDF_TT2000_to_UTC_EPOCH&#39;</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">CDF_TT2000_to_UTC_EPOCH</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">CDF_TT2000_to_UTC_EPOCH</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_longlong</span><span class="p">]</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="p">,</span> <span class="s1">&#39;CDF_TT2000_from_UTC_EPOCH&#39;</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">CDF_TT2000_from_UTC_EPOCH</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_longlong</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">CDF_TT2000_from_UTC_EPOCH</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">]</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="p">,</span> <span class="s1">&#39;CDF_TT2000_to_UTC_EPOCH16&#39;</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">CDF_TT2000_to_UTC_EPOCH16</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">CDF_TT2000_to_UTC_EPOCH16</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> \
-                <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_longlong</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)]</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="p">,</span> <span class="s1">&#39;CDF_TT2000_from_UTC_EPOCH16&#39;</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">CDF_TT2000_from_UTC_EPOCH16</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> \
-                <span class="n">ctypes</span><span class="o">.</span><span class="n">c_longlong</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">CDF_TT2000_from_UTC_EPOCH16</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> \
-                <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)]</span>
+        <span class="k">for</span> <span class="n">funcname</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_signatures</span><span class="p">:</span>
+            <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="p">,</span> <span class="n">funcname</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">func</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_signatures</span><span class="p">[</span><span class="n">funcname</span><span class="p">]</span>
+            <span class="n">func</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">func</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
 
         <span class="c1">#Get CDF version information</span>
         <span class="n">ver</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -429,48 +441,25 @@
             <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">numpytypedict</span><span class="p">[</span><span class="n">const</span><span class="o">.</span><span class="n">CDF_INT8</span><span class="o">.</span><span class="n">value</span><span class="p">]</span>
             <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">cdftypenames</span><span class="p">[</span><span class="n">const</span><span class="o">.</span><span class="n">CDF_TIME_TT2000</span><span class="o">.</span><span class="n">value</span><span class="p">]</span>
             <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">numpytypedict</span><span class="p">[</span><span class="n">const</span><span class="o">.</span><span class="n">CDF_TIME_TT2000</span><span class="o">.</span><span class="n">value</span><span class="p">]</span>
-        <span class="k">elif</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;linux&#39;</span><span class="p">)</span> \
-             <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">uname</span><span class="p">()[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;arm&#39;</span><span class="p">)</span> \
-             <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="p">,</span> <span class="s1">&#39;computeTT2000&#39;</span><span class="p">)</span> \
-             <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">computeTT2000</span><span class="p">(</span>
-                 <span class="mi">2010</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">315576066184000000</span><span class="p">:</span>
-            <span class="c1">#TT2000 call failed, so probably need to type-pun</span>
-            <span class="c1">#double arguments to variadic functions.</span>
-            <span class="c1">#Calling convention for non-variadic functions with floats</span>
-            <span class="c1">#is unique, but convention for ints is same as variadic.</span>
-            <span class="c1">#So type-pun arguments to integers to force that calling</span>
-            <span class="c1">#convention.</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_arm32</span><span class="p">:</span>
+            <span class="c1"># Type-pun double arguments to variadic functions.</span>
+            <span class="c1"># Calling convention for non-variadic functions with floats</span>
+            <span class="c1"># is unique, but convention for ints is same as variadic.</span>
             <span class="k">if</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">sizeof</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_longlong</span><span class="p">)</span> <span class="o">!=</span> \
                <span class="n">ctypes</span><span class="o">.</span><span class="n">sizeof</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">):</span>
                 <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;ARM with unknown type sizes; &#39;</span>
                               <span class="s1">&#39;TT2000 functions will not work.&#39;</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">computeTT2000</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> \
-                    <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_longlong</span><span class="p">]</span> <span class="o">*</span> <span class="mi">9</span>
-                <span class="n">c_ll_p</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_longlong</span><span class="p">)</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">computeTT2000</span><span class="p">(</span>
-                    <span class="n">ctypes</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">pointer</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span>
-                        <span class="mi">2010</span><span class="p">)),</span> <span class="n">c_ll_p</span><span class="p">)</span><span class="o">.</span><span class="n">contents</span><span class="p">,</span>
-                    <span class="n">ctypes</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">pointer</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span>
-                        <span class="mi">1</span><span class="p">)),</span> <span class="n">c_ll_p</span><span class="p">)</span><span class="o">.</span><span class="n">contents</span><span class="p">,</span>
-                    <span class="n">ctypes</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">pointer</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span>
-                        <span class="mi">1</span><span class="p">)),</span> <span class="n">c_ll_p</span><span class="p">)</span><span class="o">.</span><span class="n">contents</span><span class="p">,</span>
-                    <span class="n">ctypes</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">pointer</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span>
-                        <span class="mi">0</span><span class="p">)),</span> <span class="n">c_ll_p</span><span class="p">)</span><span class="o">.</span><span class="n">contents</span><span class="p">,</span>
-                    <span class="n">ctypes</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">pointer</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span>
-                        <span class="mi">0</span><span class="p">)),</span> <span class="n">c_ll_p</span><span class="p">)</span><span class="o">.</span><span class="n">contents</span><span class="p">,</span>
-                    <span class="n">ctypes</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">pointer</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span>
-                        <span class="mi">0</span><span class="p">)),</span> <span class="n">c_ll_p</span><span class="p">)</span><span class="o">.</span><span class="n">contents</span><span class="p">,</span>
-                    <span class="n">ctypes</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">pointer</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span>
-                        <span class="mi">0</span><span class="p">)),</span> <span class="n">c_ll_p</span><span class="p">)</span><span class="o">.</span><span class="n">contents</span><span class="p">,</span>
-                    <span class="n">ctypes</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">pointer</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span>
-                        <span class="mi">0</span><span class="p">)),</span> <span class="n">c_ll_p</span><span class="p">)</span><span class="o">.</span><span class="n">contents</span><span class="p">,</span>
-                    <span class="n">ctypes</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">pointer</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span>
-                        <span class="mi">0</span><span class="p">)),</span> <span class="n">c_ll_p</span><span class="p">)</span><span class="o">.</span><span class="n">contents</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">315576066184000000</span><span class="p">:</span>
+                        <span class="n">_cast_ll</span><span class="p">(</span><span class="mi">2010</span><span class="p">),</span> <span class="n">_cast_ll</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">_cast_ll</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+                        <span class="n">_cast_ll</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">_cast_ll</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">_cast_ll</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+                        <span class="n">_cast_ll</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">_cast_ll</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">_cast_ll</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="p">)</span> <span class="o">!=</span> <span class="mi">315576066184000000</span><span class="p">:</span>
                     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;ARM with unknown calling convention; &#39;</span>
                                   <span class="s1">&#39;TT2000 functions will not work.&#39;</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">datetime_to_tt2000</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_datetime_to_tt2000_typepunned</span>
-
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">epoch_to_datetime</span><span class="p">(</span><span class="mf">63113903999999.984</span><span class="p">)</span><span class="o">.</span><span class="n">year</span> <span class="o">!=</span> <span class="mi">1999</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">epoch_to_datetime</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_epoch_to_datetime_bad_rounding</span>
         <span class="n">v_epoch16_to_datetime</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">frompyfunc</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">epoch16_to_datetime</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">v_epoch16_to_datetime</span> <span class="o">=</span> \
@@ -536,9 +525,6 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">v_epoch16_to_tt2000</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bad_tt2000</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">tt2000_to_epoch16</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bad_tt2000</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">v_tt2000_to_epoch16</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bad_tt2000</span>
-
-        <span class="c1"># User has not explicitly called set_backward</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_explicit_backward</span> <span class="o">=</span> <span class="kc">False</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_find_lib</span><span class="p">():</span>
@@ -619,8 +605,10 @@
                 <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;SystemDrive&#39;</span><span class="p">,</span> <span class="s1">&#39;c:&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">root</span> <span class="o">+</span> <span class="n">extra</span>
                 <span class="k">for</span> <span class="n">root</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">Program Files&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">Program Files (x86)&#39;</span><span class="p">]</span>
                 <span class="k">for</span> <span class="n">extra</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">CDF Distribution</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">CDF_Distribution</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">]],</span>
-            <span class="s1">&#39;darwin&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;/Applications/&#39;</span><span class="p">,</span> <span class="s1">&#39;/usr/local/&#39;</span><span class="p">,</span>
-                       <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~&#39;</span><span class="p">)],</span>
+            <span class="s1">&#39;darwin&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;/Applications/&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/Applications/&#39;</span><span class="p">),</span>
+                       <span class="s1">&#39;/Applications/cdf/&#39;</span><span class="p">,</span>
+                       <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/Applications/cdf/&#39;</span><span class="p">),</span>
+                       <span class="s1">&#39;/usr/local/&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~&#39;</span><span class="p">)],</span>
             <span class="s1">&#39;linux2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;/usr/local/&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~&#39;</span><span class="p">)],</span>
             <span class="s1">&#39;linux&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;/usr/local/&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~&#39;</span><span class="p">)],</span>
         <span class="p">}</span>
@@ -743,8 +731,6 @@
 <span class="sd">        ======</span>
 <span class="sd">        ValueError : if backward=False and underlying CDF library is V2</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># User has explicitly chosen backward compat or not</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_explicit_backward</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">backward</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
@@ -777,20 +763,55 @@
         <span class="n">mm</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">dd</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">hh</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="nb">min</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">mn</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">sec</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">msec</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">EPOCHbreakdown</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="n">epoch</span><span class="p">),</span>
-                                     <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">yyyy</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">mm</span><span class="p">),</span>
-                                     <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">dd</span><span class="p">),</span>
-                                     <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">hh</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="nb">min</span><span class="p">),</span>
-                                     <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">sec</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">msec</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">EPOCHbreakdown</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">yyyy</span><span class="p">,</span> <span class="n">mm</span><span class="p">,</span> <span class="n">dd</span><span class="p">,</span> <span class="n">hh</span><span class="p">,</span> <span class="n">mn</span><span class="p">,</span> <span class="n">sec</span><span class="p">,</span> <span class="n">msec</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">yyyy</span><span class="o">.</span><span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">9999</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">999000</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">yyyy</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">mm</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">dd</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                                     <span class="n">hh</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="nb">min</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">sec</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                                     <span class="n">hh</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">mn</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">sec</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
                                      <span class="n">msec</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_epoch_to_datetime_bad_rounding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Converts a CDF epoch value to a datetime</span>
+
+<span class="sd">        Version for libraries before CDF 3.8.0.1, which would erroneously</span>
+<span class="sd">        convert times near end of day into the next day.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ==========</span>
+<span class="sd">        epoch : float</span>
+<span class="sd">            epoch value from CDF</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        =======</span>
+<span class="sd">        out : :class:`datetime.datetime`</span>
+<span class="sd">            date and time corresponding to epoch. Invalid values are set to</span>
+<span class="sd">            usual epoch invalid value, i.e. last moment of year 9999.</span>
+
+<span class="sd">        See Also</span>
+<span class="sd">        ========</span>
+<span class="sd">        v_epoch_to_datetime</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">yyyy</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">mm</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">dd</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">hh</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">mn</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">sec</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">msec</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="c1"># Truncate to ms inherent EPOCH resolution to avoid rounding bug</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">EPOCHbreakdown</span><span class="p">(</span>
+            <span class="nb">int</span><span class="p">(</span><span class="n">epoch</span><span class="p">),</span> <span class="n">yyyy</span><span class="p">,</span> <span class="n">mm</span><span class="p">,</span> <span class="n">dd</span><span class="p">,</span> <span class="n">hh</span><span class="p">,</span> <span class="n">mn</span><span class="p">,</span> <span class="n">sec</span><span class="p">,</span> <span class="n">msec</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">yyyy</span><span class="o">.</span><span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">9999</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">999000</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">yyyy</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">mm</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">dd</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                                     <span class="n">hh</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">mn</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">sec</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                                     <span class="n">msec</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Library.datetime_to_epoch"><a class="viewcode-back" href="../../autosummary/spacepy.pycdf.Library.html#spacepy.pycdf.Library.datetime_to_epoch">[docs]</a>    <span class="k">def</span> <span class="nf">datetime_to_epoch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -856,32 +877,29 @@
         <span class="n">mm</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">dd</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">hh</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="nb">min</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">mn</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">sec</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">msec</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">usec</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">nsec</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">psec</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">EPOCH16breakdown</span><span class="p">((</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)(</span><span class="n">epoch0</span><span class="p">,</span> <span class="n">epoch1</span><span class="p">),</span>
-                                     <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">yyyy</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">mm</span><span class="p">),</span>
-                                     <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">dd</span><span class="p">),</span>
-                                     <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">hh</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="nb">min</span><span class="p">),</span>
-                                     <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">sec</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">msec</span><span class="p">),</span>
-                                     <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">usec</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">nsec</span><span class="p">),</span>
-                                     <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">psec</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">EPOCH16breakdown</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)(</span><span class="n">epoch0</span><span class="p">,</span> <span class="n">epoch1</span><span class="p">),</span>
+            <span class="n">yyyy</span><span class="p">,</span> <span class="n">mm</span><span class="p">,</span> <span class="n">dd</span><span class="p">,</span> <span class="n">hh</span><span class="p">,</span> <span class="n">mn</span><span class="p">,</span> <span class="n">sec</span><span class="p">,</span>
+            <span class="n">msec</span><span class="p">,</span> <span class="n">usec</span><span class="p">,</span> <span class="n">nsec</span><span class="p">,</span> <span class="n">psec</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">yyyy</span><span class="o">.</span><span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">9999</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">999999</span><span class="p">)</span>
         <span class="n">micro</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">msec</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="n">usec</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span>
                     <span class="nb">float</span><span class="p">(</span><span class="n">nsec</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1000</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="n">psec</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1e6</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">micro</span> <span class="o">&lt;</span> <span class="mi">1000000</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">yyyy</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">mm</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">dd</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                                     <span class="n">hh</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="nb">min</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">sec</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                                     <span class="n">hh</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">mn</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">sec</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
                                      <span class="n">micro</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">add_sec</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">micro</span> <span class="o">/</span> <span class="mi">1000000</span><span class="p">)</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">yyyy</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">mm</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">dd</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                                         <span class="n">hh</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="nb">min</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">sec</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                                         <span class="n">hh</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">mn</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">sec</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
                                          <span class="n">micro</span> <span class="o">-</span> <span class="n">add_sec</span> <span class="o">*</span> <span class="mi">1000000</span><span class="p">)</span> <span class="o">+</span> \
                                          <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">add_sec</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">OverflowError</span><span class="p">:</span>
@@ -1035,15 +1053,14 @@
         <span class="n">mm</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">dd</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">hh</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="nb">min</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">mn</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">sec</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">msec</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">usec</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">nsec</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">breakdownTT2000</span><span class="p">(</span>
-            <span class="n">ctypes</span><span class="o">.</span><span class="n">c_longlong</span><span class="p">(</span><span class="n">tt2000</span><span class="p">),</span>
-            <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">yyyy</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">mm</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">dd</span><span class="p">),</span>
-            <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">hh</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="nb">min</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">sec</span><span class="p">),</span>
+            <span class="n">tt2000</span><span class="p">,</span> <span class="n">yyyy</span><span class="p">,</span> <span class="n">mm</span><span class="p">,</span> <span class="n">dd</span><span class="p">,</span>
+            <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">hh</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">mn</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">sec</span><span class="p">),</span>
             <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">msec</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">usec</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">nsec</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">yyyy</span><span class="o">.</span><span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">9999</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">999999</span><span class="p">)</span>
@@ -1051,18 +1068,18 @@
         <span class="k">if</span> <span class="n">sec</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span>
                 <span class="nb">int</span><span class="p">(</span><span class="n">yyyy</span><span class="o">.</span><span class="n">value</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">mm</span><span class="o">.</span><span class="n">value</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">dd</span><span class="o">.</span><span class="n">value</span><span class="p">),</span>
-                <span class="nb">int</span><span class="p">(</span><span class="n">hh</span><span class="o">.</span><span class="n">value</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="nb">min</span><span class="o">.</span><span class="n">value</span><span class="p">),</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">999999</span><span class="p">)</span>
+                <span class="nb">int</span><span class="p">(</span><span class="n">hh</span><span class="o">.</span><span class="n">value</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">mn</span><span class="o">.</span><span class="n">value</span><span class="p">),</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">999999</span><span class="p">)</span>
         <span class="n">micro</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">msec</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">+</span> <span class="n">usec</span><span class="o">.</span><span class="n">value</span> <span class="o">+</span> <span class="n">nsec</span><span class="o">.</span><span class="n">value</span> <span class="o">/</span> <span class="mi">1000</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">micro</span> <span class="o">&lt;</span> <span class="mi">1000000</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span>
                 <span class="nb">int</span><span class="p">(</span><span class="n">yyyy</span><span class="o">.</span><span class="n">value</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">mm</span><span class="o">.</span><span class="n">value</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">dd</span><span class="o">.</span><span class="n">value</span><span class="p">),</span>
-                <span class="nb">int</span><span class="p">(</span><span class="n">hh</span><span class="o">.</span><span class="n">value</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="nb">min</span><span class="o">.</span><span class="n">value</span><span class="p">),</span> <span class="n">sec</span><span class="p">,</span> <span class="n">micro</span><span class="p">)</span>
+                <span class="nb">int</span><span class="p">(</span><span class="n">hh</span><span class="o">.</span><span class="n">value</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">mn</span><span class="o">.</span><span class="n">value</span><span class="p">),</span> <span class="n">sec</span><span class="p">,</span> <span class="n">micro</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">add_sec</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">micro</span> <span class="o">/</span> <span class="mi">1000000</span><span class="p">)</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span>
                     <span class="nb">int</span><span class="p">(</span><span class="n">yyyy</span><span class="o">.</span><span class="n">value</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">mm</span><span class="o">.</span><span class="n">value</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">dd</span><span class="o">.</span><span class="n">value</span><span class="p">),</span>
-                    <span class="nb">int</span><span class="p">(</span><span class="n">hh</span><span class="o">.</span><span class="n">value</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="nb">min</span><span class="o">.</span><span class="n">value</span><span class="p">),</span> <span class="n">sec</span><span class="p">,</span>
+                    <span class="nb">int</span><span class="p">(</span><span class="n">hh</span><span class="o">.</span><span class="n">value</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">mn</span><span class="o">.</span><span class="n">value</span><span class="p">),</span> <span class="n">sec</span><span class="p">,</span>
                     <span class="n">micro</span> <span class="o">-</span> <span class="n">add_sec</span> <span class="o">*</span> <span class="mi">1000000</span><span class="p">)</span> <span class="o">+</span> \
                     <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">add_sec</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">OverflowError</span><span class="p">:</span>
@@ -1093,10 +1110,11 @@
         <span class="k">if</span> <span class="n">dt</span>  <span class="o">==</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">max</span><span class="p">:</span>
             <span class="k">return</span> <span class="o">-</span><span class="mi">2</span><span class="o">**</span><span class="mi">63</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">computeTT2000</span><span class="p">(</span>
-            <span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">dt</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">dt</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">dt</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span>
-            <span class="n">dt</span><span class="o">.</span><span class="n">minute</span><span class="p">,</span> <span class="n">dt</span><span class="o">.</span><span class="n">second</span><span class="p">,</span>
-            <span class="nb">int</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">microsecond</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">),</span>
-            <span class="n">dt</span><span class="o">.</span><span class="n">microsecond</span> <span class="o">%</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></div>
+            <span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">dt</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">dt</span><span class="o">.</span><span class="n">day</span><span class="p">,</span>
+            <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">minute</span><span class="p">),</span>
+            <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">second</span><span class="p">),</span>
+            <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">microsecond</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">)),</span>
+            <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">microsecond</span> <span class="o">%</span> <span class="mi">1000</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span></div>
 
     <span class="k">def</span> <span class="nf">_datetime_to_tt2000_typepunned</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1119,31 +1137,16 @@
 <span class="sd">        ========</span>
 <span class="sd">        v_datetime_to_tt2000</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">c_ll_p</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_longlong</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">dt</span><span class="o">.</span><span class="n">tzinfo</span> <span class="o">!=</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">dt</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">()</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">dt</span> <span class="o">=</span> <span class="n">dt</span> <span class="o">-</span> <span class="n">dt</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">()</span>
         <span class="n">dt</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">dt</span>  <span class="o">==</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">max</span><span class="p">:</span>
             <span class="k">return</span> <span class="o">-</span><span class="mi">2</span><span class="o">**</span><span class="mi">63</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_library</span><span class="o">.</span><span class="n">computeTT2000</span><span class="p">(</span>
-                    <span class="n">ctypes</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">pointer</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span>
-                        <span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">)),</span> <span class="n">c_ll_p</span><span class="p">)</span><span class="o">.</span><span class="n">contents</span><span class="p">,</span>
-                    <span class="n">ctypes</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">pointer</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span>
-                        <span class="n">dt</span><span class="o">.</span><span class="n">month</span><span class="p">)),</span> <span class="n">c_ll_p</span><span class="p">)</span><span class="o">.</span><span class="n">contents</span><span class="p">,</span>
-                    <span class="n">ctypes</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">pointer</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span>
-                        <span class="n">dt</span><span class="o">.</span><span class="n">day</span><span class="p">)),</span> <span class="n">c_ll_p</span><span class="p">)</span><span class="o">.</span><span class="n">contents</span><span class="p">,</span>
-                    <span class="n">ctypes</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">pointer</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span>
-                        <span class="n">dt</span><span class="o">.</span><span class="n">hour</span><span class="p">)),</span> <span class="n">c_ll_p</span><span class="p">)</span><span class="o">.</span><span class="n">contents</span><span class="p">,</span>
-                    <span class="n">ctypes</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">pointer</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span>
-                        <span class="n">dt</span><span class="o">.</span><span class="n">minute</span><span class="p">)),</span> <span class="n">c_ll_p</span><span class="p">)</span><span class="o">.</span><span class="n">contents</span><span class="p">,</span>
-                    <span class="n">ctypes</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">pointer</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span>
-                        <span class="n">dt</span><span class="o">.</span><span class="n">second</span><span class="p">)),</span> <span class="n">c_ll_p</span><span class="p">)</span><span class="o">.</span><span class="n">contents</span><span class="p">,</span>
-                    <span class="n">ctypes</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">pointer</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span>
-                        <span class="n">dt</span><span class="o">.</span><span class="n">microsecond</span> <span class="o">//</span> <span class="mi">1000</span><span class="p">)),</span> <span class="n">c_ll_p</span><span class="p">)</span><span class="o">.</span><span class="n">contents</span><span class="p">,</span>
-                    <span class="n">ctypes</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">pointer</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span>
-                        <span class="n">dt</span><span class="o">.</span><span class="n">microsecond</span> <span class="o">%</span> <span class="mi">1000</span><span class="p">)),</span> <span class="n">c_ll_p</span><span class="p">)</span><span class="o">.</span><span class="n">contents</span><span class="p">,</span>
-                    <span class="n">ctypes</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">pointer</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span><span class="p">(</span>
-                        <span class="mi">0</span><span class="p">)),</span> <span class="n">c_ll_p</span><span class="p">)</span><span class="o">.</span><span class="n">contents</span><span class="p">)</span>
+            <span class="n">_cast_ll</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">),</span> <span class="n">_cast_ll</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span><span class="p">),</span> <span class="n">_cast_ll</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">day</span><span class="p">),</span>
+            <span class="n">_cast_ll</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span><span class="p">),</span> <span class="n">_cast_ll</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">minute</span><span class="p">),</span> <span class="n">_cast_ll</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span> <span class="n">second</span><span class="p">),</span>
+            <span class="n">_cast_ll</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">microsecond</span> <span class="o">//</span> <span class="mi">1000</span><span class="p">),</span> <span class="n">_cast_ll</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">microsecond</span> <span class="o">%</span> <span class="mi">1000</span><span class="p">),</span>
+            <span class="n">_cast_ll</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
 
 <div class="viewcode-block" id="Library.epoch_to_tt2000"><a class="viewcode-back" href="../../autosummary/spacepy.pycdf.Library.html#spacepy.pycdf.Library.epoch_to_tt2000">[docs]</a>    <span class="k">def</span> <span class="nf">epoch_to_tt2000</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1682,11 +1685,11 @@
 <span class="sd">    When CDFs are created in this way, they are opened read-write, see</span>
 <span class="sd">    :py:meth:`readonly` to change.</span>
 
-<span class="sd">    By default, new CDFs (without a master) are created in version 2</span>
-<span class="sd">    (backward-compatible) format. To create a version 3 CDF, use</span>
+<span class="sd">    By default, new CDFs (without a master) are created in version 3</span>
+<span class="sd">    format. To create a version 2 (backward-compatible) CDF, use</span>
 <span class="sd">    :meth:`Library.set_backward`:</span>
 
-<span class="sd">        &gt;&gt;&gt; pycdf.lib.set_backward(False)</span>
+<span class="sd">        &gt;&gt;&gt; pycdf.lib.set_backward(True)</span>
 <span class="sd">        &gt;&gt;&gt; cdffile = pycdf.CDF(&#39;cdf_filename.cdf&#39;, &#39;&#39;)</span>
 
 <span class="sd">    Add variables by direct assignment, which will automatically set type</span>
@@ -2042,11 +2045,6 @@
 <span class="sd">            Not intended for direct call; pass parameters to</span>
 <span class="sd">            :py:class:`pycdf.CDF` constructor.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">lib</span><span class="o">.</span><span class="n">_explicit_backward</span><span class="p">:</span>
-            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-                <span class="s1">&#39;spacepy.pycdf.lib.set_backward not called;&#39;</span>
-                <span class="s1">&#39; making v3-compatible CDF.&#39;</span><span class="p">,</span>
-                <span class="ne">DeprecationWarning</span><span class="p">)</span>
         <span class="n">lib</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">const</span><span class="o">.</span><span class="n">CREATE_</span><span class="p">,</span> <span class="n">const</span><span class="o">.</span><span class="n">CDF_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pathname</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
                               <span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span> <span class="o">*</span> <span class="mi">1</span><span class="p">)(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_opened</span> <span class="o">=</span> <span class="kc">True</span>
@@ -2417,18 +2415,6 @@
 <span class="sd">        ValueError : if neither data nor sufficient typing information</span>
 <span class="sd">                     is provided.</span>
 
-<span class="sd">        Warns</span>
-<span class="sd">        =====</span>
-<span class="sd">        DeprecationWarning</span>
-<span class="sd">            if no type is provided and data is datetime, warn</span>
-<span class="sd">            that a default type was chosen (usually TIME_TT2000).</span>
-
-<span class="sd">            .. versionchanged:: 0.3.0</span>
-<span class="sd">               Before 0.3.0 (when the default changed from EPOCH/EPOCH16</span>
-<span class="sd">               to TIME_TT2000), this warned that the default would change.</span>
-
-<span class="sd">            .. versionadded:: 0.2.3</span>
-
 <span class="sd">        Notes</span>
 <span class="sd">        =====</span>
 <span class="sd">        Any given data may be representable by a range of CDF types; if</span>
@@ -2524,11 +2510,6 @@
                 <span class="k">if</span> <span class="nb">type</span> <span class="ow">in</span> <span class="p">(</span><span class="n">const</span><span class="o">.</span><span class="n">CDF_EPOCH16</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
                             <span class="n">const</span><span class="o">.</span><span class="n">CDF_TIME_TT2000</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">backward</span><span class="p">:</span>
                     <span class="nb">type</span> <span class="o">=</span> <span class="n">const</span><span class="o">.</span><span class="n">CDF_EPOCH</span>
-                <span class="k">if</span> <span class="nb">type</span> <span class="ow">in</span> <span class="n">lib</span><span class="o">.</span><span class="n">timetypes</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">guess_types</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-                    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-                        <span class="s1">&#39;No type specified for time input; assuming </span><span class="si">{}</span><span class="s1">.&#39;</span>
-                        <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lib</span><span class="o">.</span><span class="n">cdftypenames</span><span class="p">[</span><span class="nb">type</span><span class="p">]),</span>
-                        <span class="ne">DeprecationWarning</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">n_elements</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">n_elements</span> <span class="o">=</span> <span class="n">guess_elements</span>
         <span class="k">if</span> <span class="n">dimVarys</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -3857,17 +3838,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_call</span><span class="p">(</span><span class="n">const</span><span class="o">.</span><span class="n">GET_</span><span class="p">,</span> <span class="n">const</span><span class="o">.</span><span class="n">zVAR_NUMELEMS_</span><span class="p">,</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">nelems</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">nelems</span><span class="o">.</span><span class="n">value</span></div>
 
-    <span class="k">def</span> <span class="nf">_nelems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Number of elements for each value in this variable</span>
-
-<span class="sd">        .. deprecated:: 0.2.2</span>
-<span class="sd">            This method will be removed in the future. Use the public</span>
-<span class="sd">            interface `nelems` instead.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;_nelems is deprecated and will be removed. Use nelems.&quot;</span><span class="p">,</span>
-                      <span class="ne">DeprecationWarning</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">nelems</span><span class="p">()</span>
-
 <div class="viewcode-block" id="Var.name"><a class="viewcode-back" href="../../autosummary/spacepy.pycdf.Var.html#spacepy.pycdf.Var.name">[docs]</a>    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns the name of this variable</span>
@@ -5008,11 +4978,6 @@
                     <span class="n">entry_type</span> <span class="o">=</span> <span class="n">vartype</span>
             <span class="k">if</span> <span class="n">entry_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">entry_type</span> <span class="o">=</span> <span class="n">types</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-                <span class="k">if</span> <span class="n">entry_type</span> <span class="ow">in</span> <span class="n">lib</span><span class="o">.</span><span class="n">timetypes</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">types</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-                    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-                        <span class="s1">&#39;Assuming </span><span class="si">{}</span><span class="s1"> for time input.&#39;</span>
-                        <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lib</span><span class="o">.</span><span class="n">cdftypenames</span><span class="p">[</span><span class="n">entry_type</span><span class="p">]),</span>
-                        <span class="ne">DeprecationWarning</span><span class="p">)</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">entry_type</span> <span class="ow">in</span> <span class="n">lib</span><span class="o">.</span><span class="n">numpytypedict</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Cannot find a matching numpy type.&#39;</span><span class="p">)</span>
             <span class="n">typelist</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">dims</span><span class="p">,</span> <span class="n">entry_type</span><span class="p">,</span> <span class="n">elements</span><span class="p">))</span>
@@ -6130,7 +6095,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

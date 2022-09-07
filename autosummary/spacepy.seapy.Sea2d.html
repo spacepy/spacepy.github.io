@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.seapy.Sea2d &#8212; SpacePy v0.3.0 Manual</title>
+    <title>spacepy.seapy.Sea2d &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -15,6 +15,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/copybutton.js"></script>
     
@@ -85,7 +86,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -95,7 +96,7 @@
           <div class="body" role="main">
             
   <section id="spacepy-seapy-sea2d">
-<h1>spacepy.seapy.Sea2d<a class="headerlink" href="#spacepy-seapy-sea2d" title="Permalink to this headline">¶</a></h1>
+<h1>spacepy.seapy.Sea2d<a class="headerlink" href="#spacepy-seapy-sea2d" title="Permalink to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="spacepy.seapy.Sea2d">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.seapy.</span></span><span class="sig-name descname"><span class="pre">Sea2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/seapy.html#Sea2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.seapy.Sea2d" title="Permalink to this definition">¶</a></dt>
@@ -106,7 +107,7 @@ y (two-element vector with max and min of y;optional)
 ‘times’ and epochs should be in some useful format
 Includes method to perform superposed epoch analysis of input data series</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>data</strong><span class="classifier">array_like</span></dt><dd><p>2-D array of data (0th dimension is quantity y, 1st dimension is time)</p>
 </dd>
@@ -125,11 +126,7 @@ given as serial time)</p>
 <p class="rubric">Notes</p>
 <p>Output can be nicely plotted with <a class="reference internal" href="#spacepy.seapy.Sea2d.plot" title="spacepy.seapy.Sea2d.plot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot()</span></code></a>, or for multiple
 objects use the <a class="reference internal" href="spacepy.seapy.multisea.html#spacepy.seapy.multisea" title="spacepy.seapy.multisea"><code class="xref py py-func docutils literal notranslate"><span class="pre">multisea()</span></code></a> function</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.seapy.Sea2d.sea" title="spacepy.seapy.Sea2d.sea"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sea</span></code></a>([storedata, quartiles, ci, mad, ...])</p></td>
 <td><p>Perform 2D superposed epoch analysis on data in object</p></td>
@@ -146,7 +143,7 @@ objects use the <a class="reference internal" href="spacepy.seapy.multisea.html#
 <p>Uses object attributes obj.data, obj.times, obj.epochs, obj.delta,
 obj.window, all of which must be available on instantiation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Other Parameters</dt>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>storedata</strong><span class="classifier">boolean</span></dt><dd><p>saves matrix of epoch windows as obj.datacube (default = False)</p>
 </dd>
@@ -173,7 +170,7 @@ obj.window, all of which must be available on instantiation.</p>
 <dd><p>Method called to create basic plot of 2D superposed epoch analysis.</p>
 <p>Uses object attributes created by <a class="reference internal" href="#spacepy.seapy.Sea2d.sea" title="spacepy.seapy.Sea2d.sea"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sea()</span></code></a>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Other Parameters</dt>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>x(y)quan</strong><span class="classifier">str</span></dt><dd><p>x(y)-axis label.  (default = ‘Time since epoch’ (None))</p>
 </dd>
@@ -235,7 +232,7 @@ obj.window, all of which must be available on instantiation.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>datamodel - easy to use general data model &#8212; SpacePy v0.3.0 Manual</title>
+    <title>datamodel - easy to use general data model &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -15,6 +15,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/copybutton.js"></script>
     
@@ -97,7 +98,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -107,7 +108,7 @@
           <div class="body" role="main">
             
   <section id="module-spacepy.datamodel">
-<span id="datamodel-easy-to-use-general-data-model"></span><h1>datamodel - easy to use general data model<a class="headerlink" href="#module-spacepy.datamodel" title="Permalink to this headline">¶</a></h1>
+<span id="datamodel-easy-to-use-general-data-model"></span><h1>datamodel - easy to use general data model<a class="headerlink" href="#module-spacepy.datamodel" title="Permalink to this heading">¶</a></h1>
 <p>The datamodel classes constitute a data model implementation
 meant to mirror the functionality of the data model output from pycdf, though
 implemented slightly differently.</p>
@@ -124,7 +125,7 @@ implemented slightly differently.</p>
 <p>Contact: <a class="reference external" href="mailto:smorley&#37;&#52;&#48;lanl&#46;gov">smorley<span>&#64;</span>lanl<span>&#46;</span>gov</a>; <a class="reference external" href="mailto:balarsen&#37;&#52;&#48;lanl&#46;gov">balarsen<span>&#64;</span>lanl<span>&#46;</span>gov</a></p>
 <p>Copyright 2010-2016 Los Alamos National Security, LLC.</p>
 <section id="about-datamodel">
-<h2>About datamodel<a class="headerlink" href="#about-datamodel" title="Permalink to this headline">¶</a></h2>
+<h2>About datamodel<a class="headerlink" href="#about-datamodel" title="Permalink to this heading">¶</a></h2>
 <p>The SpacePy datamodel module implements classes that are designed to make implementing a standard
 data model easy. The concepts are very similar to those used in standards like HDF5, netCDF and
 NASA CDF.</p>
@@ -146,7 +147,7 @@ to HDF5 or JSON-headed ASCII. See <code class="xref py py-func docutils literal 
 <code class="xref py py-func docutils literal notranslate"><span class="pre">datamodel.toHDF5()</span></code>, and <code class="xref py py-func docutils literal notranslate"><span class="pre">datamodel.toJSONheadedASCII()</span></code> for more details.</p>
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
 <p>Imagine representing some satellite data within the global attributes might be
 the mission name and the instrument PI, the variables might be the
 instrument counts [n-dimensional array], timestamps[1-dimensional array and an orbit number [scalar].
@@ -178,7 +179,7 @@ using <a class="reference internal" href="autosummary/spacepy.toolbox.dictree.ht
 </div>
 </section>
 <section id="guide-for-nasa-cdf-users">
-<h2>Guide for NASA CDF users<a class="headerlink" href="#guide-for-nasa-cdf-users" title="Permalink to this headline">¶</a></h2>
+<h2>Guide for NASA CDF users<a class="headerlink" href="#guide-for-nasa-cdf-users" title="Permalink to this heading">¶</a></h2>
 <p>By definition, a NASA CDF only has a single ‘layer’. That is, a CDF contains a series of records
 (stored variables of various types) and a set of attributes that are either global or local in
 scope. Thus to use SpacePy’s datamodel to capture the functionality of CDF the two basic data types
@@ -193,7 +194,7 @@ the following will make life easier:</p>
 </div>
 </section>
 <section id="a-quick-guide-to-json-headed-ascii">
-<h2>A quick guide to JSON-headed ASCII<a class="headerlink" href="#a-quick-guide-to-json-headed-ascii" title="Permalink to this headline">¶</a></h2>
+<h2>A quick guide to JSON-headed ASCII<a class="headerlink" href="#a-quick-guide-to-json-headed-ascii" title="Permalink to this heading">¶</a></h2>
 <p>In many cases it is preferred to have a human-readable ASCII file, rather than a binary file like CDF
 or HDF5. To make it easier to carry all the same metadata that is available in HDF5 or CDF we have
 developed an ASCII data storage format that encodes the metadata using JSON (JavaScript Object Notation).
@@ -248,11 +249,7 @@ writes it to a JSON-headed ASCII file. The contents of the file are then shown.<
 </div>
 </section>
 <p class="rubric">Classes</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData" title="spacepy.datamodel.SpaceData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpaceData</span></code></a>(*args, **kwargs)</p></td>
 <td><p>Datamodel class extending dict by adding attributes.</p></td>
@@ -266,11 +263,7 @@ writes it to a JSON-headed ASCII file. The contents of the file are then shown.<
 </tbody>
 </table>
 <p class="rubric">Functions</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.datamodel.convertKeysToStr.html#spacepy.datamodel.convertKeysToStr" title="spacepy.datamodel.convertKeysToStr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convertKeysToStr</span></code></a>(SDobject)</p></td>
 <td><p></p></td>
@@ -362,7 +355,7 @@ writes it to a JSON-headed ASCII file. The contents of the file are then shown.<
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

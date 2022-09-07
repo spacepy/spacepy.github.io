@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.pycdf.Attr &#8212; SpacePy v0.3.0 Manual</title>
+    <title>spacepy.pycdf.Attr &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -15,6 +15,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/copybutton.js"></script>
     
@@ -85,7 +86,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -95,7 +96,7 @@
           <div class="body" role="main">
             
   <section id="spacepy-pycdf-attr">
-<h1>spacepy.pycdf.Attr<a class="headerlink" href="#spacepy-pycdf-attr" title="Permalink to this headline">¶</a></h1>
+<h1>spacepy.pycdf.Attr<a class="headerlink" href="#spacepy-pycdf-attr" title="Permalink to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="spacepy.pycdf.Attr">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pycdf.</span></span><span class="sig-name descname"><span class="pre">Attr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdf_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attr_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Attr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Attr" title="Permalink to this definition">¶</a></dt>
@@ -123,11 +124,7 @@ Example:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">first_three</span> <span class="o">=</span> <span class="n">attribute</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="c1">#first three elements of 5th Entry</span>
 </pre></div>
 </div>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pycdf.Attr.append" title="spacepy.pycdf.Attr.append"><code class="xref py py-obj docutils literal notranslate"><span class="pre">append</span></code></a>(data)</p></td>
 <td><p>Add an entry to end of attribute</p></td>
@@ -161,7 +158,7 @@ Example:</p>
 <dd><p>Add an entry to end of attribute</p>
 <p>Puts entry after last defined entry (does not fill gaps)</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>data</strong></dt><dd><p>data for the new entry</p>
 </dd>
@@ -175,13 +172,13 @@ Example:</p>
 <span class="sig-name descname"><span class="pre">has_entry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Attr.has_entry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Attr.has_entry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if this attribute has a particular Entry number</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>number</strong><span class="classifier">int</span></dt><dd><p>number of Entry to check or change</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">bool</span></dt><dd><p>True if <code class="docutils literal notranslate"><span class="pre">number</span></code> is a valid entry number; False if not</p>
 </dd>
@@ -197,7 +194,7 @@ Example:</p>
 <p>Inserts entry at particular number while moving all subsequent
 entries to one entry number later. Does not close gaps.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>index</strong><span class="classifier">int</span></dt><dd><p>index where to put the new entry</p>
 </dd>
@@ -213,7 +210,7 @@ entries to one entry number later. Does not close gaps.</p>
 <span class="sig-name descname"><span class="pre">max_idx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Attr.max_idx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Attr.max_idx" title="Permalink to this definition">¶</a></dt>
 <dd><p>Maximum index of Entries for this Attr</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">int</span></dt><dd><p>maximum Entry number</p>
 </dd>
@@ -232,13 +229,13 @@ entries to one entry number later. Does not close gaps.</p>
 already exists, it will be overwritten.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>data</strong></dt><dd><p>data to put in the Entry</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Other Parameters</dt>
+<dt class="field-even">Other Parameters<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>type</strong><span class="classifier">int</span></dt><dd><p>type of the new Entry, from <a class="reference internal" href="spacepy.pycdf.const.html#module-spacepy.pycdf.const" title="spacepy.pycdf.const"><code class="xref py py-mod docutils literal notranslate"><span class="pre">const</span></code></a>
 (otherwise guessed from <code class="docutils literal notranslate"><span class="pre">data</span></code>)</p>
@@ -255,7 +252,7 @@ already exists, it will be overwritten.</p>
 <span class="sig-name descname"><span class="pre">number</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Attr.number"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Attr.number" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the attribute number for this attribute</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">int</span></dt><dd><p>attribute number</p>
 </dd>
@@ -270,7 +267,7 @@ already exists, it will be overwritten.</p>
 <dd><p>Rename this attribute</p>
 <p>Renaming a zAttribute renames it for <em>all</em> zVariables in this CDF!</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>new_name</strong><span class="classifier">str</span></dt><dd><p>the new name of the attribute</p>
 </dd>
@@ -284,19 +281,19 @@ already exists, it will be overwritten.</p>
 <span class="sig-name descname"><span class="pre">type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Attr.type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Attr.type" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find or change the CDF type of a particular Entry number</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>number</strong><span class="classifier">int</span></dt><dd><p>number of Entry to check or change</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">int</span></dt><dd><p>CDF variable type, see <a class="reference internal" href="spacepy.pycdf.const.html#module-spacepy.pycdf.const" title="spacepy.pycdf.const"><code class="xref py py-mod docutils literal notranslate"><span class="pre">const</span></code></a></p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">Other Parameters</dt>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>new_type</strong></dt><dd><p>type to change this Entry to, from <a class="reference internal" href="spacepy.pycdf.const.html#module-spacepy.pycdf.const" title="spacepy.pycdf.const"><code class="xref py py-mod docutils literal notranslate"><span class="pre">const</span></code></a>.
 Omit to only check type.</p>
@@ -346,7 +343,7 @@ User’s Guide section 2.5.5 pg. 57</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

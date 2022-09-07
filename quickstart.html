@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>SpacePy - A Quick Start Documentation &#8212; SpacePy v0.3.0 Manual</title>
+    <title>SpacePy - A Quick Start Documentation &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -15,6 +15,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/copybutton.js"></script>
     
@@ -113,7 +114,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -123,16 +124,16 @@
           <div class="body" role="main">
             
   <section id="spacepy-a-quick-start-documentation">
-<h1>SpacePy - A Quick Start Documentation<a class="headerlink" href="#spacepy-a-quick-start-documentation" title="Permalink to this headline">¶</a></h1>
+<h1>SpacePy - A Quick Start Documentation<a class="headerlink" href="#spacepy-a-quick-start-documentation" title="Permalink to this heading">¶</a></h1>
 <p>The SpacePy Team
 (Steve Morley, Josef Koller, Dan Welling, Brian Larsen, Jon Niehof,
 Mike Henderson)</p>
 <section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h2>
 <p>See <a class="reference internal" href="install.html"><span class="doc">Installing SpacePy</span></a>.</p>
 </section>
 <section id="toolbox-a-box-full-of-tools">
-<h2>Toolbox - A Box Full of Tools<a class="headerlink" href="#toolbox-a-box-full-of-tools" title="Permalink to this headline">¶</a></h2>
+<h2>Toolbox - A Box Full of Tools<a class="headerlink" href="#toolbox-a-box-full-of-tools" title="Permalink to this heading">¶</a></h2>
 <p>Contains tools that don’t fit anywhere else but are, in general, quite
 useful. The following functions are a selection of those implemented:</p>
 <blockquote>
@@ -172,14 +173,14 @@ useful. The following functions are a selection of those implemented:</p>
 </div>
 </section>
 <section id="time-and-coordinate-transformations">
-<h2>Time and Coordinate Transformations<a class="headerlink" href="#time-and-coordinate-transformations" title="Permalink to this headline">¶</a></h2>
+<h2>Time and Coordinate Transformations<a class="headerlink" href="#time-and-coordinate-transformations" title="Permalink to this heading">¶</a></h2>
 <p>Import the modules as:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.time</span> <span class="k">as</span> <span class="nn">spt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.coords</span> <span class="k">as</span> <span class="nn">spc</span>
 </pre></div>
 </div>
 <section id="ticktock-class">
-<h3>Ticktock Class<a class="headerlink" href="#ticktock-class" title="Permalink to this headline">¶</a></h3>
+<h3>Ticktock Class<a class="headerlink" href="#ticktock-class" title="Permalink to this heading">¶</a></h3>
 <p>The Ticktock class provides a number of time conversion routines and is
 implemented as a container class built on the functionality of the Python
 datetime module. The following time coordinates are provided</p>
@@ -222,7 +223,7 @@ simply type e.g.:</p>
 </div>
 </section>
 <section id="timedelta-class">
-<h3>Timedelta Class<a class="headerlink" href="#timedelta-class" title="Permalink to this headline">¶</a></h3>
+<h3>Timedelta Class<a class="headerlink" href="#timedelta-class" title="Permalink to this heading">¶</a></h3>
 <p>You can add/subtract time from a Ticktock class instance by using an
 instance of <a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.timedelta" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.timedelta</span></code></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mf">2.3</span><span class="p">)</span>
@@ -234,7 +235,7 @@ instance of <a class="reference external" href="https://docs.python.org/3/librar
 </div>
 </section>
 <section id="coords-class">
-<h3>Coords Class<a class="headerlink" href="#coords-class" title="Permalink to this headline">¶</a></h3>
+<h3>Coords Class<a class="headerlink" href="#coords-class" title="Permalink to this heading">¶</a></h3>
 <p>The spatial coordinate class includes the following coordinate systems in
 Cartesian and spherical forms.</p>
 <blockquote>
@@ -266,7 +267,7 @@ vector with the name <code class="docutils literal notranslate"><span class="pre
 </section>
 </section>
 <section id="the-radbelt-module">
-<h2>The radbelt Module<a class="headerlink" href="#the-radbelt-module" title="Permalink to this headline">¶</a></h2>
+<h2>The radbelt Module<a class="headerlink" href="#the-radbelt-module" title="Permalink to this heading">¶</a></h2>
 <p>The radiation belt module currently includes a simple radial
 diffusion code as a class. Import the module and instatiate a radbelt object:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.radbelt</span> <span class="k">as</span> <span class="nn">sprb</span>
@@ -286,7 +287,7 @@ results:</p>
 </div>
 </section>
 <section id="the-data-assimilation-module">
-<h2>The Data Assimilation Module<a class="headerlink" href="#the-data-assimilation-module" title="Permalink to this headline">¶</a></h2>
+<h2>The Data Assimilation Module<a class="headerlink" href="#the-data-assimilation-module" title="Permalink to this heading">¶</a></h2>
 <p>This module includes data assimilation capabilities, through the
 assimilation class. The class assimilates data for the radiation belt model
 using the Ensemble Kalman Filter. The algorithm used is the SVD method
@@ -355,7 +356,7 @@ to 10 <sup>-6</sup>.  The Lmax line, Kp and Dst values would be excluded.  The t
 the topmost plot (phase space density) would be set to ‘Observations Plot’.</p>
 </section>
 <section id="omni-module">
-<h2>OMNI Module<a class="headerlink" href="#omni-module" title="Permalink to this headline">¶</a></h2>
+<h2>OMNI Module<a class="headerlink" href="#omni-module" title="Permalink to this heading">¶</a></h2>
 <p>The OMNI database is an hourly resolution, multi-source data set
 with coverage from November 1963; higher temporal resolution versions of
 the OMNI database exist, but with coverage from 1995. The primary data are
@@ -392,7 +393,7 @@ for instance:</p>
 </div>
 </section>
 <section id="the-irbempy-module">
-<h2>The irbempy Module<a class="headerlink" href="#the-irbempy-module" title="Permalink to this headline">¶</a></h2>
+<h2>The irbempy Module<a class="headerlink" href="#the-irbempy-module" title="Permalink to this heading">¶</a></h2>
 <p>ONERA (Office National d’Etudes et Recherches Aerospatiales) initiated a
 well-known FORTRAN library that provides routines to compute magnetic
 coordinates for any location in the Earth’s magnetic field, to perform
@@ -437,7 +438,7 @@ shells in the inner magnetosphere.:</p>
 </ul>
 </section>
 <section id="pycdf-python-access-to-nasa-cdf-library">
-<h2>pyCDF - Python Access to NASA CDF Library<a class="headerlink" href="#pycdf-python-access-to-nasa-cdf-library" title="Permalink to this headline">¶</a></h2>
+<h2>pyCDF - Python Access to NASA CDF Library<a class="headerlink" href="#pycdf-python-access-to-nasa-cdf-library" title="Permalink to this heading">¶</a></h2>
 <p>pycdf provides a “pythonic” interface to the NASA CDF library. It requires
 that the NASA CDF C-library is properly installed.
 The module can then be imported, e.g.:</p>
@@ -483,7 +484,7 @@ accessed:</p>
 </div>
 </section>
 <section id="the-datamodel-module">
-<h2>The datamodel Module<a class="headerlink" href="#the-datamodel-module" title="Permalink to this headline">¶</a></h2>
+<h2>The datamodel Module<a class="headerlink" href="#the-datamodel-module" title="Permalink to this heading">¶</a></h2>
 <p>The SpacePy datamodel module implements classes that are designed to make implementing a standard
 data model easy. The concepts are very similar to those used in standards like HDF5, netCDF and
 NASA CDF.</p>
@@ -494,7 +495,7 @@ entire folder. The next container type is for storing data and is based on a num
 class is <code class="xref py py-class docutils literal notranslate"><span class="pre">datamodel.dmarray</span></code> and also carries attributes. The dmarray class is analogous to an
 HDF5 dataset.</p>
 <section id="guide-for-nasa-cdf-users">
-<h3>Guide for NASA CDF users<a class="headerlink" href="#guide-for-nasa-cdf-users" title="Permalink to this headline">¶</a></h3>
+<h3>Guide for NASA CDF users<a class="headerlink" href="#guide-for-nasa-cdf-users" title="Permalink to this heading">¶</a></h3>
 <p>By definition, a NASA CDF only has a single ‘layer’. That is, a CDF contains a series of records
 (stored variables of various types) and a set of attributes that are either global or local in
 scope. Thus to use SpacePy’s datamodel to capture the functionality of CDF the two basic data types
@@ -579,7 +580,7 @@ data, so to make this compatible with NASA CDF we call the <a class="reference i
 data structure is now flat again and can be mapped directly to NASA CDF.</p>
 </section>
 <section id="converters-to-from-datamodel">
-<h3>Converters to/from datamodel<a class="headerlink" href="#converters-to-from-datamodel" title="Permalink to this headline">¶</a></h3>
+<h3>Converters to/from datamodel<a class="headerlink" href="#converters-to-from-datamodel" title="Permalink to this heading">¶</a></h3>
 <p>Currently converters exist to read HDF5 and NASA CDF files directly to a SpacePy datamodel. This capability
 also exists for JSON-headed ASCII files (RBSP/AutoPlot-compatible). A converter from the datamodel to HDF5
 is now available and a converter to NASA CDF is under development. Also under development is the reverse of
@@ -587,7 +588,7 @@ the SpaceData.flatten method, so that flattened objects can be restored to their
 </section>
 </section>
 <section id="empiricals-module">
-<h2>Empiricals Module<a class="headerlink" href="#empiricals-module" title="Permalink to this headline">¶</a></h2>
+<h2>Empiricals Module<a class="headerlink" href="#empiricals-module" title="Permalink to this heading">¶</a></h2>
 <p>The empiricals module provides access to some useful empirical models.
 As of SpacePy 0.1.2, the models available are:</p>
 <blockquote>
@@ -629,7 +630,7 @@ through in a Python dictionary:</p>
 </div>
 </section>
 <section id="seapy-superposed-epoch-analysis-in-python">
-<h2>SeaPy - Superposed Epoch Analysis in Python<a class="headerlink" href="#seapy-superposed-epoch-analysis-in-python" title="Permalink to this headline">¶</a></h2>
+<h2>SeaPy - Superposed Epoch Analysis in Python<a class="headerlink" href="#seapy-superposed-epoch-analysis-in-python" title="Permalink to this heading">¶</a></h2>
 <p>Superposed epoch analysis is a technique used to reveal consistent responses,
 relative to some repeatable phenomenon, in noisy data . Time series of the variables
 under investigation are extracted from a window around the epoch and all data
@@ -733,7 +734,7 @@ the temporal resolution is 1 hr and the window is +/- 3 days</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.empiricals.getExpectedSWTemp &#8212; SpacePy v0.3.0 Manual</title>
+    <title>spacepy.empiricals.getExpectedSWTemp &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -15,6 +15,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/copybutton.js"></script>
     
@@ -85,7 +86,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -95,7 +96,7 @@
           <div class="body" role="main">
             
   <section id="spacepy-empiricals-getexpectedswtemp">
-<h1>spacepy.empiricals.getExpectedSWTemp<a class="headerlink" href="#spacepy-empiricals-getexpectedswtemp" title="Permalink to this headline">¶</a></h1>
+<h1>spacepy.empiricals.getExpectedSWTemp<a class="headerlink" href="#spacepy-empiricals-getexpectedswtemp" title="Permalink to this heading">¶</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="spacepy.empiricals.getExpectedSWTemp">
 <span class="sig-prename descclassname"><span class="pre">spacepy.empiricals.</span></span><span class="sig-name descname"><span class="pre">getExpectedSWTemp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">velo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'XB15'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'K'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/empiricals.html#getExpectedSWTemp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.empiricals.getExpectedSWTemp" title="Permalink to this definition">¶</a></dt>
@@ -105,7 +106,7 @@ L87  – Lopez, R.E., J. Geophys. Res., 92, 11189-11194, 1987
 BS06 – Borovsky, J.E. and J.T. Steinberg, Geophysical Monograph Series 167, 59-76, 2006
 XB15 – Xu, F. and J.E. Borovsky, J. Geophys. Res., 120, 70-100, 2015</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>velo</strong><span class="classifier">array-like</span></dt><dd><p>Array like of solar wind bulk velocity values [km/s]</p>
 </dd>
@@ -115,7 +116,7 @@ XB15 – Xu, F. and J.E. Borovsky, J. Geophys. Res., 120, 70-100, 2015</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>Texp</strong><span class="classifier">array-like</span></dt><dd><p>The expected solar wind temperature given the bulk velocity [K] or [eV]</p>
 </dd>
@@ -159,7 +160,7 @@ XB15 – Xu, F. and J.E. Borovsky, J. Geophys. Res., 120, 70-100, 2015</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

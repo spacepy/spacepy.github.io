@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>time - Time conversion, manipulation and implementation of Ticktock class &#8212; SpacePy v0.3.0 Manual</title>
+    <title>time - Time conversion, manipulation and implementation of Ticktock class &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -15,6 +15,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/copybutton.js"></script>
     
@@ -95,7 +96,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -105,10 +106,10 @@
           <div class="body" role="main">
             
   <section id="module-spacepy.time">
-<span id="time-time-conversion-manipulation-and-implementation-of-ticktock-class"></span><h1>time - Time conversion, manipulation and implementation of Ticktock class<a class="headerlink" href="#module-spacepy.time" title="Permalink to this headline">¶</a></h1>
+<span id="time-time-conversion-manipulation-and-implementation-of-ticktock-class"></span><h1>time - Time conversion, manipulation and implementation of Ticktock class<a class="headerlink" href="#module-spacepy.time" title="Permalink to this heading">¶</a></h1>
 <p>Time conversion, manipulation and implementation of Ticktock class</p>
 <section id="notes">
-<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this heading">¶</a></h2>
 <p>The handling of time, in particular the conversions between representations,
 can be more complicated than it seems on the surface. This can result in
 some surprising behavior, particularly when requiring second-level accuracy and
@@ -168,7 +169,7 @@ second aware timebases: CDF and RDT.</p>
 more details on the exact definitions of time systems used by SpacePy.</p>
 </section>
 <section id="examples">
-<h2>Examples:<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<h2>Examples:<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.time</span> <span class="k">as</span> <span class="nn">spt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
 </pre></div>
@@ -249,23 +250,15 @@ Contact: <a class="reference external" href="mailto:smorley&#37;&#52;&#48;lanl&#
 <p>Copyright 2010 Los Alamos National Security, LLC.</p>
 </section>
 <p class="rubric">Classes</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.time.Ticktock.html#spacepy.time.Ticktock" title="spacepy.time.Ticktock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Ticktock</span></code></a>(data, dtype)</p></td>
-<td><p>Ticktock class holding various time coordinate systems (TAI, UTC, ISO, JD, MJD, UNX, RDT, CDF, DOY, eDOY, APT)</p></td>
+<td><p>Ticktock class holding various time coordinate systems (TAI, UTC, ISO, JD, MJD, GPS, UNX, RDT, CDF, DOY, eDOY, APT)</p></td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Functions</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.time.dtstr2iso.html#spacepy.time.dtstr2iso" title="spacepy.time.dtstr2iso"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtstr2iso</span></code></a>(dtstr[, fmt])</p></td>
 <td><p>Convert a datetime string to a standard format</p></td>
@@ -321,7 +314,7 @@ Contact: <a class="reference external" href="mailto:smorley&#37;&#52;&#48;lanl&#
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

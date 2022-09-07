@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>SpacePy Configuration &#8212; SpacePy v0.3.0 Manual</title>
+    <title>SpacePy Configuration &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -15,6 +15,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/copybutton.js"></script>
     
@@ -96,7 +97,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -106,7 +107,7 @@
           <div class="body" role="main">
             
   <section id="spacepy-configuration">
-<h1>SpacePy Configuration<a class="headerlink" href="#spacepy-configuration" title="Permalink to this headline">¶</a></h1>
+<h1>SpacePy Configuration<a class="headerlink" href="#spacepy-configuration" title="Permalink to this heading">¶</a></h1>
 <p>SpacePy has a few tunable options that can be altered through the <code class="docutils literal notranslate"><span class="pre">spacepy.rc</span></code>
 configuration file. All options have defaults which will be used if not specified in
 the configuration file. These defaults are usually fine for most people and may
@@ -132,7 +133,7 @@ contains a single section, <code class="docutils literal notranslate"><span clas
 </ul>
 </div></blockquote>
 <section id="the-spacepy-directory">
-<h2>The spacepy directory<a class="headerlink" href="#the-spacepy-directory" title="Permalink to this headline">¶</a></h2>
+<h2>The spacepy directory<a class="headerlink" href="#the-spacepy-directory" title="Permalink to this heading">¶</a></h2>
 <p>If you prefer a different location for the SpacePy
 directory, set the environment variable <code class="docutils literal notranslate"><span class="pre">$SPACEPY</span></code> to a location of
 your choice. For example, with a <code class="docutils literal notranslate"><span class="pre">csh</span></code>, or <code class="docutils literal notranslate"><span class="pre">tcsh</span></code> you would:</p>
@@ -158,7 +159,7 @@ specified by <code class="docutils literal notranslate"><span class="pre">$SPACE
 data, which can be updated with <a class="reference internal" href="autosummary/spacepy.toolbox.update.html#spacepy.toolbox.update" title="spacepy.toolbox.update"><code class="xref py py-func docutils literal notranslate"><span class="pre">update()</span></code></a>.</p>
 </section>
 <section id="available-configuration-options">
-<h2>Available configuration options<a class="headerlink" href="#available-configuration-options" title="Permalink to this headline">¶</a></h2>
+<h2>Available configuration options<a class="headerlink" href="#available-configuration-options" title="Permalink to this heading">¶</a></h2>
 <dl class="simple">
 <dt>enable_deprecation_warning</dt><dd><p>SpacePy raises <code class="xref py py-exc docutils literal notranslate"><span class="pre">DeprecationWarning</span></code> when deprecated functions
 are called. Starting in Python 2.7, these are ignored. SpacePy adds a warnings
@@ -219,7 +220,7 @@ HTTP requests. Normally leaving this unset should be fine.</p>
 </dl>
 </section>
 <section id="developer-documentation">
-<h2>Developer documentation<a class="headerlink" href="#developer-documentation" title="Permalink to this headline">¶</a></h2>
+<h2>Developer documentation<a class="headerlink" href="#developer-documentation" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">spacepy.rc</span></code> is loaded into a dictionary (<code class="docutils literal notranslate"><span class="pre">spacepy.config</span></code>) by SpacePy’s
 main <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>. All options from the <code class="docutils literal notranslate"><span class="pre">[spacepy]</span></code> section are loaded,
 with no developer intervention needed. Each key is the option’s name; the
@@ -231,11 +232,11 @@ value for each key is a function to be applied to the value with the same key
 to produce a different type from a string.</p>
 <hr class="docutils" />
 <dl class="field-list simple">
-<dt class="field-odd">Release</dt>
-<dd class="field-odd"><p>0.3.0</p>
+<dt class="field-odd">Release<span class="colon">:</span></dt>
+<dd class="field-odd"><p>0.4.0</p>
 </dd>
-<dt class="field-even">Doc generation date</dt>
-<dd class="field-even"><p>Apr 27, 2022</p>
+<dt class="field-even">Doc generation date<span class="colon">:</span></dt>
+<dd class="field-even"><p>Sep 07, 2022</p>
 </dd>
 </dl>
 <p>For additions or fixes to this page, contact the SpacePy Team at Los Alamos.</p>
@@ -274,7 +275,7 @@ to produce a different type from a string.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>
