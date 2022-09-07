@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.coordinates.quaternionFromMatrix &#8212; SpacePy v0.3.0 Manual</title>
+    <title>spacepy.coordinates.quaternionFromMatrix &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -15,6 +15,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/copybutton.js"></script>
     
@@ -85,7 +86,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -95,7 +96,7 @@
           <div class="body" role="main">
             
   <section id="spacepy-coordinates-quaternionfrommatrix">
-<h1>spacepy.coordinates.quaternionFromMatrix<a class="headerlink" href="#spacepy-coordinates-quaternionfrommatrix" title="Permalink to this headline">¶</a></h1>
+<h1>spacepy.coordinates.quaternionFromMatrix<a class="headerlink" href="#spacepy-coordinates-quaternionfrommatrix" title="Permalink to this heading">¶</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="spacepy.coordinates.quaternionFromMatrix">
 <span class="sig-prename descclassname"><span class="pre">spacepy.coordinates.</span></span><span class="sig-name descname"><span class="pre">quaternionFromMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scalarPos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'last'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/coordinates.html#quaternionFromMatrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.coordinates.quaternionFromMatrix" title="Permalink to this definition">¶</a></dt>
@@ -103,27 +104,27 @@
 <p>The output has one fewer axis than the input (the last axis) and the
 shape is otherwise unchanged, allowing multi-dimensional matrix input.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>matrix</strong><span class="classifier">array_like</span></dt><dd><p>input rotation matrix or array of matrices</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">array_like</span></dt><dd><p>Quaternions representing the same rotation as the input rotation
 matrices.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">Other Parameters</dt>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>scalarPos</strong><span class="classifier">str</span></dt><dd><p>Location of the scalar component of the output quaternion, either
 ‘last’ (default) or ‘first’.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>NotImplementedError</dt><dd><p>for invalid values of <code class="docutils literal notranslate"><span class="pre">scalarPos</span></code></p>
 </dd>
@@ -153,36 +154,37 @@ of the same disadvantages inherent to rotation matrices, such as potential
 numerical instabilities. Working in quaternion space as much as possible
 is recommended.</p>
 <p>There are several algorithms; the most well-known algorithm for this
-conversion is Shepperd’s <a class="footnote-reference brackets" href="#shepperd" id="id1">1</a>, although the many “rediscoveries”
+conversion is Shepperd’s <a class="footnote-reference brackets" href="#shepperd" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, although the many “rediscoveries”
 indicate
 it is not sufficiently well-known. This function uses the method of
-Bar-Itzhack <a class="footnote-reference brackets" href="#baritzhack" id="id2">2</a> (version 3), which should be resistant to small
+Bar-Itzhack <a class="footnote-reference brackets" href="#baritzhack" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> (version 3), which should be resistant to small
 errors in the rotation matrix. As a result, the input checking is quite
 coarse and will likely accept many matrices that do not represent valid
 rotations.</p>
 <p>Also potentially of interest, although not implemented here, is Sarabandi
-and Thomas <a class="footnote-reference brackets" href="#sarabandi" id="id3">3</a>.</p>
+and Thomas <a class="footnote-reference brackets" href="#sarabandi" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>.</p>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="shepperd"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>S.W. Shepperd, “Quaternion from rotation matrix,” Journal of
+<aside class="footnote brackets" id="shepperd" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>S.W. Shepperd, “Quaternion from rotation matrix,” Journal of
 Guidance and Control, Vol. 1, No. 3, pp. 223-224, 1978,
 <a class="reference external" href="https://doi.org/10.2514/3.55767b">doi:10.2514/3.55767b</a></p>
-</dd>
-<dt class="label" id="baritzhack"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p>I. Y. Bar-Itzhack, “New method for extracting the
+</aside>
+<aside class="footnote brackets" id="baritzhack" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>I. Y. Bar-Itzhack, “New method for extracting the
 quaternion from a rotation matrix”, AIAA Journal of Guidance,
 Control and Dynamics, 23 (6): 1085–1087,
 <a class="reference external" href="https://doi.org/10.2514/2.4654">doi:10.2514/2.4654</a></p>
-</dd>
-<dt class="label" id="sarabandi"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
-<dd><p>S. Sarabandi and F. Thomas, “Accurate Computation of
+</aside>
+<aside class="footnote brackets" id="sarabandi" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>S. Sarabandi and F. Thomas, “Accurate Computation of
 Quaternions from Rotation Matrices”, In: Lenarcic J.,
 Parenti-Castelli V. (eds) Advances in Robot Kinematics 2018,
 Springer.
 <a class="reference external" href="https://doi.org/10.1007/978-3-319-93188-3_5">doi:10.1007/978-3-319-93188-3_5</a></p>
-</dd>
-</dl>
+</aside>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.coordinates</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">coordinates</span><span class="o">.</span><span class="n">quaternionFromMatrix</span><span class="p">(</span>
@@ -229,7 +231,7 @@ Springer.
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy - main SpacePy module &#8212; SpacePy v0.3.0 Manual</title>
+    <title>spacepy - main SpacePy module &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -15,6 +15,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/copybutton.js"></script>
     
@@ -84,7 +85,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -94,7 +95,7 @@
           <div class="body" role="main">
             
   <section id="module-spacepy">
-<span id="spacepy-main-spacepy-module"></span><h1>spacepy - main SpacePy module<a class="headerlink" href="#module-spacepy" title="Permalink to this headline">¶</a></h1>
+<span id="spacepy-main-spacepy-module"></span><h1>spacepy - main SpacePy module<a class="headerlink" href="#module-spacepy" title="Permalink to this heading">¶</a></h1>
 <p>SpacePy: Space Science Tools for Python</p>
 <p>SpacePy is a package of tools primarily aimed at the space science community.
 This __init__.py file sets the parameters for import statements.</p>
@@ -108,11 +109,7 @@ will list all available functions, classes and variables.</p>
 <p>Most functionality is in spacepy’s submodules. Each module has specific
 help available:</p>
 <p class="rubric">Submodules</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="coordinates.html#module-spacepy.coordinates" title="spacepy.coordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coordinates</span></code></a></p></td>
 <td><p>Implementation of Coords class functions for coordinate transformations</p></td>
@@ -129,41 +126,40 @@ help available:</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="irbempy.html#module-spacepy.irbempy" title="spacepy.irbempy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">irbempy</span></code></a></p></td>
 <td><p>module wrapper for irbem_lib Reference for this library <a class="reference external" href="https://sourceforge.net/projects/irbem/">https://sourceforge.net/projects/irbem/</a> D.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="omni.html#module-spacepy.omni" title="spacepy.omni"><code class="xref py py-obj docutils literal notranslate"><span class="pre">omni</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="lanlstar.html#module-spacepy.LANLstar" title="spacepy.LANLstar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LANLstar</span></code></a></p></td>
+<td><p>Lstar and Lmax calculation using artificial neural network (ANN) technique.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="omni.html#module-spacepy.omni" title="spacepy.omni"><code class="xref py py-obj docutils literal notranslate"><span class="pre">omni</span></code></a></p></td>
 <td><p>Tools to read and process omni data (Qin-Denton, etc.)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="poppy.html#module-spacepy.poppy" title="spacepy.poppy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">poppy</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="poppy.html#module-spacepy.poppy" title="spacepy.poppy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">poppy</span></code></a></p></td>
 <td><p>PoPPy -- Point Processes in Python.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pybats.html#module-spacepy.pybats" title="spacepy.pybats"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pybats</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="pybats.html#module-spacepy.pybats" title="spacepy.pybats"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pybats</span></code></a></p></td>
 <td><p>PyBats!  An open source Python-based interface for reading, manipulating, and visualizing BATS-R-US and SWMF output.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pycdf.html#module-spacepy.pycdf" title="spacepy.pycdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pycdf</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="pycdf.html#module-spacepy.pycdf" title="spacepy.pycdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pycdf</span></code></a></p></td>
 <td><p>This package provides a Python interface to the Common Data Format (CDF) library used for many NASA missions, available at <a class="reference external" href="http://cdf.gsfc.nasa.gov/">http://cdf.gsfc.nasa.gov/</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="radbelt.html#module-spacepy.radbelt" title="spacepy.radbelt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">radbelt</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="radbelt.html#module-spacepy.radbelt" title="spacepy.radbelt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">radbelt</span></code></a></p></td>
 <td><p>Functions supporting radiation belt diffusion codes</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="seapy.html#module-spacepy.seapy" title="spacepy.seapy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">seapy</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="seapy.html#module-spacepy.seapy" title="spacepy.seapy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">seapy</span></code></a></p></td>
 <td><p>SeaPy -- Superposed Epoch in Python.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="time.html#module-spacepy.time" title="spacepy.time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">time</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="time.html#module-spacepy.time" title="spacepy.time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">time</span></code></a></p></td>
 <td><p>Time conversion, manipulation and implementation of Ticktock class</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="toolbox.html#module-spacepy.toolbox" title="spacepy.toolbox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toolbox</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="toolbox.html#module-spacepy.toolbox" title="spacepy.toolbox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toolbox</span></code></a></p></td>
 <td><p>Toolbox of various functions and generic utilities.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="ae9ap9.html#module-spacepy.ae9ap9" title="spacepy.ae9ap9"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ae9ap9</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="ae9ap9.html#module-spacepy.ae9ap9" title="spacepy.ae9ap9"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ae9ap9</span></code></a></p></td>
 <td><p>Module for reading and dealing with AE9AP9 data files.</p></td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Functions</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.deprecated" title="spacepy.deprecated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">deprecated</span></code></a>(version, message[, docstring])</p></td>
 <td><p>Decorator to deprecate a function/method</p></td>
@@ -181,7 +177,7 @@ help available:</p>
 <code class="docutils literal notranslate"><span class="pre">DeprecationWarning</span></code> and the docstring has a deprecation
 note added in accordance with <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html#sections">numpydoc format</a></p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>version</strong><span class="classifier">str</span></dt><dd><p>What is the first version where this was deprecated?</p>
 </dd>
@@ -190,7 +186,7 @@ docstring.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Other Parameters</dt>
+<dt class="field-even">Other Parameters<span class="colon">:</span></dt>
 <dd class="field-even"><dl>
 <dt><strong>docstring</strong><span class="classifier">str</span></dt><dd><div class="versionadded">
 <p><span class="versionmodified added">New in version 0.2.2.</span></p>
@@ -277,7 +273,7 @@ function.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

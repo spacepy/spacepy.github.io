@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.irbempy.get_Bfield &#8212; SpacePy v0.3.0 Manual</title>
+    <title>spacepy.irbempy.get_Bfield &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -15,6 +15,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/copybutton.js"></script>
     
@@ -49,7 +50,7 @@
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../irbempy.html" accesskey="U">irbempy - Python interface to irbem/ONERA library</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../irbempy.html" accesskey="U">irbempy - Python interface to IRBEM library</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.irbempy.get_Bfield</a></li> 
       </ul>
     </div>
@@ -85,7 +86,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -95,14 +96,14 @@
           <div class="body" role="main">
             
   <section id="spacepy-irbempy-get-bfield">
-<h1>spacepy.irbempy.get_Bfield<a class="headerlink" href="#spacepy-irbempy-get-bfield" title="Permalink to this headline">¶</a></h1>
+<h1>spacepy.irbempy.get_Bfield<a class="headerlink" href="#spacepy-irbempy-get-bfield" title="Permalink to this heading">¶</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="spacepy.irbempy.get_Bfield">
 <span class="sig-prename descclassname"><span class="pre">spacepy.irbempy.</span></span><span class="sig-name descname"><span class="pre">get_Bfield</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loci</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extMag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'T01STORM'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omnivals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/irbempy/irbempy.html#get_Bfield"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.irbempy.get_Bfield" title="Permalink to this definition">¶</a></dt>
 <dd><p>call get_bfield in irbem lib and return a dictionary with the B-field vector and
 strenght.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>- ticks (Ticktock class)</strong><span class="classifier">containing time information</span></dt><dd></dd>
 <dt><strong>- loci (Coords class)</strong><span class="classifier">containing spatial information</span></dt><dd></dd>
@@ -115,7 +116,7 @@ strenght.</p>
 <dt><strong>- (see Lstar documentation for further explanation)</strong></dt><dd></dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>- results (dictionary)</strong><span class="classifier">containing keys: Bvec, and Blocal</span></dt><dd></dd>
 </dl>
@@ -127,12 +128,15 @@ strenght.</p>
 <dt><a class="reference internal" href="spacepy.irbempy.get_Lstar.html#spacepy.irbempy.get_Lstar" title="spacepy.irbempy.get_Lstar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_Lstar</span></code></a>, <a class="reference internal" href="spacepy.irbempy.find_Bmirror.html#spacepy.irbempy.find_Bmirror" title="spacepy.irbempy.find_Bmirror"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_Bmirror</span></code></a>, <a class="reference internal" href="spacepy.irbempy.find_magequator.html#spacepy.irbempy.find_magequator" title="spacepy.irbempy.find_magequator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_magequator</span></code></a></dt><dd></dd>
 </dl>
 </div>
+<p class="rubric">Notes</p>
+<p>Most parameterized external field models are subject to limits on the valid
+range of input parameters and will return NaN if evaluated outside the bounds.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.time</span> <span class="k">as</span> <span class="nn">spt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.coordinates</span> <span class="k">as</span> <span class="nn">spc</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.irbempy</span> <span class="k">as</span> <span class="nn">ib</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">spt</span><span class="o">.</span><span class="n">Ticktock</span><span class="p">([</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;2002-02-02T12:10:00&#39;</span><span class="p">],</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">spc</span><span class="o">.</span><span class="n">Coords</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]],</span> <span class="s1">&#39;GEO&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">spc</span><span class="o">.</span><span class="n">Coords</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]],</span> <span class="s1">&#39;GEO&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="n">use_irbem</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ib</span><span class="o">.</span><span class="n">get_Bfield</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 <span class="go">{&#39;Blocal&#39;: array([  976.42565251,  3396.25991675]),</span>
 <span class="go">   &#39;Bvec&#39;: array([[ -5.01738885e-01,  -1.65104338e+02,   9.62365503e+02],</span>
@@ -170,13 +174,13 @@ strenght.</p>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../irbempy.html" >irbempy - Python interface to irbem/ONERA library</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../irbempy.html" >irbempy - Python interface to IRBEM library</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.irbempy.get_Bfield</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

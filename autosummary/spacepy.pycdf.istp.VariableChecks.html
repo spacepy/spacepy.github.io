@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.pycdf.istp.VariableChecks &#8212; SpacePy v0.3.0 Manual</title>
+    <title>spacepy.pycdf.istp.VariableChecks &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -15,6 +15,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/copybutton.js"></script>
     
@@ -86,7 +87,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -96,7 +97,7 @@
           <div class="body" role="main">
             
   <section id="spacepy-pycdf-istp-variablechecks">
-<h1>spacepy.pycdf.istp.VariableChecks<a class="headerlink" href="#spacepy-pycdf-istp-variablechecks" title="Permalink to this headline">¶</a></h1>
+<h1>spacepy.pycdf.istp.VariableChecks<a class="headerlink" href="#spacepy-pycdf-istp-variablechecks" title="Permalink to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="spacepy.pycdf.istp.VariableChecks">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pycdf.istp.</span></span><span class="sig-name descname"><span class="pre">VariableChecks</span></span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#VariableChecks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.VariableChecks" title="Permalink to this definition">¶</a></dt>
@@ -107,11 +108,7 @@ skeleton editor</a>.  All
 tests return a list, one error string for every noncompliance
 found (empty list if compliant). <a class="reference internal" href="#spacepy.pycdf.istp.VariableChecks.all" title="spacepy.pycdf.istp.VariableChecks.all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">all()</span></code></a> will perform all
 tests and concatenate all errors.</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pycdf.istp.VariableChecks.all" title="spacepy.pycdf.istp.VariableChecks.all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">all</span></code></a>(v[, catch])</p></td>
 <td><p>Perform all variable tests</p></td>
@@ -153,7 +150,7 @@ tests and concatenate all errors.</p>
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">catch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#VariableChecks.all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.VariableChecks.all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform all variable tests</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>v</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-class docutils literal notranslate"><span class="pre">Var</span></code></a></span></dt><dd><p>Variable to check</p>
 </dd>
@@ -164,7 +161,7 @@ Calling the individual test will reveal the full traceback.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>list of str</dt><dd><p>Description of each validation failure.</p>
 </dd>
@@ -190,13 +187,13 @@ Calling the individual test will reveal the full traceback.</p>
 <a class="reference external" href="https://spdf.gsfc.nasa.gov/istp_guide/vattributes.html#DELTA">DELTA</a>
 match the type, size, and units of this variable.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>v</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-class docutils literal notranslate"><span class="pre">Var</span></code></a></span></dt><dd><p>Variable to check</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>list of str</dt><dd><p>Description of each validation failure.</p>
 </dd>
@@ -215,13 +212,13 @@ match the type, size, and units of this variable.</p>
 and <a class="reference external" href="https://spdf.gsfc.nasa.gov/istp_guide/vattributes.html#LABL_PTR_1">LABL_PTR</a>
 exist in the CDF.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>v</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-class docutils literal notranslate"><span class="pre">Var</span></code></a></span></dt><dd><p>Variable to check</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>list of str</dt><dd><p>Description of each validation failure.</p>
 </dd>
@@ -239,13 +236,13 @@ attributes for <a class="reference external" href="https://spdf.gsfc.nasa.gov/is
 and compares to the size of the corresponding dimension in
 this variable.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>v</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-class docutils literal notranslate"><span class="pre">Var</span></code></a></span></dt><dd><p>Variable to check</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>list of str</dt><dd><p>Description of each validation failure.</p>
 </dd>
@@ -261,13 +258,13 @@ this variable.</p>
 <p>Checks attributes for this variable for any entries consisting
 of an empty string. These should be replaced with a single space.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>v</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-class docutils literal notranslate"><span class="pre">Var</span></code></a></span></dt><dd><p>Variable to check</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>list of str</dt><dd><p>Description of each validation failure.</p>
 </dd>
@@ -284,13 +281,13 @@ of an empty string. These should be replaced with a single space.</p>
 attribute to the variable name; fail validation if they don’t
 match.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>v</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-class docutils literal notranslate"><span class="pre">Var</span></code></a></span></dt><dd><p>Variable to check</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>list of str</dt><dd><p>Description of each validation failure.</p>
 </dd>
@@ -307,13 +304,13 @@ match.</p>
 attribute and makes sure it is the same type as variable and matches
 ISTP value.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>v</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-class docutils literal notranslate"><span class="pre">Var</span></code></a></span></dt><dd><p>Variable to check</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>list of str</dt><dd><p>Description of each validation failure.</p>
 </dd>
@@ -337,13 +334,13 @@ ISTP value.</p>
 variable attribute for <a class="reference external" href="https://spdf.gsfc.nasa.gov/istp_guide/vattributes.html#DEPEND_0">DEPEND_0</a>
 and compares to the record count for this variable.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>v</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-class docutils literal notranslate"><span class="pre">Var</span></code></a></span></dt><dd><p>Variable to check</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>list of str</dt><dd><p>Description of each validation failure.</p>
 </dd>
@@ -360,13 +357,13 @@ and compares to the record count for this variable.</p>
 of this variable and makes sure it is reasonable for the
 variable dimensions.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>v</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-class docutils literal notranslate"><span class="pre">Var</span></code></a></span></dt><dd><p>Variable to check</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>list of str</dt><dd><p>Description of each validation failure.</p>
 </dd>
@@ -383,13 +380,13 @@ variable dimensions.</p>
 and <code class="docutils literal notranslate"><span class="pre">VALIDMAX</span></code>; fails validation if any values are below
 VALIDMIN or above <code class="docutils literal notranslate"><span class="pre">VALIDMAX</span></code> unless equal to <a class="reference external" href="https://spdf.gsfc.nasa.gov/istp_guide/vattributes.html#FILLVAL">FILLVAL</a>.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>v</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-class docutils literal notranslate"><span class="pre">Var</span></code></a></span></dt><dd><p>Variable to check</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>list of str</dt><dd><p>Description of each validation failure.</p>
 </dd>
@@ -406,13 +403,13 @@ VALIDMIN or above <code class="docutils literal notranslate"><span class="pre">V
 to <code class="docutils literal notranslate"><span class="pre">SCALEMAX</span></code> to make sure it isn’t larger and both are
 within range of the variable CDF datatype.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>v</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-class docutils literal notranslate"><span class="pre">Var</span></code></a></span></dt><dd><p>Variable to check</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>list of str</dt><dd><p>Description of each validation failure.</p>
 </dd>
@@ -459,7 +456,7 @@ within range of the variable CDF datatype.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

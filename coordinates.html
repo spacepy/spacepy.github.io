@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>coordinates - module for coordinate transforms &#8212; SpacePy v0.3.0 Manual</title>
+    <title>coordinates - module for coordinate transforms &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -15,6 +15,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/copybutton.js"></script>
     
@@ -95,7 +96,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -105,7 +106,7 @@
           <div class="body" role="main">
             
   <section id="module-spacepy.coordinates">
-<span id="coordinates-module-for-coordinate-transforms"></span><h1>coordinates - module for coordinate transforms<a class="headerlink" href="#module-spacepy.coordinates" title="Permalink to this headline">¶</a></h1>
+<span id="coordinates-module-for-coordinate-transforms"></span><h1>coordinates - module for coordinate transforms<a class="headerlink" href="#module-spacepy.coordinates" title="Permalink to this heading">¶</a></h1>
 <p>Implementation of Coords class functions for coordinate transformations</p>
 <p>The coordinate systems supported by this module cover the most commonly
 used geophysical and magnetospheric systems. The naming conventions can
@@ -146,9 +147,14 @@ units will be preserved.</p>
 <code class="docutils literal notranslate"><span class="pre">ECI2000</span></code>, <code class="docutils literal notranslate"><span class="pre">ECIMOD</span></code>, <code class="docutils literal notranslate"><span class="pre">ECITOD</span></code>, and <code class="docutils literal notranslate"><span class="pre">CDMAG</span></code>. With the exception
 of <code class="docutils literal notranslate"><span class="pre">ECIMOD</span></code>, these can be used with the existing IRBEM backend, and
 will be converted to their closest equivalents.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.4.0.</span></p>
+</div>
+<p>The default backend for coordinate transformations was changed from IRBEM
+to the CTrans-based SpacePy backend.</p>
 </div></blockquote>
 <section id="notes-on-differences-between-representations">
-<h2>Notes on differences between representations<a class="headerlink" href="#notes-on-differences-between-representations" title="Permalink to this headline">¶</a></h2>
+<h2>Notes on differences between representations<a class="headerlink" href="#notes-on-differences-between-representations" title="Permalink to this heading">¶</a></h2>
 <p>IRBEM’s coordinate transformations are low-accuracy and were written for
 a library with a driving philosophy of speed and robustness as priorities.
 The coordinate transformations are therefore approximate. Further, most of
@@ -168,7 +174,7 @@ and AstroPy. However, for use cases where the required precision is of order
 1 percent the output can be considered equivalent.</p>
 </section>
 <section id="setting-options-for-coordinate-transformation">
-<h2>Setting options for coordinate transformation<a class="headerlink" href="#setting-options-for-coordinate-transformation" title="Permalink to this headline">¶</a></h2>
+<h2>Setting options for coordinate transformation<a class="headerlink" href="#setting-options-for-coordinate-transformation" title="Permalink to this heading">¶</a></h2>
 <p>The backend for coordinate transformations can be provided at
 instantiation of a <a class="reference internal" href="autosummary/spacepy.coordinates.Coords.html#spacepy.coordinates.Coords" title="spacepy.coordinates.Coords"><code class="xref py py-class docutils literal notranslate"><span class="pre">Coords</span></code></a> object using a keyword
 argument. However, for convenience and flexibility the options can be
@@ -194,11 +200,7 @@ Contact: <a class="reference external" href="mailto:smorley&#37;&#52;&#48;lanl&#
 <p>Copyright 2010-2016 Los Alamos National Security, LLC.</p>
 </section>
 <p class="rubric">Classes</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.coordinates.Coords.html#spacepy.coordinates.Coords" title="spacepy.coordinates.Coords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Coords</span></code></a>(data, dtype, carsph, [units, ticks, ...)</p></td>
 <td><p>A class holding spatial coordinates and enabling transformation between coordinate systems.</p></td>
@@ -206,11 +208,7 @@ Contact: <a class="reference external" href="mailto:smorley&#37;&#52;&#48;lanl&#
 </tbody>
 </table>
 <p class="rubric">Functions</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.coordinates.car2sph.html#spacepy.coordinates.car2sph" title="spacepy.coordinates.car2sph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">car2sph</span></code></a>(car_in)</p></td>
 <td><p>Coordinate transformation from Cartesian to spherical</p></td>
@@ -272,7 +270,7 @@ Contact: <a class="reference external" href="mailto:smorley&#37;&#52;&#48;lanl&#
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

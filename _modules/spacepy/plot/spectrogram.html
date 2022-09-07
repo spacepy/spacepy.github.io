@@ -1,11 +1,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.plot.spectrogram &#8212; SpacePy v0.3.0 Manual</title>
+    <title>spacepy.plot.spectrogram &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
@@ -14,6 +14,7 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/copybutton.js"></script>
     
@@ -61,7 +62,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -534,10 +535,10 @@
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">plotSettings</span><span class="p">[</span><span class="s1">&#39;zlog&#39;</span><span class="p">]:</span>
             <span class="n">pcm</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;spectrogram&#39;</span><span class="p">][</span><span class="s1">&#39;xedges&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;spectrogram&#39;</span><span class="p">][</span><span class="s1">&#39;yedges&#39;</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">bb</span><span class="p">),</span>
-                                <span class="n">norm</span><span class="o">=</span><span class="n">LogNorm</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">plotSettings</span><span class="p">[</span><span class="s1">&#39;cmap&#39;</span><span class="p">],</span> <span class="n">vmin</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">plotSettings</span><span class="p">[</span><span class="s1">&#39;zlim&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span>
-                                <span class="n">vmax</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">plotSettings</span><span class="p">[</span><span class="s1">&#39;zlim&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+                                <span class="n">norm</span><span class="o">=</span><span class="n">LogNorm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">plotSettings</span><span class="p">[</span><span class="s1">&#39;zlim&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">vmax</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">plotSettings</span><span class="p">[</span><span class="s1">&#39;zlim&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]),</span>
+                                <span class="n">cmap</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">plotSettings</span><span class="p">[</span><span class="s1">&#39;cmap&#39;</span><span class="p">])</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">pcm</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;spectrogram&#39;</span><span class="p">][</span><span class="s1">&#39;xedges&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;spectrogram&#39;</span><span class="p">][</span><span class="s1">&#39;yedges&#39;</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">bb</span><span class="p">),</span> 
+            <span class="n">pcm</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;spectrogram&#39;</span><span class="p">][</span><span class="s1">&#39;xedges&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;spectrogram&#39;</span><span class="p">][</span><span class="s1">&#39;yedges&#39;</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">bb</span><span class="p">),</span>
                                 <span class="n">cmap</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">plotSettings</span><span class="p">[</span><span class="s1">&#39;cmap&#39;</span><span class="p">],</span> <span class="n">vmin</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">plotSettings</span><span class="p">[</span><span class="s1">&#39;zlim&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span>
                                 <span class="n">vmax</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">plotSettings</span><span class="p">[</span><span class="s1">&#39;zlim&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
 
@@ -653,7 +654,7 @@
 <span class="sd">    zlog : bool</span>
 <span class="sd">        Plot the color with a log colorbar (default: True)</span>
 <span class="sd">    ylog : bool</span>
-<span class="sd">        Plot the Y axis with a log scale (default: True) </span>
+<span class="sd">        Plot the Y axis with a log scale (default: True)</span>
 <span class="sd">    alpha : scalar (0-1)</span>
 <span class="sd">        The alpha blending value (default: None)</span>
 <span class="sd">    cmap : string</span>
@@ -668,7 +669,7 @@
 <span class="sd">        Plot a colorbar (default: True)</span>
 <span class="sd">    cbtitle : string</span>
 <span class="sd">        Label to go on the colorbar (default: None)</span>
-<span class="sd">    </span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    =======</span>
 <span class="sd">    ax : matplotlib.axes._subplots.AxesSubplot</span>
@@ -701,8 +702,8 @@
                 <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
                     <span class="n">Y_tmp</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">bin_center_to_edges</span><span class="p">(</span><span class="n">Y</span><span class="p">[</span><span class="n">ii</span><span class="p">])</span>
                 <span class="n">Y</span> <span class="o">=</span> <span class="n">Y_tmp</span>
-                
-    <span class="c1"># deal with all the default keywords </span>
+
+    <span class="c1"># deal with all the default keywords</span>
     <span class="n">zlog</span>    <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;zlog&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
     <span class="n">ylog</span>    <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;ylog&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
     <span class="n">alpha</span>   <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;alpha&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
@@ -712,7 +713,7 @@
     <span class="n">ax</span>      <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;ax&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">cb</span>      <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;cb&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
     <span class="n">cbtitle</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;cbtitle&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    
+
     <span class="c1"># the first case is that X, Y are 1d and Z is 2d, just make the plot</span>
     <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -737,7 +738,7 @@
                            <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span>
                            <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">ylog</span><span class="p">:</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
-    
+
     <span class="k">if</span> <span class="n">cb</span><span class="p">:</span> <span class="c1"># add a colorbar</span>
         <span class="n">cb_</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">pc</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">cbtitle</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -773,7 +774,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

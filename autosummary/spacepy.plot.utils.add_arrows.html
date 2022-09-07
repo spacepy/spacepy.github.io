@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.plot.utils.add_arrows &#8212; SpacePy v0.3.0 Manual</title>
+    <title>spacepy.plot.utils.add_arrows &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -15,6 +15,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/copybutton.js"></script>
     
@@ -86,7 +87,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -96,41 +97,41 @@
           <div class="body" role="main">
             
   <section id="spacepy-plot-utils-add-arrows">
-<h1>spacepy.plot.utils.add_arrows<a class="headerlink" href="#spacepy-plot-utils-add-arrows" title="Permalink to this headline">¶</a></h1>
+<h1>spacepy.plot.utils.add_arrows<a class="headerlink" href="#spacepy-plot-utils-add-arrows" title="Permalink to this heading">¶</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="spacepy.plot.utils.add_arrows">
 <span class="sig-prename descclassname"><span class="pre">spacepy.plot.utils.</span></span><span class="sig-name descname"><span class="pre">add_arrows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-&gt;'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dorestrict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#add_arrows"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.plot.utils.add_arrows" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add directional arrows along a plotted line.  Useful for plotting flow
 lines, magnetic field lines, or other directional traces.</p>
-<p><em>lines</em> can be either <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.lines.Line2D.html#matplotlib.lines.Line2D" title="(in Matplotlib v3.5.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Line2D</span></code></a>, a list or tuple
-of lines, or a <a class="reference external" href="https://matplotlib.org/stable/api/collections_api.html#matplotlib.collections.LineCollection" title="(in Matplotlib v3.5.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LineCollection</span></code></a> object.</p>
+<p><em>lines</em> can be either <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.lines.Line2D.html#matplotlib.lines.Line2D" title="(in Matplotlib v3.5.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Line2D</span></code></a>, a list or tuple
+of lines, or a <a class="reference external" href="https://matplotlib.org/stable/api/collections_api.html#matplotlib.collections.LineCollection" title="(in Matplotlib v3.5.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LineCollection</span></code></a> object.</p>
 <p>For each line, arrows will be added using 
-<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.annotate.html#matplotlib.axes.Axes.annotate" title="(in Matplotlib v3.5.1)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a>.  Arrows will be spread evenly
+<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.annotate.html#matplotlib.axes.Axes.annotate" title="(in Matplotlib v3.5.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a>.  Arrows will be spread evenly
 over the line using the number of points in the line as the metric for
 spacing.  For example, if a line has 120 points and 3 arrows are requested,
 an arrow will be added at point number 30, 60, and 90.
 Arrow color and alpha is obtained from the parent line.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>lines</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.lines.Line2D.html#matplotlib.lines.Line2D" title="(in Matplotlib v3.5.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Line2D</span></code></a>, a list/tuple, or <a class="reference external" href="https://matplotlib.org/stable/api/collections_api.html#matplotlib.collections.LineCollection" title="(in Matplotlib v3.5.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LineCollection</span></code></a></span></dt><dd><p>A single line or group of lines on which to place the arrows.
+<dt><strong>lines</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.lines.Line2D.html#matplotlib.lines.Line2D" title="(in Matplotlib v3.5.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Line2D</span></code></a>, a list/tuple, or <a class="reference external" href="https://matplotlib.org/stable/api/collections_api.html#matplotlib.collections.LineCollection" title="(in Matplotlib v3.5.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LineCollection</span></code></a></span></dt><dd><p>A single line or group of lines on which to place the arrows.
 Arrows inherent color and transparency (alpha) from the line on which
 they are placed.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>None</dt><dd></dd>
 </dl>
 </dd>
-<dt class="field-odd">Other Parameters</dt>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>n</strong><span class="classifier">integer</span></dt><dd><p>Number of arrows to add to each line; defaults to 3.</p>
 </dd>
 <dt><strong>size</strong><span class="classifier">integer</span></dt><dd><p>The size of the arrows in points.  Defaults to 12.</p>
 </dd>
-<dt><strong>style</strong><span class="classifier">string</span></dt><dd><p>Set the style of the arrow via <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.ArrowStyle.html#matplotlib.patches.ArrowStyle" title="(in Matplotlib v3.5.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArrowStyle</span></code></a>,
+<dt><strong>style</strong><span class="classifier">string</span></dt><dd><p>Set the style of the arrow via <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.ArrowStyle.html#matplotlib.patches.ArrowStyle" title="(in Matplotlib v3.5.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArrowStyle</span></code></a>,
 e.g. ‘-&gt;’ (default) or ‘-<a href="#id1"><span class="problematic" id="id2">|</span></a>&gt;’</p>
 </dd>
 <dt><strong>dorestrict</strong><span class="classifier">boolean</span></dt><dd><p>If True (default), only points along the line within the current
@@ -201,7 +202,7 @@ created, so not all lines will receive *n</em> arrows.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>irbempy - Python interface to irbem/ONERA library &#8212; SpacePy v0.3.0 Manual</title>
+    <title>irbempy - Python interface to IRBEM library &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -15,6 +15,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/copybutton.js"></script>
     
@@ -49,7 +50,7 @@
         <li><a href="search.html">search</a>|&nbsp;</li>
        <li><a href="index.html">documentation </a> &raquo;</li>
 
-        <li class="nav-item nav-item-this"><a href="">irbempy - Python interface to irbem/ONERA library</a></li> 
+        <li class="nav-item nav-item-this"><a href="">irbempy - Python interface to IRBEM library</a></li> 
       </ul>
     </div>
 
@@ -61,7 +62,7 @@
   <div>
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">irbempy - Python interface to irbem/ONERA library</a><ul>
+<li><a class="reference internal" href="#">irbempy - Python interface to IRBEM library</a><ul>
 <li><a class="reference internal" href="#options">Options</a></li>
 <li><a class="reference internal" href="#extmag">extMag</a></li>
 <li><a class="reference internal" href="#authors">Authors</a></li>
@@ -96,7 +97,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -106,7 +107,7 @@
           <div class="body" role="main">
             
   <section id="module-spacepy.irbempy">
-<span id="irbempy-python-interface-to-irbem-onera-library"></span><h1>irbempy - Python interface to irbem/ONERA library<a class="headerlink" href="#module-spacepy.irbempy" title="Permalink to this headline">¶</a></h1>
+<span id="irbempy-python-interface-to-irbem-library"></span><h1>irbempy - Python interface to IRBEM library<a class="headerlink" href="#module-spacepy.irbempy" title="Permalink to this heading">¶</a></h1>
 <p>module wrapper for irbem_lib
 Reference for this library
 <a class="reference external" href="https://sourceforge.net/projects/irbem/">https://sourceforge.net/projects/irbem/</a>
@@ -115,7 +116,7 @@ D. Boscher, S. Bourdarie, P. O’Brien, T. Guild, IRBEM library V4.3, 2004-2008<
 that define the quality level of the result. The options list is a 5-element list and is defined
 as follows.</p>
 <section id="options">
-<h2>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li><p>1st element: 0 - don’t compute L* or phi ;  1 - compute L*; 2- compute phi</p></li>
@@ -163,7 +164,7 @@ Tsyganenko 2001 storm-time model. The external model is always specified using t
 and the following options exist.</p>
 </section>
 <section id="extmag">
-<h2>extMag<a class="headerlink" href="#extmag" title="Permalink to this headline">¶</a></h2>
+<h2>extMag<a class="headerlink" href="#extmag" title="Permalink to this heading">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li><p>‘0’ = No external field model</p></li>
@@ -182,22 +183,57 @@ and the following options exist.</p>
 <li><p>‘TS07’ = Tsyganenko and Sitnov 2007 model</p></li>
 </ul>
 </div></blockquote>
+<p>Many of these models have limits placed on the valid range of input parameters,
+and outside these limits invalid (NaN) values will be returned.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>MEAD      : Mead &amp; Fairfield [1975] (uses 0&lt;=Kp&lt;=9 - Valid for rGEO&lt;=17. Re)</p></li>
+<li><p>T87SHORT: Tsyganenko short [1987] (uses 0&lt;=Kp&lt;=9 - Valid for rGEO&lt;=30. Re)</p></li>
+<li><p>T87LONG : Tsyganenko long [1987] (uses 0&lt;=Kp&lt;=9 - Valid for rGEO&lt;=70. Re)</p></li>
+<li><p>T89        : Tsyganenko [1989] (uses 0&lt;=Kp&lt;=9 - Valid for rGEO&lt;=70. Re)</p></li>
+<li><p>OPQUIET : Olson &amp; Pfitzer quiet [1977] (default - Valid for rGEO&lt;=15. Re)</p></li>
+<li><dl class="simple">
+<dt>OPDYN<span class="classifier">Olson &amp; Pfitzer dynamic [1988] (uses 5.&lt;=dens&lt;=50., 300.&lt;=velo&lt;=500.,</span></dt><dd><p>-100.&lt;=Dst&lt;=20. - Valid for rGEO&lt;=60. Re)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>T96<span class="classifier">Tsyganenko [1996] (uses -100.&lt;=Dst (nT)&lt;=20., 0.5&lt;=Pdyn (nPa)&lt;10.,</span></dt><dd><p><a href="#id1"><span class="problematic" id="id2">|ByIMF|</span></a> (nT)&lt;1=0., <a href="#id3"><span class="problematic" id="id4">|BzIMF|</span></a> (nT)&lt;=10. - Valid for rGEO&lt;=40. Re)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>OSTA<span class="classifier">Ostapenko &amp; Maltsev [1997] (uses dst,Pdyn,BzIMF, Kp)</span></dt><dd><p>T01QUIET: Tsyganenko [2002a,b] (uses -50.&lt;Dst (nT)&lt;20., 0.5&lt;Pdyn (nPa)&lt;=5.,
+<a href="#id5"><span class="problematic" id="id6">|ByIMF|</span></a> (nT)&lt;=5., <a href="#id7"><span class="problematic" id="id8">|BzIMF|</span></a> (nT)&lt;=5., 0.&lt;=G1&lt;=10., 0.&lt;=G2&lt;=10. - Valid for xGSM&gt;=-15. Re)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>T01STORM: Tsyganenko, Singer &amp; Kasper [2003] storm  (uses Dst, Pdyn, ByIMF, BzIMF, G2, G3 -</dt><dd><p>there is no upper or lower limit for those inputs - Valid for xGSM&gt;=-15. Re)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>T05<span class="classifier">Tsyganenko &amp; Sitnov [2005] storm  (uses Dst, Pdyn, ByIMF, BzIMF,</span></dt><dd><p>W1, W2, W3, W4, W5, W6 - no upper or lower limit for inputs - Valid for xGSM&gt;=-15. Re)</p>
+</dd>
+</dl>
+</li>
+<li><p>TS07   : Tsyganenko and Sitnov [2007] model. Uses specially calculated coefficient files.</p></li>
+</ul>
+</div></blockquote>
 </section>
 <section id="authors">
-<h2>Authors<a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h2>
+<h2>Authors<a class="headerlink" href="#authors" title="Permalink to this heading">¶</a></h2>
 <p>Josef Koller, Steve Morley</p>
 <p>Copyright 2010 Los Alamos National Security, LLC.</p>
 </section>
-<p>This module provides a Python interface to the IRBEM library</p>
-<p>Reference for this library <a class="reference external" href="https://sourceforge.net/projects/irbem/">https://sourceforge.net/projects/irbem/</a></p>
+<p>This module provides a Python interface to the IRBEM (formerly known
+as ONERA-DESP) library.</p>
+<p>Reference for this library <a class="reference external" href="https://github.com/PRBEM/IRBEM">https://github.com/PRBEM/IRBEM</a></p>
 <p>D. Boscher, S. Bourdarie, P. O’Brien, T. Guild, IRBEM library V4.3, 2004-2008</p>
 <p>Authors: Josef Koller, Steve Morley</p>
 <p>Copyright 2010 Los Alamos National Security, LLC.</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.irbempy.get_AEP8.html#spacepy.irbempy.get_AEP8" title="spacepy.irbempy.get_AEP8"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_AEP8</span></code></a>(energy, loci[, model, fluxtype, ...])</p></td>
 <td><p>will return the flux from the AE8-AP8 model</p></td>
@@ -220,22 +256,13 @@ and the following options exist.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.irbempy.find_magequator.html#spacepy.irbempy.find_magequator" title="spacepy.irbempy.find_magequator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_magequator</span></code></a>(ticks, loci[, extMag, ...])</p></td>
 <td><p>call find_magequator from irbem library and return a dictionary with values for Bmin and the GEO (cartesian) coordinates of the magnetic equator</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.irbempy.car2sph.html#spacepy.irbempy.car2sph" title="spacepy.irbempy.car2sph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">car2sph</span></code></a>(CARin)</p></td>
-<td><p>coordinate transformation from cartesian to spherical</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.irbempy.sph2car.html#spacepy.irbempy.sph2car" title="spacepy.irbempy.sph2car"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sph2car</span></code></a>(SPHin)</p></td>
-<td><p>coordinate transformation from spherical to cartesian</p></td>
-</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.irbempy.coord_trans.html#spacepy.irbempy.coord_trans" title="spacepy.irbempy.coord_trans"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coord_trans</span></code></a>(loci, returntype, returncarsph)</p></td>
 <td><p>thin layer to call coor_trans1 from irbem lib this will convert between systems GDZ, GEO, GSM, GSE, SM, GEI, MAG, SPH, RLL</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.irbempy.get_sysaxes.html#spacepy.irbempy.get_sysaxes" title="spacepy.irbempy.get_sysaxes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_sysaxes</span></code></a>(dtype, carsph)</p></td>
-<td><p>will return the sysaxes according to the irbem library</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.irbempy.get_dtype.html#spacepy.irbempy.get_dtype" title="spacepy.irbempy.get_dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_dtype</span></code></a>(sysaxes)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.irbempy.get_dtype.html#spacepy.irbempy.get_dtype" title="spacepy.irbempy.get_dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_dtype</span></code></a>(sysaxes)</p></td>
 <td><p>will return the coordinate system type as string</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.irbempy.prep_irbem.html#spacepy.irbempy.prep_irbem" title="spacepy.irbempy.prep_irbem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prep_irbem</span></code></a>([ticks, loci, alpha, extMag, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.irbempy.prep_irbem.html#spacepy.irbempy.prep_irbem" title="spacepy.irbempy.prep_irbem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prep_irbem</span></code></a>([ticks, loci, alpha, extMag, ...])</p></td>
 <td><p>Prepare inputs for direct IRBEM-LIB calls.</p></td>
 </tr>
 </tbody>
@@ -269,12 +296,12 @@ and the following options exist.</p>
         <li><a href="search.html">search</a>|&nbsp;</li>
        <li><a href="index.html">documentation </a> &raquo;</li>
 
-        <li class="nav-item nav-item-this"><a href="">irbempy - Python interface to irbem/ONERA library</a></li> 
+        <li class="nav-item nav-item-this"><a href="">irbempy - Python interface to IRBEM library</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

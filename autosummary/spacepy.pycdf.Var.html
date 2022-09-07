@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.pycdf.Var &#8212; SpacePy v0.3.0 Manual</title>
+    <title>spacepy.pycdf.Var &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -15,6 +15,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/copybutton.js"></script>
     
@@ -85,7 +86,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -95,14 +96,14 @@
           <div class="body" role="main">
             
   <section id="spacepy-pycdf-var">
-<h1>spacepy.pycdf.Var<a class="headerlink" href="#spacepy-pycdf-var" title="Permalink to this headline">¶</a></h1>
+<h1>spacepy.pycdf.Var<a class="headerlink" href="#spacepy-pycdf-var" title="Permalink to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="spacepy.pycdf.Var">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pycdf.</span></span><span class="sig-name descname"><span class="pre">Var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdf_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Var" title="Permalink to this definition">¶</a></dt>
 <dd><p>A CDF variable.</p>
 <p>This object does not directly store the data from the CDF; rather,
 it provides access to the data in a format that much like a Python
-list or numpy <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.22)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>.
+list or numpy <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.23)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>.
 General list information is available in the python docs:
 <a class="reference external" href="http://docs.python.org/tutorial/introduction.html#lists">1</a>,
 <a class="reference external" href="http://docs.python.org/tutorial/datastructures.html#more-on-lists">2</a>,
@@ -342,11 +343,7 @@ more information on sparse records.</p>
 set on opening the CDF so rVars appear as zVars. See p.24 of the
 CDF user’s guide; pyCDF uses zMode 2.</p>
 </div>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pycdf.Var.attrs" title="spacepy.pycdf.Var.attrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">attrs</span></code></a></p></td>
 <td><p>zAttributes for this zVariable in a dict-like format.</p></td>
@@ -408,13 +405,13 @@ written; even deleting the data may not permit the change.</p>
 <p>See section 2.6 of the CDF user’s guide for more information on
 compression.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">tuple</span></dt><dd><p>the (comptype, param) currently in effect</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Other Parameters</dt>
+<dt class="field-even">Other Parameters<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>comptype</strong><span class="classifier">ctypes.c_long</span></dt><dd><p>type of compression to change to, see CDF C reference
 manual section 4.10. Constants for this parameter
@@ -436,7 +433,7 @@ gzip; other types have only one possible parameter.)</p>
 <span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Var.copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Copies all data and attributes from this variable</p>
 <dl class="field-list">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>out</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.VarCopy.html#spacepy.pycdf.VarCopy" title="spacepy.pycdf.VarCopy"><code class="xref py py-class docutils literal notranslate"><span class="pre">VarCopy</span></code></a></span></dt><dd><p>list of all data in record order</p>
 </dd>
@@ -466,7 +463,7 @@ gzip; other types have only one possible parameter.)</p>
 (this replicates the apparent behavior of the
 CDF library on variable creation).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>new_dv</strong><span class="classifier">list of boolean</span></dt><dd><p>Each element True to change that dimension to dimension
 variance, False to change to not dimension variance.
@@ -474,7 +471,7 @@ variance, False to change to not dimension variance.
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">list of boolean</span></dt><dd><p>True if that dimension has variance, else false.</p>
 </dd>
@@ -488,7 +485,7 @@ variance, False to change to not dimension variance.
 <span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var.insert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Var.insert" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inserts a <em>single</em> record before an index</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>index</strong><span class="classifier">int</span></dt><dd><p>index before which to insert the new record</p>
 </dd>
@@ -504,7 +501,7 @@ variance, False to change to not dimension variance.
 <span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var.name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Var.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the name of this variable</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">str</span></dt><dd><p>variable’s name</p>
 </dd>
@@ -520,7 +517,7 @@ variance, False to change to not dimension variance.
 <p>This is the length of strings for CHAR and UCHAR,
 should be 1 otherwise.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt>int</dt><dd><p>length of strings</p>
 </dd>
@@ -536,7 +533,7 @@ should be 1 otherwise.</p>
 <p>See section 2.3.20 of the CDF user’s guide for more information on
 pad values.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>out</strong><span class="classifier"></span></dt><dd><p>Current pad value for this variable. <code class="docutils literal notranslate"><span class="pre">None</span></code> if it has never been
 set. This rarely happens; the pad value is usually set by the CDF
@@ -544,7 +541,7 @@ library on variable creation.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Other Parameters</dt>
+<dt class="field-even">Other Parameters<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>value</strong></dt><dd><p>If specified, should be an appropriate pad value. If not
 specified, the pad value will not be set or changed.</p>
@@ -563,7 +560,7 @@ specified, the pad value will not be set or changed.</p>
 <span class="sig-name descname"><span class="pre">rename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var.rename"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Var.rename" title="Permalink to this definition">¶</a></dt>
 <dd><p>Renames this variable</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>new_name</strong><span class="classifier">str</span></dt><dd><p>the new name for this variable</p>
 </dd>
@@ -580,13 +577,13 @@ specified, the pad value will not be set or changed.</p>
 (this replicates the apparent behavior of the CDF library on
 variable creation).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">Boolean</span></dt><dd><p>True if record varying, False if NRV</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Other Parameters</dt>
+<dt class="field-even">Other Parameters<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>new_rv</strong><span class="classifier">boolean</span></dt><dd><p>True to change to record variance, False to change to NRV,
 unspecified to simply check variance.</p>
@@ -617,13 +614,13 @@ already written; even deleting the data may not permit the change.</p>
 <p>See section 2.3.12 of the CDF user’s guide for more information on
 sparse records.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">ctypes.c_long</span></dt><dd><p>Sparse record mode for this variable.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Other Parameters</dt>
+<dt class="field-even">Other Parameters<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>sparsetype</strong><span class="classifier">ctypes.c_long</span></dt><dd><p>If specified, should be a sparse record mode from
 <a class="reference internal" href="spacepy.pycdf.const.html#module-spacepy.pycdf.const" title="spacepy.pycdf.const"><code class="xref py py-mod docutils literal notranslate"><span class="pre">const</span></code></a>; see also CDF C reference manual
@@ -644,13 +641,13 @@ variable will not change.</p>
 <span class="sig-name descname"><span class="pre">type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Var.type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Var.type" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns or sets the CDF type of this variable</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>new_type</strong><span class="classifier">ctypes.c_long</span></dt><dd><p>the new type from <a class="reference internal" href="spacepy.pycdf.const.html#module-spacepy.pycdf.const" title="spacepy.pycdf.const"><code class="xref py py-mod docutils literal notranslate"><span class="pre">const</span></code></a></p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">int</span></dt><dd><p>CDF type</p>
 </dd>
@@ -696,7 +693,7 @@ variable will not change.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

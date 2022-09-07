@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.ctrans.convert_multitime &#8212; SpacePy v0.3.0 Manual</title>
+    <title>spacepy.ctrans.convert_multitime &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -15,6 +15,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/copybutton.js"></script>
     
@@ -85,7 +86,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -95,15 +96,15 @@
           <div class="body" role="main">
             
   <section id="spacepy-ctrans-convert-multitime">
-<h1>spacepy.ctrans.convert_multitime<a class="headerlink" href="#spacepy-ctrans-convert-multitime" title="Permalink to this headline">¶</a></h1>
+<h1>spacepy.ctrans.convert_multitime<a class="headerlink" href="#spacepy-ctrans-convert-multitime" title="Permalink to this heading">¶</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="spacepy.ctrans.convert_multitime">
 <span class="sig-prename descclassname"><span class="pre">spacepy.ctrans.</span></span><span class="sig-name descname"><span class="pre">convert_multitime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sys_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sys_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaults</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">itol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/ctrans.html#convert_multitime"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.ctrans.convert_multitime" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert coordinates for N times, where N &gt;= 1</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>coords</strong><span class="classifier">array-like</span></dt><dd><p>Coordinates as Nx3 array. Cartesian assumed unless input system is gedetic.</p>
+<dt><strong>coords</strong><span class="classifier">array-like</span></dt><dd><p>Coordinates as Nx3 array. Cartesian assumed unless input system is geodetic.</p>
 </dd>
 <dt><strong>ticks</strong><span class="classifier">spacepy.time.Ticktock</span></dt><dd><p>Times for each element of coords. Must contain either N times or 1 time.</p>
 </dd>
@@ -113,7 +114,7 @@
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Other Parameters</dt>
+<dt class="field-even">Other Parameters<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>defaults</strong><span class="classifier">namedtuple or None</span></dt><dd><p>Named tuple with parameters from coordinates module</p>
 </dd>
@@ -161,7 +162,7 @@ by spacepy.cooordinates.Coords.convert) will override this value.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

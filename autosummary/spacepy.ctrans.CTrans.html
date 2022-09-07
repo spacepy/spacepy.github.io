@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.ctrans.CTrans &#8212; SpacePy v0.3.0 Manual</title>
+    <title>spacepy.ctrans.CTrans &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -15,6 +15,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/copybutton.js"></script>
     
@@ -85,7 +86,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -95,7 +96,7 @@
           <div class="body" role="main">
             
   <section id="spacepy-ctrans-ctrans">
-<h1>spacepy.ctrans.CTrans<a class="headerlink" href="#spacepy-ctrans-ctrans" title="Permalink to this headline">¶</a></h1>
+<h1>spacepy.ctrans.CTrans<a class="headerlink" href="#spacepy-ctrans-ctrans" title="Permalink to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="spacepy.ctrans.CTrans">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.ctrans.</span></span><span class="sig-name descname"><span class="pre">CTrans</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ephmodel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pnmodel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/ctrans.html#CTrans"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.ctrans.CTrans" title="Permalink to this definition">¶</a></dt>
@@ -104,19 +105,19 @@
 of Cartesian vectors along with the names of the input and output
 coordinate systems and returns an array of the converted coordinates.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>ctime</strong><span class="classifier">(spacepy.time.Ticktock, datetime, float, string)</span></dt><dd><p>Input time stamp. Must have one time only. Accepted input formats</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">CTrans</span></dt><dd><p>instance with self.convert, etc.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">Other Parameters</dt>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>ephmodel</strong><span class="classifier">str, optional</span></dt><dd><p>Select ephemerides model (e.g., for determining Sun direction).
 Currently only ‘LGMDEFAULT’ is supported, for consistency with
@@ -141,11 +142,7 @@ and ‘IAU00’.</p>
 <p><span class="versionmodified added">New in version 0.3.0.</span></p>
 </div>
 <p class="rubric">Methods</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.ctrans.CTrans.calcTimes" title="spacepy.ctrans.CTrans.calcTimes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calcTimes</span></code></a>([recalc])</p></td>
 <td><p>Calculate time in systems required to set up coordinate transforms</p></td>
@@ -176,7 +173,7 @@ and ‘IAU00’.</p>
 <dd><p>Calculate time in systems required to set up coordinate transforms</p>
 <p>Sets Julian Date and Julian centuries in UTC, TAI, UT1, and TT systems.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>recalc</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, recalculate the times for coordinate transformation. Default
 is False.</p>
@@ -194,7 +191,7 @@ is False.</p>
 system transformations, such as orbital eccentricity, the obliquity of
 the ecliptic, anomalies, and precession angles.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>recalc</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, recalculate the orbital parameters for coordinate transformation.
 Default is False.</p>
@@ -217,7 +214,7 @@ Earth-Centered Inertial, True-of-date (ECITOD)
 Geocentric Solar Ecliptic (GSE)
 Geocentric Geographic (GEO)</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>recalc</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, recalculate the core (non-magnetic) coordinate transformations.
 Default is False.</p>
@@ -238,7 +235,7 @@ Solar Magnetic (SM)
 Geocentric Solar Magnetospheric (GSM)
 Geomagnetic, centered dipole (CDMAG)</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>recalc</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, recalculate the core (non-magnetic) coordinate transformations.
 Default is False.</p>
@@ -253,7 +250,7 @@ Default is False.</p>
 <span class="sig-name descname"><span class="pre">convert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sys_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sys_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaults</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/ctrans.html#CTrans.convert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.ctrans.CTrans.convert" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert an input vector between two coordinate systems</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>vec</strong><span class="classifier">array-like</span></dt><dd><p>Input 3-vector (can be an array of input 3-vectors) to convert.
 E.g., for 2D input the array must be like [[x1, y1, z1], [x2, y2, z2]]</p>
@@ -266,7 +263,7 @@ see module level documentation.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Other Parameters</dt>
+<dt class="field-even">Other Parameters<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>defaults</strong><span class="classifier">namedtuple or None</span></dt><dd><p>Named tuple containing default settings passed from Coordinates module</p>
 </dd>
@@ -280,7 +277,7 @@ see module level documentation.</p>
 <span class="sig-name descname"><span class="pre">getEOP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">useEOP</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/ctrans.html#CTrans.getEOP"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.ctrans.CTrans.getEOP" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get/set Earth Orientation Parameters</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>useEOP</strong><span class="classifier">bool</span></dt><dd><p>If True, use Earth Orientation Parameters. Default False.</p>
 </dd>
@@ -338,7 +335,7 @@ status of the ‘pnmodel’ variable in the CTrans object attributes.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

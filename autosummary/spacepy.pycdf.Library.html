@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.pycdf.Library &#8212; SpacePy v0.3.0 Manual</title>
+    <title>spacepy.pycdf.Library &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -15,6 +15,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/copybutton.js"></script>
     
@@ -85,7 +86,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -95,7 +96,7 @@
           <div class="body" role="main">
             
   <section id="spacepy-pycdf-library">
-<h1>spacepy.pycdf.Library<a class="headerlink" href="#spacepy-pycdf-library" title="Permalink to this headline">¶</a></h1>
+<h1>spacepy.pycdf.Library<a class="headerlink" href="#spacepy-pycdf-library" title="Permalink to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="spacepy.pycdf.Library">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pycdf.</span></span><span class="sig-name descname"><span class="pre">Library</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">libpath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">library</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Library"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Library" title="Permalink to this definition">¶</a></dt>
@@ -109,11 +110,7 @@ C reference manual.</p>
 <a class="reference external" href="https://docs.python.org/3/library/ctypes.html#module-ctypes" title="(in Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ctypes</span></code></a>.</p>
 <p>Instantiating this object loads the C library, see <a class="reference internal" href="../pycdf.html"><span class="doc">pycdf - Python interface to CDF files</span></a> docs
 for details.</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pycdf.Library.call" title="spacepy.pycdf.Library.call"><code class="xref py py-obj docutils literal notranslate"><span class="pre">call</span></code></a>(*args, **kwargs)</p></td>
 <td><p>Call the CDF internal interface</p></td>
@@ -177,20 +174,20 @@ CDF library’s C internal interface. Checks the return value with
 <a class="reference internal" href="#spacepy.pycdf.Library.check_status" title="spacepy.pycdf.Library.check_status"><code class="xref py py-meth docutils literal notranslate"><span class="pre">check_status()</span></code></a>.</p>
 <p>Terminal NULL is automatically added to args.</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>args</strong><span class="classifier">various, see <a class="reference external" href="https://docs.python.org/3/library/ctypes.html#module-ctypes" title="(in Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ctypes</span></code></a></span></dt><dd><p>Passed directly to the CDF library interface. Useful
 constants are defined in the <code class="xref py py-mod docutils literal notranslate"><span class="pre">const</span></code> module.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">int</span></dt><dd><p>CDF status from the library</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">Other Parameters</dt>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>ignore</strong><span class="classifier">sequence of CDF statuses</span></dt><dd><p>sequence of CDF statuses to ignore. If any of these
 is returned by CDF library, any related warnings or
@@ -198,12 +195,12 @@ exceptions will <em>not</em> be raised.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>CDFError</strong><span class="classifier">if CDF library reports an error</span></dt><dd></dd>
 </dl>
 </dd>
-<dt class="field-odd">Warns</dt>
+<dt class="field-odd">Warns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>CDFWarning</strong><span class="classifier">if CDF library reports a warning</span></dt><dd></dd>
 </dl>
@@ -216,19 +213,19 @@ exceptions will <em>not</em> be raised.</p>
 <span class="sig-name descname"><span class="pre">check_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Library.check_status"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Library.check_status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Raise exception or warning based on return status of CDF call</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>status</strong><span class="classifier">int</span></dt><dd><p>status returned by the C library</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">int</span></dt><dd><p>status (unchanged)</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">Other Parameters</dt>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>ignore</strong><span class="classifier">sequence of ctypes.c_long</span></dt><dd><p>CDF statuses to ignore. If any of these is returned by CDF library,
 any related warnings or exceptions will <em>not</em> be raised.
@@ -236,12 +233,12 @@ any related warnings or exceptions will <em>not</em> be raised.
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>CDFError</strong><span class="classifier">if status &lt; CDF_WARN, indicating an error</span></dt><dd></dd>
 </dl>
 </dd>
-<dt class="field-odd">Warns</dt>
+<dt class="field-odd">Warns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>CDFWarning</strong><span class="classifier">if CDF_WARN &lt;= status &lt; CDF_OK, indicating a warning.</span></dt><dd></dd>
 </dl>
@@ -254,13 +251,13 @@ any related warnings or exceptions will <em>not</em> be raised.
 <span class="sig-name descname"><span class="pre">datetime_to_epoch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Library.datetime_to_epoch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Library.datetime_to_epoch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a Python datetime to a CDF Epoch value</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>dt</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a></span></dt><dd><p>date and time to convert</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">float</span></dt><dd><p>epoch corresponding to dt</p>
 </dd>
@@ -280,13 +277,13 @@ any related warnings or exceptions will <em>not</em> be raised.
 <span class="sig-name descname"><span class="pre">datetime_to_epoch16</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Library.datetime_to_epoch16"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Library.datetime_to_epoch16" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a Python datetime to a CDF Epoch16 value</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>dt</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a></span></dt><dd><p>date and time to convert</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">list of float</span></dt><dd><p>epoch16 corresponding to dt</p>
 </dd>
@@ -306,13 +303,13 @@ any related warnings or exceptions will <em>not</em> be raised.
 <span class="sig-name descname"><span class="pre">datetime_to_tt2000</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Library.datetime_to_tt2000"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Library.datetime_to_tt2000" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a Python datetime to a CDF TT2000 value</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>dt</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a></span></dt><dd><p>date and time to convert</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">int</span></dt><dd><p>tt2000 corresponding to dt</p>
 </dd>
@@ -332,13 +329,13 @@ any related warnings or exceptions will <em>not</em> be raised.
 <span class="sig-name descname"><span class="pre">epoch_to_datetime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Library.epoch_to_datetime"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Library.epoch_to_datetime" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a CDF epoch value to a datetime</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>epoch</strong><span class="classifier">float</span></dt><dd><p>epoch value from CDF</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl>
 <dt><strong>out</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a></span></dt><dd><p>date and time corresponding to epoch. Invalid values are set to
 usual epoch invalid value, i.e. last moment of year 9999.</p>
@@ -359,13 +356,13 @@ usual epoch invalid value, i.e. last moment of year 9999.</p>
 <span class="sig-name descname"><span class="pre">epoch_to_epoch16</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Library.epoch_to_epoch16"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Library.epoch_to_epoch16" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a CDF EPOCH to a CDF EPOCH16 value</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>epoch</strong><span class="classifier">double</span></dt><dd><p>EPOCH to convert. Lists and numpy arrays are acceptable.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">(double, double)</span></dt><dd><p>EPOCH16 corresponding to epoch</p>
 </dd>
@@ -378,16 +375,16 @@ usual epoch invalid value, i.e. last moment of year 9999.</p>
 <dt class="sig sig-object py" id="spacepy.pycdf.Library.epoch_to_num">
 <span class="sig-name descname"><span class="pre">epoch_to_num</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Library.epoch_to_num"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Library.epoch_to_num" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert CDF EPOCH to matplotlib number.</p>
-<p>Same output as <a class="reference external" href="https://matplotlib.org/stable/api/dates_api.html#matplotlib.dates.date2num" title="(in Matplotlib v3.5.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">date2num()</span></code></a> and useful for
+<p>Same output as <a class="reference external" href="https://matplotlib.org/stable/api/dates_api.html#matplotlib.dates.date2num" title="(in Matplotlib v3.5.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">date2num()</span></code></a> and useful for
 plotting large data sets without converting the times through datetime.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>epoch</strong><span class="classifier">double</span></dt><dd><p>EPOCH to convert. Lists and numpy arrays are acceptable.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">double</span></dt><dd><p>Floating point number representing days since matplotlib
 epoch (usually 0001-01-01 as day 1, or 1970-01-01 as day 0).</p>
@@ -398,7 +395,7 @@ epoch (usually 0001-01-01 as day 1, or 1970-01-01 as day 0).</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference external" href="https://matplotlib.org/stable/api/dates_api.html#matplotlib.dates.date2num" title="(in Matplotlib v3.5.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.dates.date2num</span></code></a>, <a class="reference external" href="https://matplotlib.org/stable/api/dates_api.html#matplotlib.dates.num2date" title="(in Matplotlib v3.5.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.dates.num2date</span></code></a></dt><dd></dd>
+<dt><a class="reference external" href="https://matplotlib.org/stable/api/dates_api.html#matplotlib.dates.date2num" title="(in Matplotlib v3.5.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.dates.date2num</span></code></a>, <a class="reference external" href="https://matplotlib.org/stable/api/dates_api.html#matplotlib.dates.num2date" title="(in Matplotlib v3.5.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.dates.num2date</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
@@ -413,13 +410,13 @@ and earlier.</p>
 <span class="sig-name descname"><span class="pre">epoch_to_tt2000</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Library.epoch_to_tt2000"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Library.epoch_to_tt2000" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a CDF EPOCH to a CDF TT2000 value</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>epoch</strong><span class="classifier">double</span></dt><dd><p>EPOCH to convert</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">int</span></dt><dd><p>tt2000 corresponding to epoch</p>
 </dd>
@@ -447,7 +444,7 @@ code, replace <code class="docutils literal notranslate"><span class="pre">epoch
 <code class="docutils literal notranslate"><span class="pre">epoch16_to_datetime(*epoch)</span></code>.</p>
 </div>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>epoch0</strong><span class="classifier">float</span></dt><dd><p>epoch16 value from CDF, first half</p>
 </dd>
@@ -455,14 +452,14 @@ code, replace <code class="docutils literal notranslate"><span class="pre">epoch
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl>
 <dt><strong>out</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a></span></dt><dd><p>date and time corresponding to epoch. Invalid values are set to
 usual epoch invalid value, i.e. last moment of year 9999.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">Raises</dt>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>EpochError</strong><span class="classifier">if input invalid</span></dt><dd></dd>
 </dl>
@@ -481,14 +478,14 @@ usual epoch invalid value, i.e. last moment of year 9999.</p>
 <span class="sig-name descname"><span class="pre">epoch16_to_epoch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch16</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Library.epoch16_to_epoch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Library.epoch16_to_epoch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a CDF EPOCH16 to a CDF EPOCH value</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>epoch16</strong><span class="classifier">(double, double)</span></dt><dd><p>EPOCH16 to convert. Lists and numpy arrays are acceptable.
 LAST dimension should be 2: the two pairs of EPOCH16</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">double</span></dt><dd><p>EPOCH corresponding to epoch16</p>
 </dd>
@@ -507,7 +504,7 @@ LAST dimension should be 2: the two pairs of EPOCH16</p>
 value in epoch is ignored (i.e., truncated.)</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>epoch0</strong><span class="classifier">float</span></dt><dd><p>epoch16 value from CDF, first half</p>
 </dd>
@@ -515,13 +512,13 @@ value in epoch is ignored (i.e., truncated.)</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">long</span></dt><dd><p>TT2000 corresponding to epoch.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">Raises</dt>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>EpochError</strong><span class="classifier">if input invalid</span></dt><dd></dd>
 </dl>
@@ -543,20 +540,20 @@ value in epoch is ignored (i.e., truncated.)</p>
 types) because comparisons to EPOCH16s are otherwise
 difficult.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>cdftype</strong><span class="classifier">int</span></dt><dd><p>CDF type number from <a class="reference internal" href="spacepy.pycdf.const.html#module-spacepy.pycdf.const" title="spacepy.pycdf.const"><code class="xref py py-mod docutils literal notranslate"><span class="pre">const</span></code></a></p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">tuple</span></dt><dd><p>minimum, maximum value supported by type (of type matching the
 CDF type).</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">Raises</dt>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>ValueError</strong><span class="classifier">if can’t match the type</span></dt><dd></dd>
 </dl>
@@ -575,13 +572,13 @@ set backward compatible mode by default.</p>
 <p><span class="versionmodified changed">Changed in version 0.3.0: </span>Before 0.3.0, pycdf set backward compatible mode on import.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>backward</strong><span class="classifier">boolean</span></dt><dd><p>Set backward compatible mode if True; clear it if False.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>ValueError</strong><span class="classifier">if backward=False and underlying CDF library is V2</span></dt><dd></dd>
 </dl>
@@ -606,20 +603,20 @@ object does not. Any times after 23:59:59.999999 will
 be truncated to 23:59:59.999999.</p>
 </div>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>tt2000</strong><span class="classifier">int</span></dt><dd><p>TT2000 value from CDF</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl>
 <dt><strong>out</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a></span></dt><dd><p>date and time corresponding to epoch. Invalid values are set to
 usual epoch invalid value, i.e. last moment of year 9999.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">Raises</dt>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>EpochError</strong><span class="classifier">if input invalid</span></dt><dd></dd>
 </dl>
@@ -644,19 +641,19 @@ do not. Times during leapseconds are rounded up to beginning
 of the next day.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>tt2000</strong><span class="classifier">int</span></dt><dd><p>TT2000 value from CDF</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">double</span></dt><dd><p>EPOCH corresponding to the TT2000 input time</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">Raises</dt>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>EpochError</strong><span class="classifier">if input invalid</span></dt><dd></dd>
 </dl>
@@ -681,19 +678,19 @@ do not. Times during leapseconds are rounded up to beginning
 of the next day.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>tt2000</strong><span class="classifier">int</span></dt><dd><p>TT2000 value from CDF</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">double, double</span></dt><dd><p>EPOCH16 corresponding to the TT2000 input time</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-odd">Raises</dt>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>EpochError</strong><span class="classifier">if input invalid</span></dt><dd></dd>
 </dl>
@@ -834,7 +831,7 @@ library resolution.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

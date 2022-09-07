@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>omni - module to read and process NASA OMNIWEB data &#8212; SpacePy v0.3.0 Manual</title>
+    <title>omni - module to read and process NASA OMNIWEB data &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -15,6 +15,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/copybutton.js"></script>
     
@@ -22,7 +23,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="spacepy.omni.get_omni" href="autosummary/spacepy.omni.get_omni.html" />
-    <link rel="prev" title="spacepy.irbempy.prep_irbem" href="autosummary/spacepy.irbempy.prep_irbem.html" /> 
+    <link rel="prev" title="spacepy.LANLstar.LANLmax" href="autosummary/spacepy.LANLstar.LANLmax.html" /> 
   </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
@@ -42,7 +43,7 @@
           <a href="autosummary/spacepy.omni.get_omni.html" title="spacepy.omni.get_omni"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="autosummary/spacepy.irbempy.prep_irbem.html" title="spacepy.irbempy.prep_irbem"
+          <a href="autosummary/spacepy.LANLstar.LANLmax.html" title="spacepy.LANLstar.LANLmax"
              accesskey="P">previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
@@ -71,8 +72,8 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="autosummary/spacepy.irbempy.prep_irbem.html"
-                          title="previous chapter">spacepy.irbempy.prep_irbem</a></p>
+    <p class="topless"><a href="autosummary/spacepy.LANLstar.LANLmax.html"
+                          title="previous chapter">spacepy.LANLstar.LANLmax</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
@@ -95,7 +96,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -105,14 +106,14 @@
           <div class="body" role="main">
             
   <section id="module-spacepy.omni">
-<span id="omni-module-to-read-and-process-nasa-omniweb-data"></span><h1>omni - module to read and process NASA OMNIWEB data<a class="headerlink" href="#module-spacepy.omni" title="Permalink to this headline">¶</a></h1>
+<span id="omni-module-to-read-and-process-nasa-omniweb-data"></span><h1>omni - module to read and process NASA OMNIWEB data<a class="headerlink" href="#module-spacepy.omni" title="Permalink to this heading">¶</a></h1>
 <p>Tools to read and process omni data (Qin-Denton, etc.)</p>
 <p>Authors: Steve Morley, Josef Koller
 Institution: Los Alamos National Laboratory
 Contact: <a class="reference external" href="mailto:smorley&#37;&#52;&#48;lanl&#46;gov">smorley<span>&#64;</span>lanl<span>&#46;</span>gov</a></p>
 <p>Copyright 2010-2014 Los Alamos National Security, LLC.</p>
 <section id="about-omni">
-<h2>About omni<a class="headerlink" href="#about-omni" title="Permalink to this headline">¶</a></h2>
+<h2>About omni<a class="headerlink" href="#about-omni" title="Permalink to this heading">¶</a></h2>
 <p>The omni module primarily manages the hourly OMNI2 and Qin-Denton data, which
 are sourced from the Virtual Radiation Belt Observatory (<a class="reference external" href="http://virbo.org">ViRBO</a>), 
 who maintain these data sources. The data can be kept up-to-date in SpacePy 
@@ -127,7 +128,7 @@ the Qin-Denton data contains no data gaps – all gaps are filled (for details o
 the gap filling, see the paper by <a class="reference external" href="http://dx.doi.org/10.1029/2006SW000296">Qin et al.</a>.)</p>
 </section>
 <section id="advanced-features">
-<h2>Advanced features<a class="headerlink" href="#advanced-features" title="Permalink to this headline">¶</a></h2>
+<h2>Advanced features<a class="headerlink" href="#advanced-features" title="Permalink to this heading">¶</a></h2>
 <p>Higher resolution data, or custom data sources, can also be managed/accessed 
 with this module, although this is considered an advanced use for this module.
 This is achieved using custom names for the dbase keyword in get_omni, which
@@ -150,11 +151,7 @@ Additionally, by default this will interpolate the data to the requested time
 ticks. To return only the actual recorded data values for the specified time 
 range set the keyword argument interp to False.</p>
 </section>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.omni.get_omni.html#spacepy.omni.get_omni" title="spacepy.omni.get_omni"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_omni</span></code></a>(ticks[, dbase])</p></td>
 <td><p>Returns Qin-Denton OMNI values, interpolated to any time-base from a default hourly resolution</p></td>
@@ -186,7 +183,7 @@ range set the keyword argument interp to False.</p>
           <a href="autosummary/spacepy.omni.get_omni.html" title="spacepy.omni.get_omni"
              >next</a> |</li>
         <li class="right" >
-          <a href="autosummary/spacepy.irbempy.prep_irbem.html" title="spacepy.irbempy.prep_irbem"
+          <a href="autosummary/spacepy.LANLstar.LANLmax.html" title="spacepy.LANLstar.LANLmax"
              >previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
@@ -198,7 +195,7 @@ range set the keyword argument interp to False.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

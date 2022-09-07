@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>SpacePy Python Programming Tips &#8212; SpacePy v0.3.0 Manual</title>
+    <title>SpacePy Python Programming Tips &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -15,6 +15,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/copybutton.js"></script>
     
@@ -97,7 +98,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -107,7 +108,7 @@
           <div class="body" role="main">
             
   <section id="spacepy-python-programming-tips">
-<h1>SpacePy Python Programming Tips<a class="headerlink" href="#spacepy-python-programming-tips" title="Permalink to this headline">¶</a></h1>
+<h1>SpacePy Python Programming Tips<a class="headerlink" href="#spacepy-python-programming-tips" title="Permalink to this heading">¶</a></h1>
 <p>One often hears that interpreted languages are too slow for whatever task someone
 needs to do.  In many cases this belief is unfounded.  As the time spent
 programming and debugging in an interpreted language is of far less than for a compiled
@@ -128,7 +129,7 @@ documentation, as well as taking the time to learn some of the vast functionalit
 </ul>
 </div></blockquote>
 <section id="basic-examples">
-<h2>Basic examples<a class="headerlink" href="#basic-examples" title="Permalink to this headline">¶</a></h2>
+<h2>Basic examples<a class="headerlink" href="#basic-examples" title="Permalink to this heading">¶</a></h2>
 <p>Though there are some similarities, Python does not look like (or work like) Matlab or IDL.
 As (most of us) are, or have been, Matlab or IDL programmers, we have to rethink how we do
 things – what is efficient in one language may not be the most efficient in another.
@@ -172,7 +173,7 @@ array-based manipulations.</p>
 This will make your code more maintainable and encourage its use by others.</p>
 </section>
 <section id="lists-for-loops-and-arrays">
-<h2>Lists, for loops, and arrays<a class="headerlink" href="#lists-for-loops-and-arrays" title="Permalink to this headline">¶</a></h2>
+<h2>Lists, for loops, and arrays<a class="headerlink" href="#lists-for-loops-and-arrays" title="Permalink to this heading">¶</a></h2>
 <p>This example teaches the lesson that most advanced <a class="reference external" href="http://www.ittvis.com/language/en-us/productsservices/idl.aspx">IDL</a> or <a class="reference external" href="http://www.mathworks.com/products/matlab/">Matlab</a> programmers already
 know; do everything in arrays and never use a for loop if there is another choice. The
 language has optimized array manipulation and it is unlikely that you will find a faster
@@ -292,7 +293,7 @@ the for loop (or list comprehension):</p>
 <p>In summary, when working on arrays it’s worth taking the time to think about whether you can get the results you need without for-loops or list comprehensions. The small amount of development time will likely be recouped very quickly.</p>
 </section>
 <section id="zip">
-<h2>Zip<a class="headerlink" href="#zip" title="Permalink to this headline">¶</a></h2>
+<h2>Zip<a class="headerlink" href="#zip" title="Permalink to this heading">¶</a></h2>
 <p>The <a class="reference external" href="https://docs.python.org/3/library/functions.html#zip" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">zip()</span></code></a> function is extremely useful, but it is really slow. If you find yourself
 using it on large amounts of data then significant time-savings might be achieved by re-writing your code
 to make the <a class="reference external" href="https://docs.python.org/3/library/functions.html#zip" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">zip()</span></code></a> operation unnecessary. A good alternative, if you do need the functionality
@@ -384,7 +385,7 @@ included:</p>
 </div>
 </section>
 <section id="external-links">
-<h2>External links<a class="headerlink" href="#external-links" title="Permalink to this headline">¶</a></h2>
+<h2>External links<a class="headerlink" href="#external-links" title="Permalink to this heading">¶</a></h2>
 <dl class="simple">
 <dt>To learn about NumPy from a MatLab user’s perspective</dt><dd><ul class="simple">
 <li><p><a class="reference external" href="http://www.scipy.org/NumPy_for_Matlab_Users">NumPy for MatLab users</a></p></li>
@@ -404,11 +405,11 @@ included:</p>
 </dl>
 <hr class="docutils" />
 <dl class="field-list simple">
-<dt class="field-odd">Release</dt>
-<dd class="field-odd"><p>0.3.0</p>
+<dt class="field-odd">Release<span class="colon">:</span></dt>
+<dd class="field-odd"><p>0.4.0</p>
 </dd>
-<dt class="field-even">Doc generation date</dt>
-<dd class="field-even"><p>Apr 27, 2022</p>
+<dt class="field-even">Doc generation date<span class="colon">:</span></dt>
+<dd class="field-even"><p>Sep 07, 2022</p>
 </dd>
 </dl>
 <p>For additions or fixes to this page contact the SpacePy team at Los Alamos.</p>
@@ -447,7 +448,7 @@ included:</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

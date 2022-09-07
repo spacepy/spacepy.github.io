@@ -1,11 +1,11 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.pycdf.istp &#8212; SpacePy v0.3.0 Manual</title>
+    <title>spacepy.pycdf.istp &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
@@ -14,6 +14,7 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/copybutton.js"></script>
     
@@ -61,7 +62,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -75,7 +76,7 @@
 
 <span class="sd">&quot;&quot;&quot;Support for ISTP-compliant CDFs</span>
 
-<span class="sd">The `ISTP metadata standard  &lt;https://spdf.gsfc.nasa.gov/sp_use_of_cdf.html&gt;`_</span>
+<span class="sd">The `ISTP metadata standard &lt;https://spdf.gsfc.nasa.gov/sp_use_of_cdf.html&gt;`_</span>
 <span class="sd">specifies the interpretation of the attributes in a CDF to describe</span>
 <span class="sd">relationships between the variables and their physical interpretation.</span>
 
@@ -445,17 +446,10 @@
         <span class="n">timetype</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="ow">in</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">pycdf</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">timetypes</span>
         <span class="n">actual</span> <span class="o">=</span> <span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">cdf_file</span><span class="o">.</span><span class="n">raw_var</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">name</span><span class="p">())</span> <span class="k">if</span> <span class="n">timetype</span> <span class="k">else</span> <span class="n">v</span><span class="p">)</span>\
                  <span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;FILLVAL&#39;</span><span class="p">]</span>
-        <span class="c1"># isclose added in numpy 1.7, so fix this when go to 0.3.0</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">numpy</span><span class="p">,</span> <span class="s1">&#39;isclose&#39;</span><span class="p">):</span>
-            <span class="n">match</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span>
-                <span class="n">actual</span><span class="p">,</span> <span class="n">expected</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-7</span><span class="p">)</span>\
-                <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">issubdtype</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">floating</span><span class="p">)</span>\
-                <span class="k">else</span> <span class="n">numpy</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">actual</span> <span class="o">==</span> <span class="n">expected</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">issubdtype</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">floating</span><span class="p">):</span>
-                <span class="n">match</span> <span class="o">=</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">actual</span> <span class="o">-</span> <span class="n">expected</span><span class="p">)</span> <span class="o">/</span> <span class="n">expected</span> <span class="o">&lt;</span> <span class="mf">1e-7</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">match</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">actual</span> <span class="o">==</span> <span class="n">expected</span><span class="p">)</span>
+        <span class="n">match</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span>
+            <span class="n">actual</span><span class="p">,</span> <span class="n">expected</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-7</span><span class="p">)</span>\
+            <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">issubdtype</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">floating</span><span class="p">)</span>\
+            <span class="k">else</span> <span class="n">numpy</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">actual</span> <span class="o">==</span> <span class="n">expected</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">match</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">timetype</span><span class="p">:</span>
                 <span class="n">converted_expected</span> <span class="o">=</span> <span class="p">{</span>
@@ -1244,16 +1238,45 @@
 
 <span class="sd">    Representation of an ISTP-compliant variable bundled together</span>
 <span class="sd">    with its dependencies to enable aggregate operations. Normally</span>
-<span class="sd">    used to copy a subset of data from one CDF to another by</span>
-<span class="sd">    chaining operations.</span>
+<span class="sd">    used to copy a subset of data from one CDF or SpaceData to another by</span>
+<span class="sd">    chaining operations, or to load just the relevant data from a CDF</span>
+<span class="sd">    into a :class:`~spacepy.datamodel.SpaceData`.</span>
+
+<span class="sd">    ``VarBundle`` operates on a single variable within a file or SpaceData</span>
+<span class="sd">    and its various dependencies, uncertainties, labels, etc. That variable</span>
+<span class="sd">    can be specified one of two ways. An open CDF file or</span>
+<span class="sd">    SpaceData can be passed as the first parameter, and the name of a</span>
+<span class="sd">    variable within it as the second parameter. Or, for CDF files, a</span>
+<span class="sd">    :class:`~.pycdf.Var` can be passed as the only parameter, implicitly</span>
+<span class="sd">    defining the input file (the CDF containing that variable).</span>
 
 <span class="sd">    Unusual or indecipherable error messages may indicate an ISTP</span>
 <span class="sd">    compliance issue; see :class:`VariableChecks` for some checks.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    var : :class:`~spacepy.pycdf.Var`</span>
-<span class="sd">        Variable to process</span>
+<span class="sd">    source : :class:`~.pycdf.CDF`, :class:`~.datamodel.SpaceData`, or :class:`~.pycdf.Var`</span>
+<span class="sd">        SpaceData or open CDF containing the variable to process, or the CDF variable itself.</span>
+<span class="sd">    name : :class:`str`</span>
+<span class="sd">        Name of the variable within ``source`` to process (&quot;main variable&quot;).</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    .datamodel.fromCDF</span>
+<span class="sd">    .pycdf.CDF.copy</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    If using :class:`~.datamodel.SpaceData` input, the contents are</span>
+<span class="sd">    assumed to be `ISTP compliant</span>
+<span class="sd">    &lt;https://spdf.gsfc.nasa.gov/sp_use_of_cdf.html&gt;`_. In particular,</span>
+<span class="sd">    the following attributes of the enclosed</span>
+<span class="sd">    :class:`~.datamodel.dmarray` are used (*italics* denotes required):</span>
+
+<span class="sd">        * *DEPEND_0*, *DEPEND_1*, etc.</span>
+<span class="sd">        * LABL_PTR_0, LABL_PTR_1, etc.</span>
+<span class="sd">        * DELTA_PLUS_VAR, DELTA_MINUS_VAR</span>
+<span class="sd">        * VALIDMIN, VALIDMAX, *FILLVAL*</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -1274,6 +1297,7 @@
 <span class="sd">    ...</span>
 <span class="sd">    &gt;</span>
 <span class="sd">    &gt;&gt;&gt; b = spacepy.pycdf.istp.VarBundle(infile[&#39;FPDU&#39;])</span>
+<span class="sd">    &gt;&gt;&gt; b = spacepy.pycdf.istp.VarBundle(infile, &#39;FPDU&#39;)  # Equivalent</span>
 <span class="sd">    &gt;&gt;&gt; outfile = spacepy.pycdf.CDF(&#39;output.cdf&#39;, create=True)</span>
 <span class="sd">    &gt;&gt;&gt; b.slice(1, 2, single=True).output(outfile)</span>
 <span class="sd">    &lt;VarBundle:</span>
@@ -1307,6 +1331,7 @@
 <span class="sd">        output</span>
 <span class="sd">        slice</span>
 <span class="sd">        sum</span>
+<span class="sd">        toSpaceData</span>
 <span class="sd">        variables</span>
 
 <span class="sd">    .. automethod:: mean</span>
@@ -1314,22 +1339,30 @@
 <span class="sd">    .. automethod:: operations</span>
 <span class="sd">    .. automethod:: slice</span>
 <span class="sd">    .. automethod:: sum</span>
+<span class="sd">    .. automethod:: toSpaceData</span>
 <span class="sd">    .. automethod:: variables</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialize variable bundle</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        var : :class:`~spacepy.pycdf.Var`</span>
-<span class="sd">            Variable to process</span>
+<span class="sd">        source : :class:`~spacepy.pycdf.CDF` or :class:`~spacepy.pycdf.Var`</span>
+<span class="sd">            CDF containing the variable to process, or the variable itself.</span>
+<span class="sd">        name : :class:`str`</span>
+<span class="sd">            Name of the variable within ``source`` to process (&quot;main variable&quot;).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mainvar</span> <span class="o">=</span> <span class="n">var</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;cdf_file&#39;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Single-argument form must be a variable&#39;</span>
+                <span class="s1">&#39; in an open CDF, not </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">source</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mainvar</span> <span class="o">=</span> <span class="n">source</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">source</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
         <span class="sd">&quot;&quot;&quot;The variable to operate on.&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cdf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mainvar</span><span class="o">.</span><span class="n">cdf_file</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cdf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mainvar</span><span class="o">.</span><span class="n">cdf_file</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">source</span>
         <span class="sd">&quot;&quot;&quot;Input CDF file containing the main variable.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mainvar</span><span class="o">.</span><span class="n">name</span><span class="p">()</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">name</span>
+        <span class="sd">&quot;&quot;&quot;Name of the main variable&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_varinfo</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="sd">&quot;&quot;&quot;Keyed by variable name. Values are also dicts, keys are</span>
 <span class="sd">        ``dims``, list of the main variable dimensions corresponding</span>
@@ -1352,7 +1385,7 @@
         <span class="sd">&quot;&quot;&quot;Index by dim, is this dim averaged.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_getvarinfo</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">_process_delta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mainvar</span><span class="p">,</span> <span class="n">deltaname</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_process_delta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mainname</span><span class="p">,</span> <span class="n">deltaname</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Handle DELTA_PLUS/DELTA_MINUS attributes</span>
 
 <span class="sd">        A DELTA variable should be the same shape and the same</span>
@@ -1360,10 +1393,10 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        mainvar : :class:`~spacepy.pycdf.Var`</span>
-<span class="sd">            Variable that references the DELTA, i.e. it has a</span>
+<span class="sd">        mainname : str</span>
+<span class="sd">            Name of variable that references the DELTA, i.e. it has a</span>
 <span class="sd">            DELTA_PLUS_VAR/DELTA_MINUS_VAR attribute that references</span>
-<span class="sd">            ``deltavar``.</span>
+<span class="sd">            ``deltaname``.</span>
 
 <span class="sd">        deltaname : str</span>
 <span class="sd">            Name of the DELTA variable itself.</span>
@@ -1374,7 +1407,7 @@
 <span class="sd">            dims/slice information suitable for inclusion in ``_varinfo``.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">thisvar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cdf</span><span class="p">[</span><span class="n">deltaname</span><span class="p">]</span>
-        <span class="n">mainname</span> <span class="o">=</span> <span class="n">mainvar</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>
+        <span class="n">mainvar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cdf</span><span class="p">[</span><span class="n">mainname</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">thisvar</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span> <span class="c1">#Check that all dependencies match</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">a</span><span class="o">.</span><span class="n">startswith</span><span class="p">((</span><span class="s1">&#39;DEPEND_&#39;</span><span class="p">,</span> <span class="s1">&#39;LABL_PTR_&#39;</span><span class="p">)):</span>
                 <span class="k">continue</span>
@@ -1385,13 +1418,15 @@
             <span class="k">elif</span> <span class="n">thisvar</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">!=</span> <span class="n">mainname</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">: attribute </span><span class="si">{}</span><span class="s1"> not in main var&#39;</span>
                                  <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">deltaname</span><span class="p">,</span> <span class="n">a</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">thisvar</span><span class="o">.</span><span class="n">rv</span><span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">mainvar</span><span class="o">.</span><span class="n">rv</span><span class="p">():</span>
+        <span class="n">rv</span> <span class="o">=</span> <span class="n">thisvar</span><span class="o">.</span><span class="n">rv</span><span class="p">()</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">thisvar</span><span class="p">,</span> <span class="s1">&#39;rv&#39;</span><span class="p">)</span>\
+             <span class="k">else</span> <span class="s1">&#39;DEPEND_0&#39;</span> <span class="ow">in</span> <span class="n">thisvar</span><span class="o">.</span><span class="n">attrs</span>
+        <span class="k">if</span> <span class="n">rv</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_varinfo</span><span class="p">[</span><span class="n">mainname</span><span class="p">][</span><span class="s1">&#39;rv&#39;</span><span class="p">]:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
                 <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">: Cannot handle RV DELTA with NRV variable.&#39;</span>
                 <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">deltaname</span><span class="p">))</span>
         <span class="n">thisshape</span> <span class="o">=</span> <span class="n">thisvar</span><span class="o">.</span><span class="n">shape</span>
         <span class="n">mainshape</span> <span class="o">=</span> <span class="n">mainvar</span><span class="o">.</span><span class="n">shape</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">thisvar</span><span class="o">.</span><span class="n">rv</span><span class="p">()</span> <span class="ow">and</span> <span class="n">mainvar</span><span class="o">.</span><span class="n">rv</span><span class="p">():</span> <span class="c1">#Ignore record dim</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">rv</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_varinfo</span><span class="p">[</span><span class="n">mainname</span><span class="p">][</span><span class="s1">&#39;rv&#39;</span><span class="p">]:</span> <span class="c1">#Ignore record dim</span>
             <span class="n">mainshape</span> <span class="o">=</span> <span class="n">mainshape</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
         <span class="k">if</span> <span class="n">thisshape</span> <span class="o">!=</span> <span class="n">mainshape</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">: DELTA/main var shape mismatch.&#39;</span>
@@ -1400,7 +1435,12 @@
         <span class="c1">#get removed when actually slicing.</span>
         <span class="n">result</span> <span class="o">=</span> <span class="p">{</span> <span class="n">k</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_varinfo</span><span class="p">[</span><span class="n">mainname</span><span class="p">][</span><span class="n">k</span><span class="p">][:]</span>
                   <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;dims&#39;</span><span class="p">,</span> <span class="s1">&#39;slice&#39;</span><span class="p">,</span> <span class="s1">&#39;postidx&#39;</span><span class="p">)</span> <span class="p">}</span>
-        <span class="n">result</span><span class="p">[</span><span class="s1">&#39;sortorder&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+            <span class="s1">&#39;dv&#39;</span><span class="p">:</span> <span class="n">thisvar</span><span class="o">.</span><span class="n">dv</span><span class="p">()</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">thisvar</span><span class="p">,</span> <span class="s1">&#39;dv&#39;</span><span class="p">)</span>\
+                  <span class="k">else</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;dims&#39;</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="s1">&#39;rv&#39;</span><span class="p">:</span> <span class="n">rv</span><span class="p">,</span>
+            <span class="s1">&#39;sortorder&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="p">})</span>
         <span class="k">return</span> <span class="n">result</span>
 
     <span class="k">def</span> <span class="nf">_getvarinfo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1409,22 +1449,26 @@
 <span class="sd">        For main variable and its dependencies, find how dimensions</span>
 <span class="sd">        relate to the main variable, and find all DELTA variables.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mainvar</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>
+        <span class="n">rv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mainvar</span><span class="o">.</span><span class="n">rv</span><span class="p">()</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mainvar</span><span class="p">,</span> <span class="s1">&#39;rv&#39;</span><span class="p">)</span>\
+             <span class="k">else</span> <span class="s1">&#39;DEPEND_0&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">mainvar</span><span class="o">.</span><span class="n">attrs</span>
         <span class="c1">#Every dim maps back to itself for the main variable</span>
-        <span class="n">dims</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mainvar</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-                          <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">mainvar</span><span class="o">.</span><span class="n">rv</span><span class="p">())))</span>
+        <span class="n">dims</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mainvar</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="ow">not</span> <span class="n">rv</span><span class="p">)))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_degenerate</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mainvar</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_summed</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mainvar</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_mean</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mainvar</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">mainvar</span><span class="o">.</span><span class="n">rv</span><span class="p">():</span> <span class="c1">#Fake the 0-dim</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">rv</span><span class="p">:</span> <span class="c1">#Fake the 0-dim</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_degenerate</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_summed</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_mean</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
         <span class="c1">#And every dimension is a full slice, to start</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_varinfo</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_varinfo</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s1">&#39;dims&#39;</span><span class="p">:</span> <span class="n">dims</span><span class="p">,</span>
+            <span class="c1"># Dim variance is CDF concept--if not specified, assume True</span>
+            <span class="s1">&#39;dv&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">mainvar</span><span class="o">.</span><span class="n">dv</span><span class="p">()</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mainvar</span><span class="p">,</span> <span class="s1">&#39;dv&#39;</span><span class="p">)</span>\
+                  <span class="k">else</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dims</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
             <span class="s1">&#39;slice&#39;</span><span class="p">:</span> <span class="p">[</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">)]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">dims</span><span class="p">),</span>
             <span class="s1">&#39;postidx&#39;</span><span class="p">:</span> <span class="p">[</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">)]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">dims</span><span class="p">),</span>
+            <span class="s1">&#39;rv&#39;</span><span class="p">:</span> <span class="n">rv</span><span class="p">,</span>
             <span class="s1">&#39;sortorder&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
             <span class="s1">&#39;vartype&#39;</span><span class="p">:</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span>
         <span class="p">}</span>
@@ -1449,8 +1493,10 @@
             <span class="c1">#Dimension of main var that corresponds to this var</span>
             <span class="n">dim</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
             <span class="n">dims</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,]</span> <span class="c1">#Record dim always matches</span>
+            <span class="n">rv</span> <span class="o">=</span> <span class="n">thisvar</span><span class="o">.</span><span class="n">rv</span><span class="p">()</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">thisvar</span><span class="p">,</span> <span class="s1">&#39;rv&#39;</span><span class="p">)</span>\
+                 <span class="k">else</span> <span class="s1">&#39;DEPEND_0&#39;</span> <span class="ow">in</span> <span class="n">thisvar</span><span class="o">.</span><span class="n">attrs</span> <span class="ow">or</span> <span class="n">a</span> <span class="o">==</span> <span class="s1">&#39;DEPEND_0&#39;</span>
             <span class="c1">#For every CDF (non-record) dim, match to the main variable</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">thisvar</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="ow">not</span> <span class="n">thisvar</span><span class="o">.</span><span class="n">rv</span><span class="p">())):</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">thisvar</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="ow">not</span> <span class="n">rv</span><span class="p">)):</span>
                 <span class="c1">#DEPEND; LABL_PTR for this dimension</span>
                 <span class="n">dim_dep</span> <span class="o">=</span> <span class="s1">&#39;DEPEND_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
                 <span class="n">labl_dep</span> <span class="o">=</span> <span class="s1">&#39;LABL_PTR_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
@@ -1474,8 +1520,11 @@
                                  <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">thisname</span><span class="p">))</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_varinfo</span><span class="p">[</span><span class="n">thisname</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
                 <span class="s1">&#39;dims&#39;</span><span class="p">:</span> <span class="n">dims</span><span class="p">,</span>
+                <span class="s1">&#39;dv&#39;</span><span class="p">:</span> <span class="n">thisvar</span><span class="o">.</span><span class="n">dv</span><span class="p">()</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">thisvar</span><span class="p">,</span> <span class="s1">&#39;dv&#39;</span><span class="p">)</span>\
+                      <span class="k">else</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dims</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
                 <span class="s1">&#39;slice&#39;</span><span class="p">:</span> <span class="p">[</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">)]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">dims</span><span class="p">),</span>
                 <span class="s1">&#39;postidx&#39;</span><span class="p">:</span> <span class="p">[</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">)]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">dims</span><span class="p">),</span>
+                <span class="s1">&#39;rv&#39;</span><span class="p">:</span> <span class="n">rv</span><span class="p">,</span>
                 <span class="s1">&#39;sortorder&#39;</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;DEPEND_&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="mi">3</span><span class="p">,</span>
                 <span class="s1">&#39;thisdim&#39;</span><span class="p">:</span> <span class="n">dim</span><span class="p">,</span>
                 <span class="s1">&#39;vartype&#39;</span><span class="p">:</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span>
@@ -1488,7 +1537,7 @@
                 <span class="k">if</span> <span class="n">deltaname</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_varinfo</span><span class="p">:</span>
                     <span class="k">continue</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_varinfo</span><span class="p">[</span><span class="n">deltaname</span><span class="p">]</span> \
-                    <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_delta</span><span class="p">(</span><span class="n">thisvar</span><span class="p">,</span> <span class="n">deltaname</span><span class="p">)</span>
+                    <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_delta</span><span class="p">(</span><span class="n">thisname</span><span class="p">,</span> <span class="n">deltaname</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_varinfo</span><span class="p">[</span><span class="n">deltaname</span><span class="p">][</span><span class="s1">&#39;vartype&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;D&#39;</span> <span class="c1">#just like other deps</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_varinfo</span><span class="p">[</span><span class="n">deltaname</span><span class="p">][</span><span class="s1">&#39;thisdim&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dim</span>
         <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;DELTA_PLUS_VAR&#39;</span><span class="p">,</span> <span class="s1">&#39;DELTA_MINUS_VAR&#39;</span><span class="p">):</span> <span class="c1">#Process DELTA vars</span>
@@ -1498,7 +1547,7 @@
             <span class="k">if</span> <span class="n">thisname</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_varinfo</span><span class="p">:</span>
                 <span class="c1">#If DELTA_PLUS/DELTA_MINUS are same var, skip second one</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_varinfo</span><span class="p">[</span><span class="n">thisname</span><span class="p">]</span> \
-                    <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_delta</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mainvar</span><span class="p">,</span> <span class="n">thisname</span><span class="p">)</span>
+                    <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_delta</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span> <span class="n">thisname</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_varinfo</span><span class="p">[</span><span class="n">thisname</span><span class="p">][</span><span class="s1">&#39;vartype&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;U&#39;</span>
 
 <div class="viewcode-block" id="VarBundle.slice"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.VarBundle.html#spacepy.pycdf.istp.VarBundle.slice">[docs]</a>    <span class="k">def</span> <span class="nf">slice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -1754,11 +1803,18 @@
 <span class="sd">        bool</span>
 <span class="sd">            True if the existing variable is the same; False if not.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># CDF output only checks</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">newvar</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">newvar</span><span class="o">.</span><span class="n">rv</span><span class="p">()</span> <span class="o">!=</span> <span class="n">rv</span> <span class="ow">or</span> <span class="n">newvar</span><span class="o">.</span><span class="n">dv</span><span class="p">()</span> <span class="o">!=</span> <span class="n">dv</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">invar</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">newvar</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">!=</span> <span class="n">invar</span><span class="o">.</span><span class="n">type</span><span class="p">():</span>
+                <span class="k">return</span> <span class="kc">False</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">invar</span><span class="p">,</span> <span class="s1">&#39;nelems&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">newvar</span><span class="o">.</span><span class="n">nelems</span><span class="p">()</span> <span class="o">!=</span> <span class="n">invar</span><span class="o">.</span><span class="n">nelems</span><span class="p">():</span>
+                <span class="k">return</span> <span class="kc">False</span>
         <span class="c1">#Check basic type, dimensions, etc.</span>
-        <span class="k">if</span> <span class="n">newvar</span><span class="o">.</span><span class="n">rv</span><span class="p">()</span> <span class="o">!=</span> <span class="n">rv</span> <span class="ow">or</span> <span class="n">newvar</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">!=</span> <span class="n">invar</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> \
-            <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">dims</span><span class="p">)</span> <span class="o">!=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">newvar</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">-</span> <span class="n">newvar</span><span class="o">.</span><span class="n">rv</span><span class="p">())</span> \
-            <span class="ow">or</span> <span class="n">newvar</span><span class="o">.</span><span class="n">dv</span><span class="p">()</span> <span class="o">!=</span> <span class="n">dv</span> <span class="ow">or</span> <span class="n">newvar</span><span class="o">.</span><span class="n">nelems</span><span class="p">()</span> <span class="o">!=</span> <span class="n">invar</span><span class="o">.</span><span class="n">nelems</span><span class="p">()</span> \
-            <span class="ow">or</span> <span class="nb">list</span><span class="p">(</span><span class="n">dims</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">list</span><span class="p">(</span><span class="n">newvar</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">newvar</span><span class="o">.</span><span class="n">rv</span><span class="p">():]):</span>
+        <span class="k">if</span> <span class="n">newvar</span><span class="o">.</span><span class="n">dtype</span> <span class="o">!=</span> <span class="n">invar</span><span class="o">.</span><span class="n">dtype</span>\
+            <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">dims</span><span class="p">)</span> <span class="o">!=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">newvar</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">-</span> <span class="n">rv</span><span class="p">)</span> \
+            <span class="ow">or</span> <span class="nb">list</span><span class="p">(</span><span class="n">dims</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">list</span><span class="p">(</span><span class="n">newvar</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">rv</span><span class="p">:]):</span>
             <span class="k">return</span> <span class="kc">False</span>
         <span class="n">ia</span> <span class="o">=</span> <span class="n">invar</span><span class="o">.</span><span class="n">attrs</span>
         <span class="n">na</span> <span class="o">=</span> <span class="n">newvar</span><span class="o">.</span><span class="n">attrs</span>
@@ -1768,8 +1824,11 @@
                 <span class="c1">#depends/LABL PTR shift around, and FIELDNAM may change,</span>
                 <span class="c1">#so test outside of this function.</span>
                 <span class="k">pass</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">na</span> <span class="ow">or</span> <span class="n">ia</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">!=</span> <span class="n">na</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> \
-               <span class="ow">or</span> <span class="ow">not</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">ia</span><span class="p">[</span><span class="n">a</span><span class="p">],</span> <span class="n">na</span><span class="p">[</span><span class="n">a</span><span class="p">]):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">na</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">ia</span><span class="p">[</span><span class="n">a</span><span class="p">],</span> <span class="n">na</span><span class="p">[</span><span class="n">a</span><span class="p">]):</span>
+                <span class="k">return</span> <span class="kc">False</span>
+            <span class="c1"># CDF input *and* output only</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">na</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">ia</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">)</span>\
+               <span class="ow">and</span> <span class="n">ia</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">!=</span> <span class="n">na</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
                 <span class="k">return</span> <span class="kc">False</span>
         <span class="c1">#Finally check the data</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">data</span> <span class="o">==</span> <span class="n">newvar</span><span class="p">[</span><span class="o">...</span><span class="p">])</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
@@ -1845,7 +1904,7 @@
 <span class="sd">            and ``averaged`` inputs.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1">#Correction for NRV variables in the mapping between dim and axis</span>
-        <span class="n">nrv</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="ow">not</span> <span class="n">invar</span><span class="o">.</span><span class="n">rv</span><span class="p">())</span>
+        <span class="n">nrv</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="ow">not</span> <span class="n">vinfo</span><span class="p">[</span><span class="s1">&#39;rv&#39;</span><span class="p">])</span>
         <span class="c1">#Degenerate slices have already been removed, so need</span>
         <span class="c1">#a map from old dim numbers to new ones. Note removing</span>
         <span class="c1">#the record dimension does not shift other dims!</span>
@@ -1883,7 +1942,7 @@
             <span class="k">else</span><span class="p">:</span> <span class="c1">#Should not happen</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Bad summation type.&#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">avgme</span><span class="p">:</span> <span class="c1">#divide out</span>
-                <span class="n">count</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="o">~</span><span class="n">invalid</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+                <span class="n">count</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="o">~</span><span class="n">invalid</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
                 <span class="n">invalid</span> <span class="o">=</span> <span class="p">(</span><span class="n">count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
                 <span class="n">count</span><span class="p">[</span><span class="n">invalid</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">#avoid warning</span>
                 <span class="n">data</span> <span class="o">=</span> <span class="n">data</span> <span class="o">/</span> <span class="n">count</span>
@@ -1991,7 +2050,7 @@
             <span class="k">return</span> <span class="kc">None</span>
         <span class="n">vinfo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_varinfo</span><span class="p">[</span><span class="n">vname</span><span class="p">]</span>
         <span class="n">invar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cdf</span><span class="p">[</span><span class="n">vname</span><span class="p">]</span>
-        <span class="n">rv</span> <span class="o">=</span> <span class="n">invar</span><span class="o">.</span><span class="n">rv</span><span class="p">()</span>
+        <span class="n">rv</span> <span class="o">=</span> <span class="n">vinfo</span><span class="p">[</span><span class="s1">&#39;rv&#39;</span><span class="p">]</span>
         <span class="n">shape</span> <span class="o">=</span> <span class="n">invar</span><span class="o">.</span><span class="n">shape</span>
         <span class="n">sl</span> <span class="o">=</span> <span class="n">vinfo</span><span class="p">[</span><span class="s1">&#39;slice&#39;</span><span class="p">]</span>
         <span class="n">postidx</span> <span class="o">=</span> <span class="n">vinfo</span><span class="p">[</span><span class="s1">&#39;postidx&#39;</span><span class="p">]</span>
@@ -2047,7 +2106,7 @@
             <span class="n">l</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_varinfo</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="s1">&#39;sortorder&#39;</span><span class="p">],</span> <span class="n">x</span><span class="p">))</span>
         <span class="n">variables</span> <span class="o">=</span> <span class="p">[[(</span><span class="n">v</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_outshape</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
                       <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">v_by_dim</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="p">[])]]</span>
-        <span class="n">vi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_varinfo</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">mainvar</span><span class="o">.</span><span class="n">name</span><span class="p">()]</span>
+        <span class="n">vi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_varinfo</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">vi</span><span class="p">[</span><span class="s1">&#39;dims&#39;</span><span class="p">]:</span>
             <span class="n">variables</span><span class="o">.</span><span class="n">append</span><span class="p">([</span>
                 <span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_outshape</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">v_by_dim</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="p">[])])</span>
@@ -2081,7 +2140,7 @@
 <span class="sd">        ...     getattr(b2, op)(*args, **kwargs)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">ops</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">vi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_varinfo</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">mainvar</span><span class="o">.</span><span class="n">name</span><span class="p">()]</span>
+        <span class="n">vi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_varinfo</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">vi</span><span class="p">[</span><span class="s1">&#39;dims&#39;</span><span class="p">]:</span>
             <span class="n">sl</span> <span class="o">=</span> <span class="n">vi</span><span class="p">[</span><span class="s1">&#39;slice&#39;</span><span class="p">][</span><span class="n">dim</span><span class="p">]</span>
             <span class="n">postidx</span> <span class="o">=</span> <span class="n">vi</span><span class="p">[</span><span class="s1">&#39;postidx&#39;</span><span class="p">][</span><span class="n">dim</span><span class="p">]</span>
@@ -2106,8 +2165,9 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        output : :class:`~spacepy.pycdf.CDF`</span>
-<span class="sd">            Output CDF to receive the new data.</span>
+<span class="sd">        output : :class:`~spacepy.pycdf.CDF`,  :class:`~spacepy.datamodel.SpaceData`</span>
+<span class="sd">            Output container to receive the new data, may be an open CDF</span>
+<span class="sd">            file or a SpaceData.</span>
 
 <span class="sd">        suffix : str</span>
 <span class="sd">            Suffix to append to the name of any variables that are changed</span>
@@ -2121,6 +2181,10 @@
 <span class="sd">        -------</span>
 <span class="sd">        VarBundle</span>
 <span class="sd">            This bundle, for method chaining.</span>
+
+<span class="sd">        See Also</span>
+<span class="sd">        --------</span>
+<span class="sd">        toSpaceData</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
@@ -2148,13 +2212,15 @@
             <span class="n">summed</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_summed</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">vinfo</span><span class="p">[</span><span class="s1">&#39;dims&#39;</span><span class="p">]]</span>
             <span class="c1">#And averaged</span>
             <span class="n">averaged</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_mean</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">vinfo</span><span class="p">[</span><span class="s1">&#39;dims&#39;</span><span class="p">]]</span>
-            <span class="n">invar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cdf</span><span class="o">.</span><span class="n">raw_var</span><span class="p">(</span><span class="n">vname</span><span class="p">)</span>
+            <span class="c1"># Raw data for CDF input *and* output only</span>
+            <span class="n">invar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cdf</span><span class="o">.</span><span class="n">raw_var</span><span class="p">(</span><span class="n">vname</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="s1">&#39;raw_var&#39;</span><span class="p">)</span>\
+                    <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cdf</span><span class="p">,</span> <span class="s1">&#39;raw_var&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">cdf</span><span class="p">[</span><span class="n">vname</span><span class="p">]</span>
             <span class="n">sl</span> <span class="o">=</span> <span class="n">vinfo</span><span class="p">[</span><span class="s1">&#39;slice&#39;</span><span class="p">]</span> <span class="c1">#including 0th dim</span>
             <span class="n">postidx</span> <span class="o">=</span> <span class="n">vinfo</span><span class="p">[</span><span class="s1">&#39;postidx&#39;</span><span class="p">]</span>
             <span class="c1">#Dimension size/variance for original variable</span>
             <span class="c1">#(0 index is CDF dimension 1)</span>
-            <span class="n">dv</span> <span class="o">=</span> <span class="n">invar</span><span class="o">.</span><span class="n">dv</span><span class="p">()</span>
-            <span class="n">rv</span> <span class="o">=</span> <span class="n">invar</span><span class="o">.</span><span class="n">rv</span><span class="p">()</span> <span class="c1">#and record variance</span>
+            <span class="n">dv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_varinfo</span><span class="p">[</span><span class="n">vname</span><span class="p">][</span><span class="s1">&#39;dv&#39;</span><span class="p">]</span>
+            <span class="n">rv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_varinfo</span><span class="p">[</span><span class="n">vname</span><span class="p">][</span><span class="s1">&#39;rv&#39;</span><span class="p">]</span>  <span class="c1">#and record variance</span>
             <span class="c1">#Scrub degenerate dimensions from the post-indexing</span>
             <span class="c1">#(record is never degenerate)</span>
             <span class="n">postidx</span> <span class="o">=</span> <span class="p">[</span><span class="n">postidx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">postidx</span><span class="p">))</span>
@@ -2175,7 +2241,8 @@
             <span class="c1">#Get shape of output variable from actual data</span>
             <span class="n">dims</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
             <span class="c1">#Raw Epoch16 have a trailing (2,)</span>
-            <span class="k">if</span> <span class="n">invar</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">pycdf</span><span class="o">.</span><span class="n">const</span><span class="o">.</span><span class="n">CDF_EPOCH16</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">invar</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">)</span>\
+               <span class="ow">and</span> <span class="n">invar</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">pycdf</span><span class="o">.</span><span class="n">const</span><span class="o">.</span><span class="n">CDF_EPOCH16</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
                 <span class="n">dims</span> <span class="o">=</span> <span class="n">dims</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
             <span class="c1">#Cut out any degenerate dimensions from DV (skipping record dim)</span>
             <span class="n">dv</span> <span class="o">=</span> <span class="p">[</span><span class="n">dv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dv</span><span class="p">))</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">degen</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]]</span>
@@ -2189,27 +2256,101 @@
             <span class="n">outname</span> <span class="o">=</span> <span class="n">namemap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">vname</span><span class="p">,</span> <span class="n">vname</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">outname</span> <span class="ow">in</span> <span class="n">output</span><span class="p">:</span>
                 <span class="n">preexist</span> <span class="o">=</span> <span class="kc">True</span>
-                <span class="n">newvar</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">raw_var</span><span class="p">(</span><span class="n">outname</span><span class="p">)</span>
+                <span class="n">newvar</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">raw_var</span><span class="p">(</span><span class="n">outname</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="s1">&#39;raw_var&#39;</span><span class="p">)</span>\
+                         <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cdf</span><span class="p">,</span> <span class="s1">&#39;raw_var&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="n">output</span><span class="p">[</span><span class="n">outname</span><span class="p">]</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_same</span><span class="p">(</span><span class="n">newvar</span><span class="p">,</span> <span class="n">invar</span><span class="p">,</span> <span class="n">rv</span><span class="p">,</span> <span class="n">dv</span><span class="p">,</span> <span class="n">dims</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
                     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
                         <span class="s1">&#39;Incompatible </span><span class="si">{}</span><span class="s1"> already exists in output.&#39;</span>
                         <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">outname</span><span class="p">))</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">preexist</span> <span class="o">=</span> <span class="kc">False</span>
-                <span class="n">newvar</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
-                    <span class="n">outname</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">invar</span><span class="o">.</span><span class="n">type</span><span class="p">(),</span> <span class="n">recVary</span><span class="o">=</span><span class="n">rv</span><span class="p">,</span>
-                    <span class="n">dimVarys</span><span class="o">=</span><span class="n">dv</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="n">dims</span><span class="p">,</span>
-                    <span class="n">n_elements</span><span class="o">=</span><span class="n">invar</span><span class="o">.</span><span class="n">nelems</span><span class="p">())</span>
-                <span class="n">newvar</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">raw_var</span><span class="p">(</span><span class="n">outname</span><span class="p">)</span>
-                <span class="c1">#Must create it empty so can change compression</span>
-                <span class="n">newvar</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="o">*</span><span class="n">invar</span><span class="o">.</span><span class="n">compress</span><span class="p">())</span>
-                <span class="n">newvar</span><span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
-                <span class="n">newvar</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">clone</span><span class="p">(</span><span class="n">invar</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="s1">&#39;new&#39;</span><span class="p">):</span>
+                    <span class="n">t</span> <span class="o">=</span> <span class="n">invar</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">invar</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">compress</span><span class="p">,</span> <span class="n">compress_param</span> <span class="o">=</span> <span class="n">invar</span><span class="o">.</span><span class="n">compress</span><span class="p">()</span>
+                    <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">AttributeError</span><span class="p">):</span>
+                        <span class="c1"># arrays have a different &quot;compress&quot;</span>
+                        <span class="n">compress</span><span class="p">,</span> <span class="n">compress_param</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+                    <span class="n">ne</span> <span class="o">=</span> <span class="n">invar</span><span class="o">.</span><span class="n">nelems</span><span class="p">()</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">invar</span><span class="p">,</span> <span class="s1">&#39;nelems&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+                    <span class="n">newvar</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+                        <span class="n">outname</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
+                        <span class="nb">type</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">recVary</span><span class="o">=</span><span class="n">rv</span><span class="p">,</span>
+                        <span class="n">dimVarys</span><span class="o">=</span><span class="n">dv</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="n">dims</span><span class="p">,</span>
+                        <span class="n">n_elements</span><span class="o">=</span><span class="n">ne</span><span class="p">,</span>
+                        <span class="n">compress</span><span class="o">=</span><span class="n">compress</span><span class="p">,</span> <span class="n">compress_param</span><span class="o">=</span><span class="n">compress_param</span><span class="p">)</span>
+                    <span class="n">newvar</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">clone</span><span class="p">(</span><span class="n">invar</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">newvar</span> <span class="o">=</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">dmarray</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">invar</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+                    <span class="n">output</span><span class="p">[</span><span class="n">outname</span><span class="p">]</span> <span class="o">=</span> <span class="n">newvar</span>
                 <span class="k">if</span> <span class="n">vname</span> <span class="o">!=</span> <span class="n">outname</span><span class="p">:</span> <span class="c1">#renamed</span>
                     <span class="n">newvar</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;FIELDNAM&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">outname</span>
 
             <span class="bp">self</span><span class="o">.</span><span class="n">_repoint_depend</span><span class="p">(</span><span class="n">invar</span><span class="p">,</span> <span class="n">newvar</span><span class="p">,</span> <span class="n">preexist</span><span class="p">,</span> <span class="n">namemap</span><span class="p">,</span> <span class="n">degen</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="VarBundle.toSpaceData"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.VarBundle.html#spacepy.pycdf.istp.VarBundle.toSpaceData">[docs]</a>    <span class="k">def</span> <span class="nf">toSpaceData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return variables, as modified.</span>
+
+<span class="sd">        Convenience function to call :meth:`output` on a new</span>
+<span class="sd">        :class:`~.datamodel.SpaceData` and return it.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        suffix : str</span>
+<span class="sd">            Appended to the name of variables changed on output; see</span>
+<span class="sd">            :meth:`output` for details.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`.datamodel.SpaceData`</span>
+<span class="sd">            Data read from input and processed according to the defined</span>
+<span class="sd">            operations.</span>
+
+<span class="sd">        See Also</span>
+<span class="sd">        --------</span>
+<span class="sd">        output</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import spacepy.pycdf</span>
+<span class="sd">        &gt;&gt;&gt; import spacepy.pycdf.istp</span>
+<span class="sd">        &gt;&gt;&gt; infile = spacepy.pycdf.CDF(&#39;rbspa_rel04_ect-hope-PA-L3_20121201_v7.1.0.cdf&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; b = spacepy.pycdf.istp.VarBundle(infile[&#39;FPDU&#39;])</span>
+<span class="sd">        &gt;&gt;&gt; data = b.slice(1, 2, single=True).toSpaceData()</span>
+<span class="sd">        &gt;&gt;&gt; infile.close()</span>
+<span class="sd">        &gt;&gt;&gt; data.tree()</span>
+<span class="sd">        +</span>
+<span class="sd">        |____ENERGY_Ion_DELTA</span>
+<span class="sd">        |____Energy_LABL</span>
+<span class="sd">        |____Epoch_Ion</span>
+<span class="sd">        |____Epoch_Ion_DELTA</span>
+<span class="sd">        |____FPDU</span>
+<span class="sd">        |____HOPE_ENERGY_Ion</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">sd</span> <span class="o">=</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">sd</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="n">suffix</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">sd</span></div>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_vtype</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;String representation of type of a variable</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        v</span>
+<span class="sd">            Open CDF variable, numpy array, or similar</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            String representation of type of ``v``, either as CDF type</span>
+<span class="sd">            or numpy type</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Kludge, but assumes main CDF code gets it right</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">res</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;CDF_&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">res</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;String representation of the bundle</span>
@@ -2227,12 +2368,12 @@
             <span class="s1">&#39;</span><span class="si">{}{}</span><span class="s1">: </span><span class="si">{}</span><span class="s1"> </span><span class="si">{}{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="s1">&#39; &#39;</span> <span class="o">*</span> <span class="mi">4</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_varinfo</span><span class="p">[</span><span class="n">vname</span><span class="p">][</span><span class="s1">&#39;sortorder&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
                 <span class="n">vname</span><span class="p">,</span>
-                <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cdf</span><span class="p">[</span><span class="n">vname</span><span class="p">])</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="c1">#Grab type from Var str</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_vtype</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cdf</span><span class="p">[</span><span class="n">vname</span><span class="p">]),</span>
                 <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">shape</span><span class="p">))</span> <span class="k">if</span> <span class="n">shape</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s1">&#39;---&#39;</span><span class="p">,</span>
                 <span class="c1">#RV vars always have dim 0 as axis 0, so they become</span>
                 <span class="c1">#NRV iff dim 0 of the main var goes away</span>
                 <span class="s1">&#39; NRV&#39;</span> <span class="k">if</span> <span class="n">shape</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-                <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">cdf</span><span class="p">[</span><span class="n">vname</span><span class="p">]</span><span class="o">.</span><span class="n">rv</span><span class="p">()</span> <span class="ow">or</span> <span class="nb">max</span><span class="p">(</span>
+                <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_varinfo</span><span class="p">[</span><span class="n">vname</span><span class="p">][</span><span class="s1">&#39;rv&#39;</span><span class="p">]</span> <span class="ow">or</span> <span class="nb">max</span><span class="p">(</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_degenerate</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_summed</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mean</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
                 <span class="k">else</span> <span class="s1">&#39;&#39;</span>
             <span class="p">)</span>
@@ -2281,7 +2422,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

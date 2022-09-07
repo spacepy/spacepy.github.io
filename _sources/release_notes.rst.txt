@@ -9,6 +9,85 @@ This document presents user-visible changes in each release of SpacePy.
    :local:
 
 
+0.4 Series
+==========
+0.4.0 (2022-09-07)
+------------------
+This release marks the end of support and/or fixes for bugs that cannot
+be reproduced on Python 3. As with the previous release series, SpacePy
+0.4.0 can still be built and installed "by hand" on Python 2, but no
+Python 2 binaries are provided and this version will not install on Python 2
+using ``pip``.
+
+New features
+************
+The :mod:`~spacepy.LANLstar` module has been rewritten to use numpy to
+evaluate the neural networks instead of relying on ``ffnet``. The
+temporary removal of support for this module in SpacePy 0.3.0 has therefore
+been lifted. The new implementation provides a slight performance increase
+with no change in results or accuracy.
+
+:class:`~spacepy.pycdf.istp.VarBundle` now supports output to and input from
+:class:`~spacepy.datamodel.SpaceData` objects as well as
+:class:`~spacepy.pycdf.CDF`.
+
+Both :mod:`~spacepy.coordinates` backends now provide access to the TEME
+coordinate system (as used by the SGP4 orbit propagator).
+
+Deprecations and removals
+*************************
+The ``_nelems`` method of :class:`~spacepy.pycdf.Var` has been removed;
+use the public interface :meth:`~spacepy.pycdf.Var.nelems`. (Deprecated
+in 0.2.2).
+
+:mod:`~spacepy.irbempy` ``get_sysaxes``, ``sph2car`` and ``car2sph``
+were deprecated in SpacePy 0.2.2 and have been removed. In place
+of the latter functions, :func:`~spacepy.coordinates.sph2car` and
+:func:`~spacepy.coordinates.car2sph` should be used.
+
+Major bugfixes
+**************
+The installer has been updated to address certain build issues,
+particularly on Mac. The Mac :doc:`installation directions
+<install_mac>` have been completely rewritten.
+
+:mod:`~spacepy.pycdf` has been updated for Apple Silicon (ARM/M1);
+Python 3.8 is required for this support.
+
+:mod:`~spacepy.pycdf` contains a time conversion workaround for
+versions of the NASA CDF library before 3.8.0.1. Non-integral epoch
+values close to midnight would erroneously return the following day;
+:meth:`~spacepy.pycdf.Library.epoch_to_datetime` now returns the
+correct value on all CDF library versions.
+
+The IRBEM backend for coordinate transformations has been updated to
+correct the specification of transformations through the J2000 and TOD
+systems, including correctly setting the GEI and TOD systems to be
+equivalent. This may change results by a small amount. The IRBEM update
+also traps a singularity at the South pole in the conversion to geodetic
+(GDZ) coordinates.
+
+Dependency requirements
+***********************
+:mod:`~spacepy.LANLstar` now uses a numpy-based implementation (based on
+contributions from Aaron Hendry) so neither ``ffnet`` or ``networkx`` are
+required to use it. These dependencies were removed in SpacePy 0.3.0, but
+were still required for use of ``LANLstar``. Support for ``LANLstar`` is
+reinstated in SpacePy 0.4.0.
+
+Other changes
+*************
+:mod:`~spacepy.pycdf` no longer warns when defaulting to version 3 CDFs
+and TIME_TT2000 time type if not specified; the warning was added in
+0.2.2 and the default changed in 0.3.0. Use
+:meth:`~spacepy.pycdf.Library.set_backward` to create version 2 CDFs and
+explicitly specify a time type (e.g. with :meth:`~spacepy.pycdf.CDF.new`)
+if TT2000 is not desired.
+
+The IRBEM library bundled with SpacePy has been updated to reflect recent
+updates and bugfixes, and reflects the upstream repository as of 2022-08-29
+(commit dfb9d26).
+
 0.3 Series
 ==========
 0.3.0 (2022-04-27)

@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.coordinates.Coords &#8212; SpacePy v0.3.0 Manual</title>
+    <title>spacepy.coordinates.Coords &#8212; SpacePy v0.4.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -15,6 +15,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/copybutton.js"></script>
     
@@ -85,7 +86,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
 
@@ -95,7 +96,7 @@
           <div class="body" role="main">
             
   <section id="spacepy-coordinates-coords">
-<h1>spacepy.coordinates.Coords<a class="headerlink" href="#spacepy-coordinates-coords" title="Permalink to this headline">¶</a></h1>
+<h1>spacepy.coordinates.Coords<a class="headerlink" href="#spacepy-coordinates-coords" title="Permalink to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="spacepy.coordinates.Coords">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.coordinates.</span></span><span class="sig-name descname"><span class="pre">Coords</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">carsph</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">units</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_irbem</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/coordinates.html#Coords"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.coordinates.Coords" title="Permalink to this definition">¶</a></dt>
@@ -108,17 +109,18 @@ and units are assumed to be Re (distance) and degrees (angle)</p>
 through, most functions throughout SpacePy assume distances
 in Re and angles in degrees, regardless of specified units.</p>
 </div>
-<p>By default, coordinate transforms are based on the IRBEM library; <a class="reference external" href="http://svn.code.sf.net/p/irbem/code/trunk/manual/user_guide.html">its
-manual</a>
-may prove useful. SpacePy also provides a framework for accurate coordinate
-transformations. This can be used by setting the <cite>use_irbem</cite> flag to False.
-In a future release of SpacePy this will become the default method.
+<p>By default, coordinate transforms are based on the SpacePy library’s
+high-accuracy coordinates backend.
+The legacy transforms provided by the IRBEM library can also be used
+by setting the <cite>use_irbem</cite> flag to True; its manual
+&lt;<a class="reference external" href="http://svn.code.sf.net/p/irbem/code/trunk/manual/user_guide.html">http://svn.code.sf.net/p/irbem/code/trunk/manual/user_guide.html</a>&gt;`_
+may prove useful.
 For a good reference on heliospheric and magnetospheric
 coordinate systems, see Franz &amp; Harper, “Heliospheric Coordinate Systems”,
 Planet. Space Sci., 50, pp 217-233, 2002
 (<a class="reference external" href="https://doi.org/10.1016/S0032-0633(01)00119-2">https://doi.org/10.1016/S0032-0633(01)00119-2</a>).</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>data</strong><span class="classifier">list or ndarray, dim = (n,3)</span></dt><dd><p>coordinate points [X,Y,Z] or [rad, lat, lon]</p>
 </dd>
@@ -136,12 +138,12 @@ on the carsph content. See note.</p>
 <dt><strong>use_irbem</strong><span class="classifier">bool</span></dt><dd><div class="versionadded">
 <p><span class="versionmodified added">New in version 0.3.0.</span></p>
 </div>
-<p>Set to True to use IRBEM for coordinate transforms (current default).
+<p>Set to True to use IRBEM for coordinate transforms.
 Otherwise use SpacePy’s coordinate transform library.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">Coords instance</span></dt><dd><p>instance with a.data, a.carsph, etc.</p>
 </dd>
@@ -166,11 +168,7 @@ Otherwise use SpacePy’s coordinate transform library.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">newcoord</span>
 </pre></div>
 </div>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
+<table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.coordinates.Coords.append" title="spacepy.coordinates.Coords.append"><code class="xref py py-obj docutils literal notranslate"><span class="pre">append</span></code></a>(other)</p></td>
 <td><p>Append another Coords instance to the current one</p></td>
@@ -188,7 +186,7 @@ Otherwise use SpacePy’s coordinate transform library.</p>
 <span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/coordinates.html#Coords.append"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.coordinates.Coords.append" title="Permalink to this definition">¶</a></dt>
 <dd><p>Append another Coords instance to the current one</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>other</strong><span class="classifier">Coords instance</span></dt><dd><p>Coords instance to append</p>
 </dd>
@@ -202,7 +200,7 @@ Otherwise use SpacePy’s coordinate transform library.</p>
 <span class="sig-name descname"><span class="pre">convert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">returntype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">returncarsph</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/coordinates.html#Coords.convert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.coordinates.Coords.convert" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a new Coords instance with new coordinate types</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>returntype</strong><span class="classifier">string</span></dt><dd><p>coordinate system, see module level documentation for
 supported systems</p>
@@ -211,7 +209,7 @@ supported systems</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">Coords object</span></dt><dd><p>Coords object in the new coordinate system</p>
 </dd>
@@ -236,13 +234,13 @@ supported systems</p>
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_skycoord</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">skycoord</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_irbem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/coordinates.html#Coords.from_skycoord"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.coordinates.Coords.from_skycoord" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a Coords instance from an Astropy SkyCoord instance</p>
 <dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>skycoord</strong><span class="classifier"><cite>astropy.coordinates.SkyCoord</cite></span></dt><dd><p>The coordinate to be converted</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">Coords instance</span></dt><dd><p>The converted coordinate</p>
 </dd>
@@ -259,7 +257,7 @@ supported systems</p>
 <span class="sig-name descname"><span class="pre">to_skycoord</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/coordinates.html#Coords.to_skycoord"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.coordinates.Coords.to_skycoord" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create an Astropy SkyCoord instance based on this instance</p>
 <dl class="field-list">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>out</strong><span class="classifier"><cite>astropy.coordinates.SkyCoord</cite></span></dt><dd><p>This coordinate as an Astropy SkyCoord</p>
 </dd>
@@ -308,7 +306,7 @@ supported systems</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2011-2022, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>
