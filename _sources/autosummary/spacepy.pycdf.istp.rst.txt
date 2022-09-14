@@ -1,6 +1,6 @@
 ﻿spacepy.pycdf.istp
 ==================
 
-.. currentmodule:: spacepy.pycdf
+.. currentmodule:: spacepy.pycdf.istp
 
 .. automodule:: spacepy.pycdf.istp
