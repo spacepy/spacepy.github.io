@@ -1,6 +1,6 @@
 ﻿spacepy.pybats.pwom
 ===================
 
-.. currentmodule:: spacepy.pybats
+.. currentmodule:: spacepy.pybats.pwom
 
 .. automodule:: spacepy.pybats.pwom

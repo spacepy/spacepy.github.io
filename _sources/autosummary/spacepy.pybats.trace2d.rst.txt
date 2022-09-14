@@ -1,6 +1,6 @@
 ﻿spacepy.pybats.trace2d
 ======================
 
-.. currentmodule:: spacepy.pybats
+.. currentmodule:: spacepy.pybats.trace2d
 
 .. automodule:: spacepy.pybats.trace2d

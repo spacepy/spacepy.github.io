@@ -1,6 +1,6 @@
 ﻿spacepy.pybats.rim
 ==================
 
-.. currentmodule:: spacepy.pybats
+.. currentmodule:: spacepy.pybats.rim
 
 .. automodule:: spacepy.pybats.rim

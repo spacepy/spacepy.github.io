@@ -1,6 +1,6 @@
 ﻿spacepy.pybats.gitm
 ===================
 
-.. currentmodule:: spacepy.pybats
+.. currentmodule:: spacepy.pybats.gitm
 
 .. automodule:: spacepy.pybats.gitm

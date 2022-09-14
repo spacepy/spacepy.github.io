@@ -1,6 +1,6 @@
 ﻿spacepy.pybats.dgcpm
 ====================
 
-.. currentmodule:: spacepy.pybats
+.. currentmodule:: spacepy.pybats.dgcpm
 
 .. automodule:: spacepy.pybats.dgcpm

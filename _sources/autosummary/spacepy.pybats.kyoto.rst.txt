@@ -1,6 +1,6 @@
 ﻿spacepy.pybats.kyoto
 ====================
 
-.. currentmodule:: spacepy.pybats
+.. currentmodule:: spacepy.pybats.kyoto
 
 .. automodule:: spacepy.pybats.kyoto
