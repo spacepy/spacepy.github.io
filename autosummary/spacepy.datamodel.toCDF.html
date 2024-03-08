@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.datamodel.toCDF &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.datamodel.toCDF &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -99,9 +99,9 @@
 <h1>spacepy.datamodel.toCDF<a class="headerlink" href="#spacepy-datamodel-tocdf" title="Permalink to this heading">¶</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="spacepy.datamodel.toCDF">
-<span class="sig-prename descclassname"><span class="pre">spacepy.datamodel.</span></span><span class="sig-name descname"><span class="pre">toCDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SDobject</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#toCDF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.toCDF" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">spacepy.datamodel.</span></span><span class="sig-name descname"><span class="pre">toCDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SDobject</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skeleton</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flatten</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoNRV</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backward</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TT2000</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#toCDF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.toCDF" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a CDF file from a SpacePy datamodel representation</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>fname</strong><span class="classifier">str</span></dt><dd><p>Filename to write to</p>
@@ -116,7 +116,7 @@
 </dl>
 </dd>
 <dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>skeleton</strong><span class="classifier">str (optional)</span></dt><dd><p>create new CDF from a skeleton file (default ‘’)</p>
 </dd>
 <dt><strong>flatten</strong><span class="classifier">bool (optional)</span></dt><dd><p>flatten incoming datamodel - if SpaceData objects are nested (default False)</p>
@@ -125,15 +125,35 @@
 </dd>
 <dt><strong>autoNRV</strong><span class="classifier">bool (optional)</span></dt><dd><p>attempt automatic identification of non-record varying entries in CDF</p>
 </dd>
-<dt><strong>backward</strong><span class="classifier">bool (optional)</span></dt><dd><p>create CDF in backward-compatible format (default is v3+ compatibility only)</p>
+<dt><strong>backward</strong><span class="classifier">bool (optional)</span></dt><dd><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">False</span></code> to create CDF in backward-compatible format; <code class="docutils literal notranslate"><span class="pre">True</span></code></dt><dd><p>to force v3+ compatibility only. (Default: do not change current
+state, see <a class="reference internal" href="spacepy.pycdf.Library.html#spacepy.pycdf.Library.set_backward" title="spacepy.pycdf.Library.set_backward"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_backward()</span></code></a>).</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.5.0: </span>Now supports specifying backward compatible or no change;
+previous versions always wrote v3+ CDFs (even if <code class="docutils literal notranslate"><span class="pre">False</span></code>).</p>
+</div>
 </dd>
-<dt><strong>TT2000</strong><span class="classifier">bool (optional)</span></dt><dd><p>write variables beginning with ‘Epoch’ as datatype CDF_TT2000 (default is automatic selection of EPOCH or EPOCH16)</p>
+</dl>
+</dd>
+<dt><strong>TT2000</strong><span class="classifier">bool (optional)</span></dt><dd><p>Specify type for variables with names beginning ‘Epoch’. Default
+CDF_EPOCH for backward-compatible CDF (<code class="docutils literal notranslate"><span class="pre">backward</span></code> True) and
+CDF_TT20000 otherwise (<code class="docutils literal notranslate"><span class="pre">backward</span></code> False or unspecified).</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.5.0: </span>Current handling introduced.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.3.0: </span>Always write TT2000 variables (due to change in <a class="reference internal" href="../pycdf.html#module-spacepy.pycdf" title="spacepy.pycdf"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pycdf</span></code></a>).</p>
+</div>
 </dd>
 <dt><strong>verbose</strong><span class="classifier">bool (optional)</span></dt><dd><p>verbosity flag</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.5.0: </span>Invalid keyword arguments now raise <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.12)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a> rather than being ignored.</p>
+</div>
 </dd></dl>
 
 </section>
@@ -170,7 +190,7 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

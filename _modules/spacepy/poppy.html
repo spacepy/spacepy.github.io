@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.poppy &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.poppy &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -133,6 +133,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">bisect</span>
+<span class="kn">import</span> <span class="nn">ctypes</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
@@ -140,19 +141,14 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">spacepy</span> <span class="kn">import</span> <span class="n">help</span>
-<span class="c1">#Try to pull in the C version. Assumption is that if you import this module,</span>
-<span class="c1">#you want to do some association analysis, so the overhead in the import</span>
-<span class="c1">#is OK.</span>
 <span class="kn">from</span> <span class="nn">spacepy</span> <span class="kn">import</span> <span class="n">lib</span>
-<span class="k">if</span> <span class="n">lib</span><span class="o">.</span><span class="n">have_libspacepy</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">ctypes</span>
 <span class="kn">import</span> <span class="nn">spacepy.toolbox</span> <span class="k">as</span> <span class="nn">tb</span>
 <span class="kn">import</span> <span class="nn">spacepy.datamodel</span> <span class="k">as</span> <span class="nn">dm</span>
 
 <span class="n">__contact__</span> <span class="o">=</span> <span class="s1">&#39;Steve Morley, smorley@lanl.gov&#39;</span>
 
 <div class="viewcode-block" id="PPro"><a class="viewcode-back" href="../../autosummary/spacepy.poppy.PPro.html#spacepy.poppy.PPro">[docs]</a><span class="k">class</span> <span class="nc">PPro</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;PoPPy point process object</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;PoPPy point process object</span>
 
 <span class="sd">    Initialize object with series1 and series2. These should be timeseries of</span>
 <span class="sd">    events, given as lists, arrays, or lists of datetime objects.</span>
@@ -197,6 +193,12 @@
     <span class="c1">#NB: P2 is the &quot;master&quot; timescale, P1 gets shifted by lags</span>
     <span class="c1">#Add lag to p1 to reach p2&#39;s timescale, subtract lag from p2 to reach p1&#39;s</span>
 
+    <span class="n">ci</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Upper and lower confidence limits for the association number&quot;&quot;&quot;</span>
+
+    <span class="n">conf_above</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Confidence that the association number is above the asymptotic&quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">process1</span><span class="p">,</span> <span class="n">process2</span><span class="p">,</span> <span class="n">lags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">winhalf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">process1</span> <span class="o">=</span> <span class="n">process1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">process2</span> <span class="o">=</span> <span class="n">process2</span>
@@ -205,7 +207,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
 
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;String Representation of PoPPy object&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;String Representation of PoPPy object&quot;&quot;&quot;</span>
 
         <span class="k">try</span><span class="p">:</span>
             <span class="n">pk</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">assoc_total</span><span class="p">)</span>
@@ -219,24 +221,24 @@
 
         <span class="c1"># TODO this is broken not enough values for the format statement</span>
         <span class="k">return</span> <span class="s2">&quot;&quot;&quot;Point Process Object:</span>
-<span class="s2">        Points in process #1 - </span><span class="si">%d</span><span class="s2"> ; Points in process #2 - </span><span class="si">%d</span><span class="s2"></span>
-<span class="s2">        Peak association number - </span><span class="si">%s</span><span class="s2"> ; Asymptotic association - </span><span class="si">%s</span><span class="s2"></span>
+<span class="s2">        Points in process #1 - </span><span class="si">%d</span><span class="s2"> ; Points in process #2 - </span><span class="si">%d</span>
+<span class="s2">        Peak association number - </span><span class="si">%s</span><span class="s2"> ; Asymptotic association - </span><span class="si">%s</span>
 <span class="s2">        &quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">process1</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">process2</span><span class="p">),</span> <span class="n">pk</span><span class="p">,</span> <span class="n">asy</span><span class="p">)</span>
 
     <span class="fm">__repr__</span> <span class="o">=</span> <span class="fm">__str__</span>
 
     <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Calling len(obj) will return the number of points in process 1&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calling len(obj) will return the number of points in process 1&quot;&quot;&quot;</span>
 
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">process1</span><span class="p">)</span>
 
 <div class="viewcode-block" id="PPro.swap"><a class="viewcode-back" href="../../autosummary/spacepy.poppy.PPro.html#spacepy.poppy.PPro.swap">[docs]</a>    <span class="k">def</span> <span class="nf">swap</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Swaps process 1 and process 2&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Swaps process 1 and process 2&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">process1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">process2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">process1</span>
         <span class="k">return</span> <span class="kc">None</span></div>
 
 <div class="viewcode-block" id="PPro.assoc"><a class="viewcode-back" href="../../autosummary/spacepy.poppy.PPro.html#spacepy.poppy.PPro.assoc">[docs]</a>    <span class="k">def</span> <span class="nf">assoc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Perform association analysis on input series</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform association analysis on input series</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ==========</span>
@@ -247,28 +249,22 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="c1">#check for existence of lags and winhalf</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">u</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">lags</span> <span class="o">=</span> <span class="n">u</span>
-            <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">lags</span>
-            <span class="k">if</span> <span class="n">h</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">winhalf</span> <span class="o">=</span> <span class="n">h</span>
-            <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">winhalf</span> <span class="o">!=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">u</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lags</span> <span class="o">=</span> <span class="n">u</span>
+        <span class="k">if</span> <span class="n">h</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">winhalf</span> <span class="o">=</span> <span class="n">h</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">lags</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">winhalf</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;calculating association for series of length </span><span class="si">%s</span><span class="s1"> at </span><span class="si">%d</span><span class="s1"> lags&#39;</span> \
-                    <span class="o">%</span> <span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">process1</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">process2</span><span class="p">)],</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lags</span><span class="p">)))</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
-                <span class="k">return</span> <span class="s1">&#39;assoc error: attributes lags and winhalf must be populated&#39;</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">return</span> <span class="kc">None</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;assoc error: attributes lags and winhalf must be populated&#39;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;calculating association for series of length </span><span class="si">%s</span><span class="s1"> at </span><span class="si">%d</span><span class="s1"> lags&#39;</span>
+                  <span class="o">%</span> <span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">process1</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">process2</span><span class="p">)],</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lags</span><span class="p">)))</span>
 
         <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
         <span class="kn">import</span> <span class="nn">matplotlib.dates</span> <span class="k">as</span> <span class="nn">mpd</span>
-        <span class="k">if</span> <span class="n">lib</span><span class="o">.</span><span class="n">have_libspacepy</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
-            <span class="n">dtype</span> <span class="o">=</span> <span class="s1">&#39;int64&#39;</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">dtype</span> <span class="o">=</span> <span class="s1">&#39;int&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">sizeof</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">)</span> <span class="o">*</span> <span class="mi">8</span><span class="p">)</span>
+        <span class="n">dtype</span> <span class="o">=</span> <span class="s1">&#39;int&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">sizeof</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">)</span> <span class="o">*</span> <span class="mi">8</span>
+                            <span class="k">if</span> <span class="n">lib</span><span class="o">.</span><span class="n">have_libspacepy</span> <span class="k">else</span> <span class="mi">64</span><span class="p">)</span>
 
         <span class="c1">##Method 1 - use tb.tOverlap</span>
         <span class="c1">#create list for association number</span>
@@ -291,7 +287,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">n_assoc</span><span class="p">[</span><span class="n">ilag</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="n">last_idx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">first_idx</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nss_list</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">def</span> <span class="nf">fracday</span><span class="p">(</span><span class="n">dd</span><span class="p">):</span>
-                <span class="sd">&#39;&#39;&#39;turn a timedelta into a fractional day&#39;&#39;&#39;</span>
+<span class="w">                </span><span class="sd">&#39;&#39;&#39;turn a timedelta into a fractional day&#39;&#39;&#39;</span>
                 <span class="c1">#NOTE: If 2.6 compatibility is ever dropped, can use dd.total_seconds()/86400</span>
                 <span class="k">return</span> <span class="n">dd</span><span class="o">.</span><span class="n">days</span> <span class="o">+</span> <span class="n">dd</span><span class="o">.</span><span class="n">seconds</span><span class="o">/</span><span class="mf">86400.0</span> <span class="o">+</span> <span class="n">dd</span><span class="o">.</span><span class="n">microseconds</span><span class="o">/</span><span class="p">(</span><span class="mf">86400.0</span> <span class="o">*</span> <span class="mi">10</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span>
             <span class="c1">#test for datetime input and try to convert to numeric</span>
@@ -338,7 +334,7 @@
         <span class="k">return</span> <span class="kc">None</span></div>
 
 <div class="viewcode-block" id="PPro.assoc_mult"><a class="viewcode-back" href="../../autosummary/spacepy.poppy.PPro.html#spacepy.poppy.PPro.assoc_mult">[docs]</a>    <span class="k">def</span> <span class="nf">assoc_mult</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">windows</span><span class="p">,</span> <span class="n">inter</span><span class="o">=</span><span class="mi">95</span><span class="p">,</span> <span class="n">n_boots</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Association analysis w/confidence interval on multiple windows</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Association analysis w/confidence interval on multiple windows</span>
 
 <span class="sd">        Using the time sequence and lags stored in this object, perform</span>
 <span class="sd">        full association analysis, including bootstrapping of confidence</span>
@@ -384,7 +380,7 @@
 <div class="viewcode-block" id="PPro.plot_mult"><a class="viewcode-back" href="../../autosummary/spacepy.poppy.PPro.html#spacepy.poppy.PPro.plot_mult">[docs]</a>    <span class="k">def</span> <span class="nf">plot_mult</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">windows</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cbar_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                   <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>
                   <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Lag&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Window Size&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Plots a 2D function of window size and lag</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plots a 2D function of window size and lag</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ==========</span>
@@ -410,17 +406,15 @@
         <span class="n">ax0</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">((</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">cbar_label</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;text.usetex&#39;</span><span class="p">]:</span>
-                <span class="n">cbar_label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;\</span><span class="si">% c</span><span class="s1">onfident above asymptotic association&#39;</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">cbar_label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;</span><span class="si">% c</span><span class="s1">onfident above asymptotic association&#39;</span>
+        <span class="k">if</span> <span class="n">cbar_label</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">cbar_label</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> confident above asymptotic association&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="sa">r</span><span class="s1">&#39;\%&#39;</span> <span class="k">if</span> <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;text.usetex&#39;</span><span class="p">]</span> <span class="k">else</span> <span class="sa">r</span><span class="s1">&#39;%&#39;</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cax</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">cbar_label</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">fig</span></div>
 
 <div class="viewcode-block" id="PPro.plot"><a class="viewcode-back" href="../../autosummary/spacepy.poppy.PPro.html#spacepy.poppy.PPro.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">asympt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
              <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Time lag&#39;</span><span class="p">,</span> <span class="n">xscale</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create basic plot of association analysis.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create basic plot of association analysis.</span>
 
 <span class="sd">        Uses object attributes created by :py:meth:`assoc` and,</span>
 <span class="sd">        optionally, :py:meth:`aa_ci`.</span>
@@ -469,23 +463,19 @@
             <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">/</span> <span class="n">xscale</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
         <span class="n">ax0</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
 
-        <span class="n">ci</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">ci</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ci</span>
         <span class="k">if</span> <span class="n">norm</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;ci&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ci</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">ci</span> <span class="o">=</span> <span class="p">[[</span><span class="n">j</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">asympt_assoc</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ci</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
                     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]]</span>
             <span class="n">asympt_assoc</span> <span class="o">=</span> <span class="mf">1.0</span>
             <span class="n">assoc_total</span> <span class="o">=</span> <span class="p">[</span><span class="n">assoc</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">asympt_assoc</span>
                            <span class="k">for</span> <span class="n">assoc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">assoc_total</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">ci</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ci</span>
-            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-                <span class="k">pass</span>
             <span class="n">asympt_assoc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">asympt_assoc</span>
             <span class="n">assoc_total</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">assoc_total</span>
 
-        <span class="k">if</span> <span class="n">ci</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ci</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">transparent</span><span class="p">:</span>
                 <span class="n">ax0</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ci</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ci</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
                                  <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
@@ -498,12 +488,12 @@
         <span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">assoc_total</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">asympt</span><span class="p">:</span>
             <span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">asympt_assoc</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">ylabel</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ylabel</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">norm</span><span class="p">:</span>
                 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span>
                     <span class="s1">&#39;Normalized Association Number n(u, h=</span><span class="si">{0}</span><span class="s1">) / n(</span><span class="si">{1}</span><span class="s1">, h=</span><span class="si">{0}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">winhalf</span><span class="p">,</span>
-                    <span class="s1">&#39;$\mathrm{u</span><span class="se">\r</span><span class="s1">ightarrow\infty}$&#39;</span>
+                    <span class="sa">r</span><span class="s1">&#39;$\mathrm{u\rightarrow\infty}$&#39;</span>
                     <span class="k">if</span> <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;text.usetex&#39;</span><span class="p">]</span> <span class="k">else</span> <span class="s1">&#39;u-&gt;Inf&#39;</span><span class="p">))</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Association Number n(u, h=</span><span class="si">{0}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
@@ -511,17 +501,16 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">title</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">show</span><span class="p">:</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
             <span class="k">return</span> <span class="kc">None</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">fig</span></div>
+        <span class="k">return</span> <span class="n">fig</span></div>
 
 <div class="viewcode-block" id="PPro.aa_ci"><a class="viewcode-back" href="../../autosummary/spacepy.poppy.PPro.html#spacepy.poppy.PPro.aa_ci">[docs]</a>    <span class="k">def</span> <span class="nf">aa_ci</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inter</span><span class="p">,</span> <span class="n">n_boots</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get bootstrap confidence intervals for association number</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get bootstrap confidence intervals for association number</span>
 
 <span class="sd">        Requires input of desired confidence interval, e.g.:</span>
 <span class="sd">            &gt;&gt;&gt; obj.aa_ci(95)</span>
@@ -568,19 +557,23 @@
         <span class="n">conf_above</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">lags</span><span class="p">)])</span>
         <span class="n">long_size</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">sizeof</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">)</span> <span class="o">*</span> <span class="mi">8</span>
 
-        <span class="k">if</span> <span class="n">seed</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
-            <span class="n">minseed</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span> <span class="o">**</span> <span class="p">(</span><span class="n">long_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-            <span class="n">maxseed</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="p">(</span><span class="n">long_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="c1"># numpy random seeds must always be 32-bit</span>
+            <span class="n">seed_size</span> <span class="o">=</span> <span class="n">long_size</span> <span class="k">if</span> <span class="n">lib</span><span class="o">.</span><span class="n">have_libspacepy</span> <span class="k">else</span> <span class="mi">32</span>
+            <span class="n">minseed</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span> <span class="o">**</span> <span class="p">(</span><span class="n">seed_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">maxseed</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="p">(</span><span class="n">seed_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
             <span class="c1">#randint used to be system-size signed integer only.</span>
             <span class="c1">#so used that and cast to the required unsigned later</span>
             <span class="c1">#cast does not lose entropy: negative numbers map to high positives.</span>
             <span class="c1">#For reproducibility, keep doing that even though dtype</span>
             <span class="c1">#kwarg now available.</span>
             <span class="n">lag_seeds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">minseed</span><span class="p">,</span> <span class="n">maxseed</span><span class="p">,</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">lags</span><span class="p">)])</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">lib</span><span class="o">.</span><span class="n">have_libspacepy</span><span class="p">:</span>
+                <span class="n">lag_seeds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="n">lag_seeds</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
             <span class="n">newtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;u&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">lag_seeds</span><span class="o">.</span><span class="n">dtype</span><span class="p">))</span>
             <span class="n">lag_seeds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="n">lag_seeds</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">newtype</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">lib</span><span class="o">.</span><span class="n">have_libspacepy</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">lib</span><span class="o">.</span><span class="n">have_libspacepy</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lags</span><span class="p">)):</span>
                 <span class="k">if</span> <span class="n">seed</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
                     <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">lag_seeds</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
@@ -594,7 +587,7 @@
             <span class="n">dtype</span> <span class="o">=</span> <span class="s1">&#39;int&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">long_size</span><span class="p">)</span>
             <span class="n">assoc_totals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">lags</span><span class="p">),</span> <span class="n">n_boots</span><span class="p">],</span>
                                     <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">seed</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">seed</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">clock_seed</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
                 <span class="n">lag_seeds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">lags</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
@@ -614,8 +607,7 @@
                 <span class="n">conf_above</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">-</span> <span class="n">value_percentile</span><span class="p">(</span><span class="n">assoc_totals</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span>
                                                          <span class="bp">self</span><span class="o">.</span><span class="n">asympt_assoc</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ci</span> <span class="o">=</span> <span class="p">[</span><span class="n">ci_low</span><span class="p">,</span> <span class="n">ci_high</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">conf_above</span> <span class="o">=</span> <span class="n">conf_above</span>
-        <span class="k">return</span> <span class="kc">None</span></div></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conf_above</span> <span class="o">=</span> <span class="n">conf_above</span></div></div>
 
 
 <span class="c1">#Functions outside class</span>
@@ -623,7 +615,7 @@
 <div class="viewcode-block" id="plot_two_ppro"><a class="viewcode-back" href="../../autosummary/spacepy.poppy.plot_two_ppro.html#spacepy.poppy.plot_two_ppro">[docs]</a><span class="k">def</span> <span class="nf">plot_two_ppro</span><span class="p">(</span><span class="n">pprodata</span><span class="p">,</span> <span class="n">pproref</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                   <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xscale</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>
                   <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">yticks</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Overplots two PPro objects</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Overplots two PPro objects</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ==========</span>
@@ -656,12 +648,12 @@
 <span class="sd">        if provided, a list of tickmarks for the Y axis</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-    <span class="k">if</span> <span class="n">ratio</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">ratio</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">ratio</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">pproref</span><span class="o">.</span><span class="n">asympt_assoc</span><span class="p">)</span> <span class="o">/</span> <span class="n">pprodata</span><span class="o">.</span><span class="n">asympt_assoc</span>
     <span class="n">lags</span> <span class="o">=</span> <span class="n">pproref</span><span class="o">.</span><span class="n">lags</span>
     <span class="n">nlags</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lags</span><span class="p">)</span>
     <span class="k">assert</span> <span class="n">lags</span><span class="p">[:]</span> <span class="o">==</span> <span class="n">pprodata</span><span class="o">.</span><span class="n">lags</span><span class="p">[:]</span>
-    <span class="k">if</span> <span class="n">xscale</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">xscale</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">lags</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="n">xscale</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lags</span><span class="p">]</span>
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="n">dpi</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
@@ -705,11 +697,8 @@
                      <span class="n">interpolate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lags</span><span class="p">,</span> <span class="n">scaleddata</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
     <span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lags</span><span class="p">,</span> <span class="n">scaledref</span><span class="p">,</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">ylim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">ax0</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">ax0</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="n">ylim</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="k">if</span> <span class="n">ylim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">bottom</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">ylim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">ylim</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">ylim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">ax0</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="n">ylim</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="k">if</span> <span class="n">log</span><span class="p">:</span>
         <span class="n">ax0</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="n">nonposy</span><span class="o">=</span><span class="s1">&#39;clip&#39;</span><span class="p">)</span>
@@ -722,7 +711,7 @@
 
 
 <div class="viewcode-block" id="boots_ci"><a class="viewcode-back" href="../../autosummary/spacepy.poppy.boots_ci.html#spacepy.poppy.boots_ci">[docs]</a><span class="k">def</span> <span class="nf">boots_ci</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">inter</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sample_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">usepy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">nretvals</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Construct bootstrap confidence interval</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Construct bootstrap confidence interval</span>
 
 <span class="sd">    The bootstrap is a statistical tool that uses multiple samples derived from</span>
 <span class="sd">    the original data (called surrogates) to estimate a parameter of the</span>
@@ -797,30 +786,26 @@
 
     <span class="n">n_els</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">n_els</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">target</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-    <span class="k">if</span> <span class="n">sample_size</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="k">if</span> <span class="n">target</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="k">if</span> <span class="n">sample_size</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">sample_size</span> <span class="o">=</span> <span class="n">n_els</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">lib</span><span class="o">.</span><span class="n">have_libspacepy</span><span class="o">==</span><span class="kc">False</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">usepy</span><span class="o">==</span><span class="kc">True</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">nretvals</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
-            <span class="n">surr_quan</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="n">n</span><span class="p">,</span><span class="n">nretvals</span><span class="p">])</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">surr_quan</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="n">n</span><span class="p">])</span>
-        <span class="k">if</span> <span class="n">seed</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">lib</span><span class="o">.</span><span class="n">have_libspacepy</span> <span class="ow">or</span> <span class="n">usepy</span><span class="p">:</span>
+        <span class="n">surr_quan</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="n">n</span><span class="p">,</span> <span class="n">nretvals</span><span class="p">]</span> <span class="k">if</span> <span class="n">nretvals</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="p">[</span><span class="n">n</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
         <span class="n">ran_el</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">n_els</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="n">sample_size</span><span class="p">])</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">)):</span> <span class="c1">#compute n bootstrapped series</span>
             <span class="n">surr_ser</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">data</span><span class="p">[</span><span class="n">rec</span><span class="p">]</span> <span class="k">for</span> <span class="n">rec</span> <span class="ow">in</span> <span class="n">ran_el</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]])</span> <span class="c1">#resample w/ replace</span>
             <span class="n">surr_quan</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">surr_ser</span><span class="p">)</span> <span class="c1">#get desired quantity from surrogates</span>
-        <span class="n">surr_quan</span> <span class="o">=</span> <span class="n">surr_quan</span><span class="p">[</span><span class="n">surr_quan</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)[:,</span><span class="mi">0</span><span class="p">]]</span>
-        <span class="c1">#surr_quan.sort()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">surr_quan</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">surr_quan</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">surr_quan</span> <span class="o">=</span> <span class="n">surr_quan</span><span class="p">[</span><span class="n">surr_quan</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)[:,</span><span class="mi">0</span><span class="p">]]</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
         <span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span> <span class="o">*</span> <span class="n">n_els</span><span class="p">)(</span><span class="o">*</span><span class="n">data</span><span class="p">)</span>
         <span class="n">surr_ser</span> <span class="o">=</span> <span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_double</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">sample_size</span><span class="p">))()</span>
-        <span class="k">if</span> <span class="n">seed</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">seed</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">seed</span> <span class="o">=</span> <span class="mi">0</span>
             <span class="n">clock_seed</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_int</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -840,15 +825,14 @@
             <span class="n">pul</span><span class="p">[:,</span><span class="n">nn</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">surr_quan</span><span class="p">[:,</span><span class="n">nn</span><span class="p">],</span> <span class="p">(</span><span class="n">perc_low</span><span class="p">,</span><span class="n">perc_high</span><span class="p">))</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">pul</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">surr_quan</span><span class="p">,</span> <span class="p">(</span><span class="n">perc_low</span><span class="p">,</span><span class="n">perc_high</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">target</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">target</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">pul</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pul</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">vp</span> <span class="o">=</span> <span class="n">value_percentile</span><span class="p">(</span><span class="n">surr_quan</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">pul</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pul</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mf">100.0</span> <span class="o">-</span> <span class="n">vp</span></div>
+    <span class="n">vp</span> <span class="o">=</span> <span class="n">value_percentile</span><span class="p">(</span><span class="n">surr_quan</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pul</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pul</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mf">100.0</span> <span class="o">-</span> <span class="n">vp</span></div>
 
 
 <div class="viewcode-block" id="value_percentile"><a class="viewcode-back" href="../../autosummary/spacepy.poppy.value_percentile.html#spacepy.poppy.value_percentile">[docs]</a><span class="k">def</span> <span class="nf">value_percentile</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Find the percentile of a particular value in a sequence</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Find the percentile of a particular value in a sequence</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ==========</span>
@@ -883,7 +867,7 @@
 
 
 <span class="k">def</span> <span class="nf">applyRefractory</span><span class="p">(</span><span class="n">process1</span><span class="p">,</span> <span class="n">period</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;Apply a refractory period to an input discrete event time sequence</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Apply a refractory period to an input discrete event time sequence</span>
 
 <span class="sd">    All events in the refractory period are removed from the point process.</span>
 
@@ -929,17 +913,13 @@
         <span class="n">t2</span> <span class="o">=</span> <span class="n">t1</span> <span class="o">+</span> <span class="n">period</span>
         <span class="n">inds</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">tOverlapHalf</span><span class="p">([</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">],</span> <span class="n">p1</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
         <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">inds</span><span class="p">:</span>
-            <span class="n">discard</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p1</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+            <span class="n">discard</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p1</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
         <span class="n">keep</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p1</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="c1"># put test element into keep array</span>
-        <span class="n">done</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">2</span>
+        <span class="n">done</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span>
 
     <span class="k">if</span> <span class="n">tickt</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">spt</span><span class="o">.</span><span class="n">Ticktock</span><span class="p">(</span><span class="n">keep</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">wasArr</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">keep</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">keep</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">keep</span><span class="p">)</span> <span class="k">if</span> <span class="n">wasArr</span> <span class="k">else</span> <span class="n">keep</span>
 </pre></div>
 
             <div class="clearer"></div>
@@ -968,7 +948,7 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

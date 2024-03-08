@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>PyBats - SWMF &amp; BATS-R-US Analysis Tools &#8212; SpacePy v0.4.1 Manual</title>
+    <title>PyBats - SWMF &amp; BATS-R-US Analysis Tools &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -140,7 +140,7 @@ will receive its own submodule.</p>
 </section>
 <section id="conventions-and-prefixes">
 <h2>Conventions and Prefixes<a class="headerlink" href="#conventions-and-prefixes" title="Permalink to this heading">¶</a></h2>
-<p>Nearly every class in PyBats inherits from <a class="reference internal" href="autosummary/spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData" title="spacepy.datamodel.SpaceData"><code class="xref py py-class docutils literal notranslate"><span class="pre">spacepy.datamodel.SpaceData</span></code></a>,
+<p>Nearly every class in PyBats inherits from <a class="reference internal" href="autosummary/spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData" title="spacepy.datamodel.SpaceData"><code class="xref py py-class docutils literal notranslate"><span class="pre">spacepy.datamodel.SpaceData</span></code></a>
 so it is important for users to understand how to employ and explore SpaceData
 objects.  There are a few exceptions, so always pay close attention to the
 docstrings and examples.  Legacy code that does not adhere to this pattern is
@@ -148,10 +148,10 @@ slowly being brought up-to-date with each release.</p>
 <p>Visualization methods have two prefixes: <em>plot_</em> and <em>add_</em>.  Whenever a method
 begins with <em>plot_</em>, a quick-look product will be created that is not highly-
 configurable.  These methods are meant to yeild either simple
-diagnostic plots or static, often-used products.  There are few methods that use
-this prefix.  The prefix <em>add_</em> is always followed by <em>plot_type</em>; it indicates
-a plotting method that is highly configurable and meant to be combined with
-other <em>add_</em>-like methods and matplotlib commands.</p>
+diagnostic plots or static, often-used products.  There are few methods that
+use this prefix.  The prefix <em>add_</em> is always followed by <em>plot_type</em>; it
+indicates a plotting method that is highly configurable and meant to be
+combined with other <em>add_</em>-like methods and matplotlib commands.</p>
 <p>Common calculations, such as calculating Alfven wave speeds of MHD results,
 are strewn about PyBats’ classes.  They are always given the method prefix
 <em>calc_</em>, i.e. <em>calc_alfven</em>.  Methods called <em>calc_all</em> will search for all
@@ -168,7 +168,7 @@ related to an SWMF-included code.</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.pybats.bats.html#module-spacepy.pybats.bats" title="spacepy.pybats.bats"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bats</span></code></a></p></td>
-<td><p>A PyBats module for handling input, output, and visualization of  binary SWMF output files taylored to BATS-R-US-type data.</p></td>
+<td><p>A PyBats module for handling input, output, and visualization of binary SWMF output files taylored to BATS-R-US-type data.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.pybats.dgcpm.html#module-spacepy.pybats.dgcpm" title="spacepy.pybats.dgcpm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dgcpm</span></code></a></p></td>
 <td><p>The PyBats submodule for handling input and output for the Dynamic Global Core Plasma Model (DGCPM), a plasmasphere module of the SWMF.</p></td>
@@ -189,7 +189,7 @@ related to an SWMF-included code.</p>
 <td><p>A module for reading, handling, and plotting RAM-SCB output.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.pybats.rim.html#module-spacepy.pybats.rim" title="spacepy.pybats.rim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rim</span></code></a></p></td>
-<td><p>Classes, functions, and methods for reading, writing, and plotting output from the Ridley Ionosphere Model (RIM) and the similar legacy code,  Ridley Serial.</p></td>
+<td><p>Classes, functions, and methods for reading, writing, and plotting output from the Ridley Ionosphere Model (RIM) and the similar legacy code, Ridley Serial.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.pybats.trace2d.html#module-spacepy.pybats.trace2d" title="spacepy.pybats.trace2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trace2d</span></code></a></p></td>
 <td><p>A set of routines for fast field line tracing.</p></td>
@@ -278,7 +278,7 @@ convenience functions for customizing plots.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

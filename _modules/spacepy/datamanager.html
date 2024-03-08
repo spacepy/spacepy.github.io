@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.datamanager &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.datamanager &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -132,7 +132,7 @@
 
 
 <div class="viewcode-block" id="DataManager"><a class="viewcode-back" href="../../datamanager.html#spacepy.datamanager.DataManager">[docs]</a><span class="k">class</span> <span class="nc">DataManager</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    THIS CLASS IS NOT YET COMPLETE, doesn&#39;t do much useful.</span>
 
 <span class="sd">    Will have to do something that allows the config file to specify regex</span>
@@ -161,7 +161,7 @@
 <span class="sd">    ========</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directories</span><span class="p">,</span> <span class="n">file_fmt</span><span class="p">,</span> <span class="n">descend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1">#Duplicate from class docstring. Consider autoclass_content = &quot;both&quot;</span>
         <span class="c1">#Convert to system path format</span>
@@ -181,7 +181,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">file_fmt</span> <span class="o">=</span> <span class="n">RePath</span><span class="p">(</span><span class="n">file_fmt</span><span class="p">)</span>
 
 <div class="viewcode-block" id="DataManager.get_filename"><a class="viewcode-back" href="../../datamanager.html#spacepy.datamanager.DataManager.get_filename">[docs]</a>    <span class="k">def</span> <span class="nf">get_filename</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns the filename corresponding to a particular point in time</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">period</span><span class="p">:</span>
@@ -191,7 +191,7 @@
         <span class="c1">#Now figure out the priority..</span>
 
 <div class="viewcode-block" id="DataManager.files_matching"><a class="viewcode-back" href="../../datamanager.html#spacepy.datamanager.DataManager.files_matching">[docs]</a>    <span class="k">def</span> <span class="nf">files_matching</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return all the files matching this file format</span>
 
 <span class="sd">        Parameters</span>
@@ -237,7 +237,7 @@
 
 
 <span class="k">class</span> <span class="nc">RePath</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A path based on a regular expression + time format</span>
 
 <span class="sd">    Parameters</span>
@@ -266,7 +266,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">file_re_split</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">path_split</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_re</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Matches a string against a path or part thereof, optionally anchored</span>
 <span class="sd">        at a particular date/time</span>
 
@@ -311,7 +311,7 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">path_split</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">native</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Break a path apart into a list for each path element.</span>
 
 <span class="sd">        Parameters</span>
@@ -339,7 +339,7 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">path_slice</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">native</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Slice a path by elements, as in getitem or []</span>
 
 <span class="sd">        Parameters</span>
@@ -384,7 +384,7 @@
 
 
 <div class="viewcode-block" id="insert_fill"><a class="viewcode-back" href="../../datamanager.html#spacepy.datamanager.insert_fill">[docs]</a><span class="k">def</span> <span class="nf">insert_fill</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">fillval</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">absolute</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">doTimes</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Populate gaps in data with fill.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Populate gaps in data with fill.</span>
 
 <span class="sd">    Continuous data are often treated differently from discontinuous data,</span>
 <span class="sd">    e.g., matplotlib will draw lines connecting data points but break the line</span>
@@ -526,7 +526,7 @@
 
 
 <div class="viewcode-block" id="apply_index"><a class="viewcode-back" href="../../datamanager.html#spacepy.datamanager.apply_index">[docs]</a><span class="k">def</span> <span class="nf">apply_index</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Apply an array of indices to data.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Apply an array of indices to data.</span>
 
 <span class="sd">    Most useful in dealing with the output from :func:`numpy.argsort`, and</span>
 <span class="sd">    best explained by the example.</span>
@@ -596,7 +596,7 @@
 
 
 <div class="viewcode-block" id="array_interleave"><a class="viewcode-back" href="../../datamanager.html#spacepy.datamanager.array_interleave">[docs]</a><span class="k">def</span> <span class="nf">array_interleave</span><span class="p">(</span><span class="n">array1</span><span class="p">,</span> <span class="n">array2</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Create an array containing all elements of both array1 and array2</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create an array containing all elements of both array1 and array2</span>
 
 <span class="sd">    ``idx`` is an index on the output array which indicates which elements will</span>
 <span class="sd">    be populated from ``array1``, i.e., ``out[idx] == array1`` (in order.)</span>
@@ -645,7 +645,7 @@
 
 
 <div class="viewcode-block" id="values_to_steps"><a class="viewcode-back" href="../../datamanager.html#spacepy.datamanager.values_to_steps">[docs]</a><span class="k">def</span> <span class="nf">values_to_steps</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Transform values along an axis to their order in a unique sequence.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Transform values along an axis to their order in a unique sequence.</span>
 
 <span class="sd">    Useful in, e.g., converting a list of energies to their steps.</span>
 
@@ -693,7 +693,7 @@
 
 
 <div class="viewcode-block" id="flatten_idx"><a class="viewcode-back" href="../../datamanager.html#spacepy.datamanager.flatten_idx">[docs]</a><span class="k">def</span> <span class="nf">flatten_idx</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Convert multidimensional index into index on flattened array.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert multidimensional index into index on flattened array.</span>
 
 <span class="sd">    Convert a multidimensional index, that is values along a particular axis,</span>
 <span class="sd">    so that it can derefence the flattened array properly. Note this is not</span>
@@ -739,22 +739,22 @@
         <span class="n">idx</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="n">preshape</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="n">axis</span><span class="p">]</span>
     <span class="n">postshape</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">axis</span><span class="p">:]</span>
-    <span class="n">stride</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">postshape</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span> <span class="c1">#1 if applied to empty</span>
+    <span class="n">stride</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">postshape</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span> <span class="c1">#1 if applied to empty</span>
     <span class="c1">#The index on this axis moves stride elements in flat</span>
     <span class="n">outidx</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span> <span class="o">*</span> <span class="n">stride</span> <span class="c1">#makes a copy</span>
     <span class="c1">#First add the offsets to get us to [..., idx @ axis = 0, 0...)</span>
     <span class="n">outidx</span> <span class="o">+=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span>
-        <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">outidx</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">postshape</span><span class="p">)),</span>
+        <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">outidx</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">postshape</span><span class="p">)),</span>
                      <span class="n">dtype</span><span class="o">=</span><span class="n">idx</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span>
-        <span class="n">numpy</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">postshape</span><span class="p">))</span>
+        <span class="n">numpy</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">postshape</span><span class="p">))</span>
     <span class="c1">#Now offsets for non-zero on the trailing axes [0, 0, ... 0@axis, ...]</span>
     <span class="n">outidx</span> <span class="o">+=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">idx</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span>
-                           <span class="nb">int</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">preshape</span><span class="p">))</span> <span class="o">*</span> <span class="n">idx</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">axis</span><span class="p">])</span>
+                           <span class="nb">int</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">preshape</span><span class="p">))</span> <span class="o">*</span> <span class="n">idx</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">axis</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">outidx</span></div>
 
 
 <div class="viewcode-block" id="axis_index"><a class="viewcode-back" href="../../datamanager.html#spacepy.datamanager.axis_index">[docs]</a><span class="k">def</span> <span class="nf">axis_index</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns array of indices along axis, for all other axes</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns array of indices along axis, for all other axes</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ==========</span>
@@ -803,7 +803,7 @@
 
 
 <div class="viewcode-block" id="rev_index"><a class="viewcode-back" href="../../datamanager.html#spacepy.datamanager.rev_index">[docs]</a><span class="k">def</span> <span class="nf">rev_index</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;From an index, return an index that reverses the action of that index</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;From an index, return an index that reverses the action of that index</span>
 
 <span class="sd">    Essentially, ``a[idx][rev_index(idx)] == a``</span>
 
@@ -853,7 +853,7 @@
 
 
 <span class="k">def</span> <span class="nf">_find_shape</span><span class="p">(</span><span class="n">bigshape</span><span class="p">,</span> <span class="n">littleshape</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Increase dimensionality of small array to match larger</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Increase dimensionality of small array to match larger</span>
 
 <span class="sd">    Add degenerate dimensions to a lesser-dimensioned array to match a</span>
 <span class="sd">    larger-dimensioned array.</span>
@@ -891,7 +891,7 @@
 
 <div class="viewcode-block" id="rebin"><a class="viewcode-back" href="../../datamanager.html#spacepy.datamanager.rebin">[docs]</a><span class="k">def</span> <span class="nf">rebin</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bindata</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">bintype</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span>
           <span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bindatadelta</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Rebin one axis of input data based on values of another array</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Rebin one axis of input data based on values of another array</span>
 
 <span class="sd">    This is clearest with an example. Consider a flux as a function of time,</span>
 <span class="sd">    energy, and the look direction of a detector (could be multiple detectors,</span>
@@ -1226,7 +1226,7 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

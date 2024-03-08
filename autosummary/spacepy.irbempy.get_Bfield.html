@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.irbempy.get_Bfield &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.irbempy.get_Bfield &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -100,25 +100,31 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="spacepy.irbempy.get_Bfield">
 <span class="sig-prename descclassname"><span class="pre">spacepy.irbempy.</span></span><span class="sig-name descname"><span class="pre">get_Bfield</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loci</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extMag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'T01STORM'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omnivals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/irbempy/irbempy.html#get_Bfield"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.irbempy.get_Bfield" title="Permalink to this definition">¶</a></dt>
-<dd><p>call get_bfield in irbem lib and return a dictionary with the B-field vector and
-strenght.</p>
+<dd><p>Return magnetic field vector (in GEO) and magnitude</p>
+<p>Calls get_bfield from IRBEMlib and uses the underlying model
+implementations and coordinate transforms in IRBEMlib to obtain the
+result.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>- ticks (Ticktock class)</strong><span class="classifier">containing time information</span></dt><dd></dd>
 <dt><strong>- loci (Coords class)</strong><span class="classifier">containing spatial information</span></dt><dd></dd>
-<dt><strong>- extMag (string)</strong><span class="classifier">optional; will choose the external magnetic field model</span></dt><dd><p>possible values [‘0’, ‘MEAD’, ‘T87SHORT’, ‘T87LONG’, ‘T89’,
-‘OPQUIET’, ‘OPDYN’, ‘T96’, ‘OSTA’, ‘T01QUIET’, ‘T01STORM’,
-‘T05’, ‘ALEX’, ‘TS07’]</p>
+<dt><strong>- extMag (string)</strong><span class="classifier">optional; will choose the external magnetic</span></dt><dd><p>field model possible values [‘0’, ‘MEAD’,
+‘T87SHORT’, ‘T87LONG’, ‘T89’, ‘OPQUIET’,
+‘OPDYN’, ‘T96’, ‘OSTA’, ‘T01QUIET’,
+‘T01STORM’, ‘T05’, ‘ALEX’, ‘TS07’]</p>
 </dd>
 <dt><strong>- options (optional list or array of integers length=5)</strong><span class="classifier">explained in Lstar</span></dt><dd></dd>
-<dt><strong>- omni values as dictionary (optional)</strong><span class="classifier">if not provided, will use lookup table</span></dt><dd></dd>
+<dt><strong>- omni values as dictionary (optional)</strong><span class="classifier">if not provided, will</span></dt><dd><p>use OMNI module to
+look up</p>
+</dd>
 <dt><strong>- (see Lstar documentation for further explanation)</strong></dt><dd></dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>- results (dictionary)</strong><span class="classifier">containing keys: Bvec, and Blocal</span></dt><dd></dd>
+<dt><strong>- results (dictionary)</strong><span class="classifier">containing keys: Bvec, and Blocal</span></dt><dd><p>Bvec is specified in GEO coordinates</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -179,7 +185,7 @@ range of input parameters and will return NaN if evaluated outside the bounds.</
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

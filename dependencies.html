@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>SpacePy Dependencies &#8212; SpacePy v0.4.1 Manual</title>
+    <title>SpacePy Dependencies &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -65,17 +65,19 @@
     <ul>
 <li><a class="reference internal" href="#">SpacePy Dependencies</a><ul>
 <li><a class="reference internal" href="#hard-dependencies">Hard Dependencies</a><ul>
-<li><a class="reference internal" href="#python-2-7">Python 2.7+</a></li>
-<li><a class="reference internal" href="#numpy-1-10">NumPy 1.10+</a></li>
+<li><a class="reference internal" href="#python-3-6">Python 3.6+</a></li>
+<li><a class="reference internal" href="#numpy-1-15-1">NumPy 1.15.1+</a></li>
 <li><a class="reference internal" href="#dateutil">dateutil</a></li>
 <li><a class="reference internal" href="#c-compiler">C compiler</a></li>
+<li><a class="reference internal" href="#pip">pip</a></li>
+<li><a class="reference internal" href="#setuptools">setuptools</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#soft-dependencies">Soft Dependencies</a><ul>
-<li><a class="reference internal" href="#scipy-0-11">SciPy 0.11+</a></li>
-<li><a class="reference internal" href="#matplotlib-1-5-0">matplotlib 1.5.0+</a></li>
-<li><a class="reference internal" href="#h5py-2-6">h5py 2.6+</a></li>
-<li><a class="reference internal" href="#cdf-2-7">CDF 2.7+</a></li>
+<li><a class="reference internal" href="#scipy-1-0">SciPy 1.0+</a></li>
+<li><a class="reference internal" href="#matplotlib-3-1">matplotlib 3.1+</a></li>
+<li><a class="reference internal" href="#h5py-2-10">h5py 2.10+</a></li>
+<li><a class="reference internal" href="#cdf-3-5">CDF 3.5+</a></li>
 <li><a class="reference internal" href="#fortran-compiler">Fortran compiler</a></li>
 <li><a class="reference internal" href="#astropy-1-0">Astropy 1.0+</a></li>
 </ul>
@@ -133,18 +135,19 @@ time SpacePy is imported.</p>
 here. <a class="reference internal" href="dep_versions.html"><span class="doc">Dependency version support</span></a> describes future support.</p>
 <section id="hard-dependencies">
 <h2>Hard Dependencies<a class="headerlink" href="#hard-dependencies" title="Permalink to this heading">¶</a></h2>
-<p>Without these packages installed, SpacePy will not function.</p>
-<section id="python-2-7">
-<h3>Python 2.7+<a class="headerlink" href="#python-2-7" title="Permalink to this heading">¶</a></h3>
-<p><a class="reference external" href="http://www.python.org/">Python</a> is the core language for SpacePy.
-Python 3 is strongly recommended and will be required soon. See <a class="reference internal" href="py2k_eol.html"><span class="doc">Python 2 End of Support</span></a>.</p>
+<p>Without these packages installed, SpacePy will not
+function. Installing via <code class="docutils literal notranslate"><span class="pre">pip</span></code> will normally install Python-based
+dependencies automatically.</p>
+<section id="python-3-6">
+<h3>Python 3.6+<a class="headerlink" href="#python-3-6" title="Permalink to this heading">¶</a></h3>
+<p><a class="reference external" href="http://www.python.org/">Python</a> is the core language for SpacePy.</p>
 <p>Required to install SpacePy.</p>
 </section>
-<section id="numpy-1-10">
-<h3>NumPy 1.10+<a class="headerlink" href="#numpy-1-10" title="Permalink to this heading">¶</a></h3>
+<section id="numpy-1-15-1">
+<h3>NumPy 1.15.1+<a class="headerlink" href="#numpy-1-15-1" title="Permalink to this heading">¶</a></h3>
 <p><a class="reference external" href="http://numpy.scipy.org/">NumPy</a> provides the
 high-performance array data structure used throughout SpacePy. Version
-1.10 or later is required.</p>
+1.15.1 or later is required.</p>
 <p>Required to install SpacePy. f2py is part of NumPy, but is sometimes
 packaged separately; it is required (at installation time) if
 <a class="reference internal" href="irbempy.html#module-spacepy.irbempy" title="spacepy.irbempy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">irbempy</span></code></a> is to be used.</p>
@@ -153,14 +156,23 @@ packaged separately; it is required (at installation time) if
 </section>
 <section id="dateutil">
 <h3>dateutil<a class="headerlink" href="#dateutil" title="Permalink to this heading">¶</a></h3>
-<p>If you choose not to install <a class="reference internal" href="#dependencies-mpl"><span class="std std-ref">matplotlib</span></a>,
-<a class="reference external" href="http://labix.org/python-dateutil">dateutil</a> 1.4 or later is required.
-(Installing matplotlib will fulfill this dependency.)</p>
+<p><a class="reference external" href="https://dateutil.readthedocs.io/">dateutil</a> 2.1 or later is required.</p>
 </section>
 <section id="c-compiler">
 <h3>C compiler<a class="headerlink" href="#c-compiler" title="Permalink to this heading">¶</a></h3>
-<p>If you are installing SpacePy from source, a working C compiler
-is required. (Not necessary for the Windows binary installer.)</p>
+<p>If you are installing SpacePy from source, a working C compiler is
+required. (Not necessary for binary wheels, provided on most
+platforms.)</p>
+</section>
+<section id="pip">
+<h3>pip<a class="headerlink" href="#pip" title="Permalink to this heading">¶</a></h3>
+<p><a class="reference external" href="https://pip.pypa.io/">pip</a> is now the expected installer for Python
+packages. Almost any modern Python installation will include it.</p>
+</section>
+<section id="setuptools">
+<h3>setuptools<a class="headerlink" href="#setuptools" title="Permalink to this heading">¶</a></h3>
+<p><a class="reference external" href="https://setuptools.pypa.io">setuptools</a> is the installer backend. It
+is commonly included and, if necessary, installable with <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
 </section>
 </section>
 <section id="soft-dependencies">
@@ -170,8 +182,8 @@ not be available. Usually an ImportError means a dependency is missing.</p>
 <p>These are simply marked as dependencies in SpacePy metadata and thus
 will be automatically installed when using dependency-resolving
 methods such as pip.</p>
-<section id="scipy-0-11">
-<span id="dependencies-scipy"></span><h3>SciPy 0.11+<a class="headerlink" href="#scipy-0-11" title="Permalink to this heading">¶</a></h3>
+<section id="scipy-1-0">
+<span id="dependencies-scipy"></span><h3>SciPy 1.0+<a class="headerlink" href="#scipy-1-0" title="Permalink to this heading">¶</a></h3>
 <p><a class="reference external" href="http://www.scipy.org/">SciPy</a> provides several useful scientific
 and numerical functions build on top of NumPy.  It is highly
 recommended. The following modules may have limited functionality
@@ -186,8 +198,8 @@ without SciPy:</p>
 </ul>
 </div></blockquote>
 </section>
-<section id="matplotlib-1-5-0">
-<span id="dependencies-mpl"></span><h3>matplotlib 1.5.0+<a class="headerlink" href="#matplotlib-1-5-0" title="Permalink to this heading">¶</a></h3>
+<section id="matplotlib-3-1">
+<span id="dependencies-mpl"></span><h3>matplotlib 3.1+<a class="headerlink" href="#matplotlib-3-1" title="Permalink to this heading">¶</a></h3>
 <p><a class="reference external" href="http://matplotlib.sourceforge.net/">matplotlib</a> is the preferred
 plotting package for Python. It is highly recommended. Without it, you
 will not be able to effectively visualize data, and the following
@@ -203,31 +215,31 @@ modules may have limited functionality or fail entirely:</p>
 </ul>
 </div></blockquote>
 </section>
-<section id="h5py-2-6">
-<span id="dependencies-h5py"></span><h3>h5py 2.6+<a class="headerlink" href="#h5py-2-6" title="Permalink to this heading">¶</a></h3>
+<section id="h5py-2-10">
+<span id="dependencies-h5py"></span><h3>h5py 2.10+<a class="headerlink" href="#h5py-2-10" title="Permalink to this heading">¶</a></h3>
 <p><a class="reference external" href="http://code.google.com/p/h5py/">h5py</a> provides a Python interface to
 HDF5 files. It is required for the HDF import/export capability of
 <a class="reference internal" href="datamodel.html#module-spacepy.datamodel" title="spacepy.datamodel"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datamodel</span></code></a> and for use of the <a class="reference internal" href="omni.html#module-spacepy.omni" title="spacepy.omni"><code class="xref py py-mod docutils literal notranslate"><span class="pre">omni</span></code></a> module.</p>
 </section>
-<section id="cdf-2-7">
-<span id="dependencies-cdf"></span><h3>CDF 2.7+<a class="headerlink" href="#cdf-2-7" title="Permalink to this heading">¶</a></h3>
+<section id="cdf-3-5">
+<span id="dependencies-cdf"></span><h3>CDF 3.5+<a class="headerlink" href="#cdf-3-5" title="Permalink to this heading">¶</a></h3>
 <p>NASA’s <a class="reference external" href="http://cdf.gsfc.nasa.gov/">CDF</a> library provides access to
 Common Data Format files. It is required for <a class="reference internal" href="pycdf.html#module-spacepy.pycdf" title="spacepy.pycdf"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pycdf</span></code></a>,
 and thus for the CDF import/export capability of
-<a class="reference internal" href="datamodel.html#module-spacepy.datamodel" title="spacepy.datamodel"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datamodel</span></code></a>.</p>
+<a class="reference internal" href="datamodel.html#module-spacepy.datamodel" title="spacepy.datamodel"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datamodel</span></code></a>. The library is included with SpacePy binary
+wheels, but a locally-installed library will be used instead if it is
+found.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Unlike the Python-based dependencies, the CDF library must be
-installed if pycdf support is needed; it will not be automatically
-installed.</p>
+<p>If building SpacePy from source, the CDF library must be installed
+if pycdf support is needed. It can be installed after SpacePy.</p>
 </div>
 </section>
 <section id="fortran-compiler">
 <span id="dependencies-fortran"></span><h3>Fortran compiler<a class="headerlink" href="#fortran-compiler" title="Permalink to this heading">¶</a></h3>
 <p>If installing from source, <a class="reference internal" href="irbempy.html#module-spacepy.irbempy" title="spacepy.irbempy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">irbempy</span></code></a> requires a Fortran
-compiler. (This is not required for the Windows binary installer).
-Supported compilers are the GNU compiler <code class="docutils literal notranslate"><span class="pre">gfortran</span></code>, the older GNU
-compiler <code class="docutils literal notranslate"><span class="pre">g77</span></code>, and the Portland Group PGI compiler.</p>
+compiler. This is not required if using a binary wheel. The supported
+compiler is the GNU compiler <code class="docutils literal notranslate"><span class="pre">gfortran</span></code>.</p>
 <p>If <a class="reference internal" href="irbempy.html#module-spacepy.irbempy" title="spacepy.irbempy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">irbempy</span></code></a> is to be used, the Fortran compiler (and
 f2py) must be installed before SpacePy.</p>
 <p><a class="reference internal" href="coordinates.html#module-spacepy.coordinates" title="spacepy.coordinates"><code class="xref py py-mod docutils literal notranslate"><span class="pre">coordinates</span></code></a> requires <a class="reference internal" href="irbempy.html#module-spacepy.irbempy" title="spacepy.irbempy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">irbempy</span></code></a> to use
@@ -238,9 +250,11 @@ the <code class="docutils literal notranslate"><span class="pre">use_irbem</span
 <section id="astropy-1-0">
 <span id="dependencies-astropy"></span><h3>Astropy 1.0+<a class="headerlink" href="#astropy-1-0" title="Permalink to this heading">¶</a></h3>
 <p><a class="reference internal" href="time.html#module-spacepy.time" title="spacepy.time"><code class="xref py py-mod docutils literal notranslate"><span class="pre">time</span></code></a> requires Astropy if conversion to/from
-Astropy <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.time.Time.html#astropy.time.Time" title="(in Astropy v5.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Time</span></code></a> is desired.</p>
+Astropy <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.time.Time.html#astropy.time.Time" title="(in Astropy v6.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Time</span></code></a> is desired.</p>
 <p><a class="reference internal" href="coordinates.html#module-spacepy.coordinates" title="spacepy.coordinates"><code class="xref py py-mod docutils literal notranslate"><span class="pre">coordinates</span></code></a> requires Astropy if conversion to/from
-Astropy <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.coordinates.SkyCoord.html#astropy.coordinates.SkyCoord" title="(in Astropy v5.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SkyCoord</span></code></a> is desired.</p>
+Astropy <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.coordinates.SkyCoord.html#astropy.coordinates.SkyCoord" title="(in Astropy v6.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SkyCoord</span></code></a> is desired.</p>
+<p>Because Astropy is only required for these conversions, it is not
+automatically installed with SpacePy.</p>
 </section>
 </section>
 <section id="soft-dependency-summary">
@@ -249,8 +263,8 @@ Astropy <a class="reference external" href="https://docs.astropy.org/en/stable/a
 that is <em>lost</em> if a soft dependency is not installed. If there is
 nothing for a given dependency/module combination, the module is
 unaffected by that dependency.</p>
-<table class="docutils align-default" id="id2">
-<caption><span class="caption-text">SpacePy functionality lost without soft dependencies</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-text">SpacePy functionality lost without soft dependencies</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head stub"></th>
 <th class="head"><p><a class="reference internal" href="#dependencies-cdf"><span class="std std-ref">CDF</span></a></p></th>
@@ -264,7 +278,7 @@ unaffected by that dependency.</p>
 <tbody>
 <tr class="row-even"><th class="stub"><p><a class="reference internal" href="coordinates.html#module-spacepy.coordinates" title="spacepy.coordinates"><code class="xref py py-mod docutils literal notranslate"><span class="pre">coordinates</span></code></a></p></th>
 <td></td>
-<td><p><a class="reference internal" href="autosummary/spacepy.coordinates.Coords.html#spacepy.coordinates.Coords" title="spacepy.coordinates.Coords"><code class="xref py py-class docutils literal notranslate"><span class="pre">Coords</span></code></a> IRBEM backend (except Windows binaries)</p></td>
+<td><p><a class="reference internal" href="autosummary/spacepy.coordinates.Coords.html#spacepy.coordinates.Coords" title="spacepy.coordinates.Coords"><code class="xref py py-class docutils literal notranslate"><span class="pre">Coords</span></code></a> IRBEM backend (except binaries)</p></td>
 <td></td>
 <td></td>
 <td><p><a class="reference internal" href="coordinates.html#module-spacepy.coordinates" title="spacepy.coordinates"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Entire</span> <span class="pre">module</span></code></a></p></td>
@@ -284,14 +298,15 @@ unaffected by that dependency.</p>
 </tr>
 <tr class="row-even"><th class="stub"><p><a class="reference internal" href="datamodel.html#module-spacepy.datamodel" title="spacepy.datamodel"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datamodel</span></code></a></p></th>
 <td><ul class="simple">
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">toCDF()</span></code></p></li>
+<li><p><a class="reference internal" href="autosummary/spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData.toCDF" title="spacepy.datamodel.SpaceData.toCDF"><code class="xref py py-meth docutils literal notranslate"><span class="pre">toCDF()</span></code></a></p></li>
 <li><p><a class="reference internal" href="autosummary/spacepy.datamodel.fromCDF.html#spacepy.datamodel.fromCDF" title="spacepy.datamodel.fromCDF"><code class="xref py py-func docutils literal notranslate"><span class="pre">fromCDF()</span></code></a></p></li>
 <li><p><a class="reference internal" href="autosummary/spacepy.datamodel.toCDF.html#spacepy.datamodel.toCDF" title="spacepy.datamodel.toCDF"><code class="xref py py-func docutils literal notranslate"><span class="pre">toCDF()</span></code></a></p></li>
+<li><p>(except binaries)</p></li>
 </ul>
 </td>
 <td></td>
 <td><ul class="simple">
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">toHDF5()</span></code></p></li>
+<li><p><a class="reference internal" href="autosummary/spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData.toHDF5" title="spacepy.datamodel.SpaceData.toHDF5"><code class="xref py py-meth docutils literal notranslate"><span class="pre">toHDF5()</span></code></a></p></li>
 <li><p><a class="reference internal" href="autosummary/spacepy.datamodel.fromHDF5.html#spacepy.datamodel.fromHDF5" title="spacepy.datamodel.fromHDF5"><code class="xref py py-func docutils literal notranslate"><span class="pre">fromHDF5()</span></code></a></p></li>
 <li><p><a class="reference internal" href="autosummary/spacepy.datamodel.toHDF5.html#spacepy.datamodel.toHDF5" title="spacepy.datamodel.toHDF5"><code class="xref py py-func docutils literal notranslate"><span class="pre">toHDF5()</span></code></a></p></li>
 </ul>
@@ -314,7 +329,7 @@ unaffected by that dependency.</p>
 </tr>
 <tr class="row-even"><th class="stub"><p><a class="reference internal" href="irbempy.html#module-spacepy.irbempy" title="spacepy.irbempy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">irbempy</span></code></a></p></th>
 <td></td>
-<td><p><a class="reference internal" href="irbempy.html#module-spacepy.irbempy" title="spacepy.irbempy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Entire</span> <span class="pre">module</span></code></a> (except Windows binaries)</p></td>
+<td><p><a class="reference internal" href="irbempy.html#module-spacepy.irbempy" title="spacepy.irbempy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Entire</span> <span class="pre">module</span></code></a> (except binaries)</p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -404,7 +419,7 @@ unaffected by that dependency.</p>
 <td></td>
 </tr>
 <tr class="row-even"><th class="stub"><p><a class="reference internal" href="pycdf.html#module-spacepy.pycdf" title="spacepy.pycdf"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pycdf</span></code></a></p></th>
-<td><p><a class="reference internal" href="pycdf.html#module-spacepy.pycdf" title="spacepy.pycdf"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Entire</span> <span class="pre">module</span></code></a></p></td>
+<td><p><a class="reference internal" href="pycdf.html#module-spacepy.pycdf" title="spacepy.pycdf"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Entire</span> <span class="pre">module</span></code></a> (except binaries)</p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -449,9 +464,9 @@ unaffected by that dependency.</p>
 <td><ul class="simple">
 <li><p><a class="reference internal" href="autosummary/spacepy.toolbox.tCommon.html#spacepy.toolbox.tCommon" title="spacepy.toolbox.tCommon"><code class="xref py py-func docutils literal notranslate"><span class="pre">tCommon()</span></code></a></p></li>
 <li><p><a class="reference internal" href="autosummary/spacepy.toolbox.linspace.html#spacepy.toolbox.linspace" title="spacepy.toolbox.linspace"><code class="xref py py-func docutils literal notranslate"><span class="pre">linspace()</span></code></a> if using
-<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></a> inputs</p></li>
+<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></a> inputs</p></li>
 <li><p><a class="reference internal" href="autosummary/spacepy.toolbox.logspace.html#spacepy.toolbox.logspace" title="spacepy.toolbox.logspace"><code class="xref py py-func docutils literal notranslate"><span class="pre">logspace()</span></code></a> if using
-<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></a> inputs</p></li>
+<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></a> inputs</p></li>
 </ul>
 </td>
 <td><ul class="simple">
@@ -499,7 +514,7 @@ unaffected by that dependency.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

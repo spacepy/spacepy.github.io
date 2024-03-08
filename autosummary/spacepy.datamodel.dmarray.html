@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.datamodel.dmarray &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.datamodel.dmarray &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -22,7 +22,7 @@
     <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="spacepy.datamodel.DMWarning" href="spacepy.datamodel.DMWarning.html" />
+    <link rel="next" title="spacepy.datamodel.ISTPContainer" href="spacepy.datamodel.ISTPContainer.html" />
     <link rel="prev" title="spacepy.datamodel.SpaceData" href="spacepy.datamodel.SpaceData.html" /> 
   </head><body>
 
@@ -40,7 +40,7 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.datamodel.DMWarning.html" title="spacepy.datamodel.DMWarning"
+          <a href="spacepy.datamodel.ISTPContainer.html" title="spacepy.datamodel.ISTPContainer"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="spacepy.datamodel.SpaceData.html" title="spacepy.datamodel.SpaceData"
@@ -67,8 +67,8 @@
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="spacepy.datamodel.DMWarning.html"
-                          title="next chapter">spacepy.datamodel.DMWarning</a></p>
+    <p class="topless"><a href="spacepy.datamodel.ISTPContainer.html"
+                          title="next chapter">spacepy.datamodel.ISTPContainer</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -101,6 +101,8 @@
 <dt class="sig sig-object py" id="spacepy.datamodel.dmarray">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.datamodel.</span></span><span class="sig-name descname"><span class="pre">dmarray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#dmarray"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.dmarray" title="Permalink to this definition">¶</a></dt>
 <dd><p>Container for data within a SpaceData object</p>
+<p>Although the format of attributes is not enforced, using ISTP metadata
+enables the use of methods from <a class="reference internal" href="spacepy.datamodel.ISTPArray.html#spacepy.datamodel.ISTPArray" title="spacepy.datamodel.ISTPArray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ISTPArray</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -129,6 +131,7 @@ any datatype; dmarrays are not just for arrays.</p>
 <span class="go">&#39;TestName&#39;</span>
 </pre></div>
 </div>
+<p>See methods of <a class="reference internal" href="spacepy.datamodel.ISTPArray.html#spacepy.datamodel.ISTPArray" title="spacepy.datamodel.ISTPArray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ISTPArray</span></code></a> if attributes are ISTP-compliant.</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.dmarray.addAttribute" title="spacepy.datamodel.dmarray.addAttribute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addAttribute</span></code></a>(name[, value])</p></td>
@@ -166,7 +169,7 @@ a.Allowed_Attributes = a.Allowed_Attributes + [‘blabla’]</p>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.datamodel.DMWarning.html" title="spacepy.datamodel.DMWarning"
+          <a href="spacepy.datamodel.ISTPContainer.html" title="spacepy.datamodel.ISTPContainer"
              >next</a> |</li>
         <li class="right" >
           <a href="spacepy.datamodel.SpaceData.html" title="spacepy.datamodel.SpaceData"
@@ -181,7 +184,7 @@ a.Allowed_Attributes = a.Allowed_Attributes + [‘blabla’]</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

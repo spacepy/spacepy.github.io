@@ -1,0 +1,6 @@
+﻿spacepy.datamodel.ISTPArray
+===========================
+
+.. currentmodule:: spacepy.datamodel
+
+.. autoclass:: ISTPArray

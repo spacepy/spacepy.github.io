@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.pybats.bats.Mag &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.pybats.bats.Mag &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -104,24 +104,24 @@
 <dd><p>A container for data from a single BATS-R-US virtual magnetometer.  These
 work just like a typical <a class="reference internal" href="spacepy.pybats.PbData.html#spacepy.pybats.PbData" title="spacepy.pybats.PbData"><code class="xref py py-class docutils literal notranslate"><span class="pre">spacepy.pybats.PbData</span></code></a> object.  Beyond
 raw magnetometer data, additional values are calculated and stored,
-including total pertubations (the sum of all global and ionospheric 
+including total pertubations (the sum of all global and ionospheric
 pertubations as measured by the magnetometer).  Users will be interested
-in methods <code class="xref py py-meth docutils literal notranslate"><span class="pre">add_comp_plot()</span></code> and 
+in methods <code class="xref py py-meth docutils literal notranslate"><span class="pre">add_comp_plot()</span></code> and
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">calc_dbdt()</span></code>.</p>
-<p>Instantiation is best done through :class: <cite>spacepy.pybats.MagFile</cite>
-objects, which load and parse organize many virtual magnetometers from a 
+<p>Instantiation is best done through :class: <code class="xref py py-obj docutils literal notranslate"><span class="pre">spacepy.pybats.MagFile</span></code>
+objects, which load and parse organize many virtual magnetometers from a
 single output file into a single object.  However, they can be created
-manually, though painfully.  Users must instantiate by handing the 
+manually, though painfully.  Users must instantiate by handing the
 new object the number of lines that will be parsed (rather, the number
-of data points that will be needed), a time vector, and (optionally) 
-the list of variables coming from the GM and IE module.  While the 
+of data points that will be needed), a time vector, and (optionally)
+the list of variables coming from the GM and IE module.  While the
 latter two are keyword arguments, at least one should be provided.
 Next, the arrays whose keys were given by the <em>gmvars</em> and <em>ievars</em>
 keyword arguments in the instantiation step can either be filled manually
 or by using the <code class="xref py py-meth docutils literal notranslate"><span class="pre">parse_gmline()</span></code> and
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">parse_ieline()</span></code> methods to parse lines of 
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">parse_ieline()</span></code> methods to parse lines of
 ascii data from a magnetometer output file.  Finally, the
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">recalc()</span></code> method should be called to 
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">recalc()</span></code> method should be called to
 calculate total perturbation.</p>
 </dd></dl>
 
@@ -160,7 +160,7 @@ calculate total perturbation.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

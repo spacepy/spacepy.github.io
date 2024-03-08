@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>coordinates - module for coordinate transforms &#8212; SpacePy v0.4.1 Manual</title>
+    <title>coordinates - module for coordinate transforms &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -63,6 +63,9 @@
     <h3><a href="index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">coordinates - module for coordinate transforms</a><ul>
+<li><a class="reference internal" href="#earth-centered-inertial-systems">Earth-centered Inertial Systems</a></li>
+<li><a class="reference internal" href="#magnetospheric-systems">Magnetospheric Systems</a></li>
+<li><a class="reference internal" href="#earth-fixed-systems">Earth-fixed Systems</a></li>
 <li><a class="reference internal" href="#notes-on-differences-between-representations">Notes on differences between representations</a></li>
 <li><a class="reference internal" href="#setting-options-for-coordinate-transformation">Setting options for coordinate transformation</a></li>
 </ul>
@@ -113,6 +116,8 @@ used geophysical and magnetospheric systems. The naming conventions can
 follow the names used by the popular IRBEM library, but for inertial
 systems we use a more consistent, fine-grained naming convention that
 clarifies the different systems.</p>
+<section id="earth-centered-inertial-systems">
+<h2>Earth-centered Inertial Systems<a class="headerlink" href="#earth-centered-inertial-systems" title="Permalink to this heading">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>ECI2000</strong> Earth-centered Inertial, J2000 epoch</p></li>
@@ -120,13 +125,23 @@ clarifies the different systems.</p>
 <li><p><strong>ECITOD</strong> Earth-centered Inertial, true-of-date</p></li>
 <li><p><strong>GEI</strong> Geocentric Equatorial Inertial (IRBEM approximation of TOD)</p></li>
 </ul>
-<ul class="simple">
+</div></blockquote>
+</section>
+<section id="magnetospheric-systems">
+<h2>Magnetospheric Systems<a class="headerlink" href="#magnetospheric-systems" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
 <li><p><strong>GSM</strong> Geocentric Solar Magnetospheric</p></li>
 <li><p><strong>GSE</strong> Geocentric Solar Ecliptic</p></li>
 <li><p><strong>SM</strong> Solar Magnetic</p></li>
 <li><p><strong>MAG</strong> Geomagnetic Coordinate System (aka CDMAG)</p></li>
 </ul>
-<ul class="simple">
+</div></blockquote>
+</section>
+<section id="earth-fixed-systems">
+<h2>Earth-fixed Systems<a class="headerlink" href="#earth-fixed-systems" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
 <li><p><strong>GEO</strong> Geocentric geographic, aka Earth-centered Earth-fixed</p></li>
 <li><p><strong>GDZ</strong> Geodetic coordinates</p></li>
 </ul>
@@ -153,6 +168,7 @@ will be converted to their closest equivalents.</p>
 <p>The default backend for coordinate transformations was changed from IRBEM
 to the CTrans-based SpacePy backend.</p>
 </div></blockquote>
+</section>
 <section id="notes-on-differences-between-representations">
 <h2>Notes on differences between representations<a class="headerlink" href="#notes-on-differences-between-representations" title="Permalink to this heading">¶</a></h2>
 <p>IRBEM’s coordinate transformations are low-accuracy and were written for
@@ -269,7 +285,7 @@ Contact: <a class="reference external" href="mailto:smorley&#37;&#52;&#48;lanl&#
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

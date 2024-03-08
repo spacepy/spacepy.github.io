@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.seapy.Sea &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.seapy.Sea &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -104,14 +104,24 @@
 <p>Initialize object with data, times, epochs, window (half-width) and delta (optional).
 ‘times’ and epochs should be in some useful format
 Includes method to perform superposed epoch analysis of input data series</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>data</strong><span class="classifier">array_like</span></dt><dd><p>list or array of data</p>
 </dd>
-<dt><strong>times</strong><span class="classifier">array_like</span></dt><dd><p>list of datetime objects (or list of serial times)</p>
+<dt><strong>times</strong><span class="classifier">array_like</span></dt><dd><p>list of datetime objects (or list of serial times). Must be contiguous
+(constant cadence) and monotonically increasing.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.5.0: </span>Issues a warning for non-contiguous/non-monotonic times.</p>
+</div>
 </dd>
-<dt><strong>epochs</strong><span class="classifier">array_like</span></dt><dd><p>list of datetime objects (or serial times) for zero epochs in SEA</p>
+<dt><strong>epochs</strong><span class="classifier">array_like</span></dt><dd><p>list of datetime objects (or serial times) for zero epochs in SEA.
+For a suitable SEA, this should be substantially shorter than
+<code class="docutils literal notranslate"><span class="pre">times</span></code>.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.5.0: </span>Issues a warning for too many epochs; arbitrarily defined as
+more than half the number of times.</p>
+</div>
 </dd>
 <dt><strong>window</strong><span class="classifier">datetime.timedelta</span></dt><dd><p>size of the half-window for the SEA (can also be given as serial time)</p>
 </dd>
@@ -233,7 +243,7 @@ obj.window, all of which must be available on instantiation.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

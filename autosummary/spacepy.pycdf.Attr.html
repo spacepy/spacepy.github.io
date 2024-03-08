@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.pycdf.Attr &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.pycdf.Attr &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -104,7 +104,7 @@
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>This class should not be used directly, but only in its
-subclasses, <a class="reference internal" href="spacepy.pycdf.gAttr.html#spacepy.pycdf.gAttr" title="spacepy.pycdf.gAttr"><code class="xref py py-class docutils literal notranslate"><span class="pre">gAttr</span></code></a> and <a class="reference internal" href="spacepy.pycdf.zAttr.html#spacepy.pycdf.zAttr" title="spacepy.pycdf.zAttr"><code class="xref py py-class docutils literal notranslate"><span class="pre">zAttr</span></code></a>. The methods
+subclasses, <a class="reference internal" href="spacepy.pycdf.gAttr.html#spacepy.pycdf.gAttr" title="spacepy.pycdf.gAttr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gAttr</span></code></a> and <a class="reference internal" href="spacepy.pycdf.zAttr.html#spacepy.pycdf.zAttr" title="spacepy.pycdf.zAttr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zAttr</span></code></a>. The methods
 listed here are safe to use in the subclasses.</p>
 </div>
 <p>Represents a CDF attribute, providing access to the Entries in a format
@@ -237,7 +237,7 @@ already exists, it will be overwritten.</p>
 </dd>
 <dt class="field-even">Other Parameters<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>type</strong><span class="classifier">int</span></dt><dd><p>type of the new Entry, from <a class="reference internal" href="spacepy.pycdf.const.html#module-spacepy.pycdf.const" title="spacepy.pycdf.const"><code class="xref py py-mod docutils literal notranslate"><span class="pre">const</span></code></a>
+<dt><strong>type</strong><span class="classifier">int</span></dt><dd><p>type of the new Entry, from <a class="reference internal" href="spacepy.pycdf.const.html#module-spacepy.pycdf.const" title="spacepy.pycdf.const"><code class="xref py py-obj docutils literal notranslate"><span class="pre">const</span></code></a>
 (otherwise guessed from <code class="docutils literal notranslate"><span class="pre">data</span></code>)</p>
 </dd>
 <dt><strong>number</strong><span class="classifier">int</span></dt><dd><p>Entry number to write, default is lowest available number.</p>
@@ -289,13 +289,13 @@ already exists, it will be overwritten.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>out</strong><span class="classifier">int</span></dt><dd><p>CDF variable type, see <a class="reference internal" href="spacepy.pycdf.const.html#module-spacepy.pycdf.const" title="spacepy.pycdf.const"><code class="xref py py-mod docutils literal notranslate"><span class="pre">const</span></code></a></p>
+<dt><strong>out</strong><span class="classifier">int</span></dt><dd><p>CDF variable type, see <a class="reference internal" href="spacepy.pycdf.const.html#module-spacepy.pycdf.const" title="spacepy.pycdf.const"><code class="xref py py-obj docutils literal notranslate"><span class="pre">const</span></code></a></p>
 </dd>
 </dl>
 </dd>
 <dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>new_type</strong></dt><dd><p>type to change this Entry to, from <a class="reference internal" href="spacepy.pycdf.const.html#module-spacepy.pycdf.const" title="spacepy.pycdf.const"><code class="xref py py-mod docutils literal notranslate"><span class="pre">const</span></code></a>.
+<dt><strong>new_type</strong></dt><dd><p>type to change this Entry to, from <a class="reference internal" href="spacepy.pycdf.const.html#module-spacepy.pycdf.const" title="spacepy.pycdf.const"><code class="xref py py-obj docutils literal notranslate"><span class="pre">const</span></code></a>.
 Omit to only check type.</p>
 </dd>
 </dl>
@@ -342,7 +342,7 @@ User’s Guide section 2.5.5 pg. 57</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

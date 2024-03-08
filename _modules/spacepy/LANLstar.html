@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.LANLstar &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.LANLstar &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -97,7 +97,7 @@
 
 
 <span class="k">def</span> <span class="nf">_get_net_path</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Gets the full path for a network file given the filename&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gets the full path for a network file given the filename&quot;&quot;&quot;</span>
     <span class="n">fspec</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
         <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;LANLstar&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">fspec</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">fspec</span> <span class="o">+</span> <span class="s1">&#39;.txt&#39;</span><span class="p">):</span>
@@ -107,7 +107,7 @@
 
 
 <span class="k">def</span> <span class="nf">_LANLcommon</span><span class="p">(</span><span class="n">indict</span><span class="p">,</span> <span class="n">extmag</span><span class="p">,</span> <span class="n">lmax</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Shared code between LANLstar and LANLmax</span>
 
 <span class="sd">    lmax is True for LANLmax, False for LANLstar</span>
@@ -192,14 +192,14 @@
                 <span class="n">hidden</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">net</span><span class="p">[</span><span class="s1">&#39;hhbias&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="p">(</span><span class="n">hidden</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span><span class="o">*</span><span class="n">net</span><span class="p">[</span><span class="s1">&#39;hhweights&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))))</span>
             <span class="n">output</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">net</span><span class="p">[</span><span class="s1">&#39;hobias&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">hidden</span><span class="o">*</span><span class="n">net</span><span class="p">[</span><span class="s1">&#39;howeights&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())))</span>
     
-            <span class="c1"># apply linear output function to get L*</span>
-            <span class="n">ls</span><span class="p">[</span><span class="n">modname</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">net</span><span class="p">[</span><span class="s1">&#39;outweight&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">output</span> <span class="o">+</span> <span class="n">net</span><span class="p">[</span><span class="s1">&#39;outbias&#39;</span><span class="p">]</span>
+            <span class="c1"># apply linear output function to get L*, ls[modname] is known 1D</span>
+            <span class="n">ls</span><span class="p">[</span><span class="n">modname</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">net</span><span class="p">[</span><span class="s1">&#39;outweight&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">output</span> <span class="o">+</span> <span class="n">net</span><span class="p">[</span><span class="s1">&#39;outbias&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
 
     <span class="k">return</span> <span class="n">ls</span>
 
 
 <span class="k">def</span> <span class="nf">_get_model</span><span class="p">(</span><span class="n">modelstr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lmax</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;Find and load coefficient set defining neural network model</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Find and load coefficient set defining neural network model</span>
 
 <span class="sd">    Other Parameters</span>
 <span class="sd">    ================</span>
@@ -244,7 +244,7 @@
 
 <span class="c1"># ------------------------------------------------</span>
 <div class="viewcode-block" id="LANLstar"><a class="viewcode-back" href="../../autosummary/spacepy.LANLstar.LANLstar.html#spacepy.LANLstar.LANLstar">[docs]</a><span class="k">def</span> <span class="nf">LANLstar</span><span class="p">(</span><span class="n">inputdict</span><span class="p">,</span> <span class="n">extMag</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate Lstar</span>
 
 <span class="sd">    Based on the L* artificial neural network (ANN) trained from </span>
@@ -347,7 +347,7 @@
 
 
 <div class="viewcode-block" id="LANLmax"><a class="viewcode-back" href="../../autosummary/spacepy.LANLstar.LANLmax.html#spacepy.LANLstar.LANLmax">[docs]</a><span class="k">def</span> <span class="nf">LANLmax</span><span class="p">(</span><span class="n">inputdict</span><span class="p">,</span> <span class="n">extMag</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate last closed drift shell (Lmax)</span>
 
 <span class="sd">    Based on the L* artificial neural network (ANN) trained from </span>
@@ -429,7 +429,7 @@
     <span class="k">return</span> <span class="n">_LANLcommon</span><span class="p">(</span><span class="n">inputdict</span><span class="p">,</span> <span class="n">extMag</span><span class="p">,</span> <span class="n">lmax</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
 <span class="k">def</span> <span class="nf">addPA</span><span class="p">(</span><span class="n">indict</span><span class="p">,</span> <span class="n">PA</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;Function to add pitch angle to input dictionary from, e.g., omni module</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Function to add pitch angle to input dictionary from, e.g., omni module</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ==========</span>
@@ -484,7 +484,7 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

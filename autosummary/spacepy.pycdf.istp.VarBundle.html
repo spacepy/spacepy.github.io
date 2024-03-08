@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.pycdf.istp.VarBundle &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.pycdf.istp.VarBundle &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -106,7 +106,7 @@
 with its dependencies to enable aggregate operations. Normally
 used to copy a subset of data from one CDF or SpaceData to another by
 chaining operations, or to load just the relevant data from a CDF
-into a <a class="reference internal" href="spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData" title="spacepy.datamodel.SpaceData"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpaceData</span></code></a>.</p>
+into a <a class="reference internal" href="spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData" title="spacepy.datamodel.SpaceData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpaceData</span></code></a>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">VarBundle</span></code> operates on a single variable within a file or SpaceData
 and its various dependencies, uncertainties, labels, etc. That variable
 can be specified one of two ways. An open CDF file or
@@ -115,13 +115,13 @@ variable within it as the second parameter. Or, for CDF files, a
 <a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-class docutils literal notranslate"><span class="pre">Var</span></code></a> can be passed as the only parameter, implicitly
 defining the input file (the CDF containing that variable).</p>
 <p>Unusual or indecipherable error messages may indicate an ISTP
-compliance issue; see <a class="reference internal" href="spacepy.pycdf.istp.VariableChecks.html#spacepy.pycdf.istp.VariableChecks" title="spacepy.pycdf.istp.VariableChecks"><code class="xref py py-class docutils literal notranslate"><span class="pre">VariableChecks</span></code></a> for some checks.</p>
+compliance issue; see <a class="reference internal" href="spacepy.pycdf.istp.VariableChecks.html#spacepy.pycdf.istp.VariableChecks" title="spacepy.pycdf.istp.VariableChecks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VariableChecks</span></code></a> for some checks.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>source</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.CDF.html#spacepy.pycdf.CDF" title="spacepy.pycdf.CDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CDF</span></code></a>, <a class="reference internal" href="spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData" title="spacepy.datamodel.SpaceData"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpaceData</span></code></a>, or <a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-class docutils literal notranslate"><span class="pre">Var</span></code></a></span></dt><dd><p>SpaceData or open CDF containing the variable to process, or the CDF variable itself.</p>
+<dt><strong>source</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.CDF.html#spacepy.pycdf.CDF" title="spacepy.pycdf.CDF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CDF</span></code></a>, <a class="reference internal" href="spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData" title="spacepy.datamodel.SpaceData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpaceData</span></code></a>, or <a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Var</span></code></a></span></dt><dd><p>SpaceData or open CDF containing the variable to process, or the CDF variable itself.</p>
 </dd>
-<dt><strong>name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Name of the variable within <code class="docutils literal notranslate"><span class="pre">source</span></code> to process (“main variable”).</p>
+<dt><strong>name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Name of the variable within <code class="docutils literal notranslate"><span class="pre">source</span></code> to process (“main variable”).</p>
 </dd>
 </dl>
 </dd>
@@ -161,7 +161,7 @@ the following attributes of the enclosed
 <span class="go">DEPEND_0: Epoch_Ion [CDF_CHAR]</span>
 <span class="go">DEPEND_1: PITCH_ANGLE [CDF_CHAR]</span>
 <span class="go">DEPEND_2: HOPE_ENERGY_Ion [CDF_CHAR]</span>
-<span class="gp">...</span>
+<span class="go">...</span>
 <span class="go">&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">pycdf</span><span class="o">.</span><span class="n">istp</span><span class="o">.</span><span class="n">VarBundle</span><span class="p">(</span><span class="n">infile</span><span class="p">[</span><span class="s1">&#39;FPDU&#39;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">pycdf</span><span class="o">.</span><span class="n">istp</span><span class="o">.</span><span class="n">VarBundle</span><span class="p">(</span><span class="n">infile</span><span class="p">,</span> <span class="s1">&#39;FPDU&#39;</span><span class="p">)</span>  <span class="c1"># Equivalent</span>
@@ -186,7 +186,7 @@ the following attributes of the enclosed
 <span class="go">CATDESC: HOPE differential proton flux [CDF_CHAR]</span>
 <span class="go">DEPEND_0: Epoch_Ion [CDF_CHAR]</span>
 <span class="go">DEPEND_1: HOPE_ENERGY_Ion [CDF_CHAR]</span>
-<span class="gp">...</span>
+<span class="go">...</span>
 <span class="go">&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">outfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">infile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -254,7 +254,7 @@ original object is updated.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<p>See the <a class="reference internal" href="#spacepy.pycdf.istp.VarBundle" title="spacepy.pycdf.istp.VarBundle"><code class="xref py py-class docutils literal notranslate"><span class="pre">VarBundle</span></code></a> examples for creating output.</p>
+<p>See the <a class="reference internal" href="#spacepy.pycdf.istp.VarBundle" title="spacepy.pycdf.istp.VarBundle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VarBundle</span></code></a> examples for creating output.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.pycdf</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.pycdf.istp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">infile</span> <span class="o">=</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">pycdf</span><span class="o">.</span><span class="n">CDF</span><span class="p">(</span><span class="s1">&#39;rbspa_rel04_ect-hope-PA-L3_20121201_v7.1.0.cdf&#39;</span><span class="p">)</span>
@@ -277,7 +277,7 @@ original object is updated.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>output</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.CDF.html#spacepy.pycdf.CDF" title="spacepy.pycdf.CDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CDF</span></code></a>,  <a class="reference internal" href="spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData" title="spacepy.datamodel.SpaceData"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpaceData</span></code></a></span></dt><dd><p>Output container to receive the new data, may be an open CDF
+<dt><strong>output</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.CDF.html#spacepy.pycdf.CDF" title="spacepy.pycdf.CDF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CDF</span></code></a>,  <a class="reference internal" href="spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData" title="spacepy.datamodel.SpaceData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpaceData</span></code></a></span></dt><dd><p>Output container to receive the new data, may be an open CDF
 file or a SpaceData.</p>
 </dd>
 <dt><strong>suffix</strong><span class="classifier">str</span></dt><dd><p>Suffix to append to the name of any variables that are changed
@@ -329,7 +329,7 @@ would perform.</p>
 <dd class="field-odd"><dl class="simple">
 <dt>list</dt><dd><p>Each element is a tuple: first element is a string with
 the name of the operation (i.e. method of
-<a class="reference internal" href="#spacepy.pycdf.istp.VarBundle" title="spacepy.pycdf.istp.VarBundle"><code class="xref py py-class docutils literal notranslate"><span class="pre">VarBundle</span></code></a>), next is also a tuple of positional
+<a class="reference internal" href="#spacepy.pycdf.istp.VarBundle" title="spacepy.pycdf.istp.VarBundle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VarBundle</span></code></a>), next is also a tuple of positional
 arguments, and finally a dict of keyword arguments.</p>
 </dd>
 </dl>
@@ -397,7 +397,7 @@ original object is updated.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<p>See the <a class="reference internal" href="#spacepy.pycdf.istp.VarBundle" title="spacepy.pycdf.istp.VarBundle"><code class="xref py py-class docutils literal notranslate"><span class="pre">VarBundle</span></code></a> examples for creating output from
+<p>See the <a class="reference internal" href="#spacepy.pycdf.istp.VarBundle" title="spacepy.pycdf.istp.VarBundle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VarBundle</span></code></a> examples for creating output from
 the slices.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.pycdf</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.pycdf.istp</span>
@@ -454,7 +454,7 @@ original object is updated.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<p>See the <a class="reference internal" href="#spacepy.pycdf.istp.VarBundle" title="spacepy.pycdf.istp.VarBundle"><code class="xref py py-class docutils literal notranslate"><span class="pre">VarBundle</span></code></a> examples for creating output.</p>
+<p>See the <a class="reference internal" href="#spacepy.pycdf.istp.VarBundle" title="spacepy.pycdf.istp.VarBundle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VarBundle</span></code></a> examples for creating output.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.pycdf</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.pycdf.istp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">infile</span> <span class="o">=</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">pycdf</span><span class="o">.</span><span class="n">CDF</span><span class="p">(</span><span class="s1">&#39;rbspa_rel04_ect-hope-PA-L3_20121201_v7.1.0.cdf&#39;</span><span class="p">)</span>
@@ -474,19 +474,19 @@ original object is updated.</p>
 <dt class="sig sig-object py" id="spacepy.pycdf.istp.VarBundle.toSpaceData">
 <span class="sig-name descname"><span class="pre">toSpaceData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#VarBundle.toSpaceData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.VarBundle.toSpaceData" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return variables, as modified.</p>
-<p>Convenience function to call <a class="reference internal" href="#spacepy.pycdf.istp.VarBundle.output" title="spacepy.pycdf.istp.VarBundle.output"><code class="xref py py-meth docutils literal notranslate"><span class="pre">output()</span></code></a> on a new
-<a class="reference internal" href="spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData" title="spacepy.datamodel.SpaceData"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpaceData</span></code></a> and return it.</p>
+<p>Convenience function to call <a class="reference internal" href="#spacepy.pycdf.istp.VarBundle.output" title="spacepy.pycdf.istp.VarBundle.output"><code class="xref py py-obj docutils literal notranslate"><span class="pre">output</span></code></a> on a new
+<a class="reference internal" href="spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData" title="spacepy.datamodel.SpaceData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpaceData</span></code></a> and return it.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>suffix</strong><span class="classifier">str</span></dt><dd><p>Appended to the name of variables changed on output; see
-<a class="reference internal" href="#spacepy.pycdf.istp.VarBundle.output" title="spacepy.pycdf.istp.VarBundle.output"><code class="xref py py-meth docutils literal notranslate"><span class="pre">output()</span></code></a> for details.</p>
+<a class="reference internal" href="#spacepy.pycdf.istp.VarBundle.output" title="spacepy.pycdf.istp.VarBundle.output"><code class="xref py py-obj docutils literal notranslate"><span class="pre">output</span></code></a> for details.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><a class="reference internal" href="spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData" title="spacepy.datamodel.SpaceData"><code class="xref py py-class docutils literal notranslate"><span class="pre">datamodel.SpaceData</span></code></a></dt><dd><p>Data read from input and processed according to the defined
+<dt><a class="reference internal" href="spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData" title="spacepy.datamodel.SpaceData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datamodel.SpaceData</span></code></a></dt><dd><p>Data read from input and processed according to the defined
 operations.</p>
 </dd>
 </dl>
@@ -589,7 +589,7 @@ included in the output (sliced away), its shape will be <code class="docutils li
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

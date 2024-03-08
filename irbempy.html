@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>irbempy - Python interface to IRBEM library &#8212; SpacePy v0.4.1 Manual</title>
+    <title>irbempy - Python interface to IRBEM library &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -198,13 +198,13 @@ and outside these limits invalid (NaN) values will be returned.</p>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>T96<span class="classifier">Tsyganenko [1996] (uses -100.&lt;=Dst (nT)&lt;=20., 0.5&lt;=Pdyn (nPa)&lt;10.,</span></dt><dd><p><a href="#id1"><span class="problematic" id="id2">|ByIMF|</span></a> (nT)&lt;1=0., <a href="#id3"><span class="problematic" id="id4">|BzIMF|</span></a> (nT)&lt;=10. - Valid for rGEO&lt;=40. Re)</p>
+<dt>T96<span class="classifier">Tsyganenko [1996] (uses -100.&lt;=Dst (nT)&lt;=20., 0.5&lt;=Pdyn (nPa)&lt;10.,</span></dt><dd><p>|ByIMF| (nT)&lt;=10., |BzIMF| (nT)&lt;=10. - Valid for rGEO&lt;=40. Re)</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
 <dt>OSTA<span class="classifier">Ostapenko &amp; Maltsev [1997] (uses dst,Pdyn,BzIMF, Kp)</span></dt><dd><p>T01QUIET: Tsyganenko [2002a,b] (uses -50.&lt;Dst (nT)&lt;20., 0.5&lt;Pdyn (nPa)&lt;=5.,
-<a href="#id5"><span class="problematic" id="id6">|ByIMF|</span></a> (nT)&lt;=5., <a href="#id7"><span class="problematic" id="id8">|BzIMF|</span></a> (nT)&lt;=5., 0.&lt;=G1&lt;=10., 0.&lt;=G2&lt;=10. - Valid for xGSM&gt;=-15. Re)</p>
+|ByIMF| (nT)&lt;=5., |BzIMF| (nT)&lt;=5., 0.&lt;=G1&lt;=10., 0.&lt;=G2&lt;=10. - Valid for xGSM&gt;=-15. Re)</p>
 </dd>
 </dl>
 </li>
@@ -239,7 +239,7 @@ as ONERA-DESP) library.</p>
 <td><p>will return the flux from the AE8-AP8 model</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.irbempy.get_Bfield.html#spacepy.irbempy.get_Bfield" title="spacepy.irbempy.get_Bfield"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_Bfield</span></code></a>(ticks, loci[, extMag, options, ...])</p></td>
-<td><p>call get_bfield in irbem lib and return a dictionary with the B-field vector and strenght.</p></td>
+<td><p>Return magnetic field vector (in GEO) and magnitude</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.irbempy.get_Lm.html#spacepy.irbempy.get_Lm" title="spacepy.irbempy.get_Lm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_Lm</span></code></a>(ticks, loci, alpha[, extMag, intMag, ...])</p></td>
 <td><p>Return the MacIlwain L value for a given location, time and model</p></td>
@@ -264,6 +264,9 @@ as ONERA-DESP) library.</p>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.irbempy.prep_irbem.html#spacepy.irbempy.prep_irbem" title="spacepy.irbempy.prep_irbem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prep_irbem</span></code></a>([ticks, loci, alpha, extMag, ...])</p></td>
 <td><p>Prepare inputs for direct IRBEM-LIB calls.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.irbempy.Shieldose2.html#spacepy.irbempy.Shieldose2" title="spacepy.irbempy.Shieldose2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Shieldose2</span></code></a>(*args, **kwargs)</p></td>
+<td><p>A class for performing dose calculations using Shieldose2</p></td>
 </tr>
 </tbody>
 </table>
@@ -300,7 +303,7 @@ as ONERA-DESP) library.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

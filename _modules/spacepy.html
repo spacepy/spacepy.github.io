@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -123,10 +123,7 @@
 <span class="sd">Copyright 2010-2016 Los Alamos National Security, LLC.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">ConfigParser</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">configparser</span> <span class="k">as</span> <span class="nn">ConfigParser</span>
+<span class="kn">import</span> <span class="nn">configparser</span>
 <span class="kn">import</span> <span class="nn">errno</span>
 <span class="kn">import</span> <span class="nn">functools</span>
 <span class="kn">import</span> <span class="nn">multiprocessing</span>
@@ -140,7 +137,7 @@
 
 
 <div class="viewcode-block" id="help"><a class="viewcode-back" href="../spacepy.html#spacepy.help">[docs]</a><span class="k">def</span> <span class="nf">help</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Launches web browser with SpacePy documentation</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Launches web browser with SpacePy documentation</span>
 
 <span class="sd">    Online help is always for the latest release of SpacePy.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -154,19 +151,16 @@
            <span class="s2">&quot;irbempy&quot;</span><span class="p">,</span> <span class="s2">&quot;empiricals&quot;</span><span class="p">,</span> <span class="s2">&quot;radbelt&quot;</span><span class="p">,</span> <span class="s2">&quot;data_assimilation&quot;</span><span class="p">,</span> <span class="s2">&quot;pycdf&quot;</span><span class="p">,</span>
            <span class="s2">&quot;datamanager&quot;</span><span class="p">,</span> <span class="s2">&quot;datamodel&quot;</span><span class="p">,</span> <span class="s2">&quot;ae9ap9&quot;</span><span class="p">]</span>
 
-<span class="c1"># on windows, make sure the mingw runtime libs are findable</span>
-<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s1">&#39;win32&#39;</span><span class="p">:</span>
-    <span class="n">minglibs</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;mingw&#39;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="s1">&#39;PATH&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">minglibs</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">]:</span>
-            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">]:</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="s1">&#39;;&#39;</span> <span class="o">+</span> <span class="n">minglibs</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span> <span class="c1">#empth PATH</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">minglibs</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">minglibs</span>
+<span class="c1"># Make sure the Fortran and other runtime libs from binary wheel are findable</span>
+<span class="n">libs</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;libs&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s1">&#39;win32&#39;</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">libs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;PATH&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">libs</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">]:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="s1">&#39;;&#39;</span> <span class="o">+</span> <span class="n">libs</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># empty or nonexistent PATH</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">libs</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">add_dll_directory</span><span class="p">(</span><span class="n">minglibs</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">add_dll_directory</span><span class="p">(</span><span class="n">libs</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>  <span class="c1"># Python 3.8+ only</span>
         <span class="k">pass</span>
 
@@ -211,7 +205,7 @@
     <span class="k">return</span> <span class="n">_deprecated</span>
 
 <div class="viewcode-block" id="deprecated"><a class="viewcode-back" href="../spacepy.html#spacepy.deprecated">[docs]</a><span class="k">def</span> <span class="nf">deprecated</span><span class="p">(</span><span class="n">version</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">docstring</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Decorator to deprecate a function/method</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Decorator to deprecate a function/method</span>
 
 <span class="sd">    Modifies a function so that calls to it raise</span>
 <span class="sd">    ``DeprecationWarning`` and the docstring has a deprecation</span>
@@ -284,7 +278,7 @@
 <span class="n">SpaceData</span> <span class="o">=</span> <span class="n">datamodel</span><span class="o">.</span><span class="n">SpaceData</span>
 
 <span class="c1">#package info</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;0.4.1&#39;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;0.5.0&#39;</span>
 <span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;The SpacePy Team&#39;</span>
 <span class="n">__team__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Steve Morley&#39;</span><span class="p">,</span> <span class="s1">&#39;Josef Koller&#39;</span><span class="p">,</span> <span class="s1">&#39;Dan Welling&#39;</span><span class="p">,</span> <span class="s1">&#39;Brian Larsen&#39;</span><span class="p">,</span> <span class="s1">&#39;Jon Niehof&#39;</span><span class="p">,</span> <span class="s1">&#39;Mike Henderson&#39;</span><span class="p">]</span>
 <span class="n">__contact__</span> <span class="o">=</span> <span class="s1">&#39;spacepy@lanl.gov&#39;</span>
@@ -300,12 +294,35 @@
 <span class="s2">as not to confuse it with the version available from LANL. Full text of the </span>
 <span class="s2">Python Software Foundation License can be found in the LICENSE.md file in the</span>
 <span class="s2">main development branch of the repository (https://github.com/spacepy/spacepy).</span>
+
+<span class="s2">CDF library support is provided by an unmodified library subject to the following license:</span>
+<span class="s2">Common Data Format (CDF)</span>
+<span class="s2">Space Physics Data Facility</span>
+<span class="s2">NASA/Goddard Space Flight Center</span>
+
+<span class="s2">This software may be copied or redistributed as long as it is not sold</span>
+<span class="s2">for profit, but it can be incorporated into any other substantive</span>
+<span class="s2">product with or without modifications for profit or non-profit.  If the</span>
+<span class="s2">software is modified, it must include the following notices:</span>
+
+<span class="s2">  - The software is not the original (for protection of the original</span>
+<span class="s2">    author&#39;s reputations from any problems introduced by others)</span>
+
+<span class="s2">  - Change history (e.g. date, functionality, etc.)</span>
+
+<span class="s2">This copyright notice must be reproduced on each copy made. This software is</span>
+<span class="s2">provided as is without any express or implied warranties whatsoever.</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
 <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s1">&#39;win32&#39;</span><span class="p">:</span>
     <span class="n">__license__</span> <span class="o">+=</span> \
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Fortran library support provided by MinGW. The MinGW base runtime package has been placed in the public domain, and is not governed by copyright.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">__license__</span> <span class="o">+=</span> \
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Fortran library support in binary wheels is distributed under the GCC Runtime Library exception.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="n">__citation__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;When publishing research which used SpacePy, please provide appropriate</span>
@@ -331,7 +348,7 @@
 <span class="n">config</span> <span class="o">=</span> <span class="p">{}</span>
 
 <span class="k">def</span> <span class="nf">_write_defaults</span><span class="p">(</span><span class="n">rcfile</span><span class="p">,</span> <span class="n">defaults</span><span class="p">,</span> <span class="n">section</span><span class="o">=</span><span class="s1">&#39;spacepy&#39;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Write configuration defaults out to a file if they aren&#39;t there&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Write configuration defaults out to a file if they aren&#39;t there&quot;&quot;&quot;</span>
     <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">rcfile</span><span class="p">,</span> <span class="s1">&#39;r+t&#39;</span><span class="p">)</span> <span class="c1">#Avoid race condition, open for read and write</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">startpos</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span>
@@ -383,7 +400,7 @@
 
 <span class="c1"># import some settings</span>
 <span class="k">def</span> <span class="nf">_read_config</span><span class="p">(</span><span class="n">rcfile</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Read configuration information from a file&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read configuration information from a file&quot;&quot;&quot;</span>
     <span class="k">global</span> <span class="n">config</span>
     <span class="n">defaults</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;enable_deprecation_warning&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="kc">True</span><span class="p">),</span>
                 <span class="s1">&#39;keepalive&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="kc">True</span><span class="p">),</span>
@@ -394,7 +411,6 @@
                 <span class="s1">&#39;leapsec_url&#39;</span><span class="p">:</span> <span class="s1">&#39;https://maia.usno.navy.mil/ser7/tai-utc.dat&#39;</span><span class="p">,</span>
                 <span class="s1">&#39;psddata_url&#39;</span><span class="p">:</span> <span class="s1">&#39;http://spacepy.lanl.gov/repository/psd_dat.sqlite&#39;</span><span class="p">,</span>
                 <span class="s1">&#39;support_notice&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="kc">True</span><span class="p">),</span>
-                <span class="s1">&#39;apply_plot_styles&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="kc">True</span><span class="p">),</span>
                 <span class="s1">&#39;enable_old_data_warning&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="kc">True</span><span class="p">),</span>
                 <span class="p">}</span>
     <span class="c1">#Functions to cast a config value; if not specified, value is a string</span>
@@ -403,40 +419,21 @@
               <span class="s1">&#39;keepalive&#39;</span><span class="p">:</span> <span class="n">str2bool</span><span class="p">,</span>
               <span class="s1">&#39;ncpus&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
               <span class="s1">&#39;support_notice&#39;</span><span class="p">:</span> <span class="n">str2bool</span><span class="p">,</span>
-              <span class="s1">&#39;apply_plot_styles&#39;</span><span class="p">:</span> <span class="n">str2bool</span><span class="p">,</span>
               <span class="s1">&#39;enable_old_data_warning&#39;</span><span class="p">:</span> <span class="n">str2bool</span><span class="p">,</span>
               <span class="p">}</span>
-    <span class="c1">#SafeConfigParser deprecated in 3.2. And this is hideous, but...</span>
-    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">ConfigParser</span><span class="p">,</span> <span class="s1">&#39;SafeConfigParser&#39;</span><span class="p">):</span>
-        <span class="n">cp_class</span> <span class="o">=</span> <span class="n">ConfigParser</span><span class="o">.</span><span class="n">SafeConfigParser</span>
-        <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">(</span><span class="n">record</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">w</span><span class="p">:</span>
-            <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span>
-                <span class="s1">&#39;always&#39;</span><span class="p">,</span> <span class="s1">&#39;The SafeConfigParser class has been renamed.*&#39;</span><span class="p">,</span>
-                <span class="ne">DeprecationWarning</span><span class="p">,</span>
-                <span class="s1">&#39;^spacepy$&#39;</span><span class="p">)</span> <span class="c1">#configparser lies about source of warnings</span>
-            <span class="n">ConfigParser</span><span class="o">.</span><span class="n">SafeConfigParser</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">this_w</span> <span class="ow">in</span> <span class="n">w</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">this_w</span><span class="o">.</span><span class="n">message</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">):</span>
-                <span class="n">cp_class</span> <span class="o">=</span> <span class="n">ConfigParser</span><span class="o">.</span><span class="n">ConfigParser</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">warnings</span><span class="o">.</span><span class="n">showwarning</span><span class="p">(</span><span class="n">this_w</span><span class="o">.</span><span class="n">message</span><span class="p">,</span> <span class="n">this_w</span><span class="o">.</span><span class="n">category</span><span class="p">,</span>
-                                     <span class="n">this_w</span><span class="o">.</span><span class="n">filename</span><span class="p">,</span> <span class="n">this_w</span><span class="o">.</span><span class="n">lineno</span><span class="p">,</span>
-                                     <span class="n">this_w</span><span class="o">.</span><span class="n">file</span><span class="p">,</span> <span class="n">this_w</span><span class="o">.</span><span class="n">line</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">cp_class</span> <span class="o">=</span> <span class="n">ConfigParser</span><span class="o">.</span><span class="n">ConfigParser</span>
-    <span class="n">cp</span> <span class="o">=</span> <span class="n">cp_class</span><span class="p">(</span><span class="n">defaults</span><span class="p">)</span>
+    <span class="n">cp</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">(</span><span class="n">defaults</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">successful</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="n">rcfile</span><span class="p">])</span>
-    <span class="k">except</span> <span class="n">ConfigParser</span><span class="o">.</span><span class="n">Error</span><span class="p">:</span>
+    <span class="k">except</span> <span class="n">configparser</span><span class="o">.</span><span class="n">Error</span><span class="p">:</span>
         <span class="n">successful</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">if</span> <span class="n">successful</span><span class="p">:</span>  <span class="c1"># New file structure</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">config</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">items</span><span class="p">(</span><span class="s1">&#39;spacepy&#39;</span><span class="p">))</span>
-        <span class="k">except</span> <span class="n">ConfigParser</span><span class="o">.</span><span class="n">NoSectionError</span><span class="p">:</span>
+        <span class="k">except</span> <span class="n">configparser</span><span class="o">.</span><span class="n">NoSectionError</span><span class="p">:</span>
             <span class="n">successful</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="n">config</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">successful</span><span class="p">:</span>  <span class="c1"># Old or bad file structure, wipe it out</span>
-        <span class="n">cp</span> <span class="o">=</span> <span class="n">cp_class</span><span class="p">()</span>
+        <span class="n">cp</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
         <span class="n">cp</span><span class="o">.</span><span class="n">add_section</span><span class="p">(</span><span class="s1">&#39;spacepy&#39;</span><span class="p">)</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">rcfile</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">cf</span><span class="p">:</span>
             <span class="n">cp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">cf</span><span class="p">)</span>
@@ -449,7 +446,7 @@
 
 
 <span class="k">def</span> <span class="nf">_find_spacepy_dir</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Determine the .spacepy directory (DOT_FLN)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Determine the .spacepy directory (DOT_FLN)</span>
 
 <span class="sd">    This does not create the directory (although will create the parent</span>
 <span class="sd">    directory if ``SPACEPY`` environment variable is set).</span>
@@ -478,7 +475,7 @@
 
 
 <span class="k">def</span> <span class="nf">_populate_spacepy_dir</span><span class="p">(</span><span class="n">DOT_FLN</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Create .spacepy directory and populate.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create .spacepy directory and populate.</span>
 
 <span class="sd">    Makes sure created and data directory exists.</span>
 
@@ -548,7 +545,7 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

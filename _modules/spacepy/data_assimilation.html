@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.data_assimilation &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.data_assimilation &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -96,7 +96,7 @@
 <span class="c1"># Data Assimilation class: enKF</span>
 <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="ensemble"><a class="viewcode-back" href="../../autosummary/spacepy.data_assimilation.ensemble.html#spacepy.data_assimilation.ensemble">[docs]</a><span class="k">class</span> <span class="nc">ensemble</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Ensemble-based data assimilation subroutines for the Radiation Belt Model</span>
 <span class="sd">    </span>
 <span class="sd">    .. currentmodule:: spacepy.data_assimilation</span>
@@ -134,7 +134,7 @@
 
     <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="ensemble.EnKF"><a class="viewcode-back" href="../../autosummary/spacepy.data_assimilation.ensemble.html#spacepy.data_assimilation.ensemble.EnKF">[docs]</a>    <span class="k">def</span> <span class="nf">EnKF</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">Psi</span><span class="p">,</span> <span class="n">Inn</span><span class="p">,</span> <span class="n">HAp</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        analysis subroutine after code example in</span>
 <span class="sd">        Evensen 2003 this will take the prepared</span>
 <span class="sd">        matrices and calculate the analysis most</span>
@@ -213,7 +213,7 @@
 
     <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="ensemble.EnKF_oneobs"><a class="viewcode-back" href="../../autosummary/spacepy.data_assimilation.ensemble.html#spacepy.data_assimilation.ensemble.EnKF_oneobs">[docs]</a>    <span class="k">def</span> <span class="nf">EnKF_oneobs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">Psi</span><span class="p">,</span> <span class="n">Inn</span><span class="p">,</span> <span class="n">HAp</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        analysis subroutine for a single observations</span>
 <span class="sd">        with the EnKF. This is a special case.</span>
 
@@ -271,7 +271,7 @@
 
     <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="ensemble.getHAprime"><a class="viewcode-back" href="../../autosummary/spacepy.data_assimilation.ensemble.html#spacepy.data_assimilation.ensemble.getHAprime">[docs]</a>    <span class="k">def</span> <span class="nf">getHAprime</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">HA</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        calculate ensemble perturbation of HA</span>
 <span class="sd">        HA&#39; = HA-HA_mean</span>
 
@@ -295,7 +295,7 @@
 
     <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="ensemble.getInnovation"><a class="viewcode-back" href="../../autosummary/spacepy.data_assimilation.ensemble.html#spacepy.data_assimilation.ensemble.getInnovation">[docs]</a>    <span class="k">def</span> <span class="nf">getInnovation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">Psi</span><span class="p">,</span> <span class="n">HA</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        compute innovation ensemble D&#39;</span>
 
 <span class="sd">        Parameters</span>
@@ -322,7 +322,7 @@
 
     <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="ensemble.getperturb"><a class="viewcode-back" href="../../autosummary/spacepy.data_assimilation.ensemble.html#spacepy.data_assimilation.ensemble.getperturb">[docs]</a>    <span class="k">def</span> <span class="nf">getperturb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        compute perturbations of observational vector</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
@@ -348,7 +348,7 @@
 
     <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="ensemble.getHA"><a class="viewcode-back" href="../../autosummary/spacepy.data_assimilation.ensemble.html#spacepy.data_assimilation.ensemble.getHA">[docs]</a>    <span class="k">def</span> <span class="nf">getHA</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">Lobs</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        compute HA provided L vector of observations</span>
 <span class="sd">        and ensemble matrix A</span>
 <span class="sd">        </span>
@@ -389,7 +389,7 @@
 
     <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="ensemble.getHPH"><a class="viewcode-back" href="../../autosummary/spacepy.data_assimilation.ensemble.html#spacepy.data_assimilation.ensemble.getHPH">[docs]</a>    <span class="k">def</span> <span class="nf">getHPH</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">Lobs</span><span class="p">,</span><span class="n">Pfxx</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        compute HPH</span>
 
 <span class="sd">        Parameters</span>
@@ -431,7 +431,7 @@
 
     <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="ensemble.add_model_error"><a class="viewcode-back" href="../../autosummary/spacepy.data_assimilation.ensemble.html#spacepy.data_assimilation.ensemble.add_model_error">[docs]</a>    <span class="k">def</span> <span class="nf">add_model_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">PSDdata</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        this routine will add a standard error to the ensemble states</span>
 
 <span class="sd">        Parameters</span>
@@ -510,7 +510,7 @@
 
     <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="ensemble.add_model_error_obs"><a class="viewcode-back" href="../../autosummary/spacepy.data_assimilation.ensemble.html#spacepy.data_assimilation.ensemble.add_model_error_obs">[docs]</a>    <span class="k">def</span> <span class="nf">add_model_error_obs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">Lobs</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        this routine will add a standard error to the ensemble states</span>
 
 <span class="sd">        Parameters</span>
@@ -581,7 +581,7 @@
 
 <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="average_window"><a class="viewcode-back" href="../../autosummary/spacepy.data_assimilation.average_window.html#spacepy.data_assimilation.average_window">[docs]</a><span class="k">def</span> <span class="nf">average_window</span><span class="p">(</span><span class="n">PSDdata</span><span class="p">,</span> <span class="n">Lgrid</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    combine observations on same L shell in</span>
 
 <span class="sd">    Parameters</span>
@@ -634,7 +634,7 @@
 <span class="c1"># -----------------------------------------------</span>
 <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="getobs4window"><a class="viewcode-back" href="../../autosummary/spacepy.data_assimilation.getobs4window.html#spacepy.data_assimilation.getobs4window">[docs]</a><span class="k">def</span> <span class="nf">getobs4window</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span> <span class="n">Tnow</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    get observations in time window [Tnow - Twindow, Tnow]</span>
 <span class="sd">    from all satellites lumped together into one y vector</span>
 
@@ -707,7 +707,7 @@
 
 <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="output"><a class="viewcode-back" href="../../autosummary/spacepy.data_assimilation.output.html#spacepy.data_assimilation.output">[docs]</a><span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="n">init</span><span class="p">,</span><span class="n">result</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    write results to file and be done</span>
 
 <span class="sd">    Parameters</span>
@@ -731,7 +731,7 @@
 <span class="c1"># ----- older stuff (not used) ------------------</span>
 <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="assimilate_JK"><a class="viewcode-back" href="../../autosummary/spacepy.data_assimilation.assimilate_JK.html#spacepy.data_assimilation.assimilate_JK">[docs]</a><span class="k">def</span> <span class="nf">assimilate_JK</span><span class="p">(</span><span class="n">dd</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    this version is currently not working</span>
 <span class="sd">    main function to assimilate all data provided in init</span>
 
@@ -867,7 +867,7 @@
 
 <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="addmodelerror_old2"><a class="viewcode-back" href="../../autosummary/spacepy.data_assimilation.addmodelerror_old2.html#spacepy.data_assimilation.addmodelerror_old2">[docs]</a><span class="k">def</span> <span class="nf">addmodelerror_old2</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">L</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    this routine will add a standard error to the ensemble states</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">where</span><span class="p">,</span> <span class="n">random</span><span class="p">,</span> <span class="n">log10</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">reshape</span><span class="p">,</span> <span class="nb">abs</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="n">arange</span>
@@ -903,7 +903,7 @@
 
 <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="addmodelerror_old"><a class="viewcode-back" href="../../autosummary/spacepy.data_assimilation.addmodelerror_old.html#spacepy.data_assimilation.addmodelerror_old">[docs]</a><span class="k">def</span> <span class="nf">addmodelerror_old</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">L</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    this routine will add a standard error to the ensemble states</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">Lgrid</span> <span class="o">=</span> <span class="n">dd</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">][</span><span class="s1">&#39;Lgrid&#39;</span><span class="p">]</span>
@@ -937,7 +937,7 @@
 
 <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="forecast"><a class="viewcode-back" href="../../autosummary/spacepy.data_assimilation.forecast.html#spacepy.data_assimilation.forecast">[docs]</a><span class="k">def</span> <span class="nf">forecast</span><span class="p">(</span><span class="n">dd</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">Tnow</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    call the model to calculate update and return result</span>
 <span class="sd">    fnew = f(Tnow+Twindow)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -972,7 +972,7 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
