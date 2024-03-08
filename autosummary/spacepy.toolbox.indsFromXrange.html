@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.toolbox.indsFromXrange &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.toolbox.indsFromXrange &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -100,17 +100,17 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="spacepy.toolbox.indsFromXrange">
 <span class="sig-prename descclassname"><span class="pre">spacepy.toolbox.</span></span><span class="sig-name descname"><span class="pre">indsFromXrange</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inxrange</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/toolbox.html#indsFromXrange"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.toolbox.indsFromXrange" title="Permalink to this definition">¶</a></dt>
-<dd><p>return the start and end indices implied by an xrange, useful when xrange is zero-length</p>
+<dd><p>return the start and end indices implied by a range, useful when range is zero-length</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>inxrange</strong><span class="classifier">xrange</span></dt><dd><p>input xrange object to parse</p>
+<dt><strong>inxrange</strong><span class="classifier">range</span></dt><dd><p>input range object to parse</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>list of int</dt><dd><p>List of start, stop indices in the xrange. The return value is not
+<dt>list of int</dt><dd><p>List of start, stop indices in the range. The return value is not
 defined if a stride is specified or if stop is before start (but
 will work when stop equals start).</p>
 </dd>
@@ -119,12 +119,12 @@ will work when stop equals start).</p>
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.toolbox</span> <span class="k">as</span> <span class="nn">tb</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">foo</span> <span class="o">=</span> <span class="n">xrange</span><span class="p">(</span><span class="mi">23</span><span class="p">,</span> <span class="mi">39</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">foo</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">23</span><span class="p">,</span> <span class="mi">39</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">foo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="go">23</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tb</span><span class="o">.</span><span class="n">indsFromXrange</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>
 <span class="go">[23, 39]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">foo1</span> <span class="o">=</span> <span class="n">xrange</span><span class="p">(</span><span class="mi">23</span><span class="p">,</span> <span class="mi">23</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">foo1</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">23</span><span class="p">,</span> <span class="mi">23</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tb</span><span class="o">.</span><span class="n">indsFromXrange</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span> <span class="c1">#indexing won&#39;t work in this case</span>
 <span class="go">[23, 23]</span>
 </pre></div>
@@ -165,7 +165,7 @@ will work when stop equals start).</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

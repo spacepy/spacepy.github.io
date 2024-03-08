@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.toolbox.windowMean &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.toolbox.windowMean &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -107,7 +107,8 @@
 <dt><strong>data</strong><span class="classifier">array_like</span></dt><dd><p>1D series of points</p>
 </dd>
 <dt><strong>time</strong><span class="classifier">list (optional)</span></dt><dd><p>series of timestamps, optional (format as numeric or datetime)
-For non-overlapping windows set overlap to zero.</p>
+For non-overlapping windows set overlap to zero. Must be same length as
+data.</p>
 </dd>
 <dt><strong>winsize</strong><span class="classifier">integer or datetime.timedelta (optional)</span></dt><dd><p>window size</p>
 </dd>
@@ -203,7 +204,7 @@ is basically a reference to the nth point in the original series.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

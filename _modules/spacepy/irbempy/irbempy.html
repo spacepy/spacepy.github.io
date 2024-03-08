@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.irbempy.irbempy &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.irbempy.irbempy &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
@@ -88,12 +88,12 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">numbers</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Iterable</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Iterable</span>
+<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Iterable</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
 <span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>
 <span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -106,15 +106,39 @@
 
 <span class="c1"># check whether TS07_DATA_PATH is set, if not then set to spacepy&#39;s installed data directory</span>
 <span class="k">if</span> <span class="s1">&#39;TS07_DATA_PATH&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">pkg_resources</span>
-    <span class="n">dataTS07D</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;TS07D&#39;</span><span class="p">)</span>
-    <span class="n">spdatapath</span> <span class="o">=</span> <span class="n">pkg_resources</span><span class="o">.</span><span class="n">resource_filename</span><span class="p">(</span><span class="s1">&#39;spacepy&#39;</span><span class="p">,</span> <span class="n">dataTS07D</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">importlib.resources</span>
+        <span class="n">newstyle</span> <span class="o">=</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">importlib</span><span class="o">.</span><span class="n">resources</span><span class="p">,</span> <span class="s1">&#39;files&#39;</span><span class="p">)</span>  <span class="c1"># &lt; 3.9</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>  <span class="c1"># &lt; 3.7</span>
+        <span class="n">newstyle</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">newstyle</span><span class="p">:</span>
+        <span class="n">spdatapath</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="n">spacepy</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span>
+            <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;TS07D&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">spdatapath</span><span class="p">,</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">)</span> <span class="ow">and</span> <span class="n">spdatapath</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="n">spdatapath</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">spdatapath</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># as_file only works on 3.12</span>
+            <span class="c1"># https://discuss.python.org/t/importlib-resources-access-whole-directories-as-resources/15618/5</span>
+            <span class="n">td</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">()</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Writing TS07 data to </span><span class="si">{</span><span class="n">td</span><span class="si">}</span><span class="s2">; will not automatically clean.&quot;</span><span class="p">)</span>
+            <span class="n">td</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">td</span><span class="p">,</span> <span class="s1">&#39;TAIL_PAR&#39;</span><span class="p">)</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">td</span><span class="p">)</span>
+            <span class="n">files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">spdatapath</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;TAIL_PAR&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">iterdir</span><span class="p">())</span>
+            <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">td</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">),</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">o</span><span class="p">:</span>
+                    <span class="n">o</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read_bytes</span><span class="p">())</span>
+            <span class="n">spdatapath</span> <span class="o">=</span> <span class="n">td</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">pkg_resources</span>
+        <span class="n">dataTS07D</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;TS07D&#39;</span><span class="p">)</span>
+        <span class="n">spdatapath</span> <span class="o">=</span> <span class="n">pkg_resources</span><span class="o">.</span><span class="n">resource_filename</span><span class="p">(</span><span class="s1">&#39;spacepy&#39;</span><span class="p">,</span> <span class="n">dataTS07D</span><span class="p">)</span>
     <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;TS07_DATA_PATH&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spdatapath</span>  <span class="c1"># set environment variable here</span>
 
 
 <span class="c1"># -----------------------------------------------</span>
 <span class="k">def</span> <span class="nf">updateTS07Coeffs</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Update coefficients for TS07 magnetic field model</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Update coefficients for TS07 magnetic field model</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -136,10 +160,7 @@
     <span class="kn">import</span> <span class="nn">tarfile</span>
     <span class="kn">import</span> <span class="nn">spacepy.time</span> <span class="k">as</span> <span class="nn">spt</span>
     <span class="n">dt</span> <span class="o">=</span> <span class="n">spt</span><span class="o">.</span><span class="n">datetime</span>
-    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">urllib</span> <span class="k">as</span> <span class="nn">u</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">urllib.request</span> <span class="k">as</span> <span class="nn">u</span>
+    <span class="kn">import</span> <span class="nn">urllib.request</span> <span class="k">as</span> <span class="nn">u</span>
 
     <span class="k">if</span> <span class="s1">&#39;user_agent&#39;</span> <span class="ow">in</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">config</span> <span class="ow">and</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;user_agent&#39;</span><span class="p">]:</span>
         <span class="k">class</span> <span class="nc">AppURLopener</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">FancyURLopener</span><span class="p">):</span>
@@ -217,25 +238,32 @@
 
 <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="get_Bfield"><a class="viewcode-back" href="../../../autosummary/spacepy.irbempy.get_Bfield.html#spacepy.irbempy.get_Bfield">[docs]</a><span class="k">def</span> <span class="nf">get_Bfield</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">loci</span><span class="p">,</span> <span class="n">extMag</span><span class="o">=</span><span class="s1">&#39;T01STORM&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">omnivals</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    call get_bfield in irbem lib and return a dictionary with the B-field vector and</span>
-<span class="sd">    strenght.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return magnetic field vector (in GEO) and magnitude</span>
+
+<span class="sd">    Calls get_bfield from IRBEMlib and uses the underlying model</span>
+<span class="sd">    implementations and coordinate transforms in IRBEMlib to obtain the</span>
+<span class="sd">    result.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">        - ticks (Ticktock class) : containing time information</span>
 <span class="sd">        - loci (Coords class) : containing spatial information</span>
-<span class="sd">        - extMag (string) : optional; will choose the external magnetic field model</span>
-<span class="sd">                            possible values [&#39;0&#39;, &#39;MEAD&#39;, &#39;T87SHORT&#39;, &#39;T87LONG&#39;, &#39;T89&#39;,</span>
-<span class="sd">                            &#39;OPQUIET&#39;, &#39;OPDYN&#39;, &#39;T96&#39;, &#39;OSTA&#39;, &#39;T01QUIET&#39;, &#39;T01STORM&#39;,</span>
-<span class="sd">                            &#39;T05&#39;, &#39;ALEX&#39;, &#39;TS07&#39;]</span>
+<span class="sd">        - extMag (string) : optional; will choose the external magnetic</span>
+<span class="sd">                            field model possible values [&#39;0&#39;, &#39;MEAD&#39;,</span>
+<span class="sd">                            &#39;T87SHORT&#39;, &#39;T87LONG&#39;, &#39;T89&#39;, &#39;OPQUIET&#39;,</span>
+<span class="sd">                            &#39;OPDYN&#39;, &#39;T96&#39;, &#39;OSTA&#39;, &#39;T01QUIET&#39;,</span>
+<span class="sd">                            &#39;T01STORM&#39;, &#39;T05&#39;, &#39;ALEX&#39;, &#39;TS07&#39;]</span>
 <span class="sd">        - options (optional list or array of integers length=5) : explained in Lstar</span>
-<span class="sd">        - omni values as dictionary (optional) : if not provided, will use lookup table</span>
+<span class="sd">        - omni values as dictionary (optional) : if not provided, will</span>
+<span class="sd">                                                 use OMNI module to</span>
+<span class="sd">                                                 look up</span>
 <span class="sd">        - (see Lstar documentation for further explanation)</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">        - results (dictionary) : containing keys: Bvec, and Blocal</span>
+<span class="sd">                                 Bvec is specified in GEO coordinates</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -296,7 +324,7 @@
 
 <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="find_Bmirror"><a class="viewcode-back" href="../../../autosummary/spacepy.irbempy.find_Bmirror.html#spacepy.irbempy.find_Bmirror">[docs]</a><span class="k">def</span> <span class="nf">find_Bmirror</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">loci</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">extMag</span><span class="o">=</span><span class="s1">&#39;T01STORM&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">omnivals</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    call find_mirror_point from irbem library and return a dictionary with values for</span>
 <span class="sd">    Blocal, Bmirr and the GEO (cartesian) coordinates of the mirror point</span>
 
@@ -377,18 +405,14 @@
         <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Bmirr&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">bmirr</span>
         <span class="n">results</span><span class="p">[</span><span class="s1">&#39;loci&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">GEOcoord</span>
 
-    <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;Use of IRBEM to perform&#39;</span><span class="p">,</span>
-                                <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">,</span>
-                                <span class="n">module</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;spacepy.coordinates$&#39;</span><span class="p">)</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;loci&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spc</span><span class="o">.</span><span class="n">Coords</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;loci&#39;</span><span class="p">],</span> <span class="s1">&#39;GEO&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="n">use_irbem</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;loci&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spc</span><span class="o">.</span><span class="n">Coords</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;loci&#39;</span><span class="p">],</span> <span class="s1">&#39;GEO&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="n">use_irbem</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">results</span></div>
 
 
 <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="find_magequator"><a class="viewcode-back" href="../../../autosummary/spacepy.irbempy.find_magequator.html#spacepy.irbempy.find_magequator">[docs]</a><span class="k">def</span> <span class="nf">find_magequator</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">loci</span><span class="p">,</span> <span class="n">extMag</span><span class="o">=</span><span class="s1">&#39;T01STORM&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">omnivals</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    call find_magequator from irbem library and return a dictionary with values for</span>
 <span class="sd">    Bmin and the GEO (cartesian) coordinates of the magnetic equator</span>
 
@@ -452,11 +476,7 @@
         <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Bmin&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">bmin</span>
         <span class="n">results</span><span class="p">[</span><span class="s1">&#39;loci&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">GEOcoord</span>
 
-    <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;Use of IRBEM to perform&#39;</span><span class="p">,</span>
-                                <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">,</span>
-                                <span class="n">module</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;spacepy.coordinates$&#39;</span><span class="p">)</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;loci&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spc</span><span class="o">.</span><span class="n">Coords</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;loci&#39;</span><span class="p">],</span> <span class="s1">&#39;GEO&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="n">use_irbem</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;loci&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spc</span><span class="o">.</span><span class="n">Coords</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;loci&#39;</span><span class="p">],</span> <span class="s1">&#39;GEO&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="n">use_irbem</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">results</span></div>
 
@@ -464,7 +484,7 @@
 <span class="c1"># -----------------------------------------------</span>
 <span class="k">def</span> <span class="nf">find_LCDS</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">extMag</span><span class="o">=</span><span class="s1">&#39;T01STORM&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">omnivals</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
               <span class="n">tol</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">bracket</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="n">mlt</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find the last closed drift shell (LCDS) for a given equatorial pitch angle.</span>
 
 <span class="sd">    Uses the IRBEM library to determine L* and searches via bisection to find LCDS</span>
@@ -680,7 +700,7 @@
 <span class="c1"># -----------------------------------------------</span>
 <span class="k">def</span> <span class="nf">find_LCDS_K</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">extMag</span><span class="o">=</span><span class="s1">&#39;T01STORM&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">omnivals</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                 <span class="n">tol</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">bracket</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="n">mlt</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find the last closed drift shell (LCDS) for a given K (modified 2nd invariant).</span>
 
 <span class="sd">    Uses the IRBEM library to determine L* and searches via bisection to find LCDS</span>
@@ -917,7 +937,7 @@
 
 <span class="c1"># -----------------------------------------------</span>
 <span class="k">def</span> <span class="nf">AlphaOfK</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">loci</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">extMag</span><span class="o">=</span><span class="s1">&#39;T01STORM&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">omnivals</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find the equatorial pitch angle corresponding to a given second invariant K.</span>
 
 <span class="sd">    Uses the IRBEM library to determine K and searches via bisection to find Alpha(K).</span>
@@ -982,11 +1002,7 @@
         <span class="n">pa0</span> <span class="o">=</span> <span class="mi">90</span>  <span class="c1"># start with equatorially mirroring</span>
         <span class="c1"># Now get K for initial alpha at this location...</span>
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">GEOcoord</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-            <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
-                <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;Use of IRBEM to perform&#39;</span><span class="p">,</span>
-                                        <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">,</span>
-                                        <span class="n">module</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;spacepy.coordinates$&#39;</span><span class="p">)</span>
-                <span class="n">pos1</span> <span class="o">=</span> <span class="n">spc</span><span class="o">.</span><span class="n">Coords</span><span class="p">(</span><span class="n">GEOcoord</span><span class="p">,</span> <span class="s1">&#39;GEO&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="n">use_irbem</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">pos1</span> <span class="o">=</span> <span class="n">spc</span><span class="o">.</span><span class="n">Coords</span><span class="p">(</span><span class="n">GEOcoord</span><span class="p">,</span> <span class="s1">&#39;GEO&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="n">use_irbem</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="n">LS1</span> <span class="o">=</span> <span class="n">get_Lstar</span><span class="p">(</span><span class="n">ticks</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">pos1</span><span class="p">,</span> <span class="n">pa0</span><span class="p">,</span> <span class="n">extMag</span><span class="o">=</span><span class="n">extMag</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span> <span class="n">omnivals</span><span class="o">=</span><span class="n">omnivals</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">LS1</span><span class="p">[</span><span class="s1">&#39;Xj&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
                 <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">NaN</span>
@@ -1035,7 +1051,7 @@
 <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="find_footpoint"><a class="viewcode-back" href="../../../autosummary/spacepy.irbempy.find_footpoint.html#spacepy.irbempy.find_footpoint">[docs]</a><span class="k">def</span> <span class="nf">find_footpoint</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">loci</span><span class="p">,</span> <span class="n">extMag</span><span class="o">=</span><span class="s1">&#39;T01STORM&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
                    <span class="n">hemi</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="n">alt</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">omnivals</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    call find_foot_point1 from irbem library and return a dictionary with values for</span>
 <span class="sd">    Bmin and the GEO (cartesian) coordinates of the magnetic equator</span>
 
@@ -1118,18 +1134,14 @@
         <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Bfootvec&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">bfoot</span>
 
 
-    <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;Use of IRBEM to perform&#39;</span><span class="p">,</span>
-                                <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">,</span>
-                                <span class="n">module</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;spacepy.coordinates$&#39;</span><span class="p">)</span>
-        <span class="n">results</span><span class="p">[</span><span class="s1">&#39;loci&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spc</span><span class="o">.</span><span class="n">Coords</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;loci&#39;</span><span class="p">],</span> <span class="s1">&#39;GDZ&#39;</span><span class="p">,</span> <span class="s1">&#39;sph&#39;</span><span class="p">,</span> <span class="n">use_irbem</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;loci&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spc</span><span class="o">.</span><span class="n">Coords</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;loci&#39;</span><span class="p">],</span> <span class="s1">&#39;GDZ&#39;</span><span class="p">,</span> <span class="s1">&#39;sph&#39;</span><span class="p">,</span> <span class="n">use_irbem</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">results</span><span class="o">.</span><span class="n">attrs</span>
     <span class="k">return</span> <span class="n">results</span></div>
 
 
 <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="coord_trans"><a class="viewcode-back" href="../../../autosummary/spacepy.irbempy.coord_trans.html#spacepy.irbempy.coord_trans">[docs]</a><span class="k">def</span> <span class="nf">coord_trans</span><span class="p">(</span><span class="n">loci</span><span class="p">,</span> <span class="n">returntype</span><span class="p">,</span> <span class="n">returncarsph</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    thin layer to call coor_trans1 from irbem lib</span>
 <span class="sd">    this will convert between systems GDZ, GEO, GSM, GSE, SM, GEI, MAG, SPH, RLL</span>
 
@@ -1191,7 +1203,7 @@
 
 <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="get_dtype"><a class="viewcode-back" href="../../../autosummary/spacepy.irbempy.get_dtype.html#spacepy.irbempy.get_dtype">[docs]</a><span class="k">def</span> <span class="nf">get_dtype</span><span class="p">(</span><span class="n">sysaxes</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    will return the coordinate system type as string</span>
 
 <span class="sd">    Parameters</span>
@@ -1224,7 +1236,7 @@
 
 <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="get_AEP8"><a class="viewcode-back" href="../../../autosummary/spacepy.irbempy.get_AEP8.html#spacepy.irbempy.get_AEP8">[docs]</a><span class="k">def</span> <span class="nf">get_AEP8</span><span class="p">(</span><span class="n">energy</span><span class="p">,</span> <span class="n">loci</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="n">fluxtype</span><span class="o">=</span><span class="s1">&#39;diff&#39;</span><span class="p">,</span> <span class="n">particles</span><span class="o">=</span><span class="s1">&#39;e&#39;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    will return the flux from the AE8-AP8 model</span>
 
 <span class="sd">    Parameters</span>
@@ -1324,10 +1336,361 @@
     <span class="k">return</span> <span class="n">flux</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span></div>
 
 
+<div class="viewcode-block" id="Shieldose2"><a class="viewcode-back" href="../../../autosummary/spacepy.irbempy.Shieldose2.html#spacepy.irbempy.Shieldose2">[docs]</a><span class="k">class</span> <span class="nc">Shieldose2</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class for performing dose calculations using Shieldose2</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    .. versionadded:: 0.5.0</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import spacepy.irbempy</span>
+<span class="sd">    &gt;&gt;&gt; import spacepy.toolbox</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; dosemod = spacepy.irbempy.Shieldose2()</span>
+<span class="sd">    &gt;&gt;&gt; dosemod.set_shielding(depths=spacepy.toolbox.logspace(0.1, 15, 45), units=&#39;mm&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; e_spec = lambda E: 2*np.exp(-E/0.3)</span>
+<span class="sd">    &gt;&gt;&gt; e_grid = spacepy.toolbox.logspace(0.01, 10, 50)</span>
+<span class="sd">    &gt;&gt;&gt; dosemod.set_flux(e_spec(e_grid), e_grid, species=&#39;e&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; dosemod.get_dose(detector=10, nucmeth=3)</span>
+<span class="sd">    &gt;&gt;&gt; import spacepy.plot</span>
+<span class="sd">    &gt;&gt;&gt; spacepy.plot.style(&#39;spacepy&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; dosemod.plot_dose(source=[&#39;e&#39;])</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Shieldose2.__init__"><a class="viewcode-back" href="../../../autosummary/spacepy.irbempy.Shieldose2.html#spacepy.irbempy.Shieldose2.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">settings</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">()</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Settings for the dose calculation (`~spacepy.datamodel.SpaceData`).</span>
+<span class="sd">           Updated by `set_flux`, `set_shielding`, and `get_dose`.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">()</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Results of dose calculation from `get_dose`</span>
+<span class="sd">        (`~spacepy.datamodel.SpaceData`).</span>
+
+<span class="sd">        Keys are ``dose_proton_untrapped``,  ``dose_proton_trapped``,</span>
+<span class="sd">        ``dose_electron``, ``dose_bremsstrahlung``, ``dose_total``,</span>
+<span class="sd">        ``depths``, ``fluence_electron``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;calc_flag&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_shielding</span><span class="p">()</span>
+
+        <span class="k">def</span> <span class="nf">j_def</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">e_or_p</span><span class="o">=</span><span class="s1">&#39;e&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">e_or_p</span> <span class="o">==</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span>
+                <span class="n">j</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">E</span><span class="o">/</span><span class="mf">0.1</span><span class="p">)</span>  <span class="c1"># E in MeV</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">j</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">E</span><span class="o">/</span><span class="mi">20</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">j</span>
+
+        <span class="n">en_e_default</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mf">0.04</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+        <span class="n">en_p_default</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">299</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_flux</span><span class="p">(</span><span class="n">j_def</span><span class="p">(</span><span class="n">en_e_default</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">),</span> <span class="n">en_e_default</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_flux</span><span class="p">(</span><span class="n">j_def</span><span class="p">(</span><span class="n">en_p_default</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">),</span> <span class="n">en_p_default</span><span class="p">,</span> <span class="s1">&#39;p_tr&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_flux</span><span class="p">(</span><span class="mf">1e-6</span><span class="o">*</span><span class="n">j_def</span><span class="p">(</span><span class="n">en_p_default</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">),</span> <span class="n">en_p_default</span><span class="p">,</span> <span class="s1">&#39;p_un&#39;</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">ndepths</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;depths&#39;</span><span class="p">])</span>
+        <span class="n">calc</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;calc_flag&#39;</span><span class="p">]</span> <span class="k">else</span> <span class="s1">&#39; not &#39;</span>
+        <span class="n">settings</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Depths = </span><span class="si">{</span><span class="n">ndepths</span><span class="si">}</span><span class="s1">; Dose</span><span class="si">{</span><span class="n">calc</span><span class="si">}</span><span class="s1">calculated&#39;</span>
+        <span class="k">return</span> <span class="s1">&#39;&lt;Shieldose2(</span><span class="si">{}</span><span class="s1">)&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Display contents of container.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;attrs&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;verbose&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                  <span class="s1">&#39;spaces&#39;</span><span class="p">:</span> <span class="s1">&#39;     &#39;</span><span class="p">,</span> <span class="s1">&#39;print_out&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+        <span class="n">typestr</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">settings</span> <span class="o">=</span> <span class="s2">&quot;|____settings</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">tree</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="s2">&quot;|____results</span><span class="se">\n</span><span class="s2">&quot;</span>\
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">tree</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span><span class="si">{</span><span class="n">typestr</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">settings</span><span class="si">}{</span><span class="n">results</span><span class="si">}</span><span class="s2">&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">set_shielding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depths</span><span class="o">=</span><span class="n">tb</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span>
+                      <span class="n">units</span><span class="o">=</span><span class="s1">&#39;Mil&#39;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        depths : array-like</span>
+<span class="sd">            Array of layer depths (not thicknesses) in given units.</span>
+<span class="sd">            Must be monotonically increasing.</span>
+
+<span class="sd">        units : `str`</span>
+<span class="sd">            Options are &quot;mil&quot; (thousandths of a inch; default),</span>
+<span class="sd">            &quot;g/cm2&quot; (density), or &quot;mm&quot; (millimeters). The shielding</span>
+<span class="sd">            is assumed to be aluminium-equivalent.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">valid_units</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mil&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                       <span class="s1">&#39;g/cm2&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                       <span class="s1">&#39;mm&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+        <span class="k">if</span> <span class="n">units</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">valid_units</span><span class="p">:</span>
+            <span class="n">ulist</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">un</span> <span class="k">for</span> <span class="n">un</span> <span class="ow">in</span> <span class="n">valid_units</span><span class="o">.</span><span class="n">keys</span><span class="p">()])</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Units must be one of </span><span class="si">{</span><span class="n">ulist</span><span class="si">}</span><span class="s1">, not </span><span class="si">{</span><span class="n">units</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">usedepth</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmcopy</span><span class="p">(</span><span class="n">depths</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;depths&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">usedepth</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;depths&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;UNITS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">units</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;depthunit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">valid_units</span><span class="p">[</span><span class="n">units</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;calc_flag&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;calc_flag&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">set_flux</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flux</span><span class="p">,</span> <span class="n">energy</span><span class="p">,</span> <span class="n">species</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">mult</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the flux/fluence spectrum for a given incident species</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        flux : array-like</span>
+<span class="sd">            A 1D array of differential number fluxes</span>
+
+<span class="sd">        energy : array-like</span>
+<span class="sd">            A 1D array of energies (same length as flux)</span>
+
+<span class="sd">        species : `str`, optional</span>
+<span class="sd">            Code for supplied species. Options are: &#39;e&#39; (electrons);</span>
+<span class="sd">            &#39;p_tr&#39; (trapped protons); &#39;p_un&#39; (untrapped protons/solar</span>
+<span class="sd">            energetic protons)</span>
+
+<span class="sd">        tau : `int`, optional</span>
+<span class="sd">            Simulation interval in seconds. If flux input is given</span>
+<span class="sd">            and assumed constant over the interval, tau should be set</span>
+<span class="sd">            to the desired duration. If fluence input is given, this</span>
+<span class="sd">            should be set to 1 (default).</span>
+
+<span class="sd">        mult : `int`, optional</span>
+<span class="sd">            Multiplier to convert from [1/energy] to [1/MeV], if energies</span>
+<span class="sd">            are in keV and flux is [1/keV] then mult=1000. Default is 1.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;energy_</span><span class="si">{</span><span class="n">species</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">energy</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;flux_</span><span class="si">{</span><span class="n">species</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">flux</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">energy</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">flux</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Flux and energy arrays must have same length.&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;tau&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tau</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;unit_en&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mult</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;calc_flag&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;calc_flag&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">get_dose</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">detector</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">nucmeth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fluence</span><span class="o">=</span><span class="s1">&#39;NASA&#39;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate dose (given shielding/incident flux)</span>
+
+<span class="sd">        Shielding calculation results are stored in `results`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        detector : `int`, optional</span>
+<span class="sd">            Detector type, default is Silicon (type 3). Detector</span>
+<span class="sd">            materials options are: 1-Aluminium; 2-Graphite; 3-Silicon;</span>
+<span class="sd">            4-Air; 5-Bone; 6-Calcium Fluoride; 7-Gallium Arsenide;</span>
+<span class="sd">            8-Lithium Fluoride; 9-Silicon Dioxide; 10-Tissue; 11-Water</span>
+
+<span class="sd">        nucmeth : `int`, optional</span>
+<span class="sd">            Nuclear interactions settings. Option 1 (default), no nuclear</span>
+<span class="sd">            attenuation for protons in Al. 2. Nuclear attenuation, local</span>
+<span class="sd">            charged secondary energy deposition. 3. As 2. but with approx.</span>
+<span class="sd">            exponential distribution of neutron dose.</span>
+
+<span class="sd">        fluence : `str`, optional</span>
+<span class="sd">            If the detector type is Silicon, the results contain an</span>
+<span class="sd">            estimate of the integral fluence at each depth of shielding.</span>
+<span class="sd">            This is calculated from the Silicon dose with an empirical</span>
+<span class="sd">            conversion factor. The default is &#39;nasa&#39; (aka &#39;wenaas&#39;).</span>
+<span class="sd">            The other options are &#39;coakley&#39; and &#39;dictat&#39;. See appendix</span>
+<span class="sd">            C.4.1 of NASA-HDBK-4002 for details.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        Example calculation of dose-depth curve, compare to figure 3 in</span>
+<span class="sd">        https://www.vdl.afrl.af.mil/programs/ae9ap9/files/techreports/20160513_Aerospace_OBrien_ATR-2016-01756_effects_kernels.pdf</span>
+
+<span class="sd">        &gt;&gt;&gt; import spacepy.irbempy</span>
+<span class="sd">        &gt;&gt;&gt; import matplotlib.pyplot as plt</span>
+<span class="sd">        &gt;&gt;&gt; import spacepy.plot</span>
+<span class="sd">        &gt;&gt;&gt; spacepy.plot.style(&#39;default&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; dosemod = spacepy.irbempy.Shieldose2()</span>
+<span class="sd">        &gt;&gt;&gt; dosemod.get_dose()</span>
+<span class="sd">        &gt;&gt;&gt; dosemod.results.tree()</span>
+<span class="sd">        &gt;&gt;&gt; dosemod.plot_dose(source=[&#39;e&#39;, &#39;brems&#39;, &#39;p_un&#39;])</span>
+<span class="sd">        &gt;&gt;&gt; plt.show()</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;detector&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">detector</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;nucmeth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nucmeth</span>
+
+        <span class="n">detmat</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;Aluminium&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;Graphite&#39;</span><span class="p">,</span>
+                  <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;Silicon&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;Air&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="s1">&#39;Bone&#39;</span><span class="p">,</span>
+                  <span class="mi">6</span><span class="p">:</span> <span class="s1">&#39;Calcium Fluoride&#39;</span><span class="p">,</span>
+                  <span class="mi">7</span><span class="p">:</span> <span class="s1">&#39;Gallium Arsenide&#39;</span><span class="p">,</span>
+                  <span class="mi">8</span><span class="p">:</span> <span class="s1">&#39;Lithium Fluoride&#39;</span><span class="p">,</span>
+                  <span class="mi">9</span><span class="p">:</span> <span class="s1">&#39;Silicon Dioxide&#39;</span><span class="p">,</span>
+                  <span class="mi">10</span><span class="p">:</span> <span class="s1">&#39;Tissue&#39;</span><span class="p">,</span> <span class="mi">11</span><span class="p">:</span> <span class="s1">&#39;Water&#39;</span><span class="p">}</span>
+        <span class="k">if</span> <span class="n">detector</span> <span class="ow">in</span> <span class="n">detmat</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;detector_material&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">detmat</span><span class="p">[</span><span class="n">detector</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">opts</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">detmat</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+            <span class="n">optstr</span> <span class="o">=</span> <span class="s1">&#39;; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">opts</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Invalid detector option (</span><span class="si">{</span><span class="n">detector</span><span class="si">}</span><span class="s1">).&#39;</span> <span class="o">+</span>
+                             <span class="sa">f</span><span class="s1">&#39;Valid options are </span><span class="si">{</span><span class="n">optstr</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">expand_dict</span><span class="p">(</span><span class="n">argdict</span><span class="p">):</span>
+            <span class="n">argdict</span><span class="p">[</span><span class="s1">&#39;len_e&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">argdict</span><span class="p">[</span><span class="s1">&#39;energy_e&#39;</span><span class="p">])</span>
+            <span class="n">argdict</span><span class="p">[</span><span class="s1">&#39;jemax&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">argdict</span><span class="p">[</span><span class="s1">&#39;energy_e&#39;</span><span class="p">])</span>
+            <span class="n">argdict</span><span class="p">[</span><span class="s1">&#39;emine&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">argdict</span><span class="p">[</span><span class="s1">&#39;energy_e&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+            <span class="n">argdict</span><span class="p">[</span><span class="s1">&#39;emaxe&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">argdict</span><span class="p">[</span><span class="s1">&#39;energy_e&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+            <span class="n">argdict</span><span class="p">[</span><span class="s1">&#39;len_p&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">argdict</span><span class="p">[</span><span class="s1">&#39;energy_p_un&#39;</span><span class="p">])</span>
+            <span class="n">argdict</span><span class="p">[</span><span class="s1">&#39;jpmax&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">argdict</span><span class="p">[</span><span class="s1">&#39;energy_p_un&#39;</span><span class="p">])</span>
+            <span class="n">argdict</span><span class="p">[</span><span class="s1">&#39;jsmax&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">argdict</span><span class="p">[</span><span class="s1">&#39;energy_p_un&#39;</span><span class="p">])</span>
+            <span class="n">argdict</span><span class="p">[</span><span class="s1">&#39;eminpun&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">argdict</span><span class="p">[</span><span class="s1">&#39;energy_p_un&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+            <span class="n">argdict</span><span class="p">[</span><span class="s1">&#39;emaxpun&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">argdict</span><span class="p">[</span><span class="s1">&#39;energy_p_un&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+            <span class="n">argdict</span><span class="p">[</span><span class="s1">&#39;eminptr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">argdict</span><span class="p">[</span><span class="s1">&#39;energy_p_tr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+            <span class="n">argdict</span><span class="p">[</span><span class="s1">&#39;emaxptr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">argdict</span><span class="p">[</span><span class="s1">&#39;energy_p_tr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+            <span class="n">argdict</span><span class="p">[</span><span class="s1">&#39;ndepth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">argdict</span><span class="p">[</span><span class="s1">&#39;depths&#39;</span><span class="p">])</span>
+            <span class="k">return</span> <span class="n">argdict</span>
+
+        <span class="n">settings</span> <span class="o">=</span> <span class="n">expand_dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">)</span>
+
+        <span class="n">callorder</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;detector&#39;</span><span class="p">,</span> <span class="s1">&#39;nucmeth&#39;</span><span class="p">,</span> <span class="s1">&#39;ndepth&#39;</span><span class="p">,</span> <span class="s1">&#39;depthunit&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;depths&#39;</span><span class="p">,</span> <span class="s1">&#39;eminpun&#39;</span><span class="p">,</span> <span class="s1">&#39;emaxpun&#39;</span><span class="p">,</span> <span class="s1">&#39;eminptr&#39;</span><span class="p">,</span> <span class="s1">&#39;emaxptr&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;len_p&#39;</span><span class="p">,</span> <span class="s1">&#39;emine&#39;</span><span class="p">,</span> <span class="s1">&#39;emaxe&#39;</span><span class="p">,</span> <span class="s1">&#39;len_e&#39;</span><span class="p">,</span> <span class="s1">&#39;jsmax&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;jpmax&#39;</span><span class="p">,</span> <span class="s1">&#39;jemax&#39;</span><span class="p">,</span> <span class="s1">&#39;unit_en&#39;</span><span class="p">,</span> <span class="s1">&#39;tau&#39;</span><span class="p">]</span>
+        <span class="c1"># Add items in order required for IRBEMlib call</span>
+        <span class="n">call</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">callorder</span><span class="p">:</span>
+            <span class="n">call</span><span class="p">[</span><span class="n">value</span><span class="p">]</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="c1"># fix array inputs</span>
+        <span class="n">dpad</span> <span class="o">=</span> <span class="mi">71</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">call</span><span class="p">[</span><span class="s1">&#39;depths&#39;</span><span class="p">])</span>
+        <span class="n">call</span><span class="p">[</span><span class="s1">&#39;depths&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">call</span><span class="p">[</span><span class="s1">&#39;depths&#39;</span><span class="p">],</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dpad</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">)</span>
+        <span class="n">esin</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;energy_p_un&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">epin</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;energy_p_tr&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">eein</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;energy_e&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">ppad</span> <span class="o">=</span> <span class="mi">301</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">epin</span><span class="p">)</span>
+        <span class="n">epad</span> <span class="o">=</span> <span class="mi">301</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">eein</span><span class="p">)</span>
+        <span class="n">call</span><span class="p">[</span><span class="s1">&#39;energy_s&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">esin</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ppad</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">)</span>
+        <span class="n">call</span><span class="p">[</span><span class="s1">&#39;flux_p_un&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;flux_p_tr&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">call</span><span class="p">[</span><span class="s1">&#39;flux_p_un&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">call</span><span class="p">[</span><span class="s1">&#39;flux_p_un&#39;</span><span class="p">],</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ppad</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">)</span>
+        <span class="n">call</span><span class="p">[</span><span class="s1">&#39;energy_p&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">epin</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ppad</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">)</span>
+        <span class="n">call</span><span class="p">[</span><span class="s1">&#39;flux_p_tr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;flux_p_tr&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">call</span><span class="p">[</span><span class="s1">&#39;flux_p_tr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">call</span><span class="p">[</span><span class="s1">&#39;flux_p_tr&#39;</span><span class="p">],</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ppad</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">)</span>
+        <span class="n">call</span><span class="p">[</span><span class="s1">&#39;energy_e&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">eein</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">epad</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">)</span>
+        <span class="n">call</span><span class="p">[</span><span class="s1">&#39;flux_e&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;flux_e&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">call</span><span class="p">[</span><span class="s1">&#39;flux_e&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">call</span><span class="p">[</span><span class="s1">&#39;flux_e&#39;</span><span class="p">],</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">epad</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">)</span>
+        <span class="n">dose_tup</span> <span class="o">=</span> <span class="n">oplib</span><span class="o">.</span><span class="n">shieldose2</span><span class="p">(</span><span class="o">*</span><span class="n">call</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="c1"># Now flag results as generated</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;calc_flag&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1"># calculate shielded integral fluence from Dose-Si</span>
+        <span class="c1"># see appendix C.4.1 of NASA-HDBK-4002</span>
+        <span class="n">fl_convert</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;nasa&#39;</span><span class="p">:</span> <span class="mf">2.4e7</span><span class="p">,</span>
+                      <span class="s1">&#39;coakley&#39;</span><span class="p">:</span> <span class="mf">5e7</span><span class="p">,</span>
+                      <span class="s1">&#39;dictat&#39;</span><span class="p">:</span> <span class="mf">3.3e7</span><span class="p">}</span>
+        <span class="n">fl_convert</span><span class="p">[</span><span class="s1">&#39;wenaas&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fl_convert</span><span class="p">[</span><span class="s1">&#39;nasa&#39;</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="n">outdict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">results</span>
+        <span class="n">nd</span> <span class="o">=</span> <span class="n">call</span><span class="p">[</span><span class="s1">&#39;ndepth&#39;</span><span class="p">]</span>
+        <span class="n">outdict</span><span class="p">[</span><span class="s1">&#39;dose_proton_untrapped&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmarray</span><span class="p">(</span><span class="n">dose_tup</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="n">nd</span><span class="p">,</span> <span class="p">:])</span>
+        <span class="n">outdict</span><span class="p">[</span><span class="s1">&#39;dose_proton_trapped&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmarray</span><span class="p">(</span><span class="n">dose_tup</span><span class="p">[</span><span class="mi">1</span><span class="p">][:</span><span class="n">nd</span><span class="p">,</span> <span class="p">:])</span>
+        <span class="n">outdict</span><span class="p">[</span><span class="s1">&#39;dose_electron&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmarray</span><span class="p">(</span><span class="n">dose_tup</span><span class="p">[</span><span class="mi">2</span><span class="p">][:</span><span class="n">nd</span><span class="p">,</span> <span class="p">:])</span>
+        <span class="n">outdict</span><span class="p">[</span><span class="s1">&#39;dose_bremsstrahlung&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmarray</span><span class="p">(</span><span class="n">dose_tup</span><span class="p">[</span><span class="mi">3</span><span class="p">][:</span><span class="n">nd</span><span class="p">,</span> <span class="p">:])</span>
+        <span class="n">outdict</span><span class="p">[</span><span class="s1">&#39;dose_total&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmarray</span><span class="p">(</span><span class="n">dose_tup</span><span class="p">[</span><span class="mi">4</span><span class="p">][:</span><span class="n">nd</span><span class="p">,</span> <span class="p">:])</span>
+        <span class="n">outdict</span><span class="p">[</span><span class="s1">&#39;depths&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;depths&#39;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">detector</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">cfac</span> <span class="o">=</span> <span class="n">fl_convert</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">fluence</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">fl_convert</span><span class="p">[</span><span class="s1">&#39;nasa&#39;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">fluence</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">fl_convert</span><span class="p">:</span>
+                <span class="n">wstr</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">fluence</span><span class="si">}</span><span class="s1"> not a supported fluence model. Defaulting to NASA.&#39;</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">wstr</span><span class="p">)</span>
+            <span class="n">outdict</span><span class="p">[</span><span class="s1">&#39;fluence_electron&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmarray</span><span class="p">(</span><span class="n">outdict</span><span class="p">[</span><span class="s1">&#39;dose_electron&#39;</span><span class="p">]</span>
+                                                     <span class="o">*</span> <span class="n">cfac</span><span class="p">)</span>
+            <span class="n">ftext</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Fluence calculated from Dose-Si using </span><span class="si">{</span><span class="n">fluence</span><span class="si">}</span><span class="s1"> model&#39;</span>
+            <span class="n">outdict</span><span class="p">[</span><span class="s1">&#39;fluence_electron&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;NOTES&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ftext</span>
+
+    <span class="k">def</span> <span class="nf">plot_dose</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;brems&#39;</span><span class="p">,</span> <span class="s1">&#39;p_tr&#39;</span><span class="p">,</span> <span class="s1">&#39;p_un&#39;</span><span class="p">],</span>
+                  <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span> <span class="n">add_legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Make plot of dose versus depth for contributing sources</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        source : `list` of `str`</span>
+<span class="sd">            List of dose contributions to plot. Supported options are:</span>
+<span class="sd">            e (electrons); brems (Bremsstrahlung); p_tr (trapped</span>
+<span class="sd">            protons); p_un (untrapped protons); tot (total dose). If</span>
+<span class="sd">            both &#39;e&#39; and &#39;brems&#39; are present in the list they will be</span>
+<span class="sd">            summed and plotted.</span>
+
+<span class="sd">        target : `matplotlib.axes.Axes` or `matplotlib.figure.Figure`, optional</span>
+<span class="sd">            The target object for plotting. Default is to create a new</span>
+<span class="sd">            figure with a single subplot. If ``Axes``, will draw into</span>
+<span class="sd">            that subplot (and will not draw a legend or figure title);</span>
+<span class="sd">            if ``Figure``, will make a single subplot (and not set</span>
+<span class="sd">            figure title). Handled by `~.plot.utils.set_target`.</span>
+
+<span class="sd">        loc : `int`, optional</span>
+<span class="sd">            The subplot triple that specifies the location of the axes object.</span>
+<span class="sd">            Defaults to matplotlib default (111).</span>
+
+<span class="sd">        add_legend : `bool`</span>
+<span class="sd">            If True (default) add a legend to the figure.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">spacepy.plot.utils</span> <span class="kn">import</span> <span class="n">set_target</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">set_target</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">)</span>
+        <span class="n">linesets</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">results</span>
+        <span class="n">geometries</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Semi-Inf Slab&#39;</span><span class="p">,</span> <span class="s1">&#39;Finite Slab&#39;</span><span class="p">,</span> <span class="s1">&#39;Spherical&#39;</span><span class="p">]</span>
+        <span class="n">pls</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="s1">&#39;dashdot&#39;</span><span class="p">,</span> <span class="s1">&#39;dashed&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;e&#39;</span> <span class="ow">in</span> <span class="n">source</span><span class="p">:</span>
+            <span class="n">plotvar</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmcopy</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;dose_electron&#39;</span><span class="p">])</span>
+            <span class="n">plab</span> <span class="o">=</span> <span class="s1">&#39;Electrons&#39;</span>
+            <span class="k">if</span> <span class="s1">&#39;brems&#39;</span> <span class="ow">in</span> <span class="n">source</span><span class="p">:</span>
+                <span class="n">plotvar</span> <span class="o">=</span> <span class="n">plotvar</span> <span class="o">+</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;dose_bremsstrahlung&#39;</span><span class="p">]</span>
+                <span class="n">plab</span> <span class="o">=</span> <span class="n">plab</span> <span class="o">+</span> <span class="s1">&#39; (incl. Bremsstrahlung)&#39;</span>
+            <span class="k">for</span> <span class="n">gidx</span><span class="p">,</span> <span class="n">geometry</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">geometries</span><span class="p">):</span>
+                <span class="n">ulab</span> <span class="o">=</span> <span class="n">plab</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">geometry</span><span class="p">)</span>
+                <span class="n">linesets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;depths&#39;</span><span class="p">],</span> <span class="n">plotvar</span><span class="p">[:,</span> <span class="n">gidx</span><span class="p">],</span>
+                                <span class="n">ls</span><span class="o">=</span><span class="n">pls</span><span class="p">[</span><span class="n">gidx</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">ulab</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="s1">&#39;brems&#39;</span> <span class="ow">in</span> <span class="n">source</span><span class="p">:</span>
+            <span class="c1"># in case brems is given, but not &#39;e&#39;</span>
+            <span class="n">plotvar</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;dose_bremsstrahlung&#39;</span><span class="p">]</span>
+            <span class="n">plab</span> <span class="o">=</span> <span class="s1">&#39;Bremsstrahlung&#39;</span>
+            <span class="k">for</span> <span class="n">gidx</span><span class="p">,</span> <span class="n">geometry</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">geometries</span><span class="p">):</span>
+                <span class="n">ulab</span> <span class="o">=</span> <span class="n">plab</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">geometry</span><span class="p">)</span>
+                <span class="n">linesets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;depths&#39;</span><span class="p">],</span> <span class="n">plotvar</span><span class="p">[:,</span> <span class="n">gidx</span><span class="p">],</span>
+                                <span class="n">ls</span><span class="o">=</span><span class="n">pls</span><span class="p">[</span><span class="n">gidx</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">ulab</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+        <span class="k">if</span> <span class="s1">&#39;p_tr&#39;</span> <span class="ow">in</span> <span class="n">source</span><span class="p">:</span>
+            <span class="n">plotvar</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmcopy</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;dose_proton_trapped&#39;</span><span class="p">])</span>
+            <span class="n">plab</span> <span class="o">=</span> <span class="s1">&#39;Protons (trapped)&#39;</span>
+            <span class="k">for</span> <span class="n">gidx</span><span class="p">,</span> <span class="n">geometry</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">geometries</span><span class="p">):</span>
+                <span class="n">ulab</span> <span class="o">=</span> <span class="n">plab</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">geometry</span><span class="p">)</span>
+                <span class="n">linesets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;depths&#39;</span><span class="p">],</span> <span class="n">plotvar</span><span class="p">[:,</span> <span class="n">gidx</span><span class="p">],</span>
+                                <span class="n">ls</span><span class="o">=</span><span class="n">pls</span><span class="p">[</span><span class="n">gidx</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">ulab</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+        <span class="k">if</span> <span class="s1">&#39;p_un&#39;</span> <span class="ow">in</span> <span class="n">source</span><span class="p">:</span>
+            <span class="n">plotvar</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmcopy</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;dose_proton_untrapped&#39;</span><span class="p">])</span>
+            <span class="n">plab</span> <span class="o">=</span> <span class="s1">&#39;Protons (untrapped)&#39;</span>
+            <span class="k">for</span> <span class="n">gidx</span><span class="p">,</span> <span class="n">geometry</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">geometries</span><span class="p">):</span>
+                <span class="n">ulab</span> <span class="o">=</span> <span class="n">plab</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">geometries</span><span class="p">[</span><span class="n">gidx</span><span class="p">])</span>
+                <span class="n">linesets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;depths&#39;</span><span class="p">],</span> <span class="n">plotvar</span><span class="p">[:,</span> <span class="n">gidx</span><span class="p">],</span>
+                                <span class="n">ls</span><span class="o">=</span><span class="n">pls</span><span class="p">[</span><span class="n">gidx</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">ulab</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+        <span class="k">if</span> <span class="s1">&#39;tot&#39;</span> <span class="ow">in</span> <span class="n">source</span><span class="p">:</span>
+            <span class="n">plotvar</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmcopy</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;dose_total&#39;</span><span class="p">])</span>
+            <span class="n">plab</span> <span class="o">=</span> <span class="s1">&#39;Total&#39;</span>
+            <span class="k">for</span> <span class="n">gidx</span><span class="p">,</span> <span class="n">geometry</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">geometries</span><span class="p">):</span>
+                <span class="n">ulab</span> <span class="o">=</span> <span class="n">plab</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">geometries</span><span class="p">[</span><span class="n">gidx</span><span class="p">])</span>
+                <span class="n">linesets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;depths&#39;</span><span class="p">],</span> <span class="n">plotvar</span><span class="p">[:,</span> <span class="n">gidx</span><span class="p">],</span>
+                                <span class="n">ls</span><span class="o">=</span><span class="n">pls</span><span class="p">[</span><span class="n">gidx</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">ulab</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">add_legend</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Depth [</span><span class="si">{}</span><span class="s1">]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;depths&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;UNITS&#39;</span><span class="p">]))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Dose [</span><span class="si">{}</span><span class="s1">]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;detector_material&#39;</span><span class="p">]))</span>
+
+        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">linesets</span></div>
+
+
 <span class="c1"># -----------------------------------------------</span>
 <span class="k">def</span> <span class="nf">_get_Lstar</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">loci</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">extMag</span><span class="o">=</span><span class="s1">&#39;T01STORM&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
                <span class="n">omnivals</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">landi2lstar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This will call make_lstar1 or make_lstar_shell_splitting_1 from the irbem library</span>
 <span class="sd">    and will lookup omni values for given time if not provided (optional). If pitch angles</span>
 <span class="sd">    are provided, drift shell splitting will be calculated and &quot;Bmirr&quot; will be returned. If they</span>
@@ -1489,7 +1852,7 @@
 
 <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="get_Lm"><a class="viewcode-back" href="../../../autosummary/spacepy.irbempy.get_Lm.html#spacepy.irbempy.get_Lm">[docs]</a><span class="k">def</span> <span class="nf">get_Lm</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">loci</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">extMag</span><span class="o">=</span><span class="s1">&#39;T01STORM&#39;</span><span class="p">,</span> <span class="n">intMag</span><span class="o">=</span><span class="s1">&#39;IGRF&#39;</span><span class="p">,</span> <span class="n">IGRFset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">omnivals</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return the MacIlwain L value for a given location, time and model</span>
 
 <span class="sd">    Parameters</span>
@@ -1545,7 +1908,7 @@
 <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="get_Lstar"><a class="viewcode-back" href="../../../autosummary/spacepy.irbempy.get_Lstar.html#spacepy.irbempy.get_Lstar">[docs]</a><span class="k">def</span> <span class="nf">get_Lstar</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">loci</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">extMag</span><span class="o">=</span><span class="s1">&#39;T01STORM&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
               <span class="n">omnivals</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">landi2lstar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This will call make_lstar1 or make_lstar_shell_splitting_1 from the irbem library</span>
 <span class="sd">    and will lookup omni values for given time if not provided (optional). If pitch angles</span>
 <span class="sd">    are provided, drift shell splitting will be calculated and &quot;Bmirr&quot; will be returned. If they</span>
@@ -1658,7 +2021,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">get_ov</span><span class="p">(</span><span class="n">fullov</span><span class="p">,</span> <span class="n">stind</span><span class="p">,</span> <span class="n">enind</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;Chop up omni data for multiprocessing&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Chop up omni data for multiprocessing&#39;&#39;&#39;</span>
         <span class="n">out</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">()</span>
         <span class="n">keylist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">fullov</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
         <span class="n">dum</span> <span class="o">=</span> <span class="n">keylist</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">keylist</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;Qbits&#39;</span><span class="p">))</span> <span class="k">if</span> <span class="s1">&#39;Qbits&#39;</span> <span class="ow">in</span> <span class="n">keylist</span> <span class="k">else</span> <span class="kc">None</span>
@@ -1671,7 +2034,7 @@
         <span class="k">return</span> <span class="n">out</span>
 
     <span class="k">def</span> <span class="nf">reassemble</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;Reassemble the results from the multiprocessing&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Reassemble the results from the multiprocessing&#39;&#39;&#39;</span>
         <span class="n">funcs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Bmin&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">,</span>
                  <span class="s1">&#39;Blocal&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">,</span>
                  <span class="s1">&#39;Bmirr&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">,</span>
@@ -1739,7 +2102,7 @@
 
 
 <span class="k">def</span> <span class="nf">_multi_get_Lstar</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">ticks</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">loci</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -1755,7 +2118,7 @@
 
 <span class="c1"># -----------------------------------------------</span>
 <div class="viewcode-block" id="prep_irbem"><a class="viewcode-back" href="../../../autosummary/spacepy.irbempy.prep_irbem.html#spacepy.irbempy.prep_irbem">[docs]</a><span class="k">def</span> <span class="nf">prep_irbem</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loci</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="p">[],</span> <span class="n">extMag</span><span class="o">=</span><span class="s1">&#39;T01STORM&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">omnivals</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Prepare inputs for direct IRBEM-LIB calls. Not expected to be called by the user.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># setup dictionary to return input values for irbem</span>
@@ -1845,11 +2208,7 @@
         <span class="c1"># Convert car -&gt; sph or vice versa as required</span>
         <span class="n">newcarsph</span> <span class="o">=</span> <span class="p">[</span><span class="n">key</span> <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span> <span class="ow">in</span> <span class="n">spc</span><span class="o">.</span><span class="n">SYSAXES_TYPES</span><span class="p">[</span><span class="n">loci</span><span class="o">.</span><span class="n">dtype</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
                      <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-        <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
-            <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;Use of IRBEM to perform&#39;</span><span class="p">,</span>
-                                    <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">,</span>
-                                    <span class="n">module</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;spacepy.coordinates$&#39;</span><span class="p">)</span>
-            <span class="n">posi</span> <span class="o">=</span> <span class="n">loci</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">loci</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">newcarsph</span><span class="p">)</span>
+        <span class="n">posi</span> <span class="o">=</span> <span class="n">loci</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">loci</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">newcarsph</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">posi</span> <span class="o">=</span> <span class="n">loci</span>
     <span class="n">d</span><span class="p">[</span><span class="s1">&#39;sysaxes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">posi</span><span class="o">.</span><span class="n">sysaxes</span>
@@ -1918,7 +2277,7 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

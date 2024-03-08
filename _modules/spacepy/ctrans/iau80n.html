@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.ctrans.iau80n &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.ctrans.iau80n &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
@@ -203,7 +203,7 @@
 <span class="sd">&quot;&quot;&quot;IAU 1980 nutation coefficients&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="nutation"><a class="viewcode-back" href="../../../autosummary/spacepy.ctrans.iau80n.nutation.html#spacepy.ctrans.iau80n.nutation">[docs]</a><span class="k">def</span> <span class="nf">nutation</span><span class="p">(</span><span class="n">TT_JC</span><span class="p">,</span> <span class="n">const</span><span class="p">,</span> <span class="n">nTerms</span><span class="o">=</span><span class="mi">106</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;Calculate dPsi and dEps for IAU80 nutation model&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Calculate dPsi and dEps for IAU80 nutation model&#39;&#39;&#39;</span>
     <span class="n">nl</span> <span class="o">=</span> <span class="n">coeff80</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="n">nlp</span> <span class="o">=</span> <span class="n">coeff80</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="n">nf</span> <span class="o">=</span> <span class="n">coeff80</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
@@ -283,7 +283,7 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

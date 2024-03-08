@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.pycdf.concatCDF &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.pycdf.concatCDF &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -108,7 +108,7 @@ variance.)</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>cdfs</strong><span class="classifier">list of <a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-class docutils literal notranslate"><span class="pre">Var</span></code></a></span></dt><dd><p>Open CDFs, will be read from in order. Must be a list (cannot
+<dt><strong>cdfs</strong><span class="classifier">list of <a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Var</span></code></a></span></dt><dd><p>Open CDFs, will be read from in order. Must be a list (cannot
 be an iterable, as all files need to be open).</p>
 </dd>
 <dt><strong>varnames</strong><span class="classifier">list of str</span></dt><dd><p>Names of variables to read (default: all variables in first CDF)</p>
@@ -120,7 +120,7 @@ Default False.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><a class="reference internal" href="spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData" title="spacepy.datamodel.SpaceData"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpaceData</span></code></a></dt><dd><p>data concatenated from each CDF, with all attributes from first.
+<dt><a class="reference internal" href="spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData" title="spacepy.datamodel.SpaceData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpaceData</span></code></a></dt><dd><p>data concatenated from each CDF, with all attributes from first.
 Non-record-varying data is also only from first, and record
 variance is only checked on the first!</p>
 </dd>
@@ -172,7 +172,7 @@ CDFs are closed when their variable goes out of scope.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

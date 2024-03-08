@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.plot.spectrogram &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.plot.spectrogram &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
@@ -124,6 +124,7 @@
 <span class="kn">import</span> <span class="nn">matplotlib.axes</span>
 <span class="kn">import</span> <span class="nn">matplotlib.collections</span> <span class="k">as</span> <span class="nn">mcoll</span>
 <span class="kn">from</span> <span class="nn">matplotlib.dates</span> <span class="kn">import</span> <span class="n">date2num</span><span class="p">,</span> <span class="n">num2date</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span>
 <span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LogNorm</span>
 <span class="kn">import</span> <span class="nn">matplotlib.transforms</span> <span class="k">as</span> <span class="nn">mtransforms</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -137,7 +138,7 @@
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Spectrogram&#39;</span><span class="p">,</span> <span class="s1">&#39;simpleSpectrogram&#39;</span><span class="p">]</span>
 
 <div class="viewcode-block" id="Spectrogram"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.Spectrogram.html#spacepy.plot.spectrogram.Spectrogram">[docs]</a><span class="k">class</span> <span class="nc">Spectrogram</span><span class="p">(</span><span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This class rebins data to produce a 2D data map that can be plotted as a spectrogram</span>
 
 <span class="sd">    It is meant to be used on arbitrary data series.  The first series &quot;x&quot; is</span>
@@ -197,7 +198,7 @@
 
 <span class="sd">        ~Spectrogram.plot</span>
 
-<span class="sd">    .. automethod:: plot</span>
+<span class="sd">    .. automethod:: Spectrogram.plot</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -208,7 +209,7 @@
 
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Spectrogram</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="c1">## setup a default dictionary to step through to set values from kwargs</span>
@@ -313,7 +314,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_computeSpec</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_computeSpec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Method operates on the input data to bin up the spectrogram and adds it</span>
 <span class="sd">        to the Spectrogram class data</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -411,7 +412,7 @@
             <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;spectrogram&#39;</span><span class="p">][</span><span class="s1">&#39;sum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">overall_sum</span>
 
     <span class="k">def</span> <span class="nf">add_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Add another SpaceData with same keys, etc. to Spectrogram instance</span>
 
 <span class="sd">        Examples</span>
@@ -445,8 +446,8 @@
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;spectrogram&#39;</span><span class="p">][</span><span class="s1">&#39;sum&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">b</span><span class="p">[</span><span class="s1">&#39;spectrogram&#39;</span><span class="p">][</span><span class="s1">&#39;sum&#39;</span><span class="p">]</span>
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;spectrogram&#39;</span><span class="p">][</span><span class="s1">&#39;spectrogram&#39;</span><span class="p">][</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;spectrogram&#39;</span><span class="p">][</span><span class="s1">&#39;sum&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;spectrogram&#39;</span><span class="p">][</span><span class="s1">&#39;count&#39;</span><span class="p">])</span>
 
-<div class="viewcode-block" id="Spectrogram.plot"><a class="viewcode-back" href="../../../autosummary/autosummary/spacepy.plot.spectrogram.Spectrogram.html#spacepy.plot.spectrogram.Spectrogram.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Spectrogram.plot"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.Spectrogram.html#spacepy.plot.spectrogram.Spectrogram.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Plot the spectrogram</span>
 
 <span class="sd">        Other Parameters</span>
@@ -560,7 +561,7 @@
         <span class="k">return</span> <span class="n">ax</span></div>
 
     <span class="k">def</span> <span class="nf">vslice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        slice a spectrogram at a given position along the x axis, maintains</span>
 <span class="sd">        variable names from spectrogram</span>
 
@@ -586,7 +587,7 @@
         <span class="k">return</span> <span class="n">ans</span>
 
     <span class="k">def</span> <span class="nf">hslice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        slice a spectrogram at a given position along the y axis, maintains</span>
 <span class="sd">        variable names from spectrogram</span>
 
@@ -612,7 +613,7 @@
         <span class="k">return</span> <span class="n">ans</span>
 
     <span class="k">def</span> <span class="nf">_set_ticks_to_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">xy</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        given the axis change the ticks to times</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">timeFmt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">plotSettings</span><span class="p">[</span><span class="s1">&#39;DateFormatter&#39;</span><span class="p">]</span>
@@ -636,7 +637,7 @@
 
 
 <div class="viewcode-block" id="simpleSpectrogram"><a class="viewcode-back" href="../../../autosummary/autosummary/spacepy.plot.spectrogram.simpleSpectrogram.html#spacepy.plot.spectrogram.simpleSpectrogram">[docs]</a><span class="k">def</span> <span class="nf">simpleSpectrogram</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Plot a spectrogram given Z or X,Y,Z. This is a wrapper around pcolormesh()</span>
 <span class="sd">    that can handle Y being a 2d array of time dependent bins. Like in the</span>
 <span class="sd">    Van Allen Probes HOPE and MagEIS data files.</span>
@@ -644,10 +645,11 @@
 <span class="sd">    Parameters</span>
 <span class="sd">    ==========</span>
 <span class="sd">    *args : 1 or 3 arraylike</span>
+
 <span class="sd">        Call Signatures::</span>
 
-<span class="sd">        simpleSpectrogram(Z, **kwargs)</span>
-<span class="sd">        simpleSpectrogram(X, Y, Z, **kwargs)</span>
+<span class="sd">            simpleSpectrogram(Z, **kwargs)</span>
+<span class="sd">            simpleSpectrogram(X, Y, Z, **kwargs)</span>
 
 <span class="sd">    Other Parameters</span>
 <span class="sd">    ================</span>
@@ -669,6 +671,12 @@
 <span class="sd">        Plot a colorbar (default: True)</span>
 <span class="sd">    cbtitle : string</span>
 <span class="sd">        Label to go on the colorbar (default: None)</span>
+<span class="sd">    zero_valid : bool</span>
+<span class="sd">        Treat zero as a valid value on zlog plots and use same color as</span>
+<span class="sd">        other under-minimum values. No effect with linear colorbar.</span>
+<span class="sd">        (default: False, draw as fill)</span>
+
+<span class="sd">        .. versionadded:: 0.5.0</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    =======</span>
@@ -705,6 +713,7 @@
 
     <span class="c1"># deal with all the default keywords</span>
     <span class="n">zlog</span>    <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;zlog&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">zero_valid</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;zero_valid&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
     <span class="n">ylog</span>    <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;ylog&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
     <span class="n">alpha</span>   <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;alpha&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">cmap</span>    <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;cmap&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
@@ -720,21 +729,23 @@
         <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">fig</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_figure</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">zlog</span> <span class="ow">and</span> <span class="n">zero_valid</span><span class="p">:</span>
+        <span class="n">Z</span><span class="p">[</span><span class="n">Z</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">vmin</span> <span class="o">/</span> <span class="mf">2.</span>
     <span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">filled</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">Norm</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">LogNorm</span> <span class="k">if</span> <span class="n">zlog</span> <span class="k">else</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">yy</span> <span class="ow">in</span> <span class="n">Y_uniq</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">yy</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Y_uniq</span><span class="p">):</span>
             <span class="c1"># which indices in X have these values</span>
             <span class="n">ind</span> <span class="o">=</span> <span class="p">(</span><span class="n">yy</span> <span class="o">==</span> <span class="n">Y_orig</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">Y_orig</span><span class="p">[</span><span class="n">ind</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">Y_orig</span><span class="p">[</span><span class="n">ind</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
-            <span class="n">Y_tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">Y_orig</span><span class="p">)</span>
-            <span class="n">Y_tmp</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">Y_orig</span><span class="p">[</span><span class="n">ind</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">Y_tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">Y_orig</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">Y</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+            <span class="n">Y_tmp</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
             <span class="n">Z_tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
             <span class="n">Z_tmp</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">Z</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
             <span class="n">pc</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y_tmp</span><span class="p">[</span><span class="n">ind</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">Z_tmp</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
-                               <span class="n">norm</span><span class="o">=</span><span class="n">LogNorm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span>
+                               <span class="n">norm</span><span class="o">=</span><span class="n">Norm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span>
                                <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">pc</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">LogNorm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">),</span>
+        <span class="n">pc</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">Norm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">),</span>
                            <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span>
                            <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">ylog</span><span class="p">:</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
@@ -773,7 +784,7 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

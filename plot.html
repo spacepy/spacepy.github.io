@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>plot - Plot, various specialized plotting functions and associated utilities &#8212; SpacePy v0.4.1 Manual</title>
+    <title>plot - Plot, various specialized plotting functions and associated utilities &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -104,10 +104,14 @@ It provides classes and functions for different types of plot
 information more cleanly, with less effort 
 (e.g. applySmartTimeTicks, style).</p>
 <p>This plot module now provides style sheets. For most standard plotting 
-we recommend the <em>default</em> style sheet (aka <em>spacepy</em>). To auto-apply the
-default plot style the following should be added to your spacepy.rc file:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apply_plot_styles</span><span class="p">:</span> <span class="kc">True</span>
+we recommend the <em>default</em> style sheet (aka <em>spacepy</em>). To apply the
+default plot style, use the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">spacepy.plot</span> <span class="k">as</span> <span class="nn">splot</span>
+<span class="n">splot</span><span class="o">.</span><span class="n">style</span><span class="p">()</span>
 </pre></div>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.5.0: </span>Plot styles are no longer applied automatically.</p>
 </div>
 <p>Different plot types may not work well with this style, so we have provided
 alternatives. For polar plots, spectrograms, or anything with larger blocks 
@@ -223,7 +227,7 @@ several submodules listed below</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

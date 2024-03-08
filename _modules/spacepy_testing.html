@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy_testing &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy_testing &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -81,6 +81,7 @@
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">sysconfig</span>
+<span class="kn">import</span> <span class="nn">unittest</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 
 
@@ -92,15 +93,20 @@
 
 
 <div class="viewcode-block" id="add_build_to_path"><a class="viewcode-back" href="../autosummary/spacepy_testing.add_build_to_path.html#spacepy_testing.add_build_to_path">[docs]</a><span class="k">def</span> <span class="nf">add_build_to_path</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Adds the python build directory to the search path.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds the python build directory to the search path.</span>
 
 <span class="sd">    Locates the build directory in the same repository as this test module</span>
 <span class="sd">    and adds the (version-specific) library directories to the Python</span>
 <span class="sd">    module search path, so the unit tests can be run against the built</span>
 <span class="sd">    instead of installed version.</span>
 
-<span class="sd">    This is run on import of this module.</span>
+<span class="sd">    .. deprecated:: 0.5.0</span>
+<span class="sd">        The new pip-based installation method does not support a separate</span>
+<span class="sd">        &quot;build&quot; step, so this function is no longer useful. When developing,</span>
+<span class="sd">        either install to a custom location and manually set the path, or</span>
+<span class="sd">        use an editable install.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;add_build_to_path deprecated in 0.5.0&#39;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">)</span>
     <span class="c1"># Prioritize version-specific path; py2 tends to be version-specific</span>
     <span class="c1"># and py3 tends to use just &quot;lib&quot;. But only use first-matching.</span>
     <span class="k">for</span> <span class="n">pth</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;lib&#39;</span><span class="p">,</span>  <span class="c1"># Prepending, so add low-priority paths first.</span>
@@ -115,7 +121,7 @@
 
 
 <div class="viewcode-block" id="assertWarns"><a class="viewcode-back" href="../autosummary/spacepy_testing.assertWarns.html#spacepy_testing.assertWarns">[docs]</a><span class="k">class</span> <span class="nc">assertWarns</span><span class="p">(</span><span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Tests that a warning is raised.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tests that a warning is raised.</span>
 
 <span class="sd">    Use as a context manager.  Code within the context manager block</span>
 <span class="sd">    will be executed and, on exit from the block, all warnings issued</span>
@@ -147,17 +153,12 @@
 <span class="sd">        The test case from which this is being called, almost always</span>
 <span class="sd">        ``self`` (so the :meth:`~unittest.TestCase.fail` method is available).</span>
 
-<span class="sd">    action : {&#39;always&#39;, ``None``, &#39;default&#39;, &#39;error&#39;, &#39;ignore&#39;, &#39;module&#39;,</span>
-<span class="sd">              &#39;once&#39;}</span>
+<span class="sd">    action : {&#39;always&#39;, ``None``, &#39;default&#39;, &#39;error&#39;, &#39;ignore&#39;, &#39;module&#39;, &#39;once&#39;}</span>
 <span class="sd">        Unless ``None``, a warning filter matching the specified warning will</span>
 <span class="sd">        be added to the filter before executing the block. &#39;always&#39;</span>
 <span class="sd">        (default) is generally recommended to make sure the tested</span>
-<span class="sd">        warning will be raised. If &#39;always&#39; is specified, on Python 2 the log</span>
-<span class="sd">        of previously-issued warnings will be edited to work around a</span>
-<span class="sd">        `Python bug &lt;https://stackoverflow.com/questions/56821539/&gt;`_. In this</span>
-<span class="sd">        case using ``module`` is strongly recommended to minimize the impact</span>
-<span class="sd">        of this editing. This filter will be removed on completion of the</span>
-<span class="sd">        block.</span>
+<span class="sd">        warning will be raised. This filter will be removed on completion</span>
+<span class="sd">        of the block.</span>
 
 <span class="sd">    message : str, optional</span>
 <span class="sd">        Regular expression to match the start of warning message. Default</span>
@@ -192,7 +193,7 @@
 <span class="sd">    of it in ``test_testing.py`` and its usage throughout the test suite.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">requireWarning</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="sd">&quot;&quot;&quot;If True, requires that the matching warning be issued (i.e. fail</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;If True, requires that the matching warning be issued (i.e. fail</span>
 <span class="sd">       if the warning isn&#39;t issued.) If False, fail if warning is issued.&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;always&#39;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">Warning</span><span class="p">,</span>
                  <span class="n">module</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">lineno</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
@@ -201,29 +202,14 @@
         <span class="nb">super</span><span class="p">(</span><span class="n">assertWarns</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">record</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Enter the context manager, called at start of block.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Enter the context manager, called at start of block.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_log</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">assertWarns</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__enter__</span><span class="p">()</span>
-        <span class="sd">&quot;&quot;&quot;Log of warnings issued within context block.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Log of warnings issued within context block.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filterspec</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_filterspec</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filterspec</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;always&#39;</span> <span class="ow">and</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
-            <span class="c1"># Bug in 2.7: &#39;always&#39; doesn&#39;t work if warning was previously</span>
-            <span class="c1"># issued, so remove any record of it being issued, which</span>
-            <span class="c1"># is stored by module.</span>
-            <span class="n">msg_pat</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_filterspec</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
-            <span class="n">cat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filterspec</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-            <span class="n">mod_pat</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_filterspec</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
-            <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">mod_pat</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>\
-                   <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">m</span><span class="p">],</span> <span class="s1">&#39;__warningregistry__&#39;</span><span class="p">):</span>
-                    <span class="n">reg</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">m</span><span class="p">]</span><span class="o">.</span><span class="n">__warningregistry__</span>
-                    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
-                        <span class="k">if</span> <span class="n">msg_pat</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">and</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cat</span><span class="p">):</span>
-                            <span class="k">del</span> <span class="n">reg</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
-                            <span class="k">break</span>
 
     <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">exc_info</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Exit context manager, called at exit of block&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Exit context manager, called at exit of block&quot;&quot;&quot;</span>
         <span class="n">retval</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">assertWarns</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__exit__</span><span class="p">(</span><span class="o">*</span><span class="n">exc_info</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">exc_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="c1"># Exception in handling, show all warnings</span>
             <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log</span><span class="p">:</span>
@@ -272,7 +258,27 @@
     <span class="k">pass</span></div>
 
 
-<span class="n">add_build_to_path</span><span class="p">()</span>
+<span class="k">class</span> <span class="nc">TestPlot</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Support for unit tests of plot functionality&quot;&quot;&quot;</span>
+    <span class="n">save_plots</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Save current figure at end of test, can be set by subclass or instance&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>
+        <span class="kn">import</span> <span class="nn">matplotlib</span>
+        <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">old_backend</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">get_backend</span><span class="p">()</span>
+        <span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;agg&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span>
+        <span class="kn">import</span> <span class="nn">matplotlib</span>
+        <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">save_plots</span> <span class="ow">and</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">get_fignums</span><span class="p">():</span>
+            <span class="n">fname</span> <span class="o">=</span> <span class="s1">&#39;output_</span><span class="si">{}</span><span class="s1">.png&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]))</span>
+            <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+            <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">old_backend</span><span class="p">)</span>
 </pre></div>
 
             <div class="clearer"></div>
@@ -300,7 +306,7 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

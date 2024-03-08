@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.plot.spectrogram.simpleSpectrogram &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.plot.spectrogram.simpleSpectrogram &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -108,8 +108,10 @@ Van Allen Probes HOPE and MagEIS data files.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
 <dt><strong>*args</strong><span class="classifier">1 or 3 arraylike</span></dt><dd><p>Call Signatures:</p>
-<p>simpleSpectrogram(Z, <a href="#id1"><span class="problematic" id="id2">**</span></a>kwargs)
-simpleSpectrogram(X, Y, Z, <a href="#id3"><span class="problematic" id="id4">**</span></a>kwargs)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simpleSpectrogram</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">simpleSpectrogram</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </dd>
@@ -120,7 +122,7 @@ simpleSpectrogram(X, Y, Z, <a href="#id3"><span class="problematic" id="id4">**<
 </dl>
 </dd>
 <dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>zlog</strong><span class="classifier">bool</span></dt><dd><p>Plot the color with a log colorbar (default: True)</p>
 </dd>
 <dt><strong>ylog</strong><span class="classifier">bool</span></dt><dd><p>Plot the Y axis with a log scale (default: True)</p>
@@ -138,6 +140,13 @@ simpleSpectrogram(X, Y, Z, <a href="#id3"><span class="problematic" id="id4">**<
 <dt><strong>cb</strong><span class="classifier">bool</span></dt><dd><p>Plot a colorbar (default: True)</p>
 </dd>
 <dt><strong>cbtitle</strong><span class="classifier">string</span></dt><dd><p>Label to go on the colorbar (default: None)</p>
+</dd>
+<dt><strong>zero_valid</strong><span class="classifier">bool</span></dt><dd><p>Treat zero as a valid value on zlog plots and use same color as
+other under-minimum values. No effect with linear colorbar.
+(default: False, draw as fill)</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.5.0.</span></p>
+</div>
 </dd>
 </dl>
 </dd>
@@ -179,7 +188,7 @@ simpleSpectrogram(X, Y, Z, <a href="#id3"><span class="problematic" id="id4">**<
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

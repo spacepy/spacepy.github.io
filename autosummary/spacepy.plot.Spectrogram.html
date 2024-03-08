@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.plot.Spectrogram &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.plot.Spectrogram &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -156,11 +156,45 @@ facilitate the creation of the SpaceData container if the data are not in the fo
 </div>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code>([target, loc, figsize])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.plot.Spectrogram.plot" title="spacepy.plot.Spectrogram.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([target, loc, figsize])</p></td>
 <td><p>Plot the spectrogram</p></td>
 </tr>
 </tbody>
 </table>
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.plot.Spectrogram.plot">
+<span class="sig-prename descclassname"><span class="pre">Spectrogram.</span></span><span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">111</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/spectrogram.html#Spectrogram.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.plot.Spectrogram.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the spectrogram</p>
+<dl class="field-list simple">
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>title</strong><span class="classifier">str</span></dt><dd><p>plot title (default ‘’)</p>
+</dd>
+<dt><strong>xlabel</strong><span class="classifier">str</span></dt><dd><p>x axis label (default ‘’)</p>
+</dd>
+<dt><strong>ylabel</strong><span class="classifier">str</span></dt><dd><p>y axis label (default ‘’)</p>
+</dd>
+<dt><strong>colorbar_label</strong><span class="classifier">str</span></dt><dd><p>colorbar label (default ‘’)</p>
+</dd>
+<dt><strong>DateFormatter</strong><span class="classifier">matplotlib.dates.DateFormatter</span></dt><dd><p>The formatting to use on the dates on the x-axis (default matplotlib.dates.DateFormatter(“%d %b %Y”))</p>
+</dd>
+<dt><strong>zlog</strong><span class="classifier">bool</span></dt><dd><p>plot the z variable on a log scale (default True)</p>
+</dd>
+<dt><strong>cmap</strong><span class="classifier">matplotlib Colormap</span></dt><dd><p>colormap instance to use</p>
+</dd>
+<dt><strong>colorbar</strong><span class="classifier">bool</span></dt><dd><p>plot the colorbar (default True)</p>
+</dd>
+<dt><strong>axis</strong><span class="classifier">matplotlib axis object</span></dt><dd><p>axis to plot the spectrogram to</p>
+</dd>
+<dt><strong>zlim</strong><span class="classifier">np.array</span></dt><dd><p>array like 2 element that overrides (interior) the spectrogram zlim (default Spectrogram.specSettings[‘zlim’])</p>
+</dd>
+<dt><strong>figsize</strong><span class="classifier">tuple (optional)</span></dt><dd><p>tuple of size to pass to figure(), None does the default</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -197,7 +231,7 @@ facilitate the creation of the SpaceData container if the data are not in the fo
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

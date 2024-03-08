@@ -1,0 +1,6 @@
+﻿spacepy.datamodel.ISTPContainer
+===============================
+
+.. currentmodule:: spacepy.datamodel
+
+.. autoclass:: ISTPContainer

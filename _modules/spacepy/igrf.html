@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.igrf &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.igrf &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -88,7 +88,6 @@
 
 
 <span class="c1"># std. lib.</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
@@ -103,7 +102,7 @@
 
 
 <div class="viewcode-block" id="IGRFCoefficients"><a class="viewcode-back" href="../../autosummary/spacepy.igrf.IGRFCoefficients.html#spacepy.igrf.IGRFCoefficients">[docs]</a><span class="k">class</span> <span class="nc">IGRFCoefficients</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Read and store IGRF coefficients from data file</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read and store IGRF coefficients from data file</span>
 
 <span class="sd">    Other Parameters</span>
 <span class="sd">    ----------------</span>
@@ -172,7 +171,7 @@
 
 
 <div class="viewcode-block" id="IGRF"><a class="viewcode-back" href="../../autosummary/spacepy.igrf.IGRF.html#spacepy.igrf.IGRF">[docs]</a><span class="k">class</span> <span class="nc">IGRF</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;International Geomagnetic Reference Field model</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;International Geomagnetic Reference Field model</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
@@ -198,12 +197,18 @@
 
 <span class="sd">    .. attribute:: dipole</span>
 
-<span class="sd">        Characteristics of dipole (:class:`dict`).</span>
+<span class="sd">        Characteristics of dipole (`dict`).</span>
 
 <span class="sd">    .. attribute:: moment</span>
 
-<span class="sd">        Dipole moments (:class:`dict`).</span>
+<span class="sd">        Dipole moments (`dict`).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dipole</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Characteristics of dipole (`dict`).&quot;&quot;&quot;</span>
+
+    <span class="n">moment</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Dipole moments (`dict`).&quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__status</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;coeffs&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
                          <span class="s1">&#39;init&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
@@ -213,16 +218,16 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__status</span><span class="p">[</span><span class="s1">&#39;coeffs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
 
 <div class="viewcode-block" id="IGRF.initialize"><a class="viewcode-back" href="../../autosummary/spacepy.igrf.IGRF.html#spacepy.igrf.IGRF.initialize">[docs]</a>    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">limits</span><span class="o">=</span><span class="s1">&#39;warn&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize model state to a particular time.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize model state to a particular time.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : :class:`~datetime.datetime`</span>
+<span class="sd">        time : `~datetime.datetime`</span>
 <span class="sd">            Time for which to initialize the model</span>
 
 <span class="sd">        Other Parameters</span>
 <span class="sd">        ----------------</span>
-<span class="sd">        limits : :class:`str`, optional</span>
+<span class="sd">        limits : `str`, optional</span>
 <span class="sd">            Set to ``warn`` to warn about out-of-range times (default);</span>
 <span class="sd">            any other value to error.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -247,7 +252,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__status</span><span class="p">[</span><span class="s1">&#39;time_set&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span></div>
 
 <div class="viewcode-block" id="IGRF.calcDipoleAxis"><a class="viewcode-back" href="../../autosummary/spacepy.igrf.IGRF.html#spacepy.igrf.IGRF.calcDipoleAxis">[docs]</a>    <span class="k">def</span> <span class="nf">calcDipoleAxis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Calculates dipole axis for initialized time.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculates dipole axis for initialized time.</span>
 
 <span class="sd">        Populates :data:`moment` and :data:`dipole`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -320,7 +325,7 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

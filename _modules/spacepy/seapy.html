@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.seapy &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.seapy &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -115,8 +115,6 @@
 
 <span class="sd">Copyright 2010 Los Alamos National Security, LLC.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
-
 <span class="kn">import</span> <span class="nn">warnings</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -127,7 +125,6 @@
 <span class="kn">from</span> <span class="nn">spacepy</span> <span class="kn">import</span> <span class="n">help</span>
 <span class="kn">import</span> <span class="nn">spacepy.time</span> <span class="k">as</span> <span class="nn">spt</span>
 <span class="kn">import</span> <span class="nn">spacepy.datamodel</span> <span class="k">as</span> <span class="nn">dm</span>
-<span class="kn">import</span> <span class="nn">spacepy.plot.apionly</span>
 <span class="kn">import</span> <span class="nn">spacepy.plot</span> <span class="k">as</span> <span class="nn">spplt</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">matplotlib.dates</span> <span class="kn">import</span> <span class="n">date2num</span><span class="p">,</span> <span class="n">num2date</span>
@@ -135,7 +132,7 @@
 <span class="n">__contact__</span> <span class="o">=</span> <span class="s1">&#39;Steve Morley, smorley@lanl.gov&#39;</span>
 
 <span class="k">class</span> <span class="nc">SeaBase</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;SeaPy Superposed epoch analysis base class</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;SeaPy Superposed epoch analysis base class</span>
 
 <span class="sd">    Do not use directly -- subclass it!</span>
 
@@ -149,6 +146,17 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="o">=</span><span class="n">times</span><span class="o">.</span><span class="n">UTC</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">times</span> <span class="o">=</span> <span class="n">times</span>
+        <span class="n">td</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">times</span><span class="p">)</span>
+        <span class="n">noncontig</span> <span class="o">=</span> <span class="p">(</span><span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">td</span><span class="p">,</span> <span class="n">td</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">all</span><span class="p">())</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">issubdtype</span><span class="p">(</span><span class="n">td</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inexact</span><span class="p">)</span>\
+              <span class="k">else</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">td</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">nonmon</span> <span class="o">=</span> <span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">t</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">td</span><span class="p">])</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">td</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">)</span> <span class="k">else</span> <span class="n">td</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">nonmon</span> <span class="ow">or</span> <span class="n">noncontig</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Input time not </span><span class="si">{}</span><span class="s1">; results are unlikely to be valid.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                          <span class="p">(</span><span class="s1">&#39;monotonic or contiguous&#39;</span> <span class="k">if</span> <span class="n">nonmon</span> <span class="k">else</span> <span class="s1">&#39;contiguous&#39;</span><span class="p">)</span>
+                          <span class="k">if</span> <span class="n">noncontig</span> <span class="k">else</span> <span class="s1">&#39;monotonic&#39;</span><span class="p">))</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">epochs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">times</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Too many epochs; results are unlikely to be valid.&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">spt</span><span class="o">.</span><span class="n">Ticktock</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">epochs</span> <span class="o">=</span> <span class="n">epochs</span><span class="o">.</span><span class="n">UTC</span>
         <span class="k">else</span><span class="p">:</span>
@@ -171,7 +179,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">bound_type</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Define String Representation of Sea object&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define String Representation of Sea object&quot;&quot;&quot;</span>
 
         <span class="n">strhead</span> <span class="o">=</span> <span class="s1">&#39;Superposed Epoch Object:&#39;</span>
         <span class="n">strtail</span> <span class="o">=</span> <span class="s1">&#39;Data array - </span><span class="si">{0}</span><span class="s1">; #Epochs - </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs</span><span class="p">))</span>
@@ -180,12 +188,12 @@
     <span class="fm">__repr__</span> <span class="o">=</span> <span class="fm">__str__</span>
 
     <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Calling len(obj) will return the number of epochs.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calling len(obj) will return the number of epochs.&quot;&quot;&quot;</span>
 
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">restoreepochs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Replaces epoch times stored in obj.badepochs in the epochs attribute</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Replaces epoch times stored in obj.badepochs in the epochs attribute</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -246,7 +254,7 @@
         <span class="k">return</span> <span class="n">time</span><span class="p">,</span> <span class="n">t_epoch</span>
 
     <span class="k">def</span> <span class="nf">random</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;Return a new Sea object, of same dimensionality, with a set of random epochs</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Return a new Sea object, of same dimensionality, with a set of random epochs</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">n</span><span class="p">:</span>
             <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_epochs</span><span class="p">)</span>
@@ -271,7 +279,7 @@
 
 
 <div class="viewcode-block" id="Sea"><a class="viewcode-back" href="../../autosummary/spacepy.seapy.Sea.html#spacepy.seapy.Sea">[docs]</a><span class="k">class</span> <span class="nc">Sea</span><span class="p">(</span><span class="n">SeaBase</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;SeaPy Superposed epoch analysis object</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;SeaPy Superposed epoch analysis object</span>
 
 <span class="sd">    Initialize object with data, times, epochs, window (half-width) and delta (optional).</span>
 <span class="sd">    &#39;times&#39; and epochs should be in some useful format</span>
@@ -282,9 +290,21 @@
 <span class="sd">    data : array_like</span>
 <span class="sd">        list or array of data</span>
 <span class="sd">    times : array_like</span>
-<span class="sd">        list of datetime objects (or list of serial times)</span>
+<span class="sd">        list of datetime objects (or list of serial times). Must be contiguous</span>
+<span class="sd">        (constant cadence) and monotonically increasing.</span>
+
+<span class="sd">        .. versionchanged:: 0.5.0</span>
+<span class="sd">           Issues a warning for non-contiguous/non-monotonic times.</span>
+
 <span class="sd">    epochs : array_like</span>
-<span class="sd">        list of datetime objects (or serial times) for zero epochs in SEA</span>
+<span class="sd">        list of datetime objects (or serial times) for zero epochs in SEA.</span>
+<span class="sd">        For a suitable SEA, this should be substantially shorter than</span>
+<span class="sd">        ``times``.</span>
+
+<span class="sd">        .. versionchanged:: 0.5.0</span>
+<span class="sd">           Issues a warning for too many epochs; arbitrarily defined as</span>
+<span class="sd">           more than half the number of times.</span>
+
 <span class="sd">    window : datetime.timedelta</span>
 <span class="sd">        size of the half-window for the SEA (can also be given as serial time)</span>
 <span class="sd">    delta : datetime.timedelta</span>
@@ -308,7 +328,7 @@
               <span class="n">window</span><span class="o">=</span><span class="n">window</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="n">delta</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Sea.sea"><a class="viewcode-back" href="../../autosummary/spacepy.seapy.Sea.html#spacepy.seapy.Sea.sea">[docs]</a>    <span class="k">def</span> <span class="nf">sea</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Method called to perform superposed epoch analysis on data in object.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Method called to perform superposed epoch analysis on data in object.</span>
 
 <span class="sd">        Uses object attributes obj.data, obj.times, obj.epochs, obj.delta,</span>
 <span class="sd">        obj.window, all of which must be available on instantiation.</span>
@@ -544,7 +564,7 @@
 <div class="viewcode-block" id="Sea.plot"><a class="viewcode-back" href="../../autosummary/spacepy.seapy.Sea.html#spacepy.seapy.Sea.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xquan</span> <span class="o">=</span> <span class="s1">&#39;Time Since Epoch&#39;</span><span class="p">,</span> <span class="n">yquan</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">xunits</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
                 <span class="n">yunits</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">epochline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">usrlimy</span><span class="o">=</span><span class="p">[],</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                 <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#7F7FFF&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Method called to create basic plot of superposed epoch analysis.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Method called to create basic plot of superposed epoch analysis.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">	==========</span>
@@ -618,7 +638,7 @@
 
 
 <div class="viewcode-block" id="Sea2d"><a class="viewcode-back" href="../../autosummary/spacepy.seapy.Sea2d.html#spacepy.seapy.Sea2d">[docs]</a><span class="k">class</span> <span class="nc">Sea2d</span><span class="p">(</span><span class="n">SeaBase</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;SeaPy 2D Superposed epoch analysis object</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;SeaPy 2D Superposed epoch analysis object</span>
 
 <span class="sd">    Initialize object with data (n element vector), times(y*n array), </span>
 <span class="sd">    epochs, window (half-width), delta (optional), and </span>
@@ -631,9 +651,21 @@
 <span class="sd">    data : array_like</span>
 <span class="sd">        2-D array of data (0th dimension is quantity y, 1st dimension is time)</span>
 <span class="sd">    times : array_like</span>
-<span class="sd">        list of datetime objects (or list of serial times)</span>
+<span class="sd">        list of datetime objects (or list of serial times). Must be contiguous</span>
+<span class="sd">        (constant cadence) and monotonically increasing.</span>
+
+<span class="sd">        .. versionchanged: 0.5.0</span>
+<span class="sd">           Issues a warning for non-contiguous/non-monotonic times.</span>
+
 <span class="sd">    epochs : array_like</span>
-<span class="sd">        list of datetime objects (or serial times) for zero epochs in SEA</span>
+<span class="sd">        list of datetime objects (or serial times) for zero epochs in SEA.</span>
+<span class="sd">        For a suitable SEA, this should be substantially shorter than</span>
+<span class="sd">        ``times``.</span>
+
+<span class="sd">        .. versionchanged: 0.5.0</span>
+<span class="sd">           Issues a warning for too many epochs; arbitrarily defined as</span>
+<span class="sd">           more than half the number of times.</span>
+
 <span class="sd">    window : datetime.timedelta</span>
 <span class="sd">        size of the half-window for the SEA (can also be given as serial time)</span>
 <span class="sd">    delta : datetime.timedelta</span>
@@ -664,7 +696,7 @@
 
 <div class="viewcode-block" id="Sea2d.sea"><a class="viewcode-back" href="../../autosummary/spacepy.seapy.Sea2d.html#spacepy.seapy.Sea2d.sea">[docs]</a>    <span class="k">def</span> <span class="nf">sea</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">storedata</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">quartiles</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">mad</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">ci_quan</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="n">nmask</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Perform 2D superposed epoch analysis on data in object</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform 2D superposed epoch analysis on data in object</span>
 
 <span class="sd">        Uses object attributes obj.data, obj.times, obj.epochs, obj.delta,</span>
 <span class="sd">        obj.window, all of which must be available on instantiation.</span>
@@ -751,7 +783,7 @@
 <div class="viewcode-block" id="Sea2d.plot"><a class="viewcode-back" href="../../autosummary/spacepy.seapy.Sea2d.html#spacepy.seapy.Sea2d.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xquan</span> <span class="o">=</span> <span class="s1">&#39;Time Since Epoch&#39;</span><span class="p">,</span> <span class="n">yquan</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">xunits</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
                 <span class="n">yunits</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">zunits</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">epochline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">usrlimy</span><span class="o">=</span><span class="p">[],</span>
                 <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">zlog</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Method called to create basic plot of 2D superposed epoch analysis.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Method called to create basic plot of 2D superposed epoch analysis.</span>
 
 <span class="sd">        Uses object attributes created by :meth:`sea`.</span>
 
@@ -834,7 +866,7 @@
 
 
 <div class="viewcode-block" id="seadict"><a class="viewcode-back" href="../../autosummary/spacepy.seapy.seadict.html#spacepy.seapy.seadict">[docs]</a><span class="k">def</span> <span class="nf">seadict</span><span class="p">(</span><span class="n">objlist</span><span class="p">,</span> <span class="n">namelist</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Function to create dictionary of SeaPy.Sea objects.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to create dictionary of SeaPy.Sea objects.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ==========</span>
@@ -867,7 +899,7 @@
 
 <div class="viewcode-block" id="multisea"><a class="viewcode-back" href="../../autosummary/spacepy.seapy.multisea.html#spacepy.seapy.multisea">[docs]</a><span class="k">def</span> <span class="nf">multisea</span><span class="p">(</span><span class="n">dictobj</span><span class="p">,</span> <span class="n">n_cols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">epochline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">usrlimx</span><span class="o">=</span><span class="p">[],</span> <span class="n">usrlimy</span><span class="o">=</span><span class="p">[],</span>
     <span class="n">xunits</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">zunits</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">zlog</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Function to create multipanel plot of superposed epoch analyses.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to create multipanel plot of superposed epoch analyses.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ==========</span>
@@ -957,7 +989,7 @@
 
 
 <div class="viewcode-block" id="readepochs"><a class="viewcode-back" href="../../autosummary/spacepy.seapy.readepochs.html#spacepy.seapy.readepochs">[docs]</a><span class="k">def</span> <span class="nf">readepochs</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">iso</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">isofmt</span><span class="o">=</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Read epochs from text file assuming YYYY MM DD hh mm ss format</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read epochs from text file assuming YYYY MM DD hh mm ss format</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ==========</span>
@@ -999,7 +1031,7 @@
 
 <div class="viewcode-block" id="sea_signif"><a class="viewcode-back" href="../../autosummary/spacepy.seapy.sea_signif.html#spacepy.seapy.sea_signif">[docs]</a><span class="k">def</span> <span class="nf">sea_signif</span><span class="p">(</span><span class="n">obj1</span><span class="p">,</span> <span class="n">obj2</span><span class="p">,</span> <span class="n">test</span><span class="o">=</span><span class="s1">&#39;KS&#39;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xquan</span> <span class="o">=</span> <span class="s1">&#39;Time Since Epoch&#39;</span><span class="p">,</span>
         <span class="n">yquan</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">xunits</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">yunits</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">epochline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">usrlimy</span><span class="o">=</span><span class="p">[]):</span>
-    <span class="sd">&quot;&quot;&quot;Test for similarity between distributions at each lag in two 1-D SEAs</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test for similarity between distributions at each lag in two 1-D SEAs</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ==========</span>
@@ -1060,7 +1092,7 @@
                 <span class="n">S</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tD</span><span class="p">)</span>
                 <span class="n">prob</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tprobKS2</span><span class="p">)</span>
         <span class="k">except</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;KS significance testing requires datacube attribute</span><span class="se">\n</span><span class="s1"></span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;KS significance testing requires datacube attribute</span><span class="se">\n</span>
 <span class="s1">                Run sea() with kwarg storedata&#39;&#39;&#39;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">test</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;U&#39;</span><span class="p">:</span>
@@ -1140,7 +1172,7 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.plot &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.plot &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -85,10 +85,14 @@
 <span class="sd">(e.g. applySmartTimeTicks, style).</span>
 
 <span class="sd">This plot module now provides style sheets. For most standard plotting </span>
-<span class="sd">we recommend the *default* style sheet (aka *spacepy*). To auto-apply the</span>
-<span class="sd">default plot style the following should be added to your spacepy.rc file::</span>
+<span class="sd">we recommend the *default* style sheet (aka *spacepy*). To apply the</span>
+<span class="sd">default plot style, use the following::</span>
 
-<span class="sd">    apply_plot_styles: True</span>
+<span class="sd">    import spacepy.plot as splot</span>
+<span class="sd">    splot.style()</span>
+
+<span class="sd">.. versionchanged:: 0.5.0</span>
+<span class="sd">   Plot styles are no longer applied automatically.</span>
 
 <span class="sd">Different plot types may not work well with this style, so we have provided</span>
 <span class="sd">alternatives. For polar plots, spectrograms, or anything with larger blocks </span>
@@ -140,10 +144,7 @@
 <span class="sd">    utils</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Mapping</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Mapping</span>
+<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Mapping</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -160,7 +161,7 @@
 <span class="kn">from</span> <span class="nn">.carrington</span> <span class="kn">import</span> <span class="o">*</span>
 
 <div class="viewcode-block" id="plot"><a class="viewcode-back" href="../../autosummary/spacepy.plot.plot.html#spacepy.plot.plot">[docs]</a><span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;Convenience wrapper for matplotlib&#39;s plot function</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Convenience wrapper for matplotlib&#39;s plot function</span>
 
 <span class="sd">    As with matplotlib&#39;s plot function, *args* is a variable length</span>
 <span class="sd">    argument, allowing for multiple *x*, *y* pairs, each with optional </span>
@@ -192,7 +193,7 @@
     <span class="k">return</span> <span class="n">pobj</span></div>
 
 <div class="viewcode-block" id="available"><a class="viewcode-back" href="../../autosummary/spacepy.plot.available.html#spacepy.plot.available">[docs]</a><span class="k">def</span> <span class="nf">available</span><span class="p">(</span><span class="n">returnvals</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;List the available plot styles provided by spacepy.plot</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;List the available plot styles provided by spacepy.plot</span>
 
 <span class="sd">    Note that some of the available styles have multiple aliases.</span>
 <span class="sd">    To apply an available style, use `spacepy.plot.style`.</span>
@@ -213,42 +214,26 @@
         <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">lookdict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span></div>
 
 <div class="viewcode-block" id="style"><a class="viewcode-back" href="../../autosummary/spacepy.plot.style.html#spacepy.plot.style">[docs]</a><span class="k">def</span> <span class="nf">style</span><span class="p">(</span><span class="n">look</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Apply SpacePy&#39;s matplotlib style settings from a known style sheet.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    look : str</span>
-<span class="sd">    Name of style. For a list of available style names, see `spacepy.plot.available`.</span>
+<span class="sd">    look : str, optional</span>
+<span class="sd">        Name of style. For a list of available style names, see</span>
+<span class="sd">        `spacepy.plot.available`. If not specified, will use default</span>
+<span class="sd">        ``&quot;spacepy&quot;`` style.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">lookdict</span> <span class="o">=</span> <span class="n">available</span><span class="p">(</span><span class="n">returnvals</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">usestyle</span> <span class="o">=</span> <span class="n">lookdict</span><span class="p">[</span><span class="n">look</span><span class="p">]</span>
-    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-        <span class="n">usestyle</span> <span class="o">=</span> <span class="n">lookdict</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">]</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">usestyle</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span> <span class="c1">#plt.style.use not available, old matplotlib?</span>
-        <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
-            <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
-            <span class="n">dum</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">rc_params_from_file</span><span class="p">(</span><span class="n">usestyle</span><span class="p">)</span>
-            <span class="n">styapply</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-            <span class="c1">#remove None values as these seem to cause issues...</span>
-            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">dum</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">dum</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="n">styapply</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">dum</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
-            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">styapply</span><span class="p">:</span>
-                <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">styapply</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+    <span class="n">usestyle</span> <span class="o">=</span> <span class="n">lookdict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">look</span><span class="p">,</span> <span class="n">lookdict</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">usestyle</span><span class="p">)</span>
     <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;image.cmap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cmap</span></div>
 
 <span class="c1">#save current rcParams before applying spacepy style</span>
-<span class="n">oldParams</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="n">oldParams</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmcopy</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;apply_plot_styles&#39;</span><span class="p">]:</span>
-    <span class="n">style</span><span class="p">()</span>
+<span class="n">oldParams</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">dmcopy</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
 
 <div class="viewcode-block" id="revert_style"><a class="viewcode-back" href="../../autosummary/spacepy.plot.revert_style.html#spacepy.plot.revert_style">[docs]</a><span class="k">def</span> <span class="nf">revert_style</span><span class="p">():</span>
-    <span class="sd">&#39;&#39;&#39;Revert plot style settings to those in use prior to importing spacepy.plot</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Revert plot style settings to those in use prior to importing spacepy.plot</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
@@ -261,7 +246,7 @@
 <div class="viewcode-block" id="dual_half_circle"><a class="viewcode-back" href="../../autosummary/spacepy.plot.dual_half_circle.html#spacepy.plot.dual_half_circle">[docs]</a><span class="k">def</span> <span class="nf">dual_half_circle</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
                      <span class="n">sun_direction</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">),</span>
                      <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Plot two half circles to a plot with the specified face colors and</span>
 <span class="sd">    rotation. This is normal to use to denote the sun direction in</span>
 <span class="sd">    magnetospheric science plots.</span>
@@ -323,7 +308,7 @@
     <span class="k">return</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="levelPlot"><a class="viewcode-back" href="../../autosummary/spacepy.plot.levelPlot.html#spacepy.plot.levelPlot">[docs]</a><span class="k">def</span> <span class="nf">levelPlot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Draw a step-plot with up to 5 levels following a color cycle (e.g. Kp index &quot;stoplight&quot;)</span>
 
 <span class="sd">    Parameters</span>
@@ -491,7 +476,7 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

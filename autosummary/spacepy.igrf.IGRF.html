@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.igrf.IGRF &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.igrf.IGRF &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -119,6 +119,12 @@
 <p class="rubric">Data</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.igrf.IGRF.dipole" title="spacepy.igrf.IGRF.dipole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dipole</span></code></a></p></td>
+<td><p>Characteristics of dipole (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a>).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.igrf.IGRF.moment" title="spacepy.igrf.IGRF.moment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moment</span></code></a></p></td>
+<td><p>Dipole moments (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a>).</p></td>
+</tr>
 </tbody>
 </table>
 <dl class="py method">
@@ -135,13 +141,13 @@
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>time</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></a></span></dt><dd><p>Time for which to initialize the model</p>
+<dt><strong>time</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datetime</span></code></a></span></dt><dd><p>Time for which to initialize the model</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Other Parameters<span class="colon">:</span></dt>
 <dd class="field-even"><dl>
-<dt><strong>limits</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, optional</span></dt><dd><p>Set to <code class="docutils literal notranslate"><span class="pre">warn</span></code> to warn about out-of-range times (default);
+<dt><strong>limits</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</span></dt><dd><p>Set to <code class="docutils literal notranslate"><span class="pre">warn</span></code> to warn about out-of-range times (default);
 any other value to error.</p>
 </dd>
 </dl>
@@ -152,13 +158,13 @@ any other value to error.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="spacepy.igrf.IGRF.dipole">
 <span class="sig-name descname"><span class="pre">dipole</span></span><a class="headerlink" href="#spacepy.igrf.IGRF.dipole" title="Permalink to this definition">¶</a></dt>
-<dd><p>Characteristics of dipole (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>).</p>
+<dd><p>Characteristics of dipole (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a>).</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="spacepy.igrf.IGRF.moment">
 <span class="sig-name descname"><span class="pre">moment</span></span><a class="headerlink" href="#spacepy.igrf.IGRF.moment" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dipole moments (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>).</p>
+<dd><p>Dipole moments (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a>).</p>
 </dd></dl>
 
 </dd></dl>
@@ -197,7 +203,7 @@ any other value to error.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

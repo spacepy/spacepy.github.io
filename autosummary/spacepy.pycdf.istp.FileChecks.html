@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.pycdf.istp.FileChecks &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.pycdf.istp.FileChecks &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -106,7 +106,7 @@
 performs checks that are not currently performed by the <a class="reference external" href="https://spdf.gsfc.nasa.gov/skteditor/">ISTP
 skeleton editor</a>.  All
 tests return a list, one error string for every noncompliance
-found (empty list if compliant). <a class="reference internal" href="#spacepy.pycdf.istp.FileChecks.all" title="spacepy.pycdf.istp.FileChecks.all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">all()</span></code></a> will perform all
+found (empty list if compliant). <a class="reference internal" href="#spacepy.pycdf.istp.FileChecks.all" title="spacepy.pycdf.istp.FileChecks.all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">all</span></code></a> will perform all
 tests and concatenate all errors.</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
@@ -132,11 +132,11 @@ tests and concatenate all errors.</p>
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">catch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#FileChecks.all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.FileChecks.all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform all variable and file-level tests</p>
 <p>In addition to calling every test in this class, will also call
-<a class="reference internal" href="spacepy.pycdf.istp.VariableChecks.html#spacepy.pycdf.istp.VariableChecks.all" title="spacepy.pycdf.istp.VariableChecks.all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">VariableChecks.all()</span></code></a> for every variable in the file.</p>
+<a class="reference internal" href="spacepy.pycdf.istp.VariableChecks.html#spacepy.pycdf.istp.VariableChecks.all" title="spacepy.pycdf.istp.VariableChecks.all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VariableChecks.all</span></code></a> for every variable in the file.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>f</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.CDF.html#spacepy.pycdf.CDF" title="spacepy.pycdf.CDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CDF</span></code></a></span></dt><dd><p>Open CDF file to check</p>
+<dt><strong>f</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.CDF.html#spacepy.pycdf.CDF" title="spacepy.pycdf.CDF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CDF</span></code></a></span></dt><dd><p>Open CDF file to check</p>
 </dd>
 <dt><strong>catch</strong><span class="classifier">bool</span></dt><dd><p>Catch exceptions in tests (default False). If True, any
 exceptions in subtests will result in an addition to the
@@ -175,7 +175,7 @@ of an empty string. These should be replaced with a single space.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>f</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.CDF.html#spacepy.pycdf.CDF" title="spacepy.pycdf.CDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CDF</span></code></a></span></dt><dd><p>Open CDF file to check</p>
+<dt><strong>f</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.CDF.html#spacepy.pycdf.CDF" title="spacepy.pycdf.CDF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CDF</span></code></a></span></dt><dd><p>Open CDF file to check</p>
 </dd>
 </dl>
 </dd>
@@ -198,7 +198,7 @@ for consistency with CDF filename.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>f</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.CDF.html#spacepy.pycdf.CDF" title="spacepy.pycdf.CDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CDF</span></code></a></span></dt><dd><p>Open CDF file to check</p>
+<dt><strong>f</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.CDF.html#spacepy.pycdf.CDF" title="spacepy.pycdf.CDF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CDF</span></code></a></span></dt><dd><p>Open CDF file to check</p>
 </dd>
 </dl>
 </dd>
@@ -220,7 +220,7 @@ variables are monotonically increasing.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>f</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.CDF.html#spacepy.pycdf.CDF" title="spacepy.pycdf.CDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CDF</span></code></a></span></dt><dd><p>Open CDF file to check</p>
+<dt><strong>f</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.CDF.html#spacepy.pycdf.CDF" title="spacepy.pycdf.CDF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CDF</span></code></a></span></dt><dd><p>Open CDF file to check</p>
 </dd>
 </dl>
 </dd>
@@ -242,7 +242,7 @@ variables only contain times matching filename.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>f</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.CDF.html#spacepy.pycdf.CDF" title="spacepy.pycdf.CDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">CDF</span></code></a></span></dt><dd><p>Open CDF file to check</p>
+<dt><strong>f</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.CDF.html#spacepy.pycdf.CDF" title="spacepy.pycdf.CDF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CDF</span></code></a></span></dt><dd><p>Open CDF file to check</p>
 </dd>
 </dl>
 </dd>
@@ -296,7 +296,7 @@ check to have.)</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

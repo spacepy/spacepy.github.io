@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.datamodel.SpaceData &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.datamodel.SpaceData &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -101,6 +101,8 @@
 <dt class="sig sig-object py" id="spacepy.datamodel.SpaceData">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.datamodel.</span></span><span class="sig-name descname"><span class="pre">SpaceData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#SpaceData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.SpaceData" title="Permalink to this definition">¶</a></dt>
 <dd><p>Datamodel class extending dict by adding attributes.</p>
+<p>Although the format of attributes is not enforced, using ISTP metadata
+enables the use of methods from <a class="reference internal" href="spacepy.datamodel.ISTPContainer.html#spacepy.datamodel.ISTPContainer" title="spacepy.datamodel.ISTPContainer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ISTPContainer</span></code></a>.</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.SpaceData.flatten" title="spacepy.datamodel.SpaceData.flatten"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flatten</span></code></a>()</p></td>
@@ -108,6 +110,15 @@
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#spacepy.datamodel.SpaceData.tree" title="spacepy.datamodel.SpaceData.tree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tree</span></code></a>(**kwargs)</p></td>
 <td><p>Print the contents of the SpaceData object in a visual tree</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.SpaceData.toCDF" title="spacepy.datamodel.SpaceData.toCDF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toCDF</span></code></a>(**kwargs)</p></td>
+<td><p>Create CDF file from this SpaceData.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.datamodel.SpaceData.toHDF5" title="spacepy.datamodel.SpaceData.toHDF5"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toHDF5</span></code></a>(**kwargs)</p></td>
+<td><p>Create HDF5 file from this SpaceData.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.SpaceData.toJSONheadedASCII" title="spacepy.datamodel.SpaceData.toJSONheadedASCII"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toJSONheadedASCII</span></code></a>(**kwargs)</p></td>
+<td><p>Create JSON-headed ASCII file from this SpaceData.</p></td>
 </tr>
 </tbody>
 </table>
@@ -161,16 +172,23 @@
 <dt class="sig sig-object py" id="spacepy.datamodel.SpaceData.tree">
 <span class="sig-name descname"><span class="pre">tree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#SpaceData.tree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.SpaceData.tree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print the contents of the SpaceData object in a visual tree</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>verbose</strong><span class="classifier">boolean (optional)</span></dt><dd><p>print more info</p>
+<dd class="field-odd"><dl>
+<dt><strong>verbose</strong><span class="classifier">bool, default False</span></dt><dd><p>print more info</p>
 </dd>
-<dt><strong>spaces</strong><span class="classifier">string (optional)</span></dt><dd><p>string will added for every line</p>
+<dt><strong>spaces</strong><span class="classifier">str (optional)</span></dt><dd><p>string will added for every line</p>
 </dd>
-<dt><strong>levels</strong><span class="classifier">integer (optional)</span></dt><dd><p>number of levels to recurse through (True means all)</p>
+<dt><strong>levels</strong><span class="classifier">int (optional)</span></dt><dd><p>number of levels to recurse through (True, the default,  means all)</p>
 </dd>
-<dt><strong>attrs</strong><span class="classifier">boolean (optional)</span></dt><dd><p>display information for attributes</p>
+<dt><strong>attrs</strong><span class="classifier">bool, default False</span></dt><dd><p>display information for attributes</p>
+</dd>
+<dt><strong>print_out</strong><span class="classifier">bool, default True</span></dt><dd><blockquote>
+<div><div class="versionadded">
+<p><span class="versionmodified added">New in version 0.5.0.</span></p>
+</div>
+</div></blockquote>
+<p>Print output (original behavior); if <code class="docutils literal notranslate"><span class="pre">False</span></code>, return the output.</p>
 </dd>
 </dl>
 </dd>
@@ -197,6 +215,27 @@
 <span class="go">|____5</span>
 </pre></div>
 </div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.datamodel.SpaceData.toCDF">
+<span class="sig-name descname"><span class="pre">toCDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#SpaceData.toCDF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.SpaceData.toCDF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create CDF file from this SpaceData.</p>
+<p>See <a class="reference internal" href="spacepy.datamodel.toCDF.html#spacepy.datamodel.toCDF" title="spacepy.datamodel.toCDF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toCDF</span></code></a>; this object is provided for <code class="docutils literal notranslate"><span class="pre">SDobject</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.datamodel.SpaceData.toHDF5">
+<span class="sig-name descname"><span class="pre">toHDF5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#SpaceData.toHDF5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.SpaceData.toHDF5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create HDF5 file from this SpaceData.</p>
+<p>See <a class="reference internal" href="spacepy.datamodel.toHDF5.html#spacepy.datamodel.toHDF5" title="spacepy.datamodel.toHDF5"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toHDF5</span></code></a>; this object is provided for <code class="docutils literal notranslate"><span class="pre">SDObject</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.datamodel.SpaceData.toJSONheadedASCII">
+<span class="sig-name descname"><span class="pre">toJSONheadedASCII</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#SpaceData.toJSONheadedASCII"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.SpaceData.toJSONheadedASCII" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create JSON-headed ASCII file from this SpaceData.</p>
+<p>See <a class="reference internal" href="spacepy.datamodel.toJSONheadedASCII.html#spacepy.datamodel.toJSONheadedASCII" title="spacepy.datamodel.toJSONheadedASCII"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toJSONheadedASCII</span></code></a>; this object is provided for <code class="docutils literal notranslate"><span class="pre">insd</span></code>.</p>
 </dd></dl>
 
 </dd></dl>
@@ -235,7 +274,7 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

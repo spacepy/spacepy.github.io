@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>SpacePy Configuration &#8212; SpacePy v0.4.1 Manual</title>
+    <title>SpacePy Configuration &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -23,7 +23,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="SpacePy Scripts" href="scripts.html" />
-    <link rel="prev" title="Python 2 End of Support" href="py2k_eol.html" /> 
+    <link rel="prev" title="Publication List" href="publications.html" /> 
   </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
@@ -43,7 +43,7 @@
           <a href="scripts.html" title="SpacePy Scripts"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="py2k_eol.html" title="Python 2 End of Support"
+          <a href="publications.html" title="Publication List"
              accesskey="P">previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
@@ -73,8 +73,8 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="py2k_eol.html"
-                          title="previous chapter">Python 2 End of Support</a></p>
+    <p class="topless"><a href="publications.html"
+                          title="previous chapter">Publication List</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
@@ -149,7 +149,7 @@ the working directory at the time of import. In particular, that means
 if it is defined as an empty string (rather than an undefined
 variable), <code class="docutils literal notranslate"><span class="pre">.spacepy</span></code> is made directly in the current
 directory. Home directory references (<code class="docutils literal notranslate"><span class="pre">~</span></code>) are expanded via
-<a class="reference external" href="https://docs.python.org/3/library/os.path.html#os.path.expanduser" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">expanduser()</span></code></a>.</p>
+<a class="reference external" href="https://docs.python.org/3/library/os.path.html#os.path.expanduser" title="(in Python v3.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">expanduser()</span></code></a>.</p>
 <p>If you change the default location, make sure you add the environment
 variable <code class="docutils literal notranslate"><span class="pre">$SPACEPY</span></code> to your <code class="docutils literal notranslate"><span class="pre">.cshrc,</span> <span class="pre">.tcshrc,</span></code> or <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>
 script. If this directory does not exist, it will be created.</p>
@@ -165,7 +165,7 @@ data, which can be updated with <a class="reference internal" href="autosummary/
 are called. Starting in Python 2.7, these are ignored. SpacePy adds a warnings
 filter to force display of deprecation warnings from SpacePy the first time a
 deprecated function is called. Set this option to False to retain the default
-Python behavior. (See <a class="reference external" href="https://docs.python.org/3/library/warnings.html#module-warnings" title="(in Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">warnings</span></code></a> module for details on custom warning
+Python behavior. (See <a class="reference external" href="https://docs.python.org/3/library/warnings.html#module-warnings" title="(in Python v3.12)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">warnings</span></code></a> module for details on custom warning
 filters.)</p>
 </dd>
 <dt>enable_old_data_warning</dt><dd><p>SpacePy maintains certain databases from external sources, notably the
@@ -186,7 +186,7 @@ The default should almost always be acceptable.</p>
 </dd>
 <dt>ncpus</dt><dd><p>Number of CPUs to use for computations that can be
 multithreaded/multiprocessed. By default, they will use the number of CPUs
-reported by <a class="reference external" href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.cpu_count" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">multiprocessing.cpu_count()</span></code></a>. You may wish to set this
+reported by <a class="reference external" href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.cpu_count" title="(in Python v3.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">multiprocessing.cpu_count()</span></code></a>. You may wish to set this
 to a lower number if you need to reserve other processors on your machine.</p>
 </dd>
 <dt>notice</dt><dd><p>True to display the SpacePy license and other information on import (default);
@@ -233,10 +233,10 @@ to produce a different type from a string.</p>
 <hr class="docutils" />
 <dl class="field-list simple">
 <dt class="field-odd">Release<span class="colon">:</span></dt>
-<dd class="field-odd"><p>0.4.1</p>
+<dd class="field-odd"><p>0.5.0</p>
 </dd>
 <dt class="field-even">Doc generation date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Sep 14, 2022</p>
+<dd class="field-even"><p>Mar 08, 2024</p>
 </dd>
 </dl>
 <p>For additions or fixes to this page, contact the SpacePy Team at Los Alamos.</p>
@@ -263,7 +263,7 @@ to produce a different type from a string.</p>
           <a href="scripts.html" title="SpacePy Scripts"
              >next</a> |</li>
         <li class="right" >
-          <a href="py2k_eol.html" title="Python 2 End of Support"
+          <a href="publications.html" title="Publication List"
              >previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
@@ -274,7 +274,7 @@ to produce a different type from a string.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

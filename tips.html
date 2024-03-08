@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>SpacePy Python Programming Tips &#8212; SpacePy v0.4.1 Manual</title>
+    <title>SpacePy Python Programming Tips &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -147,7 +147,7 @@ show that the speeds of the different methods can vary substantially.</p>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 </pre></div>
 </div>
-<p>This is 6 function calls in 2.590 CPU seconds (from <a class="reference external" href="https://docs.python.org/3/library/profile.html#module-cProfile" title="(in Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cProfile</span></code></a>)</p>
+<p>This is 6 function calls in 2.590 CPU seconds (from <a class="reference external" href="https://docs.python.org/3/library/profile.html#module-cProfile" title="(in Python v3.12)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cProfile</span></code></a>)</p>
 <p>The next, more Pythonic, way is with a list comprehension</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">val</span><span class="o">+</span><span class="mi">1</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
 </pre></div>
@@ -160,7 +160,7 @@ show that the speeds of the different methods can vary substantially.</p>
 </div>
 <p>This is 6 function calls in 1.959 CPU seconds (~1.3x), better than the for loop but worse
 than the list comprehension</p>
-<p>Next we do this the <cite>right</cite> way and just create it in <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/">numpy</a> and never leave</p>
+<p>Next we do this the <code class="xref py py-obj docutils literal notranslate"><span class="pre">right</span></code> way and just create it in <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/">numpy</a> and never leave</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000000</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">+=</span> <span class="mi">1</span>
 </pre></div>
@@ -294,10 +294,10 @@ the for loop (or list comprehension):</p>
 </section>
 <section id="zip">
 <h2>Zip<a class="headerlink" href="#zip" title="Permalink to this heading">¶</a></h2>
-<p>The <a class="reference external" href="https://docs.python.org/3/library/functions.html#zip" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">zip()</span></code></a> function is extremely useful, but it is really slow. If you find yourself
+<p>The <a class="reference external" href="https://docs.python.org/3/library/functions.html#zip" title="(in Python v3.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">zip()</span></code></a> function is extremely useful, but it is really slow. If you find yourself
 using it on large amounts of data then significant time-savings might be achieved by re-writing your code
-to make the <a class="reference external" href="https://docs.python.org/3/library/functions.html#zip" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">zip()</span></code></a> operation unnecessary. A good alternative, if you do need the functionality
-of <a class="reference external" href="https://docs.python.org/3/library/functions.html#zip" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">zip()</span></code></a>, is in <code class="xref py py-func docutils literal notranslate"><span class="pre">itertools.izip()</span></code>. This is far more efficient as it builds an interator.</p>
+to make the <a class="reference external" href="https://docs.python.org/3/library/functions.html#zip" title="(in Python v3.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">zip()</span></code></a> operation unnecessary. A good alternative, if you do need the functionality
+of <a class="reference external" href="https://docs.python.org/3/library/functions.html#zip" title="(in Python v3.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">zip()</span></code></a>, is in <code class="xref py py-func docutils literal notranslate"><span class="pre">itertools.izip()</span></code>. This is far more efficient as it builds an interator.</p>
 <p>This example generates N points, evenly distributed on the unit sphere centered at
 (0,0,0) using the “Golden Spiral” method.</p>
 <p>The original code:</p>
@@ -321,7 +321,7 @@ of <a class="reference external" href="https://docs.python.org/3/library/functio
     <span class="k">return</span> <span class="p">(</span><span class="n">x0_y0_z0</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Profiling this with <a class="reference external" href="https://docs.python.org/3/library/profile.html#module-cProfile" title="(in Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cProfile</span></code></a> shows that a lot of time is spent in <a class="reference external" href="https://docs.python.org/3/library/functions.html#zip" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">zip()</span></code></a>:</p>
+<p>Profiling this with <a class="reference external" href="https://docs.python.org/3/library/profile.html#module-cProfile" title="(in Python v3.12)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cProfile</span></code></a> shows that a lot of time is spent in <a class="reference external" href="https://docs.python.org/3/library/functions.html#zip" title="(in Python v3.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">zip()</span></code></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Tue</span> <span class="n">Jun</span> <span class="mi">14</span> <span class="mi">09</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">41</span> <span class="mi">2011</span>    <span class="n">PointsOnSphere</span><span class="o">.</span><span class="n">prof</span>
 
          <span class="mi">9</span> <span class="n">function</span> <span class="n">calls</span> <span class="ow">in</span> <span class="mf">8.132</span> <span class="n">seconds</span>
@@ -339,7 +339,7 @@ of <a class="reference external" href="https://docs.python.org/3/library/functio
 </div>
 <p>So lets try and do a few simple rewrites to make this faster.  Using numpy.vstack
 is the first one that came to mind.  The change here is to replace building up
-the array from the elements made by <a class="reference external" href="https://docs.python.org/3/library/functions.html#zip" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">zip()</span></code></a> to just concatenating the arrays we already have:</p>
+the array from the elements made by <a class="reference external" href="https://docs.python.org/3/library/functions.html#zip" title="(in Python v3.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">zip()</span></code></a> to just concatenating the arrays we already have:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">PointsOnSphere</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
 <span class="c1"># Generate evenly distributed N points on the unit sphere centered at (0,0,0)</span>
 <span class="c1"># Uses &quot;Golden Spiral&quot; method</span>
@@ -359,7 +359,7 @@ the array from the elements made by <a class="reference external" href="https://
     <span class="k">return</span> <span class="p">(</span><span class="n">x0_y0_z0</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Profiling this with <a class="reference external" href="https://docs.python.org/3/library/profile.html#module-cProfile" title="(in Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cProfile</span></code></a> one can see that this is now fast enough for me,
+<p>Profiling this with <a class="reference external" href="https://docs.python.org/3/library/profile.html#module-cProfile" title="(in Python v3.12)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cProfile</span></code></a> one can see that this is now fast enough for me,
 no more work to do.  We picked up a 48x speed increase, I’m sure this can still
 be made better and let the SpacePy team know if you rewrite it and it will be
 included:</p>
@@ -406,10 +406,10 @@ included:</p>
 <hr class="docutils" />
 <dl class="field-list simple">
 <dt class="field-odd">Release<span class="colon">:</span></dt>
-<dd class="field-odd"><p>0.4.1</p>
+<dd class="field-odd"><p>0.5.0</p>
 </dd>
 <dt class="field-even">Doc generation date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Sep 14, 2022</p>
+<dd class="field-even"><p>Mar 08, 2024</p>
 </dd>
 </dl>
 <p>For additions or fixes to this page contact the SpacePy team at Los Alamos.</p>
@@ -447,7 +447,7 @@ included:</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

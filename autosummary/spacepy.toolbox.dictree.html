@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.toolbox.dictree &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.toolbox.dictree &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -99,20 +99,33 @@
 <h1>spacepy.toolbox.dictree<a class="headerlink" href="#spacepy-toolbox-dictree" title="Permalink to this heading">¶</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="spacepy.toolbox.dictree">
-<span class="sig-prename descclassname"><span class="pre">spacepy.toolbox.</span></span><span class="sig-name descname"><span class="pre">dictree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spaces</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">levels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/toolbox.html#dictree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.toolbox.dictree" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">spacepy.toolbox.</span></span><span class="sig-name descname"><span class="pre">dictree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spaces</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">levels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/toolbox.html#dictree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.toolbox.dictree" title="Permalink to this definition">¶</a></dt>
 <dd><p>pretty print a dictionary tree</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>in_dict</strong><span class="classifier">dict</span></dt><dd><p>a complex dictionary (with substructures)</p>
 </dd>
-<dt><strong>verbose</strong><span class="classifier">boolean (optional)</span></dt><dd><p>print more info</p>
+<dt><strong>verbose</strong><span class="classifier">bool, default False</span></dt><dd><p>print more info</p>
 </dd>
-<dt><strong>spaces</strong><span class="classifier">string (optional)</span></dt><dd><p>string will added for every line</p>
+<dt><strong>spaces</strong><span class="classifier">str (optional)</span></dt><dd><p>string will added for every line</p>
 </dd>
-<dt><strong>levels</strong><span class="classifier">integer (optional)</span></dt><dd><p>number of levels to recurse through (True means all)</p>
+<dt><strong>levels</strong><span class="classifier">int (optional)</span></dt><dd><p>number of levels to recurse through (True, the default,  means all)</p>
 </dd>
-<dt><strong>attrs</strong><span class="classifier">boolean (optional)</span></dt><dd><p>display information for attributes</p>
+<dt><strong>attrs</strong><span class="classifier">bool, default False</span></dt><dd><p>display information for attributes</p>
+</dd>
+<dt><strong>print_out</strong><span class="classifier">bool, default True</span></dt><dd><blockquote>
+<div><div class="versionadded">
+<p><span class="versionmodified added">New in version 0.5.0.</span></p>
+</div>
+</div></blockquote>
+<p>Print output (original behavior); if <code class="docutils literal notranslate"><span class="pre">False</span></code>, return the output.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>TypeError</dt><dd><p>Input does not have keys or attrs, cannot build tree.</p>
 </dd>
 </dl>
 </dd>
@@ -181,7 +194,7 @@ are denoted by a colon.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

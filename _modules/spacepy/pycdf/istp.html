@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.pycdf.istp &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.pycdf.istp &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
@@ -126,13 +126,13 @@
 
 
 <div class="viewcode-block" id="VariableChecks"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.VariableChecks.html#spacepy.pycdf.istp.VariableChecks">[docs]</a><span class="k">class</span> <span class="nc">VariableChecks</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;ISTP compliance checks for a single variable.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;ISTP compliance checks for a single variable.</span>
 
 <span class="sd">    Checks a variable&#39;s compliance with ISTP standards. This mostly</span>
 <span class="sd">    performs checks that are not currently performed by the `ISTP</span>
 <span class="sd">    skeleton editor &lt;https://spdf.gsfc.nasa.gov/skteditor/&gt;`_.  All</span>
 <span class="sd">    tests return a list, one error string for every noncompliance</span>
-<span class="sd">    found (empty list if compliant). :meth:`all` will perform all</span>
+<span class="sd">    found (empty list if compliant). `all` will perform all</span>
 <span class="sd">    tests and concatenate all errors.</span>
 
 <span class="sd">    .. autosummary::</span>
@@ -168,11 +168,11 @@
 
 <div class="viewcode-block" id="VariableChecks.all"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.VariableChecks.html#spacepy.pycdf.istp.VariableChecks.all">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">all</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">catch</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Perform all variable tests</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform all variable tests</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        v : :class:`~spacepy.pycdf.Var`</span>
+<span class="sd">        v : `~.pycdf.Var`</span>
 <span class="sd">            Variable to check</span>
 <span class="sd">        catch : bool</span>
 <span class="sd">            Catch exceptions in tests (default False). If True, any</span>
@@ -196,7 +196,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">callme</span> <span class="o">=</span> <span class="p">[</span><span class="n">func</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
                   <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span>
-                  <span class="ow">and</span> <span class="n">callable</span><span class="p">(</span><span class="n">func</span><span class="p">)</span> <span class="ow">and</span> <span class="n">name</span> <span class="o">!=</span> <span class="s1">&#39;all&#39;</span><span class="p">]</span>
+                  <span class="ow">and</span> <span class="nb">callable</span><span class="p">(</span><span class="n">func</span><span class="p">)</span> <span class="ow">and</span> <span class="n">name</span> <span class="o">!=</span> <span class="s1">&#39;all&#39;</span><span class="p">]</span>
         <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">callme</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
@@ -211,7 +211,7 @@
 
 <div class="viewcode-block" id="VariableChecks.depends"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.VariableChecks.html#spacepy.pycdf.istp.VariableChecks.depends">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">depends</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Checks that DELTA, DEPEND, and LABL_PTR variables exist</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Checks that DELTA, DEPEND, and LABL_PTR variables exist</span>
 
 <span class="sd">        Check that variables specified in the variable attributes for</span>
 <span class="sd">        `DELTA</span>
@@ -224,7 +224,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        v : :class:`~spacepy.pycdf.Var`</span>
+<span class="sd">        v : `~.pycdf.Var`</span>
 <span class="sd">            Variable to check</span>
 
 <span class="sd">        Returns</span>
@@ -241,7 +241,7 @@
 
 <div class="viewcode-block" id="VariableChecks.deltas"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.VariableChecks.html#spacepy.pycdf.istp.VariableChecks.deltas">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">deltas</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check DELTA variables</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check DELTA variables</span>
 
 <span class="sd">        Check that variables specified in the variable attributes for</span>
 <span class="sd">        `DELTA</span>
@@ -250,7 +250,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        v : :class:`~spacepy.pycdf.Var`</span>
+<span class="sd">        v : `~.pycdf.Var`</span>
 <span class="sd">            Variable to check</span>
 
 <span class="sd">        Returns</span>
@@ -298,7 +298,7 @@
 
 <div class="viewcode-block" id="VariableChecks.depsize"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.VariableChecks.html#spacepy.pycdf.istp.VariableChecks.depsize">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">depsize</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Checks that DEPEND has same shape as that dim</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Checks that DEPEND has same shape as that dim</span>
 
 <span class="sd">        Compares the size of variables specified in the variable</span>
 <span class="sd">        attributes for `DEPEND</span>
@@ -308,7 +308,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        v : :class:`~spacepy.pycdf.Var`</span>
+<span class="sd">        v : `~.pycdf.Var`</span>
 <span class="sd">            Variable to check</span>
 
 <span class="sd">        Returns</span>
@@ -388,14 +388,14 @@
 
 <div class="viewcode-block" id="VariableChecks.empty_entry"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.VariableChecks.html#spacepy.pycdf.istp.VariableChecks.empty_entry">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">empty_entry</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check for attributes with empty string</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check for attributes with empty string</span>
 
 <span class="sd">        Checks attributes for this variable for any entries consisting</span>
 <span class="sd">        of an empty string. These should be replaced with a single space.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        v : :class:`~spacepy.pycdf.Var`</span>
+<span class="sd">        v : `~.pycdf.Var`</span>
 <span class="sd">            Variable to check</span>
 
 <span class="sd">        Returns</span>
@@ -413,7 +413,7 @@
 
 <div class="viewcode-block" id="VariableChecks.fillval"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.VariableChecks.html#spacepy.pycdf.istp.VariableChecks.fillval">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">fillval</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check for FILLVAL presence, type, value</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check for FILLVAL presence, type, value</span>
 
 <span class="sd">        Checks variable for existence of `FILLVAL</span>
 <span class="sd">        &lt;https://spdf.gsfc.nasa.gov/istp_guide/vattributes.html#FILLVAL&gt;`_</span>
@@ -422,7 +422,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        v : :class:`~spacepy.pycdf.Var`</span>
+<span class="sd">        v : `~.pycdf.Var`</span>
 <span class="sd">            Variable to check</span>
 
 <span class="sd">        Returns</span>
@@ -477,7 +477,7 @@
 
 <div class="viewcode-block" id="VariableChecks.recordcount"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.VariableChecks.html#spacepy.pycdf.istp.VariableChecks.recordcount">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">recordcount</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check that the DEPEND_0 has same record count as variable</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check that the DEPEND_0 has same record count as variable</span>
 
 <span class="sd">        Checks the record count of the variable specified in the</span>
 <span class="sd">        variable attribute for `DEPEND_0</span>
@@ -486,7 +486,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        v : :class:`~spacepy.pycdf.Var`</span>
+<span class="sd">        v : `~.pycdf.Var`</span>
 <span class="sd">            Variable to check</span>
 
 <span class="sd">        Returns</span>
@@ -507,11 +507,11 @@
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">_validhelper</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Helper function for checking SCALEMIN/MAX, VALIDMIN/MAX</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Helper function for checking SCALEMIN/MAX, VALIDMIN/MAX</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        v : :class:`~spacepy.pycdf.Var`</span>
+<span class="sd">        v : `~.pycdf.Var`</span>
 <span class="sd">            Variable to check</span>
 
 <span class="sd">        rng : bool</span>
@@ -617,7 +617,7 @@
 
 <div class="viewcode-block" id="VariableChecks.validrange"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.VariableChecks.html#spacepy.pycdf.istp.VariableChecks.validrange">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">validrange</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check that all values are within VALIDMIN/VALIDMAX, or FILLVAL</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check that all values are within VALIDMIN/VALIDMAX, or FILLVAL</span>
 
 <span class="sd">        Compare all values of this variable to `VALIDMIN</span>
 <span class="sd">        &lt;https://spdf.gsfc.nasa.gov/istp_guide/vattributes.html#VALIDMIN&gt;`_</span>
@@ -627,7 +627,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        v : :class:`~spacepy.pycdf.Var`</span>
+<span class="sd">        v : `~.pycdf.Var`</span>
 <span class="sd">            Variable to check</span>
 
 <span class="sd">        Returns</span>
@@ -640,7 +640,7 @@
 
 <div class="viewcode-block" id="VariableChecks.validscale"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.VariableChecks.html#spacepy.pycdf.istp.VariableChecks.validscale">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">validscale</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check SCALEMIN&lt;=SCALEMAX, and both in range for CDF datatype.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check SCALEMIN&lt;=SCALEMAX, and both in range for CDF datatype.</span>
 
 <span class="sd">        Compares `SCALEMIN</span>
 <span class="sd">        &lt;https://spdf.gsfc.nasa.gov/istp_guide/vattributes.html#SCALEMIN&gt;`_</span>
@@ -649,7 +649,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        v : :class:`~spacepy.pycdf.Var`</span>
+<span class="sd">        v : `~.pycdf.Var`</span>
 <span class="sd">            Variable to check</span>
 
 <span class="sd">        Returns</span>
@@ -662,7 +662,7 @@
 
 <div class="viewcode-block" id="VariableChecks.validdisplaytype"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.VariableChecks.html#spacepy.pycdf.istp.VariableChecks.validdisplaytype">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">validdisplaytype</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check that plottype matches dimensions.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check that plottype matches dimensions.</span>
 
 <span class="sd">        Check `DISPLAYTYPE</span>
 <span class="sd">        &lt;https://spdf.gsfc.nasa.gov/istp_guide/vattributes.html#DISPLAY_TYPE&gt;`_</span>
@@ -671,7 +671,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        v : :class:`~spacepy.pycdf.Var`</span>
+<span class="sd">        v : `~.pycdf.Var`</span>
 <span class="sd">            Variable to check</span>
 
 <span class="sd">        Returns</span>
@@ -694,7 +694,7 @@
 
 <div class="viewcode-block" id="VariableChecks.fieldnam"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.VariableChecks.html#spacepy.pycdf.istp.VariableChecks.fieldnam">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">fieldnam</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check that FIELDNAM attribute matches variable name.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check that FIELDNAM attribute matches variable name.</span>
 
 <span class="sd">        Compare `FIELDNAM</span>
 <span class="sd">        &lt;https://spdf.gsfc.nasa.gov/istp_guide/vattributes.html#FIELDNAM&gt;`_</span>
@@ -703,7 +703,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        v : :class:`~spacepy.pycdf.Var`</span>
+<span class="sd">        v : `~.pycdf.Var`</span>
 <span class="sd">            Variable to check</span>
 
 <span class="sd">        Returns</span>
@@ -723,13 +723,13 @@
 
 
 <div class="viewcode-block" id="FileChecks"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.FileChecks.html#spacepy.pycdf.istp.FileChecks">[docs]</a><span class="k">class</span> <span class="nc">FileChecks</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;ISTP compliance checks for a CDF file.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;ISTP compliance checks for a CDF file.</span>
 
 <span class="sd">    Checks a file&#39;s compliance with ISTP standards. This mostly</span>
 <span class="sd">    performs checks that are not currently performed by the `ISTP</span>
 <span class="sd">    skeleton editor &lt;https://spdf.gsfc.nasa.gov/skteditor/&gt;`_.  All</span>
 <span class="sd">    tests return a list, one error string for every noncompliance</span>
-<span class="sd">    found (empty list if compliant). :meth:`all` will perform all</span>
+<span class="sd">    found (empty list if compliant). `all` will perform all</span>
 <span class="sd">    tests and concatenate all errors.</span>
 
 <span class="sd">    .. autosummary::</span>
@@ -753,14 +753,14 @@
 
 <div class="viewcode-block" id="FileChecks.all"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.FileChecks.html#spacepy.pycdf.istp.FileChecks.all">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">all</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">catch</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Perform all variable and file-level tests</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform all variable and file-level tests</span>
 
 <span class="sd">        In addition to calling every test in this class, will also call</span>
-<span class="sd">        :meth:`VariableChecks.all` for every variable in the file.</span>
+<span class="sd">        `VariableChecks.all` for every variable in the file.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        f : :class:`~spacepy.pycdf.CDF`</span>
+<span class="sd">        f : `~.pycdf.CDF`</span>
 <span class="sd">            Open CDF file to check</span>
 <span class="sd">        catch : bool</span>
 <span class="sd">            Catch exceptions in tests (default False). If True, any</span>
@@ -788,7 +788,7 @@
         <span class="c1">#Update this list when adding new test functions</span>
         <span class="n">callme</span> <span class="o">=</span> <span class="p">[</span><span class="n">func</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
                   <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span>
-                  <span class="ow">and</span> <span class="n">callable</span><span class="p">(</span><span class="n">func</span><span class="p">)</span> <span class="ow">and</span> <span class="n">name</span> <span class="o">!=</span> <span class="s1">&#39;all&#39;</span><span class="p">]</span>
+                  <span class="ow">and</span> <span class="nb">callable</span><span class="p">(</span><span class="n">func</span><span class="p">)</span> <span class="ow">and</span> <span class="n">name</span> <span class="o">!=</span> <span class="s1">&#39;all&#39;</span><span class="p">]</span>
         <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">callme</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
@@ -807,14 +807,14 @@
                 
 <div class="viewcode-block" id="FileChecks.empty_entry"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.FileChecks.html#spacepy.pycdf.istp.FileChecks.empty_entry">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">empty_entry</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check for attributes with empty string</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check for attributes with empty string</span>
 
 <span class="sd">        Checks global attributes for this variable for any entries consisting</span>
 <span class="sd">        of an empty string. These should be replaced with a single space.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        f : :class:`~spacepy.pycdf.CDF`</span>
+<span class="sd">        f : `~.pycdf.CDF`</span>
 <span class="sd">            Open CDF file to check</span>
 
 <span class="sd">        Returns</span>
@@ -836,7 +836,7 @@
 
 <div class="viewcode-block" id="FileChecks.filename"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.FileChecks.html#spacepy.pycdf.istp.FileChecks.filename">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">filename</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Compare filename to global attributes</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compare filename to global attributes</span>
 
 <span class="sd">        Check global attribute `Logical_file_id</span>
 <span class="sd">        &lt;https://spdf.gsfc.nasa.gov/istp_guide/gattributes.html#Logical_file_id&gt;`_</span>
@@ -846,7 +846,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        f : :class:`~spacepy.pycdf.CDF`</span>
+<span class="sd">        f : `~.pycdf.CDF`</span>
 <span class="sd">            Open CDF file to check</span>
 
 <span class="sd">        Returns</span>
@@ -862,8 +862,7 @@
         <span class="k">if</span> <span class="n">errs</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">errs</span>
         <span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">pathname</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">bytes</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
-            <span class="n">fname</span> <span class="o">=</span> <span class="n">fname</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+        <span class="n">fname</span> <span class="o">=</span> <span class="n">fname</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">fname</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;Logical_source&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]):</span>
             <span class="n">errs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Logical_source </span><span class="si">{}</span><span class="s2"> doesn&#39;t match filename </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="n">f</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;Logical_source&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">fname</span><span class="p">))</span>
@@ -874,7 +873,7 @@
 
 <div class="viewcode-block" id="FileChecks.time_monoton"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.FileChecks.html#spacepy.pycdf.istp.FileChecks.time_monoton">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">time_monoton</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Checks that times are monotonic</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Checks that times are monotonic</span>
 
 <span class="sd">        Check that all `Epoch</span>
 <span class="sd">        &lt;https://spdf.gsfc.nasa.gov/istp_guide/variables.html#support_data_eg1&gt;`_</span>
@@ -882,7 +881,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        f : :class:`~spacepy.pycdf.CDF`</span>
+<span class="sd">        f : `~.pycdf.CDF`</span>
 <span class="sd">            Open CDF file to check</span>
 
 <span class="sd">        Returns</span>
@@ -907,7 +906,7 @@
 
 <div class="viewcode-block" id="FileChecks.times"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.FileChecks.html#spacepy.pycdf.istp.FileChecks.times">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">times</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Compare filename to times</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compare filename to times</span>
 
 <span class="sd">        Check that all `Epoch</span>
 <span class="sd">        &lt;https://spdf.gsfc.nasa.gov/istp_guide/variables.html#support_data_eg1&gt;`_</span>
@@ -915,7 +914,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        f : :class:`~spacepy.pycdf.CDF`</span>
+<span class="sd">        f : `~.pycdf.CDF`</span>
 <span class="sd">            Open CDF file to check</span>
 
 <span class="sd">        Returns</span>
@@ -932,9 +931,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">errs</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">pathname</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">bytes</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
-            <span class="n">fname</span> <span class="o">=</span> <span class="n">fname</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
-        <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;\d</span><span class="si">{8}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fname</span><span class="p">)</span>
+        <span class="n">fname</span> <span class="o">=</span> <span class="n">fname</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d</span><span class="si">{8}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fname</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">m</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;Cannot parse date from filename </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fname</span><span class="p">)]</span>
         <span class="n">datestr</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -955,7 +953,7 @@
 
 
 <div class="viewcode-block" id="fillval"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.fillval.html#spacepy.pycdf.istp.fillval">[docs]</a><span class="k">def</span> <span class="nf">fillval</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">ret</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Set ISTP-compliant FILLVAL on a variable</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set ISTP-compliant FILLVAL on a variable</span>
 
 <span class="sd">    Sets or returns a CDF variable&#39;s `FILLVAL</span>
 <span class="sd">    &lt;https://spdf.gsfc.nasa.gov/istp_guide/vattributes.html#FILLVAL&gt;`_</span>
@@ -963,7 +961,7 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    v : :class:`~spacepy.pycdf.Var`</span>
+<span class="sd">    v : `~.pycdf.Var`</span>
 <span class="sd">        CDF variable to update</span>
 
 <span class="sd">    Other Parameters</span>
@@ -1021,7 +1019,7 @@
 
 
 <div class="viewcode-block" id="format"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.format.html#spacepy.pycdf.istp.format">[docs]</a><span class="k">def</span> <span class="nf">format</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">use_scaleminmax</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dryrun</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Set ISTP-compliant FORMAT on a variable</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set ISTP-compliant FORMAT on a variable</span>
 
 <span class="sd">    Sets a CDF variable&#39;s `FORMAT</span>
 <span class="sd">    &lt;https://spdf.gsfc.nasa.gov/istp_guide/vattributes.html#FORMAT&gt;`_</span>
@@ -1033,7 +1031,7 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    v : :class:`~spacepy.pycdf.Var`</span>
+<span class="sd">    v : `~.pycdf.Var`</span>
 <span class="sd">        Variable to update</span>
 <span class="sd">    use_scaleminmax : bool, optional</span>
 <span class="sd">        Use SCALEMIN/MAX instead of VALIDMIN/MAX (default False).</span>
@@ -1172,7 +1170,7 @@
 
 
 <div class="viewcode-block" id="nanfill"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.nanfill.html#spacepy.pycdf.istp.nanfill">[docs]</a><span class="k">def</span> <span class="nf">nanfill</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Set fill values to NaN</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set fill values to NaN</span>
 
 <span class="sd">    Finds all values which are equal to ``FILLVAL``, greater than</span>
 <span class="sd">    ``VALIDMAX``, or less than ``VALIDMIN``, and replace with ``NaN``</span>
@@ -1184,8 +1182,8 @@
 <span class="sd">    restriction.)</span>
 
 <span class="sd">    Only applicable to floating-point types. Best applied to a</span>
-<span class="sd">    :class:`~spacepy.pycdf.VarCopy` or :class:`~spacepy.datamodel.dmarray`</span>
-<span class="sd">    rather than :class:`~spacepy.pycdf.Var`. Updating a variable in a CDF</span>
+<span class="sd">    `~.pycdf.VarCopy` or `~.datamodel.dmarray`</span>
+<span class="sd">    rather than `~.pycdf.Var`. Updating a variable in a CDF</span>
 <span class="sd">    requires one write per changed value, and also will result in a CDF</span>
 <span class="sd">    that is no longer ISTP compliant.</span>
 
@@ -1194,7 +1192,7 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    v : :class:`~spacepy.pycdf.Var` or :class:`~spacepy.datamodel.dmarray`</span>
+<span class="sd">    v : `~.pycdf.Var` or `~.datamodel.dmarray`</span>
 <span class="sd">        CDF variable, data, or copy to update</span>
 
 <span class="sd">    Examples</span>
@@ -1234,13 +1232,13 @@
 
 
 <div class="viewcode-block" id="VarBundle"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.VarBundle.html#spacepy.pycdf.istp.VarBundle">[docs]</a><span class="k">class</span> <span class="nc">VarBundle</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Collective handling of ISTP-compliant variable and its dependencies.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Collective handling of ISTP-compliant variable and its dependencies.</span>
 
 <span class="sd">    Representation of an ISTP-compliant variable bundled together</span>
 <span class="sd">    with its dependencies to enable aggregate operations. Normally</span>
 <span class="sd">    used to copy a subset of data from one CDF or SpaceData to another by</span>
 <span class="sd">    chaining operations, or to load just the relevant data from a CDF</span>
-<span class="sd">    into a :class:`~spacepy.datamodel.SpaceData`.</span>
+<span class="sd">    into a `~.datamodel.SpaceData`.</span>
 
 <span class="sd">    ``VarBundle`` operates on a single variable within a file or SpaceData</span>
 <span class="sd">    and its various dependencies, uncertainties, labels, etc. That variable</span>
@@ -1251,13 +1249,13 @@
 <span class="sd">    defining the input file (the CDF containing that variable).</span>
 
 <span class="sd">    Unusual or indecipherable error messages may indicate an ISTP</span>
-<span class="sd">    compliance issue; see :class:`VariableChecks` for some checks.</span>
+<span class="sd">    compliance issue; see `VariableChecks` for some checks.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    source : :class:`~.pycdf.CDF`, :class:`~.datamodel.SpaceData`, or :class:`~.pycdf.Var`</span>
+<span class="sd">    source : `~.pycdf.CDF`, `~.datamodel.SpaceData`, or `~.pycdf.Var`</span>
 <span class="sd">        SpaceData or open CDF containing the variable to process, or the CDF variable itself.</span>
-<span class="sd">    name : :class:`str`</span>
+<span class="sd">    name : `str`</span>
 <span class="sd">        Name of the variable within ``source`` to process (&quot;main variable&quot;).</span>
 
 <span class="sd">    See Also</span>
@@ -1345,26 +1343,26 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize variable bundle</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize variable bundle</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        source : :class:`~spacepy.pycdf.CDF` or :class:`~spacepy.pycdf.Var`</span>
+<span class="sd">        source : `~spacepy.pycdf.CDF` or `~spacepy.pycdf.Var`</span>
 <span class="sd">            CDF containing the variable to process, or the variable itself.</span>
-<span class="sd">        name : :class:`str`</span>
+<span class="sd">        name : `str`</span>
 <span class="sd">            Name of the variable within ``source`` to process (&quot;main variable&quot;).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;cdf_file&#39;</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Single-argument form must be a variable&#39;</span>
                 <span class="s1">&#39; in an open CDF, not </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">source</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mainvar</span> <span class="o">=</span> <span class="n">source</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">source</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
-        <span class="sd">&quot;&quot;&quot;The variable to operate on.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The variable to operate on.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cdf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mainvar</span><span class="o">.</span><span class="n">cdf_file</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">source</span>
-        <span class="sd">&quot;&quot;&quot;Input CDF file containing the main variable.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Input CDF file containing the main variable.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mainvar</span><span class="o">.</span><span class="n">name</span><span class="p">()</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">name</span>
-        <span class="sd">&quot;&quot;&quot;Name of the main variable&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Name of the main variable&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_varinfo</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="sd">&quot;&quot;&quot;Keyed by variable name. Values are also dicts, keys are</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Keyed by variable name. Values are also dicts, keys are</span>
 <span class="sd">        ``dims``, list of the main variable dimensions corresponding</span>
 <span class="sd">        to each dimension of the variable, ``slice``, the slice</span>
 <span class="sd">        to apply when reading this variable from the input, ``postidx``,</span>
@@ -1378,15 +1376,15 @@
 <span class="sd">        labels).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_degenerate</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="sd">&quot;&quot;&quot;Index by dim, is it degenerate, i.e. removed in a slice.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Index by dim, is it degenerate, i.e. removed in a slice.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_summed</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="sd">&quot;&quot;&quot;Index by dim, is this dim summed.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Index by dim, is this dim summed.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_mean</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="sd">&quot;&quot;&quot;Index by dim, is this dim averaged.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Index by dim, is this dim averaged.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_getvarinfo</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_process_delta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mainname</span><span class="p">,</span> <span class="n">deltaname</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Handle DELTA_PLUS/DELTA_MINUS attributes</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Handle DELTA_PLUS/DELTA_MINUS attributes</span>
 
 <span class="sd">        A DELTA variable should be the same shape and the same</span>
 <span class="sd">        dependencies as its referrer (except potentially NRV).</span>
@@ -1444,7 +1442,7 @@
         <span class="k">return</span> <span class="n">result</span>
 
     <span class="k">def</span> <span class="nf">_getvarinfo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Find dependency and dimension information</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Find dependency and dimension information</span>
 
 <span class="sd">        For main variable and its dependencies, find how dimensions</span>
 <span class="sd">        relate to the main variable, and find all DELTA variables.</span>
@@ -1552,7 +1550,7 @@
 
 <div class="viewcode-block" id="VarBundle.slice"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.VarBundle.html#spacepy.pycdf.istp.VarBundle.slice">[docs]</a>    <span class="k">def</span> <span class="nf">slice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
               <span class="n">single</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Slice on a single dimension</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Slice on a single dimension</span>
 
 <span class="sd">        Selects subset of a dimension to include in the output. Slicing</span>
 <span class="sd">        is done with reference to the dimensions of the main variable and</span>
@@ -1601,7 +1599,7 @@
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">        See the :class:`VarBundle` examples for creating output from</span>
+<span class="sd">        See the `VarBundle` examples for creating output from</span>
 <span class="sd">        the slices.</span>
 
 <span class="sd">        &gt;&gt;&gt; import spacepy.pycdf</span>
@@ -1636,7 +1634,7 @@
         <span class="k">return</span> <span class="bp">self</span></div>
 
 <div class="viewcode-block" id="VarBundle.sum"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.VarBundle.html#spacepy.pycdf.istp.VarBundle.sum">[docs]</a>    <span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Sum across a dimension.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sum across a dimension.</span>
 
 <span class="sd">        Total the main variable of the bundle across the given dimension.</span>
 <span class="sd">        That dimension disappears from the output and dependencies</span>
@@ -1673,7 +1671,7 @@
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">        See the :class:`VarBundle` examples for creating output.</span>
+<span class="sd">        See the `VarBundle` examples for creating output.</span>
 
 <span class="sd">        &gt;&gt;&gt; import spacepy.pycdf</span>
 <span class="sd">        &gt;&gt;&gt; import spacepy.pycdf.istp</span>
@@ -1695,7 +1693,7 @@
         <span class="k">return</span> <span class="bp">self</span></div>
 
 <div class="viewcode-block" id="VarBundle.mean"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.VarBundle.html#spacepy.pycdf.istp.VarBundle.mean">[docs]</a>    <span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Take the mean of a dimension.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Take the mean of a dimension.</span>
 
 <span class="sd">        Take mean of the main variable of the bundle across the given</span>
 <span class="sd">        dimension. That dimension disappears from the output and dependencies</span>
@@ -1731,7 +1729,7 @@
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">        See the :class:`VarBundle` examples for creating output.</span>
+<span class="sd">        See the `VarBundle` examples for creating output.</span>
 
 <span class="sd">        &gt;&gt;&gt; import spacepy.pycdf</span>
 <span class="sd">        &gt;&gt;&gt; import spacepy.pycdf.istp</span>
@@ -1753,7 +1751,7 @@
         <span class="k">return</span> <span class="bp">self</span></div>
 
     <span class="k">def</span> <span class="nf">_tokeep</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Determine which variables to keep for output</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Determine which variables to keep for output</span>
 
 <span class="sd">        Dependencies for dimensions which disappear after slicing, and</span>
 <span class="sd">        other variables that they depend on, shouldn&#39;t be included in</span>
@@ -1772,17 +1770,17 @@
                 <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;thisdim&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">deleted</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">_same</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">newvar</span><span class="p">,</span> <span class="n">invar</span><span class="p">,</span> <span class="n">rv</span><span class="p">,</span> <span class="n">dv</span><span class="p">,</span> <span class="n">dims</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Checks if an existing variable matches a proposed new variable</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Checks if an existing variable matches a proposed new variable</span>
 
 <span class="sd">        Does not compare DEPEND and LABL_PTR attributes (those are handled</span>
 <span class="sd">        later.)</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        newvar : :class:`~spacepy.pycdf.Var`</span>
+<span class="sd">        newvar : `~.pycdf.Var`</span>
 <span class="sd">            Existing variable to compare to requirements</span>
 
-<span class="sd">        invar : : class:`~spacepy.pycdf.Var`</span>
+<span class="sd">        invar : : class:`~.pycdf.Var`</span>
 <span class="sd">            Variable to use as reference for attributes, RV, CDF type,</span>
 <span class="sd">            number of elements.</span>
 
@@ -1795,7 +1793,7 @@
 <span class="sd">        dims : list of int</span>
 <span class="sd">            Size of each dimension.</span>
 
-<span class="sd">        data : :class:`~numpy.ndarray`</span>
+<span class="sd">        data : `~numpy.ndarray`</span>
 <span class="sd">            Data that should be in the variable.</span>
 
 <span class="sd">        Returns</span>
@@ -1834,9 +1832,9 @@
         <span class="k">return</span> <span class="p">(</span><span class="n">data</span> <span class="o">==</span> <span class="n">newvar</span><span class="p">[</span><span class="o">...</span><span class="p">])</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_namemap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Map old variable names to new</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Map old variable names to new</span>
 
-<span class="sd">        Helper for :meth:`output` that maps the variable name in the</span>
+<span class="sd">        Helper for `output` that maps the variable name in the</span>
 <span class="sd">        input CDF to variable name in the output CDF.</span>
 
 <span class="sd">        Parameters</span>
@@ -1865,9 +1863,9 @@
         <span class="k">return</span> <span class="n">namemap</span>
 
     <span class="k">def</span> <span class="nf">_sum_avg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">invar</span><span class="p">,</span> <span class="n">vinfo</span><span class="p">,</span> <span class="n">degen</span><span class="p">,</span> <span class="n">summed</span><span class="p">,</span> <span class="n">averaged</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Sum/average data</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sum/average data</span>
 
-<span class="sd">        Helper for :meth:`output` that performs summing and averaging</span>
+<span class="sd">        Helper for `output` that performs summing and averaging</span>
 <span class="sd">        of the data for a single variable. Note dimensionality of all</span>
 <span class="sd">        input is before the removal of degenerate dimensions</span>
 <span class="sd">        (this function does the translation using ``degen``), and it is</span>
@@ -1876,10 +1874,10 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        data : :class:`numpy.ndarray`</span>
+<span class="sd">        data : `numpy.ndarray`</span>
 <span class="sd">            Data as read from input CDF and properly sliced.</span>
 
-<span class="sd">        invar : :class:`~spacepy.pycdf.Var`</span>
+<span class="sd">        invar : `~.pycdf.Var`</span>
 <span class="sd">            CDF input variable from which ``data`` was read.</span>
 
 <span class="sd">        vinfo : dict</span>
@@ -1899,7 +1897,7 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        :class:`numpy.ndarray`</span>
+<span class="sd">        `numpy.ndarray`</span>
 <span class="sd">            Data summed/averaged over dimensions according to ``summed``</span>
 <span class="sd">            and ``averaged`` inputs.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1952,7 +1950,7 @@
         <span class="k">return</span> <span class="n">data</span>
 
     <span class="k">def</span> <span class="nf">_repoint_depend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">invar</span><span class="p">,</span> <span class="n">newvar</span><span class="p">,</span> <span class="n">preexist</span><span class="p">,</span> <span class="n">namemap</span><span class="p">,</span> <span class="n">degen</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Change DEPEND for new dimensionality of one variable.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Change DEPEND for new dimensionality of one variable.</span>
 
 <span class="sd">        Slicing/summing might change variable dimensionality and thus</span>
 <span class="sd">        the relationship with its DEPENDs, and the DEPENDs themselves</span>
@@ -1962,10 +1960,10 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        invar : :class:`~spacepy.pycdf.Var`</span>
+<span class="sd">        invar : `~.pycdf.Var`</span>
 <span class="sd">            The input variable (opened in raw mode).</span>
 
-<span class="sd">        newvar : :class:`~spacepy.pycdf.Var`</span>
+<span class="sd">        newvar : `~.pycdf.Var`</span>
 <span class="sd">            The output variable (opened in raw mode).</span>
 
 <span class="sd">        preexist : bool</span>
@@ -1993,7 +1991,7 @@
             <span class="c1">#Handle a suffixed DELTA if necessary</span>
             <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;DELTA_&#39;</span><span class="p">):</span>
                 <span class="n">olddelta</span> <span class="o">=</span> <span class="n">invar</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">a</span><span class="p">]</span>
-                <span class="k">if</span> <span class="nb">str</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">bytes</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">olddelta</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">olddelta</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
                     <span class="n">olddelta</span> <span class="o">=</span> <span class="n">olddelta</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
                 <span class="n">newvar</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">=</span> <span class="n">namemap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">olddelta</span><span class="p">,</span> <span class="n">olddelta</span><span class="p">)</span>
                 <span class="k">continue</span>
@@ -2006,14 +2004,14 @@
                 <span class="n">old_a</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span>
                                        <span class="n">olddim</span><span class="p">)</span>
                 <span class="n">oldval</span> <span class="o">=</span> <span class="n">invar</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">old_a</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-                <span class="k">if</span> <span class="nb">str</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">bytes</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">oldval</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">oldval</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
                     <span class="n">oldval</span> <span class="o">=</span> <span class="n">oldval</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">oldval</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="c1">#Check for variable renaming from the input to output</span>
                 <span class="n">newval</span> <span class="o">=</span> <span class="n">namemap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">oldval</span><span class="p">,</span> <span class="n">oldval</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">preexist</span><span class="p">:</span>
                     <span class="n">existingval</span> <span class="o">=</span> <span class="n">newvar</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">a</span><span class="p">]</span>
-                    <span class="k">if</span> <span class="nb">str</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">bytes</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">existingval</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">existingval</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
                         <span class="n">existingval</span> <span class="o">=</span> <span class="n">existingval</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
                     <span class="k">if</span> <span class="n">existingval</span> <span class="o">!=</span> <span class="n">newval</span><span class="p">:</span>
                         <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
@@ -2033,7 +2031,7 @@
                     <span class="k">del</span> <span class="n">newvar</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">a</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">_outshape</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vname</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Calculate shape of the variable on output</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate shape of the variable on output</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2068,7 +2066,7 @@
         <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">slices</span><span class="p">)]</span><span class="o">.</span><span class="n">shape</span>
 
 <div class="viewcode-block" id="VarBundle.variables"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.VarBundle.html#spacepy.pycdf.istp.VarBundle.variables">[docs]</a>    <span class="k">def</span> <span class="nf">variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Description of variable output from the bundle</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Description of variable output from the bundle</span>
 
 <span class="sd">        Provides information describing the variables output</span>
 <span class="sd">        from the bundle</span>
@@ -2113,7 +2111,7 @@
         <span class="k">return</span> <span class="n">variables</span></div>
 
 <div class="viewcode-block" id="VarBundle.operations"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.VarBundle.html#spacepy.pycdf.istp.VarBundle.operations">[docs]</a>    <span class="k">def</span> <span class="nf">operations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Operations of this bundle</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Operations of this bundle</span>
 
 <span class="sd">        Provides information describing the operations this bundle</span>
 <span class="sd">        would perform.</span>
@@ -2123,7 +2121,7 @@
 <span class="sd">        list</span>
 <span class="sd">            Each element is a tuple: first element is a string with</span>
 <span class="sd">            the name of the operation (i.e. method of</span>
-<span class="sd">            :class:`VarBundle`), next is also a tuple of positional</span>
+<span class="sd">            `VarBundle`), next is also a tuple of positional</span>
 <span class="sd">            arguments, and finally a dict of keyword arguments.</span>
 
 <span class="sd">        Examples</span>
@@ -2161,11 +2159,11 @@
         <span class="k">return</span> <span class="n">ops</span></div>
 
 <div class="viewcode-block" id="VarBundle.output"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.VarBundle.html#spacepy.pycdf.istp.VarBundle.output">[docs]</a>    <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Output the variables as modified</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Output the variables as modified</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        output : :class:`~spacepy.pycdf.CDF`,  :class:`~spacepy.datamodel.SpaceData`</span>
+<span class="sd">        output : `~.pycdf.CDF`,  `~.datamodel.SpaceData`</span>
 <span class="sd">            Output container to receive the new data, may be an open CDF</span>
 <span class="sd">            file or a SpaceData.</span>
 
@@ -2289,20 +2287,20 @@
         <span class="k">return</span> <span class="bp">self</span></div>
 
 <div class="viewcode-block" id="VarBundle.toSpaceData"><a class="viewcode-back" href="../../../autosummary/spacepy.pycdf.istp.VarBundle.html#spacepy.pycdf.istp.VarBundle.toSpaceData">[docs]</a>    <span class="k">def</span> <span class="nf">toSpaceData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return variables, as modified.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return variables, as modified.</span>
 
-<span class="sd">        Convenience function to call :meth:`output` on a new</span>
-<span class="sd">        :class:`~.datamodel.SpaceData` and return it.</span>
+<span class="sd">        Convenience function to call `output` on a new</span>
+<span class="sd">        `~.datamodel.SpaceData` and return it.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        suffix : str</span>
 <span class="sd">            Appended to the name of variables changed on output; see</span>
-<span class="sd">            :meth:`output` for details.</span>
+<span class="sd">            `output` for details.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        :class:`.datamodel.SpaceData`</span>
+<span class="sd">        `.datamodel.SpaceData`</span>
 <span class="sd">            Data read from input and processed according to the defined</span>
 <span class="sd">            operations.</span>
 
@@ -2333,7 +2331,7 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_vtype</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;String representation of type of a variable</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;String representation of type of a variable</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -2353,7 +2351,7 @@
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;String representation of the bundle</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;String representation of the bundle</span>
 
 <span class="sd">        Returns a string representation of the bundle, which is all the</span>
 <span class="sd">        variables that are involved on the input. Variables which are</span>
@@ -2380,7 +2378,7 @@
             <span class="k">for</span> <span class="n">dimvars</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">()</span> <span class="k">for</span> <span class="n">vname</span><span class="p">,</span> <span class="n">shape</span> <span class="ow">in</span> <span class="n">dimvars</span><span class="p">])</span>
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Representation of bundle</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Representation of bundle</span>
 
 <span class="sd">        Cannot return anything that can be evaluated to create a copy</span>
 <span class="sd">        of the CDF, so this is just the informal str representation in</span>
@@ -2421,7 +2419,7 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

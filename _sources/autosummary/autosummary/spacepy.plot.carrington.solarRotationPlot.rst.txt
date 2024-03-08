@@ -1,0 +1,6 @@
+spacepy.plot.carrington.solarRotationPlot
+=========================================
+
+.. currentmodule:: spacepy.plot.carrington
+
+.. autofunction:: spacepy.plot.carrington.solarRotationPlot

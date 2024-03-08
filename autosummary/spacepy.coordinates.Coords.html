@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.coordinates.Coords &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.coordinates.Coords &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -112,7 +112,7 @@ in Re and angles in degrees, regardless of specified units.</p>
 <p>By default, coordinate transforms are based on the SpacePy library’s
 high-accuracy coordinates backend.
 The legacy transforms provided by the IRBEM library can also be used
-by setting the <cite>use_irbem</cite> flag to True; its manual
+by setting the <code class="xref py py-obj docutils literal notranslate"><span class="pre">use_irbem</span></code> flag to True; its manual
 &lt;<a class="reference external" href="http://svn.code.sf.net/p/irbem/code/trunk/manual/user_guide.html">http://svn.code.sf.net/p/irbem/code/trunk/manual/user_guide.html</a>&gt;`_
 may prove useful.
 For a good reference on heliospheric and magnetospheric
@@ -179,6 +179,9 @@ Otherwise use SpacePy’s coordinate transform library.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.coordinates.Coords.from_skycoord" title="spacepy.coordinates.Coords.from_skycoord"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_skycoord</span></code></a>(skycoord[, use_irbem])</p></td>
 <td><p>Create a Coords instance from an Astropy SkyCoord instance</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.coordinates.Coords.to_skycoord" title="spacepy.coordinates.Coords.to_skycoord"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_skycoord</span></code></a>()</p></td>
+<td><p>Create an Astropy SkyCoord instance based on this instance</p></td>
+</tr>
 </tbody>
 </table>
 <dl class="py method">
@@ -236,7 +239,7 @@ supported systems</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>skycoord</strong><span class="classifier"><cite>astropy.coordinates.SkyCoord</cite></span></dt><dd><p>The coordinate to be converted</p>
+<dt><strong>skycoord</strong><span class="classifier"><a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.coordinates.SkyCoord.html#astropy.coordinates.SkyCoord" title="(in Astropy v6.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">astropy.coordinates.SkyCoord</span></code></a></span></dt><dd><p>The coordinate to be converted</p>
 </dd>
 </dl>
 </dd>
@@ -259,7 +262,7 @@ supported systems</p>
 <dl class="field-list">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>out</strong><span class="classifier"><cite>astropy.coordinates.SkyCoord</cite></span></dt><dd><p>This coordinate as an Astropy SkyCoord</p>
+<dt><strong>out</strong><span class="classifier"><a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.coordinates.SkyCoord.html#astropy.coordinates.SkyCoord" title="(in Astropy v6.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">astropy.coordinates.SkyCoord</span></code></a></span></dt><dd><p>This coordinate as an Astropy SkyCoord</p>
 </dd>
 </dl>
 </dd>
@@ -305,7 +308,7 @@ supported systems</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

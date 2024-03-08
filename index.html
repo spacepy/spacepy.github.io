@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>SpacePy 0.4.1 documentation &#8212; SpacePy v0.4.1 Manual</title>
+    <title>SpacePy 0.5.0 documentation &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -46,7 +46,7 @@
         <li><a href="search.html">search</a>|&nbsp;</li>
        <li><a href="#">documentation </a> &raquo;</li>
 
-        <li class="nav-item nav-item-this"><a href="">SpacePy 0.4.1 documentation</a></li> 
+        <li class="nav-item nav-item-this"><a href="">SpacePy 0.5.0 documentation</a></li> 
       </ul>
     </div>
 
@@ -58,7 +58,7 @@
   <div>
     <h3><a href="#">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">SpacePy 0.4.1 documentation</a></li>
+<li><a class="reference internal" href="#">SpacePy 0.5.0 documentation</a></li>
 <li><a class="reference internal" href="#getting-started">Getting Started</a></li>
 <li><a class="reference internal" href="#spacepy-documents">SpacePy Documents</a></li>
 <li><a class="reference internal" href="#developer-guide">Developer Guide</a></li>
@@ -100,7 +100,7 @@
           <div class="body" role="main">
             
   <section id="spacepy-version-documentation">
-<h1>SpacePy 0.4.1 documentation<a class="headerlink" href="#spacepy-version-documentation" title="Permalink to this heading">¶</a></h1>
+<h1>SpacePy 0.5.0 documentation<a class="headerlink" href="#spacepy-version-documentation" title="Permalink to this heading">¶</a></h1>
 <p>SpacePy is a package for Python, targeted at the space sciences, that aims to
 make basic data analysis, modeling and visualization easier. It builds on the
 capabilities of the well-known NumPy and MatPlotLib packages. Publication
@@ -125,16 +125,26 @@ this reliance will be diminished.</p>
 <p>When publishing research which used SpacePy, please provide appropriate
 credit to the SpacePy team via citation or acknowledgment.</p>
 <dl class="simple">
-<dt>To cite SpacePy in publications, use (BibTeX code):</dt><dd><p>&#64;INPROCEEDINGS{spacepy11,
-author = {{Morley}, S.~K. and {Koller}, J. and {Welling}, D.~T. and {Larsen}, B.~A. and {Henderson}, M.~G. and {Niehof}, J.~T.},
-title = “{Spacepy - A Python-based library of tools for the space sciences}”,
-booktitle = “{Proceedings of the 9th Python in science conference (SciPy 2010)}”,
-year = 2011,
-address = {Austin, TX}
+<dt>To cite SpacePy in publications, use (BibTeX code):</dt><dd><p>&#64;article{niehof2022spacepy,
+title={The SpacePy space science package at 12 years},
+author={Niehof, Jonathan T and Morley, Steven K and Welling, Daniel T and Larsen, Brian A},
+journal={Frontiers in Astronomy and Space Sciences},
+volume={9},
+year={2022},
+doi={10.3389/fspas.2022.1023612},
+publisher={Frontiers}
 }</p>
 </dd>
-<dt>Or to cite the code itself:</dt><dd><p>&#64;software{SpacePy,
-author       = {{Larsen}, B.~A. and {Morley}, S.~K. and {Niehof}, J.~T. and {Welling}, D.~T.},
+<dt>To cite the code itself:</dt><dd><p>&#64;software{spacepy_code,
+author       = {Morley, Steven K. and Niehof, Jonathan T. and
+Welling, Daniel T. and Larsen, Brian A. and
+Brunet, Antoine and Engel, Miles A. and
+Gieseler, Jan and Haiducek, John and
+Henderson, Michael and Hendry, Aaron and
+Hirsch, Michael and Killick, Peter and
+Koller, Josef and Merrill, Asher and
+Rastatter, Lutz and Reimer, Ashton and
+Shih, Albert Y. and Stricklan, Amanda},
 title        = {SpacePy},
 publisher    = {Zenodo},
 doi          = {10.5281/zenodo.3252523},
@@ -148,7 +158,7 @@ before publication or public presentation of analysis performed by that
 module, or in case of questions about the module. This allows the author to
 validate the analysis and receive appropriate credit for his or her
 work.</p>
-<span class="target" id="module-spacepy"></span></section>
+</section>
 <section id="getting-started">
 <h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">¶</a></h1>
 <p>First steps in SpacePy and scientific Python.</p>
@@ -169,7 +179,6 @@ work.</p>
 <li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="case_studies.html">SpacePy Case Studies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="publications.html">Publication List</a></li>
-<li class="toctree-l1"><a class="reference internal" href="py2k_eol.html">Python 2 End of Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">SpacePy Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scripts.html">SpacePy Scripts</a></li>
 </ul>
@@ -226,10 +235,10 @@ work.</p>
 <hr class="docutils" />
 <dl class="field-list simple">
 <dt class="field-odd">Release<span class="colon">:</span></dt>
-<dd class="field-odd"><p>0.4.1</p>
+<dd class="field-odd"><p>0.5.0</p>
 </dd>
 <dt class="field-even">Doc generation date<span class="colon">:</span></dt>
-<dd class="field-even"><p>Sep 14, 2022</p>
+<dd class="field-even"><p>Mar 08, 2024</p>
 </dd>
 </dl>
 </section>
@@ -259,11 +268,11 @@ work.</p>
         <li><a href="search.html">search</a>|&nbsp;</li>
        <li><a href="#">documentation </a> &raquo;</li>
 
-        <li class="nav-item nav-item-this"><a href="">SpacePy 0.4.1 documentation</a></li> 
+        <li class="nav-item nav-item-this"><a href="">SpacePy 0.5.0 documentation</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

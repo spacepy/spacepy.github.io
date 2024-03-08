@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.pycdf.Library &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.pycdf.Library &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -107,7 +107,7 @@ access to the underlying C library if necessary. The CDF library itself
 is described in section 2.1 of the CDF user’s guide, as well as the CDF
 C reference manual.</p>
 <p>Calling the C library directly requires knowledge of
-<a class="reference external" href="https://docs.python.org/3/library/ctypes.html#module-ctypes" title="(in Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ctypes</span></code></a>.</p>
+<a class="reference external" href="https://docs.python.org/3/library/ctypes.html#module-ctypes" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ctypes</span></code></a>.</p>
 <p>Instantiating this object loads the C library, see <a class="reference internal" href="../pycdf.html"><span class="doc">pycdf - Python interface to CDF files</span></a> docs
 for details.</p>
 <table class="autosummary longtable docutils align-default">
@@ -154,14 +154,53 @@ for details.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pycdf.Library.set_backward" title="spacepy.pycdf.Library.set_backward"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_backward</span></code></a>([backward])</p></td>
 <td><p>Set backward compatibility mode for new CDFs</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pycdf.Library.tt2000_to_datetime" title="spacepy.pycdf.Library.tt2000_to_datetime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tt2000_to_datetime</span></code></a>(tt2000)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pycdf.Library.supports_int8" title="spacepy.pycdf.Library.supports_int8"><code class="xref py py-obj docutils literal notranslate"><span class="pre">supports_int8</span></code></a></p></td>
+<td><p>True if this library supports INT8 and TIME_TT2000 types; else False.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pycdf.Library.tt2000_to_datetime" title="spacepy.pycdf.Library.tt2000_to_datetime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tt2000_to_datetime</span></code></a>(tt2000)</p></td>
 <td><p>Converts a CDF TT2000 value to a datetime</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pycdf.Library.tt2000_to_epoch" title="spacepy.pycdf.Library.tt2000_to_epoch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tt2000_to_epoch</span></code></a>(tt2000)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pycdf.Library.tt2000_to_epoch" title="spacepy.pycdf.Library.tt2000_to_epoch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tt2000_to_epoch</span></code></a>(tt2000)</p></td>
 <td><p>Converts a CDF TT2000 value to a CDF EPOCH</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pycdf.Library.tt2000_to_epoch16" title="spacepy.pycdf.Library.tt2000_to_epoch16"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tt2000_to_epoch16</span></code></a>(tt2000)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pycdf.Library.tt2000_to_epoch16" title="spacepy.pycdf.Library.tt2000_to_epoch16"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tt2000_to_epoch16</span></code></a>(tt2000)</p></td>
 <td><p>Converts a CDF TT2000 value to a CDF EPOCH16</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pycdf.Library.v_datetime_to_epoch" title="spacepy.pycdf.Library.v_datetime_to_epoch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v_datetime_to_epoch</span></code></a>(datetime)</p></td>
+<td><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.datetime_to_epoch" title="spacepy.pycdf.Library.datetime_to_epoch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datetime_to_epoch</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pycdf.Library.v_datetime_to_epoch16" title="spacepy.pycdf.Library.v_datetime_to_epoch16"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v_datetime_to_epoch16</span></code></a>(datetime)</p></td>
+<td><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.datetime_to_epoch16" title="spacepy.pycdf.Library.datetime_to_epoch16"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datetime_to_epoch16</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pycdf.Library.v_datetime_to_tt2000" title="spacepy.pycdf.Library.v_datetime_to_tt2000"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v_datetime_to_tt2000</span></code></a>(datetime)</p></td>
+<td><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.datetime_to_tt2000" title="spacepy.pycdf.Library.datetime_to_tt2000"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datetime_to_tt2000</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pycdf.Library.v_epoch_to_datetime" title="spacepy.pycdf.Library.v_epoch_to_datetime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v_epoch_to_datetime</span></code></a>(epoch)</p></td>
+<td><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.epoch_to_datetime" title="spacepy.pycdf.Library.epoch_to_datetime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">epoch_to_datetime</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pycdf.Library.v_epoch_to_tt2000" title="spacepy.pycdf.Library.v_epoch_to_tt2000"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v_epoch_to_tt2000</span></code></a>(epoch)</p></td>
+<td><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.epoch_to_tt2000" title="spacepy.pycdf.Library.epoch_to_tt2000"><code class="xref py py-obj docutils literal notranslate"><span class="pre">epoch_to_tt2000</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pycdf.Library.v_epoch16_to_datetime" title="spacepy.pycdf.Library.v_epoch16_to_datetime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v_epoch16_to_datetime</span></code></a>(epoch)</p></td>
+<td><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.epoch16_to_datetime" title="spacepy.pycdf.Library.epoch16_to_datetime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">epoch16_to_datetime</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pycdf.Library.v_epoch16_to_tt2000" title="spacepy.pycdf.Library.v_epoch16_to_tt2000"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v_epoch16_to_tt2000</span></code></a>(epoch16)</p></td>
+<td><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.epoch16_to_tt2000" title="spacepy.pycdf.Library.epoch16_to_tt2000"><code class="xref py py-obj docutils literal notranslate"><span class="pre">epoch16_to_tt2000</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pycdf.Library.v_tt2000_to_datetime" title="spacepy.pycdf.Library.v_tt2000_to_datetime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v_tt2000_to_datetime</span></code></a>(tt2000)</p></td>
+<td><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.tt2000_to_datetime" title="spacepy.pycdf.Library.tt2000_to_datetime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tt2000_to_datetime</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pycdf.Library.v_tt2000_to_epoch" title="spacepy.pycdf.Library.v_tt2000_to_epoch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v_tt2000_to_epoch</span></code></a>(tt2000)</p></td>
+<td><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.tt2000_to_epoch" title="spacepy.pycdf.Library.tt2000_to_epoch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tt2000_to_epoch</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pycdf.Library.v_tt2000_to_epoch16" title="spacepy.pycdf.Library.v_tt2000_to_epoch16"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v_tt2000_to_epoch16</span></code></a>(tt2000)</p></td>
+<td><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.tt2000_to_epoch16" title="spacepy.pycdf.Library.tt2000_to_epoch16"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tt2000_to_epoch16</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pycdf.Library.libpath" title="spacepy.pycdf.Library.libpath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">libpath</span></code></a></p></td>
+<td><p>The path where pycdf found the CDF C library, potentially useful in debugging.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pycdf.Library.version" title="spacepy.pycdf.Library.version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">version</span></code></a></p></td>
+<td><p>Version of the CDF library</p></td>
 </tr>
 </tbody>
 </table>
@@ -176,8 +215,8 @@ CDF library’s C internal interface. Checks the return value with
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>args</strong><span class="classifier">various, see <a class="reference external" href="https://docs.python.org/3/library/ctypes.html#module-ctypes" title="(in Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ctypes</span></code></a></span></dt><dd><p>Passed directly to the CDF library interface. Useful
-constants are defined in the <code class="xref py py-mod docutils literal notranslate"><span class="pre">const</span></code> module.</p>
+<dt><strong>args</strong><span class="classifier">various, see <a class="reference external" href="https://docs.python.org/3/library/ctypes.html#module-ctypes" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ctypes</span></code></a></span></dt><dd><p>Passed directly to the CDF library interface. Useful
+constants are defined in the <code class="xref py py-obj docutils literal notranslate"><span class="pre">const</span></code> module.</p>
 </dd>
 </dl>
 </dd>
@@ -253,7 +292,7 @@ any related warnings or exceptions will <em>not</em> be raised.
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>dt</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a></span></dt><dd><p>date and time to convert</p>
+<dt><strong>dt</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a></span></dt><dd><p>date and time to convert</p>
 </dd>
 </dl>
 </dd>
@@ -279,7 +318,7 @@ any related warnings or exceptions will <em>not</em> be raised.
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>dt</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a></span></dt><dd><p>date and time to convert</p>
+<dt><strong>dt</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a></span></dt><dd><p>date and time to convert</p>
 </dd>
 </dl>
 </dd>
@@ -305,7 +344,7 @@ any related warnings or exceptions will <em>not</em> be raised.
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>dt</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a></span></dt><dd><p>date and time to convert</p>
+<dt><strong>dt</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a></span></dt><dd><p>date and time to convert</p>
 </dd>
 </dl>
 </dd>
@@ -337,7 +376,7 @@ any related warnings or exceptions will <em>not</em> be raised.
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl>
-<dt><strong>out</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a></span></dt><dd><p>date and time corresponding to epoch. Invalid values are set to
+<dt><strong>out</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a></span></dt><dd><p>date and time corresponding to epoch. Invalid values are set to
 usual epoch invalid value, i.e. last moment of year 9999.</p>
 </dd>
 </dl>
@@ -375,7 +414,7 @@ usual epoch invalid value, i.e. last moment of year 9999.</p>
 <dt class="sig sig-object py" id="spacepy.pycdf.Library.epoch_to_num">
 <span class="sig-name descname"><span class="pre">epoch_to_num</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Library.epoch_to_num"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Library.epoch_to_num" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert CDF EPOCH to matplotlib number.</p>
-<p>Same output as <a class="reference external" href="https://matplotlib.org/stable/api/dates_api.html#matplotlib.dates.date2num" title="(in Matplotlib v3.5.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">date2num()</span></code></a> and useful for
+<p>Same output as <a class="reference external" href="https://matplotlib.org/stable/api/dates_api.html#matplotlib.dates.date2num" title="(in Matplotlib v3.8.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">date2num</span></code></a> and useful for
 plotting large data sets without converting the times through datetime.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -395,7 +434,7 @@ epoch (usually 0001-01-01 as day 1, or 1970-01-01 as day 0).</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference external" href="https://matplotlib.org/stable/api/dates_api.html#matplotlib.dates.date2num" title="(in Matplotlib v3.5.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.dates.date2num</span></code></a>, <a class="reference external" href="https://matplotlib.org/stable/api/dates_api.html#matplotlib.dates.num2date" title="(in Matplotlib v3.5.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.dates.num2date</span></code></a></dt><dd></dd>
+<dt><a class="reference external" href="https://matplotlib.org/stable/api/dates_api.html#matplotlib.dates.date2num" title="(in Matplotlib v3.8.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.dates.date2num</span></code></a>, <a class="reference external" href="https://matplotlib.org/stable/api/dates_api.html#matplotlib.dates.num2date" title="(in Matplotlib v3.8.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.dates.num2date</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
@@ -454,7 +493,7 @@ code, replace <code class="docutils literal notranslate"><span class="pre">epoch
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl>
-<dt><strong>out</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a></span></dt><dd><p>date and time corresponding to epoch. Invalid values are set to
+<dt><strong>out</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a></span></dt><dd><p>date and time corresponding to epoch. Invalid values are set to
 usual epoch invalid value, i.e. last moment of year 9999.</p>
 </dd>
 </dl>
@@ -542,7 +581,7 @@ difficult.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>cdftype</strong><span class="classifier">int</span></dt><dd><p>CDF type number from <a class="reference internal" href="spacepy.pycdf.const.html#module-spacepy.pycdf.const" title="spacepy.pycdf.const"><code class="xref py py-mod docutils literal notranslate"><span class="pre">const</span></code></a></p>
+<dt><strong>cdftype</strong><span class="classifier">int</span></dt><dd><p>CDF type number from <a class="reference internal" href="spacepy.pycdf.const.html#module-spacepy.pycdf.const" title="spacepy.pycdf.const"><code class="xref py py-obj docutils literal notranslate"><span class="pre">const</span></code></a></p>
 </dd>
 </dl>
 </dd>
@@ -571,15 +610,29 @@ set backward compatible mode by default.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 0.3.0: </span>Before 0.3.0, pycdf set backward compatible mode on import.</p>
 </div>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>backward</strong><span class="classifier">boolean</span></dt><dd><p>Set backward compatible mode if True; clear it if False.</p>
+<dd class="field-odd"><dl>
+<dt><strong>backward</strong><span class="classifier">bool, optional</span></dt><dd><p>Set backward compatible mode if True; clear it if False. If not
+specified, will not change current setting.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.5.0: </span>Added ability to not change setting (previously defaulted
+to setting backward compatible).</p>
+</div>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl>
+<dt>bool</dt><dd><p>Previous value of backward-compatible mode.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.5.0.</span></p>
+</div>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
 <dt><strong>ValueError</strong><span class="classifier">if backward=False and underlying CDF library is V2</span></dt><dd></dd>
 </dl>
 </dd>
@@ -611,7 +664,7 @@ be truncated to 23:59:59.999999.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl>
-<dt><strong>out</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a></span></dt><dd><p>date and time corresponding to epoch. Invalid values are set to
+<dt><strong>out</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a></span></dt><dd><p>date and time corresponding to epoch. Invalid values are set to
 usual epoch invalid value, i.e. last moment of year 9999.</p>
 </dd>
 </dl>
@@ -706,76 +759,86 @@ of the next day.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="spacepy.pycdf.Library.v_datetime_to_epoch">
-<span class="sig-name descname"><span class="pre">v_datetime_to_epoch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datetime</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spacepy.pycdf.Library.v_datetime_to_epoch" title="Permalink to this definition">¶</a></dt>
-<dd><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.datetime_to_epoch" title="spacepy.pycdf.Library.datetime_to_epoch"><code class="xref py py-meth docutils literal notranslate"><span class="pre">datetime_to_epoch()</span></code></a> which takes a
-numpy array of datetimes as input and returns an array of epochs.</p>
+<span class="sig-name descname"><span class="pre">v_datetime_to_epoch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datetime</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Library.v_datetime_to_epoch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Library.v_datetime_to_epoch" title="Permalink to this definition">¶</a></dt>
+<dd><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.datetime_to_epoch" title="spacepy.pycdf.Library.datetime_to_epoch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datetime_to_epoch</span></code></a>.</p>
+<p>Takes a numpy array of datetimes as input and returns an array of
+epochs.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="spacepy.pycdf.Library.v_datetime_to_epoch16">
-<span class="sig-name descname"><span class="pre">v_datetime_to_epoch16</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datetime</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spacepy.pycdf.Library.v_datetime_to_epoch16" title="Permalink to this definition">¶</a></dt>
-<dd><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.datetime_to_epoch16" title="spacepy.pycdf.Library.datetime_to_epoch16"><code class="xref py py-meth docutils literal notranslate"><span class="pre">datetime_to_epoch16()</span></code></a> which takes a
-numpy array of datetimes as input and returns an array of epoch16.</p>
+<span class="sig-name descname"><span class="pre">v_datetime_to_epoch16</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datetime</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Library.v_datetime_to_epoch16"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Library.v_datetime_to_epoch16" title="Permalink to this definition">¶</a></dt>
+<dd><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.datetime_to_epoch16" title="spacepy.pycdf.Library.datetime_to_epoch16"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datetime_to_epoch16</span></code></a>.</p>
+<p>Takes a numpy array of datetimes as input and returns an array of
+epoch16.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="spacepy.pycdf.Library.v_datetime_to_tt2000">
-<span class="sig-name descname"><span class="pre">v_datetime_to_tt2000</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datetime</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spacepy.pycdf.Library.v_datetime_to_tt2000" title="Permalink to this definition">¶</a></dt>
-<dd><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.datetime_to_tt2000" title="spacepy.pycdf.Library.datetime_to_tt2000"><code class="xref py py-meth docutils literal notranslate"><span class="pre">datetime_to_tt2000()</span></code></a> which takes a
-numpy array of datetimes as input and returns an array of TT2000.</p>
+<span class="sig-name descname"><span class="pre">v_datetime_to_tt2000</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datetime</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Library.v_datetime_to_tt2000"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Library.v_datetime_to_tt2000" title="Permalink to this definition">¶</a></dt>
+<dd><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.datetime_to_tt2000" title="spacepy.pycdf.Library.datetime_to_tt2000"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datetime_to_tt2000</span></code></a>.</p>
+<p>Takes a numpy array of datetimes as input and returns an array of
+TT2000.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="spacepy.pycdf.Library.v_epoch_to_datetime">
-<span class="sig-name descname"><span class="pre">v_epoch_to_datetime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spacepy.pycdf.Library.v_epoch_to_datetime" title="Permalink to this definition">¶</a></dt>
-<dd><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.epoch_to_datetime" title="spacepy.pycdf.Library.epoch_to_datetime"><code class="xref py py-meth docutils literal notranslate"><span class="pre">epoch_to_datetime()</span></code></a> which takes a
-numpy array of epochs as input and returns an array of datetimes.</p>
+<span class="sig-name descname"><span class="pre">v_epoch_to_datetime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Library.v_epoch_to_datetime"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Library.v_epoch_to_datetime" title="Permalink to this definition">¶</a></dt>
+<dd><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.epoch_to_datetime" title="spacepy.pycdf.Library.epoch_to_datetime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">epoch_to_datetime</span></code></a>.</p>
+<p>Takes a numpy array of epochs as input and returns an array of
+datetimes.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="spacepy.pycdf.Library.v_epoch_to_tt2000">
-<span class="sig-name descname"><span class="pre">v_epoch_to_tt2000</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spacepy.pycdf.Library.v_epoch_to_tt2000" title="Permalink to this definition">¶</a></dt>
-<dd><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.epoch_to_tt2000" title="spacepy.pycdf.Library.epoch_to_tt2000"><code class="xref py py-meth docutils literal notranslate"><span class="pre">epoch_to_tt2000()</span></code></a> which takes a
-numpy array of epochs as input and returns an array of tt2000s.</p>
+<span class="sig-name descname"><span class="pre">v_epoch_to_tt2000</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Library.v_epoch_to_tt2000"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Library.v_epoch_to_tt2000" title="Permalink to this definition">¶</a></dt>
+<dd><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.epoch_to_tt2000" title="spacepy.pycdf.Library.epoch_to_tt2000"><code class="xref py py-obj docutils literal notranslate"><span class="pre">epoch_to_tt2000</span></code></a>.</p>
+<p>Takes a numpy array of epochs as input and returns an array of
+tt2000s.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="spacepy.pycdf.Library.v_epoch16_to_datetime">
-<span class="sig-name descname"><span class="pre">v_epoch16_to_datetime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epoch1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spacepy.pycdf.Library.v_epoch16_to_datetime" title="Permalink to this definition">¶</a></dt>
-<dd><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.epoch16_to_datetime" title="spacepy.pycdf.Library.epoch16_to_datetime"><code class="xref py py-meth docutils literal notranslate"><span class="pre">epoch16_to_datetime()</span></code></a> which takes
-a numpy array of epoch16 as input and returns an array of datetimes.
-An epoch16 is a pair of doubles; the input array’s last dimension
-must be two (and the returned array will have one fewer dimension).</p>
+<span class="sig-name descname"><span class="pre">v_epoch16_to_datetime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Library.v_epoch16_to_datetime"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Library.v_epoch16_to_datetime" title="Permalink to this definition">¶</a></dt>
+<dd><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.epoch16_to_datetime" title="spacepy.pycdf.Library.epoch16_to_datetime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">epoch16_to_datetime</span></code></a>.</p>
+<p>Takes a numpy array of epoch16 as input and returns an array of
+datetimes. An epoch16 is a pair of doubles; the input array’s last
+dimension must be two (and the returned array will have one fewer
+dimension).</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="spacepy.pycdf.Library.v_epoch16_to_tt2000">
-<span class="sig-name descname"><span class="pre">v_epoch16_to_tt2000</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch16</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spacepy.pycdf.Library.v_epoch16_to_tt2000" title="Permalink to this definition">¶</a></dt>
-<dd><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.epoch16_to_tt2000" title="spacepy.pycdf.Library.epoch16_to_tt2000"><code class="xref py py-meth docutils literal notranslate"><span class="pre">epoch16_to_tt2000()</span></code></a> which takes
-a numpy array of epoch16 as input and returns an array of tt2000s.
-An epoch16 is a pair of doubles; the input array’s last dimension
-must be two (and the returned array will have one fewer dimension).</p>
+<span class="sig-name descname"><span class="pre">v_epoch16_to_tt2000</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch16</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Library.v_epoch16_to_tt2000"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Library.v_epoch16_to_tt2000" title="Permalink to this definition">¶</a></dt>
+<dd><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.epoch16_to_tt2000" title="spacepy.pycdf.Library.epoch16_to_tt2000"><code class="xref py py-obj docutils literal notranslate"><span class="pre">epoch16_to_tt2000</span></code></a>.</p>
+<p>Takes a numpy array of epoch16 as input and returns an array of
+tt2000s. An epoch16 is a pair of doubles; the input array’s last
+dimension must be two (and the returned array will have one fewer
+dimension).</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="spacepy.pycdf.Library.v_tt2000_to_datetime">
-<span class="sig-name descname"><span class="pre">v_tt2000_to_datetime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tt2000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spacepy.pycdf.Library.v_tt2000_to_datetime" title="Permalink to this definition">¶</a></dt>
-<dd><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.tt2000_to_datetime" title="spacepy.pycdf.Library.tt2000_to_datetime"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tt2000_to_datetime()</span></code></a> which takes
-a numpy array of tt2000 as input and returns an array of datetimes.</p>
+<span class="sig-name descname"><span class="pre">v_tt2000_to_datetime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tt2000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Library.v_tt2000_to_datetime"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Library.v_tt2000_to_datetime" title="Permalink to this definition">¶</a></dt>
+<dd><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.tt2000_to_datetime" title="spacepy.pycdf.Library.tt2000_to_datetime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tt2000_to_datetime</span></code></a>.</p>
+<p>Takes a numpy array of tt2000 as input and returns an array of
+datetimes.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="spacepy.pycdf.Library.v_tt2000_to_epoch">
-<span class="sig-name descname"><span class="pre">v_tt2000_to_epoch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tt2000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spacepy.pycdf.Library.v_tt2000_to_epoch" title="Permalink to this definition">¶</a></dt>
-<dd><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.tt2000_to_epoch" title="spacepy.pycdf.Library.tt2000_to_epoch"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tt2000_to_epoch()</span></code></a> which takes
-a numpy array of tt2000 as input and returns an array of epochs.</p>
+<span class="sig-name descname"><span class="pre">v_tt2000_to_epoch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tt2000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Library.v_tt2000_to_epoch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Library.v_tt2000_to_epoch" title="Permalink to this definition">¶</a></dt>
+<dd><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.tt2000_to_epoch" title="spacepy.pycdf.Library.tt2000_to_epoch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tt2000_to_epoch</span></code></a>.</p>
+<p>Takes a numpy array of tt2000 as input and returns an array of
+epochs.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="spacepy.pycdf.Library.v_tt2000_to_epoch16">
-<span class="sig-name descname"><span class="pre">v_tt2000_to_epoch16</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tt2000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spacepy.pycdf.Library.v_tt2000_to_epoch16" title="Permalink to this definition">¶</a></dt>
-<dd><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.tt2000_to_epoch16" title="spacepy.pycdf.Library.tt2000_to_epoch16"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tt2000_to_epoch16()</span></code></a> which takes
-a numpy array of tt2000 as input and returns an array of epoch16.</p>
+<span class="sig-name descname"><span class="pre">v_tt2000_to_epoch16</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tt2000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#Library.v_tt2000_to_epoch16"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.Library.v_tt2000_to_epoch16" title="Permalink to this definition">¶</a></dt>
+<dd><p>A vectorized version of <a class="reference internal" href="#spacepy.pycdf.Library.tt2000_to_epoch16" title="spacepy.pycdf.Library.tt2000_to_epoch16"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tt2000_to_epoch16</span></code></a>.</p>
+<p>Takes a numpy array of tt2000 as input and returns an array of
+epoch16.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -830,7 +893,7 @@ library resolution.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

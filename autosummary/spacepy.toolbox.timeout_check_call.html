@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.toolbox.timeout_check_call &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.toolbox.timeout_check_call &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -101,19 +101,19 @@
 <dt class="sig sig-object py" id="spacepy.toolbox.timeout_check_call">
 <span class="sig-prename descclassname"><span class="pre">spacepy.toolbox.</span></span><span class="sig-name descname"><span class="pre">timeout_check_call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/toolbox.html#timeout_check_call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.toolbox.timeout_check_call" title="Permalink to this definition">¶</a></dt>
 <dd><p>Call a subprocess with a timeout.</p>
-<p>Like <a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.check_call" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">subprocess.check_call()</span></code></a>, but will terminate the process and
+<p>Like <a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.check_call" title="(in Python v3.12)"><code class="xref py py-func docutils literal notranslate"><span class="pre">subprocess.check_call()</span></code></a>, but will terminate the process and
 raise <a class="reference internal" href="spacepy.toolbox.TimeoutError.html#spacepy.toolbox.TimeoutError" title="spacepy.toolbox.TimeoutError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TimeoutError</span></code></a> if it runs for too long.</p>
 <p>This will only terminate the single process started; any child processes
 will remain running (this has implications for, say, spawing shells.)</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>timeout</strong><span class="classifier">float</span></dt><dd><p>Timeout, in seconds. Fractions are acceptable but the resolution is of
 order 100ms.</p>
 </dd>
-<dt><strong>args</strong><span class="classifier">sequence</span></dt><dd><p>Arguments passed through to <a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.Popen" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">subprocess.Popen</span></code></a></p>
+<dt><strong>args</strong><span class="classifier">sequence</span></dt><dd><p>Arguments passed through to <a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.Popen" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">subprocess.Popen</span></code></a></p>
 </dd>
-<dt><strong>kwargs</strong><span class="classifier">dict</span></dt><dd><p>keyword arguments to pass to <a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.Popen" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">subprocess.Popen</span></code></a></p>
+<dt><strong>kwargs</strong><span class="classifier">dict</span></dt><dd><p>keyword arguments to pass to <a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.Popen" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">subprocess.Popen</span></code></a></p>
 </dd>
 </dl>
 </dd>
@@ -124,9 +124,11 @@ order 100ms.</p>
 </dl>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><dl>
-<dt><strong>TimeoutError</strong><span class="classifier">If subprocess does not return in <code class="docutils literal notranslate"><span class="pre">timeout</span></code> seconds.</span></dt><dd></dd>
-<dt><strong>CalledProcessError</strong><span class="classifier">if command has non-zero exit status</span></dt><dd></dd>
+<dd class="field-odd"><dl class="simple">
+<dt>TimeoutError</dt><dd><p>If subprocess does not return in <code class="docutils literal notranslate"><span class="pre">timeout</span></code> seconds.</p>
+</dd>
+<dt>CalledProcessError</dt><dd><p>If command has non-zero exit status</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -171,7 +173,7 @@ order 100ms.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

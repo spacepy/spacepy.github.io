@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.ctrans &#8212; SpacePy v0.4.1 Manual</title>
+    <title>spacepy.ctrans &#8212; SpacePy v0.5.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -206,7 +206,7 @@
 
 
 <div class="viewcode-block" id="Ellipsoid"><a class="viewcode-back" href="../../autosummary/spacepy.ctrans.Ellipsoid.html#spacepy.ctrans.Ellipsoid">[docs]</a><span class="k">class</span> <span class="nc">Ellipsoid</span><span class="p">(</span><span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Ellipsoid definition class for geodetic coordinates</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ellipsoid definition class for geodetic coordinates</span>
 
 <span class="sd">    Other Parameters</span>
 <span class="sd">    ----------------</span>
@@ -250,7 +250,7 @@
 
 
 <div class="viewcode-block" id="CTrans"><a class="viewcode-back" href="../../autosummary/spacepy.ctrans.CTrans.html#spacepy.ctrans.CTrans">[docs]</a><span class="k">class</span> <span class="nc">CTrans</span><span class="p">(</span><span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Coordinate transformation class for a single instance in time</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Coordinate transformation class for a single instance in time</span>
 
 <span class="sd">    A general coordinate conversion routine, which takes a numpy array (Nx3)</span>
 <span class="sd">    of Cartesian vectors along with the names of the input and output</span>
@@ -362,7 +362,7 @@
                          <span class="p">}</span>
 
     <span class="k">def</span> <span class="nf">_setconstants</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set constants to be used in calculations</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set constants to be used in calculations</span>
 
 <span class="sd">        Constants set through this method are immutable to ensure</span>
 <span class="sd">        consistency in calculations.</span>
@@ -379,7 +379,7 @@
                                                        <span class="p">)</span>
 
 <div class="viewcode-block" id="CTrans.getEOP"><a class="viewcode-back" href="../../autosummary/spacepy.ctrans.CTrans.html#spacepy.ctrans.CTrans.getEOP">[docs]</a>    <span class="k">def</span> <span class="nf">getEOP</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">useEOP</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get/set Earth Orientation Parameters</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get/set Earth Orientation Parameters</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -406,7 +406,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_raiseErr</span><span class="p">(</span><span class="ne">NotImplementedError</span><span class="p">,</span> <span class="s1">&#39;eop&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="CTrans.calcTimes"><a class="viewcode-back" href="../../autosummary/spacepy.ctrans.CTrans.html#spacepy.ctrans.CTrans.calcTimes">[docs]</a>    <span class="k">def</span> <span class="nf">calcTimes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">recalc</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Calculate time in systems required to set up coordinate transforms</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate time in systems required to set up coordinate transforms</span>
 
 <span class="sd">        Sets Julian Date and Julian centuries in UTC, TAI, UT1, and TT systems.</span>
 
@@ -449,7 +449,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__status</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span></div>
 
 <div class="viewcode-block" id="CTrans.calcOrbitParams"><a class="viewcode-back" href="../../autosummary/spacepy.ctrans.CTrans.html#spacepy.ctrans.CTrans.calcOrbitParams">[docs]</a>    <span class="k">def</span> <span class="nf">calcOrbitParams</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">recalc</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Calculate Earth orbit parameters needed for coordinate transforms</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate Earth orbit parameters needed for coordinate transforms</span>
 
 <span class="sd">        Calculates  Earth&#39;s orbital parameters required for defining coordinate</span>
 <span class="sd">        system transformations, such as orbital eccentricity, the obliquity of</span>
@@ -509,7 +509,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__status</span><span class="p">[</span><span class="s1">&#39;orbital&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span></div>
 
     <span class="k">def</span> <span class="nf">_calcNutation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nTerms</span><span class="o">=</span><span class="mi">106</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Calculate nutation-related quantities</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate nutation-related quantities</span>
 
 <span class="sd">        Calculates nutation parameters, equation of equinoxes,</span>
 <span class="sd">        true obliquity of the ecliptic, and updates object values</span>
@@ -533,12 +533,12 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_normVec</span><span class="p">(</span><span class="n">vec</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Normalize input vector&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Normalize input vector&quot;&quot;&quot;</span>
         <span class="n">tmpmag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
         <span class="n">vec</span> <span class="o">/=</span> <span class="n">tmpmag</span>
 
     <span class="k">def</span> <span class="nf">_nutation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nTerms</span><span class="o">=</span><span class="mi">106</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Calculate nutation terms dPsi and dEps&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate nutation terms dPsi and dEps&quot;&quot;&quot;</span>
         <span class="n">pnmodel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;pnmodel&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">pnmodel</span> <span class="o">==</span> <span class="s1">&#39;IAU82&#39;</span><span class="p">:</span>
             <span class="kn">import</span> <span class="nn">warnings</span>
@@ -555,7 +555,7 @@
         <span class="k">return</span> <span class="n">dPsi</span><span class="p">,</span> <span class="n">dEps</span>
 
 <div class="viewcode-block" id="CTrans.calcCoreTransforms"><a class="viewcode-back" href="../../autosummary/spacepy.ctrans.CTrans.html#spacepy.ctrans.CTrans.calcCoreTransforms">[docs]</a>    <span class="k">def</span> <span class="nf">calcCoreTransforms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">recalc</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculate core coordinate transform matrices</span>
 
 <span class="sd">        These coordinate systems do not require information about</span>
@@ -700,7 +700,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__status</span><span class="p">[</span><span class="s1">&#39;transformCore&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span></div>
 
 <div class="viewcode-block" id="CTrans.calcMagTransforms"><a class="viewcode-back" href="../../autosummary/spacepy.ctrans.CTrans.html#spacepy.ctrans.CTrans.calcMagTransforms">[docs]</a>    <span class="k">def</span> <span class="nf">calcMagTransforms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">recalc</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Calculate geophysical coordinate systems</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate geophysical coordinate systems</span>
 
 <span class="sd">        Calculate transforms for coordinate systems requiring magnetic field</span>
 <span class="sd">        information.</span>
@@ -796,7 +796,7 @@
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Transform&#39;</span><span class="p">][</span><span class="s1">&#39;CDMAG_ECIMOD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Transform&#39;</span><span class="p">][</span><span class="s1">&#39;ECIMOD_CDMAG&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">T</span></div>
 
 <div class="viewcode-block" id="CTrans.convert"><a class="viewcode-back" href="../../autosummary/spacepy.ctrans.CTrans.html#spacepy.ctrans.CTrans.convert">[docs]</a>    <span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vec</span><span class="p">,</span> <span class="n">sys_in</span><span class="p">,</span> <span class="n">sys_out</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert an input vector between two coordinate systems</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert an input vector between two coordinate systems</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -874,7 +874,7 @@
         <span class="k">return</span> <span class="n">converted_squeezed</span></div>
 
 <div class="viewcode-block" id="CTrans.gmst"><a class="viewcode-back" href="../../autosummary/spacepy.ctrans.CTrans.html#spacepy.ctrans.CTrans.gmst">[docs]</a>    <span class="k">def</span> <span class="nf">gmst</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Calculate Greenwich Mean Sidereal Time</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate Greenwich Mean Sidereal Time</span>
 
 <span class="sd">        Notes</span>
 <span class="sd">        -----</span>
@@ -914,7 +914,7 @@
             <span class="k">raise</span> <span class="ne">Exception</span></div>
 
     <span class="k">def</span> <span class="nf">_calcSun</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculate the Sun vector.</span>
 
 <span class="sd">        This should only be called from within calcCoreTransforms, after</span>
@@ -953,7 +953,7 @@
             <span class="c1"># TODO: normalize Sun vector (this is in ECIJ2000)</span>
 
     <span class="k">def</span> <span class="nf">_raiseErr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">errtype</span><span class="p">,</span> <span class="n">code</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Common error raising method</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Common error raising method</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -981,7 +981,7 @@
         <span class="k">raise</span> <span class="n">errtype</span><span class="p">(</span><span class="s1">&#39;CTrans: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">_kepler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mean_anom</span><span class="p">,</span> <span class="n">ecc</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span> <span class="n">maxiter</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Solve Kepler&#39;s equation for eccentric anomaly</span>
 
 <span class="sd">        Parameters</span>
@@ -1013,7 +1013,7 @@
 
 
 <div class="viewcode-block" id="geo_to_gdz"><a class="viewcode-back" href="../../autosummary/spacepy.ctrans.geo_to_gdz.html#spacepy.ctrans.geo_to_gdz">[docs]</a><span class="k">def</span> <span class="nf">geo_to_gdz</span><span class="p">(</span><span class="n">geovec</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;km&#39;</span><span class="p">,</span> <span class="n">geoid</span><span class="o">=</span><span class="n">WGS84</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert geocentric geographic (cartesian GEO) to geodetic (spherical GDZ)</span>
 
 <span class="sd">    Uses Heikkinen&#39;s exact solution [#Heikkinen]_, see Zhu et al. [#Zhu] for</span>
@@ -1104,7 +1104,7 @@
 
 
 <div class="viewcode-block" id="gdz_to_geo"><a class="viewcode-back" href="../../autosummary/spacepy.ctrans.gdz_to_geo.html#spacepy.ctrans.gdz_to_geo">[docs]</a><span class="k">def</span> <span class="nf">gdz_to_geo</span><span class="p">(</span><span class="n">gdzvec</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;km&#39;</span><span class="p">,</span> <span class="n">geoid</span><span class="o">=</span><span class="n">WGS84</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert geodetic (GDZ) coordinates to geocentric geographic</span>
 
 <span class="sd">    Parameters</span>
@@ -1150,7 +1150,7 @@
 
 
 <div class="viewcode-block" id="geo_to_rll"><a class="viewcode-back" href="../../autosummary/spacepy.ctrans.geo_to_rll.html#spacepy.ctrans.geo_to_rll">[docs]</a><span class="k">def</span> <span class="nf">geo_to_rll</span><span class="p">(</span><span class="n">geovec</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;km&#39;</span><span class="p">,</span> <span class="n">geoid</span><span class="o">=</span><span class="n">WGS84</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Calculate RLL from geocentric geographic (GEO) coordinates</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate RLL from geocentric geographic (GEO) coordinates</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1183,7 +1183,7 @@
 
 
 <div class="viewcode-block" id="rll_to_geo"><a class="viewcode-back" href="../../autosummary/spacepy.ctrans.rll_to_geo.html#spacepy.ctrans.rll_to_geo">[docs]</a><span class="k">def</span> <span class="nf">rll_to_geo</span><span class="p">(</span><span class="n">rllvec</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;km&#39;</span><span class="p">,</span> <span class="n">geoid</span><span class="o">=</span><span class="n">WGS84</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Calculate geocentric geographic (GEO) from RLL coordinates</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate geocentric geographic (GEO) from RLL coordinates</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1222,7 +1222,7 @@
 
 
 <div class="viewcode-block" id="convert_multitime"><a class="viewcode-back" href="../../autosummary/spacepy.ctrans.convert_multitime.html#spacepy.ctrans.convert_multitime">[docs]</a><span class="k">def</span> <span class="nf">convert_multitime</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">ticks</span><span class="p">,</span> <span class="n">sys_in</span><span class="p">,</span> <span class="n">sys_out</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">itol</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Convert coordinates for N times, where N &gt;= 1</span>
 
 <span class="sd">    Parameters</span>
@@ -1307,7 +1307,7 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2022, The SpacePy Team.
+        &#169; Copyright 2011-2024, The SpacePy Team.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
