@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.plot.utils.add_logo &#8212; SpacePy v0.5.0 Manual</title>
+    <title>spacepy.plot.utils.add_logo &#8212; SpacePy v0.6.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -110,7 +110,7 @@ be the last call in constructing a figure.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>img</strong><span class="classifier">str or numpy.ndarray</span></dt><dd><p>The image to place on the figure. If a string, assumed to be a
-filename to be read with <a class="reference external" href="https://matplotlib.org/stable/api/image_api.html#matplotlib.image.imread" title="(in Matplotlib v3.8.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">imread()</span></code></a>; if
+filename to be read with <a class="reference external" href="https://matplotlib.org/stable/api/image_api.html#matplotlib.image.imread" title="(in Matplotlib v3.8.4)"><code class="xref py py-func docutils literal notranslate"><span class="pre">imread()</span></code></a>; if
 a numpy array, assumed to be the image itself
 (in a simliar format).</p>
 </dd>
@@ -118,8 +118,8 @@ a numpy array, assumed to be the image itself
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>(axes, axesimg)</strong><span class="classifier">tuple of Axes and AxesImage</span></dt><dd><p>The <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.8.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Axes</span></code></a> object created to hold the iamge,
-and the <a class="reference external" href="https://matplotlib.org/stable/api/image_api.html#matplotlib.image.AxesImage" title="(in Matplotlib v3.8.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AxesImage</span></code></a> object for the image
+<dt><strong>(axes, axesimg)</strong><span class="classifier">tuple of Axes and AxesImage</span></dt><dd><p>The <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.8.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Axes</span></code></a> object created to hold the iamge,
+and the <a class="reference external" href="https://matplotlib.org/stable/api/image_api.html#matplotlib.image.AxesImage" title="(in Matplotlib v3.8.4)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AxesImage</span></code></a> object for the image
 itself.</p>
 </dd>
 </dl>
@@ -127,7 +127,7 @@ itself.</p>
 <dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>fig</strong><span class="classifier">matplotlib.figure.Figure</span></dt><dd><p>The figure on which to place the logo; if not specified, the
-<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.gcf.html#matplotlib.pyplot.gcf" title="(in Matplotlib v3.8.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">gcf()</span></code></a> function will be used.</p>
+<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.gcf.html#matplotlib.pyplot.gcf" title="(in Matplotlib v3.8.4)"><code class="xref py py-func docutils literal notranslate"><span class="pre">gcf()</span></code></a> function will be used.</p>
 </dd>
 <dt><strong>pos</strong><span class="classifier">str</span></dt><dd><p>The position to place the logo.
 br: bottom right;
@@ -142,7 +142,7 @@ dimension of the figure (width or height). Default is 0.05 (5%).</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>Calls <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.draw.html#matplotlib.pyplot.draw" title="(in Matplotlib v3.8.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw()</span></code></a> to ensure locations are
+<p>Calls <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.draw.html#matplotlib.pyplot.draw" title="(in Matplotlib v3.8.4)"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw()</span></code></a> to ensure locations are
 up to date.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.plot.utils</span>

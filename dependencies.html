@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>SpacePy Dependencies &#8212; SpacePy v0.5.0 Manual</title>
+    <title>SpacePy Dependencies &#8212; SpacePy v0.6.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/default.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -67,7 +67,7 @@
 <li><a class="reference internal" href="#hard-dependencies">Hard Dependencies</a><ul>
 <li><a class="reference internal" href="#python-3-6">Python 3.6+</a></li>
 <li><a class="reference internal" href="#numpy-1-15-1">NumPy 1.15.1+</a></li>
-<li><a class="reference internal" href="#dateutil">dateutil</a></li>
+<li><a class="reference internal" href="#dateutil-2-5">dateutil 2.5+</a></li>
 <li><a class="reference internal" href="#c-compiler">C compiler</a></li>
 <li><a class="reference internal" href="#pip">pip</a></li>
 <li><a class="reference internal" href="#setuptools">setuptools</a></li>
@@ -80,6 +80,7 @@
 <li><a class="reference internal" href="#cdf-3-5">CDF 3.5+</a></li>
 <li><a class="reference internal" href="#fortran-compiler">Fortran compiler</a></li>
 <li><a class="reference internal" href="#astropy-1-0">Astropy 1.0+</a></li>
+<li><a class="reference internal" href="#pandas-0-18">Pandas 0.18+</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#soft-dependency-summary">Soft Dependency Summary</a></li>
@@ -154,9 +155,9 @@ packaged separately; it is required (at installation time) if
 <p>Due to a numpy bug, numpy 1.15.0 is not supported. Use 1.15.1 or later.</p>
 <p>On Python 3.9, numpy 1.18 or later is required.</p>
 </section>
-<section id="dateutil">
-<h3>dateutil<a class="headerlink" href="#dateutil" title="Permalink to this heading">¶</a></h3>
-<p><a class="reference external" href="https://dateutil.readthedocs.io/">dateutil</a> 2.1 or later is required.</p>
+<section id="dateutil-2-5">
+<h3>dateutil 2.5+<a class="headerlink" href="#dateutil-2-5" title="Permalink to this heading">¶</a></h3>
+<p><a class="reference external" href="https://dateutil.readthedocs.io/">dateutil</a> 2.5 or later is required.</p>
 </section>
 <section id="c-compiler">
 <h3>C compiler<a class="headerlink" href="#c-compiler" title="Permalink to this heading">¶</a></h3>
@@ -256,6 +257,11 @@ Astropy <a class="reference external" href="https://docs.astropy.org/en/stable/a
 <p>Because Astropy is only required for these conversions, it is not
 automatically installed with SpacePy.</p>
 </section>
+<section id="pandas-0-18">
+<span id="dependencies-pandas"></span><h3>Pandas 0.18+<a class="headerlink" href="#pandas-0-18" title="Permalink to this heading">¶</a></h3>
+<p><a class="reference external" href="https://pandas.pydata.org/">Pandas</a> is only required if converting
+from <a class="reference internal" href="autosummary/spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData" title="spacepy.datamodel.SpaceData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpaceData</span></code></a> to <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame</span></code></a> is desired.</p>
+</section>
 </section>
 <section id="soft-dependency-summary">
 <h2>Soft Dependency Summary<a class="headerlink" href="#soft-dependency-summary" title="Permalink to this heading">¶</a></h2>
@@ -263,8 +269,8 @@ automatically installed with SpacePy.</p>
 that is <em>lost</em> if a soft dependency is not installed. If there is
 nothing for a given dependency/module combination, the module is
 unaffected by that dependency.</p>
-<table class="docutils align-default" id="id4">
-<caption><span class="caption-text">SpacePy functionality lost without soft dependencies</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-text">SpacePy functionality lost without soft dependencies</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head stub"></th>
 <th class="head"><p><a class="reference internal" href="#dependencies-cdf"><span class="std std-ref">CDF</span></a></p></th>
@@ -273,6 +279,7 @@ unaffected by that dependency.</p>
 <th class="head"><p><a class="reference internal" href="#dependencies-mpl"><span class="std std-ref">matplotlib</span></a></p></th>
 <th class="head"><p><a class="reference internal" href="#dependencies-scipy"><span class="std std-ref">SciPy</span></a></p></th>
 <th class="head"><p><a class="reference internal" href="#dependencies-astropy"><span class="std std-ref">AstroPy</span></a></p></th>
+<th class="head"><p><a class="reference internal" href="#dependencies-pandas"><span class="std std-ref">Pandas</span></a></p></th>
 </tr>
 </thead>
 <tbody>
@@ -287,6 +294,7 @@ unaffected by that dependency.</p>
 <li><p><a class="reference internal" href="autosummary/spacepy.coordinates.Coords.html#spacepy.coordinates.Coords.to_skycoord" title="spacepy.coordinates.Coords.to_skycoord"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_skycoord()</span></code></a></p></li>
 </ul>
 </td>
+<td></td>
 </tr>
 <tr class="row-odd"><th class="stub"><p><a class="reference internal" href="ctrans.html#module-spacepy.ctrans" title="spacepy.ctrans"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ctrans</span></code></a></p></th>
 <td></td>
@@ -294,6 +302,7 @@ unaffected by that dependency.</p>
 <td></td>
 <td></td>
 <td><p><a class="reference internal" href="ctrans.html#module-spacepy.ctrans" title="spacepy.ctrans"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Entire</span> <span class="pre">module</span></code></a></p></td>
+<td></td>
 <td></td>
 </tr>
 <tr class="row-even"><th class="stub"><p><a class="reference internal" href="datamodel.html#module-spacepy.datamodel" title="spacepy.datamodel"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datamodel</span></code></a></p></th>
@@ -314,6 +323,7 @@ unaffected by that dependency.</p>
 <td></td>
 <td></td>
 <td></td>
+<td><p><a class="reference internal" href="autosummary/spacepy.datamodel.ISTPContainer.html#spacepy.datamodel.ISTPContainer.toDataFrame" title="spacepy.datamodel.ISTPContainer.toDataFrame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toDataFrame</span></code></a></p></td>
 </tr>
 <tr class="row-odd"><th class="stub"><p><a class="reference internal" href="empiricals.html#module-spacepy.empiricals" title="spacepy.empiricals"><code class="xref py py-mod docutils literal notranslate"><span class="pre">empiricals</span></code></a></p></th>
 <td></td>
@@ -326,6 +336,7 @@ unaffected by that dependency.</p>
 </ul>
 </td>
 <td></td>
+<td></td>
 </tr>
 <tr class="row-even"><th class="stub"><p><a class="reference internal" href="irbempy.html#module-spacepy.irbempy" title="spacepy.irbempy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">irbempy</span></code></a></p></th>
 <td></td>
@@ -334,8 +345,10 @@ unaffected by that dependency.</p>
 <td></td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="row-odd"><th class="stub"><p><a class="reference internal" href="lanlstar.html#module-spacepy.LANLstar" title="spacepy.LANLstar"><code class="xref py py-mod docutils literal notranslate"><span class="pre">LANLstar</span></code></a></p></th>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -350,12 +363,14 @@ unaffected by that dependency.</p>
 <td></td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="row-odd"><th class="stub"><p><a class="reference internal" href="plot.html#module-spacepy.plot" title="spacepy.plot"><code class="xref py py-mod docutils literal notranslate"><span class="pre">plot</span></code></a></p></th>
 <td></td>
 <td></td>
 <td></td>
 <td><p><a class="reference internal" href="plot.html#module-spacepy.plot" title="spacepy.plot"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Entire</span> <span class="pre">module</span></code></a></p></td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
@@ -370,6 +385,7 @@ unaffected by that dependency.</p>
 <li><p><a class="reference internal" href="autosummary/spacepy.poppy.plot_two_ppro.html#spacepy.poppy.plot_two_ppro" title="spacepy.poppy.plot_two_ppro"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_two_ppro()</span></code></a></p></li>
 </ul>
 </td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
@@ -417,9 +433,11 @@ unaffected by that dependency.</p>
 </td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="row-even"><th class="stub"><p><a class="reference internal" href="pycdf.html#module-spacepy.pycdf" title="spacepy.pycdf"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pycdf</span></code></a></p></th>
 <td><p><a class="reference internal" href="pycdf.html#module-spacepy.pycdf" title="spacepy.pycdf"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Entire</span> <span class="pre">module</span></code></a> (except binaries)</p></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -437,6 +455,7 @@ unaffected by that dependency.</p>
 </td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="row-even"><th class="stub"><p><a class="reference internal" href="seapy.html#module-spacepy.seapy" title="spacepy.seapy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">seapy</span></code></a></p></th>
 <td></td>
@@ -448,6 +467,7 @@ unaffected by that dependency.</p>
 </ul>
 </td>
 <td></td>
+<td></td>
 </tr>
 <tr class="row-odd"><th class="stub"><p><a class="reference internal" href="time.html#module-spacepy.time" title="spacepy.time"><code class="xref py py-mod docutils literal notranslate"><span class="pre">time</span></code></a></p></th>
 <td></td>
@@ -456,6 +476,7 @@ unaffected by that dependency.</p>
 <td></td>
 <td></td>
 <td><p>AstroPy support in <a class="reference internal" href="autosummary/spacepy.time.Ticktock.html#spacepy.time.Ticktock" title="spacepy.time.Ticktock"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ticktock</span></code></a></p></td>
+<td></td>
 </tr>
 <tr class="row-even"><th class="stub"><p><a class="reference internal" href="toolbox.html#module-spacepy.toolbox" title="spacepy.toolbox"><code class="xref py py-mod docutils literal notranslate"><span class="pre">toolbox</span></code></a></p></th>
 <td></td>
@@ -475,6 +496,7 @@ unaffected by that dependency.</p>
 <li><p><a class="reference internal" href="autosummary/spacepy.toolbox.poisson_fit.html#spacepy.toolbox.poisson_fit" title="spacepy.toolbox.poisson_fit"><code class="xref py py-func docutils literal notranslate"><span class="pre">poisson_fit()</span></code></a></p></li>
 </ul>
 </td>
+<td></td>
 <td></td>
 </tr>
 </tbody>
