@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.datamodel.ISTPArray &#8212; SpacePy v0.5.0 Manual</title>
+    <title>spacepy.datamodel.ISTPArray &#8212; SpacePy v0.6.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -113,14 +113,58 @@ these are in <a class="reference internal" href="spacepy.datamodel.ISTPContainer
 </div>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPArray.plot_as_line" title="spacepy.datamodel.ISTPArray.plot_as_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_as_line</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPArray.fromQuantity" title="spacepy.datamodel.ISTPArray.fromQuantity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromQuantity</span></code></a>(q[, copy])</p></td>
+<td><p>Convert from Astropy Quantity</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPArray.plot_as_line" title="spacepy.datamodel.ISTPArray.plot_as_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_as_line</span></code></a>()</p></td>
 <td><p>Determines if this array is better plotted as a lineplot or spectrogram.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPArray.replace_invalid" title="spacepy.datamodel.ISTPArray.replace_invalid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">replace_invalid</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPArray.replace_invalid" title="spacepy.datamodel.ISTPArray.replace_invalid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">replace_invalid</span></code></a>()</p></td>
 <td><p>Return data from array with invalid values replaced by <a class="reference external" href="https://numpy.org/doc/stable/reference/constants.html#numpy.nan" title="(in NumPy v1.26)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nan</span></code></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPArray.toQuantity" title="spacepy.datamodel.ISTPArray.toQuantity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toQuantity</span></code></a>([copy])</p></td>
+<td><p>Convert to Astropy Quantity</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPArray.units" title="spacepy.datamodel.ISTPArray.units"><code class="xref py py-obj docutils literal notranslate"><span class="pre">units</span></code></a>([fmt])</p></td>
+<td><p>Finds units of array.</p></td>
 </tr>
 </tbody>
 </table>
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.datamodel.ISTPArray.fromQuantity">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fromQuantity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#ISTPArray.fromQuantity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.ISTPArray.fromQuantity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert from Astropy Quantity</p>
+<p>Converts an Astropy <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.units.Quantity.html#astropy.units.Quantity" title="(in Astropy v6.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Quantity</span></code></a> to an ISTP array.
+<a class="reference external" href="https://numpy.org/doc/stable/reference/constants.html#numpy.nan" title="(in NumPy v1.26)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nan</span></code></a> are replaced with fill.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>q</strong><span class="classifier"><a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.units.Quantity.html#astropy.units.Quantity" title="(in Astropy v6.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Quantity</span></code></a></span></dt><dd><p>Quantity to convert</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#spacepy.datamodel.ISTPArray" title="spacepy.datamodel.ISTPArray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ISTPArray</span></code></a></dt><dd><p>Array with attributes which can be inferred from input.
+This may not be fully ISTP-compliant.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>copy</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, default <code class="docutils literal notranslate"><span class="pre">True</span></code></span></dt><dd><p>Copy data from the Quantity. If <code class="docutils literal notranslate"><span class="pre">False</span></code>, changes to the
+Quantity may affect this array. In some cases a copy
+may be made even if <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.6.0.</span></p>
+</div>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="spacepy.datamodel.ISTPArray.plot_as_line">
 <span class="sig-name descname"><span class="pre">plot_as_line</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#ISTPArray.plot_as_line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.ISTPArray.plot_as_line" title="Permalink to this definition">¶</a></dt>
@@ -170,6 +214,82 @@ spectrogram</p>
 </div>
 <p>Comparisons with <code class="docutils literal notranslate"><span class="pre">FILLVAL</span></code> are done using <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.isclose.html#numpy.isclose" title="(in NumPy v1.26)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isclose</span></code></a> and
 so may replace values that are near, but not identical, to fill.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.datamodel.ISTPArray.toQuantity">
+<span class="sig-name descname"><span class="pre">toQuantity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#ISTPArray.toQuantity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.ISTPArray.toQuantity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert to Astropy Quantity</p>
+<p>Converts this array to an Astropy <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.units.Quantity.html#astropy.units.Quantity" title="(in Astropy v6.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Quantity</span></code></a>.
+Invalid values are replaced with <a class="reference external" href="https://numpy.org/doc/stable/reference/constants.html#numpy.nan" title="(in NumPy v1.26)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nan</span></code></a>.</p>
+<dl class="field-list">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.units.Quantity.html#astropy.units.Quantity" title="(in Astropy v6.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Quantity</span></code></a></dt><dd><p>Data from this array interpreted according to its <code class="docutils literal notranslate"><span class="pre">UNITS</span></code>
+attribute.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><dl>
+<dt><strong>copy</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, default <code class="docutils literal notranslate"><span class="pre">True</span></code></span></dt><dd><p>Copy data to the Quantity. If <code class="docutils literal notranslate"><span class="pre">False</span></code>, changes to the
+Quantity may affect the source array. In some cases a copy
+may be made even if <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.6.0.</span></p>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamodel</span>
+<span class="go"># https://rbsp-ect.newmexicoconsortium.org/data_pub/rbspa/ECT/level2/</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">datamodel</span><span class="o">.</span><span class="n">fromCDF</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s1">&#39;rbspa_ect-elec-L2_20140115_v2.1.0.cdf&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Position&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">toQuantity</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+<span class="go">&lt;Quantity [[-32833200. , -15531762. ,  -6449212. ],</span>
+<span class="go">           [-32903586. , -15406271. ,  -6448704.5],</span>
+<span class="go">           [-32967848. , -15277711. ,  -6446542.5],</span>
+<span class="go">           ...,</span>
+<span class="go">           [-20966128. ,   6941849.5,  -2896334.2],</span>
+<span class="go">           [-21515586. ,   6858618. ,  -3026324. ],</span>
+<span class="go">           [-22047328. ,   6783260.5,  -3153003.5]] m&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.datamodel.ISTPArray.units">
+<span class="sig-name descname"><span class="pre">units</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'minimal'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#ISTPArray.units"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.ISTPArray.units" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds units of array.</p>
+<p>Looks up the unit attribute and performs minor cleanup (including
+intepreting IDL codes).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>fmt</strong><span class="classifier">{‘minimal’, ‘latex’, ‘astropy’, ‘raw’}</span></dt><dd><p>How to format the units: <code class="docutils literal notranslate"><span class="pre">minimal</span></code> (default) is a
+minimally-processed rendering, <code class="docutils literal notranslate"><span class="pre">latex</span></code> is in LaTeX,
+<code class="docutils literal notranslate"><span class="pre">astropy</span></code> is meant to give good results when passed to
+<a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.units.Unit.html#astropy.units.Unit" title="(in Astropy v6.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">astropy.units.Unit</span></code></a>, and <code class="docutils literal notranslate"><span class="pre">raw</span></code> has no processing. No
+checks are done on processing for AstroPy or LaTeX, and it
+should not be assumed they will parse.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></dt><dd><p>Physical units of this array. <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> if not present.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.6.0.</span></p>
+</div>
 </dd></dl>
 
 </dd></dl>

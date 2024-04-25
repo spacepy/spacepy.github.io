@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.datamodel.ISTPContainer &#8212; SpacePy v0.5.0 Manual</title>
+    <title>spacepy.datamodel.ISTPContainer &#8212; SpacePy v0.6.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -110,20 +110,62 @@ and are unlikely to give good results if that is not the case.</p>
 </div>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.lineplot" title="spacepy.datamodel.ISTPContainer.lineplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lineplot</span></code></a>(vname[, target])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.fromDataFrame" title="spacepy.datamodel.ISTPContainer.fromDataFrame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromDataFrame</span></code></a>(df[, copy])</p></td>
+<td><p>Convert from Pandas DataFrame</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.lineplot" title="spacepy.datamodel.ISTPContainer.lineplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lineplot</span></code></a>(vname[, target])</p></td>
 <td><p>Line plot of a value (array) from this container</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.main_vars" title="spacepy.datamodel.ISTPContainer.main_vars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">main_vars</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.main_vars" title="spacepy.datamodel.ISTPContainer.main_vars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">main_vars</span></code></a>()</p></td>
 <td><p>Return names of the 'main' variables in this container.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.plot" title="spacepy.datamodel.ISTPContainer.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([vnames, fig])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.plot" title="spacepy.datamodel.ISTPContainer.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([vnames, fig])</p></td>
 <td><p>Plot one or more values (arrays) from this container</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.spectrogram" title="spacepy.datamodel.ISTPContainer.spectrogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spectrogram</span></code></a>(vname[, target])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.spectrogram" title="spacepy.datamodel.ISTPContainer.spectrogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spectrogram</span></code></a>(vname[, target])</p></td>
 <td><p>Spectrogram plot of a value (array) from this container</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.toDataFrame" title="spacepy.datamodel.ISTPContainer.toDataFrame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toDataFrame</span></code></a>([vname, copy])</p></td>
+<td><p>Convert to Pandas DataFrame</p></td>
 </tr>
 </tbody>
 </table>
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.datamodel.ISTPContainer.fromDataFrame">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fromDataFrame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#ISTPContainer.fromDataFrame"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.ISTPContainer.fromDataFrame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert from Pandas DataFrame</p>
+<p>Converts a Pandas <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame</span></code></a> to ISTP-compliant type.
+<a class="reference external" href="https://numpy.org/doc/stable/reference/constants.html#numpy.nan" title="(in NumPy v1.26)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nan</span></code></a> are replaced with fill.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>df</strong><span class="classifier"><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame</span></code></a></span></dt><dd><p>Data frame to convert</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#spacepy.datamodel.ISTPContainer" title="spacepy.datamodel.ISTPContainer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ISTPContainer</span></code></a></dt><dd><p>ISTP-compliant container representing the dataframe’s data.
+This may not be fully ISTP-compliant; the minimium attributes
+required to represent the DataFrame are used.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>copy</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, default <code class="docutils literal notranslate"><span class="pre">True</span></code></span></dt><dd><p>Copy data from the DataFrame. If <code class="docutils literal notranslate"><span class="pre">False</span></code>, changes to the
+output may affect the DataFrame. In some cases a copy
+may be made even if <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.6.0.</span></p>
+</div>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="spacepy.datamodel.ISTPContainer.lineplot">
 <span class="sig-name descname"><span class="pre">lineplot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#ISTPContainer.lineplot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.ISTPContainer.lineplot" title="Permalink to this definition">¶</a></dt>
@@ -134,7 +176,7 @@ and are unlikely to give good results if that is not the case.</p>
 <dt><strong>vname</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>The key into this container of the value to plot (i.e.,
 the name of the variable).</p>
 </dd>
-<dt><strong>target</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.8.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a> or <a class="reference external" href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v3.8.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.figure.Figure</span></code></a>, optional</span></dt><dd><p>Where to draw the plot. Default is to create a new figure with
+<dt><strong>target</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.8.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a> or <a class="reference external" href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v3.8.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.figure.Figure</span></code></a>, optional</span></dt><dd><p>Where to draw the plot. Default is to create a new figure with
 a single subplot. If <code class="docutils literal notranslate"><span class="pre">Axes</span></code>, will draw into that subplot (and
 will not draw a legend or figure title); if <code class="docutils literal notranslate"><span class="pre">Figure</span></code>, will
 make a single subplot (and not set figure title). Handled by
@@ -144,7 +186,7 @@ make a single subplot (and not set figure title). Handled by
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl>
-<dt><strong>ax</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.8.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a></span></dt><dd><p>The subplot on which the variable was plotted</p>
+<dt><strong>ax</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.8.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a></span></dt><dd><p>The subplot on which the variable was plotted</p>
 </dd>
 </dl>
 </dd>
@@ -188,7 +230,7 @@ the name of the variable). If not specified, plots all
 ‘main’ variables which are not dependencies of others;
 see <a class="reference internal" href="#spacepy.datamodel.ISTPContainer.main_vars" title="spacepy.datamodel.ISTPContainer.main_vars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">main_vars</span></code></a>.</p>
 </dd>
-<dt><strong>fig</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v3.8.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.figure.Figure</span></code></a>, optional</span></dt><dd><p>Where to draw the plot. Default is to create a new figure. If
+<dt><strong>fig</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v3.8.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.figure.Figure</span></code></a>, optional</span></dt><dd><p>Where to draw the plot. Default is to create a new figure. If
 given, subplots will be added to this figure (it should start
 empty).</p>
 </dd>
@@ -196,7 +238,7 @@ empty).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl>
-<dt><strong>fig</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v3.8.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.figure.Figure</span></code></a></span></dt><dd><p>The figure on which the variables were plotted</p>
+<dt><strong>fig</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v3.8.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.figure.Figure</span></code></a></span></dt><dd><p>The figure on which the variables were plotted</p>
 </dd>
 </dl>
 </dd>
@@ -251,7 +293,7 @@ empty).</p>
 <dt><strong>vname</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>The key into this container of the value to plot (i.e.,
 the name of the variable).</p>
 </dd>
-<dt><strong>target</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.8.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a> or <a class="reference external" href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v3.8.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.figure.Figure</span></code></a>, optional</span></dt><dd><p>Where to draw the plot. Default is to create a new figure with
+<dt><strong>target</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.8.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a> or <a class="reference external" href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v3.8.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.figure.Figure</span></code></a>, optional</span></dt><dd><p>Where to draw the plot. Default is to create a new figure with
 a single subplot. If <code class="docutils literal notranslate"><span class="pre">Axes</span></code>, will draw into that subplot (and
 will not set figure title); if <code class="docutils literal notranslate"><span class="pre">Figure</span></code>, will make a single
 subplot (and not set figure title). Handled by
@@ -261,7 +303,7 @@ subplot (and not set figure title). Handled by
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl>
-<dt><strong>ax</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.8.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a></span></dt><dd><p>The subplot on which the variable was plotted</p>
+<dt><strong>ax</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.8.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a></span></dt><dd><p>The subplot on which the variable was plotted</p>
 </dd>
 </dl>
 </dd>
@@ -269,6 +311,52 @@ subplot (and not set figure title). Handled by
 <p class="rubric">Notes</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.5.0.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.datamodel.ISTPContainer.toDataFrame">
+<span class="sig-name descname"><span class="pre">toDataFrame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#ISTPContainer.toDataFrame"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.ISTPContainer.toDataFrame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert to Pandas DataFrame</p>
+<p>Converts one variable (and its dependencies) to a Pandas
+<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame</span></code></a>. Invalid values are replaced with <a class="reference external" href="https://numpy.org/doc/stable/reference/constants.html#numpy.nan" title="(in NumPy v1.26)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nan</span></code></a>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>vname</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</span></dt><dd><p>The key into this container of the value to convert
+(i.e.,  the name of the variable). Strongly recommended;
+if not specified, will try to find one using <a class="reference internal" href="#spacepy.datamodel.ISTPContainer.main_vars" title="spacepy.datamodel.ISTPContainer.main_vars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">main_vars</span></code></a>,
+and raise <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValueError</span></code></a> if there is more than one candidate.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame</span></code></a></dt><dd><p>Data from the array named by <code class="docutils literal notranslate"><span class="pre">vname</span></code> and its dependencies.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>copy</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, default <code class="docutils literal notranslate"><span class="pre">True</span></code></span></dt><dd><p>Copy data to the DataFrame. If <code class="docutils literal notranslate"><span class="pre">False</span></code>, changes to the
+DataFrame may affect the source data. In some cases a copy
+may be made even if <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.6.0.</span></p>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamodel</span>
+<span class="go"># https://rbsp-ect.newmexicoconsortium.org/data_pub/rbspa/ECT/level2/</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">datamodel</span><span class="o">.</span><span class="n">fromCDF</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s1">&#39;rbspa_ect-elec-L2_20140115_v2.1.0.cdf&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">toDataFrame</span><span class="p">(</span><span class="s1">&#39;Position&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
 </div>
 </dd></dl>
 

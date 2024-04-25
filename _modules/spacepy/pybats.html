@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.pybats &#8212; SpacePy v0.5.0 Manual</title>
+    <title>spacepy.pybats &#8212; SpacePy v0.6.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -2001,7 +2001,7 @@
         <span class="c1"># Const: nT-&gt;T, m-&gt;km, mu_0, proton mass, cm-3-&gt;m-3.</span>
         <span class="n">const</span> <span class="o">=</span> <span class="mf">1E-12</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">4.</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mi">10</span><span class="o">**-</span><span class="mi">7</span><span class="o">*</span><span class="mf">1.67E-27</span><span class="o">*</span><span class="mi">100</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;vAlf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">const</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;rho&#39;</span><span class="p">]),</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;vAlf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">const</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_denvar</span><span class="p">]),</span>
                                <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;$km/s$&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;V$_</span><span class="si">{Alf}</span><span class="s1">&#39;</span><span class="p">})</span>
 
         <span class="k">return</span> <span class="kc">True</span>
@@ -2020,6 +2020,60 @@
                                 <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;M$_</span><span class="si">{Alfven}</span><span class="s1">$&#39;</span><span class="p">})</span>
 
         <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">calc_clock</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Calculate and store IMF clock angle, defined as the angle of the</span>
+<span class="sd">        interplanetary magnetic field (IMF) in the GSM Y-Z plane. A clock</span>
+<span class="sd">        angle of zero represents purely northward IMF while 180 represents</span>
+<span class="sd">        purely southward configuration.</span>
+
+<span class="sd">        The resulting value is stored as `self[&#39;clock&#39;]` in units of degrees.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        .. versionadded:: 0.6.0</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;clock&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="mi">180</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;by&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bz&#39;</span><span class="p">]),</span>
+                                <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;$^{\circ}$&#39;</span><span class="p">,</span>
+                                       <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;Clock Angle&#39;</span><span class="p">})</span>
+
+    <span class="k">def</span> <span class="nf">calc_epsilon</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Calculate the epsilon parameter, an approximation of power input into</span>
+<span class="sd">        the magnetosphere. It is Poynting flux ($E \times B / \mu_0$) scaled</span>
+<span class="sd">        to the solar wind clock angle. Thus, it is an energy flux, or,</span>
+<span class="sd">        equivalently, power-per-unit area.</span>
+
+<span class="sd">        The resultant quantity is stored as `self[&#39;epsilon&#39;]` and has units</span>
+<span class="sd">        of $W/m^2$.</span>
+
+<span class="sd">        For full details, see Perreault and Akasofu(1978),</span>
+<span class="sd">        https://doi.org/10.1111/j.1365-246X.1978.tb05494.x.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        .. versionadded:: 0.6.0</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="k">if</span> <span class="s1">&#39;b&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">calc_b</span><span class="p">()</span>
+        <span class="k">if</span> <span class="s1">&#39;u&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">calc_u</span><span class="p">()</span>
+        <span class="k">if</span> <span class="s1">&#39;clock&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">calc_clock</span><span class="p">()</span>
+
+        <span class="c1"># Calculate mu-naught</span>
+        <span class="n">mu_o</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mf">1E-7</span>
+
+        <span class="c1"># Calculate conversion factors:</span>
+        <span class="n">conv</span> <span class="o">=</span> <span class="mf">1000.</span> <span class="o">*</span> <span class="mf">1E-9</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">mu_o</span>  <span class="c1"># km/s-&gt;m/s; nT**2-&gt;T**2</span>
+        <span class="n">clock</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span> <span class="o">*</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;clock&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">4</span>
+
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;epsilon&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">conv</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">clock</span><span class="p">,</span>
+                                  <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;$W/m^2$&#39;</span><span class="p">,</span>
+                                         <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;$\epsilon$&#39;</span><span class="p">})</span>
 
     <span class="k">def</span> <span class="nf">varcheck</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>

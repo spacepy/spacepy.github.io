@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.datamodel &#8212; SpacePy v0.5.0 Manual</title>
+    <title>spacepy.datamodel &#8212; SpacePy v0.6.0 Manual</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/default.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
@@ -312,10 +312,16 @@
 <span class="sd">    .. versionadded:: 0.5.0</span>
 
 <span class="sd">    .. autosummary::</span>
+<span class="sd">        ~ISTPArray.fromQuantity</span>
 <span class="sd">        ~ISTPArray.plot_as_line</span>
 <span class="sd">        ~ISTPArray.replace_invalid</span>
+<span class="sd">        ~ISTPArray.toQuantity</span>
+<span class="sd">        ~ISTPArray.units</span>
+<span class="sd">    .. automethod:: fromQuantity</span>
 <span class="sd">    .. automethod:: plot_as_line</span>
 <span class="sd">    .. automethod:: replace_invalid</span>
+<span class="sd">    .. automethod:: toQuantity</span>
+<span class="sd">    .. automethod:: units</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">attrs</span><span class="p">:</span> <span class="n">collections</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">Mapping</span>
 
@@ -377,7 +383,150 @@
         <span class="k">if</span> <span class="n">dims</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="c1"># Reasonable dividing line is probably 4 stacked line plots</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">5</span></div></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">5</span></div>
+
+<div class="viewcode-block" id="ISTPArray.units"><a class="viewcode-back" href="../../autosummary/spacepy.datamodel.ISTPArray.html#spacepy.datamodel.ISTPArray.units">[docs]</a>    <span class="k">def</span> <span class="nf">units</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;minimal&#39;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Finds units of array.</span>
+
+<span class="sd">        Looks up the unit attribute and performs minor cleanup (including</span>
+<span class="sd">        intepreting IDL codes).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `str`</span>
+<span class="sd">            Physical units of this array. `None` if not present.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        fmt : {&#39;minimal&#39;, &#39;latex&#39;, &#39;astropy&#39;, &#39;raw&#39;}</span>
+<span class="sd">            How to format the units: ``minimal`` (default) is a</span>
+<span class="sd">            minimally-processed rendering, ``latex`` is in LaTeX,</span>
+<span class="sd">            ``astropy`` is meant to give good results when passed to</span>
+<span class="sd">            `astropy.units.Unit`, and ``raw`` has no processing. No</span>
+<span class="sd">            checks are done on processing for AstroPy or LaTeX, and it</span>
+<span class="sd">            should not be assumed they will parse.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        .. versionadded:: 0.6.0</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;UNITS&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">fmt</span> <span class="o">==</span> <span class="s1">&#39;raw&#39;</span> <span class="ow">or</span> <span class="n">u</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">u</span>
+        <span class="k">if</span> <span class="n">fmt</span> <span class="o">==</span> <span class="s1">&#39;astropy&#39;</span><span class="p">:</span>
+            <span class="n">u</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">fmt</span> <span class="o">==</span> <span class="s1">&#39;latex&#39;</span><span class="p">:</span>
+            <span class="n">u</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">#&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">fmt</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;minimal&#39;</span><span class="p">,</span> <span class="s1">&#39;astropy&#39;</span><span class="p">):</span>
+            <span class="n">u</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;![EU]([^!]*)!N&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;^\1&#39;</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>  <span class="c1"># IDL to exponent</span>
+            <span class="n">u</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\^{([^!]*)}&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;^\1&#39;</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>  <span class="c1"># LaTeX to exponent</span>
+        <span class="k">if</span> <span class="n">fmt</span> <span class="o">==</span> <span class="s1">&#39;minimal&#39;</span><span class="p">:</span>
+            <span class="n">u</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(?&lt;=\d)(?=[\w^_])&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>  <span class="c1"># Insert spaces</span>
+        <span class="k">if</span> <span class="n">fmt</span> <span class="o">==</span> <span class="s1">&#39;astropy&#39;</span><span class="p">:</span>
+            <span class="c1"># Common substitutions</span>
+            <span class="k">for</span> <span class="n">orig</span><span class="p">,</span> <span class="n">ap</span> <span class="ow">in</span> <span class="p">((</span><span class="s1">&#39;ster&#39;</span><span class="p">,</span> <span class="s1">&#39;sr&#39;</span><span class="p">),</span>
+                             <span class="p">(</span><span class="s1">&#39;cc&#39;</span><span class="p">,</span> <span class="s1">&#39;cm^3&#39;</span><span class="p">),</span>
+                             <span class="p">):</span>
+                <span class="n">u</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">fr</span><span class="s1">&#39;((?&lt;=[\W\d])|^)</span><span class="si">{</span><span class="n">orig</span><span class="si">}</span><span class="s1">(?=[\W\d]|$)&#39;</span><span class="p">,</span> <span class="n">ap</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">fmt</span> <span class="o">==</span> <span class="s1">&#39;latex&#39;</span><span class="p">:</span>
+            <span class="n">u</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;![EU]([^!]*)!N&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;^{\1}&#39;</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>  <span class="c1"># IDL to exponent</span>
+        <span class="k">return</span> <span class="n">u</span></div>
+
+<div class="viewcode-block" id="ISTPArray.toQuantity"><a class="viewcode-back" href="../../autosummary/spacepy.datamodel.ISTPArray.html#spacepy.datamodel.ISTPArray.toQuantity">[docs]</a>    <span class="k">def</span> <span class="nf">toQuantity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert to Astropy Quantity</span>
+
+<span class="sd">        Converts this array to an Astropy `~astropy.units.Quantity`.</span>
+<span class="sd">        Invalid values are replaced with `~numpy.nan`.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `~astropy.units.Quantity`</span>
+<span class="sd">            Data from this array interpreted according to its ``UNITS``</span>
+<span class="sd">            attribute.</span>
+
+<span class="sd">        Other Parameters</span>
+<span class="sd">        ----------------</span>
+<span class="sd">        copy : `bool`, default ``True``</span>
+<span class="sd">            Copy data to the Quantity. If ``False``, changes to the</span>
+<span class="sd">            Quantity may affect the source array. In some cases a copy</span>
+<span class="sd">            may be made even if ``False``.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        .. versionadded:: 0.6.0</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import spacepy.datamodel</span>
+<span class="sd">        # https://rbsp-ect.newmexicoconsortium.org/data_pub/rbspa/ECT/level2/</span>
+<span class="sd">        &gt;&gt;&gt; data = spacepy.datamodel.fromCDF(</span>
+<span class="sd">        ...     &#39;rbspa_ect-elec-L2_20140115_v2.1.0.cdf&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; q = data[&#39;Position&#39;].toQuantity()</span>
+<span class="sd">        &gt;&gt;&gt; q.to(&#39;m&#39;)</span>
+<span class="sd">        &lt;Quantity [[-32833200. , -15531762. ,  -6449212. ],</span>
+<span class="sd">                   [-32903586. , -15406271. ,  -6448704.5],</span>
+<span class="sd">                   [-32967848. , -15277711. ,  -6446542.5],</span>
+<span class="sd">                   ...,</span>
+<span class="sd">                   [-20966128. ,   6941849.5,  -2896334.2],</span>
+<span class="sd">                   [-21515586. ,   6858618. ,  -3026324. ],</span>
+<span class="sd">                   [-22047328. ,   6783260.5,  -3153003.5]] m&gt;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">import</span> <span class="nn">astropy.units</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">replace_invalid</span><span class="p">()</span>  <span class="c1"># makes copy</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">copy</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="o">...</span><span class="p">]</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">astropy</span><span class="o">.</span><span class="n">units</span><span class="o">.</span><span class="n">Quantity</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">(</span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;astropy&#39;</span><span class="p">),</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">q</span></div>
+
+<div class="viewcode-block" id="ISTPArray.fromQuantity"><a class="viewcode-back" href="../../autosummary/spacepy.datamodel.ISTPArray.html#spacepy.datamodel.ISTPArray.fromQuantity">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">fromQuantity</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert from Astropy Quantity</span>
+
+<span class="sd">        Converts an Astropy `~astropy.units.Quantity` to an ISTP array.</span>
+<span class="sd">        `~numpy.nan` are replaced with fill.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        q : `~astropy.units.Quantity`</span>
+<span class="sd">            Quantity to convert</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `ISTPArray`</span>
+<span class="sd">            Array with attributes which can be inferred from input.</span>
+<span class="sd">            This may not be fully ISTP-compliant.</span>
+
+<span class="sd">        Other Parameters</span>
+<span class="sd">        ----------------</span>
+<span class="sd">        copy : `bool`, default ``True``</span>
+<span class="sd">            Copy data from the Quantity. If ``False``, changes to the</span>
+<span class="sd">            Quantity may affect this array. In some cases a copy</span>
+<span class="sd">            may be made even if ``False``.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        .. versionadded:: 0.6.0</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">import</span> <span class="nn">astropy.units</span>
+        <span class="n">fill</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">fill</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+            <span class="n">copy</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">if</span> <span class="n">copy</span> <span class="k">else</span> <span class="n">q</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">data</span><span class="p">[</span><span class="n">fill</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1e31</span>  <span class="c1"># Quantities are always float</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">si</span>
+        <span class="c1"># Force scientific notation, remove superfluous signs and zeros</span>
+        <span class="n">scale</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;0*e\+?0*&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">s</span><span class="o">.</span><span class="n">scale</span><span class="si">:</span><span class="s1">#e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># Unscaled formatter is deprecated, so strip the scale the hard way</span>
+        <span class="n">unscaled</span> <span class="o">=</span> <span class="p">(</span><span class="n">s</span> <span class="o">/</span> <span class="n">astropy</span><span class="o">.</span><span class="n">units</span><span class="o">.</span><span class="n">Unit</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">scale</span><span class="p">))</span><span class="o">.</span><span class="n">to_string</span><span class="p">()</span>
+        <span class="c1"># and remove extra spaces around operators</span>
+        <span class="n">unscaled</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\s+([^\w])\s+&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;\1&#39;</span><span class="p">,</span> <span class="n">unscaled</span><span class="p">)</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;FILLVAL&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">1e31</span><span class="p">,</span>
+            <span class="s1">&#39;SI_Conversion&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">scale</span><span class="si">}</span><span class="s1">&gt;</span><span class="si">{</span><span class="n">unscaled</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;UNITS&#39;</span><span class="p">:</span> <span class="n">q</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">to_string</span><span class="p">(),</span>
+        <span class="p">}</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">attrs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out</span></div></div>
 
 
 <div class="viewcode-block" id="ISTPContainer"><a class="viewcode-back" href="../../autosummary/spacepy.datamodel.ISTPContainer.html#spacepy.datamodel.ISTPContainer">[docs]</a><span class="k">class</span> <span class="nc">ISTPContainer</span><span class="p">(</span><span class="n">collections</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">Mapping</span><span class="p">):</span>
@@ -391,14 +540,18 @@
 <span class="sd">    .. versionadded:: 0.5.0</span>
 
 <span class="sd">    .. autosummary::</span>
+<span class="sd">        ~ISTPContainer.fromDataFrame</span>
 <span class="sd">        ~ISTPContainer.lineplot</span>
 <span class="sd">        ~ISTPContainer.main_vars</span>
 <span class="sd">        ~ISTPContainer.plot</span>
 <span class="sd">        ~ISTPContainer.spectrogram</span>
+<span class="sd">        ~ISTPContainer.toDataFrame</span>
+<span class="sd">    .. automethod:: fromDataFrame</span>
 <span class="sd">    .. automethod:: lineplot</span>
 <span class="sd">    .. automethod:: main_vars</span>
 <span class="sd">    .. automethod:: plot</span>
 <span class="sd">    .. automethod:: spectrogram</span>
+<span class="sd">    .. automethod:: toDataFrame</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">attrs</span><span class="p">:</span>  <span class="n">collections</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">Mapping</span>
 
@@ -453,9 +606,9 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">data</span><span class="p">[:,</span> <span class="n">dim</span><span class="p">],</span> <span class="o">**</span><span class="n">plot_kwargs</span><span class="p">)</span>
         <span class="n">ylabel</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;LABLAXIS&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;UNITS&#39;</span><span class="p">):</span>
-            <span class="n">ylabel</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}{}</span><span class="s1">(</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="n">ylabel</span><span class="p">,</span> <span class="s1">&#39; &#39;</span> <span class="k">if</span> <span class="n">ylabel</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;UNITS&#39;</span><span class="p">])</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">units</span><span class="p">(</span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">u</span><span class="p">:</span>
+            <span class="n">ylabel</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}{}</span><span class="s1">($</span><span class="si">{}</span><span class="s1">$)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ylabel</span><span class="p">,</span> <span class="s1">&#39; &#39;</span> <span class="k">if</span> <span class="n">ylabel</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">ylabel</span><span class="p">:</span>
             <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;LABLAXIS&#39;</span><span class="p">):</span>
@@ -599,9 +752,10 @@
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">v</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;DEPEND_0&#39;</span><span class="p">]]</span>
         <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">v</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;DEPEND_1&#39;</span><span class="p">]]</span>
         <span class="n">zlabel</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;LABLAXIS&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;UNITS&#39;</span><span class="p">):</span>
-            <span class="n">zlabel</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}{}</span><span class="s1">(</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="n">zlabel</span><span class="p">,</span> <span class="s1">&#39; &#39;</span> <span class="k">if</span> <span class="n">zlabel</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;UNITS&#39;</span><span class="p">])</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">units</span><span class="p">(</span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">u</span><span class="p">:</span>
+            <span class="n">zlabel</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}{}</span><span class="s1">($</span><span class="si">{}</span><span class="s1">$)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">zlabel</span><span class="p">,</span> <span class="s1">&#39; &#39;</span> <span class="k">if</span> <span class="n">zlabel</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
         <span class="n">zlabel</span> <span class="o">=</span> <span class="n">zlabel</span> <span class="k">if</span> <span class="n">zlabel</span> <span class="k">else</span> <span class="kc">None</span>
         <span class="k">try</span><span class="p">:</span>  <span class="c1"># mpl &gt;=3.7</span>
             <span class="n">cmap</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">colormaps</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
@@ -617,9 +771,10 @@
         <span class="n">ax</span> <span class="o">=</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">simpleSpectrogram</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">data</span><span class="p">,</span> <span class="n">cbtitle</span><span class="o">=</span><span class="n">zlabel</span><span class="p">,</span>
                                             <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">zero_valid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
         <span class="n">ylabel</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;LABLAXIS&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">y</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;UNITS&#39;</span><span class="p">):</span>
-            <span class="n">ylabel</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}{}</span><span class="s1">(</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="n">ylabel</span><span class="p">,</span> <span class="s1">&#39; &#39;</span> <span class="k">if</span> <span class="n">ylabel</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;UNITS&#39;</span><span class="p">])</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">units</span><span class="p">(</span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">u</span><span class="p">:</span>
+            <span class="n">ylabel</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}{}</span><span class="s1">($</span><span class="si">{}</span><span class="s1">$)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">ylabel</span><span class="p">,</span> <span class="s1">&#39; &#39;</span> <span class="k">if</span> <span class="n">ylabel</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">ylabel</span><span class="p">:</span>
             <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;LABLAXIS&#39;</span><span class="p">):</span>
@@ -664,7 +819,143 @@
         <span class="n">dp</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">v</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;DELTA_PLUS_VAR&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">replace_invalid</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;DELTA_PLUS_VAR&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">v</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;DELTA_MINUS_VAR&#39;</span><span class="p">]:</span>
             <span class="k">return</span><span class="p">(</span><span class="n">dp</span><span class="p">,)</span>
-        <span class="k">return</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">v</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;DELTA_MINUS_VAR&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">replace_invalid</span><span class="p">(),</span> <span class="n">dp</span><span class="p">)</span></div>
+        <span class="k">return</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">v</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;DELTA_MINUS_VAR&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">replace_invalid</span><span class="p">(),</span> <span class="n">dp</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ISTPContainer.toDataFrame"><a class="viewcode-back" href="../../autosummary/spacepy.datamodel.ISTPContainer.html#spacepy.datamodel.ISTPContainer.toDataFrame">[docs]</a>    <span class="k">def</span> <span class="nf">toDataFrame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert to Pandas DataFrame</span>
+
+<span class="sd">        Converts one variable (and its dependencies) to a Pandas</span>
+<span class="sd">        `~pandas.DataFrame`. Invalid values are replaced with `~numpy.nan`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        vname : `str`, optional</span>
+<span class="sd">            The key into this container of the value to convert</span>
+<span class="sd">            (i.e.,  the name of the variable). Strongly recommended;</span>
+<span class="sd">            if not specified, will try to find one using `main_vars`,</span>
+<span class="sd">            and raise `ValueError` if there is more than one candidate.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `~pandas.DataFrame`</span>
+<span class="sd">            Data from the array named by ``vname`` and its dependencies.</span>
+
+<span class="sd">        Other Parameters</span>
+<span class="sd">        ----------------</span>
+<span class="sd">        copy : `bool`, default ``True``</span>
+<span class="sd">            Copy data to the DataFrame. If ``False``, changes to the</span>
+<span class="sd">            DataFrame may affect the source data. In some cases a copy</span>
+<span class="sd">            may be made even if ``False``.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        .. versionadded:: 0.6.0</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; import spacepy.datamodel</span>
+<span class="sd">        # https://rbsp-ect.newmexicoconsortium.org/data_pub/rbspa/ECT/level2/</span>
+<span class="sd">        &gt;&gt;&gt; data = spacepy.datamodel.fromCDF(</span>
+<span class="sd">        ...     &#39;rbspa_ect-elec-L2_20140115_v2.1.0.cdf&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; df = data.toDataFrame(&#39;Position&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; df.plot()</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">import</span> <span class="nn">pandas</span>
+        <span class="k">if</span> <span class="n">vname</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">main_vars</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">main_vars</span><span class="p">()</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">main_vars</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">matches</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">main_vars</span><span class="p">)</span> <span class="k">if</span> <span class="n">main_vars</span> <span class="k">else</span> <span class="s1">&#39;none&#39;</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s1">&#39;No variable specified; possible matches: </span><span class="si">{</span><span class="n">matches</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+            <span class="n">vname</span> <span class="o">=</span> <span class="n">main_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">vname</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">vname</span><span class="p">]</span><span class="o">.</span><span class="n">replace_invalid</span><span class="p">()</span>  <span class="c1"># makes copy</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">copy</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">vname</span><span class="p">][</span><span class="o">...</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;LABL_PTR_1&#39;</span> <span class="ow">in</span> <span class="n">a</span><span class="p">:</span>
+            <span class="n">columns</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;LABL_PTR_1&#39;</span><span class="p">]][</span><span class="o">...</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;FIELDNAM&#39;</span><span class="p">,</span> <span class="n">vname</span><span class="p">)]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">columns</span> <span class="o">*=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">self</span><span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;DEPEND_0&#39;</span><span class="p">]][</span><span class="o">...</span><span class="p">],</span>
+            <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">df</span></div>
+
+<div class="viewcode-block" id="ISTPContainer.fromDataFrame"><a class="viewcode-back" href="../../autosummary/spacepy.datamodel.ISTPContainer.html#spacepy.datamodel.ISTPContainer.fromDataFrame">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">fromDataFrame</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert from Pandas DataFrame</span>
+
+<span class="sd">        Converts a Pandas `~pandas.DataFrame` to ISTP-compliant type.</span>
+<span class="sd">        `~numpy.nan` are replaced with fill.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        df : `~pandas.DataFrame`</span>
+<span class="sd">            Data frame to convert</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `ISTPContainer`</span>
+<span class="sd">            ISTP-compliant container representing the dataframe&#39;s data.</span>
+<span class="sd">            This may not be fully ISTP-compliant; the minimium attributes</span>
+<span class="sd">            required to represent the DataFrame are used.</span>
+
+<span class="sd">        Other Parameters</span>
+<span class="sd">        ----------------</span>
+<span class="sd">        copy : `bool`, default ``True``</span>
+<span class="sd">            Copy data from the DataFrame. If ``False``, changes to the</span>
+<span class="sd">            output may affect the DataFrame. In some cases a copy</span>
+<span class="sd">            may be made even if ``False``.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        .. versionadded:: 0.6.0</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
+        <span class="c1"># assume can hold a dmarray, a CDF will convert it</span>
+        <span class="n">fill</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">fill</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+            <span class="n">copy</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">if</span> <span class="n">copy</span> <span class="k">else</span> <span class="n">df</span><span class="o">.</span><span class="n">values</span>
+        <span class="n">vartype</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="s1">&#39;float&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;i&#39;</span><span class="p">:</span> <span class="s1">&#39;int&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;U&#39;</span><span class="p">:</span> <span class="s1">&#39;char&#39;</span><span class="p">,</span>
+        <span class="p">}</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">kind</span><span class="p">,</span> <span class="s1">&#39;float&#39;</span><span class="p">)</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">createISTPattrs</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">ndims</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">vartype</span><span class="o">=</span><span class="n">vartype</span><span class="p">)</span>
+        <span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+            <span class="s1">&#39;DEPEND_1&#39;</span><span class="p">:</span> <span class="s1">&#39;ColumnNumbers&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;DISPLAY_TYPE&#39;</span><span class="p">:</span> <span class="s1">&#39;time_series&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;FIELDNAM&#39;</span><span class="p">:</span> <span class="s1">&#39;data&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;LABL_PTR_1&#39;</span><span class="p">:</span> <span class="s1">&#39;Labels&#39;</span><span class="p">,</span>
+        <span class="p">})</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;CATDESC&#39;</span><span class="p">,</span> <span class="s1">&#39;LABLAXIS&#39;</span><span class="p">,</span> <span class="s1">&#39;SI_CONVERSION&#39;</span><span class="p">,</span> <span class="s1">&#39;UNITS&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;VALIDMIN&#39;</span><span class="p">,</span> <span class="s1">&#39;VALIDMAX&#39;</span><span class="p">):</span>
+            <span class="k">del</span> <span class="n">attrs</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+        <span class="n">output</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="n">output</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="n">fill</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1e31</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">createISTPattrs</span><span class="p">(</span><span class="s1">&#39;support_data&#39;</span><span class="p">,</span> <span class="n">vartype</span><span class="o">=</span><span class="s1">&#39;tt2000&#39;</span><span class="p">)</span>
+        <span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+            <span class="s1">&#39;FIELDNAM&#39;</span><span class="p">:</span> <span class="s1">&#39;Epoch&#39;</span><span class="p">,</span>
+        <span class="p">})</span>
+        <span class="k">del</span> <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;CATDESC&#39;</span><span class="p">]</span>
+        <span class="n">output</span><span class="p">[</span><span class="s1">&#39;Epoch&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_pydatetime</span><span class="p">(),</span> <span class="n">attrs</span><span class="o">=</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">createISTPattrs</span><span class="p">(</span><span class="s1">&#39;metadata&#39;</span><span class="p">,</span> <span class="n">vartype</span><span class="o">=</span><span class="s1">&#39;char&#39;</span><span class="p">,</span> <span class="n">NRV</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+            <span class="s1">&#39;FIELDNAM&#39;</span><span class="p">:</span> <span class="s1">&#39;Labels&#39;</span><span class="p">,</span>
+        <span class="p">})</span>
+        <span class="k">del</span> <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;CATDESC&#39;</span><span class="p">]</span>
+        <span class="n">output</span><span class="p">[</span><span class="s1">&#39;Labels&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">attrs</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;U&#39;</span><span class="p">)</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="n">createISTPattrs</span><span class="p">(</span><span class="s1">&#39;support_data&#39;</span><span class="p">,</span> <span class="n">vartype</span><span class="o">=</span><span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="n">NRV</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+            <span class="s1">&#39;FIELDNAM&#39;</span><span class="p">:</span> <span class="s1">&#39;ColumnNumbers&#39;</span><span class="p">,</span>
+        <span class="p">})</span>
+        <span class="k">del</span> <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;CATDESC&#39;</span><span class="p">]</span>
+        <span class="n">output</span><span class="p">[</span><span class="s1">&#39;ColumnNumbers&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)),</span>
+                                          <span class="n">attrs</span><span class="o">=</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">output</span></div></div>
 
 
 <div class="viewcode-block" id="dmarray"><a class="viewcode-back" href="../../autosummary/spacepy.datamodel.dmarray.html#spacepy.datamodel.dmarray">[docs]</a><span class="k">class</span> <span class="nc">dmarray</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">MetaMixin</span><span class="p">,</span> <span class="n">ISTPArray</span><span class="p">):</span>
@@ -1387,7 +1678,7 @@
                             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> is being made NRV&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
                         <span class="n">v</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">dmcopy</span><span class="p">(</span><span class="n">val</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
                     <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-                        <span class="n">v</span> <span class="o">=</span> <span class="n">outdata</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="o">.</span><span class="n">tolist</span><span class="p">,</span> <span class="n">recVary</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                        <span class="n">v</span> <span class="o">=</span> <span class="n">outdata</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">recVary</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
                         <span class="n">v</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">dmcopy</span><span class="p">(</span><span class="n">val</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">force_epoch</span> <span class="ow">and</span> <span class="s1">&#39;Epoch&#39;</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
                     <span class="n">outdata</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">[</span><span class="o">...</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="n">pycdf</span><span class="o">.</span><span class="n">const</span><span class="o">.</span><span class="n">CDF_EPOCH</span><span class="p">)</span>
@@ -1659,7 +1950,7 @@
                             <span class="n">dumval</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
                         <span class="n">dumval</span> <span class="o">=</span> <span class="n">dumval</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;|S35&#39;</span><span class="p">)</span>
                     <span class="k">else</span><span class="p">:</span>
-                        <span class="n">dumval</span> <span class="o">=</span> <span class="n">dumval</span><span class="o">.</span><span class="n">atsype</span><span class="p">(</span><span class="s1">&#39;|S35&#39;</span><span class="p">)</span>
+                        <span class="n">dumval</span> <span class="o">=</span> <span class="n">dumval</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;|S35&#39;</span><span class="p">)</span>
                     <span class="n">hfile</span><span class="p">[</span><span class="n">path</span><span class="p">]</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dumval</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="n">comptype</span><span class="p">,</span>
                                                <span class="n">compression_opts</span><span class="o">=</span><span class="n">compopts</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
                     <span class="c1">#else:</span>
