@@ -1,25 +1,21 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.pycdf.istp &#8212; SpacePy v0.6.0 Manual</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <title>spacepy.pycdf.istp &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    
-    <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="spacepy.pycdf.istp.FileChecks" href="spacepy.pycdf.istp.FileChecks.html" />
@@ -50,16 +46,199 @@
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pycdf.html" accesskey="U">pycdf - Python interface to CDF files</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pycdf.html" accesskey="U">spacepy.pycdf</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.pycdf.istp</a></li> 
       </ul>
     </div>
+  
 
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-spacepy.pycdf.istp">
+<span id="spacepy-pycdf-istp"></span><h1>spacepy.pycdf.istp<a class="headerlink" href="#module-spacepy.pycdf.istp" title="Link to this heading">¶</a></h1>
+<p>Support for ISTP-compliant CDFs</p>
+<p>The <a class="reference external" href="https://spdf.gsfc.nasa.gov/sp_use_of_cdf.html">ISTP metadata standard</a>
+specifies the interpretation of the attributes in a CDF to describe
+relationships between the variables and their physical interpretation.</p>
+<p>This module supports that subset of CDFs.</p>
+<p>Authors: Jon Niehof</p>
+<p>Additional Contributors: Lorna Ellis, Asher Merrill</p>
+<p>Institution: University of New Hampshire</p>
+<p>Contact: <a class="reference external" href="mailto:Jonathan&#46;Niehof&#37;&#52;&#48;unh&#46;edu">Jonathan<span>&#46;</span>Niehof<span>&#64;</span>unh<span>&#46;</span>edu</a></p>
+<p class="rubric">Functions</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pycdf.istp.fillval" title="spacepy.pycdf.istp.fillval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fillval</span></code></a>(v[, ret])</p></td>
+<td><p>Set ISTP-compliant FILLVAL on a variable</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pycdf.istp.format" title="spacepy.pycdf.istp.format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">format</span></code></a>(v[, use_scaleminmax, dryrun])</p></td>
+<td><p>Set ISTP-compliant FORMAT on a variable</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pycdf.istp.nanfill" title="spacepy.pycdf.istp.nanfill"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nanfill</span></code></a>(v)</p></td>
+<td><p>Set fill values to NaN</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pycdf.istp.FileChecks.html#spacepy.pycdf.istp.FileChecks" title="spacepy.pycdf.istp.FileChecks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FileChecks</span></code></a>()</p></td>
+<td><p>ISTP compliance checks for a CDF file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pycdf.istp.VarBundle.html#spacepy.pycdf.istp.VarBundle" title="spacepy.pycdf.istp.VarBundle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VarBundle</span></code></a>(source[, name])</p></td>
+<td><p>Collective handling of ISTP-compliant variable and its dependencies.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pycdf.istp.VariableChecks.html#spacepy.pycdf.istp.VariableChecks" title="spacepy.pycdf.istp.VariableChecks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VariableChecks</span></code></a>()</p></td>
+<td><p>ISTP compliance checks for a single variable.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pycdf.istp.fillval">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pycdf.istp.</span></span><span class="sig-name descname"><span class="pre">fillval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ret</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#fillval"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.fillval" title="Link to this definition">¶</a></dt>
+<dd><p>Set ISTP-compliant FILLVAL on a variable</p>
+<p>Sets or returns a CDF variable’s <a class="reference external" href="https://spdf.gsfc.nasa.gov/istp_guide/vattributes.html#FILLVAL">FILLVAL</a>
+attribute to the value required by ISTP (based on variable type).</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>v</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Var</span></code></a></span></dt><dd><p>CDF variable to update</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>various</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">ret</span></code> is True, returns the correct value for variable type (which
+may be of various Python types).  Otherwise sets the value and returns
+<code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ret</strong><span class="classifier">boolean</span></dt><dd><p>If True, return the value instead of setting it (Default False, set).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.pycdf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.pycdf.istp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">pycdf</span><span class="o">.</span><span class="n">CDF</span><span class="p">(</span><span class="s1">&#39;foo.cdf&#39;</span><span class="p">,</span> <span class="n">create</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;Var&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">pycdf</span><span class="o">.</span><span class="n">istp</span><span class="o">.</span><span class="n">fillval</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;FILLVAL&#39;</span><span class="p">]</span>
+<span class="go">-128</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pycdf.istp.format">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pycdf.istp.</span></span><span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_scaleminmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dryrun</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#format"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.format" title="Link to this definition">¶</a></dt>
+<dd><p>Set ISTP-compliant FORMAT on a variable</p>
+<p>Sets a CDF variable’s <a class="reference external" href="https://spdf.gsfc.nasa.gov/istp_guide/vattributes.html#FORMAT">FORMAT</a>
+attribute, which provides a Fortran-like format string that should
+be useable for printing any valid value in the variable. Sets
+according to the VALIDMIN/VALIDMAX attributes (or, optionally,
+SCALEMIN/SCALEMAX) if present, otherwise uses the full range of
+the type.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>v</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Var</span></code></a></span></dt><dd><p>Variable to update</p>
+</dd>
+<dt><strong>use_scaleminmax</strong><span class="classifier">bool, optional</span></dt><dd><p>Use SCALEMIN/MAX instead of VALIDMIN/MAX (default False).
+Note: istpchecks may complain about result.</p>
+</dd>
+<dt><strong>dryrun</strong><span class="classifier">bool, optional</span></dt><dd><p>Print the decided format to stdout instead of modifying
+the CDF (for use in command-line debugging) (default False).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.pycdf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.pycdf.istp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">pycdf</span><span class="o">.</span><span class="n">CDF</span><span class="p">(</span><span class="s1">&#39;foo.cdf&#39;</span><span class="p">,</span> <span class="n">create</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;Var&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">pycdf</span><span class="o">.</span><span class="n">istp</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;FORMAT&#39;</span><span class="p">]</span>
+<span class="go">&#39;I4&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pycdf.istp.nanfill">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pycdf.istp.</span></span><span class="sig-name descname"><span class="pre">nanfill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#nanfill"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.nanfill" title="Link to this definition">¶</a></dt>
+<dd><p>Set fill values to NaN</p>
+<p>Finds all values which are equal to <code class="docutils literal notranslate"><span class="pre">FILLVAL</span></code>, greater than
+<code class="docutils literal notranslate"><span class="pre">VALIDMAX</span></code>, or less than <code class="docutils literal notranslate"><span class="pre">VALIDMIN</span></code>, and replace with <code class="docutils literal notranslate"><span class="pre">NaN</span></code>
+(not-a-number). This is an update-in-place operation; does not return
+a copy.</p>
+<p>Assumes a single value for <code class="docutils literal notranslate"><span class="pre">VALIDMIN</span></code>, <code class="docutils literal notranslate"><span class="pre">VALIDMAX</span></code>, <code class="docutils literal notranslate"><span class="pre">FILLVAL</span></code>
+(although if the attribute is not present, will simply assume no
+restriction.)</p>
+<p>Only applicable to floating-point types. Best applied to a
+<a class="reference internal" href="spacepy.pycdf.VarCopy.html#spacepy.pycdf.VarCopy" title="spacepy.pycdf.VarCopy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VarCopy</span></code></a> or <a class="reference internal" href="spacepy.datamodel.dmarray.html#spacepy.datamodel.dmarray" title="spacepy.datamodel.dmarray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dmarray</span></code></a>
+rather than <a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Var</span></code></a>. Updating a variable in a CDF
+requires one write per changed value, and also will result in a CDF
+that is no longer ISTP compliant.</p>
+<p>Because of floating-point comparison, the matching to <code class="docutils literal notranslate"><span class="pre">FILLVAL</span></code> may
+fail.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>v</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Var</span></code></a> or <a class="reference internal" href="spacepy.datamodel.dmarray.html#spacepy.datamodel.dmarray" title="spacepy.datamodel.dmarray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dmarray</span></code></a></span></dt><dd><p>CDF variable, data, or copy to update</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.pycdf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.pycdf.istp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">pycdf</span><span class="o">.</span><span class="n">CDF</span><span class="p">(</span><span class="s1">&#39;foo.cdf&#39;</span><span class="p">,</span> <span class="n">create</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;Var&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mf">1e31</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">pycdf</span><span class="o">.</span><span class="n">istp</span><span class="o">.</span><span class="n">fillval</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span>
+<span class="go">VarCopy([1., 2., 3., -1.e31], dtype=float32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">pycdf</span><span class="o">.</span><span class="n">istp</span><span class="o">.</span><span class="n">nanfill</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span>
+<span class="go">VarCopy([1., 2., 3., nan], dtype=float32)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/logo.png" alt="Logo"/>
             </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.pycdf.istp</a><ul>
+<li><a class="reference internal" href="#spacepy.pycdf.istp.fillval"><code class="docutils literal notranslate"><span class="pre">fillval()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pycdf.istp.format"><code class="docutils literal notranslate"><span class="pre">format()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pycdf.istp.nanfill"><code class="docutils literal notranslate"><span class="pre">nanfill()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div>
     <h4>Previous topic</h4>
     <p class="topless"><a href="spacepy.pycdf.const.html"
@@ -77,7 +256,7 @@
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -85,60 +264,8 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <section id="module-spacepy.pycdf.istp">
-<span id="spacepy-pycdf-istp"></span><h1>spacepy.pycdf.istp<a class="headerlink" href="#module-spacepy.pycdf.istp" title="Permalink to this heading">¶</a></h1>
-<p>Support for ISTP-compliant CDFs</p>
-<p>The <a class="reference external" href="https://spdf.gsfc.nasa.gov/sp_use_of_cdf.html">ISTP metadata standard</a>
-specifies the interpretation of the attributes in a CDF to describe
-relationships between the variables and their physical interpretation.</p>
-<p>This module supports that subset of CDFs.</p>
-<p>Authors: Jon Niehof</p>
-<p>Additional Contributors: Lorna Ellis, Asher Merrill</p>
-<p>Institution: University of New Hampshire</p>
-<p>Contact: <a class="reference external" href="mailto:Jonathan&#46;Niehof&#37;&#52;&#48;unh&#46;edu">Jonathan<span>&#46;</span>Niehof<span>&#64;</span>unh<span>&#46;</span>edu</a></p>
-<p class="rubric">Classes</p>
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pycdf.istp.FileChecks.html#spacepy.pycdf.istp.FileChecks" title="spacepy.pycdf.istp.FileChecks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FileChecks</span></code></a>()</p></td>
-<td><p>ISTP compliance checks for a CDF file.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pycdf.istp.VarBundle.html#spacepy.pycdf.istp.VarBundle" title="spacepy.pycdf.istp.VarBundle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VarBundle</span></code></a>(source[, name])</p></td>
-<td><p>Collective handling of ISTP-compliant variable and its dependencies.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pycdf.istp.VariableChecks.html#spacepy.pycdf.istp.VariableChecks" title="spacepy.pycdf.istp.VariableChecks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VariableChecks</span></code></a>()</p></td>
-<td><p>ISTP compliance checks for a single variable.</p></td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Functions</p>
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pycdf.istp.fillval.html#spacepy.pycdf.istp.fillval" title="spacepy.pycdf.istp.fillval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fillval</span></code></a>(v[, ret])</p></td>
-<td><p>Set ISTP-compliant FILLVAL on a variable</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pycdf.istp.format.html#spacepy.pycdf.istp.format" title="spacepy.pycdf.istp.format"><code class="xref py py-obj docutils literal notranslate"><span class="pre">format</span></code></a>(v[, use_scaleminmax, dryrun])</p></td>
-<td><p>Set ISTP-compliant FORMAT on a variable</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pycdf.istp.nanfill.html#spacepy.pycdf.istp.nanfill" title="spacepy.pycdf.istp.nanfill"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nanfill</span></code></a>(v)</p></td>
-<td><p>Set fill values to NaN</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-
-
-            <div class="clearer"></div>
-          </div>
         </div>
       </div>
       <div class="clearer"></div>
@@ -163,13 +290,14 @@ relationships between the variables and their physical interpretation.</p>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pycdf.html" >pycdf - Python interface to CDF files</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pycdf.html" >spacepy.pycdf</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.pycdf.istp</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2024, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
 </html>

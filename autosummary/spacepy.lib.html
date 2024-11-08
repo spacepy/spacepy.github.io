@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>spacepy.lib &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="spacepy.omni" href="spacepy.omni.html" />
+    <link rel="prev" title="spacepy.irbempy.Shieldose2" href="spacepy.irbempy.Shieldose2.html" /> 
+  </head><body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.omni.html" title="spacepy.omni"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.irbempy.Shieldose2.html" title="spacepy.irbempy.Shieldose2"
+             accesskey="P">previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" accesskey="U">spacepy</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.lib</a></li> 
+      </ul>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-spacepy.lib">
+<span id="spacepy-lib"></span><h1>spacepy.lib<a class="headerlink" href="#module-spacepy.lib" title="Link to this heading">¶</a></h1>
+<p>Support for fast C-based versions of spacepy routines.</p>
+<p>To add functions, put a .c file containing the desired functions in
+the libspacepy directory. Any functions for export to python should
+be added to the functions dictionary below. These functions will
+be callable as attributes of spacepy.lib. If the C library is not
+found, spacepy.lib.have_libspacepy will be False. See Poppy
+for an example.</p>
+<p>Authors: Jon Niehof
+Institution: Los Alamos National Laboratory
+Contact: <a class="reference external" href="mailto:jniehof&#37;&#52;&#48;lanl&#46;gov">jniehof<span>&#64;</span>lanl<span>&#46;</span>gov</a></p>
+<p>Copyright 2010-2014 Los Alamos National Security, LLC.</p>
+<p class="rubric">Attributes</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="#spacepy.lib.dptr" title="spacepy.lib.dptr"><code class="xref py py-data docutils literal notranslate"><span class="pre">dptr</span></code></a></div>
+<div class="line"><a class="reference internal" href="#spacepy.lib.ulptr" title="spacepy.lib.ulptr"><code class="xref py py-data docutils literal notranslate"><span class="pre">ulptr</span></code></a></div>
+<div class="line"><a class="reference internal" href="#spacepy.lib.lptr" title="spacepy.lib.lptr"><code class="xref py py-data docutils literal notranslate"><span class="pre">lptr</span></code></a></div>
+</div>
+<dl class="py data">
+<dt class="sig sig-object py" id="spacepy.lib.dptr">
+<span class="sig-prename descclassname"><span class="pre">spacepy.lib.</span></span><span class="sig-name descname"><span class="pre">dptr</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;class</span> <span class="pre">'spacepy.lib.LP_c_double'&gt;</span></em><a class="headerlink" href="#spacepy.lib.dptr" title="Link to this definition">¶</a></dt>
+<dd><p>alias of LP_c_double</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="spacepy.lib.ulptr">
+<span class="sig-prename descclassname"><span class="pre">spacepy.lib.</span></span><span class="sig-name descname"><span class="pre">ulptr</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;class</span> <span class="pre">'spacepy.lib.LP_c_ulong'&gt;</span></em><a class="headerlink" href="#spacepy.lib.ulptr" title="Link to this definition">¶</a></dt>
+<dd><p>alias of LP_c_ulong</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="spacepy.lib.lptr">
+<span class="sig-prename descclassname"><span class="pre">spacepy.lib.</span></span><span class="sig-name descname"><span class="pre">lptr</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;class</span> <span class="pre">'spacepy.lib.LP_c_long'&gt;</span></em><a class="headerlink" href="#spacepy.lib.lptr" title="Link to this definition">¶</a></dt>
+<dd><p>alias of LP_c_long</p>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.lib</a><ul>
+<li><a class="reference internal" href="#spacepy.lib.dptr"><code class="docutils literal notranslate"><span class="pre">dptr</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.lib.ulptr"><code class="docutils literal notranslate"><span class="pre">ulptr</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.lib.lptr"><code class="docutils literal notranslate"><span class="pre">lptr</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="spacepy.irbempy.Shieldose2.html"
+                          title="previous chapter">spacepy.irbempy.Shieldose2</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="spacepy.omni.html"
+                          title="next chapter">spacepy.omni</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/autosummary/spacepy.lib.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.omni.html" title="spacepy.omni"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.irbempy.Shieldose2.html" title="spacepy.irbempy.Shieldose2"
+             >previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.lib</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    </div>
+  </body>
+</html>

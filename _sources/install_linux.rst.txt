@@ -95,7 +95,7 @@ Raspberry Pi
 SpacePy works on Raspberry Pi, using Raspberry Pi OS in 32-bit or
 64-bit flavors. A few tips:
 
-   * No binary wheels are provided, so you will need to build from source.
+   * Binary wheels are provided for 64-bit only.
 
    * It is highly recommended to install all dependencies (numpy,
      etc.) via the system package manager ``apt-get`` rather than
@@ -104,4 +104,3 @@ SpacePy works on Raspberry Pi, using Raspberry Pi OS in 32-bit or
 
       sudo apt-get install gfortran python3-numpy python3-dateutil python3-scipy python3-h5py python3-matplotlib
 
-   * Similarly, use the ``--no-build-isolation`` flag to use the system numpy.

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>spacepy.pybats.batsmath &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="spacepy.pybats.dgcpm" href="spacepy.pybats.dgcpm.html" />
+    <link rel="prev" title="spacepy.pybats.bats.VirtSat" href="spacepy.pybats.bats.VirtSat.html" /> 
+  </head><body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.pybats.dgcpm.html" title="spacepy.pybats.dgcpm"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.pybats.bats.VirtSat.html" title="spacepy.pybats.bats.VirtSat"
+             accesskey="P">previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" accesskey="U">spacepy.pybats</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.pybats.batsmath</a></li> 
+      </ul>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-spacepy.pybats.batsmath">
+<span id="spacepy-pybats-batsmath"></span><h1>spacepy.pybats.batsmath<a class="headerlink" href="#module-spacepy.pybats.batsmath" title="Link to this heading">¶</a></h1>
+<p>Functions for common math problems such as derivatives, etc.
+These should typically be called via other interfaces, but are made available
+to all users.</p>
+<p class="rubric">Functions</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.batsmath.d_dx" title="spacepy.pybats.batsmath.d_dx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">d_dx</span></code></a>(U, dx)</p></td>
+<td><p>Given a 2D array of U values that is <em>regularly spaced</em> and is ordered using 'C' or 'matplotlib' ordering (such that $x$ progresses along the last  index, $y$ along the next-to-last, etc.),  take spatial the derivative with respect to $x$.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.batsmath.d_dy" title="spacepy.pybats.batsmath.d_dy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">d_dy</span></code></a>(U, dy)</p></td>
+<td><p>Given a 2D array of U values that is <em>regularly spaced</em> and is ordered using 'C' or 'matplotlib' ordering (such that $x$ progresses along the last  index, $y$ along the next-to-last, etc.),  take spatial the derivative with respect to $y$.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.batsmath.interp_2d_reg" title="spacepy.pybats.batsmath.interp_2d_reg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interp_2d_reg</span></code></a>(x, y, xgrid, ygrid, val[, dx, dy])</p></td>
+<td><p>For a set of points (<em>x</em>, <em>y</em>) that lie inside of the 2D arrays of x and y locations, <em>xgrid</em>, <em>ygrid</em>, interpolate 2D array of values, <em>val</em> to  those points using simple bilinear interpolation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.batsmath.interp_bilin_scalar" title="spacepy.pybats.batsmath.interp_bilin_scalar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interp_bilin_scalar</span></code></a>(x, y, z[, xMin, yMin, ...])</p></td>
+<td><p>Fast, simple bilinear interpolation from 2d regular grid with starting points <em>xMin</em>, <em>yMin</em> and normalized spacing <em>dx</em>, <em>dy</em> of values on grid (<em>z</em>) to new location, <em>x</em>, <em>y</em>.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.batsmath.d_dx">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.batsmath.</span></span><span class="sig-name descname"><span class="pre">d_dx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/batsmath.html#d_dx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.batsmath.d_dx" title="Link to this definition">¶</a></dt>
+<dd><p>Given a 2D array of U values that is <em>regularly spaced</em> and is ordered using
+‘C’ or ‘matplotlib’ ordering (such that $x$ progresses along the last 
+index, $y$ along the next-to-last, etc.), 
+take spatial the derivative with respect to $x$.
+A 2D array of dU/dx values are returned.  Uses second order 
+central differences (non-edge values) and second order forward/backward 
+differences (edge values) to obtain first derivative without ghost cells.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.batsmath.d_dy">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.batsmath.</span></span><span class="sig-name descname"><span class="pre">d_dy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/batsmath.html#d_dy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.batsmath.d_dy" title="Link to this definition">¶</a></dt>
+<dd><p>Given a 2D array of U values that is <em>regularly spaced</em> and is ordered using
+‘C’ or ‘matplotlib’ ordering (such that $x$ progresses along the last 
+index, $y$ along the next-to-last, etc.), 
+take spatial the derivative with respect to $y$.
+A 2D array of dU/dx values are returned.  Uses second order 
+central differences (non-edge values) and second order forward/backward 
+differences (edge values) to obtain first derivative without ghost cells.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.batsmath.interp_2d_reg">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.batsmath.</span></span><span class="sig-name descname"><span class="pre">interp_2d_reg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xgrid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ygrid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/batsmath.html#interp_2d_reg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.batsmath.interp_2d_reg" title="Link to this definition">¶</a></dt>
+<dd><p>For a set of points (<em>x</em>, <em>y</em>) that lie inside of the 2D arrays of x and y
+locations, <em>xgrid</em>, <em>ygrid</em>, interpolate 2D array of values, <em>val</em> to 
+those points using simple bilinear interpolation.  This function will
+extrapolate outside of <em>xgrid</em>, <em>ygrid</em>, so use with caution.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.batsmath.interp_bilin_scalar">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.batsmath.</span></span><span class="sig-name descname"><span class="pre">interp_bilin_scalar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xMin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yMin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/batsmath.html#interp_bilin_scalar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.batsmath.interp_bilin_scalar" title="Link to this definition">¶</a></dt>
+<dd><p>Fast, simple bilinear interpolation from 2d regular grid with starting
+points <em>xMin</em>, <em>yMin</em> and normalized spacing <em>dx</em>, <em>dy</em> of values on grid
+(<em>z</em>) to new location, <em>x</em>, <em>y</em>.  Used to quickly set up ghost cells for
+advanced tracing.</p>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.pybats.batsmath</a><ul>
+<li><a class="reference internal" href="#spacepy.pybats.batsmath.d_dx"><code class="docutils literal notranslate"><span class="pre">d_dx()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.batsmath.d_dy"><code class="docutils literal notranslate"><span class="pre">d_dy()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.batsmath.interp_2d_reg"><code class="docutils literal notranslate"><span class="pre">interp_2d_reg()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.batsmath.interp_bilin_scalar"><code class="docutils literal notranslate"><span class="pre">interp_bilin_scalar()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="spacepy.pybats.bats.VirtSat.html"
+                          title="previous chapter">spacepy.pybats.bats.VirtSat</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="spacepy.pybats.dgcpm.html"
+                          title="next chapter">spacepy.pybats.dgcpm</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/autosummary/spacepy.pybats.batsmath.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.pybats.dgcpm.html" title="spacepy.pybats.dgcpm"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.pybats.bats.VirtSat.html" title="spacepy.pybats.bats.VirtSat"
+             >previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" >spacepy.pybats</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.pybats.batsmath</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    </div>
+  </body>
+</html>

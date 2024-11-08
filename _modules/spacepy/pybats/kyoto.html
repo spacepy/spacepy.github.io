@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>spacepy.pybats.kyoto &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/plot_directive.css" />
+    
+    <script src="../../../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+    <link rel="icon" href="../../../_static/spacepy_favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../../../index.html"><img src="../../../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../../../search.html">search</a>|&nbsp;</li>
+       <li><a href="../../../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="../pybats.html" accesskey="U">spacepy.pybats</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.pybats.kyoto</a></li> 
+      </ul>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for spacepy.pybats.kyoto</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">kyoto is a tool set for obtaining and handling geomagnetic indices stored at the</span>
+<span class="sd">`Kyoto World Data Center (WDC) website &lt;http://wdc.kugi.kyoto-u.ac.jp/wdc/Sec3.html&gt;`_.  </span>
+<span class="sd">Indices can be loaded from file or fetched from the web.</span>
+
+<span class="sd">Instantiation of objects from this module should be done through the constructor</span>
+<span class="sd">functions :func:`fetch` and load().  Use help on these objects</span>
+<span class="sd">for more information.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c1"># Module wide imports.</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+<span class="kn">from</span> <span class="nn">spacepy.plot</span> <span class="kn">import</span> <span class="n">set_target</span><span class="p">,</span> <span class="n">applySmartTimeTicks</span><span class="p">,</span> <span class="n">levelPlot</span>
+<span class="kn">from</span> <span class="nn">spacepy.pybats</span> <span class="kn">import</span> <span class="n">PbData</span>
+<span class="kn">from</span> <span class="nn">spacepy.datamodel</span> <span class="kn">import</span> <span class="n">dmarray</span><span class="p">,</span> <span class="n">SpaceData</span>
+
+<span class="c1">#############################################################################</span>
+<span class="c1"># DATA CLASSES</span>
+<span class="c1">#############################################################################</span>
+
+<div class="viewcode-block" id="KyotoDst">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.kyoto.KyotoDst.html#spacepy.pybats.kyoto.KyotoDst">[docs]</a>
+<span class="k">class</span> <span class="nc">KyotoDst</span><span class="p">(</span><span class="n">PbData</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Handle hourly dst index from Kyoto WDC.  </span>
+
+<span class="sd">    Use the specialized constructor functions :func:`fetch` and </span>
+<span class="sd">    load() to instantiate from the web or from file.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;KyotoDst object for handling observed Dst data.&#39;</span>
+
+<div class="viewcode-block" id="KyotoDst.__init__">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.kyoto.KyotoDst.html#spacepy.pybats.kyoto.KyotoDst.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># Init as PbData:</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">KyotoDst</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">lines</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_parse</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lines</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Given raw ascii input as a list of lines, parse into object.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="k">if</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39; Format&#39;</span><span class="p">:</span> <span class="c1">#IAGA-2002 formatted file.</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">parse_iaga</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">iagacode</span><span class="o">=</span><span class="s1">&#39;DST&#39;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+                <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;dst&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;nT&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;npts&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
+            <span class="k">return</span>
+    
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;npts&#39;</span><span class="p">]</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">dst</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">24</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;npts&#39;</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
+            <span class="c1"># Get year, month, day.</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">yy</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">14</span><span class="p">:</span><span class="mi">16</span><span class="p">])</span> <span class="o">*</span> <span class="mi">100</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="n">yy</span> <span class="o">=</span> <span class="mi">1900</span>
+            <span class="n">yy</span> <span class="o">=</span> <span class="n">yy</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
+            <span class="n">dd</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">8</span><span class="p">:</span><span class="mi">10</span><span class="p">])</span>
+            <span class="n">mm</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">7</span> <span class="p">])</span>
+        
+        <span class="c1"># Parse the rest of the data.</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">24</span><span class="p">):</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">yy</span><span class="p">,</span> <span class="n">mm</span><span class="p">,</span> <span class="n">dd</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span>
+                <span class="n">loc</span> <span class="o">=</span> <span class="mi">20</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">j</span>
+                <span class="n">dst</span><span class="p">[</span><span class="mi">24</span><span class="o">*</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="n">loc</span><span class="p">:</span><span class="n">loc</span><span class="o">+</span><span class="mi">4</span><span class="p">])</span>
+
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;dst&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">dst</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;nT&#39;</span><span class="p">})</span></div>
+
+
+<span class="c1">#===========================================================================</span>
+<div class="viewcode-block" id="KyotoAe">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.kyoto.KyotoAe.html#spacepy.pybats.kyoto.KyotoAe">[docs]</a>
+<span class="k">class</span> <span class="nc">KyotoAe</span><span class="p">(</span><span class="n">PbData</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Handle Ae index from Kyoto WDC.  </span>
+
+<span class="sd">    Use the specialized constructor functions :func:`fetch` and </span>
+<span class="sd">    load() to instantiate from the web or from file.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;KyotoDst object for handling auroral index data.&#39;</span>
+
+<div class="viewcode-block" id="KyotoAe.__init__">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.kyoto.KyotoAe.html#spacepy.pybats.kyoto.KyotoAe.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># Init as PbData:</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">KyotoAe</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">lines</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_parse</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lines</span><span class="p">):</span>
+        <span class="c1"># Decode binary data:</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">==</span><span class="nb">bytes</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">)):</span>
+                <span class="n">lines</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+                
+        <span class="c1"># Call parse_iaga to parse lines:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">parse_iaga</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="p">]</span></div>
+
+            
+<span class="c1">#===========================================================================</span>
+<div class="viewcode-block" id="KyotoSym">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.kyoto.KyotoSym.html#spacepy.pybats.kyoto.KyotoSym">[docs]</a>
+<span class="k">class</span> <span class="nc">KyotoSym</span><span class="p">(</span><span class="n">PbData</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Handle Sym-H and related indices from Kyoto WDC.  </span>
+
+<span class="sd">    Use the specialized constructor functions :func:`fetch` and </span>
+<span class="sd">    load() to instantiate from the web or from file.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;KyotoDst object for handling observations-based &#39;</span><span class="o">+</span>\
+            <span class="s1">&#39;SYM- and ASY- data.&#39;</span>
+
+<div class="viewcode-block" id="KyotoSym.__init__">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.kyoto.KyotoSym.html#spacepy.pybats.kyoto.KyotoSym.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># Init as PbData:</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">KyotoSym</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">lines</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_parse</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lines</span><span class="p">):</span>
+        <span class="c1"># Decode binary data:</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">==</span><span class="nb">bytes</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">)):</span>
+                <span class="n">lines</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+        <span class="c1"># Call parse_iaga to parse lines:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">parse_iaga</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="s1">&#39;ASY/SYM&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="p">]</span></div>
+
+
+<span class="c1">#===========================================================================</span>
+<div class="viewcode-block" id="KyotoKp">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.kyoto.KyotoKp.html#spacepy.pybats.kyoto.KyotoKp">[docs]</a>
+<span class="k">class</span> <span class="nc">KyotoKp</span><span class="p">(</span><span class="n">PbData</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Handles global Kp index from Kyoto WDC.</span>
+<span class="sd">    </span>
+<span class="sd">    Use the specialized constructor functions :func:`fetch` and </span>
+<span class="sd">    load() to instantiate from the web or from file.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;KyotoDst object for handling observations-based global &#39;</span><span class="o">+</span>\
+            <span class="s1">&#39;Kp index data&#39;</span>
+
+<div class="viewcode-block" id="KyotoKp.__init__">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.kyoto.KyotoKp.html#spacepy.pybats.kyoto.KyotoKp.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># Init as PbData:</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">KyotoKp</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">lines</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_parse</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lines</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Given raw ascii input as a list of lines, parse into object.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="c1"># Decode binary data:</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">==</span><span class="nb">bytes</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">)):</span>
+                <span class="n">lines</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+        
+        <span class="c1"># Kill header as necessary.</span>
+        <span class="k">if</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;HTML&#39;</span><span class="p">:</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="n">lines</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="n">lines</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;YYYY&#39;</span><span class="p">:</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">npoints</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="n">npoints</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+        <span class="n">t1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="n">npoints</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+        <span class="n">t2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="n">npoints</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+        <span class="n">kp</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="n">npoints</span><span class="p">)</span>
+        <span class="n">hr1</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">hrs</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">22</span><span class="p">]</span>
+        <span class="n">frac</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39; &#39;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">1.</span><span class="o">/</span><span class="mf">3.</span><span class="p">,</span> <span class="s1">&#39;+&#39;</span><span class="p">:</span><span class="mf">1.</span><span class="o">/</span><span class="mf">3.</span><span class="p">}</span>
+
+        <span class="c1"># Parse lines.</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
+            <span class="n">yy</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span>
+            <span class="n">mm</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">])</span>
+            <span class="n">dd</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">8</span><span class="p">])</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
+                <span class="n">kp</span><span class="p">[</span><span class="mi">8</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">]</span>  <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">9</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">j</span><span class="p">])</span><span class="o">+</span><span class="n">frac</span><span class="p">[</span><span class="n">line</span><span class="p">[</span><span class="mi">10</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">j</span><span class="p">]]</span>
+                <span class="n">time</span><span class="p">[</span><span class="mi">8</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">]</span><span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">yy</span><span class="p">,</span><span class="n">mm</span><span class="p">,</span><span class="n">dd</span><span class="p">,</span><span class="n">hrs</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="mi">30</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">t1</span><span class="p">[</span><span class="mi">8</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">]</span><span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">yy</span><span class="p">,</span><span class="n">mm</span><span class="p">,</span><span class="n">dd</span><span class="p">,</span><span class="n">hr1</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">t2</span><span class="p">[</span><span class="mi">8</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">]</span><span class="o">=</span> <span class="n">t1</span><span class="p">[</span><span class="mi">8</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">]</span><span class="o">+</span><span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+        <span class="c1"># Store data into object.</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">dmarray</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;binstart&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">dmarray</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;binstop&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">dmarray</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;kp&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">dmarray</span><span class="p">(</span><span class="n">kp</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;None&#39;</span><span class="p">})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;npts&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">npoints</span>
+
+<div class="viewcode-block" id="KyotoKp.add_histplot">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.kyoto.KyotoKp.html#spacepy.pybats.kyoto.KyotoKp.add_histplot">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_histplot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Kyoto $K_</span><span class="si">{p}</span><span class="s1">$&#39;</span><span class="p">,</span> 
+                     <span class="n">time_range</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">filled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">level_kwargs</span><span class="o">=</span><span class="p">{},</span>
+                     <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Make a quick histogram-style plot of the Kp data.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        =======</span>
+<span class="sd">        fig : matplotlib figure object</span>
+<span class="sd">        ax  : matplotlib axes object</span>
+
+<span class="sd">        Other Parameters</span>
+<span class="sd">        ================</span>
+<span class="sd">        target : Figure or Axes</span>
+<span class="sd">            If None (default), a new figure is generated from scratch.</span>
+<span class="sd">            If a matplotlib Figure object, a new axis is created</span>
+<span class="sd">            to fill that figure.</span>
+<span class="sd">            If a matplotlib Axes object, the plot is placed</span>
+<span class="sd">            into that axis.</span>
+<span class="sd">        </span>
+<span class="sd">        loc : int</span>
+<span class="sd">            Use to specify the subplot placement of the axis</span>
+<span class="sd">            (e.g. loc=212, etc.) Used if target is a Figure or None.</span>
+<span class="sd">            Default 111 (single plot).</span>
+
+<span class="sd">        label : string</span>
+<span class="sd">            The label applied to the line when a legend is added to the axes.</span>
+<span class="sd">            Defaults to &#39;Kyoto $K_{p}$&#39;.</span>
+
+<span class="sd">        time_range : tuple of datetimes</span>
+<span class="sd">            The time range to plot.  Only the first and last values in the</span>
+<span class="sd">            tuple (or list) are used if the number of elements is greater than</span>
+<span class="sd">            two.  Defaults to **None**, meaning that the full time range</span>
+<span class="sd">            available is used.</span>
+
+<span class="sd">        filled : Boolean</span>
+<span class="sd">            If True, make a filled &#39;traffic light&#39; plot of Kp using</span>
+<span class="sd">            spacepy.plot.levelPlot. Extra keyword arguments for levelPlot can</span>
+<span class="sd">            be supplied via level_kwargs.</span>
+
+<span class="sd">        Extra keyword arguments are passed to :func:`matplotlib.pyplot.plot`</span>
+<span class="sd">        to customize the line style (and are ignored if filled is True).</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        ========</span>
+<span class="sd">        &gt;&gt;&gt; import matplotlib.pyplot as plt</span>
+<span class="sd">        &gt;&gt;&gt; import spacepy.pybats.kyoto as kt</span>
+<span class="sd">         &gt;&gt;&gt; kp = kt.fetch(&#39;kp&#39;, (1981, 11), (1981, 11))</span>
+<span class="sd">        &gt;&gt;&gt; kp.add_histplot(lw=2.0, color=&#39;r&#39;, label=&#39;Example Kp&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; ax = plt.gca()</span>
+<span class="sd">        &gt;&gt;&gt; kp.add_histplot(filled=True)</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">time_range</span><span class="p">:</span>
+            <span class="n">time_range</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span>
+    
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">set_target</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span>  <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">filled</span><span class="p">:</span>
+            <span class="n">tvar</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;binstart&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+            <span class="n">tvar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tvar</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+            <span class="n">kpvar</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;kp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+            <span class="n">kpvar</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kpvar</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tvar</span><span class="p">,</span> <span class="n">kpvar</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s1">&#39;steps-post&#39;</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ax</span> <span class="o">=</span> <span class="n">levelPlot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="s1">&#39;binstart&#39;</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="s1">&#39;kp&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">level_kwargs</span><span class="p">)</span>
+        <span class="n">applySmartTimeTicks</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">time_range</span><span class="p">,</span> <span class="n">dolabel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span></div>
+</div>
+
+
+<span class="c1">#############################################################################</span>
+<span class="c1"># CONSTRUCTOR FUNCTIONS</span>
+<span class="c1">#############################################################################</span>
+
+<div class="viewcode-block" id="fetch">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.kyoto.html#spacepy.pybats.kyoto.fetch">[docs]</a>
+<span class="k">def</span> <span class="nf">fetch</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">tstart</span><span class="p">,</span> <span class="n">tstop</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Fetch Kyoto data of type dtype from the web given a start time, tstart,</span>
+<span class="sd">    and a stop time, tstop.</span>
+
+<span class="sd">    dtype can be any of the following strings: </span>
+
+<span class="sd">    1. dst -- The hourly Dst index.</span>
+<span class="sd">    2. kp  -- The 3-hour global Kp index.</span>
+<span class="sd">    3. ae  -- The AE, AL, and AU minute-resolution auroral indices.</span>
+<span class="sd">    4. sym -- The minute resolution SYM and ASY indices for H and D directions.</span>
+
+<span class="sd">    Start and stop times can be year-month tuples or datetime objects.</span>
+
+<span class="sd">    The filled corresponding data class will be returned.</span>
+
+<span class="sd">    Example 1: Get Kp for the whole year of 2005:</span>
+<span class="sd">    kp=fetch(&#39;kp&#39;, (2005,1), (2005,12))</span>
+<span class="sd">    </span>
+<span class="sd">    Example 2: Get Dst for the a few months from 1981:</span>
+<span class="sd">    import datetime</span>
+<span class="sd">    t1=datetime.datetime(1981,9, 1)</span>
+<span class="sd">    t2=datetime.datetime(1981,11, 31)</span>
+<span class="sd">    dst=fetch(&#39;dst&#39;, t1, t2)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="kn">from</span> <span class="nn">calendar</span> <span class="kn">import</span> <span class="n">monthrange</span> <span class="k">as</span> <span class="n">mrng</span>
+    
+    <span class="n">objts</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;dst&#39;</span><span class="p">:</span><span class="n">KyotoDst</span><span class="p">,</span><span class="s1">&#39;kp&#39;</span><span class="p">:</span><span class="n">KyotoKp</span><span class="p">,</span><span class="s1">&#39;ae&#39;</span><span class="p">:</span><span class="n">KyotoAe</span><span class="p">,</span><span class="s1">&#39;sym&#39;</span><span class="p">:</span><span class="n">KyotoSym</span><span class="p">}</span>
+    <span class="n">funcs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;dst&#39;</span><span class="p">:</span><span class="n">dstfetch</span><span class="p">,</span><span class="s1">&#39;kp&#39;</span><span class="p">:</span><span class="n">kpfetch</span><span class="p">,</span><span class="s1">&#39;ae&#39;</span><span class="p">:</span><span class="n">aefetch</span><span class="p">,</span><span class="s1">&#39;sym&#39;</span><span class="p">:</span><span class="n">symfetch</span><span class="p">}</span>
+
+    <span class="c1"># Convert times into datetime objects:</span>
+    <span class="c1"># Start time:</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">tstart</span><span class="p">)</span><span class="o">==</span><span class="nb">list</span> <span class="ow">or</span> <span class="nb">type</span><span class="p">(</span><span class="n">tstart</span><span class="p">)</span><span class="o">==</span><span class="nb">tuple</span><span class="p">:</span>
+        <span class="c1"># Convert tuples into datetimes:</span>
+        <span class="n">tstart</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">tstart</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tstart</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">tstart</span><span class="p">)</span><span class="o">!=</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">tstop</span><span class="p">)</span><span class="o">!=</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">:</span>
+        <span class="c1"># Not a date time or list/tuple?  Fail.</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unrecognized type for input time.&#39;</span><span class="p">)</span>
+    <span class="c1"># Stop time:</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">tstop</span><span class="p">)</span><span class="o">==</span><span class="nb">list</span> <span class="ow">or</span> <span class="nb">type</span><span class="p">(</span><span class="n">tstop</span><span class="p">)</span><span class="o">==</span><span class="nb">tuple</span><span class="p">:</span>
+        <span class="c1"># Convert tuples into datetime:</span>
+        <span class="n">tstop</span>  <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">tstop</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tstop</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">mrng</span><span class="p">(</span><span class="n">tstop</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">tstop</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">1</span><span class="p">],</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">tstop</span><span class="p">)</span><span class="o">!=</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">tstop</span><span class="p">)</span><span class="o">!=</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">:</span>
+        <span class="c1"># Not a date time or list/tuple?  Fail.</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unrecognized type for input time.&#39;</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Using functions for &#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fetching from {0:%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M} to {1:%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">tstart</span><span class="p">,</span><span class="n">tstop</span><span class="p">))</span>
+
+    <span class="c1"># Call correct function:</span>
+    <span class="k">if</span> <span class="n">dtype</span><span class="o">==</span><span class="s1">&#39;dst&#39;</span> <span class="ow">or</span> <span class="n">dtype</span><span class="o">==</span><span class="s1">&#39;kp&#39;</span><span class="p">:</span>
+        <span class="n">lines</span><span class="o">=</span><span class="n">funcs</span><span class="p">[</span><span class="n">dtype</span><span class="p">](</span><span class="n">tstart</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">tstart</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">tstop</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">tstop</span><span class="o">.</span><span class="n">month</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">lines</span><span class="o">=</span><span class="n">funcs</span><span class="p">[</span><span class="n">dtype</span><span class="p">](</span><span class="n">tstart</span><span class="p">,</span> <span class="n">tstop</span><span class="p">)</span>
+
+    <span class="c1"># Instantiate proper object and parse lines:    </span>
+    <span class="n">obj</span><span class="o">=</span><span class="n">objts</span><span class="p">[</span><span class="n">dtype</span><span class="p">]()</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">_parse</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">obj</span></div>
+
+
+<span class="c1">#############################################################################</span>
+<span class="c1"># WEBFETCH FUNCTIONS</span>
+<span class="c1">#############################################################################</span>
+
+<div class="viewcode-block" id="inttomonth">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.kyoto.html#spacepy.pybats.kyoto.inttomonth">[docs]</a>
+<span class="k">def</span> <span class="nf">inttomonth</span><span class="p">(</span><span class="n">inmonth</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Turn integer month into string month.</span>
+<span class="sd">    Necessary for webfetch.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">inmonth</span> <span class="o">&gt;</span> <span class="mi">12</span><span class="p">:</span> <span class="n">inmonth</span> <span class="o">=</span> <span class="mi">12</span>
+    <span class="k">if</span> <span class="n">inmonth</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>  <span class="n">inmonth</span> <span class="o">=</span>  <span class="mi">1</span>
+    <span class="n">strmonth</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;Jan&#39;</span><span class="p">,</span> <span class="s1">&#39;Feb&#39;</span><span class="p">,</span> <span class="s1">&#39;Mar&#39;</span><span class="p">,</span> <span class="s1">&#39;Apr&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;May&#39;</span><span class="p">,</span> <span class="s1">&#39;Jun&#39;</span><span class="p">,</span> <span class="s1">&#39;Jul&#39;</span><span class="p">,</span> <span class="s1">&#39;Aug&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Sep&#39;</span><span class="p">,</span> <span class="s1">&#39;Oct&#39;</span><span class="p">,</span> <span class="s1">&#39;Nov&#39;</span><span class="p">,</span> <span class="s1">&#39;Dec&#39;</span>
+        <span class="p">]</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">strmonth</span><span class="p">[</span><span class="n">inmonth</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span></div>
+
+
+<span class="c1">#===========================================================================</span>
+
+<div class="viewcode-block" id="dstfetch">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.kyoto.html#spacepy.pybats.kyoto.dstfetch">[docs]</a>
+<span class="k">def</span> <span class="nf">dstfetch</span><span class="p">(</span><span class="n">yrstart</span><span class="p">,</span> <span class="n">mostart</span><span class="p">,</span> <span class="n">yrstop</span><span class="p">,</span> <span class="n">mostop</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    A function to fetch Kyoto Dst directly from the Kyoto WDC website.</span>
+<span class="sd">    Returns raw ascii lines.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">urllib.parse</span><span class="o">,</span> <span class="nn">urllib.request</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span> <span class="c1">#glue the python 3 names onto python 2</span>
+        <span class="kn">import</span> <span class="nn">urllib</span>
+        <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span> <span class="o">=</span> <span class="n">urllib</span>
+        <span class="n">urllib</span><span class="o">.</span><span class="n">request</span> <span class="o">=</span> <span class="n">urllib</span>
+    <span class="c1"># Set up all form info.</span>
+    <span class="n">forminfo</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># Date-time stuff - requires special formatting.</span>
+    <span class="n">forminfo2</span><span class="o">=</span> <span class="p">{}</span> <span class="c1"># Other form stuff.</span>
+
+    <span class="c1"># Start time:</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">yrstart</span><span class="o">-</span><span class="mi">2000</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;SCent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;SCent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">19</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;STens&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span><span class="o">%</span><span class="n">yrstart</span><span class="p">)[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;SYear&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span><span class="o">%</span><span class="n">yrstart</span><span class="p">)[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;SMonth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%02i</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">mostart</span>
+    <span class="c1"># End Time:</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">yrstop</span><span class="o">-</span><span class="mi">2000</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;ECent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;ECent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">19</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;ETens&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span><span class="o">%</span><span class="n">yrstop</span><span class="p">)[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;EYear&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span><span class="o">%</span><span class="n">yrstop</span><span class="p">)[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;EMonth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%02i</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">mostop</span>
+
+    <span class="c1"># Build and open URL.  Note that the forminfo must be</span>
+    <span class="c1"># in a certain order for the request to work...</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="s1">&#39;spacepy@lanl.gov&#39;</span><span class="p">)</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;http://wdc.kugi.kyoto-u.ac.jp/cgi-bin/dstae-cgi?&#39;</span> <span class="o">+</span> \
+        <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">=</span><span class="si">%2i</span><span class="s1">&amp;</span><span class="si">%s</span><span class="s1">=</span><span class="si">%i</span><span class="s1">&amp;</span><span class="si">%s</span><span class="s1">=</span><span class="si">%i</span><span class="s1">&amp;</span><span class="si">%s</span><span class="s1">=</span><span class="si">%s</span><span class="s1">&amp;</span><span class="si">%s</span><span class="s1">=</span><span class="si">%2i</span><span class="s1">&amp;</span><span class="si">%s</span><span class="s1">=</span><span class="si">%i</span><span class="s1">&amp;</span><span class="si">%s</span><span class="s1">=</span><span class="si">%i</span><span class="s1">&amp;</span><span class="si">%s</span><span class="s1">=</span><span class="si">%s</span><span class="s1">&amp;&#39;</span> <span class="o">%</span> \
+        <span class="p">(</span><span class="s1">&#39;SCent&#39;</span><span class="p">,</span> <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;SCent&#39;</span><span class="p">],</span> \
+             <span class="s1">&#39;STens&#39;</span><span class="p">,</span> <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;STens&#39;</span><span class="p">],</span> \
+             <span class="s1">&#39;SYear&#39;</span><span class="p">,</span> <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;SYear&#39;</span><span class="p">],</span> \
+             <span class="s1">&#39;SMonth&#39;</span><span class="p">,</span><span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;SMonth&#39;</span><span class="p">],</span>\
+             <span class="s1">&#39;ECent&#39;</span><span class="p">,</span> <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;ECent&#39;</span><span class="p">],</span> \
+             <span class="s1">&#39;ETens&#39;</span><span class="p">,</span> <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;ETens&#39;</span><span class="p">],</span> \
+             <span class="s1">&#39;EYear&#39;</span><span class="p">,</span> <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;EYear&#39;</span><span class="p">],</span> \
+             <span class="s1">&#39;EMonth&#39;</span><span class="p">,</span><span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;EMonth&#39;</span><span class="p">])</span>
+    <span class="c1"># Form format updated 03/14/2011</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">target</span> <span class="o">+</span> \
+        <span class="s1">&#39;Image+Type=GIF&amp;COLOR=COLOR&amp;AE+Sensitivity=0&#39;</span> <span class="o">+</span> \
+        <span class="s1">&#39;&amp;Dst+Sensitivity=0&amp;Output=DST&amp;Out+format=WDC&amp;Email=&#39;</span> <span class="o">+</span>\
+        <span class="n">email</span>
+
+    <span class="c1"># Fetch data from web.</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+    <span class="k">return</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span></div>
+
+
+<span class="c1">#===========================================================================</span>
+
+<div class="viewcode-block" id="kpfetch">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.kyoto.html#spacepy.pybats.kyoto.kpfetch">[docs]</a>
+<span class="k">def</span> <span class="nf">kpfetch</span><span class="p">(</span><span class="n">yrstart</span><span class="p">,</span> <span class="n">mostart</span><span class="p">,</span> <span class="n">yrstop</span><span class="p">,</span> <span class="n">mostop</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    A function to fetch Kyoto Kp directly from the Kyoto WDC website.</span>
+<span class="sd">    Returns raw ascii lines.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">urllib.parse</span><span class="o">,</span> <span class="nn">urllib.request</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span> <span class="c1">#glue the python 3 names onto python 2</span>
+        <span class="kn">import</span> <span class="nn">urllib</span>
+        <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span> <span class="o">=</span> <span class="n">urllib</span>
+        <span class="n">urllib</span><span class="o">.</span><span class="n">request</span> <span class="o">=</span> <span class="n">urllib</span>
+    <span class="c1"># Set up all form info.</span>
+    <span class="n">forminfo</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># Date-time stuff - requires special formatting.</span>
+    <span class="n">forminfo2</span><span class="o">=</span> <span class="p">{}</span> <span class="c1"># Other form stuff.</span>
+
+    <span class="c1"># Start time:</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">yrstart</span><span class="o">-</span><span class="mi">2000</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;SCent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;SCent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">19</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;STens&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span><span class="o">%</span><span class="n">yrstart</span><span class="p">)[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;SYear&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span><span class="o">%</span><span class="n">yrstart</span><span class="p">)[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;SMonth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%02i</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">mostart</span>
+    <span class="c1"># End Time:</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">yrstop</span><span class="o">-</span><span class="mi">2000</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;ECent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;ECent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">19</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;ETens&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span><span class="o">%</span><span class="n">yrstop</span><span class="p">)[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;EYear&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span><span class="o">%</span><span class="n">yrstop</span><span class="p">)[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;EMonth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%02i</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">mostop</span>
+
+    <span class="c1"># Build and open URL.  Note that the forminfo must be</span>
+    <span class="c1"># in a certain order for the request to work...</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="s1">&#39;spacepy@lanl.gov&#39;</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">forminfo</span><span class="p">)</span>
+    <span class="n">target</span><span class="o">=</span><span class="s1">&#39;http://wdc.kugi.kyoto-u.ac.jp/cgi-bin/kp-cgi&#39;</span><span class="c1">#</span>
+    <span class="n">data</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">=</span><span class="si">%2i</span><span class="s1">&amp;</span><span class="si">%s</span><span class="s1">=</span><span class="si">%i</span><span class="s1">&amp;</span><span class="si">%s</span><span class="s1">=</span><span class="si">%i</span><span class="s1">&amp;</span><span class="si">%s</span><span class="s1">=</span><span class="si">%s</span><span class="s1">&amp;</span><span class="si">%s</span><span class="s1">=</span><span class="si">%2i</span><span class="s1">&amp;</span><span class="si">%s</span><span class="s1">=</span><span class="si">%i</span><span class="s1">&amp;</span><span class="si">%s</span><span class="s1">=</span><span class="si">%i</span><span class="s1">&amp;</span><span class="si">%s</span><span class="s1">=</span><span class="si">%s</span><span class="s1">&amp;</span><span class="si">%s</span><span class="s1">=</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> \
+        <span class="p">(</span><span class="s1">&#39;SCent&#39;</span><span class="p">,</span> <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;SCent&#39;</span><span class="p">],</span> \
+         <span class="s1">&#39;STens&#39;</span><span class="p">,</span> <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;STens&#39;</span><span class="p">],</span> \
+         <span class="s1">&#39;SYear&#39;</span><span class="p">,</span> <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;SYear&#39;</span><span class="p">],</span> \
+         <span class="s1">&#39;SMonth&#39;</span><span class="p">,</span><span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;SMonth&#39;</span><span class="p">],</span>\
+         <span class="s1">&#39;ECent&#39;</span><span class="p">,</span> <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;ECent&#39;</span><span class="p">],</span> \
+         <span class="s1">&#39;ETens&#39;</span><span class="p">,</span> <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;ETens&#39;</span><span class="p">],</span> \
+         <span class="s1">&#39;EYear&#39;</span><span class="p">,</span> <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;EYear&#39;</span><span class="p">],</span> \
+         <span class="s1">&#39;EMonth&#39;</span><span class="p">,</span><span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;EMonth&#39;</span><span class="p">],</span>\
+         <span class="s1">&#39;Email&#39;</span> <span class="p">,</span><span class="n">email</span><span class="p">)</span>
+
+    <span class="c1"># Fetch data from web.</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span> 
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span></div>
+
+<span class="c1">#===========================================================================</span>
+
+<div class="viewcode-block" id="symfetch">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.kyoto.html#spacepy.pybats.kyoto.symfetch">[docs]</a>
+<span class="k">def</span> <span class="nf">symfetch</span><span class="p">(</span><span class="n">t_start</span><span class="p">,</span> <span class="n">t_stop</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    A function to fetch Kyoto SYM-H directly from the Kyoto WDC website.</span>
+<span class="sd">    Returns raw ascii lines obtained from the website representing the data</span>
+<span class="sd">    in IAGA 2002 format.  </span>
+
+<span class="sd">    Note that, because of the higher density of the data, full datetimes</span>
+<span class="sd">    are required for the start and stop time.  This is in contrast to</span>
+<span class="sd">    other fetch functions, where hourly or three-hourly resolution allows</span>
+<span class="sd">    for only the start and stop years and months are required as integers.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    t_start : datetime.datetime</span>
+<span class="sd">       Start time for range of requested data as a datetime object.</span>
+<span class="sd">    t_stop : datetime.datetime</span>
+<span class="sd">       Stop time for range of requested data as a datetime object.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">urllib.parse</span><span class="o">,</span> <span class="nn">urllib.request</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span> <span class="c1">#glue the python 3 names onto python 2</span>
+        <span class="kn">import</span> <span class="nn">urllib</span>
+        <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span> <span class="o">=</span> <span class="n">urllib</span>
+        <span class="n">urllib</span><span class="o">.</span><span class="n">request</span> <span class="o">=</span> <span class="n">urllib</span>
+
+    <span class="c1"># Get difference between start and stop time:</span>
+    <span class="n">deltaT</span> <span class="o">=</span> <span class="n">t_stop</span> <span class="o">-</span> <span class="n">t_start</span>
+        
+    <span class="c1"># Set up all form info.</span>
+    <span class="n">forminfo</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># Date-time stuff - requires special formatting.</span>
+
+    <span class="c1"># GENERATE FORM INFO:</span>
+    <span class="c1"># First three digits of year, last digit of year:</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Tens&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t_start</span><span class="o">.</span><span class="n">year</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t_start</span><span class="o">.</span><span class="n">year</span> <span class="o">-</span> <span class="mi">10</span><span class="o">*</span><span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Tens&#39;</span><span class="p">])</span>
+    <span class="c1"># Month:</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Month&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">t_start</span><span class="o">.</span><span class="n">month</span>
+    <span class="c1"># Day (right now, locked in to one month of data):</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Day_Tens&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t_start</span><span class="o">.</span><span class="n">day</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Days&#39;</span><span class="p">]</span>     <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t_start</span><span class="o">.</span><span class="n">day</span> <span class="o">-</span> <span class="mi">10</span><span class="o">*</span><span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Day_Tens&#39;</span><span class="p">])</span>
+    <span class="c1"># Hour/minute:</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Hour&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">t_start</span><span class="o">.</span><span class="n">hour</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="n">t_start</span><span class="o">.</span><span class="n">minute</span>
+    <span class="c1"># Duration:</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Dur_Day_Tens&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">deltaT</span><span class="o">.</span><span class="n">days</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Dur_Day&#39;</span><span class="p">]</span>      <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">deltaT</span><span class="o">.</span><span class="n">days</span> <span class="o">-</span> <span class="mi">10</span><span class="o">*</span><span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Dur_Day_Tens&#39;</span><span class="p">])</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Dur_Hour&#39;</span><span class="p">]</span>     <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">deltaT</span><span class="o">.</span><span class="n">seconds</span><span class="o">/</span><span class="mf">3600.</span><span class="p">)</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Dur_Min&#39;</span><span class="p">]</span>      <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">deltaT</span><span class="o">.</span><span class="n">seconds</span><span class="o">/</span><span class="mf">60.</span><span class="o">-</span><span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Dur_Hour&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">60.</span><span class="p">)</span>
+
+    <span class="c1"># Email and other information:</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Output&#39;</span><span class="p">]</span>     <span class="o">=</span> <span class="s1">&#39;ASY&#39;</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Out+format&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;IAGA2002&#39;</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Email&#39;</span><span class="p">]</span>      <span class="o">=</span>  <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="s1">&#39;spacepy@lanl.gov&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Build and open URL.  Note that the forminfo must be</span>
+    <span class="c1"># in a certain order for the request to work...</span>
+    <span class="n">target</span><span class="o">=</span><span class="s1">&#39;http://wdc.kugi.kyoto-u.ac.jp/cgi-bin/aeasy-cgi&#39;</span>
+    <span class="n">data</span><span class="o">=</span><span class="s1">&#39;Tens=</span><span class="si">{0[Tens]:03d}</span><span class="s1">&amp;Year=</span><span class="si">{0[Year]:d}</span><span class="s1">&amp;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">forminfo</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">+=</span><span class="s1">&#39;Month=</span><span class="si">{0[Month]:02d}</span><span class="s1">&amp;Day_Tens=</span><span class="si">{0[Day_Tens]:d}</span><span class="s1">&amp;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">forminfo</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">+=</span><span class="s1">&#39;Days=</span><span class="si">{0[Days]:d}</span><span class="s1">&amp;Hour=</span><span class="si">{0[Hour]:02d}</span><span class="s1">&amp;min=</span><span class="si">{0[min]:02d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">forminfo</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">+=</span><span class="s1">&#39;&amp;Dur_Day_Tens=</span><span class="si">{0[Dur_Day_Tens]:02d}</span><span class="s1">&amp;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">forminfo</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">+=</span><span class="s1">&#39;Dur_Day=</span><span class="si">{0[Dur_Day]:d}</span><span class="s1">&amp;Dur_Hour=</span><span class="si">{0[Dur_Hour]:02d}</span><span class="s1">&amp;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">forminfo</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">+=</span><span class="s1">&#39;Dur_Min=</span><span class="si">{0[Dur_Min]:02d}</span><span class="s1">&amp;Image+Type=GIF&amp;COLOR=&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">forminfo</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">+=</span><span class="s1">&#39;COLOR&amp;AE+Sensitivity=0&amp;ASY</span><span class="si">%2F</span><span class="s1">SYM++Sensitivity=0&amp;&#39;</span>
+    <span class="n">data</span><span class="o">+=</span><span class="s1">&#39;Output=</span><span class="si">{0[Output]}</span><span class="s1">&amp;Out+format=&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">forminfo</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">+=</span><span class="s1">&#39;IAGA2002&amp;Email=</span><span class="si">{0[Email]}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">forminfo</span><span class="p">)</span>
+    <span class="c1">#print good</span>
+    <span class="c1">#print target+&#39;?&#39;+data</span>
+    
+    <span class="c1"># Fetch data from web.</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">target</span><span class="o">+</span><span class="s1">&#39;?&#39;</span><span class="o">+</span><span class="n">data</span><span class="p">)</span> 
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span></div>
+
+
+<span class="c1">#===========================================================================</span>
+
+<div class="viewcode-block" id="aefetch">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.kyoto.html#spacepy.pybats.kyoto.aefetch">[docs]</a>
+<span class="k">def</span> <span class="nf">aefetch</span><span class="p">(</span><span class="n">t_start</span><span class="p">,</span> <span class="n">t_stop</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    A function to fetch Kyoto AE directly from the Kyoto WDC website.</span>
+<span class="sd">    Returns raw ascii lines obtained from the website representing the data</span>
+<span class="sd">    in IAGA 2002 format.  </span>
+
+<span class="sd">    Note that, because of the higher density of the data, full date times</span>
+<span class="sd">    are required for the start and stop time.  This is in contrast to</span>
+<span class="sd">    other fetch functions, where hourly or three-hourly resolution allows</span>
+<span class="sd">    for only the start and stop years and months are required as integers.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    t_start : datetime.datetime</span>
+<span class="sd">       Start time for range of requested data as a datetime object.</span>
+<span class="sd">    t_stop : datetime.datetime</span>
+<span class="sd">       Stop time for range of requested data as a datetime object.</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">urllib.parse</span><span class="o">,</span> <span class="nn">urllib.request</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span> <span class="c1">#glue the python 3 names onto python 2</span>
+        <span class="kn">import</span> <span class="nn">urllib</span>
+        <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span> <span class="o">=</span> <span class="n">urllib</span>
+        <span class="n">urllib</span><span class="o">.</span><span class="n">request</span> <span class="o">=</span> <span class="n">urllib</span>
+
+    <span class="c1"># Get difference between start and stop time:</span>
+    <span class="n">deltaT</span> <span class="o">=</span> <span class="n">t_stop</span> <span class="o">-</span> <span class="n">t_start</span>
+        
+    <span class="c1"># Set up all form info.</span>
+    <span class="n">forminfo</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># Date-time stuff - requires special formatting.</span>
+
+    <span class="c1"># GENERATE FORM INFO:</span>
+    <span class="c1"># First three digits of year, last digit of year:</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Tens&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t_start</span><span class="o">.</span><span class="n">year</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t_start</span><span class="o">.</span><span class="n">year</span> <span class="o">-</span> <span class="mi">10</span><span class="o">*</span><span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Tens&#39;</span><span class="p">])</span>
+    <span class="c1"># Month:</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Month&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">t_start</span><span class="o">.</span><span class="n">month</span>
+    <span class="c1"># Day (right now, locked in to one month of data):</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Day_Tens&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t_start</span><span class="o">.</span><span class="n">day</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Days&#39;</span><span class="p">]</span>     <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t_start</span><span class="o">.</span><span class="n">day</span> <span class="o">-</span> <span class="mi">10</span><span class="o">*</span><span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Day_Tens&#39;</span><span class="p">])</span>
+    <span class="c1"># Hour/minute:</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Hour&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">t_start</span><span class="o">.</span><span class="n">hour</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="n">t_start</span><span class="o">.</span><span class="n">minute</span>
+    <span class="c1"># Duration:</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Dur_Day_Tens&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">deltaT</span><span class="o">.</span><span class="n">days</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Dur_Day&#39;</span><span class="p">]</span>      <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">deltaT</span><span class="o">.</span><span class="n">days</span> <span class="o">-</span> <span class="mi">10</span><span class="o">*</span><span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Dur_Day_Tens&#39;</span><span class="p">])</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Dur_Hour&#39;</span><span class="p">]</span>     <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">deltaT</span><span class="o">.</span><span class="n">seconds</span><span class="o">/</span><span class="mf">3600.</span><span class="p">)</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Dur_Min&#39;</span><span class="p">]</span>      <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">deltaT</span><span class="o">.</span><span class="n">seconds</span><span class="o">/</span><span class="mf">60.</span><span class="o">-</span><span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Dur_Hour&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">60.</span><span class="p">)</span>
+
+    <span class="c1"># Email and other information:</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Output&#39;</span><span class="p">]</span>     <span class="o">=</span> <span class="s1">&#39;AE&#39;</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Out+format&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;IAGA2002&#39;</span>
+    <span class="n">forminfo</span><span class="p">[</span><span class="s1">&#39;Email&#39;</span><span class="p">]</span>      <span class="o">=</span>  <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="s1">&#39;spacepy@lanl.gov&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Keep this here for reference.  After testing, remove.</span>
+    <span class="c1">#good=&#39;http://wdc.kugi.kyoto-u.ac.jp/cgi-bin/aeasy-cgi?Tens=201&amp;Year=0&amp;Month=04&amp;Day_Tens=0&amp;Days=0&amp;Hour=00&amp;min=00&amp;Dur_Day_Tens=03&amp;Dur_Day=0&amp;Dur_Hour=00&amp;Dur_Min=00&amp;Image+Type=GIF&amp;COLOR=COLOR&amp;AE+Sensitivity=0&amp;ASY%2FSYM++Sensitivity=0&amp;Output=AE&amp;Out+format=IAGA2002&amp;Email=dog%40fart.crap&#39;</span>
+
+    <span class="c1"># Build and open URL.  Note that the forminfo must be</span>
+    <span class="c1"># in a certain order for the request to work...</span>
+    <span class="n">target</span><span class="o">=</span><span class="s1">&#39;http://wdc.kugi.kyoto-u.ac.jp/cgi-bin/aeasy-cgi&#39;</span>
+    <span class="n">data</span><span class="o">=</span><span class="s1">&#39;Tens=</span><span class="si">{0[Tens]:03d}</span><span class="s1">&amp;Year=</span><span class="si">{0[Year]:d}</span><span class="s1">&amp;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">forminfo</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">+=</span><span class="s1">&#39;Month=</span><span class="si">{0[Month]:02d}</span><span class="s1">&amp;Day_Tens=</span><span class="si">{0[Day_Tens]:d}</span><span class="s1">&amp;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">forminfo</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">+=</span><span class="s1">&#39;Days=</span><span class="si">{0[Days]:d}</span><span class="s1">&amp;Hour=</span><span class="si">{0[Hour]:02d}</span><span class="s1">&amp;min=</span><span class="si">{0[min]:02d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">forminfo</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">+=</span><span class="s1">&#39;&amp;Dur_Day_Tens=</span><span class="si">{0[Dur_Day_Tens]:02d}</span><span class="s1">&amp;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">forminfo</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">+=</span><span class="s1">&#39;Dur_Day=</span><span class="si">{0[Dur_Day]:d}</span><span class="s1">&amp;Dur_Hour=</span><span class="si">{0[Dur_Hour]:02d}</span><span class="s1">&amp;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">forminfo</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">+=</span><span class="s1">&#39;Dur_Min=</span><span class="si">{0[Dur_Min]:02d}</span><span class="s1">&amp;Image+Type=GIF&amp;COLOR=&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">forminfo</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">+=</span><span class="s1">&#39;COLOR&amp;AE+Sensitivity=0&amp;ASY</span><span class="si">%2F</span><span class="s1">SYM++Sensitivity=0&amp;&#39;</span>
+    <span class="n">data</span><span class="o">+=</span><span class="s1">&#39;Output=AE&amp;Out+format=&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">forminfo</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">+=</span><span class="s1">&#39;IAGA2002&amp;Email=</span><span class="si">{0[Email]}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">forminfo</span><span class="p">)</span>
+    <span class="c1">#print good</span>
+    <span class="c1">#print target+&#39;?&#39;+data</span>
+    
+    <span class="c1"># Fetch data from web.</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">target</span><span class="o">+</span><span class="s1">&#39;?&#39;</span><span class="o">+</span><span class="n">data</span><span class="p">)</span> 
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span></div>
+
+
+<span class="c1">#===========================================================================</span>
+
+<div class="viewcode-block" id="parse_iaga">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.kyoto.html#spacepy.pybats.kyoto.parse_iaga">[docs]</a>
+<span class="k">def</span> <span class="nf">parse_iaga</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">iagacode</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    KyotoWDC uses two format types: WDC, which is data specific, and </span>
+<span class="sd">    IAGA-2002, which is general for all data types.  This function is</span>
+<span class="sd">    a general reader for this format.  It returns a dictionary of vectors,</span>
+<span class="sd">    each corresponding to a column from the file.</span>
+
+<span class="sd">    &#39;lines&#39; is simply a list of lines from the IAGA-formatted file.</span>
+<span class="sd">    &#39;iagacode&#39;, if given, should be a string containing the IAGA code for the</span>
+<span class="sd">    file contents.  If given, this function will raise an</span>
+<span class="sd">    exception if iagacode does not match the file&#39;s code.  This is </span>
+<span class="sd">    useful for ensure the correct data values are located in this file.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="kn">from</span> <span class="nn">dateutil.parser</span> <span class="kn">import</span> <span class="n">parse</span>
+
+    <span class="c1"># Begin by parsing header; ensuring the correct file format.</span>
+    <span class="n">fmt</span><span class="o">=</span><span class="p">(</span><span class="n">lines</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">fmt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;Format&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">fmt</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;IAGA-2002&#39;</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Data is not in IAGA-2002 format.&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Parse mandatory IAGA header lines.</span>
+    <span class="n">source</span><span class="o">=</span><span class="p">(</span><span class="n">lines</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">code</span><span class="o">=</span><span class="p">(</span><span class="n">lines</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    
+    <span class="c1"># Check Iaga Code as necessary.</span>
+    <span class="k">if</span> <span class="n">iagacode</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">iagacode</span> <span class="o">!=</span> <span class="n">code</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;IAGA Code does not match required code.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Loop through and count optional header lines.</span>
+    <span class="n">nHead</span><span class="o">=</span><span class="mi">12</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">line</span><span class="o">=</span><span class="n">lines</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">line</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39; #&#39;</span><span class="p">:</span> <span class="k">break</span>
+        <span class="n">nHead</span><span class="o">+=</span><span class="mi">1</span>
+
+    <span class="c1"># Parse column labels.  We don&#39;t need time or DOY.</span>
+    <span class="n">parts</span><span class="o">=</span><span class="n">line</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># </span>
+    <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;time&#39;</span><span class="p">:[],</span> <span class="s1">&#39;doy&#39;</span><span class="p">:[]}</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">:</span>
+        <span class="n">data</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">=</span><span class="p">[]</span>
+
+    <span class="c1"># Read all data.</span>
+    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">l</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;|&#39;</span><span class="p">:</span><span class="k">continue</span> <span class="c1"># skip repeat headers.</span>
+
+        <span class="n">p</span><span class="o">=</span><span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])))</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;doy&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+        
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">parts</span><span class="p">):</span>
+            <span class="n">data</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]))</span>
+
+    <span class="c1"># Convert to dmarrays.</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">data</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">=</span><span class="n">dmarray</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">data</span></div>
+
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/logo.png" alt="Logo"/>
+            </a></p>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../../../search.html">search</a>|&nbsp;</li>
+       <li><a href="../../../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="../pybats.html" >spacepy.pybats</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.pybats.kyoto</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    </div>
+  </body>
+</html>

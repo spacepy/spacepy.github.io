@@ -1,29 +1,25 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.plot.utils &#8212; SpacePy v0.6.0 Manual</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <title>spacepy.plot.utils &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    
-    <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="spacepy.plot.utils.EventClicker" href="spacepy.plot.utils.EventClicker.html" />
-    <link rel="prev" title="spacepy.plot.spectrogram.simpleSpectrogram" href="autosummary/spacepy.plot.spectrogram.simpleSpectrogram.html" /> 
+    <link rel="prev" title="spacepy.plot.spectrogram.Spectrogram" href="spacepy.plot.spectrogram.Spectrogram.html" /> 
   </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
@@ -43,18 +39,680 @@
           <a href="spacepy.plot.utils.EventClicker.html" title="spacepy.plot.utils.EventClicker"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="autosummary/spacepy.plot.spectrogram.simpleSpectrogram.html" title="spacepy.plot.spectrogram.simpleSpectrogram"
+          <a href="spacepy.plot.spectrogram.Spectrogram.html" title="spacepy.plot.spectrogram.Spectrogram"
              accesskey="P">previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../plot.html" accesskey="U">plot - Plot, various specialized plotting functions and associated utilities</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.plot.html" accesskey="U">spacepy.plot</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.plot.utils</a></li> 
       </ul>
     </div>
+  
 
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-spacepy.plot.utils">
+<span id="spacepy-plot-utils"></span><h1>spacepy.plot.utils<a class="headerlink" href="#module-spacepy.plot.utils" title="Link to this heading">¶</a></h1>
+<p>Utility routines for plotting and related activities</p>
+<p>Authors: Jonathan Niehof, Steven Morley, Daniel Welling</p>
+<p>Institution: Los Alamos National Laboratory</p>
+<p>Contact: <a class="reference external" href="mailto:jniehof&#37;&#52;&#48;lanl&#46;gov">jniehof<span>&#64;</span>lanl<span>&#46;</span>gov</a></p>
+<p>Copyright 2012-2014 Los Alamos National Security, LLC.</p>
+<p class="rubric">Functions</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.plot.utils.add_arrows" title="spacepy.plot.utils.add_arrows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_arrows</span></code></a>(lines[, n, size, style, ...])</p></td>
+<td><p>Add directional arrows along a plotted line.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.plot.utils.add_logo" title="spacepy.plot.utils.add_logo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_logo</span></code></a>(img[, fig, pos, margin])</p></td>
+<td><p>Add an image (logo) to one corner of a plot.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.plot.utils.annotate_xaxis" title="spacepy.plot.utils.annotate_xaxis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">annotate_xaxis</span></code></a>(txt[, ax])</p></td>
+<td><p>Write text in-line and to the right of the x-axis tick labels</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.plot.utils.applySmartTimeTicks" title="spacepy.plot.utils.applySmartTimeTicks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">applySmartTimeTicks</span></code></a>(ax, time[, dolimit, dolabel])</p></td>
+<td><p>Given an axis <em>ax</em> and a list/array of datetime objects, <em>time</em>, use the smartTimeTicks function to build smart time ticks and then immediately apply them to the given axis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.plot.utils.collapse_vertical" title="spacepy.plot.utils.collapse_vertical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collapse_vertical</span></code></a>(combine[, others, leave_axis])</p></td>
+<td><p>Collapse the vertical spacing between two or more subplots.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.plot.utils.filter_boxes" title="spacepy.plot.utils.filter_boxes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter_boxes</span></code></a>(boxes)</p></td>
+<td><p>From a list of boxes, exclude those that are completely contained by another</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.plot.utils.get_biggest_clear" title="spacepy.plot.utils.get_biggest_clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_biggest_clear</span></code></a>(boxes[, fig_aspect, ...])</p></td>
+<td><p>Given a list of boxes with clear space, figure aspect ratio (width/height), and image aspect ratio (width/height), return the largest clear space that maintains the aspect ratio of the image</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.plot.utils.get_clear" title="spacepy.plot.utils.get_clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_clear</span></code></a>(boxes[, pos])</p></td>
+<td><p>Take a list of boxes which <em>obstruct</em> the plot, i.e., don't overplot</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.plot.utils.get_used_boxes" title="spacepy.plot.utils.get_used_boxes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_used_boxes</span></code></a>([fig])</p></td>
+<td><p>Go through all elements of a figure and find the &quot;boxes&quot; they occupy, in figure coordinates.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.plot.utils.printfig" title="spacepy.plot.utils.printfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">printfig</span></code></a>(fignum[, saveonly, pngonly, clean, ...])</p></td>
+<td><p>save current figure to file and call lpr (print).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.plot.utils.set_target" title="spacepy.plot.utils.set_target"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_target</span></code></a>(target[, figsize, loc, polar])</p></td>
+<td><p>Given a <em>target</em> on which to plot a figure, determine if that <em>target</em> is <strong>None</strong> or a matplotlib figure or axes object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.plot.utils.shared_ylabel" title="spacepy.plot.utils.shared_ylabel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shared_ylabel</span></code></a>(axes, txt, *args, **kwargs)</p></td>
+<td><p>Create a ylabel that spans several subplots</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.plot.utils.show_used" title="spacepy.plot.utils.show_used"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_used</span></code></a>([fig])</p></td>
+<td><p>Show the areas of a figure which are used/occupied by plot elements.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.plot.utils.smartTimeTicks" title="spacepy.plot.utils.smartTimeTicks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">smartTimeTicks</span></code></a>(time)</p></td>
+<td><p>Returns major ticks, minor ticks and format for time-based plots</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.plot.utils.timestamp" title="spacepy.plot.utils.timestamp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timestamp</span></code></a>([position, size, draw, strnow, ...])</p></td>
+<td><p>print a timestamp on the current plot, vertical lower right</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.plot.utils.EventClicker.html#spacepy.plot.utils.EventClicker" title="spacepy.plot.utils.EventClicker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventClicker</span></code></a>([ax, n_phases, interval, ...])</p></td>
+<td><p>Presents a provided figure (normally a time series) and provides an interface to mark events shown in the plot.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.plot.utils.add_arrows">
+<span class="sig-prename descclassname"><span class="pre">spacepy.plot.utils.</span></span><span class="sig-name descname"><span class="pre">add_arrows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-&gt;'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dorestrict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#add_arrows"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.plot.utils.add_arrows" title="Link to this definition">¶</a></dt>
+<dd><p>Add directional arrows along a plotted line.  Useful for plotting flow
+lines, magnetic field lines, or other directional traces.</p>
+<p><em>lines</em> can be either <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.lines.Line2D.html#matplotlib.lines.Line2D" title="(in Matplotlib v3.9.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Line2D</span></code></a>, a list or tuple
+of lines, or a <a class="reference external" href="https://matplotlib.org/stable/api/collections_api.html#matplotlib.collections.LineCollection" title="(in Matplotlib v3.9.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LineCollection</span></code></a> object.</p>
+<p>For each line, arrows will be added using 
+<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.annotate.html#matplotlib.axes.Axes.annotate" title="(in Matplotlib v3.9.2)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">annotate()</span></code></a>.  Arrows will be spread evenly
+over the line using the number of points in the line as the metric for
+spacing.  For example, if a line has 120 points and 3 arrows are requested,
+an arrow will be added at point number 30, 60, and 90.
+Arrow color and alpha is obtained from the parent line.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>lines</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.lines.Line2D.html#matplotlib.lines.Line2D" title="(in Matplotlib v3.9.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Line2D</span></code></a>, a list/tuple, or <a class="reference external" href="https://matplotlib.org/stable/api/collections_api.html#matplotlib.collections.LineCollection" title="(in Matplotlib v3.9.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LineCollection</span></code></a></span></dt><dd><p>A single line or group of lines on which to place the arrows.
+Arrows inherent color and transparency (alpha) from the line on which
+they are placed.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>None</dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>n</strong><span class="classifier">integer</span></dt><dd><p>Number of arrows to add to each line; defaults to 3.</p>
+</dd>
+<dt><strong>size</strong><span class="classifier">integer</span></dt><dd><p>The size of the arrows in points.  Defaults to 12.</p>
+</dd>
+<dt><strong>style</strong><span class="classifier">string</span></dt><dd><p>Set the style of the arrow via <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.ArrowStyle.html#matplotlib.patches.ArrowStyle" title="(in Matplotlib v3.9.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArrowStyle</span></code></a>,
+e.g. ‘-&gt;’ (default)</p>
+</dd>
+<dt><strong>dorestrict</strong><span class="classifier">boolean</span></dt><dd><p>If True (default), only points along the line within the current
+limits of the axes will be considered when distributing arrows.</p>
+</dd>
+<dt><strong>positions</strong><span class="classifier">Nx2 array</span></dt><dd><p>N must be the number of lines provided via the argument <em>lines</em>.
+If provided, only one arrow will be placed per line.
+<em>positions</em> sets the explicit location of each arrow for each line as
+X-Y space in Axes coordinates.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The algorithm works by dividing the line in to <em>n*+1 segments and
+placing an arrow between each segment, endpoints excluded.  Arrows span
+the shortest distance possible, i.e., two adjacent points along a line.
+For lines that are long spatially but sparse in points, the arrows will
+have long tails that may extend beyond axes bounds.  For explicit positions,
+the arrow is placed at the point on the curve closest to that position
+and the exact position is not always attainable.  A maximum number of arrows
+equal to one-half of the number of points in a line per line will be
+created, so not all lines will receive *n</em> arrows.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">.01</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">line</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">add_arrows</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;-|&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.plot.utils.add_logo">
+<span class="sig-prename descclassname"><span class="pre">spacepy.plot.utils.</span></span><span class="sig-name descname"><span class="pre">add_logo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'br'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#add_logo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.plot.utils.add_logo" title="Link to this definition">¶</a></dt>
+<dd><p>Add an image (logo) to one corner of a plot.</p>
+<p>The provided image will be placed in a corner of the plot and sized
+to maintain its aspect ratio and be as large as possible without
+overlapping any existing elements of the figure. Thus this should
+be the last call in constructing a figure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>img</strong><span class="classifier">str or numpy.ndarray</span></dt><dd><p>The image to place on the figure. If a string, assumed to be a
+filename to be read with <a class="reference external" href="https://matplotlib.org/stable/api/image_api.html#matplotlib.image.imread" title="(in Matplotlib v3.9.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">imread()</span></code></a>; if
+a numpy array, assumed to be the image itself
+(in a simliar format).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>(axes, axesimg)</strong><span class="classifier">tuple of Axes and AxesImage</span></dt><dd><p>The <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.9.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Axes</span></code></a> object created to hold the iamge,
+and the <a class="reference external" href="https://matplotlib.org/stable/api/image_api.html#matplotlib.image.AxesImage" title="(in Matplotlib v3.9.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AxesImage</span></code></a> object for the image
+itself.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>fig</strong><span class="classifier">matplotlib.figure.Figure</span></dt><dd><p>The figure on which to place the logo; if not specified, the
+<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.gcf.html#matplotlib.pyplot.gcf" title="(in Matplotlib v3.9.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">gcf()</span></code></a> function will be used.</p>
+</dd>
+<dt><strong>pos</strong><span class="classifier">str</span></dt><dd><p>The position to place the logo.
+br: bottom right;
+bl: bottom left;
+tl: top left;
+tr: top right</p>
+</dd>
+<dt><strong>margin</strong><span class="classifier">float</span></dt><dd><p>Margin to include on each side of figure, as a fraction of the larger
+dimension of the figure (width or height). Default is 0.05 (5%).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Calls <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.draw.html#matplotlib.pyplot.draw" title="(in Matplotlib v3.9.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw()</span></code></a> to ensure locations are
+up to date.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.plot.utils</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax0</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="go">[&lt;matplotlib.lines.Line2D at 0x00000000&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="go">[&lt;matplotlib.lines.Line2D at 0x00000000&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">add_logo</span><span class="p">(</span><span class="s1">&#39;logo.png&#39;</span><span class="p">,</span> <span class="n">fig</span><span class="p">)</span>
+<span class="go">(&lt;matplotlib.axes.Axes at 0x00000000&gt;,</span>
+<span class="go"> &lt;matplotlib.image.AxesImage at 0x00000000&gt;)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.plot.utils.annotate_xaxis">
+<span class="sig-prename descclassname"><span class="pre">spacepy.plot.utils.</span></span><span class="sig-name descname"><span class="pre">annotate_xaxis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">txt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#annotate_xaxis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.plot.utils.annotate_xaxis" title="Link to this definition">¶</a></dt>
+<dd><p>Write text in-line and to the right of the x-axis tick labels</p>
+<p>Annotates the x axis of an <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.9.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Axes</span></code></a> object with text
+placed in-line with the tick labels and immediately to the right of the
+last label. This is formatted to match the existing tick marks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>txt</strong><span class="classifier">str</span></dt><dd><p>The annotation text.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">matplotlib.text.Text</span></dt><dd><p>The <a class="reference external" href="https://matplotlib.org/stable/api/text_api.html#matplotlib.text.Text" title="(in Matplotlib v3.9.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Text</span></code></a> object for the annotation.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax</strong><span class="classifier">matplotlib.axes.Axes</span></dt><dd><p>The axes to annotate; if not specified, the
+<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.gca.html#matplotlib.pyplot.gca" title="(in Matplotlib v3.9.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">gca()</span></code></a> function will be used.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The annotation is placed <em>immediately</em> to the right of the last tick label.
+Generally the first character of <code class="docutils literal notranslate"><span class="pre">txt</span></code> should be a space to allow some
+room.</p>
+<p>Calls <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.draw.html#matplotlib.pyplot.draw" title="(in Matplotlib v3.9.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw()</span></code></a> to ensure tick marker locations are
+up to date.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.plot.utils</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">datetime</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">times</span> <span class="o">=</span> <span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2010</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
+<span class="go">[&lt;matplotlib.lines.Line2D object at 0x0000000&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">annotate_xaxis</span><span class="p">(</span><span class="s1">&#39; UT&#39;</span><span class="p">)</span> <span class="c1">#mark that times are UT</span>
+<span class="go">&lt;matplotlib.text.Text object at 0x0000000&gt;</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/d9be0e02159802465bbf3bc48d3a4c86/spacepy-plot-utils-1.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/eff0b98f43a0a09cc372e31fb76d91ca/spacepy-plot-utils-1.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/3054ceccdc8e1bcade97aab0cfb88976/spacepy-plot-utils-1.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/a89ff14f28197e363e4f677d698aed3e/spacepy-plot-utils-1.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/spacepy-plot-utils-1.png" class="plot-directive" src="../_images/spacepy-plot-utils-1.png" />
+</figure>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.plot.utils.applySmartTimeTicks">
+<span class="sig-prename descclassname"><span class="pre">spacepy.plot.utils.</span></span><span class="sig-name descname"><span class="pre">applySmartTimeTicks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dolimit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dolabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#applySmartTimeTicks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.plot.utils.applySmartTimeTicks" title="Link to this definition">¶</a></dt>
+<dd><p>Given an axis <em>ax</em> and a list/array of datetime objects, <em>time</em>,
+use the smartTimeTicks function to build smart time ticks and
+then immediately apply them to the given axis.  The first and
+last elements of the time list will be used as bounds for the
+x-axis range.</p>
+<p>The range of the <em>time</em> input value will be used to set the limits
+of the x-axis as well.  Set kwarg ‘dolimit’ to False to override
+this behavior.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax</strong><span class="classifier">matplotlib.pyplot.Axes</span></dt><dd><p>A matplotlib Axis object.</p>
+</dd>
+<dt><strong>time</strong><span class="classifier">list</span></dt><dd><p>list of datetime objects</p>
+</dd>
+<dt><strong>dolimit</strong><span class="classifier">boolean (optional)</span></dt><dd><p>The range of the <em>time</em> input value will be used to set the limits
+of the x-axis as well. Setting this overrides this behavior.</p>
+</dd>
+<dt><strong>dolabel</strong><span class="classifier">boolean (optional)</span></dt><dd><p>Sets autolabeling of the time axis with “Time from” time[0]</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#spacepy.plot.utils.smartTimeTicks" title="spacepy.plot.utils.smartTimeTicks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">smartTimeTicks</span></code></a></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.plot.utils.collapse_vertical">
+<span class="sig-prename descclassname"><span class="pre">spacepy.plot.utils.</span></span><span class="sig-name descname"><span class="pre">collapse_vertical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">combine</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">others</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leave_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#collapse_vertical"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.plot.utils.collapse_vertical" title="Link to this definition">¶</a></dt>
+<dd><p>Collapse the vertical spacing between two or more subplots.</p>
+<p>Useful for a multi-panel plot where most subplots should have
+space between them but several adjacent ones should not (i.e.,
+appear as a single plot.) This function will remove all the
+vertical space between the subplots listed in <code class="docutils literal notranslate"><span class="pre">combine</span></code> and
+redistribute the space between all of the subplots in both
+<code class="docutils literal notranslate"><span class="pre">combine</span></code> and <code class="docutils literal notranslate"><span class="pre">others</span></code> in proportion to their current size,
+so that the relative size of the subplots does not change.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>combine</strong><span class="classifier">sequence</span></dt><dd><p>The <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.9.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Axes</span></code></a> objects (i.e. subplots)
+which should be placed together with no vertical space.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>others</strong><span class="classifier">sequence</span></dt><dd><p>The <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.9.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Axes</span></code></a> objects (i.e. subplots)
+which will keep their vertical spacing, but will be expanded
+with the space taken away from between the elements of <code class="docutils literal notranslate"><span class="pre">combine</span></code>.</p>
+</dd>
+<dt><strong>leave_axis</strong><span class="classifier">bool</span></dt><dd><p>If set to true, will leave the axis lines and tick marks between
+the collapsed subplots. By default, the axis line (“spine”) is
+removed so the two subplots appear as one.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This function can be fairly fragile and should only be used for fairly
+simple layouts, e.g., a one-column multi-row plot stack.</p>
+<p>This may require some clean-up of the y axis labels, as they are likely
+to overlap.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.plot.utils</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#Make three stacked subplots</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax0</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">311</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">312</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">313</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="c1">#just make some lines</span>
+<span class="go">[&lt;matplotlib.lines.Line2D object at 0x0000000&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="go">[&lt;matplotlib.lines.Line2D object at 0x0000000&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="go">[&lt;matplotlib.lines.Line2D object at 0x0000000&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#Collapse space between top two plots, leave bottom one alone</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">collapse_vertical</span><span class="p">([</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">],</span> <span class="p">[</span><span class="n">ax2</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/0ea71805e9da433aeea53f6ce5a08bd7/spacepy-plot-utils-2.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/3aca41c27c8fb11a8300967c7e0e06ce/spacepy-plot-utils-2.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/15fd90f15cabbad5e4c003f98ee3837f/spacepy-plot-utils-2.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/45677c85ba0f44ecc09fbf103325d725/spacepy-plot-utils-2.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/spacepy-plot-utils-2.png" class="plot-directive" src="../_images/spacepy-plot-utils-2.png" />
+</figure>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.plot.utils.filter_boxes">
+<span class="sig-prename descclassname"><span class="pre">spacepy.plot.utils.</span></span><span class="sig-name descname"><span class="pre">filter_boxes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">boxes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#filter_boxes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.plot.utils.filter_boxes" title="Link to this definition">¶</a></dt>
+<dd><p>From a list of boxes, exclude those that are completely contained by another</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.plot.utils.get_biggest_clear">
+<span class="sig-prename descclassname"><span class="pre">spacepy.plot.utils.</span></span><span class="sig-name descname"><span class="pre">get_biggest_clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">boxes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig_aspect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img_aspect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#get_biggest_clear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.plot.utils.get_biggest_clear" title="Link to this definition">¶</a></dt>
+<dd><p>Given a list of boxes with clear space, figure aspect ratio (width/height),
+and image aspect ratio (width/height), return the largest clear space
+that maintains the aspect ratio of the image</p>
+<p>Mostly a helper for add_logo</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.plot.utils.get_clear">
+<span class="sig-prename descclassname"><span class="pre">spacepy.plot.utils.</span></span><span class="sig-name descname"><span class="pre">get_clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">boxes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'br'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#get_clear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.plot.utils.get_clear" title="Link to this definition">¶</a></dt>
+<dd><p>Take a list of boxes which <em>obstruct</em> the plot, i.e., don’t overplot</p>
+<p>Return a list of boxes which are “clear”.</p>
+<p>Mostly a helper for add_logo</p>
+<p>pos is where to look for the clear area:
+br: bottom right
+bl: bottom left
+tl: top left
+tr: top right</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.plot.utils.get_used_boxes">
+<span class="sig-prename descclassname"><span class="pre">spacepy.plot.utils.</span></span><span class="sig-name descname"><span class="pre">get_used_boxes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#get_used_boxes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.plot.utils.get_used_boxes" title="Link to this definition">¶</a></dt>
+<dd><p>Go through all elements of a figure and find the “boxes” they occupy,
+in figure coordinates. Mostly helper for add_logo</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.plot.utils.printfig">
+<span class="sig-prename descclassname"><span class="pre">spacepy.plot.utils.</span></span><span class="sig-name descname"><span class="pre">printfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fignum</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saveonly</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pngonly</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clean</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#printfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.plot.utils.printfig" title="Link to this definition">¶</a></dt>
+<dd><p>save current figure to file and call lpr (print).</p>
+<p>This routine will create a total of 3 files (png, ps and c.png) in the
+current working directory with a sequence number attached. Also, a time
+stamp and the location of the file will be imprinted on the figure. The
+file ending with c.png is clean and no directory or time stamp are
+attached (good for PowerPoint presentations).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>fignum</strong><span class="classifier">integer</span></dt><dd><p>matplotlib figure number</p>
+</dd>
+<dt><strong>saveonly</strong><span class="classifier">boolean (optional)</span></dt><dd><p>True (don’t print and save only to file)  False (print and save)</p>
+</dd>
+<dt><strong>pngolny</strong><span class="classifier">boolean (optional)</span></dt><dd><p>True (only save png files and print png directly) False (print ps file, and generate png, ps; can be slow)</p>
+</dd>
+<dt><strong>clean</strong><span class="classifier">boolean (optional)</span></dt><dd><p>True (print and save only clean files without directory info) False (print and save directory location as well)</p>
+</dd>
+<dt><strong>filename</strong><span class="classifier">string (optional)</span></dt><dd><p>None (If specified then the filename is set and code does not use the sequence number)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.plot.utils</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">printfig</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">pngonly</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">saveonly</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.plot.utils.set_target">
+<span class="sig-prename descclassname"><span class="pre">spacepy.plot.utils.</span></span><span class="sig-name descname"><span class="pre">set_target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#set_target"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.plot.utils.set_target" title="Link to this definition">¶</a></dt>
+<dd><p>Given a <em>target</em> on which to plot a figure, determine if that <em>target</em>
+is <strong>None</strong> or a matplotlib figure or axes object.  Based on the type
+of <em>target</em>, a figure and/or axes will be either located or generated.
+Both the figure and axes objects are returned to the caller for further
+manipulation.  This is used in nearly all <em>add_plot</em>-type methods.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>target</strong><span class="classifier">object</span></dt><dd><p>The object on which plotting will happen.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>fig</strong><span class="classifier">object</span></dt><dd><p>A matplotlib figure object on which to plot.</p>
+</dd>
+<dt><strong>ax</strong><span class="classifier">object</span></dt><dd><p>A matplotlib subplot object on which to plot.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>figsize</strong><span class="classifier">tuple</span></dt><dd><p>A two-item tuple/list giving the dimensions of the figure, in inches.
+Defaults to Matplotlib defaults.</p>
+</dd>
+<dt><strong>loc</strong><span class="classifier">integer</span></dt><dd><p>The subplot triple that specifies the location of the axes object.
+Defaults to matplotlib default (111).</p>
+</dd>
+<dt><strong>polar</strong><span class="classifier">bool</span></dt><dd><p>Set the axes object to polar coodinates.  Defaults to <strong>False</strong>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">spacepy.pybats</span> <span class="kn">import</span> <span class="n">set_target</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">set_target</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">211</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.plot.utils.shared_ylabel">
+<span class="sig-prename descclassname"><span class="pre">spacepy.plot.utils.</span></span><span class="sig-name descname"><span class="pre">shared_ylabel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">txt</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#shared_ylabel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.plot.utils.shared_ylabel" title="Link to this definition">¶</a></dt>
+<dd><p>Create a ylabel that spans several subplots</p>
+<p>Useful for a multi-panel plot where several subplots have the
+same units/quantities on the y axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>axes</strong><span class="classifier">list</span></dt><dd><p>The <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.9.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Axes</span></code></a> objects (i.e. subplots)
+which should share a single label</p>
+</dd>
+<dt><strong>txt</strong><span class="classifier">str</span></dt><dd><p>The label to place in the middle of all the <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.9.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Axes</span></code></a> objects.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">matplotlib.text.Text</span></dt><dd><p>The <a class="reference external" href="https://matplotlib.org/stable/api/text_api.html#matplotlib.text.Text" title="(in Matplotlib v3.9.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Text</span></code></a> object for the label.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Additional arguments and keywords are passed through to</strong></dt><dd></dd>
+<dt><strong>:meth:`~matplotlib.axes.Axes.set_ylabel`</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This function can be fairly fragile and should only be used for fairly
+simple layouts, e.g., a one-column multi-row plot stack.</p>
+<p>The label is associated with the bottommost subplot in <code class="docutils literal notranslate"><span class="pre">axes</span></code>.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.plot.utils</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#Make three stacked subplots</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax0</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">311</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">312</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">313</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="c1">#just make some lines</span>
+<span class="go">[&lt;matplotlib.lines.Line2D object at 0x0000000&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="go">[&lt;matplotlib.lines.Line2D object at 0x0000000&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="go">[&lt;matplotlib.lines.Line2D object at 0x0000000&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#Create a green label across all three axes</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">shared_ylabel</span><span class="p">([</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">],</span>
+<span class="gp">... </span><span class="s1">&#39;this is a very long label that spans all three axes&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.plot.utils.show_used">
+<span class="sig-prename descclassname"><span class="pre">spacepy.plot.utils.</span></span><span class="sig-name descname"><span class="pre">show_used</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#show_used"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.plot.utils.show_used" title="Link to this definition">¶</a></dt>
+<dd><p>Show the areas of a figure which are used/occupied by plot elements.</p>
+<p>This function will overplot each element of a plot with a rectangle
+showing the full bounds of that element, to see for example
+the margins and such used by a text label.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>boxes</strong><span class="classifier">list of Rectangle</span></dt><dd><p>The <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Rectangle.html#matplotlib.patches.Rectangle" title="(in Matplotlib v3.9.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Rectangle</span></code></a> objects used for the overplot.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>fig</strong><span class="classifier">matplotlib.figure.Figure</span></dt><dd><p>The figure to mark up; if not specified, the
+<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.gcf.html#matplotlib.pyplot.gcf" title="(in Matplotlib v3.9.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">gcf()</span></code></a> function will be used.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Calls <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.draw.html#matplotlib.pyplot.draw" title="(in Matplotlib v3.9.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">draw()</span></code></a> to ensure locations are
+up to date.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.plot.utils</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax0</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="go">[&lt;matplotlib.lines.Line2D at 0x00000000&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="go">[&lt;matplotlib.lines.Line2D at 0x00000000&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">show_used</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+<span class="go">[&lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;,</span>
+<span class="go"> &lt;matplotlib.patches.Rectangle at 0x0000000&gt;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.plot.utils.smartTimeTicks">
+<span class="sig-prename descclassname"><span class="pre">spacepy.plot.utils.</span></span><span class="sig-name descname"><span class="pre">smartTimeTicks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#smartTimeTicks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.plot.utils.smartTimeTicks" title="Link to this definition">¶</a></dt>
+<dd><p>Returns major ticks, minor ticks and format for time-based plots</p>
+<p>smartTimeTicks takes a list of datetime objects and uses the range
+to calculate the best tick spacing and format.  Returned to the user
+is a tuple containing the major tick locator, minor tick locator, and
+a format string – all necessary to apply the ticks to an axis.</p>
+<p>It is suggested that, unless the user explicitly needs this info,
+to use the convenience function applySmartTimeTicks to place the
+ticks directly on a given axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">list</span></dt><dd><p>list of datetime objects</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">tuple</span></dt><dd><p>tuple of Mtick - major ticks, mtick - minor ticks, fmt - format</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#spacepy.plot.utils.applySmartTimeTicks" title="spacepy.plot.utils.applySmartTimeTicks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">applySmartTimeTicks</span></code></a></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.plot.utils.timestamp">
+<span class="sig-prename descclassname"><span class="pre">spacepy.plot.utils.</span></span><span class="sig-name descname"><span class="pre">timestamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1.003,</span> <span class="pre">0.01)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'xx-small'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strnow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'vertical'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#timestamp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.plot.utils.timestamp" title="Link to this definition">¶</a></dt>
+<dd><p>print a timestamp on the current plot, vertical lower right</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>position</strong><span class="classifier">list</span></dt><dd><p>position for the timestamp</p>
+</dd>
+<dt><strong>size</strong><span class="classifier">string (optional)</span></dt><dd><p>text size</p>
+</dd>
+<dt><strong>draw</strong><span class="classifier">Boolean (optional)</span></dt><dd><p>call draw to make sure it appears</p>
+</dd>
+<dt><strong>kwargs</strong><span class="classifier">keywords</span></dt><dd><p>other keywords to axis.annotate</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.plot.utils</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="n">plot</span><span class="p">,</span> <span class="n">arange</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">arange</span><span class="p">(</span><span class="mi">11</span><span class="p">))</span>
+<span class="go">[&lt;matplotlib.lines.Line2D object at 0x49072b0&gt;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
@@ -64,8 +722,21 @@
     <h3><a href="../index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">spacepy.plot.utils</a><ul>
-<li><a class="reference internal" href="#classes">Classes</a></li>
-<li><a class="reference internal" href="#functions">Functions</a></li>
+<li><a class="reference internal" href="#spacepy.plot.utils.add_arrows"><code class="docutils literal notranslate"><span class="pre">add_arrows()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.plot.utils.add_logo"><code class="docutils literal notranslate"><span class="pre">add_logo()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.plot.utils.annotate_xaxis"><code class="docutils literal notranslate"><span class="pre">annotate_xaxis()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.plot.utils.applySmartTimeTicks"><code class="docutils literal notranslate"><span class="pre">applySmartTimeTicks()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.plot.utils.collapse_vertical"><code class="docutils literal notranslate"><span class="pre">collapse_vertical()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.plot.utils.filter_boxes"><code class="docutils literal notranslate"><span class="pre">filter_boxes()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.plot.utils.get_biggest_clear"><code class="docutils literal notranslate"><span class="pre">get_biggest_clear()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.plot.utils.get_clear"><code class="docutils literal notranslate"><span class="pre">get_clear()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.plot.utils.get_used_boxes"><code class="docutils literal notranslate"><span class="pre">get_used_boxes()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.plot.utils.printfig"><code class="docutils literal notranslate"><span class="pre">printfig()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.plot.utils.set_target"><code class="docutils literal notranslate"><span class="pre">set_target()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.plot.utils.shared_ylabel"><code class="docutils literal notranslate"><span class="pre">shared_ylabel()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.plot.utils.show_used"><code class="docutils literal notranslate"><span class="pre">show_used()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.plot.utils.smartTimeTicks"><code class="docutils literal notranslate"><span class="pre">smartTimeTicks()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.plot.utils.timestamp"><code class="docutils literal notranslate"><span class="pre">timestamp()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -73,8 +744,8 @@
   </div>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="autosummary/spacepy.plot.spectrogram.simpleSpectrogram.html"
-                          title="previous chapter">spacepy.plot.spectrogram.simpleSpectrogram</a></p>
+    <p class="topless"><a href="spacepy.plot.spectrogram.Spectrogram.html"
+                          title="previous chapter">spacepy.plot.spectrogram.Spectrogram</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
@@ -88,7 +759,7 @@
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -96,78 +767,8 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <section id="module-spacepy.plot.utils">
-<span id="spacepy-plot-utils"></span><h1>spacepy.plot.utils<a class="headerlink" href="#module-spacepy.plot.utils" title="Permalink to this heading">¶</a></h1>
-<p>Utility routines for plotting and related activities</p>
-<p>Authors: Jonathan Niehof, Steven Morley, Daniel Welling</p>
-<p>Institution: Los Alamos National Laboratory</p>
-<p>Contact: <a class="reference external" href="mailto:jniehof&#37;&#52;&#48;lanl&#46;gov">jniehof<span>&#64;</span>lanl<span>&#46;</span>gov</a></p>
-<p>Copyright 2012-2014 Los Alamos National Security, LLC.</p>
-<section id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.plot.utils.EventClicker.html#spacepy.plot.utils.EventClicker" title="spacepy.plot.utils.EventClicker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EventClicker</span></code></a>([ax, n_phases, interval, ...])</p></td>
-<td><p>Presents a provided figure (normally a time series) and provides an interface to mark events shown in the plot.</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h2>
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.plot.utils.add_logo.html#spacepy.plot.utils.add_logo" title="spacepy.plot.utils.add_logo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_logo</span></code></a>(img[, fig, pos, margin])</p></td>
-<td><p>Add an image (logo) to one corner of a plot.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="spacepy.plot.utils.annotate_xaxis.html#spacepy.plot.utils.annotate_xaxis" title="spacepy.plot.utils.annotate_xaxis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">annotate_xaxis</span></code></a>(txt[, ax])</p></td>
-<td><p>Write text in-line and to the right of the x-axis tick labels</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.plot.utils.applySmartTimeTicks.html#spacepy.plot.utils.applySmartTimeTicks" title="spacepy.plot.utils.applySmartTimeTicks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">applySmartTimeTicks</span></code></a>(ax, time[, dolimit, dolabel])</p></td>
-<td><p>Given an axis <em>ax</em> and a list/array of datetime objects, <em>time</em>, use the smartTimeTicks function to build smart time ticks and then immediately apply them to the given axis.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="spacepy.plot.utils.collapse_vertical.html#spacepy.plot.utils.collapse_vertical" title="spacepy.plot.utils.collapse_vertical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collapse_vertical</span></code></a>(combine[, others, leave_axis])</p></td>
-<td><p>Collapse the vertical spacing between two or more subplots.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.plot.utils.printfig.html#spacepy.plot.utils.printfig" title="spacepy.plot.utils.printfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">printfig</span></code></a>(fignum[, saveonly, pngonly, clean, ...])</p></td>
-<td><p>save current figure to file and call lpr (print).</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="spacepy.plot.utils.set_target.html#spacepy.plot.utils.set_target" title="spacepy.plot.utils.set_target"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_target</span></code></a>(target[, figsize, loc, polar])</p></td>
-<td><p>Given a <em>target</em> on which to plot a figure, determine if that <em>target</em> is <strong>None</strong> or a matplotlib figure or axes object.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.plot.utils.shared_ylabel.html#spacepy.plot.utils.shared_ylabel" title="spacepy.plot.utils.shared_ylabel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shared_ylabel</span></code></a>(axes, txt, *args, **kwargs)</p></td>
-<td><p>Create a ylabel that spans several subplots</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="spacepy.plot.utils.show_used.html#spacepy.plot.utils.show_used" title="spacepy.plot.utils.show_used"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_used</span></code></a>([fig])</p></td>
-<td><p>Show the areas of a figure which are used/occupied by plot elements.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.plot.utils.smartTimeTicks.html#spacepy.plot.utils.smartTimeTicks" title="spacepy.plot.utils.smartTimeTicks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">smartTimeTicks</span></code></a>(time)</p></td>
-<td><p>Returns major ticks, minor ticks and format for time-based plots</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="spacepy.plot.utils.timestamp.html#spacepy.plot.utils.timestamp" title="spacepy.plot.utils.timestamp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timestamp</span></code></a>([position, size, draw, strnow, ...])</p></td>
-<td><p>print a timestamp on the current plot, vertical lower right</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.plot.utils.add_arrows.html#spacepy.plot.utils.add_arrows" title="spacepy.plot.utils.add_arrows"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_arrows</span></code></a>(lines[, n, size, style, ...])</p></td>
-<td><p>Add directional arrows along a plotted line.</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-
-
-            <div class="clearer"></div>
-          </div>
         </div>
       </div>
       <div class="clearer"></div>
@@ -185,20 +786,21 @@
           <a href="spacepy.plot.utils.EventClicker.html" title="spacepy.plot.utils.EventClicker"
              >next</a> |</li>
         <li class="right" >
-          <a href="autosummary/spacepy.plot.spectrogram.simpleSpectrogram.html" title="spacepy.plot.spectrogram.simpleSpectrogram"
+          <a href="spacepy.plot.spectrogram.Spectrogram.html" title="spacepy.plot.spectrogram.Spectrogram"
              >previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../plot.html" >plot - Plot, various specialized plotting functions and associated utilities</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.plot.html" >spacepy.plot</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.plot.utils</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2024, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
 </html>

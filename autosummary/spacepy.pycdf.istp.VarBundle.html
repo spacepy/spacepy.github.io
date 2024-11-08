@@ -1,25 +1,21 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.pycdf.istp.VarBundle &#8212; SpacePy v0.6.0 Manual</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <title>spacepy.pycdf.istp.VarBundle &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    
-    <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="spacepy.pycdf.istp.VariableChecks" href="spacepy.pycdf.istp.VariableChecks.html" />
@@ -50,46 +46,13 @@
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pycdf.html" >pycdf - Python interface to CDF files</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="spacepy.pycdf.istp.html" accesskey="U">spacepy.pycdf.istp</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pycdf.html" >spacepy.pycdf</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="spacepy.pycdf.istp.html" accesskey="U">spacepy.pycdf.istp</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.pycdf.istp.VarBundle</a></li> 
       </ul>
     </div>
-
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="../index.html">
-              <img class="logo" src="../_static/logo.png" alt="Logo"/>
-            </a></p>
-  <div>
-    <h4>Previous topic</h4>
-    <p class="topless"><a href="spacepy.pycdf.istp.FileChecks.html"
-                          title="previous chapter">spacepy.pycdf.istp.FileChecks</a></p>
-  </div>
-  <div>
-    <h4>Next topic</h4>
-    <p class="topless"><a href="spacepy.pycdf.istp.VariableChecks.html"
-                          title="next chapter">spacepy.pycdf.istp.VariableChecks</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/autosummary/spacepy.pycdf.istp.VarBundle.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -97,10 +60,10 @@
           <div class="body" role="main">
             
   <section id="spacepy-pycdf-istp-varbundle">
-<h1>spacepy.pycdf.istp.VarBundle<a class="headerlink" href="#spacepy-pycdf-istp-varbundle" title="Permalink to this heading">¶</a></h1>
+<h1>spacepy.pycdf.istp.VarBundle<a class="headerlink" href="#spacepy-pycdf-istp-varbundle" title="Link to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="spacepy.pycdf.istp.VarBundle">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pycdf.istp.</span></span><span class="sig-name descname"><span class="pre">VarBundle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#VarBundle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.VarBundle" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pycdf.istp.</span></span><span class="sig-name descname"><span class="pre">VarBundle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#VarBundle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.VarBundle" title="Link to this definition">¶</a></dt>
 <dd><p>Collective handling of ISTP-compliant variable and its dependencies.</p>
 <p>Representation of an ISTP-compliant variable bundled together
 with its dependencies to enable aggregate operations. Normally
@@ -121,7 +84,7 @@ compliance issue; see <a class="reference internal" href="spacepy.pycdf.istp.Var
 <dd class="field-odd"><dl>
 <dt><strong>source</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.CDF.html#spacepy.pycdf.CDF" title="spacepy.pycdf.CDF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CDF</span></code></a>, <a class="reference internal" href="spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData" title="spacepy.datamodel.SpaceData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpaceData</span></code></a>, or <a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Var</span></code></a></span></dt><dd><p>SpaceData or open CDF containing the variable to process, or the CDF variable itself.</p>
 </dd>
-<dt><strong>name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Name of the variable within <code class="docutils literal notranslate"><span class="pre">source</span></code> to process (“main variable”).</p>
+<dt><strong>name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Name of the variable within <code class="docutils literal notranslate"><span class="pre">source</span></code> to process (“main variable”).</p>
 </dd>
 </dl>
 </dd>
@@ -129,7 +92,7 @@ compliance issue; see <a class="reference internal" href="spacepy.pycdf.istp.Var
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="spacepy.datamodel.fromCDF.html#spacepy.datamodel.fromCDF" title="spacepy.datamodel.fromCDF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datamodel.fromCDF</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="spacepy.datamodel.html#spacepy.datamodel.fromCDF" title="spacepy.datamodel.fromCDF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">datamodel.fromCDF</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="spacepy.pycdf.CDF.html#spacepy.pycdf.CDF.copy" title="spacepy.pycdf.CDF.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pycdf.CDF.copy</span></code></a></dt><dd></dd>
 </dl>
 </div>
@@ -192,6 +155,23 @@ the following attributes of the enclosed
 <span class="gp">&gt;&gt;&gt; </span><span class="n">infile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pycdf.istp.VarBundle.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#VarBundle.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.VarBundle.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize variable bundle</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>source</strong><span class="classifier"><a class="reference internal" href="spacepy.pycdf.CDF.html#spacepy.pycdf.CDF" title="spacepy.pycdf.CDF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CDF</span></code></a> or <a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Var</span></code></a></span></dt><dd><p>CDF containing the variable to process, or the variable itself.</p>
+</dd>
+<dt><strong>name</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Name of the variable within <code class="docutils literal notranslate"><span class="pre">source</span></code> to process (“main variable”).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pycdf.istp.VarBundle.mean" title="spacepy.pycdf.istp.VarBundle.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(dim)</p></td>
@@ -217,9 +197,16 @@ the following attributes of the enclosed
 </tr>
 </tbody>
 </table>
+<p class="rubric">Attributes</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="#spacepy.pycdf.istp.VarBundle.mainvar" title="spacepy.pycdf.istp.VarBundle.mainvar"><code class="xref py py-data docutils literal notranslate"><span class="pre">mainvar</span></code></a></div>
+</div>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="#spacepy.pycdf.istp.VarBundle.cdf" title="spacepy.pycdf.istp.VarBundle.cdf"><code class="xref py py-data docutils literal notranslate"><span class="pre">cdf</span></code></a></div>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="spacepy.pycdf.istp.VarBundle.mean">
-<span class="sig-name descname"><span class="pre">mean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#VarBundle.mean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.VarBundle.mean" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">mean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#VarBundle.mean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.VarBundle.mean" title="Link to this definition">¶</a></dt>
 <dd><p>Take the mean of a dimension.</p>
 <p>Take mean of the main variable of the bundle across the given
 dimension. That dimension disappears from the output and dependencies
@@ -271,8 +258,40 @@ original object is updated.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pycdf.istp.VarBundle.operations">
+<span class="sig-name descname"><span class="pre">operations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#VarBundle.operations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.VarBundle.operations" title="Link to this definition">¶</a></dt>
+<dd><p>Operations of this bundle</p>
+<p>Provides information describing the operations this bundle
+would perform.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>list</dt><dd><p>Each element is a tuple: first element is a string with
+the name of the operation (i.e. method of
+<a class="reference internal" href="#spacepy.pycdf.istp.VarBundle" title="spacepy.pycdf.istp.VarBundle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VarBundle</span></code></a>), next is also a tuple of positional
+arguments, and finally a dict of keyword arguments.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.pycdf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.pycdf.istp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">infile</span> <span class="o">=</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">pycdf</span><span class="o">.</span><span class="n">CDF</span><span class="p">(</span><span class="s1">&#39;rbspa_rel04_ect-hope-PA-L3_20121201_v7.1.0.cdf&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">pycdf</span><span class="o">.</span><span class="n">istp</span><span class="o">.</span><span class="n">VarBundle</span><span class="p">(</span><span class="n">infile</span><span class="p">[</span><span class="s1">&#39;FPDU&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">single</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">operations</span><span class="p">()</span>
+<span class="go">  [(&#39;slice&#39;, (1, 2), {&#39;single&#39;: True})]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#Apply same operations to a different variable</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b2</span> <span class="o">=</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">pycdf</span><span class="o">.</span><span class="n">istp</span><span class="o">.</span><span class="n">VarBundle</span><span class="p">(</span><span class="n">infile</span><span class="p">[</span><span class="s1">&#39;FEDU&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">op</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span> <span class="ow">in</span> <span class="n">b2</span><span class="o">.</span><span class="n">operations</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">getattr</span><span class="p">(</span><span class="n">b2</span><span class="p">,</span> <span class="n">op</span><span class="p">)(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="spacepy.pycdf.istp.VarBundle.output">
-<span class="sig-name descname"><span class="pre">output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#VarBundle.output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.VarBundle.output" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#VarBundle.output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.VarBundle.output" title="Link to this definition">¶</a></dt>
 <dd><p>Output the variables as modified</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -319,40 +338,8 @@ changed from the input CDF (e.g. from slicing.)</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="spacepy.pycdf.istp.VarBundle.operations">
-<span class="sig-name descname"><span class="pre">operations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#VarBundle.operations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.VarBundle.operations" title="Permalink to this definition">¶</a></dt>
-<dd><p>Operations of this bundle</p>
-<p>Provides information describing the operations this bundle
-would perform.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt>list</dt><dd><p>Each element is a tuple: first element is a string with
-the name of the operation (i.e. method of
-<a class="reference internal" href="#spacepy.pycdf.istp.VarBundle" title="spacepy.pycdf.istp.VarBundle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VarBundle</span></code></a>), next is also a tuple of positional
-arguments, and finally a dict of keyword arguments.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.pycdf</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.pycdf.istp</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">infile</span> <span class="o">=</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">pycdf</span><span class="o">.</span><span class="n">CDF</span><span class="p">(</span><span class="s1">&#39;rbspa_rel04_ect-hope-PA-L3_20121201_v7.1.0.cdf&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">pycdf</span><span class="o">.</span><span class="n">istp</span><span class="o">.</span><span class="n">VarBundle</span><span class="p">(</span><span class="n">infile</span><span class="p">[</span><span class="s1">&#39;FPDU&#39;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">single</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">operations</span><span class="p">()</span>
-<span class="go">  [(&#39;slice&#39;, (1, 2), {&#39;single&#39;: True})]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1">#Apply same operations to a different variable</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b2</span> <span class="o">=</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">pycdf</span><span class="o">.</span><span class="n">istp</span><span class="o">.</span><span class="n">VarBundle</span><span class="p">(</span><span class="n">infile</span><span class="p">[</span><span class="s1">&#39;FEDU&#39;</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">op</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span> <span class="ow">in</span> <span class="n">b2</span><span class="o">.</span><span class="n">operations</span><span class="p">():</span>
-<span class="gp">... </span>    <span class="nb">getattr</span><span class="p">(</span><span class="n">b2</span><span class="p">,</span> <span class="n">op</span><span class="p">)(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="spacepy.pycdf.istp.VarBundle.slice">
-<span class="sig-name descname"><span class="pre">slice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">single</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#VarBundle.slice"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.VarBundle.slice" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">slice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">single</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#VarBundle.slice"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.VarBundle.slice" title="Link to this definition">¶</a></dt>
 <dd><p>Slice on a single dimension</p>
 <p>Selects subset of a dimension to include in the output. Slicing
 is done with reference to the dimensions of the main variable and
@@ -418,7 +405,7 @@ the slices.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="spacepy.pycdf.istp.VarBundle.sum">
-<span class="sig-name descname"><span class="pre">sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#VarBundle.sum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.VarBundle.sum" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#VarBundle.sum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.VarBundle.sum" title="Link to this definition">¶</a></dt>
 <dd><p>Sum across a dimension.</p>
 <p>Total the main variable of the bundle across the given dimension.
 That dimension disappears from the output and dependencies
@@ -472,7 +459,7 @@ original object is updated.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="spacepy.pycdf.istp.VarBundle.toSpaceData">
-<span class="sig-name descname"><span class="pre">toSpaceData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#VarBundle.toSpaceData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.VarBundle.toSpaceData" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">toSpaceData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#VarBundle.toSpaceData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.VarBundle.toSpaceData" title="Link to this definition">¶</a></dt>
 <dd><p>Return variables, as modified.</p>
 <p>Convenience function to call <a class="reference internal" href="#spacepy.pycdf.istp.VarBundle.output" title="spacepy.pycdf.istp.VarBundle.output"><code class="xref py py-obj docutils literal notranslate"><span class="pre">output</span></code></a> on a new
 <a class="reference internal" href="spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData" title="spacepy.datamodel.SpaceData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpaceData</span></code></a> and return it.</p>
@@ -519,7 +506,7 @@ operations.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="spacepy.pycdf.istp.VarBundle.variables">
-<span class="sig-name descname"><span class="pre">variables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#VarBundle.variables"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.VarBundle.variables" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">variables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf/istp.html#VarBundle.variables"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.istp.VarBundle.variables" title="Link to this definition">¶</a></dt>
 <dd><p>Description of variable output from the bundle</p>
 <p>Provides information describing the variables output
 from the bundle</p>
@@ -552,6 +539,18 @@ included in the output (sliced away), its shape will be <code class="docutils li
 </div>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spacepy.pycdf.istp.VarBundle.mainvar">
+<span class="sig-name descname"><span class="pre">mainvar</span></span><a class="headerlink" href="#spacepy.pycdf.istp.VarBundle.mainvar" title="Link to this definition">¶</a></dt>
+<dd><p>The variable to operate on.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spacepy.pycdf.istp.VarBundle.cdf">
+<span class="sig-name descname"><span class="pre">cdf</span></span><a class="headerlink" href="#spacepy.pycdf.istp.VarBundle.cdf" title="Link to this definition">¶</a></dt>
+<dd><p>Input CDF file containing the main variable.</p>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -559,6 +558,62 @@ included in the output (sliced away), its shape will be <code class="docutils li
 
             <div class="clearer"></div>
           </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.pycdf.istp.VarBundle</a><ul>
+<li><a class="reference internal" href="#spacepy.pycdf.istp.VarBundle"><code class="docutils literal notranslate"><span class="pre">VarBundle</span></code></a><ul>
+<li><a class="reference internal" href="#spacepy.pycdf.istp.VarBundle.__init__"><code class="docutils literal notranslate"><span class="pre">VarBundle.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pycdf.istp.VarBundle.mean"><code class="docutils literal notranslate"><span class="pre">VarBundle.mean()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pycdf.istp.VarBundle.operations"><code class="docutils literal notranslate"><span class="pre">VarBundle.operations()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pycdf.istp.VarBundle.output"><code class="docutils literal notranslate"><span class="pre">VarBundle.output()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pycdf.istp.VarBundle.slice"><code class="docutils literal notranslate"><span class="pre">VarBundle.slice()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pycdf.istp.VarBundle.sum"><code class="docutils literal notranslate"><span class="pre">VarBundle.sum()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pycdf.istp.VarBundle.toSpaceData"><code class="docutils literal notranslate"><span class="pre">VarBundle.toSpaceData()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pycdf.istp.VarBundle.variables"><code class="docutils literal notranslate"><span class="pre">VarBundle.variables()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pycdf.istp.VarBundle.mainvar"><code class="docutils literal notranslate"><span class="pre">VarBundle.mainvar</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pycdf.istp.VarBundle.cdf"><code class="docutils literal notranslate"><span class="pre">VarBundle.cdf</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="spacepy.pycdf.istp.FileChecks.html"
+                          title="previous chapter">spacepy.pycdf.istp.FileChecks</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="spacepy.pycdf.istp.VariableChecks.html"
+                          title="next chapter">spacepy.pycdf.istp.VariableChecks</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/autosummary/spacepy.pycdf.istp.VarBundle.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -583,14 +638,15 @@ included in the output (sliced away), its shape will be <code class="docutils li
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pycdf.html" >pycdf - Python interface to CDF files</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="spacepy.pycdf.istp.html" >spacepy.pycdf.istp</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pycdf.html" >spacepy.pycdf</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="spacepy.pycdf.istp.html" >spacepy.pycdf.istp</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.pycdf.istp.VarBundle</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2024, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
 </html>

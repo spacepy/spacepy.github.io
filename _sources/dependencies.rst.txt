@@ -19,7 +19,7 @@ Without these packages installed, SpacePy will not
 function. Installing via ``pip`` will normally install Python-based
 dependencies automatically.
 
-Python 3.6+
+Python 3.7+
 -----------
 
 `Python <http://www.python.org/>`_ is the core language for SpacePy.
@@ -30,13 +30,7 @@ NumPy 1.15.1+
 -------------
 `NumPy <http://numpy.scipy.org/>`_ provides the
 high-performance array data structure used throughout SpacePy. Version
-1.15.1 or later is required.
-
-Required to install SpacePy. f2py is part of NumPy, but is sometimes
-packaged separately; it is required (at installation time) if
-:mod:`~spacepy.irbempy` is to be used.
-
-Due to a numpy bug, numpy 1.15.0 is not supported. Use 1.15.1 or later.
+1.15.1 or later is required. Due to a numpy bug, numpy 1.15.0 is not supported.
 
 On Python 3.9, numpy 1.18 or later is required.
 
@@ -97,7 +91,6 @@ modules may have limited functionality or fail entirely:
     * :mod:`~spacepy.plot`
     * :mod:`~spacepy.poppy`
     * :mod:`~spacepy.pybats`
-    * :mod:`~spacepy.radbelt`
     * :mod:`~spacepy.seapy`
     * :mod:`~spacepy.toolbox`
 
@@ -142,7 +135,7 @@ the ``use_irbem`` option.
 
 .. _dependencies_astropy:
 
-Astropy 1.0+
+Astropy 2.0+
 ------------
 :mod:`~spacepy.time` requires Astropy if conversion to/from
 Astropy :class:`~astropy.time.Time` is desired.
@@ -280,25 +273,24 @@ unaffected by that dependency.
        * :func:`~spacepy.pybats.add_planet`
        * :meth:`~spacepy.pybats.ImfInput.add_pram_bz`
        * :meth:`~spacepy.pybats.ImfInput.quicklook`
-       * :meth:`~spacepy.pybats.bats.BatLog.add_dst_quicklook`
+       * :meth:`~spacepy.pybats.bats.BatsLog.add_dst_quicklook`
        * :meth:`~spacepy.pybats.bats.Bats2d.add_b_magsphere`
-       * :meth:`~spacepy.pybats.bats.Bats2d.add_b_magsphere_legacy`
        * :meth:`~spacepy.pybats.bats.Bats2d.add_body`
-       * :meth:`~spacepy.pybats.bats.Bats2d.add_comp_plot`
+       * :meth:`~spacepy.pybats.bats.Mag.add_comp_plot`
        * :meth:`~spacepy.pybats.bats.Bats2d.add_contour`
-       * :meth:`~spacepy.pybats.bats.Bats2d.add_cont_shell`
+       * :meth:`~spacepy.pybats.bats.ShellSlice.add_cont_shell`
        * :meth:`~spacepy.pybats.bats.Bats2d.add_grid_plot`
        * :meth:`~spacepy.pybats.bats.Bats2d.add_pcolor`
        * :meth:`~spacepy.pybats.bats.Bats2d.add_planet`
-       * :meth:`~spacepy.pybats.bats.Bats2d.add_plot`
+       * :meth:`~spacepy.pybats.bats.Mag.add_plot`
        * :meth:`~spacepy.pybats.bats.Bats2d.add_stream_scatter`
-       * :meth:`~spacepy.pybats.bats.MagGridFile.add_ae_quicklook`
+       * :meth:`~spacepy.pybats.bats.GeoIndexFile.add_ae_quicklook`
        * :meth:`~spacepy.pybats.bats.MagGridFile.add_contour`
-       * :meth:`~spacepy.pybats.bats.MagGridFile.add_kp_quicklook`
-       * :meth:`~spacepy.pybats.bats.MagGridFile.add_orbit_plot`
-       * :meth:`~spacepy.pybats.quotree.QTree.plot_res`
-       * :meth:`~spacepy.pybats.quotree.Branch.plotbox`
-       * :meth:`~spacepy.pybats.quotree.Branch.plot_res`
+       * :meth:`~spacepy.pybats.bats.GeoIndexFile.add_kp_quicklook`
+       * :meth:`~spacepy.pybats.bats.VirtSat.add_orbit_plot`
+       * :meth:`~spacepy.pybats.qotree.QTree.plot_res`
+       * :meth:`~spacepy.pybats.qotree.Branch.plotbox`
+       * :meth:`~spacepy.pybats.qotree.Branch.plot_res`
        * :func:`~spacepy.pybats.trace2d.test_asymtote`
        * :func:`~spacepy.pybats.trace2d.test_dipole`
      -
@@ -309,15 +301,6 @@ unaffected by that dependency.
      -
      -
      -
-     -
-     -
-     -
-   * - :mod:`~spacepy.radbelt`
-     -
-     -
-     -
-     - * :meth:`~spacepy.radbelt.RBmodel.plot`
-       * :meth:`~spacepy.radbelt.RBmodel.plot_obs`
      -
      -
      -

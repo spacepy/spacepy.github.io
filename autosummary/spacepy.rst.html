@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>spacepy.rst &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="spacepy.seapy" href="spacepy.seapy.html" />
+    <link rel="prev" title="spacepy.realtime" href="spacepy.realtime.html" /> 
+  </head><body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.seapy.html" title="spacepy.seapy"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.realtime.html" title="spacepy.realtime"
+             accesskey="P">previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" accesskey="U">spacepy</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.rst</a></li> 
+      </ul>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-spacepy.rst">
+<span id="spacepy-rst"></span><h1>spacepy.rst<a class="headerlink" href="#module-spacepy.rst" title="Link to this heading">¶</a></h1>
+<p>Created on Mon Sep 10 13:09:11 2012</p>
+<p>&#64;author: balarsen</p>
+<p class="rubric">Functions</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.rst.listToEnumerate" title="spacepy.rst.listToEnumerate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">listToEnumerate</span></code></a>(inList[, startingNum, makeBlock])</p></td>
+<td><p>starting from a python list return a string that is the RST equlivant of the list in enumerated list makeBlock : make the text into a text block in rst if there are newline chars in the string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.rst.listToList" title="spacepy.rst.listToList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">listToList</span></code></a>(inList[, makeBlock])</p></td>
+<td><p>starting from a python list return a string that is the RST equlivant of the list in a bulleted list</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.rst.listToTable" title="spacepy.rst.listToTable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">listToTable</span></code></a>(data[, header, title])</p></td>
+<td><p>starting from a python list return a string that is the RST equlivant of the list in rst table format</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.rst.strToHeading" title="spacepy.rst.strToHeading"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strToHeading</span></code></a>(string[, level])</p></td>
+<td><p>return a rst heading from the given string (soplit on spaces) document title: === aboce and below (-2) document subtitle: --- above and below (-1) section 1: ==== (0) subsection 1.1: ---- (1) subsubsection 1.1.1: ~~~~ (2)</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.rst.listToEnumerate">
+<span class="sig-prename descclassname"><span class="pre">spacepy.rst.</span></span><span class="sig-name descname"><span class="pre">listToEnumerate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inList</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">startingNum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makeBlock</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/rst.html#listToEnumerate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.rst.listToEnumerate" title="Link to this definition">¶</a></dt>
+<dd><p>starting from a python list return a string that is the RST equlivant of
+the list in enumerated list
+makeBlock : make the text into a text block in rst if there are newline chars in the string</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.rst.listToList">
+<span class="sig-prename descclassname"><span class="pre">spacepy.rst.</span></span><span class="sig-name descname"><span class="pre">listToList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inList</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">makeBlock</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/rst.html#listToList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.rst.listToList" title="Link to this definition">¶</a></dt>
+<dd><p>starting from a python list return a string that is the RST equlivant of
+the list in a bulleted list</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.rst.listToTable">
+<span class="sig-prename descclassname"><span class="pre">spacepy.rst.</span></span><span class="sig-name descname"><span class="pre">listToTable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/rst.html#listToTable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.rst.listToTable" title="Link to this definition">¶</a></dt>
+<dd><p>starting from a python list return a string that is the RST equlivant of
+the list in rst table format</p>
+<p>based loosly on
+<a class="reference external" href="http://stackoverflow.com/questions/11347505/what-are-some-approaches-to-outputting-a-python-data-structure-to-restructuredte">http://stackoverflow.com/questions/11347505/what-are-some-approaches-to-outputting-a-python-data-structure-to-restructuredte</a>
+see
+<a class="reference external" href="http://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html#tables">http://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html#tables</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.rst.strToHeading">
+<span class="sig-prename descclassname"><span class="pre">spacepy.rst.</span></span><span class="sig-name descname"><span class="pre">strToHeading</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/rst.html#strToHeading"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.rst.strToHeading" title="Link to this definition">¶</a></dt>
+<dd><p>return a rst heading from the given string (soplit on spaces)
+document title: === aboce and below (-2)
+document subtitle: — above and below (-1)
+section 1: ==== (0)
+subsection 1.1: —- (1)
+subsubsection 1.1.1: ~~~~ (2)</p>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.rst</a><ul>
+<li><a class="reference internal" href="#spacepy.rst.listToEnumerate"><code class="docutils literal notranslate"><span class="pre">listToEnumerate()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.rst.listToList"><code class="docutils literal notranslate"><span class="pre">listToList()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.rst.listToTable"><code class="docutils literal notranslate"><span class="pre">listToTable()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.rst.strToHeading"><code class="docutils literal notranslate"><span class="pre">strToHeading()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="spacepy.realtime.html"
+                          title="previous chapter">spacepy.realtime</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="spacepy.seapy.html"
+                          title="next chapter">spacepy.seapy</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/autosummary/spacepy.rst.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.seapy.html" title="spacepy.seapy"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.realtime.html" title="spacepy.realtime"
+             >previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.rst</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    </div>
+  </body>
+</html>

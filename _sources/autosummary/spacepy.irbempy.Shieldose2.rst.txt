@@ -1,4 +1,4 @@
-﻿spacepy.irbempy.Shieldose2
+spacepy.irbempy.Shieldose2
 ==========================
 
 .. currentmodule:: spacepy.irbempy
@@ -13,21 +13,62 @@
 
    .. autosummary::
    
-      ~Shieldose2.__init__
+   
+   
       ~Shieldose2.get_dose
+   
+   
       ~Shieldose2.plot_dose
+   
+   
       ~Shieldose2.set_flux
+   
+   
       ~Shieldose2.set_shielding
+   
    
    
 
    
    
    .. rubric:: Attributes
-
-   .. autosummary::
    
-      ~Shieldose2.settings
-      ~Shieldose2.results
+   
+   | :data:`settings`
+   
+   
+   | :data:`results`
+   
+   
+   
+
+   
+   
+   
+   
+   
+   .. automethod::  get_dose
+   
+   
+   .. automethod::  plot_dose
+   
+   
+   .. automethod::  set_flux
+   
+   
+   .. automethod::  set_shielding
+   
+   
+   
+
+   
+   
+   
+   
+   .. autoattribute::  settings
+   
+   
+   .. autoattribute::  results
+   
    
    

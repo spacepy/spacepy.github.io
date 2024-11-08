@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>spacepy.irbempy &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="spacepy.irbempy.Shieldose2" href="spacepy.irbempy.Shieldose2.html" />
+    <link rel="prev" title="spacepy.igrf.IGRFCoefficients" href="spacepy.igrf.IGRFCoefficients.html" /> 
+  </head><body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.irbempy.Shieldose2.html" title="spacepy.irbempy.Shieldose2"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.igrf.IGRFCoefficients.html" title="spacepy.igrf.IGRFCoefficients"
+             accesskey="P">previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" accesskey="U">spacepy</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.irbempy</a></li> 
+      </ul>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-spacepy.irbempy">
+<span id="spacepy-irbempy"></span><h1>spacepy.irbempy<a class="headerlink" href="#module-spacepy.irbempy" title="Link to this heading">¶</a></h1>
+<p>Wrapper for the fortran library irbem_lib</p>
+<p>Reference: <a class="reference external" href="https://github.com/PRBEM/IRBEM">https://github.com/PRBEM/IRBEM</a></p>
+<ol class="upperalpha simple" start="4">
+<li><p>Boscher, S. Bourdarie, T. P. O’Brien, T. Guild, IRBEM library V4.3, 2004-2008</p></li>
+</ol>
+<p>Most functions in this module use an options list to define the models used and the settings
+that define the quality level of the result. The options list is a 5-element list and is defined
+as follows.</p>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>1st element: 0 - don’t compute L* or phi ;  1 - compute L*; 2- compute phi</p></li>
+<li><dl class="simple">
+<dt>2nd element: 0 - initialize IGRF field once per year (year.5);</dt><dd><p>n - n is the  frequency (in days) starting on January 1st of each year
+(i.e. if options(2nd element)=15 then IGRF will be updated on the following days of the
+year: 1, 15, 30, 45 …)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>3rd element: resolution to compute L* (0 to 9) where 0 is the recomended value to ensure a</dt><dd><p>good ratio precision/computation time
+(i.e. an error of ~2% at L=6). The higher the value the better will be the precision, the
+longer will be the computing time. Generally there is not much improvement for values
+larger than 4. Note that this parameter defines the integration step (theta)
+along the field line such as dtheta=(2pi)/(720*[options(3rd element)+1])</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>4th element: resolution to compute L* (0 to 9). The higher the value the better will be</dt><dd><p>the precision, the longer will be
+the computing time. It is recommended to use 0 (usually sufficient) unless L* is not
+computed on a LEO orbit. For LEO orbit higher values are recommended. Note that this
+parameter defines the integration step (phi) along the drift shell such as
+dphi=(2pi)/(25*[options(4th element)+1])</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>5th element: allows to select an internal magnetic field model (default is set to IGRF)</dt><dd><ul>
+<li><p>0 = IGRF</p></li>
+<li><p>1 = Eccentric tilted dipole</p></li>
+<li><p>2 = Jensen&amp;Cain 1960</p></li>
+<li><p>3 = GSFC 12/66 updated to 1970</p></li>
+<li><p>4 = User-defined model (Default: Centred dipole + uniform [Dungey open model] )</p></li>
+<li><p>5 = Centred dipole</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<p>The routines also require specification of the external magnetic field model. The default is the
+Tsyganenko 2001 storm-time model. The external model is always specified using the extMag keyword
+and the following options exist.</p>
+</section>
+<section id="extmag">
+<h2>extMag<a class="headerlink" href="#extmag" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>‘0’ = No external field model</p></li>
+<li><p>‘MEAD’ = Mead and Fairfield</p></li>
+<li><p>‘T87SHORT’ = Tsyganenko 1987 short (inner magnetosphere)</p></li>
+<li><p>‘T87LONG’ = Tsyganenko 1987 long (valid in extended tail region)</p></li>
+<li><p>‘T89’ = Tsyganenko 1989</p></li>
+<li><p>‘OPQUIET’ = Olsen-Pfitzer static model for quiet conditions</p></li>
+<li><p>‘OPDYN’ = Olsen-Pfitzer static model for active conditions</p></li>
+<li><p>‘T96’ = Tsyganenko 1996</p></li>
+<li><p>‘OSTA’ = Ostapenko and Maltsev</p></li>
+<li><p>‘T01QUIET’ = Tsyganenko 2001 model for quiet conditions</p></li>
+<li><p>‘T01STORM’ = Tsyganenko 2001 model for active conditions</p></li>
+<li><p>‘T05’ = Tsyganenko and Sitnov 2005 model</p></li>
+<li><p>‘ALEX’ = Alexeev model</p></li>
+<li><p>‘TS07’ = Tsyganenko and Sitnov 2007 model</p></li>
+</ul>
+</div></blockquote>
+<p>Many of these models have limits placed on the valid range of input parameters,
+and outside these limits invalid (NaN) values will be returned.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>MEAD      : Mead &amp; Fairfield [1975] (uses 0&lt;=Kp&lt;=9 - Valid for rGEO&lt;=17. Re)</p></li>
+<li><p>T87SHORT: Tsyganenko short [1987] (uses 0&lt;=Kp&lt;=9 - Valid for rGEO&lt;=30. Re)</p></li>
+<li><p>T87LONG : Tsyganenko long [1987] (uses 0&lt;=Kp&lt;=9 - Valid for rGEO&lt;=70. Re)</p></li>
+<li><p>T89        : Tsyganenko [1989] (uses 0&lt;=Kp&lt;=9 - Valid for rGEO&lt;=70. Re)</p></li>
+<li><p>OPQUIET : Olson &amp; Pfitzer quiet [1977] (default - Valid for rGEO&lt;=15. Re)</p></li>
+<li><dl class="simple">
+<dt>OPDYN<span class="classifier">Olson &amp; Pfitzer dynamic [1988] (uses 5.&lt;=dens&lt;=50., 300.&lt;=velo&lt;=500.,</span></dt><dd><p>-100.&lt;=Dst&lt;=20. - Valid for rGEO&lt;=60. Re)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>T96<span class="classifier">Tsyganenko [1996] (uses -100.&lt;=Dst (nT)&lt;=20., 0.5&lt;=Pdyn (nPa)&lt;10.,</span></dt><dd><p>|ByIMF| (nT)&lt;=10., |BzIMF| (nT)&lt;=10. - Valid for rGEO&lt;=40. Re)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>OSTA<span class="classifier">Ostapenko &amp; Maltsev [1997] (uses dst,Pdyn,BzIMF, Kp)</span></dt><dd><p>T01QUIET: Tsyganenko [2002a,b] (uses -50.&lt;Dst (nT)&lt;20., 0.5&lt;Pdyn (nPa)&lt;=5.,
+|ByIMF| (nT)&lt;=5., |BzIMF| (nT)&lt;=5., 0.&lt;=G1&lt;=10., 0.&lt;=G2&lt;=10. - Valid for xGSM&gt;=-15. Re)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>T01STORM: Tsyganenko, Singer &amp; Kasper [2003] storm  (uses Dst, Pdyn, ByIMF, BzIMF, G2, G3 -</dt><dd><p>there is no upper or lower limit for those inputs - Valid for xGSM&gt;=-15. Re)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>T05<span class="classifier">Tsyganenko &amp; Sitnov [2005] storm  (uses Dst, Pdyn, ByIMF, BzIMF,</span></dt><dd><p>W1, W2, W3, W4, W5, W6 - no upper or lower limit for inputs - Valid for xGSM&gt;=-15. Re)</p>
+</dd>
+</dl>
+</li>
+<li><p>TS07   : Tsyganenko and Sitnov [2007] model. Uses specially calculated coefficient files.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Link to this heading">¶</a></h2>
+<p>Josef Koller, Steve Morley</p>
+<p>Copyright 2010 Los Alamos National Security, LLC.</p>
+</section>
+<p class="rubric">Functions</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.irbempy.AlphaOfK" title="spacepy.irbempy.AlphaOfK"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AlphaOfK</span></code></a>(ticks, loci, K[, extMag, options, ...])</p></td>
+<td><p>Find the equatorial pitch angle corresponding to a given second invariant K.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.irbempy.coord_trans" title="spacepy.irbempy.coord_trans"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coord_trans</span></code></a>(loci, returntype, returncarsph)</p></td>
+<td><p>thin layer to call coor_trans1 from irbem lib this will convert between systems GDZ, GEO, GSM, GSE, SM, GEI, MAG, SPH, RLL</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.irbempy.find_Bmirror" title="spacepy.irbempy.find_Bmirror"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_Bmirror</span></code></a>(ticks, loci, alpha[, extMag, ...])</p></td>
+<td><p>call find_mirror_point from irbem library and return a dictionary with values for Blocal, Bmirr and the GEO (cartesian) coordinates of the mirror point</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.irbempy.find_LCDS" title="spacepy.irbempy.find_LCDS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_LCDS</span></code></a>(ticks, alpha[, extMag, options, ...])</p></td>
+<td><p>Find the last closed drift shell (LCDS) for a given equatorial pitch angle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.irbempy.find_LCDS_K" title="spacepy.irbempy.find_LCDS_K"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_LCDS_K</span></code></a>(ticks, K[, extMag, options, ...])</p></td>
+<td><p>Find the last closed drift shell (LCDS) for a given K (modified 2nd invariant).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.irbempy.find_footpoint" title="spacepy.irbempy.find_footpoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_footpoint</span></code></a>(ticks, loci[, extMag, ...])</p></td>
+<td><p>call find_foot_point1 from irbem library and return a dictionary with values for Bmin and the GEO (cartesian) coordinates of the magnetic equator</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.irbempy.find_magequator" title="spacepy.irbempy.find_magequator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_magequator</span></code></a>(ticks, loci[, extMag, ...])</p></td>
+<td><p>call find_magequator from irbem library and return a dictionary with values for Bmin and the GEO (cartesian) coordinates of the magnetic equator</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.irbempy.get_AEP8" title="spacepy.irbempy.get_AEP8"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_AEP8</span></code></a>(energy, loci[, model, fluxtype, ...])</p></td>
+<td><p>will return the flux from the AE8-AP8 model</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.irbempy.get_Bfield" title="spacepy.irbempy.get_Bfield"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_Bfield</span></code></a>(ticks, loci[, extMag, options, ...])</p></td>
+<td><p>Return magnetic field vector (in GEO) and magnitude</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.irbempy.get_Lm" title="spacepy.irbempy.get_Lm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_Lm</span></code></a>(ticks, loci, alpha[, extMag, intMag, ...])</p></td>
+<td><p>Return the MacIlwain L value for a given location, time and model</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.irbempy.get_Lstar" title="spacepy.irbempy.get_Lstar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_Lstar</span></code></a>(ticks, loci[, alpha, extMag, ...])</p></td>
+<td><p>This will call make_lstar1 or make_lstar_shell_splitting_1 from the irbem library and will lookup omni values for given time if not provided (optional).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.irbempy.get_dtype" title="spacepy.irbempy.get_dtype"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_dtype</span></code></a>(sysaxes)</p></td>
+<td><p>will return the coordinate system type as string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.irbempy.prep_ctypes" title="spacepy.irbempy.prep_ctypes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prep_ctypes</span></code></a>(d)</p></td>
+<td><p>Converts <a class="reference internal" href="#spacepy.irbempy.prep_irbem" title="spacepy.irbempy.prep_irbem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prep_irbem</span></code></a> output to correct types for ctypes call.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.irbempy.prep_irbem" title="spacepy.irbempy.prep_irbem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prep_irbem</span></code></a>([ticks, loci, alpha, extMag, ...])</p></td>
+<td><p>Prepare inputs for direct IRBEM-LIB calls.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.irbempy.updateTS07Coeffs" title="spacepy.irbempy.updateTS07Coeffs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">updateTS07Coeffs</span></code></a>([path, force, verbose])</p></td>
+<td><p>Update coefficients for TS07 magnetic field model</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.irbempy.Shieldose2.html#spacepy.irbempy.Shieldose2" title="spacepy.irbempy.Shieldose2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Shieldose2</span></code></a>(*args, **kwargs)</p></td>
+<td><p>A class for performing dose calculations using Shieldose2</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.irbempy.AlphaOfK">
+<span class="sig-prename descclassname"><span class="pre">spacepy.irbempy.</span></span><span class="sig-name descname"><span class="pre">AlphaOfK</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loci</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extMag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'T01STORM'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0,</span> <span class="pre">0,</span> <span class="pre">3,</span> <span class="pre">0,</span> <span class="pre">0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omnivals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/irbempy.html#AlphaOfK"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.irbempy.AlphaOfK" title="Link to this definition">¶</a></dt>
+<dd><p>Find the equatorial pitch angle corresponding to a given second invariant K.</p>
+<p>Uses the IRBEM library to determine K and searches via bisection to find Alpha(K).</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>- ticks (Ticktock class)</strong><span class="classifier">containing time information <strong>for a single time</strong></span></dt><dd></dd>
+<dt><strong>- loci (Coords class)</strong><span class="classifier">containing position information <strong>for a single point</strong></span></dt><dd></dd>
+<dt><strong>- K (numeric)</strong><span class="classifier">value of second invariant (K) for search</span></dt><dd></dd>
+<dt><strong>- extMag (string)</strong><span class="classifier">optional; will choose the external magnetic field model</span></dt><dd><p>possible values [‘0’, ‘MEAD’, ‘T87SHORT’, ‘T87LONG’, ‘T89’,
+‘OPQUIET’, ‘OPDYN’, ‘T96’, ‘OSTA’, ‘T01QUIET’, ‘T01STORM’,
+‘T05’, ‘ALEX’, ‘TS07’]</p>
+</dd>
+<dt><strong>- options (optional list or array of integers length=5)</strong><span class="classifier">explained in Lstar</span></dt><dd></dd>
+<dt><strong>- omni values as dictionary (optional)</strong><span class="classifier">if not provided, will use lookup table</span></dt><dd></dd>
+<dt><strong>- (see Lstar documentation for further explanation)</strong></dt><dd></dd>
+<dt><strong>- tol (float)</strong><span class="classifier">tolerance for search in radial distance</span></dt><dd></dd>
+<dt><strong>- bracket (list): X-GSM coordinates to bracket bisection search</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>AlphaEq</strong><span class="classifier">equatorial pitch angle corresponding to K</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#spacepy.irbempy.find_LCDS_K" title="spacepy.irbempy.find_LCDS_K"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_LCDS_K</span></code></a>, <a class="reference internal" href="#spacepy.irbempy.get_Lstar" title="spacepy.irbempy.get_Lstar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_Lstar</span></code></a>, <a class="reference internal" href="#spacepy.irbempy.get_Bfield" title="spacepy.irbempy.get_Bfield"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_Bfield</span></code></a>, <a class="reference internal" href="#spacepy.irbempy.find_Bmirror" title="spacepy.irbempy.find_Bmirror"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_Bmirror</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">Ticktock</span><span class="p">([</span><span class="s1">&#39;2002-09-01T04:00:00&#39;</span><span class="p">],</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">loci</span> <span class="o">=</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">coordinates</span><span class="o">.</span><span class="n">Coords</span><span class="p">([</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;GSM&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="n">use_irbem</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">irbempy</span><span class="o">.</span><span class="n">AlphaOfK</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">loci</span><span class="p">,</span> <span class="mf">0.11</span><span class="p">,</span> <span class="n">extMag</span><span class="o">=</span><span class="s1">&#39;T89&#39;</span><span class="p">)</span>
+<span class="go">48.984375</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.irbempy.coord_trans">
+<span class="sig-prename descclassname"><span class="pre">spacepy.irbempy.</span></span><span class="sig-name descname"><span class="pre">coord_trans</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loci</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">returntype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">returncarsph</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/irbempy.html#coord_trans"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.irbempy.coord_trans" title="Link to this definition">¶</a></dt>
+<dd><p>thin layer to call coor_trans1 from irbem lib
+this will convert between systems GDZ, GEO, GSM, GSE, SM, GEI, MAG, SPH, RLL</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>- loci (Coords instance)</strong><span class="classifier">containing coordinate information, can contain n points</span></dt><dd></dd>
+<dt><strong>- returntype (str)</strong><span class="classifier">describing system as GDZ, GEO, GSM, GSE, SM, GEI, MAG, SPH, RLL</span></dt><dd></dd>
+<dt><strong>- returncarsph (str)</strong><span class="classifier">cartesian or spherical units ‘car’, ‘sph’</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>- xout (ndarray)</strong><span class="classifier">values after transformation in (n,3) dimensions</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">Coords</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]],</span> <span class="s1">&#39;GEO&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="n">use_irbem</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">ticks</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">([</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;2002-02-02T12:10:00&#39;</span><span class="p">],</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">coord_trans</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="s1">&#39;GSM&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">)</span>
+<span class="go">array([[ 2.8639301 , -0.01848784,  0.89306361],</span>
+<span class="go">[ 1.9124434 ,  0.07209424,  0.58082929]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.irbempy.find_Bmirror">
+<span class="sig-prename descclassname"><span class="pre">spacepy.irbempy.</span></span><span class="sig-name descname"><span class="pre">find_Bmirror</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loci</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extMag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'T01STORM'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omnivals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/irbempy.html#find_Bmirror"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.irbempy.find_Bmirror" title="Link to this definition">¶</a></dt>
+<dd><p>call find_mirror_point from irbem library and return a dictionary with values for
+Blocal, Bmirr and the GEO (cartesian) coordinates of the mirror point</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ticks</strong><span class="classifier">Ticktock class</span></dt><dd><p>containing time information</p>
+</dd>
+<dt><strong>loci</strong><span class="classifier">Coords class</span></dt><dd><p>containing spatial information</p>
+</dd>
+<dt><strong>alpha</strong><span class="classifier">array-like</span></dt><dd><p>containing the pitch angles</p>
+</dd>
+<dt><strong>extMag</strong><span class="classifier">str</span></dt><dd><p>optional; will choose the external magnetic field model
+possible values [‘0’, ‘MEAD’, ‘T87SHORT’, ‘T87LONG’, ‘T89’,
+OPQUIET’, ‘OPDYN’, ‘T96’, ‘OSTA’, ‘T01QUIET’, ‘T01STORM’,
+‘T05’, ‘ALEX’, ‘TS07’]</p>
+</dd>
+<dt><strong>options</strong><span class="classifier">array-like (optional)</span></dt><dd><p>length=5 : explained in Lstar</p>
+</dd>
+<dt><strong>omnivals</strong><span class="classifier">dict (optional)</span></dt><dd><p>if not provided, will use lookup table
+(see get_Lstar documentation for further explanation)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>results</strong><span class="classifier">dictionary</span></dt><dd><p>containing keys: Blocal, Bmirr, GEOcar</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#spacepy.irbempy.get_Lstar" title="spacepy.irbempy.get_Lstar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_Lstar</span></code></a>, <a class="reference internal" href="#spacepy.irbempy.get_Bfield" title="spacepy.irbempy.get_Bfield"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_Bfield</span></code></a>, <a class="reference internal" href="#spacepy.irbempy.find_magequator" title="spacepy.irbempy.find_magequator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_magequator</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>The resulting Bmirr is a one-dimensional array in time if alpha is a singleton, otherwise
+it is two-dimensional</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">([</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;2002-02-02T12:10:00&#39;</span><span class="p">],</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">Coords</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]],</span> <span class="s1">&#39;GEO&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="n">use_irbem</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ib</span><span class="o">.</span><span class="n">find_Bmirror</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">,[</span><span class="mi">90</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">60</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
+<span class="go">{&#39;Blocal&#39;: array([978.62167212, 3399.44983792]),</span>
+<span class="go"> &#39;Bmirr&#39;: array([[978.62167212, 1009.04166504, 1304.81635975, 32451.54718886],</span>
+<span class="go">                 [3399.44983792, 3505.1329238, 4532.49001884, nan]]),</span>
+<span class="go"> &#39;loci&#39;: Coords([[0.6877979690266218, -0.11552153465118173, 0.9162488420030738],</span>
+<span class="go">                [nan, nan, nan]], &#39;GEO&#39;, &#39;car&#39;)}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.irbempy.find_LCDS">
+<span class="sig-prename descclassname"><span class="pre">spacepy.irbempy.</span></span><span class="sig-name descname"><span class="pre">find_LCDS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extMag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'T01STORM'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omnivals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bracket</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[3,</span> <span class="pre">12]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mlt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/irbempy.html#find_LCDS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.irbempy.find_LCDS" title="Link to this definition">¶</a></dt>
+<dd><p>Find the last closed drift shell (LCDS) for a given equatorial pitch angle.</p>
+<p>Uses the IRBEM library to determine L* and searches via bisection to find LCDS
+to a given tolerance in R (radial distance along GSM equator at local midnight).
+Note that this function is present to aid in reproducibility of older work, however
+it should be noted that drift shells are defined by constant K, not constant
+equatorial pitch angle. Therefore find_LCDS_K should be used for obtaining the LCDS.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>- ticks (Ticktock class)</strong><span class="classifier">containing time information <strong>for a single time</strong></span></dt><dd></dd>
+<dt><strong>- alpha (numeric)</strong><span class="classifier">equatorial pitch angle for search</span></dt><dd></dd>
+<dt><strong>- extMag (string)</strong><span class="classifier">optional; will choose the external magnetic field model</span></dt><dd><p>possible values [‘0’, ‘MEAD’, ‘T87SHORT’, ‘T87LONG’, ‘T89’,
+‘OPQUIET’, ‘OPDYN’, ‘T96’, ‘OSTA’, ‘T01QUIET’, ‘T01STORM’,
+‘T05’, ‘ALEX’, ‘TS07’]</p>
+</dd>
+<dt><strong>- options (optional list or array of integers length=5)</strong><span class="classifier">explained in Lstar</span></dt><dd></dd>
+<dt><strong>- omni values as dictionary (optional)</strong><span class="classifier">if not provided, will use lookup table</span></dt><dd></dd>
+<dt><strong>- (see Lstar documentation for further explanation)</strong></dt><dd></dd>
+<dt><strong>- tol (float)</strong><span class="classifier">tolerance for search in radial distance</span></dt><dd></dd>
+<dt><strong>- bracket (list): X-GSM coordinates to bracket bisection search</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>results (SpaceData, dictionary-like): contains keys LCDS, K, AlphaEq and UTC</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#spacepy.irbempy.find_LCDS_K" title="spacepy.irbempy.find_LCDS_K"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_LCDS_K</span></code></a>, <a class="reference internal" href="#spacepy.irbempy.get_Lstar" title="spacepy.irbempy.get_Lstar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_Lstar</span></code></a>, <a class="reference internal" href="#spacepy.irbempy.get_Bfield" title="spacepy.irbempy.get_Bfield"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_Bfield</span></code></a>, <a class="reference internal" href="#spacepy.irbempy.find_Bmirror" title="spacepy.irbempy.find_Bmirror"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_Bmirror</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">Ticktock</span><span class="p">([</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">],</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">irbempy</span><span class="o">.</span><span class="n">find_LCDS</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="n">extMag</span><span class="o">=</span><span class="s1">&#39;T89&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.irbempy.find_LCDS_K">
+<span class="sig-prename descclassname"><span class="pre">spacepy.irbempy.</span></span><span class="sig-name descname"><span class="pre">find_LCDS_K</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extMag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'T01STORM'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[1,</span> <span class="pre">1,</span> <span class="pre">3,</span> <span class="pre">0,</span> <span class="pre">0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omnivals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bracket</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[3,</span> <span class="pre">12]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mlt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/irbempy.html#find_LCDS_K"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.irbempy.find_LCDS_K" title="Link to this definition">¶</a></dt>
+<dd><p>Find the last closed drift shell (LCDS) for a given K (modified 2nd invariant).</p>
+<p>Uses the IRBEM library to determine L* and searches via bisection to find LCDS
+to a given tolerance in R (radial distance along GSM equator at local midnight).</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>- ticks (Ticktock class)</strong><span class="classifier">containing time information <strong>for a single time</strong></span></dt><dd></dd>
+<dt><strong>- K (numeric)</strong><span class="classifier">K (modified 2nd adiabatic invariant) for search</span></dt><dd></dd>
+<dt><strong>- extMag (string)</strong><span class="classifier">optional; will choose the external magnetic field model</span></dt><dd><p>possible values [‘0’, ‘MEAD’, ‘T87SHORT’, ‘T87LONG’, ‘T89’,
+‘OPQUIET’, ‘OPDYN’, ‘T96’, ‘OSTA’, ‘T01QUIET’, ‘T01STORM’,
+‘T05’, ‘ALEX’, ‘TS07’]</p>
+</dd>
+<dt><strong>- options (optional list or array of integers length=5)</strong><span class="classifier">explained in Lstar</span></dt><dd></dd>
+<dt><strong>- omni values as dictionary (optional)</strong><span class="classifier">if not provided, will use lookup table</span></dt><dd></dd>
+<dt><strong>- (see Lstar documentation for further explanation)</strong></dt><dd></dd>
+<dt><strong>- tol (float)</strong><span class="classifier">tolerance for search in radial distance</span></dt><dd></dd>
+<dt><strong>- bracket (list): X-GSM coordinates to bracket bisection search</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>results (SpaceData, dictionary-like): contains keys LCDS, K, AlphaEq and UTC</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#spacepy.irbempy.get_Lstar" title="spacepy.irbempy.get_Lstar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_Lstar</span></code></a>, <a class="reference internal" href="#spacepy.irbempy.get_Bfield" title="spacepy.irbempy.get_Bfield"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_Bfield</span></code></a>, <a class="reference internal" href="#spacepy.irbempy.find_Bmirror" title="spacepy.irbempy.find_Bmirror"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_Bmirror</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">Ticktock</span><span class="p">([</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">],</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">irbempy</span><span class="o">.</span><span class="n">find_LCDS_K</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">extMag</span><span class="o">=</span><span class="s1">&#39;T89&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.irbempy.find_footpoint">
+<span class="sig-prename descclassname"><span class="pre">spacepy.irbempy.</span></span><span class="sig-name descname"><span class="pre">find_footpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loci</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extMag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'T01STORM'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[1,</span> <span class="pre">0,</span> <span class="pre">3,</span> <span class="pre">0,</span> <span class="pre">0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hemi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omnivals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/irbempy.html#find_footpoint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.irbempy.find_footpoint" title="Link to this definition">¶</a></dt>
+<dd><p>call find_foot_point1 from irbem library and return a dictionary with values for
+Bmin and the GEO (cartesian) coordinates of the magnetic equator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>- ticks (Ticktock class)</strong><span class="classifier">containing time information</span></dt><dd></dd>
+<dt><strong>- loci (Coords class)</strong><span class="classifier">containing spatial information</span></dt><dd></dd>
+<dt><strong>- extMag (string)</strong><span class="classifier">optional; will choose the external magnetic field model</span></dt><dd><p>possible values [‘0’, ‘MEAD’, ‘T87SHORT’, ‘T87LONG’, ‘T89’,
+‘OPQUIET’, ‘OPDYN’, ‘T96’, ‘OSTA’, ‘T01QUIET’, ‘T01STORM’,
+‘T05’, ‘ALEX’, ‘TS07’]</p>
+</dd>
+<dt><strong>- options (optional list or array of integers length=5)</strong><span class="classifier">explained in Lstar</span></dt><dd></dd>
+<dt><strong>- omni values as dictionary (optional)</strong><span class="classifier">if not provided, will use lookup table</span></dt><dd></dd>
+<dt><strong>- (see Lstar documentation for further explanation)</strong></dt><dd></dd>
+<dt><strong>- hemi (string)</strong><span class="classifier">optional (valid cases are ‘same’, ‘other’, ‘north’ or ‘south’)</span></dt><dd><p>will set the target hemisphere for tracing the footpoint</p>
+</dd>
+<dt><strong>- alt (numeric)</strong><span class="classifier">optional keyword to set stop height [km] of fieldline trace (default 100km)</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>- results (spacepy.datamodel.SpaceData)</strong><span class="classifier">containing keys</span></dt><dd><p>Bfoot    - Magnitude of B-field at footpoint [nT]
+loci     - Coords instance with GDZ coordinates of the magnetic footpoint [alt, lat, lon]
+Bfootvec - Components of B-field at footpoint in cartesian GEO coordinates [nT]</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#spacepy.irbempy.get_Lstar" title="spacepy.irbempy.get_Lstar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_Lstar</span></code></a>, <a class="reference internal" href="#spacepy.irbempy.get_Bfield" title="spacepy.irbempy.get_Bfield"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_Bfield</span></code></a>, <a class="reference internal" href="#spacepy.irbempy.find_Bmirror" title="spacepy.irbempy.find_Bmirror"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_Bmirror</span></code></a>, <a class="reference internal" href="#spacepy.irbempy.find_magequator" title="spacepy.irbempy.find_magequator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_magequator</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">([</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;2002-02-02T12:10:00&#39;</span><span class="p">],</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">Coords</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]],</span> <span class="s1">&#39;GEO&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="n">use_irbem</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">irbempy</span><span class="o">.</span><span class="n">find_footpoint</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="go">{&#39;Bfoot&#39;: array([ 47559.04643444,  47542.84688657]),</span>
+<span class="go"> &#39;Bfootvec&#39;: array([[-38428.07217246,   4497.31549786, -27657.19291928],</span>
+<span class="go">       [-38419.08514332,   4501.45390964, -27641.14866517]]),</span>
+<span class="go"> &#39;loci&#39;: Coords( [[ 99.31443778  55.71415787 -10.21888955]</span>
+<span class="go"> [ 99.99397026  55.70716296 -10.22797462]] ), dtype=GDZ,sph, units=[&#39;km&#39;, &#39;deg&#39;, &#39;deg&#39;]}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.irbempy.find_magequator">
+<span class="sig-prename descclassname"><span class="pre">spacepy.irbempy.</span></span><span class="sig-name descname"><span class="pre">find_magequator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loci</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extMag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'T01STORM'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omnivals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/irbempy.html#find_magequator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.irbempy.find_magequator" title="Link to this definition">¶</a></dt>
+<dd><p>call find_magequator from irbem library and return a dictionary with values for
+Bmin and the GEO (cartesian) coordinates of the magnetic equator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>- ticks (Ticktock class)</strong><span class="classifier">containing time information</span></dt><dd></dd>
+<dt><strong>- loci (Coords class)</strong><span class="classifier">containing spatial information</span></dt><dd></dd>
+<dt><strong>- extMag (string)</strong><span class="classifier">optional; will choose the external magnetic field model</span></dt><dd><p>possible values [‘0’, ‘MEAD’, ‘T87SHORT’, ‘T87LONG’, ‘T89’,
+‘OPQUIET’, ‘OPDYN’, ‘T96’, ‘OSTA’, ‘T01QUIET’, ‘T01STORM’,
+‘T05’, ‘ALEX’, ‘TS07’]</p>
+</dd>
+<dt><strong>- options (optional list or array of integers length=5)</strong><span class="classifier">explained in Lstar</span></dt><dd></dd>
+<dt><strong>- omni values as dictionary (optional)</strong><span class="classifier">if not provided, will use lookup table</span></dt><dd></dd>
+<dt><strong>- (see Lstar documentation for further explanation)</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>- results (dictionary)</strong><span class="classifier">containing keys: Bmin, Coords instance with GEO coordinates of</span></dt><dd><p>the magnetic equator</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#spacepy.irbempy.get_Lstar" title="spacepy.irbempy.get_Lstar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_Lstar</span></code></a>, <a class="reference internal" href="#spacepy.irbempy.get_Bfield" title="spacepy.irbempy.get_Bfield"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_Bfield</span></code></a>, <a class="reference internal" href="#spacepy.irbempy.find_Bmirror" title="spacepy.irbempy.find_Bmirror"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_Bmirror</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">([</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;2002-02-02T12:10:00&#39;</span><span class="p">],</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">Coords</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]],</span> <span class="s1">&#39;GEO&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="n">use_irbem</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">op</span><span class="o">.</span><span class="n">find_magequator</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="go">{&#39;Bmin&#39;: array([  945.63652413,  3373.64496167]),</span>
+<span class="go">    &#39;loci&#39;: Coords( [[ 2.99938371  0.00534151 -0.03213603]</span>
+<span class="go">    [ 2.00298822 -0.0073077   0.04584859]] ), dtype=GEO,car, units=[&#39;Re&#39;, &#39;Re&#39;, &#39;Re&#39;]}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.irbempy.get_AEP8">
+<span class="sig-prename descclassname"><span class="pre">spacepy.irbempy.</span></span><span class="sig-name descname"><span class="pre">get_AEP8</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">energy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loci</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'min'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fluxtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'diff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">particles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'e'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/irbempy.html#get_AEP8"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.irbempy.get_AEP8" title="Link to this definition">¶</a></dt>
+<dd><p>will return the flux from the AE8-AP8 model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>- energy (float)</strong><span class="classifier">center energy in MeV; if fluxtype=RANGE, then needs to be a list [Emin, Emax]</span></dt><dd></dd>
+<dt><strong>- loci (Coords)</strong><span class="classifier">a Coords instance with the location inside the magnetosphere</span></dt><dd><p>optional      instead of a Coords instance, one can also provide a list with [BBo, L] combination</p>
+</dd>
+<dt><strong>- model (str)</strong><span class="classifier">MIN or MAX for solar cycle dependence</span></dt><dd></dd>
+<dt><strong>- fluxtype (str)</strong><span class="classifier">DIFF, RANGE, INT are possible types</span></dt><dd></dd>
+<dt><strong>- particles (str): e or p or electrons or protons</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>- float</strong><span class="classifier">flux from AE8/AP8 model</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">irbempy</span><span class="o">.</span><span class="n">get_aep8</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.time</span> <span class="k">as</span> <span class="nn">spt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.coordinates</span> <span class="k">as</span> <span class="nn">spc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.irbempy</span> <span class="k">as</span> <span class="nn">ib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">spt</span><span class="o">.</span><span class="n">Ticktock</span><span class="p">([</span><span class="s1">&#39;2017-02-02T12:00:00&#39;</span><span class="p">],</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">spc</span><span class="o">.</span><span class="n">Coords</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;GEO&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="n">use_irbem</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="o">.</span><span class="n">ticks</span> <span class="o">=</span> <span class="n">t</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">energy</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c1">#MeV</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ib</span><span class="o">.</span><span class="n">get_AEP8</span><span class="p">(</span><span class="n">energy</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">)</span>
+<span class="go">1932209.4427359989</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.irbempy.get_Bfield">
+<span class="sig-prename descclassname"><span class="pre">spacepy.irbempy.</span></span><span class="sig-name descname"><span class="pre">get_Bfield</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loci</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extMag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'T01STORM'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omnivals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/irbempy.html#get_Bfield"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.irbempy.get_Bfield" title="Link to this definition">¶</a></dt>
+<dd><p>Return magnetic field vector (in GEO) and magnitude</p>
+<p>Calls get_bfield from IRBEMlib and uses the underlying model
+implementations and coordinate transforms in IRBEMlib to obtain the
+result.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>- ticks (Ticktock class)</strong><span class="classifier">containing time information</span></dt><dd></dd>
+<dt><strong>- loci (Coords class)</strong><span class="classifier">containing spatial information</span></dt><dd></dd>
+<dt><strong>- extMag (string)</strong><span class="classifier">optional; will choose the external magnetic</span></dt><dd><p>field model possible values [‘0’, ‘MEAD’,
+‘T87SHORT’, ‘T87LONG’, ‘T89’, ‘OPQUIET’,
+‘OPDYN’, ‘T96’, ‘OSTA’, ‘T01QUIET’,
+‘T01STORM’, ‘T05’, ‘ALEX’, ‘TS07’]</p>
+</dd>
+<dt><strong>- options (optional list or array of integers length=5)</strong><span class="classifier">explained in Lstar</span></dt><dd></dd>
+<dt><strong>- omni values as dictionary (optional)</strong><span class="classifier">if not provided, will</span></dt><dd><p>use OMNI module to
+look up</p>
+</dd>
+<dt><strong>- (see Lstar documentation for further explanation)</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>- results (dictionary)</strong><span class="classifier">containing keys: Bvec, and Blocal</span></dt><dd><p>Bvec is specified in GEO coordinates</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#spacepy.irbempy.get_Lstar" title="spacepy.irbempy.get_Lstar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_Lstar</span></code></a>, <a class="reference internal" href="#spacepy.irbempy.find_Bmirror" title="spacepy.irbempy.find_Bmirror"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_Bmirror</span></code></a>, <a class="reference internal" href="#spacepy.irbempy.find_magequator" title="spacepy.irbempy.find_magequator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_magequator</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>Most parameterized external field models are subject to limits on the valid
+range of input parameters and will return NaN if evaluated outside the bounds.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.time</span> <span class="k">as</span> <span class="nn">spt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.coordinates</span> <span class="k">as</span> <span class="nn">spc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.irbempy</span> <span class="k">as</span> <span class="nn">ib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">spt</span><span class="o">.</span><span class="n">Ticktock</span><span class="p">([</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;2002-02-02T12:10:00&#39;</span><span class="p">],</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">spc</span><span class="o">.</span><span class="n">Coords</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]],</span> <span class="s1">&#39;GEO&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="n">use_irbem</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ib</span><span class="o">.</span><span class="n">get_Bfield</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="go">{&#39;Blocal&#39;: array([  976.42565251,  3396.25991675]),</span>
+<span class="go">   &#39;Bvec&#39;: array([[ -5.01738885e-01,  -1.65104338e+02,   9.62365503e+02],</span>
+<span class="go">   [  3.33497974e+02,  -5.42111173e+02,   3.33608693e+03]])}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.irbempy.get_Lm">
+<span class="sig-prename descclassname"><span class="pre">spacepy.irbempy.</span></span><span class="sig-name descname"><span class="pre">get_Lm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loci</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extMag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'T01STORM'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intMag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'IGRF'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">IGRFset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omnivals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/irbempy.html#get_Lm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.irbempy.get_Lm" title="Link to this definition">¶</a></dt>
+<dd><p>Return the MacIlwain L value for a given location, time and model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>- ticks (Ticktock class)</strong><span class="classifier">containing time information</span></dt><dd></dd>
+<dt><strong>- loci (Coords class)</strong><span class="classifier">containing spatial information</span></dt><dd></dd>
+<dt><strong>- alpha (list or ndarray)</strong><span class="classifier">pitch angles in degrees</span></dt><dd></dd>
+<dt><strong>- extMag (string)</strong><span class="classifier">optional; will choose the external magnetic field model</span></dt><dd><p>possible values [‘0’, ‘MEAD’, ‘T87SHORT’, ‘T87LONG’, ‘T89’,
+‘OPQUIET’, ‘OPDYN’, ‘T96’, ‘OSTA’, ‘T01QUIET’, ‘T01STORM’,
+‘T05’, ‘ALEX’, ‘TS07’]</p>
+</dd>
+<dt><strong>- intMag (string)</strong><span class="classifier">optional: select the internal field model</span></dt><dd><p>possible values [‘IGRF’,’EDIP’,’JC’,’GSFC’,’DUN’,’CDIP’]
+For full details see get_Lstar</p>
+</dd>
+<dt><strong>- omni values as dictionary (optional)</strong><span class="classifier">if not provided, will use lookup table</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>- results (dictionary)</strong><span class="classifier">containing keys: Lm, Bmin, Blocal (or Bmirr), Xj, MLT</span></dt><dd><p>if pitch angles provided in “alpha” then drift shells are calculated and “Bmirr”
+is returned if not provided, then “Blocal” at spacecraft is returned. A negative
+value for Lm indicates the field line is closed but particles are lost to the
+atmosphere; the absolute value indicates the L value.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.irbempy.get_Lstar">
+<span class="sig-prename descclassname"><span class="pre">spacepy.irbempy.</span></span><span class="sig-name descname"><span class="pre">get_Lstar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loci</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">90</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extMag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'T01STORM'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omnivals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">landi2lstar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/irbempy.html#get_Lstar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.irbempy.get_Lstar" title="Link to this definition">¶</a></dt>
+<dd><p>This will call make_lstar1 or make_lstar_shell_splitting_1 from the irbem library
+and will lookup omni values for given time if not provided (optional). If pitch angles
+are provided, drift shell splitting will be calculated and “Bmirr” will be returned. If they
+are not provided, then no drift shell splitting is calculated and “Blocal” is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>- ticks (Ticktock class)</strong><span class="classifier">containing time information</span></dt><dd></dd>
+<dt><strong>- loci (Coords class)</strong><span class="classifier">containing spatial information</span></dt><dd></dd>
+<dt><strong>- alpha (list or ndarray)</strong><span class="classifier">optional pitch angles in degrees (default is 90);</span></dt><dd><p>if provided will calculate shell splitting; max 25 values</p>
+</dd>
+<dt><strong>- extMag (string)</strong><span class="classifier">optional; will choose the external magnetic field model</span></dt><dd><p>possible values [‘0’, ‘MEAD’, ‘T87SHORT’, ‘T87LONG’, ‘T89’,
+‘OPQUIET’, ‘OPDYN’, ‘T96’, ‘OSTA’, ‘T01QUIET’, ‘T01STORM’,
+‘T05’, ‘ALEX’, ‘TS07’]</p>
+</dd>
+<dt><strong>- options (optional list or array of integers length=5)</strong><span class="classifier">explained below</span></dt><dd></dd>
+<dt><strong>- omni values as dictionary (optional)</strong><span class="classifier">if not provided, will use lookup table</span></dt><dd></dd>
+<dt><strong>- landi2lstar</strong><span class="classifier">if True, will use the faster landi2lstar routine if possible. This</span></dt><dd><p>routine can only be used with OPQUIET+IGRF magnetic field models.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>- results (dictionary)</strong><span class="classifier">containing keys: Lm, Lstar, Bmin, Blocal (or Bmirr), Xj, MLT</span></dt><dd><p>if pitch angles provided in “alpha” then drift shells are calculated and “Bmirr”
+is returned if not provided, then “Blocal” at spacecraft is returned. A negative
+value for Lm indicates the field line is closed but particles are lost to the
+atmosphere; the absolute value indicates the L value. A negative value for Lstar
+indicates the field line is closed but particles are lost to the atmosphere
+before completing a drift orbit; the absolute value indicates the drift shell.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>External Field</dt><dd><ul class="simple">
+<li><p>0        : no external field</p></li>
+<li><p>MEAD  : Mead &amp; Fairfield [1975] (uses 0&lt;=Kp&lt;=9 - Valid for rGEO&lt;=17. Re)</p></li>
+<li><p>T87SHORT: Tsyganenko short [1987] (uses 0&lt;=Kp&lt;=9 - Valid for rGEO&lt;=30. Re)</p></li>
+<li><p>T87LONG : Tsyganenko long [1987] (uses 0&lt;=Kp&lt;=9 - Valid for rGEO&lt;=70. Re)</p></li>
+<li><p>T89    : Tsyganenko [1989] (uses 0&lt;=Kp&lt;=9 - Valid for rGEO&lt;=70. Re)</p></li>
+<li><p>OPQUIET : Olson &amp; Pfitzer quiet [1977] (default - Valid for rGEO&lt;=15. Re)</p></li>
+<li><dl class="simple">
+<dt>OPDYN<span class="classifier">Olson &amp; Pfitzer dynamic [1988] (uses 5.&lt;=dens&lt;=50., 300.&lt;=velo&lt;=500.,</span></dt><dd><p>-100.&lt;=Dst&lt;=20. - Valid for rGEO&lt;=60. Re)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>T96<span class="classifier">Tsyganenko [1996] (uses -100.&lt;=Dst (nT)&lt;=20., 0.5&lt;=Pdyn (nPa)&lt;10.,</span></dt><dd><p>abs(ByIMF) (nT)&lt;1=0., abs(BzIMF) (nT)&lt;=10. - Valid for rGEO&lt;=40. Re)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>OSTA<span class="classifier">Ostapenko &amp; Maltsev [1997] (uses dst,Pdyn,BzIMF, Kp)</span></dt><dd><p>T01QUIET: Tsyganenko [2002a,b] (uses -50.&lt;Dst (nT)&lt;20., 0.5&lt;Pdyn (nPa)&lt;=5.,
+abs(ByIMF) (nT)&lt;=5., abs(BzIMF) (nT)&lt;=5., 0.&lt;=G1&lt;=10., 0.&lt;=G2&lt;=10. - Valid for xGSM&gt;=-15. Re)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>T01STORM: Tsyganenko, Singer &amp; Kasper [2003] storm  (uses Dst, Pdyn, ByIMF, BzIMF, G2, G3 -</dt><dd><p>there is no upper or lower limit for those inputs - Valid for xGSM&gt;=-15. Re)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>T05<span class="classifier">Tsyganenko &amp; Sitnov [2005] storm  (uses Dst, Pdyn, ByIMF, BzIMF,</span></dt><dd><p>W1, W2, W3, W4, W5, W6 - no upper or lower limit for inputs - Valid for xGSM&gt;=-15. Re)</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>OMNI contents</dt><dd><ul class="simple">
+<li><p>Kp: value of Kp as in OMNI2 files but has to be double instead of integer type</p></li>
+<li><p>Dst: Dst index (nT)</p></li>
+<li><p>dens: Solar Wind density (cm-3)</p></li>
+<li><p>velo: Solar Wind velocity (km/s)</p></li>
+<li><p>Pdyn: Solar Wind dynamic pressure (nPa)</p></li>
+<li><p>ByIMF: GSM y component of IMF mag. field (nT)</p></li>
+<li><p>BzIMF: GSM z component of IMF mag. field (nT)</p></li>
+<li><dl class="simple">
+<dt>G1:  G1=&lt; Vsw*(Bperp/40)2/(1+Bperp/40)*sin3(theta/2) &gt; where the &lt;&gt; mean an average over the</dt><dd><p>previous 1 hour, Vsw is the solar wind speed, Bperp is the transverse IMF
+component (GSM) and theta it’s clock angle.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>G2: G2=&lt; a*Vsw*Bs &gt; where the &lt;&gt; mean an average over the previous 1 hour,</dt><dd><p>Vsw is solar wind speed, Bs=|IMF Bz| when IMF Bz &lt; 0 and Bs=0 when IMF Bz &gt; 0, a=0.005.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>G3:  G3=&lt; Vsw*Dsw*Bs /2000.&gt; where the &lt;&gt; mean an average over the previous 1 hour,</dt><dd><p>Vsw is the solar wind speed, Dsw is the solar wind density, Bs=|IMF Bz| when IMF
+Bz &lt; 0 and Bs=0 when IMF Bz &gt; 0.</p>
+</dd>
+</dl>
+</li>
+<li><p>W1 - W6: see definition in (JGR-A, v.110(A3), 2005.) (PDF 1.2MB)</p></li>
+<li><p>AL: the auroral index</p></li>
+</ul>
+</dd>
+<dt>Options</dt><dd><ul class="simple">
+<li><p>1st element: 0 - don’t compute L* or phi ;  1 - compute L*; 2- compute phi</p></li>
+<li><dl class="simple">
+<dt>2nd element: 0 - initialize IGRF field once per year (year.5);</dt><dd><p>n - n is the  frequency (in days) starting on January 1st of each year
+(i.e. if options(2nd element)=15 then IGRF will be updated on the following days of the
+year: 1, 15, 30, 45 …)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>3rd element: resolution to compute L* (0 to 9) where 0 is the recomended value to ensure a</dt><dd><p>good ratio precision/computation time
+(i.e. an error of ~2% at L=6). The higher the value the better will be the precision, the
+longer will be the computing time. Generally there is not much improvement for values
+larger than 4. Note that this parameter defines the integration step (theta)
+along the field line such as dtheta=(2pi)/(720*[options(3rd element)+1])</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>4th element: resolution to compute L* (0 to 9). The higher the value the better will be</dt><dd><p>the precision, the longer will be
+the computing time. It is recommended to use 0 (usually sufficient) unless L* is not
+computed on a LEO orbit. For LEO orbit higher values are recommended. Note that this
+parameter defines the integration step (phi) along the drift shell such as
+dphi=(2pi)/(25*[options(4th element)+1])</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>5th element: allows to select an internal magnetic field model (default is set to IGRF)</dt><dd><ul>
+<li><p>0 = IGRF</p></li>
+<li><p>1 = Eccentric tilted dipole</p></li>
+<li><p>2 = Jensen&amp;Cain 1960</p></li>
+<li><p>3 = GSFC 12/66 updated to 1970</p></li>
+<li><p>4 = User-defined model (Default: Centred dipole + uniform [Dungey open model] )</p></li>
+<li><p>5 = Centred dipole</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Ticktock</span><span class="p">([</span><span class="s1">&#39;2002-02-02T12:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;2002-02-02T12:10:00&#39;</span><span class="p">],</span> <span class="s1">&#39;ISO&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">Coords</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]],</span> <span class="s1">&#39;GEO&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="n">use_irbem</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">irbempy</span><span class="o">.</span><span class="n">Lstar</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="go">{&#39;Blocal&#39;: array([ 1020.40493286,  3446.08845227]),</span>
+<span class="go">    &#39;Bmin&#39;: array([ 1019.98404311,  3437.63865243]),</span>
+<span class="go">    &#39;Lm&#39;: array([ 3.08948304,  2.06022102]),</span>
+<span class="go">    &#39;Lstar&#39;: array([ 2.97684043,  1.97868577]),</span>
+<span class="go">    &#39;MLT&#39;: array([ 23.5728333 ,  23.57287944]),</span>
+<span class="go">    &#39;Xj&#39;: array([ 0.00112884,  0.00286955])}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.irbempy.get_dtype">
+<span class="sig-prename descclassname"><span class="pre">spacepy.irbempy.</span></span><span class="sig-name descname"><span class="pre">get_dtype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sysaxes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/irbempy.html#get_dtype"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.irbempy.get_dtype" title="Link to this definition">¶</a></dt>
+<dd><p>will return the coordinate system type as string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>- sysaxes (int)</strong><span class="classifier">number according to the irbem, possible values: 0-8</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>- dtype (str)</strong><span class="classifier">coordinate system GDZ, GEO, GSM, GSE, SM, GEI, MAG, SPH, RLL</span></dt><dd></dd>
+<dt><strong>- carsph (str)</strong><span class="classifier">cartesian or spherical ‘car’, ‘sph’</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_dtype</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">(&#39;GSE&#39;, &#39;car&#39;)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.irbempy.prep_ctypes">
+<span class="sig-prename descclassname"><span class="pre">spacepy.irbempy.</span></span><span class="sig-name descname"><span class="pre">prep_ctypes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/irbempy.html#prep_ctypes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.irbempy.prep_ctypes" title="Link to this definition">¶</a></dt>
+<dd><p>Converts <a class="reference internal" href="#spacepy.irbempy.prep_irbem" title="spacepy.irbempy.prep_irbem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prep_irbem</span></code></a> output to correct types for ctypes call.</p>
+<p>This is primarily for internal use by <a class="reference internal" href="#spacepy.irbempy.get_AEP8" title="spacepy.irbempy.get_AEP8"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_AEP8</span></code></a> and <a class="reference internal" href="#spacepy.irbempy.get_Lstar" title="spacepy.irbempy.get_Lstar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_Lstar</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>d</strong><span class="classifier">dict</span></dt><dd><p>Output IRBEM parameters from <a class="reference internal" href="#spacepy.irbempy.prep_irbem" title="spacepy.irbempy.prep_irbem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prep_irbem</span></code></a></p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>dict</dt><dd><p><code class="docutils literal notranslate"><span class="pre">d</span></code> with most values converted to ctypes objects or pointers.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.irbempy.prep_irbem">
+<span class="sig-prename descclassname"><span class="pre">spacepy.irbempy.</span></span><span class="sig-name descname"><span class="pre">prep_irbem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loci</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extMag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'T01STORM'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omnivals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/irbempy.html#prep_irbem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.irbempy.prep_irbem" title="Link to this definition">¶</a></dt>
+<dd><p>Prepare inputs for direct IRBEM-LIB calls. Not expected to be called by the user.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.irbempy.updateTS07Coeffs">
+<span class="sig-prename descclassname"><span class="pre">spacepy.irbempy.</span></span><span class="sig-name descname"><span class="pre">updateTS07Coeffs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/irbempy.html#updateTS07Coeffs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.irbempy.updateTS07Coeffs" title="Link to this definition">¶</a></dt>
+<dd><p>Update coefficients for TS07 magnetic field model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Base path for TS07 dynamic coefficients. If None (default)
+then the TS07_DATA_PATH environment variable is used.</p>
+</dd>
+<dt><strong>force</strong><span class="classifier">boolean</span></dt><dd><p>If True (default is False) then missing paths will be created.</p>
+</dd>
+<dt><strong>verbose</strong><span class="classifier">boolean</span></dt><dd><p>Print verbose output. Default is False.</p>
+</dd>
+<dt><strong>start</strong><span class="classifier">datetime.datetime or string</span></dt><dd><p>Start time for archive retrieval. If start is a string then it should
+ISO8601 format (YYYY-MM-DDTHH:mm:SS). Defaults to 2007-01-01.</p>
+</dd>
+<dt><strong>end</strong><span class="classifier">datetime.datetime or string</span></dt><dd><p>End time for archive retrieval. Required format same as start.
+Defaults to time of query (i.e. latest available).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.irbempy</a><ul>
+<li><a class="reference internal" href="#options">Options</a></li>
+<li><a class="reference internal" href="#extmag">extMag</a></li>
+<li><a class="reference internal" href="#authors">Authors</a></li>
+<li><a class="reference internal" href="#spacepy.irbempy.AlphaOfK"><code class="docutils literal notranslate"><span class="pre">AlphaOfK()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.irbempy.coord_trans"><code class="docutils literal notranslate"><span class="pre">coord_trans()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.irbempy.find_Bmirror"><code class="docutils literal notranslate"><span class="pre">find_Bmirror()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.irbempy.find_LCDS"><code class="docutils literal notranslate"><span class="pre">find_LCDS()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.irbempy.find_LCDS_K"><code class="docutils literal notranslate"><span class="pre">find_LCDS_K()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.irbempy.find_footpoint"><code class="docutils literal notranslate"><span class="pre">find_footpoint()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.irbempy.find_magequator"><code class="docutils literal notranslate"><span class="pre">find_magequator()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.irbempy.get_AEP8"><code class="docutils literal notranslate"><span class="pre">get_AEP8()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.irbempy.get_Bfield"><code class="docutils literal notranslate"><span class="pre">get_Bfield()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.irbempy.get_Lm"><code class="docutils literal notranslate"><span class="pre">get_Lm()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.irbempy.get_Lstar"><code class="docutils literal notranslate"><span class="pre">get_Lstar()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.irbempy.get_dtype"><code class="docutils literal notranslate"><span class="pre">get_dtype()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.irbempy.prep_ctypes"><code class="docutils literal notranslate"><span class="pre">prep_ctypes()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.irbempy.prep_irbem"><code class="docutils literal notranslate"><span class="pre">prep_irbem()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.irbempy.updateTS07Coeffs"><code class="docutils literal notranslate"><span class="pre">updateTS07Coeffs()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="spacepy.igrf.IGRFCoefficients.html"
+                          title="previous chapter">spacepy.igrf.IGRFCoefficients</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="spacepy.irbempy.Shieldose2.html"
+                          title="next chapter">spacepy.irbempy.Shieldose2</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/autosummary/spacepy.irbempy.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.irbempy.Shieldose2.html" title="spacepy.irbempy.Shieldose2"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.igrf.IGRFCoefficients.html" title="spacepy.igrf.IGRFCoefficients"
+             >previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.irbempy</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    </div>
+  </body>
+</html>

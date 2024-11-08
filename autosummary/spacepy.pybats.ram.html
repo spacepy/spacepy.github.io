@@ -1,29 +1,25 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.pybats.ram &#8212; SpacePy v0.6.0 Manual</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <title>spacepy.pybats.ram &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    
-    <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="spacepy.pybats.rim" href="spacepy.pybats.rim.html" />
-    <link rel="prev" title="spacepy.pybats.pwom" href="spacepy.pybats.pwom.html" /> 
+    <link rel="next" title="spacepy.pybats.ram.BoundaryFluxFile" href="spacepy.pybats.ram.BoundaryFluxFile.html" />
+    <link rel="prev" title="spacepy.pybats.qotree.QTree" href="spacepy.pybats.qotree.QTree.html" /> 
   </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
@@ -40,35 +36,303 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.rim.html" title="spacepy.pybats.rim"
+          <a href="spacepy.pybats.ram.BoundaryFluxFile.html" title="spacepy.pybats.ram.BoundaryFluxFile"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.pwom.html" title="spacepy.pybats.pwom"
+          <a href="spacepy.pybats.qotree.QTree.html" title="spacepy.pybats.qotree.QTree"
              accesskey="P">previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pybats.html" accesskey="U">PyBats - SWMF &amp; BATS-R-US Analysis Tools</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" accesskey="U">spacepy.pybats</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.pybats.ram</a></li> 
       </ul>
     </div>
+  
 
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-spacepy.pybats.ram">
+<span id="spacepy-pybats-ram"></span><h1>spacepy.pybats.ram<a class="headerlink" href="#module-spacepy.pybats.ram" title="Link to this heading">¶</a></h1>
+<p>A module for reading, handling, and plotting RAM-SCB output.</p>
+<p class="rubric">Functions</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.ram.add_body" title="spacepy.pybats.ram.add_body"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_body</span></code></a>(ax[, rad, rotate, add_night])</p></td>
+<td><p>Creates a circle of radius kwarg rad (default 2.0 RE) at the center of axis ax.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.ram.add_body_polar" title="spacepy.pybats.ram.add_body_polar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_body_polar</span></code></a>(ax[, noon])</p></td>
+<td><p>Add the &quot;Earth&quot; to the center of a polar dial plot located on axis &quot;ax&quot;.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.ram.gen_egrid" title="spacepy.pybats.ram.gen_egrid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_egrid</span></code></a>([nE, lb, ew, power])</p></td>
+<td><p>Given number of points and a lower boundary (<em>nE</em> and <em>lb</em>), build the RAM-SCB energy grid.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.ram.gen_pgrid" title="spacepy.pybats.ram.gen_pgrid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_pgrid</span></code></a>([nPa])</p></td>
+<td><p>Given number of points, $*nPa*$, build the RAM-SCB pitch angle grid.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.ram.gen_rgrid" title="spacepy.pybats.ram.gen_rgrid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_rgrid</span></code></a>([nR, rmin, rmax])</p></td>
+<td><p>Given the number of radial points, <em>nR</em>, the min and max of the radial extent, <em>rmin</em> and <em>rmax</em>, repsectively, create and return the radial grid of RAM-SCB as a vector of points in Earth radii.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.ram.gen_tgrid" title="spacepy.pybats.ram.gen_tgrid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_tgrid</span></code></a>([nT])</p></td>
+<td><p>Given the number of local time grid points, <em>nT</em>, return, as vectors, the grid points in local time in units of radians and then local time hours that would be used in RAM-SCB.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.ram.get_iono_cb" title="spacepy.pybats.ram.get_iono_cb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_iono_cb</span></code></a>([ct_name])</p></td>
+<td><p>Several custom colorbars used by RIM and AMIE have become standard when visualizing data from these models.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.ram.grid_zeros" title="spacepy.pybats.ram.grid_zeros"><code class="xref py py-obj docutils literal notranslate"><span class="pre">grid_zeros</span></code></a>(axis)</p></td>
+<td><p>Attempt to plot x=0 and y=0 gridlines w/o messing up plot range.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.ram.read_t89file" title="spacepy.pybats.ram.read_t89file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_t89file</span></code></a>(filename)</p></td>
+<td><p>Read a T89 input file intended for RAM-SCB.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.ram.set_orb_ticks" title="spacepy.pybats.ram.set_orb_ticks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_orb_ticks</span></code></a>(axis)</p></td>
+<td><p>Set major ticks to multiples of 1, minor ticks to 1/4.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.ram.viz_egrid" title="spacepy.pybats.ram.viz_egrid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">viz_egrid</span></code></a>([nE, lb, ew, power])</p></td>
+<td><p>Vizualize the RAM-SCB energy grid.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.ram.viz_young_comp" title="spacepy.pybats.ram.viz_young_comp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">viz_young_comp</span></code></a>()</p></td>
+<td><p>Create a quick-look plot of % O+ as calculated by Young et al. for various values of Kp and F10.7.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.ram.young_comp" title="spacepy.pybats.ram.young_comp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">young_comp</span></code></a>(kp, f107)</p></td>
+<td><p>Determine plasma sheet composition using the Young et al. empirical relationship based on Kp and F10.7 (first and second arguments, respectively) as given by <em>Young et al.</em> [JGR, 1982, Vol.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pybats.ram.BoundaryFluxFile.html#spacepy.pybats.ram.BoundaryFluxFile" title="spacepy.pybats.ram.BoundaryFluxFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BoundaryFluxFile</span></code></a>(filename)</p></td>
+<td><p>Read, plot, and edit flux $([filename].swf)$ or $([filename].dat)$ files.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pybats.ram.BoundaryGroup.html#spacepy.pybats.ram.BoundaryGroup" title="spacepy.pybats.ram.BoundaryGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BoundaryGroup</span></code></a>([path, rotate])</p></td>
+<td><p>A class that collects many <a class="reference internal" href="spacepy.pybats.ram.PlasmaBoundary.html#spacepy.pybats.ram.PlasmaBoundary" title="spacepy.pybats.ram.PlasmaBoundary"><code class="xref py py-class docutils literal notranslate"><span class="pre">PlasmaBoundary</span></code></a> objects together to work as a coherent group.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pybats.ram.Currents.html#spacepy.pybats.ram.Currents" title="spacepy.pybats.ram.Currents"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Currents</span></code></a>(filename)</p></td>
+<td><p>The 3D equilibrium code produces NetCDF files that contain the electric currents throughout the domain.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pybats.ram.EfieldFile.html#spacepy.pybats.ram.EfieldFile" title="spacepy.pybats.ram.EfieldFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EfieldFile</span></code></a>(filename, *args, **kwargs)</p></td>
+<td><p>Base class for reading electric field input and output ASCII files.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pybats.ram.GeoMltFile.html#spacepy.pybats.ram.GeoMltFile" title="spacepy.pybats.ram.GeoMltFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeoMltFile</span></code></a>([filename, scrub, compressed])</p></td>
+<td><p>GeoMltFile is a class to open, read, manipulate and write files that contain LANL geosynchronous multi-satellite averaged, MLT-interpolated fluxes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pybats.ram.IonoPotScb.html#spacepy.pybats.ram.IonoPotScb" title="spacepy.pybats.ram.IonoPotScb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IonoPotScb</span></code></a>(filename, *args, **kwargs)</p></td>
+<td><p>The 3D equilibrium code produces NetCDF files that contain the ionospheric potential on the polar cap as well as mapped to the equatorial plane.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pybats.ram.LogFile.html#spacepy.pybats.ram.LogFile" title="spacepy.pybats.ram.LogFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LogFile</span></code></a>(file, *args, **kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pybats.ram.ParamFile.html#spacepy.pybats.ram.ParamFile" title="spacepy.pybats.ram.ParamFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ParamFile</span></code></a>(infile)</p></td>
+<td><p>It is sometimes necessary to read and parse a PARAM.in file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pybats.ram.PlasmaBoundary.html#spacepy.pybats.ram.PlasmaBoundary" title="spacepy.pybats.ram.PlasmaBoundary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlasmaBoundary</span></code></a>(filename[, time])</p></td>
+<td><p>Opens an ascii-format boundary file written from IM_wrapper.f90:IM_put_from_gm in the coupled SWMF-RAM-SCB model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pybats.ram.PressureFile.html#spacepy.pybats.ram.PressureFile" title="spacepy.pybats.ram.PressureFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PressureFile</span></code></a>(filename, *args, **kwargs)</p></td>
+<td><p>A class for reading and visualizing pressure_####.in files.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pybats.ram.RamSat.html#spacepy.pybats.ram.RamSat" title="spacepy.pybats.ram.RamSat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RamSat</span></code></a>(filename)</p></td>
+<td><p>A class to handle and plot RAM-SCB virtual satellite files.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pybats.ram.WeqFile.html#spacepy.pybats.ram.WeqFile" title="spacepy.pybats.ram.WeqFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WeqFile</span></code></a>(filename, *args, **kwargs)</p></td>
+<td><p>Slight variation on the weimer class to read weq_***.in files.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.add_body">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.ram.</span></span><span class="sig-name descname"><span class="pre">add_body</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_night</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">extra_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/ram.html#add_body"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ram.add_body" title="Link to this definition">¶</a></dt>
+<dd><p>Creates a circle of radius kwarg rad (default 2.0 RE) at the center of
+axis ax.  Then, a planet of radius 1.0 RE is added to the center to
+represent the Earth.  Extra kwargs are passed to the patch generators.</p>
+<p>Three patches are created by this function: the inner boundary (a light
+grey Circle patch), the planet (a white Circle patch) and the night side
+of the planet (a black wedge.)  All three are returned to the caller.</p>
+<p>The kwarge “rotate”, which defaults to 0.0, can be set to any angle
+(in degrees) to rotate the location of local noon/midnight on the
+planet patches.  The default is local noon points towards +X.  A
+rotate value of 90 will cause local noon to point towards +Y.</p>
+<p>Example</p>
+<p>&gt;&gt;&gt;ax=pylab.subplot(111)
+&gt;&gt;&gt;inner, planet, night = rampy.add_body(ax)</p>
+<p>If you are using a polar axis, try using add_body_polar.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.add_body_polar">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.ram.</span></span><span class="sig-name descname"><span class="pre">add_body_polar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">90.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/ram.html#add_body_polar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ram.add_body_polar" title="Link to this definition">¶</a></dt>
+<dd><p>Add the “Earth” to the center of a polar dial plot located on
+axis “ax”.  Kwarg noon specifies the angle counter clockwise from the
+x-axis, in degrees, that is local noon (e.g. sun facing.)  Default is
+90 degrees, or in the +Y direction.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.gen_egrid">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.ram.</span></span><span class="sig-name descname"><span class="pre">gen_egrid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nE</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">36</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ew</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.03</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">power</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.27</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/ram.html#gen_egrid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ram.gen_egrid" title="Link to this definition">¶</a></dt>
+<dd><p>Given number of points and a lower boundary (<em>nE</em> and <em>lb</em>), build the
+RAM-SCB energy grid.  Three arrays are returned: ebound(nE+1), the boundary
+of each bin, ecenter(nE), the center of each bin, and ewidth(nE),
+the width of each bin.  All output units are in keV.</p>
+<p>Grid parameters can be set with kwargs but default to common RAM values:
+======= =========================================
+Kwarg   Description
+======= =========================================
+nE      Number of grid points.
+lb      Lower boundary of energy grid in keV
+ew      Width of first energy bin.
+power   Power series exponent to determine grid spacing.
+======= =========================================</p>
+<p>Usage:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">ecentr</span><span class="p">,</span> <span class="n">ebound</span><span class="p">,</span> <span class="n">ewidth</span><span class="p">)</span><span class="o">=</span><span class="n">gen_egrid</span><span class="p">(</span><span class="n">nE</span><span class="o">=</span><span class="mi">36</span><span class="p">,</span> <span class="n">lb</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">ew</span><span class="o">=</span><span class="mf">3E-2</span><span class="p">,</span> <span class="n">power</span><span class="o">=</span><span class="mf">1.27</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.gen_pgrid">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.ram.</span></span><span class="sig-name descname"><span class="pre">gen_pgrid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nPa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">72</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/ram.html#gen_pgrid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ram.gen_pgrid" title="Link to this definition">¶</a></dt>
+<dd><p>Given number of points, $*nPa*$, build the RAM-SCB pitch angle grid.
+The return value is a $*nPa*x3$ matrix containing the bin starts, centers,
+and ends in cosine of pitch angle.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.gen_rgrid">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.ram.</span></span><span class="sig-name descname"><span class="pre">gen_rgrid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nR</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/ram.html#gen_rgrid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ram.gen_rgrid" title="Link to this definition">¶</a></dt>
+<dd><p>Given the number of radial points, <em>nR</em>, the min and max of the radial
+extent, <em>rmin</em> and <em>rmax</em>, repsectively, create and return the radial grid
+of RAM-SCB as a vector of points in Earth radii.</p>
+<p>Note that the first and last cells are ghost cells.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.gen_tgrid">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.ram.</span></span><span class="sig-name descname"><span class="pre">gen_tgrid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nT</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/ram.html#gen_tgrid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ram.gen_tgrid" title="Link to this definition">¶</a></dt>
+<dd><p>Given the number of local time grid points, <em>nT</em>, return, as vectors,
+the grid points in local time in units of radians and then local time hours
+that would be used in RAM-SCB.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.get_iono_cb">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.ram.</span></span><span class="sig-name descname"><span class="pre">get_iono_cb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ct_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bwr'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/ram.html#get_iono_cb"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ram.get_iono_cb" title="Link to this definition">¶</a></dt>
+<dd><p>Several custom colorbars used by RIM and AMIE have become standard when
+visualizing data from these models.  These are ‘blue_white_red’ and
+‘white_red’, used for data that have positive and negative values and
+for data that have only positive values, respectively.  This function
+builds and returns these colorbars when called with the initials of the
+color table name as the only argument.</p>
+<p>For RAM-SCB usage, the ‘bwr’ color map is useful for plotting ionospheric
+potential and will create plots that look similar to those produced by
+AMIE and RIM.  The ‘wr’ color map is useful when plotting anisotropy.</p>
+<p>Example - get each colormap:</p>
+<p>&gt;&gt;&gt;bwr_map = get_iono_cb(‘bwr’)
+&gt;&gt;&gt;wr_map  = get_iono_cb(‘wr’)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.grid_zeros">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.ram.</span></span><span class="sig-name descname"><span class="pre">grid_zeros</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/ram.html#grid_zeros"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ram.grid_zeros" title="Link to this definition">¶</a></dt>
+<dd><p>Attempt to plot x=0 and y=0 gridlines w/o messing up
+plot range.  This should be called last when creating
+a plot; after you have the range sorted out.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.read_t89file">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.ram.</span></span><span class="sig-name descname"><span class="pre">read_t89file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/ram.html#read_t89file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ram.read_t89file" title="Link to this definition">¶</a></dt>
+<dd><p>Read a T89 input file intended for RAM-SCB.</p>
+<p>Usage:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="p">,</span> <span class="n">b_dip</span><span class="p">,</span> <span class="n">b_ext</span> <span class="o">=</span> <span class="n">read_t89file</span><span class="p">(</span><span class="s1">&#39;somefile.t89&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.set_orb_ticks">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.ram.</span></span><span class="sig-name descname"><span class="pre">set_orb_ticks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/ram.html#set_orb_ticks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ram.set_orb_ticks" title="Link to this definition">¶</a></dt>
+<dd><p>Set major ticks to multiples of 1, minor ticks to 1/4.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.viz_egrid">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.ram.</span></span><span class="sig-name descname"><span class="pre">viz_egrid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nE</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">36</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ew</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.03</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">power</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.27</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/ram.html#viz_egrid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ram.viz_egrid" title="Link to this definition">¶</a></dt>
+<dd><p>Vizualize the RAM-SCB energy grid.  All kwargs correspond to those used by
+<a class="reference internal" href="#spacepy.pybats.ram.gen_egrid" title="spacepy.pybats.ram.gen_egrid"><code class="xref py py-func docutils literal notranslate"><span class="pre">gen_egrid()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.viz_young_comp">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.ram.</span></span><span class="sig-name descname"><span class="pre">viz_young_comp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/ram.html#viz_young_comp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ram.viz_young_comp" title="Link to this definition">¶</a></dt>
+<dd><p>Create a quick-look plot of % O+ as calculated by Young et al. for
+various values of Kp and F10.7.  No input arguments are taken.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.young_comp">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.ram.</span></span><span class="sig-name descname"><span class="pre">young_comp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f107</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/ram.html#young_comp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ram.young_comp" title="Link to this definition">¶</a></dt>
+<dd><p>Determine plasma sheet composition using the Young et al. empirical
+relationship based on Kp and F10.7 (first and second arguments,
+respectively) as given by <em>Young et al.</em> [JGR, 1982, Vol. 87 No. A11]</p>
+<p>Returns fraction of total number density that is Hydrogen,
+Helium, and Oxygen.</p>
+<p>Example usage:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">FracH</span><span class="p">,</span> <span class="n">FracHe</span><span class="p">,</span> <span class="n">FracO</span> <span class="o">=</span> <span class="n">young_comp</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mf">150.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/logo.png" alt="Logo"/>
             </a></p>
   <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.pybats.ram</a><ul>
+<li><a class="reference internal" href="#spacepy.pybats.ram.add_body"><code class="docutils literal notranslate"><span class="pre">add_body()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ram.add_body_polar"><code class="docutils literal notranslate"><span class="pre">add_body_polar()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ram.gen_egrid"><code class="docutils literal notranslate"><span class="pre">gen_egrid()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ram.gen_pgrid"><code class="docutils literal notranslate"><span class="pre">gen_pgrid()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ram.gen_rgrid"><code class="docutils literal notranslate"><span class="pre">gen_rgrid()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ram.gen_tgrid"><code class="docutils literal notranslate"><span class="pre">gen_tgrid()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ram.get_iono_cb"><code class="docutils literal notranslate"><span class="pre">get_iono_cb()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ram.grid_zeros"><code class="docutils literal notranslate"><span class="pre">grid_zeros()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ram.read_t89file"><code class="docutils literal notranslate"><span class="pre">read_t89file()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ram.set_orb_ticks"><code class="docutils literal notranslate"><span class="pre">set_orb_ticks()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ram.viz_egrid"><code class="docutils literal notranslate"><span class="pre">viz_egrid()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ram.viz_young_comp"><code class="docutils literal notranslate"><span class="pre">viz_young_comp()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ram.young_comp"><code class="docutils literal notranslate"><span class="pre">young_comp()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="spacepy.pybats.pwom.html"
-                          title="previous chapter">spacepy.pybats.pwom</a></p>
+    <p class="topless"><a href="spacepy.pybats.qotree.QTree.html"
+                          title="previous chapter">spacepy.pybats.qotree.QTree</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="spacepy.pybats.rim.html"
-                          title="next chapter">spacepy.pybats.rim</a></p>
+    <p class="topless"><a href="spacepy.pybats.ram.BoundaryFluxFile.html"
+                          title="next chapter">spacepy.pybats.ram.BoundaryFluxFile</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -77,7 +341,7 @@
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -85,24 +349,8 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <section id="module-spacepy.pybats.ram">
-<span id="spacepy-pybats-ram"></span><h1>spacepy.pybats.ram<a class="headerlink" href="#module-spacepy.pybats.ram" title="Permalink to this heading">¶</a></h1>
-<p>A module for reading, handling, and plotting RAM-SCB output.</p>
-</section>
-
-
-            <div class="clearer"></div>
-          </div>
         </div>
       </div>
       <div class="clearer"></div>
@@ -117,23 +365,24 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.rim.html" title="spacepy.pybats.rim"
+          <a href="spacepy.pybats.ram.BoundaryFluxFile.html" title="spacepy.pybats.ram.BoundaryFluxFile"
              >next</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.pwom.html" title="spacepy.pybats.pwom"
+          <a href="spacepy.pybats.qotree.QTree.html" title="spacepy.pybats.qotree.QTree"
              >previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pybats.html" >PyBats - SWMF &amp; BATS-R-US Analysis Tools</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" >spacepy.pybats</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.pybats.ram</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2024, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
 </html>

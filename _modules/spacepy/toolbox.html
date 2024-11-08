@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.toolbox &#8212; SpacePy v0.6.0 Manual</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <title>spacepy.toolbox &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    
-    <link rel="shortcut icon" href="../../_static/spacepy_favicon.ico"/>
+    <script src="../../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <link rel="icon" href="../../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
   </head><body>
@@ -46,24 +42,7 @@
         <li class="nav-item nav-item-this"><a href="">spacepy.toolbox</a></li> 
       </ul>
     </div>
-
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="../../index.html">
-              <img class="logo" src="../../_static/logo.png" alt="Logo"/>
-            </a></p>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -112,14 +91,8 @@
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">spacepy</span> <span class="kn">import</span> <span class="n">help</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="k">pass</span>
-<span class="k">except</span><span class="p">:</span>
-    <span class="k">pass</span>
-
 <span class="kn">import</span> <span class="nn">spacepy</span>
+<span class="kn">from</span> <span class="nn">spacepy</span> <span class="kn">import</span> <span class="n">help</span>
 <span class="kn">from</span> <span class="nn">spacepy</span> <span class="kn">import</span> <span class="n">time</span> <span class="k">as</span> <span class="n">spt</span>
 
 <span class="c1">#Try to pull in the C version. Assumption is that if you import this module,</span>
@@ -143,6 +116,8 @@
 
 <span class="n">__contact__</span> <span class="o">=</span> <span class="s1">&#39;Brian Larsen: balarsen@lanl.gov&#39;</span>
 
+<div class="viewcode-block" id="unique_columns">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.unique_columns">[docs]</a>
 <span class="k">def</span> <span class="nf">unique_columns</span><span class="p">(</span><span class="n">inval</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Given a multidimensional input return the unique rows or columns along the given axis.</span>
@@ -154,8 +129,8 @@
 <span class="sd">    inval :  array-like</span>
 <span class="sd">        array to find unique columns or rows of</span>
 
-<span class="sd">    Optional Parameters</span>
-<span class="sd">    -------------------</span>
+<span class="sd">    Other Parameters</span>
+<span class="sd">    ----------------</span>
 <span class="sd">    axis : int</span>
 <span class="sd">        The axis to find unique over, default: 0</span>
 
@@ -176,10 +151,13 @@
         <span class="n">val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ascontiguousarray</span><span class="p">(</span><span class="n">inval</span><span class="p">)</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">void</span><span class="p">,</span> <span class="n">val</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">itemsize</span> <span class="o">*</span> <span class="n">val</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span>
     <span class="n">unique_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">val</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">val</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">unique_a</span>
+    <span class="k">return</span> <span class="n">unique_a</span></div>
+
 
     
-<div class="viewcode-block" id="hypot"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.hypot.html#spacepy.toolbox.hypot">[docs]</a><span class="k">def</span> <span class="nf">hypot</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<div class="viewcode-block" id="hypot">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.hypot">[docs]</a>
+<span class="k">def</span> <span class="nf">hypot</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    compute the N-dimensional hypot of an iterable or many arguments</span>
 
@@ -259,7 +237,10 @@
             <span class="n">ans</span> <span class="o">+=</span> <span class="n">arg</span><span class="o">**</span><span class="mi">2</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="tOverlap"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.tOverlap.html#spacepy.toolbox.tOverlap">[docs]</a><span class="k">def</span> <span class="nf">tOverlap</span><span class="p">(</span><span class="n">ts1</span><span class="p">,</span> <span class="n">ts2</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+<div class="viewcode-block" id="tOverlap">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.tOverlap">[docs]</a>
+<span class="k">def</span> <span class="nf">tOverlap</span><span class="p">(</span><span class="n">ts1</span><span class="p">,</span> <span class="n">ts2</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Finds the overlapping elements in two lists of datetime objects</span>
 
@@ -306,7 +287,10 @@
         <span class="n">idx_1in2</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">return</span> <span class="n">idx_1in2</span><span class="p">,</span> <span class="n">idx_2in1</span></div>
 
-<div class="viewcode-block" id="tOverlapHalf"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.tOverlapHalf.html#spacepy.toolbox.tOverlapHalf">[docs]</a><span class="k">def</span> <span class="nf">tOverlapHalf</span><span class="p">(</span><span class="n">ts1</span><span class="p">,</span> <span class="n">ts2</span><span class="p">,</span> <span class="n">presort</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+
+<div class="viewcode-block" id="tOverlapHalf">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.tOverlapHalf">[docs]</a>
+<span class="k">def</span> <span class="nf">tOverlapHalf</span><span class="p">(</span><span class="n">ts1</span><span class="p">,</span> <span class="n">ts2</span><span class="p">,</span> <span class="n">presort</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find overlapping elements in two lists of datetime objects</span>
 
@@ -348,7 +332,10 @@
         <span class="k">return</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ts2</span><span class="p">))</span>
                 <span class="k">if</span> <span class="n">ts2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">t_lower</span> <span class="ow">and</span> <span class="n">ts2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">t_upper</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="tCommon"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.tCommon.html#spacepy.toolbox.tCommon">[docs]</a><span class="k">def</span> <span class="nf">tCommon</span><span class="p">(</span><span class="n">ts1</span><span class="p">,</span> <span class="n">ts2</span><span class="p">,</span> <span class="n">mask_only</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+
+<div class="viewcode-block" id="tCommon">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.tCommon">[docs]</a>
+<span class="k">def</span> <span class="nf">tCommon</span><span class="p">(</span><span class="n">ts1</span><span class="p">,</span> <span class="n">ts2</span><span class="p">,</span> <span class="n">mask_only</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Finds the elements in a list of datetime objects present in another</span>
 
@@ -396,9 +383,9 @@
 
     <span class="n">tn1</span><span class="p">,</span> <span class="n">tn2</span> <span class="o">=</span> <span class="n">date2num</span><span class="p">(</span><span class="n">ts1</span><span class="p">),</span> <span class="n">date2num</span><span class="p">(</span><span class="n">ts2</span><span class="p">)</span>
 
-    <span class="n">el1in2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">tn1</span><span class="p">,</span> <span class="n">tn2</span><span class="p">,</span> <span class="n">assume_unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1">#makes mask of present/absent</span>
-    <span class="n">el1in2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">tn1</span><span class="p">,</span> <span class="n">tn2</span><span class="p">,</span> <span class="n">assume_unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1">#makes mask of present/absent</span>
-    <span class="n">el2in1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">tn2</span><span class="p">,</span> <span class="n">tn1</span><span class="p">,</span> <span class="n">assume_unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">el1in2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">tn1</span><span class="p">,</span> <span class="n">tn2</span><span class="p">,</span> <span class="n">assume_unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1">#makes mask of present/absent</span>
+    <span class="n">el1in2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">tn1</span><span class="p">,</span> <span class="n">tn2</span><span class="p">,</span> <span class="n">assume_unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1">#makes mask of present/absent</span>
+    <span class="n">el2in1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">tn2</span><span class="p">,</span> <span class="n">tn1</span><span class="p">,</span> <span class="n">assume_unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">mask_only</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">el1in2</span><span class="p">,</span> <span class="n">el2in1</span>
@@ -431,7 +418,10 @@
             <span class="n">dum2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dum2</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">dum1</span><span class="p">,</span> <span class="n">dum2</span></div>
 
-<div class="viewcode-block" id="loadpickle"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.loadpickle.html#spacepy.toolbox.loadpickle">[docs]</a><span class="k">def</span> <span class="nf">loadpickle</span><span class="p">(</span><span class="n">fln</span><span class="p">):</span>
+
+<div class="viewcode-block" id="loadpickle">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.loadpickle">[docs]</a>
+<span class="k">def</span> <span class="nf">loadpickle</span><span class="p">(</span><span class="n">fln</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    load a pickle and return content as dictionary</span>
 
@@ -457,33 +447,34 @@
 <span class="sd">    &gt;&gt;&gt; d = loadpickle(&#39;test.pbin&#39;)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">fln</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">fln</span> <span class="o">+</span> <span class="s1">&#39;.gz&#39;</span><span class="p">):</span>
-        <span class="n">gzip</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="c1"># It&#39;s a gzip</span>
         <span class="n">fln</span> <span class="o">+=</span> <span class="s1">&#39;.gz&#39;</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fln</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin1&#39;</span><span class="p">)</span>
         <span class="k">except</span> <span class="n">pickle</span><span class="o">.</span><span class="n">UnpicklingError</span><span class="p">:</span> <span class="c1">#maybe it&#39;s a gzip?</span>
-            <span class="n">gzip</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">gzip</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="k">if</span> <span class="n">gzip</span><span class="p">:</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="kn">import</span> <span class="nn">zlib</span>
-            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fln</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
-                <span class="n">stream</span> <span class="o">=</span> <span class="n">zlib</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="n">fh</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="mi">16</span> <span class="o">+</span> <span class="n">zlib</span><span class="o">.</span><span class="n">MAX_WBITS</span><span class="p">)</span> 
-                <span class="k">return</span> <span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin1&#39;</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">MemoryError</span><span class="p">:</span>
-            <span class="kn">import</span> <span class="nn">gzip</span>
-            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fln</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
-                <span class="n">gzh</span> <span class="o">=</span> <span class="n">gzip</span><span class="o">.</span><span class="n">GzipFile</span><span class="p">(</span><span class="n">fileobj</span><span class="o">=</span><span class="n">fh</span><span class="p">)</span>
-                <span class="n">contents</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">gzh</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin1&#39;</span><span class="p">)</span>
-                <span class="n">gzh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-            <span class="k">return</span> <span class="n">contents</span></div>
+            <span class="k">pass</span>
+    <span class="c1"># Try to resolve as a gzip</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">zlib</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fln</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+            <span class="n">stream</span> <span class="o">=</span> <span class="n">zlib</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="n">fh</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="mi">16</span> <span class="o">+</span> <span class="n">zlib</span><span class="o">.</span><span class="n">MAX_WBITS</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin1&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">MemoryError</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">gzip</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fln</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+            <span class="n">gzh</span> <span class="o">=</span> <span class="n">gzip</span><span class="o">.</span><span class="n">GzipFile</span><span class="p">(</span><span class="n">fileobj</span><span class="o">=</span><span class="n">fh</span><span class="p">)</span>
+            <span class="n">contents</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">gzh</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin1&#39;</span><span class="p">)</span>
+            <span class="n">gzh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">contents</span></div>
+
 
 
 <span class="c1"># -----------------------------------------------</span>
-<div class="viewcode-block" id="savepickle"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.savepickle.html#spacepy.toolbox.savepickle">[docs]</a><span class="k">def</span> <span class="nf">savepickle</span><span class="p">(</span><span class="n">fln</span><span class="p">,</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">compress</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="savepickle">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.savepickle">[docs]</a>
+<span class="k">def</span> <span class="nf">savepickle</span><span class="p">(</span><span class="n">fln</span><span class="p">,</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">compress</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    save dictionary variable dict to a pickle with filename fln</span>
 
@@ -522,8 +513,11 @@
             <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="nb">dict</span><span class="p">,</span> <span class="n">fh</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># 2 ... fast binary</span></div>
 
 
+
 <span class="c1"># -----------------------------------------------</span>
-<div class="viewcode-block" id="assemble"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.assemble.html#spacepy.toolbox.assemble">[docs]</a><span class="k">def</span> <span class="nf">assemble</span><span class="p">(</span><span class="n">fln_pattern</span><span class="p">,</span> <span class="n">outfln</span><span class="p">,</span> <span class="n">sortkey</span><span class="o">=</span><span class="s1">&#39;ticks&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="assemble">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.assemble">[docs]</a>
+<span class="k">def</span> <span class="nf">assemble</span><span class="p">(</span><span class="n">fln_pattern</span><span class="p">,</span> <span class="n">outfln</span><span class="p">,</span> <span class="n">sortkey</span><span class="o">=</span><span class="s1">&#39;ticks&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    assembles all pickled files matching fln_pattern into single file and</span>
 <span class="sd">    save as outfln. Pattern may contain simple shell-style wildcards \\*? a la fnmatch</span>
@@ -579,8 +573,10 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">TAIcount</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">fln</span><span class="p">][</span> <span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">fln</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span> <span class="p">])</span>
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">d</span><span class="p">[</span><span class="n">fln</span><span class="p">]:</span>
-            <span class="c1">#print fln, key</span>
-            <span class="n">dim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">fln</span><span class="p">][</span><span class="n">key</span><span class="p">]))</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dcomb</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">spt</span><span class="o">.</span><span class="n">Ticktock</span><span class="p">):</span>
+                <span class="n">dim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">fln</span><span class="p">][</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">dim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">fln</span><span class="p">][</span><span class="n">key</span><span class="p">]))</span>
             <span class="n">ax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">dim</span><span class="o">==</span><span class="n">TAIcount</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="c1"># then match with TAI length is given (jump over otherwise like for &#39;parameters&#39;)</span>
                 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dcomb</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">spt</span><span class="o">.</span><span class="n">Ticktock</span><span class="p">):</span>
@@ -597,19 +593,22 @@
             <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">dcomb</span><span class="p">[</span><span class="n">sortkey</span><span class="p">])</span>
         <span class="n">TAIcount</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dcomb</span><span class="p">[</span><span class="n">sortkey</span><span class="p">])</span>
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">dcomb</span><span class="p">:</span> <span class="c1"># iterates over keys by default</span>
-            <span class="n">dim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">dcomb</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dcomb</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">spt</span><span class="o">.</span><span class="n">Ticktock</span><span class="p">):</span>
+                <span class="n">dim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dcomb</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">dim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">dcomb</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span>
             <span class="n">ax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">dim</span><span class="o">==</span><span class="n">TAIcount</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="c1"># then match with length of TAI</span>
                 <span class="n">dcomb</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">dcomb</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span> <span class="c1"># resort</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="c1"># do nothing</span>
-        <span class="k">pass</span>
 
     <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> writing: &#39;</span><span class="p">,</span> <span class="n">outfln</span><span class="p">)</span>
     <span class="n">savepickle</span><span class="p">(</span><span class="n">outfln</span><span class="p">,</span> <span class="n">dcomb</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">dcomb</span></div>
 
-<div class="viewcode-block" id="human_sort"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.human_sort.html#spacepy.toolbox.human_sort">[docs]</a><span class="k">def</span> <span class="nf">human_sort</span><span class="p">(</span> <span class="n">l</span> <span class="p">):</span>
+
+<div class="viewcode-block" id="human_sort">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.human_sort">[docs]</a>
+<span class="k">def</span> <span class="nf">human_sort</span><span class="p">(</span> <span class="n">l</span> <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Sort the given list in the way that humans expect.</span>
 <span class="sd">    http://www.codinghorror.com/blog/2007/12/sorting-for-humans-natural-sort-order.html</span>
 
@@ -642,7 +641,10 @@
     <span class="k">return</span> <span class="n">l</span></div>
 
 
-<div class="viewcode-block" id="dictree"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.dictree.html#spacepy.toolbox.dictree">[docs]</a><span class="k">def</span> <span class="nf">dictree</span><span class="p">(</span><span class="n">in_dict</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">spaces</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+
+<div class="viewcode-block" id="dictree">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.dictree">[docs]</a>
+<span class="k">def</span> <span class="nf">dictree</span><span class="p">(</span><span class="n">in_dict</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">spaces</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">print_out</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    pretty print a dictionary tree</span>
@@ -751,6 +753,7 @@
         <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">res</span></div>
+
 
 
 <span class="k">def</span> <span class="nf">_crawl_yearly</span><span class="p">(</span><span class="n">base_url</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">datadir</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cached</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -1076,6 +1079,8 @@
     <span class="k">return</span> <span class="n">data</span>
 
 
+<div class="viewcode-block" id="LinkExtracter">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.LinkExtracter.html#spacepy.toolbox.LinkExtracter">[docs]</a>
 <span class="k">class</span> <span class="nc">LinkExtracter</span><span class="p">(</span><span class="n">html</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">HTMLParser</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Finds all links in a HTML page, useful for crawling.</span>
 
@@ -1083,21 +1088,30 @@
 <span class="sd">    a list of link targets.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
+<div class="viewcode-block" id="LinkExtracter.reset">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.LinkExtracter.html#spacepy.toolbox.LinkExtracter.reset">[docs]</a>
     <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">LinkExtracter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">links</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of link targets found in the page&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of link targets found in the page&quot;&quot;&quot;</span></div>
 
+
+<div class="viewcode-block" id="LinkExtracter.handle_starttag">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.LinkExtracter.html#spacepy.toolbox.LinkExtracter.handle_starttag">[docs]</a>
     <span class="k">def</span> <span class="nf">handle_starttag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">tag</span> <span class="o">!=</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">name</span> <span class="o">!=</span> <span class="s1">&#39;href&#39;</span><span class="p">:</span>
                 <span class="k">continue</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
+</div>
 
 
-<div class="viewcode-block" id="get_url"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.get_url.html#spacepy.toolbox.get_url">[docs]</a><span class="k">def</span> <span class="nf">get_url</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">outfile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reporthook</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cached</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+
+<div class="viewcode-block" id="get_url">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.get_url">[docs]</a>
+<span class="k">def</span> <span class="nf">get_url</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">outfile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reporthook</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cached</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">keepalive</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">conn</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Read data from a URL</span>
 
@@ -1244,7 +1258,10 @@
     <span class="k">return</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span> <span class="k">if</span> <span class="n">keepalive</span> <span class="k">else</span> <span class="n">data</span></div>
 
 
-<div class="viewcode-block" id="update"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.update.html#spacepy.toolbox.update">[docs]</a><span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="nb">all</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">QDomni</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">omni</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">omni2</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">leapsecs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+
+<div class="viewcode-block" id="update">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.update">[docs]</a>
+<span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="nb">all</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">QDomni</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">omni</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">omni2</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">leapsecs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
            <span class="n">PSDdata</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cached</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Download and update local database for omni, leapsecs etc</span>
@@ -1471,7 +1488,10 @@
                 <span class="n">cached</span><span class="o">=</span><span class="n">cached</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">datadir</span></div>
 
-<div class="viewcode-block" id="indsFromXrange"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.indsFromXrange.html#spacepy.toolbox.indsFromXrange">[docs]</a><span class="k">def</span> <span class="nf">indsFromXrange</span><span class="p">(</span><span class="n">inxrange</span><span class="p">):</span>
+
+<div class="viewcode-block" id="indsFromXrange">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.indsFromXrange">[docs]</a>
+<span class="k">def</span> <span class="nf">indsFromXrange</span><span class="p">(</span><span class="n">inxrange</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;return the start and end indices implied by a range, useful when range is zero-length</span>
 
 <span class="sd">    Parameters</span>
@@ -1508,7 +1528,10 @@
         <span class="n">retval</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)),</span> <span class="nb">int</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">))]</span>
     <span class="k">return</span> <span class="n">retval</span></div>
 
-<div class="viewcode-block" id="progressbar"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.progressbar.html#spacepy.toolbox.progressbar">[docs]</a><span class="k">def</span> <span class="nf">progressbar</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="n">blocksize</span><span class="p">,</span> <span class="n">totalsize</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Download Progress&#39;</span><span class="p">):</span>
+
+<div class="viewcode-block" id="progressbar">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.progressbar">[docs]</a>
+<span class="k">def</span> <span class="nf">progressbar</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="n">blocksize</span><span class="p">,</span> <span class="n">totalsize</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Download Progress&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    print a progress bar with urllib.urlretrieve reporthook functionality</span>
 
@@ -1526,7 +1549,10 @@
         <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="windowMean"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.windowMean.html#spacepy.toolbox.windowMean">[docs]</a><span class="k">def</span> <span class="nf">windowMean</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="p">[],</span> <span class="n">winsize</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">st_time</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">):</span>
+
+<div class="viewcode-block" id="windowMean">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.windowMean">[docs]</a>
+<span class="k">def</span> <span class="nf">windowMean</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="p">[],</span> <span class="n">winsize</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">st_time</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Windowing mean function, window overlap is user defined</span>
 
@@ -1606,14 +1632,14 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;windowmean error: data and time must have same length&#39;</span><span class="p">)</span>
-        <span class="c1">#First check if datetime objects</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">winsize</span><span class="p">)</span> <span class="o">==</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span>
-            <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">overlap</span><span class="p">)</span> <span class="o">==</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span>
-        <span class="k">except</span> <span class="ne">AssertionError</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;windowmean error: winsize/overlap must be timedeltas if a time array is supplied.&#39;</span><span class="p">)</span>
         <span class="n">pts</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1">#force time-based averaging</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">!=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">):</span>
+        <span class="c1">#First check if datetime objects</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">winsize</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">)</span>
+               <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">overlap</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">)):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;windowmean error: winsize/overlap must be&#39;</span>
+                                <span class="s1">&#39; timedeltas if a time array is datetime.&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
             <span class="n">startpt</span> <span class="o">=</span> <span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="c1">#now actually do windowing mean</span>
@@ -1621,21 +1647,18 @@
     <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">pts</span><span class="p">:</span>
         <span class="c1">#loop for fixed number of points in window</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">inttypes</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">long</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
-            <span class="n">inttypes</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">,)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">winsize</span><span class="p">,</span> <span class="n">inttypes</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">winsize</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
             <span class="n">winsize</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">winsize</span><span class="p">))</span>
             <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;windowmean: non-integer windowsize, rounding to </span><span class="si">%d</span><span class="s1">&#39;</span> \
-            <span class="o">%</span> <span class="n">winsize</span><span class="p">)</span>
+                          <span class="o">%</span> <span class="n">winsize</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">winsize</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">winsize</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;windowmean: window length &lt; 1, defaulting to 1&#39;</span><span class="p">)</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;windowmean: window length &lt; 1, defaulting to 1&#39;</span><span class="p">,</span>
+                          <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">overlap</span> <span class="o">&gt;=</span> <span class="n">winsize</span><span class="p">:</span>
             <span class="n">overlap</span> <span class="o">=</span> <span class="n">winsize</span> <span class="o">-</span> <span class="mi">1</span>
             <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;windowmean: overlap longer than window, truncated to</span>
-<span class="s1">            </span><span class="si">%d</span><span class="s1">&#39;&#39;&#39;</span> <span class="o">%</span> <span class="n">overlap</span><span class="p">)</span>
+<span class="s1">            </span><span class="si">%d</span><span class="s1">&#39;&#39;&#39;</span> <span class="o">%</span> <span class="n">overlap</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
         <span class="n">lastpt</span> <span class="o">=</span> <span class="n">winsize</span><span class="o">-</span><span class="mi">1</span> <span class="c1">#set last point to end of window size</span>
         <span class="k">while</span> <span class="n">lastpt</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
             <span class="n">datwin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">startpt</span><span class="p">:</span><span class="n">startpt</span><span class="o">+</span><span class="n">winsize</span><span class="p">]),</span> \
@@ -1650,11 +1673,11 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="c1">#loop with time-based window</span>
         <span class="n">lastpt</span> <span class="o">=</span> <span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">winsize</span>
-        <span class="n">delta</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">microseconds</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#TODO: replace this with an explicit check for times on the boundary?</span>
-        <span class="k">if</span> <span class="n">st_time</span><span class="p">:</span>
-            <span class="n">startpt</span> <span class="o">=</span> <span class="n">st_time</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">):</span>
+            <span class="n">delta</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">microseconds</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#TODO: replace this with an explicit check for times on the boundary?</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">startpt</span> <span class="o">=</span> <span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">delta</span> <span class="o">=</span> <span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">time</span><span class="p">))</span> <span class="o">/</span> <span class="mf">1.e6</span>  <span class="c1"># Definite fudge...</span>
+        <span class="n">startpt</span> <span class="o">=</span> <span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">st_time</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">st_time</span>
         <span class="k">if</span> <span class="n">overlap</span> <span class="o">&gt;=</span> <span class="n">winsize</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Overlap requested greater than size of window&#39;</span><span class="p">)</span>
         <span class="k">while</span> <span class="n">startpt</span> <span class="o">&lt;</span> <span class="n">time</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
@@ -1664,7 +1687,7 @@
                 <span class="n">getmean</span> <span class="o">=</span> <span class="n">op</span><span class="p">(</span><span class="n">getdata</span><span class="o">.</span><span class="n">compressed</span><span class="p">())</span> <span class="c1">#find mean excluding NaNs</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">getmean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-            <span class="n">gettime</span> <span class="o">=</span> <span class="n">startpt</span> <span class="o">+</span> <span class="n">winsize</span><span class="o">//</span><span class="mi">2</span> <span class="c1">#new timestamp -floordiv req&#39;d with future division</span>
+            <span class="n">gettime</span> <span class="o">=</span> <span class="n">startpt</span> <span class="o">+</span> <span class="n">winsize</span><span class="o">/</span><span class="mi">2</span>
             <span class="n">startpt</span> <span class="o">=</span> <span class="n">startpt</span> <span class="o">+</span> <span class="n">winsize</span> <span class="o">-</span> <span class="n">overlap</span> <span class="c1">#advance window start</span>
             <span class="n">lastpt</span> <span class="o">=</span> <span class="n">startpt</span> <span class="o">+</span> <span class="n">winsize</span>
             <span class="n">outdata</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">getmean</span><span class="p">)</span> <span class="c1">#construct output arrays</span>
@@ -1672,7 +1695,10 @@
 
     <span class="k">return</span> <span class="n">outdata</span><span class="p">,</span> <span class="n">outtime</span></div>
 
-<div class="viewcode-block" id="medAbsDev"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.medAbsDev.html#spacepy.toolbox.medAbsDev">[docs]</a><span class="k">def</span> <span class="nf">medAbsDev</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+
+<div class="viewcode-block" id="medAbsDev">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.medAbsDev">[docs]</a>
+<span class="k">def</span> <span class="nf">medAbsDev</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate median absolute deviation of a given input series</span>
 
@@ -1728,7 +1754,10 @@
         <span class="n">mad</span> <span class="o">*=</span> <span class="mf">1.4826</span> <span class="c1">#scale so that MAD is same as SD for normal distr.</span>
     <span class="k">return</span> <span class="n">mad</span></div>
 
-<div class="viewcode-block" id="binHisto"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.binHisto.html#spacepy.toolbox.binHisto">[docs]</a><span class="k">def</span> <span class="nf">binHisto</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+
+<div class="viewcode-block" id="binHisto">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.binHisto">[docs]</a>
+<span class="k">def</span> <span class="nf">binHisto</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculates bin width and number of bins for histogram using Freedman-Diaconis rule, if rule fails, defaults to square-root method</span>
 
@@ -1782,7 +1811,10 @@
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Used F-D rule&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">binw</span><span class="p">,</span> <span class="n">nbins</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="bootHisto"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.bootHisto.html#spacepy.toolbox.bootHisto">[docs]</a><span class="k">def</span> <span class="nf">bootHisto</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">inter</span><span class="o">=</span><span class="mf">90.</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+
+<div class="viewcode-block" id="bootHisto">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.bootHisto">[docs]</a>
+<span class="k">def</span> <span class="nf">bootHisto</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">inter</span><span class="o">=</span><span class="mf">90.</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
               <span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Bootstrap confidence intervals for a histogram.</span>
 
@@ -1852,7 +1884,7 @@
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
 <span class="sd">    binHisto</span>
-<span class="sd">    plot.utils.set_target</span>
+<span class="sd">    spacepy.plot.utils.set_target</span>
 <span class="sd">    numpy.histogram</span>
 <span class="sd">    matplotlib.pyplot.hist</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1883,7 +1915,10 @@
     <span class="k">return</span> <span class="n">bin_edges</span><span class="p">,</span> <span class="n">ci_low</span><span class="p">,</span> <span class="n">ci_high</span><span class="p">,</span> <span class="n">sample</span><span class="p">,</span> <span class="n">bars</span></div>
 
 
-<div class="viewcode-block" id="logspace"><a class="viewcode-back" href="../../doc_standard.html#spacepy.toolbox.logspace">[docs]</a><span class="k">def</span> <span class="nf">logspace</span><span class="p">(</span><span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+<div class="viewcode-block" id="logspace">
+<a class="viewcode-back" href="../../doc_standard.html#spacepy.toolbox.logspace">[docs]</a>
+<span class="k">def</span> <span class="nf">logspace</span><span class="p">(</span><span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns log-spaced bins. Same as numpy.logspace except the min and max are the min and max</span>
 <span class="sd">    not log10(min) and log10(max)</span>
@@ -1930,7 +1965,10 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">min</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">max</span><span class="p">),</span> <span class="n">num</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="linspace"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.linspace.html#spacepy.toolbox.linspace">[docs]</a><span class="k">def</span> <span class="nf">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+<div class="viewcode-block" id="linspace">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.linspace">[docs]</a>
+<span class="k">def</span> <span class="nf">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns linear-spaced bins. Same as numpy.linspace except works with datetime</span>
 <span class="sd">    and is faster</span>
@@ -1982,7 +2020,10 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="geomspace"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.geomspace.html#spacepy.toolbox.geomspace">[docs]</a><span class="k">def</span> <span class="nf">geomspace</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+
+<div class="viewcode-block" id="geomspace">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.geomspace">[docs]</a>
+<span class="k">def</span> <span class="nf">geomspace</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns geometrically spaced numbers.</span>
 
@@ -1993,7 +2034,7 @@
 <span class="sd">    ratio : float (optional)</span>
 <span class="sd">        The ratio between subsequent points</span>
 <span class="sd">    stop : float (optional)</span>
-<span class="sd">        End value, if this is selected `num` is overridden</span>
+<span class="sd">        End value, if this is selected ``num`` is overridden</span>
 <span class="sd">    num : int (optional)</span>
 <span class="sd">        Number of samples to generate. Default is 50.</span>
 
@@ -2046,7 +2087,10 @@
             <span class="n">j</span><span class="o">+=</span><span class="mi">1</span>
         <span class="k">return</span> <span class="n">seq</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="arraybin"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.arraybin.html#spacepy.toolbox.arraybin">[docs]</a><span class="k">def</span> <span class="nf">arraybin</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">bins</span><span class="p">):</span>
+
+<div class="viewcode-block" id="arraybin">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.arraybin">[docs]</a>
+<span class="k">def</span> <span class="nf">arraybin</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">bins</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Split a sequence into subsequences based on value.</span>
 
@@ -2078,7 +2122,10 @@
     <span class="k">return</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">start_idx</span><span class="p">,</span> <span class="n">stop_idx</span><span class="p">))</span> <span class="k">for</span> <span class="p">(</span><span class="n">start_idx</span><span class="p">,</span> <span class="n">stop_idx</span><span class="p">)</span>
             <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">splits</span><span class="p">,</span> <span class="n">splits</span> <span class="o">+</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)])]</span></div>
 
-<div class="viewcode-block" id="mlt2rad"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.mlt2rad.html#spacepy.toolbox.mlt2rad">[docs]</a><span class="k">def</span> <span class="nf">mlt2rad</span><span class="p">(</span><span class="n">mlt</span><span class="p">,</span> <span class="n">midnight</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+
+<div class="viewcode-block" id="mlt2rad">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.mlt2rad">[docs]</a>
+<span class="k">def</span> <span class="nf">mlt2rad</span><span class="p">(</span><span class="n">mlt</span><span class="p">,</span> <span class="n">midnight</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert mlt values to radians for polar plotting</span>
 <span class="sd">    transform mlt angles to radians from -pi to pi</span>
@@ -2119,7 +2166,10 @@
         <span class="n">rad_arr</span> <span class="o">=</span> <span class="p">(</span><span class="n">mlt_arr</span><span class="o">-</span><span class="mi">12</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">12.</span>
     <span class="k">return</span> <span class="n">rad_arr</span></div>
 
-<div class="viewcode-block" id="rad2mlt"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.rad2mlt.html#spacepy.toolbox.rad2mlt">[docs]</a><span class="k">def</span> <span class="nf">rad2mlt</span><span class="p">(</span><span class="n">rad</span><span class="p">,</span> <span class="n">midnight</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+
+<div class="viewcode-block" id="rad2mlt">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.rad2mlt">[docs]</a>
+<span class="k">def</span> <span class="nf">rad2mlt</span><span class="p">(</span><span class="n">rad</span><span class="p">,</span> <span class="n">midnight</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert radians values to mlt</span>
 <span class="sd">    transform radians from -pi to pi to mlt</span>
@@ -2153,7 +2203,10 @@
     <span class="n">mlt_arr</span><span class="o">=</span><span class="n">rad_arr</span><span class="o">*</span><span class="p">(</span><span class="mi">12</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">+</span> <span class="mi">12</span>
     <span class="k">return</span> <span class="n">mlt_arr</span></div>
 
-<div class="viewcode-block" id="pmm"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.pmm.html#spacepy.toolbox.pmm">[docs]</a><span class="k">def</span> <span class="nf">pmm</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+<div class="viewcode-block" id="pmm">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.pmm">[docs]</a>
+<span class="k">def</span> <span class="nf">pmm</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    print min and max of input arrays</span>
 
@@ -2181,7 +2234,8 @@
         <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
             <span class="n">ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
             <span class="kn">import</span> <span class="nn">warnings</span>
-            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;pmm: Unable to exclude non-finite values, results may be incorrect&#39;</span><span class="p">,</span> <span class="ne">RuntimeWarning</span><span class="p">)</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;pmm: Unable to exclude non-finite values, results may be incorrect&#39;</span><span class="p">,</span>
+                          <span class="ne">RuntimeWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">ans</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">ind</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">ind</span><span class="p">])])</span>
         <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
@@ -2191,7 +2245,10 @@
             <span class="n">ans</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">a_tmp</span><span class="p">[</span><span class="n">ind</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">a_tmp</span><span class="p">[</span><span class="n">ind</span><span class="p">])])</span>
     <span class="k">return</span> <span class="n">ans</span></div>
 
-<div class="viewcode-block" id="getNamedPath"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.getNamedPath.html#spacepy.toolbox.getNamedPath">[docs]</a><span class="k">def</span> <span class="nf">getNamedPath</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+
+<div class="viewcode-block" id="getNamedPath">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.getNamedPath">[docs]</a>
+<span class="k">def</span> <span class="nf">getNamedPath</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return the full path of a parent directory with name as the leaf</span>
 
@@ -2216,7 +2273,10 @@
         <span class="k">return</span> <span class="n">path</span>
     <span class="k">return</span> <span class="n">findNamed</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span></div>
 
-<div class="viewcode-block" id="query_yes_no"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.query_yes_no.html#spacepy.toolbox.query_yes_no">[docs]</a><span class="k">def</span> <span class="nf">query_yes_no</span><span class="p">(</span><span class="n">question</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span><span class="p">):</span>
+
+<div class="viewcode-block" id="query_yes_no">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.query_yes_no">[docs]</a>
+<span class="k">def</span> <span class="nf">query_yes_no</span><span class="p">(</span><span class="n">question</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Ask a yes/no question via raw_input() and return their answer.</span>
 
@@ -2262,10 +2322,7 @@
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;invalid default answer: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">default</span><span class="p">))</span>
     <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">question</span> <span class="o">+</span> <span class="n">prompt</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
-            <span class="n">choice</span> <span class="o">=</span> <span class="n">raw_input</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-        <span class="k">elif</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">:</span>
-            <span class="n">choice</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">choice</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">default</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">choice</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">default</span>
         <span class="k">elif</span> <span class="n">choice</span> <span class="ow">in</span> <span class="n">valid</span><span class="p">:</span>
@@ -2274,7 +2331,10 @@
             <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Please respond with &#39;yes&#39; or &#39;no&#39; &quot;</span>\
                              <span class="s2">&quot;(or &#39;y&#39; or &#39;n&#39;).</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="interpol"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.interpol.html#spacepy.toolbox.interpol">[docs]</a><span class="k">def</span> <span class="nf">interpol</span><span class="p">(</span><span class="n">newx</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">wrap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+<div class="viewcode-block" id="interpol">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.interpol">[docs]</a>
+<span class="k">def</span> <span class="nf">interpol</span><span class="p">(</span><span class="n">newx</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">wrap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    1-D linear interpolation with interpolation of hours/longitude</span>
 
@@ -2368,9 +2428,12 @@
         <span class="n">newy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">newx</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">compressed</span><span class="p">(),</span> <span class="n">y</span><span class="o">.</span><span class="n">compressed</span><span class="p">(),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">newy</span></div>
 
+
 <span class="c1"># -----------------------------------------------</span>
 
-<div class="viewcode-block" id="normalize"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.normalize.html#spacepy.toolbox.normalize">[docs]</a><span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="n">low</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+<div class="viewcode-block" id="normalize">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.normalize">[docs]</a>
+<span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="n">low</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Given an input vector normalize the vector to a given range</span>
 
@@ -2397,7 +2460,10 @@
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">vec</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">vec</span><span class="p">)),</span> <span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">))</span></div>
 
 
-<div class="viewcode-block" id="intsolve"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.intsolve.html#spacepy.toolbox.intsolve">[docs]</a><span class="k">def</span> <span class="nf">intsolve</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">maxit</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+
+<div class="viewcode-block" id="intsolve">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.intsolve">[docs]</a>
+<span class="k">def</span> <span class="nf">intsolve</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">maxit</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find the function input such that definite integral is desired value.</span>
 
@@ -2468,7 +2534,10 @@
              <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">),</span> <span class="ne">UserWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">test_bound</span></div>
 
-<div class="viewcode-block" id="dist_to_list"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.dist_to_list.html#spacepy.toolbox.dist_to_list">[docs]</a><span class="k">def</span> <span class="nf">dist_to_list</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="dist_to_list">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.dist_to_list">[docs]</a>
+<span class="k">def</span> <span class="nf">dist_to_list</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert a probability distribution function to a list of values</span>
 
@@ -2515,7 +2584,10 @@
     <span class="n">step</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">total</span><span class="p">)</span> <span class="o">/</span> <span class="n">length</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">intsolve</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.5</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="n">step</span><span class="p">,</span> <span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">length</span><span class="p">)]</span></div>
 
-<div class="viewcode-block" id="bin_center_to_edges"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.bin_center_to_edges.html#spacepy.toolbox.bin_center_to_edges">[docs]</a><span class="k">def</span> <span class="nf">bin_center_to_edges</span><span class="p">(</span><span class="n">centers</span><span class="p">):</span>
+
+<div class="viewcode-block" id="bin_center_to_edges">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.bin_center_to_edges">[docs]</a>
+<span class="k">def</span> <span class="nf">bin_center_to_edges</span><span class="p">(</span><span class="n">centers</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert a list of bin centers to their edges</span>
 
@@ -2550,7 +2622,10 @@
     <span class="n">edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edges</span><span class="p">,</span> <span class="n">centers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="n">centers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">edges</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
     <span class="k">return</span> <span class="n">edges</span></div>
 
-<div class="viewcode-block" id="bin_edges_to_center"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.bin_edges_to_center.html#spacepy.toolbox.bin_edges_to_center">[docs]</a><span class="k">def</span> <span class="nf">bin_edges_to_center</span><span class="p">(</span><span class="n">edges</span><span class="p">):</span>
+
+<div class="viewcode-block" id="bin_edges_to_center">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.bin_edges_to_center">[docs]</a>
+<span class="k">def</span> <span class="nf">bin_edges_to_center</span><span class="p">(</span><span class="n">edges</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert a list of bin edges to their centers</span>
 
@@ -2578,12 +2653,12 @@
 <span class="sd">    [0.5, 1.5, 2.5, 3.5]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">)</span> <span class="ow">and</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">&lt;=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="o">//</span><span class="mi">2</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="o">/</span><span class="mi">2</span></div>
+    <span class="k">return</span> <span class="n">edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="o">/</span><span class="mi">2</span></div>
 
-<div class="viewcode-block" id="thread_job"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.thread_job.html#spacepy.toolbox.thread_job">[docs]</a><span class="k">def</span> <span class="nf">thread_job</span><span class="p">(</span><span class="n">job_size</span><span class="p">,</span> <span class="n">thread_count</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+<div class="viewcode-block" id="thread_job">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.thread_job">[docs]</a>
+<span class="k">def</span> <span class="nf">thread_job</span><span class="p">(</span><span class="n">job_size</span><span class="p">,</span> <span class="n">thread_count</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Split a job into subjobs and run a thread for each</span>
 
@@ -2683,7 +2758,10 @@
         <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
             <span class="n">t</span><span class="o">.</span><span class="n">join</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="thread_map"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.thread_map.html#spacepy.toolbox.thread_map">[docs]</a><span class="k">def</span> <span class="nf">thread_map</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">iterable</span><span class="p">,</span> <span class="n">thread_count</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+<div class="viewcode-block" id="thread_map">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.thread_map">[docs]</a>
+<span class="k">def</span> <span class="nf">thread_map</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">iterable</span><span class="p">,</span> <span class="n">thread_count</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Apply a function to every element of a list, in separate threads</span>
 
@@ -2748,7 +2826,10 @@
                <span class="n">target</span><span class="p">,</span> <span class="n">iterable</span><span class="p">,</span> <span class="n">retvals</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">retvals</span></div>
 
-<div class="viewcode-block" id="eventTimer"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.eventTimer.html#spacepy.toolbox.eventTimer">[docs]</a><span class="k">def</span> <span class="nf">eventTimer</span><span class="p">(</span><span class="n">Event</span><span class="p">,</span> <span class="n">Time1</span><span class="p">):</span>
+
+<div class="viewcode-block" id="eventTimer">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.eventTimer">[docs]</a>
+<span class="k">def</span> <span class="nf">eventTimer</span><span class="p">(</span><span class="n">Event</span><span class="p">,</span> <span class="n">Time1</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Times an event then prints out the time and the name of the event,</span>
 <span class="sd">    nice for debugging and seeing that the code is progressing</span>
@@ -2778,7 +2859,10 @@
     <span class="k">return</span> <span class="n">Time2</span></div>
 
 
-<div class="viewcode-block" id="isview"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.isview.html#spacepy.toolbox.isview">[docs]</a><span class="k">def</span> <span class="nf">isview</span><span class="p">(</span><span class="n">array1</span><span class="p">,</span> <span class="n">array2</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="isview">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.isview">[docs]</a>
+<span class="k">def</span> <span class="nf">isview</span><span class="p">(</span><span class="n">array1</span><span class="p">,</span> <span class="n">array2</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns if an object is a view of another object.  More precisely if one array argument is specified</span>
 <span class="sd">    True is returned is the arrays owns its data.  If two arrays arguments are specified a tuple is returned</span>
@@ -2832,7 +2916,10 @@
     <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="c1"># if it is not an array then it is not a view</span></div>
 
-<div class="viewcode-block" id="interweave"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.interweave.html#spacepy.toolbox.interweave">[docs]</a><span class="k">def</span> <span class="nf">interweave</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+
+<div class="viewcode-block" id="interweave">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.interweave">[docs]</a>
+<span class="k">def</span> <span class="nf">interweave</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    given two array-like variables interweave them together.</span>
 <span class="sd">    Discussed here: http://stackoverflow.com/questions/5347065/interweaving-two-numpy-arrays</span>
@@ -2858,12 +2945,18 @@
     <span class="k">return</span> <span class="n">ans</span></div>
 
 
-<div class="viewcode-block" id="TimeoutError"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.TimeoutError.html#spacepy.toolbox.TimeoutError">[docs]</a><span class="k">class</span> <span class="nc">TimeoutError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+
+<div class="viewcode-block" id="TimeoutError">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.TimeoutError">[docs]</a>
+<span class="k">class</span> <span class="nc">TimeoutError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised when a time-limited process times out&quot;&quot;&quot;</span>
     <span class="k">pass</span></div>
 
 
-<div class="viewcode-block" id="do_with_timeout"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.do_with_timeout.html#spacepy.toolbox.do_with_timeout">[docs]</a><span class="k">def</span> <span class="nf">do_with_timeout</span><span class="p">(</span><span class="n">timeout</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+<div class="viewcode-block" id="do_with_timeout">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.do_with_timeout">[docs]</a>
+<span class="k">def</span> <span class="nf">do_with_timeout</span><span class="p">(</span><span class="n">timeout</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Execute a function (or method) with a timeout.</span>
 
@@ -2944,9 +3037,16 @@
     <span class="k">return</span> <span class="n">retval</span></div>
 
 
-<div class="viewcode-block" id="timeout_check_call"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.timeout_check_call.html#spacepy.toolbox.timeout_check_call">[docs]</a><span class="k">def</span> <span class="nf">timeout_check_call</span><span class="p">(</span><span class="n">timeout</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+<div class="viewcode-block" id="timeout_check_call">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.timeout_check_call">[docs]</a>
+<span class="k">def</span> <span class="nf">timeout_check_call</span><span class="p">(</span><span class="n">timeout</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Call a subprocess with a timeout.</span>
+
+<span class="sd">    .. deprecated:: 0.7.0</span>
+<span class="sd">        Use ``timeout`` argument of :func:`subprocess.check_call`, added</span>
+<span class="sd">        in Python 3.3.</span>
 
 <span class="sd">    Like :func:`subprocess.check_call`, but will terminate the process and</span>
 <span class="sd">    raise :exc:`TimeoutError` if it runs for too long.</span>
@@ -2981,6 +3081,9 @@
 <span class="sd">    out : int</span>
 <span class="sd">        0 on successful completion</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;timeout_check_call was deprecated in 0.7.0&quot;</span>
+                  <span class="s2">&quot; and will be removed.&quot;</span><span class="p">,</span>
+                  <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">resolution</span> <span class="o">=</span> <span class="mf">0.1</span>
     <span class="n">pro</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="n">starttime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
@@ -2999,7 +3102,10 @@
     <span class="k">return</span> <span class="mi">0</span></div>
 
 
-<div class="viewcode-block" id="poisson_fit"><a class="viewcode-back" href="../../autosummary/spacepy.toolbox.poisson_fit.html#spacepy.toolbox.poisson_fit">[docs]</a><span class="k">def</span> <span class="nf">poisson_fit</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">initial</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;Powell&#39;</span><span class="p">):</span>
+
+<div class="viewcode-block" id="poisson_fit">
+<a class="viewcode-back" href="../../autosummary/spacepy.toolbox.html#spacepy.toolbox.poisson_fit">[docs]</a>
+<span class="k">def</span> <span class="nf">poisson_fit</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">initial</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;Powell&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Fit a Poisson distribution to data using the method and initial guess provided.</span>
 
@@ -3049,10 +3155,28 @@
                    <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>  <span class="c1"># minimization method, see docs</span>
                    <span class="p">)</span>
     <span class="k">return</span> <span class="n">ans</span></div>
+
 </pre></div>
 
             <div class="clearer"></div>
           </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/logo.png" alt="Logo"/>
+            </a></p>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -3077,8 +3201,8 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2024, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
 </html>

@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.igrf &#8212; SpacePy v0.6.0 Manual</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <title>spacepy.igrf &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    
-    <link rel="shortcut icon" href="../../_static/spacepy_favicon.ico"/>
+    <script src="../../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <link rel="icon" href="../../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
   </head><body>
@@ -46,24 +42,7 @@
         <li class="nav-item nav-item-this"><a href="">spacepy.igrf</a></li> 
       </ul>
     </div>
-
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="../../index.html">
-              <img class="logo" src="../../_static/logo.png" alt="Logo"/>
-            </a></p>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -75,15 +54,6 @@
 
 <span class="sd">This module is intended primarily to support :mod:`~spacepy.coordinates`</span>
 <span class="sd">rather than for direct end use, and the interface is subject to change.</span>
-
-<span class="sd">Classes</span>
-<span class="sd">-------</span>
-<span class="sd">.. autosummary::</span>
-<span class="sd">    :template: clean_class.rst</span>
-<span class="sd">    :toctree: autosummary</span>
-
-<span class="sd">    IGRFCoefficients</span>
-<span class="sd">    IGRF</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 
@@ -101,7 +71,9 @@
 <span class="kn">import</span> <span class="nn">spacepy.time</span> <span class="k">as</span> <span class="nn">spt</span>
 
 
-<div class="viewcode-block" id="IGRFCoefficients"><a class="viewcode-back" href="../../autosummary/spacepy.igrf.IGRFCoefficients.html#spacepy.igrf.IGRFCoefficients">[docs]</a><span class="k">class</span> <span class="nc">IGRFCoefficients</span><span class="p">():</span>
+<div class="viewcode-block" id="IGRFCoefficients">
+<a class="viewcode-back" href="../../autosummary/spacepy.igrf.IGRFCoefficients.html#spacepy.igrf.IGRFCoefficients">[docs]</a>
+<span class="k">class</span> <span class="nc">IGRFCoefficients</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Read and store IGRF coefficients from data file</span>
 
 <span class="sd">    Other Parameters</span>
@@ -109,6 +81,8 @@
 <span class="sd">    fname : str, optional</span>
 <span class="sd">        Filename to read from; defaults from the .spacepy data directory.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="IGRFCoefficients.__init__">
+<a class="viewcode-back" href="../../autosummary/spacepy.igrf.IGRFCoefficients.html#spacepy.igrf.IGRFCoefficients.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fname</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="c1"># Store coefficients and SV in nested arrays</span>
         <span class="c1"># This is triangular, e.g.,</span>
@@ -164,44 +138,23 @@
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;g_SV&#39;</span><span class="p">,</span> <span class="s1">&#39;h_SV&#39;</span><span class="p">]:</span>
             <span class="k">for</span> <span class="n">arr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">coeffs</span><span class="p">[</span><span class="n">key</span><span class="p">]:</span>
                 <span class="n">arr</span><span class="o">.</span><span class="n">setflags</span><span class="p">(</span><span class="n">write</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
+</div>
+
 
 
 <span class="c1"># load coefficients so it doesn&#39;t get done on instantiation of IGRF class</span>
 <span class="n">igrfcoeffs</span> <span class="o">=</span> <span class="n">IGRFCoefficients</span><span class="p">()</span>
 
 
-<div class="viewcode-block" id="IGRF"><a class="viewcode-back" href="../../autosummary/spacepy.igrf.IGRF.html#spacepy.igrf.IGRF">[docs]</a><span class="k">class</span> <span class="nc">IGRF</span><span class="p">():</span>
+<div class="viewcode-block" id="IGRF">
+<a class="viewcode-back" href="../../autosummary/spacepy.igrf.IGRF.html#spacepy.igrf.IGRF">[docs]</a>
+<span class="k">class</span> <span class="nc">IGRF</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;International Geomagnetic Reference Field model</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
 
 <span class="sd">    .. versionadded:: 0.3.0</span>
-
-<span class="sd">    .. rubric:: Methods</span>
-
-<span class="sd">    .. autosummary::</span>
-
-<span class="sd">        ~IGRF.calcDipoleAxis</span>
-<span class="sd">        ~IGRF.initialize</span>
-
-<span class="sd">    .. rubric:: Data</span>
-
-<span class="sd">    .. autosummary::</span>
-
-<span class="sd">        dipole</span>
-<span class="sd">        moment</span>
-
-<span class="sd">    .. automethod:: calcDipoleAxis</span>
-<span class="sd">    .. automethod:: initialize</span>
-
-<span class="sd">    .. attribute:: dipole</span>
-
-<span class="sd">        Characteristics of dipole (`dict`).</span>
-
-<span class="sd">    .. attribute:: moment</span>
-
-<span class="sd">        Dipole moments (`dict`).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">dipole</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Characteristics of dipole (`dict`).&quot;&quot;&quot;</span>
@@ -209,15 +162,20 @@
     <span class="n">moment</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Dipole moments (`dict`).&quot;&quot;&quot;</span>
 
+<div class="viewcode-block" id="IGRF.__init__">
+<a class="viewcode-back" href="../../autosummary/spacepy.igrf.IGRF.html#spacepy.igrf.IGRF.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__status</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;coeffs&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
                          <span class="s1">&#39;init&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
                          <span class="s1">&#39;time_set&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
                          <span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__coeffs</span> <span class="o">=</span> <span class="n">igrfcoeffs</span><span class="o">.</span><span class="n">coeffs</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__status</span><span class="p">[</span><span class="s1">&#39;coeffs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__status</span><span class="p">[</span><span class="s1">&#39;coeffs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="IGRF.initialize"><a class="viewcode-back" href="../../autosummary/spacepy.igrf.IGRF.html#spacepy.igrf.IGRF.initialize">[docs]</a>    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">limits</span><span class="o">=</span><span class="s1">&#39;warn&#39;</span><span class="p">):</span>
+
+<div class="viewcode-block" id="IGRF.initialize">
+<a class="viewcode-back" href="../../autosummary/spacepy.igrf.IGRF.html#spacepy.igrf.IGRF.initialize">[docs]</a>
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">limits</span><span class="o">=</span><span class="s1">&#39;warn&#39;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize model state to a particular time.</span>
 
 <span class="sd">        Parameters</span>
@@ -237,7 +195,7 @@
         <span class="k">if</span> <span class="n">time</span> <span class="o">&lt;</span> <span class="n">igrfcoeffs</span><span class="o">.</span><span class="n">datelow</span> <span class="ow">or</span> <span class="n">time</span> <span class="o">&gt;</span> <span class="n">igrfcoeffs</span><span class="o">.</span><span class="n">datehigh</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">limits</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;warn&#39;</span><span class="p">:</span>
                 <span class="n">errmsg</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Proceeding using effective date </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">igrfcoeffs</span><span class="o">.</span><span class="n">datehigh</span><span class="p">)</span>
-                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">errmsg</span><span class="p">)</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">errmsg</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="n">igrfcoeffs</span><span class="o">.</span><span class="n">datehigh</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">errmsg</span> <span class="o">+=</span> <span class="s1">&#39;&#39;&#39;</span><span class="se">\n</span><span class="s1">Use &quot;limits=&#39;warn&#39;&quot; to force out-of-range times &#39;&#39;&#39;</span>
@@ -251,7 +209,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">calcDipoleAxis</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__status</span><span class="p">[</span><span class="s1">&#39;time_set&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="IGRF.calcDipoleAxis"><a class="viewcode-back" href="../../autosummary/spacepy.igrf.IGRF.html#spacepy.igrf.IGRF.calcDipoleAxis">[docs]</a>    <span class="k">def</span> <span class="nf">calcDipoleAxis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="IGRF.calcDipoleAxis">
+<a class="viewcode-back" href="../../autosummary/spacepy.igrf.IGRF.html#spacepy.igrf.IGRF.calcDipoleAxis">[docs]</a>
+    <span class="k">def</span> <span class="nf">calcDipoleAxis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculates dipole axis for initialized time.</span>
 
 <span class="sd">        Populates :data:`moment` and :data:`dipole`.</span>
@@ -259,7 +220,8 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__status</span><span class="p">[</span><span class="s1">&#39;time_set&#39;</span><span class="p">]:</span>
             <span class="k">return</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__status</span><span class="p">[</span><span class="s1">&#39;init&#39;</span><span class="p">]:</span>
-            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;IGRF: Initialize for a time before invoking this method.&#39;</span><span class="p">)</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;IGRF: Initialize for a time before invoking this method.&#39;</span><span class="p">,</span>
+                          <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
             <span class="k">return</span>
 
         <span class="c1"># Find the indices for the epochs surrounding input time</span>
@@ -296,11 +258,30 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">dipole</span><span class="p">[</span><span class="s1">&#39;cd_gcolat_rad&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">g10</span><span class="o">/</span><span class="n">mom</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dipole</span><span class="p">[</span><span class="s1">&#39;cd_glon_rad&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">h11</span><span class="o">/</span><span class="n">g11</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dipole</span><span class="p">[</span><span class="s1">&#39;cd_gcolat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dipole</span><span class="p">[</span><span class="s1">&#39;cd_gcolat_rad&#39;</span><span class="p">])</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dipole</span><span class="p">[</span><span class="s1">&#39;cd_glon&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dipole</span><span class="p">[</span><span class="s1">&#39;cd_glon_rad&#39;</span><span class="p">])</span></div></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dipole</span><span class="p">[</span><span class="s1">&#39;cd_glon&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dipole</span><span class="p">[</span><span class="s1">&#39;cd_glon_rad&#39;</span><span class="p">])</span></div>
+</div>
+
 </pre></div>
 
             <div class="clearer"></div>
           </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/logo.png" alt="Logo"/>
+            </a></p>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -325,8 +306,8 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2024, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
 </html>

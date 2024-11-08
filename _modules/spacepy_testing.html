@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy_testing &#8212; SpacePy v0.6.0 Manual</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <title>spacepy_testing &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    
-    <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
   </head><body>
@@ -45,24 +41,7 @@
         <li class="nav-item nav-item-this"><a href="">spacepy_testing</a></li> 
       </ul>
     </div>
-
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="../index.html">
-              <img class="logo" src="../_static/logo.png" alt="Logo"/>
-            </a></p>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -92,7 +71,9 @@
 <span class="sd">&quot;&quot;&quot;Directory containing unit test data&quot;&quot;&quot;</span>
 
 
-<div class="viewcode-block" id="add_build_to_path"><a class="viewcode-back" href="../autosummary/spacepy_testing.add_build_to_path.html#spacepy_testing.add_build_to_path">[docs]</a><span class="k">def</span> <span class="nf">add_build_to_path</span><span class="p">():</span>
+<div class="viewcode-block" id="add_build_to_path">
+<a class="viewcode-back" href="../autosummary/spacepy_testing.add_build_to_path.html#spacepy_testing.add_build_to_path">[docs]</a>
+<span class="k">def</span> <span class="nf">add_build_to_path</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds the python build directory to the search path.</span>
 
 <span class="sd">    Locates the build directory in the same repository as this test module</span>
@@ -120,7 +101,10 @@
             <span class="k">break</span></div>
 
 
-<div class="viewcode-block" id="assertWarns"><a class="viewcode-back" href="../autosummary/spacepy_testing.assertWarns.html#spacepy_testing.assertWarns">[docs]</a><span class="k">class</span> <span class="nc">assertWarns</span><span class="p">(</span><span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">):</span>
+
+<div class="viewcode-block" id="assertWarns">
+<a class="viewcode-back" href="../autosummary/spacepy_testing.assertWarns.html#spacepy_testing.assertWarns">[docs]</a>
+<span class="k">class</span> <span class="nc">assertWarns</span><span class="p">(</span><span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Tests that a warning is raised.</span>
 
 <span class="sd">    Use as a context manager.  Code within the context manager block</span>
@@ -195,11 +179,14 @@
     <span class="n">requireWarning</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;If True, requires that the matching warning be issued (i.e. fail</span>
 <span class="sd">       if the warning isn&#39;t issued.) If False, fail if warning is issued.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="assertWarns.__init__">
+<a class="viewcode-back" href="../autosummary/spacepy_testing.assertWarns.html#spacepy_testing.assertWarns.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;always&#39;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">Warning</span><span class="p">,</span>
                  <span class="n">module</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">lineno</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_filterspec</span> <span class="o">=</span> <span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">lineno</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_testcase</span> <span class="o">=</span> <span class="n">test</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">assertWarns</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">record</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">assertWarns</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">record</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
 
     <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Enter the context manager, called at start of block.&quot;&quot;&quot;</span>
@@ -251,11 +238,15 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_testcase</span><span class="o">.</span><span class="n">fail</span><span class="p">(</span><span class="s1">&#39;Warning was issued.&#39;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="assertDoesntWarn"><a class="viewcode-back" href="../autosummary/spacepy_testing.assertDoesntWarn.html#spacepy_testing.assertDoesntWarn">[docs]</a><span class="k">class</span> <span class="nc">assertDoesntWarn</span><span class="p">(</span><span class="n">assertWarns</span><span class="p">):</span>
+
+<div class="viewcode-block" id="assertDoesntWarn">
+<a class="viewcode-back" href="../autosummary/spacepy_testing.assertDoesntWarn.html#spacepy_testing.assertDoesntWarn">[docs]</a>
+<span class="k">class</span> <span class="nc">assertDoesntWarn</span><span class="p">(</span><span class="n">assertWarns</span><span class="p">):</span>
     <span class="vm">__doc__</span> <span class="o">=</span> <span class="s1">&#39;Tests that a warning is not raised.&#39;</span> \
               <span class="o">+</span> <span class="n">assertWarns</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">[</span><span class="n">assertWarns</span><span class="o">.</span><span class="vm">__doc__</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">):]</span>
     <span class="n">requireWarning</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">pass</span></div>
+
 
 
 <span class="k">class</span> <span class="nc">TestPlot</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
@@ -268,21 +259,41 @@
         <span class="kn">import</span> <span class="nn">matplotlib</span>
         <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">old_backend</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">get_backend</span><span class="p">()</span>
+        <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
         <span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;agg&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span>
         <span class="kn">import</span> <span class="nn">matplotlib</span>
         <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">save_plots</span> <span class="ow">and</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">get_fignums</span><span class="p">():</span>
-            <span class="n">fname</span> <span class="o">=</span> <span class="s1">&#39;output_</span><span class="si">{}</span><span class="s1">.png&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]))</span>
-            <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">get_fignums</span><span class="p">():</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">save_plots</span><span class="p">:</span>
+                <span class="n">fname</span> <span class="o">=</span> <span class="s1">&#39;output_</span><span class="si">{}</span><span class="s1">.png&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]))</span>
+                <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
             <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
         <span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">old_backend</span><span class="p">)</span>
 </pre></div>
 
             <div class="clearer"></div>
           </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -306,8 +317,8 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2024, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
 </html>

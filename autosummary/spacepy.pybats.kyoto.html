@@ -1,29 +1,25 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.pybats.kyoto &#8212; SpacePy v0.6.0 Manual</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <title>spacepy.pybats.kyoto &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    
-    <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="spacepy.pybats.pwom" href="spacepy.pybats.pwom.html" />
-    <link rel="prev" title="spacepy.pybats.gitm" href="spacepy.pybats.gitm.html" /> 
+    <link rel="next" title="spacepy.pybats.kyoto.KyotoAe" href="spacepy.pybats.kyoto.KyotoAe.html" />
+    <link rel="prev" title="spacepy.pybats.interact.ClickTracer" href="spacepy.pybats.interact.ClickTracer.html" /> 
   </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
@@ -40,35 +36,218 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.pwom.html" title="spacepy.pybats.pwom"
+          <a href="spacepy.pybats.kyoto.KyotoAe.html" title="spacepy.pybats.kyoto.KyotoAe"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.gitm.html" title="spacepy.pybats.gitm"
+          <a href="spacepy.pybats.interact.ClickTracer.html" title="spacepy.pybats.interact.ClickTracer"
              accesskey="P">previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pybats.html" accesskey="U">PyBats - SWMF &amp; BATS-R-US Analysis Tools</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" accesskey="U">spacepy.pybats</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.pybats.kyoto</a></li> 
       </ul>
     </div>
+  
 
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-spacepy.pybats.kyoto">
+<span id="spacepy-pybats-kyoto"></span><h1>spacepy.pybats.kyoto<a class="headerlink" href="#module-spacepy.pybats.kyoto" title="Link to this heading">¶</a></h1>
+<p>kyoto is a tool set for obtaining and handling geomagnetic indices stored at the
+<a class="reference external" href="http://wdc.kugi.kyoto-u.ac.jp/wdc/Sec3.html">Kyoto World Data Center (WDC) website</a>.  
+Indices can be loaded from file or fetched from the web.</p>
+<p>Instantiation of objects from this module should be done through the constructor
+functions <a class="reference internal" href="#spacepy.pybats.kyoto.fetch" title="spacepy.pybats.kyoto.fetch"><code class="xref py py-func docutils literal notranslate"><span class="pre">fetch()</span></code></a> and load().  Use help on these objects
+for more information.</p>
+<p class="rubric">Functions</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.kyoto.aefetch" title="spacepy.pybats.kyoto.aefetch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aefetch</span></code></a>(t_start, t_stop)</p></td>
+<td><p>A function to fetch Kyoto AE directly from the Kyoto WDC website.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.kyoto.dstfetch" title="spacepy.pybats.kyoto.dstfetch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dstfetch</span></code></a>(yrstart, mostart, yrstop, mostop)</p></td>
+<td><p>A function to fetch Kyoto Dst directly from the Kyoto WDC website.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.kyoto.fetch" title="spacepy.pybats.kyoto.fetch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fetch</span></code></a>(dtype, tstart, tstop[, debug])</p></td>
+<td><p>Fetch Kyoto data of type dtype from the web given a start time, tstart, and a stop time, tstop.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.kyoto.inttomonth" title="spacepy.pybats.kyoto.inttomonth"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inttomonth</span></code></a>(inmonth)</p></td>
+<td><p>Turn integer month into string month.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.kyoto.kpfetch" title="spacepy.pybats.kyoto.kpfetch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kpfetch</span></code></a>(yrstart, mostart, yrstop, mostop)</p></td>
+<td><p>A function to fetch Kyoto Kp directly from the Kyoto WDC website.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.kyoto.parse_iaga" title="spacepy.pybats.kyoto.parse_iaga"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_iaga</span></code></a>(lines[, iagacode])</p></td>
+<td><p>KyotoWDC uses two format types: WDC, which is data specific, and  IAGA-2002, which is general for all data types.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.kyoto.symfetch" title="spacepy.pybats.kyoto.symfetch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">symfetch</span></code></a>(t_start, t_stop)</p></td>
+<td><p>A function to fetch Kyoto SYM-H directly from the Kyoto WDC website.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pybats.kyoto.KyotoAe.html#spacepy.pybats.kyoto.KyotoAe" title="spacepy.pybats.kyoto.KyotoAe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KyotoAe</span></code></a>([lines])</p></td>
+<td><p>Handle Ae index from Kyoto WDC.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pybats.kyoto.KyotoDst.html#spacepy.pybats.kyoto.KyotoDst" title="spacepy.pybats.kyoto.KyotoDst"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KyotoDst</span></code></a>([lines])</p></td>
+<td><p>Handle hourly dst index from Kyoto WDC.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pybats.kyoto.KyotoKp.html#spacepy.pybats.kyoto.KyotoKp" title="spacepy.pybats.kyoto.KyotoKp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KyotoKp</span></code></a>([lines])</p></td>
+<td><p>Handles global Kp index from Kyoto WDC.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pybats.kyoto.KyotoSym.html#spacepy.pybats.kyoto.KyotoSym" title="spacepy.pybats.kyoto.KyotoSym"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KyotoSym</span></code></a>([lines])</p></td>
+<td><p>Handle Sym-H and related indices from Kyoto WDC.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.kyoto.aefetch">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.kyoto.</span></span><span class="sig-name descname"><span class="pre">aefetch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t_start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_stop</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/kyoto.html#aefetch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.kyoto.aefetch" title="Link to this definition">¶</a></dt>
+<dd><p>A function to fetch Kyoto AE directly from the Kyoto WDC website.
+Returns raw ascii lines obtained from the website representing the data
+in IAGA 2002 format.</p>
+<p>Note that, because of the higher density of the data, full date times
+are required for the start and stop time.  This is in contrast to
+other fetch functions, where hourly or three-hourly resolution allows
+for only the start and stop years and months are required as integers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>t_start</strong><span class="classifier">datetime.datetime</span></dt><dd><p>Start time for range of requested data as a datetime object.</p>
+</dd>
+<dt><strong>t_stop</strong><span class="classifier">datetime.datetime</span></dt><dd><p>Stop time for range of requested data as a datetime object.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.kyoto.dstfetch">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.kyoto.</span></span><span class="sig-name descname"><span class="pre">dstfetch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">yrstart</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mostart</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yrstop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mostop</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/kyoto.html#dstfetch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.kyoto.dstfetch" title="Link to this definition">¶</a></dt>
+<dd><p>A function to fetch Kyoto Dst directly from the Kyoto WDC website.
+Returns raw ascii lines.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.kyoto.fetch">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.kyoto.</span></span><span class="sig-name descname"><span class="pre">fetch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tstart</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tstop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/kyoto.html#fetch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.kyoto.fetch" title="Link to this definition">¶</a></dt>
+<dd><p>Fetch Kyoto data of type dtype from the web given a start time, tstart,
+and a stop time, tstop.</p>
+<p>dtype can be any of the following strings:</p>
+<ol class="arabic simple">
+<li><p>dst – The hourly Dst index.</p></li>
+<li><p>kp  – The 3-hour global Kp index.</p></li>
+<li><p>ae  – The AE, AL, and AU minute-resolution auroral indices.</p></li>
+<li><p>sym – The minute resolution SYM and ASY indices for H and D directions.</p></li>
+</ol>
+<p>Start and stop times can be year-month tuples or datetime objects.</p>
+<p>The filled corresponding data class will be returned.</p>
+<p>Example 1: Get Kp for the whole year of 2005:
+kp=fetch(‘kp’, (2005,1), (2005,12))</p>
+<p>Example 2: Get Dst for the a few months from 1981:
+import datetime
+t1=datetime.datetime(1981,9, 1)
+t2=datetime.datetime(1981,11, 31)
+dst=fetch(‘dst’, t1, t2)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.kyoto.inttomonth">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.kyoto.</span></span><span class="sig-name descname"><span class="pre">inttomonth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inmonth</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/kyoto.html#inttomonth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.kyoto.inttomonth" title="Link to this definition">¶</a></dt>
+<dd><p>Turn integer month into string month.
+Necessary for webfetch.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.kyoto.kpfetch">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.kyoto.</span></span><span class="sig-name descname"><span class="pre">kpfetch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">yrstart</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mostart</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yrstop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mostop</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/kyoto.html#kpfetch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.kyoto.kpfetch" title="Link to this definition">¶</a></dt>
+<dd><p>A function to fetch Kyoto Kp directly from the Kyoto WDC website.
+Returns raw ascii lines.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.kyoto.parse_iaga">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.kyoto.</span></span><span class="sig-name descname"><span class="pre">parse_iaga</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iagacode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/kyoto.html#parse_iaga"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.kyoto.parse_iaga" title="Link to this definition">¶</a></dt>
+<dd><p>KyotoWDC uses two format types: WDC, which is data specific, and 
+IAGA-2002, which is general for all data types.  This function is
+a general reader for this format.  It returns a dictionary of vectors,
+each corresponding to a column from the file.</p>
+<p>‘lines’ is simply a list of lines from the IAGA-formatted file.
+‘iagacode’, if given, should be a string containing the IAGA code for the
+file contents.  If given, this function will raise an
+exception if iagacode does not match the file’s code.  This is 
+useful for ensure the correct data values are located in this file.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.kyoto.symfetch">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.kyoto.</span></span><span class="sig-name descname"><span class="pre">symfetch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t_start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_stop</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/kyoto.html#symfetch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.kyoto.symfetch" title="Link to this definition">¶</a></dt>
+<dd><p>A function to fetch Kyoto SYM-H directly from the Kyoto WDC website.
+Returns raw ascii lines obtained from the website representing the data
+in IAGA 2002 format.</p>
+<p>Note that, because of the higher density of the data, full datetimes
+are required for the start and stop time.  This is in contrast to
+other fetch functions, where hourly or three-hourly resolution allows
+for only the start and stop years and months are required as integers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>t_start</strong><span class="classifier">datetime.datetime</span></dt><dd><p>Start time for range of requested data as a datetime object.</p>
+</dd>
+<dt><strong>t_stop</strong><span class="classifier">datetime.datetime</span></dt><dd><p>Stop time for range of requested data as a datetime object.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/logo.png" alt="Logo"/>
             </a></p>
   <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.pybats.kyoto</a><ul>
+<li><a class="reference internal" href="#spacepy.pybats.kyoto.aefetch"><code class="docutils literal notranslate"><span class="pre">aefetch()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.kyoto.dstfetch"><code class="docutils literal notranslate"><span class="pre">dstfetch()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.kyoto.fetch"><code class="docutils literal notranslate"><span class="pre">fetch()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.kyoto.inttomonth"><code class="docutils literal notranslate"><span class="pre">inttomonth()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.kyoto.kpfetch"><code class="docutils literal notranslate"><span class="pre">kpfetch()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.kyoto.parse_iaga"><code class="docutils literal notranslate"><span class="pre">parse_iaga()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.kyoto.symfetch"><code class="docutils literal notranslate"><span class="pre">symfetch()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="spacepy.pybats.gitm.html"
-                          title="previous chapter">spacepy.pybats.gitm</a></p>
+    <p class="topless"><a href="spacepy.pybats.interact.ClickTracer.html"
+                          title="previous chapter">spacepy.pybats.interact.ClickTracer</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="spacepy.pybats.pwom.html"
-                          title="next chapter">spacepy.pybats.pwom</a></p>
+    <p class="topless"><a href="spacepy.pybats.kyoto.KyotoAe.html"
+                          title="next chapter">spacepy.pybats.kyoto.KyotoAe</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -77,7 +256,7 @@
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -85,29 +264,8 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <section id="module-spacepy.pybats.kyoto">
-<span id="spacepy-pybats-kyoto"></span><h1>spacepy.pybats.kyoto<a class="headerlink" href="#module-spacepy.pybats.kyoto" title="Permalink to this heading">¶</a></h1>
-<p>kyoto is a tool set for obtaining and handling geomagnetic indices stored at the
-<a class="reference external" href="http://wdc.kugi.kyoto-u.ac.jp/wdc/Sec3.html">Kyoto World Data Center (WDC) website</a>.  
-Indices can be loaded from file or fetched from the web.</p>
-<p>Instantiation of objects from this module should be done through the constructor
-functions <code class="xref py py-func docutils literal notranslate"><span class="pre">fetch()</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">load()</span></code>.  Use help on these objects
-for more information.</p>
-</section>
-
-
-            <div class="clearer"></div>
-          </div>
         </div>
       </div>
       <div class="clearer"></div>
@@ -122,23 +280,24 @@ for more information.</p>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.pwom.html" title="spacepy.pybats.pwom"
+          <a href="spacepy.pybats.kyoto.KyotoAe.html" title="spacepy.pybats.kyoto.KyotoAe"
              >next</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.gitm.html" title="spacepy.pybats.gitm"
+          <a href="spacepy.pybats.interact.ClickTracer.html" title="spacepy.pybats.interact.ClickTracer"
              >previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pybats.html" >PyBats - SWMF &amp; BATS-R-US Analysis Tools</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" >spacepy.pybats</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.pybats.kyoto</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2024, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
 </html>

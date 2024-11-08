@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.omni &#8212; SpacePy v0.6.0 Manual</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <title>spacepy.omni &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    
-    <link rel="shortcut icon" href="../../_static/spacepy_favicon.ico"/>
+    <script src="../../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <link rel="icon" href="../../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
   </head><body>
@@ -46,24 +42,7 @@
         <li class="nav-item nav-item-this"><a href="">spacepy.omni</a></li> 
       </ul>
     </div>
-
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="../../index.html">
-              <img class="logo" src="../../_static/logo.png" alt="Logo"/>
-            </a></p>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -76,58 +55,13 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Tools to read and process omni data (Qin-Denton, etc.)</span>
 
+<span class="sd">For additional documentation :doc:`../omni`</span>
+
 <span class="sd">Authors: Steve Morley, Josef Koller</span>
 <span class="sd">Institution: Los Alamos National Laboratory</span>
 <span class="sd">Contact: smorley@lanl.gov</span>
 
 <span class="sd">Copyright 2010-2014 Los Alamos National Security, LLC.</span>
-
-
-<span class="sd">About omni</span>
-<span class="sd">----------</span>
-
-<span class="sd">The omni module primarily manages the hourly OMNI2 and Qin-Denton data, which</span>
-<span class="sd">are sourced from the Virtual Radiation Belt Observatory (`ViRBO &lt;http://virbo.org&gt;`_), </span>
-<span class="sd">who maintain these data sources. The data can be kept up-to-date in SpacePy </span>
-<span class="sd">using the :func:`~spacepy.toolbox.update` function in the :mod:`spacepy.toolbox` module.</span>
-
-<span class="sd">The OMNI2 data combines data from a variety of satellites that sample the solar</span>
-<span class="sd">wind (notably ACE and Wind), and propagates the data to Earth&#39;s bow shock nose.</span>
-<span class="sd">The `Qin-Denton &lt;http://virbo.org/QinDenton&gt;`_ data is derived from the OMNI2 </span>
-<span class="sd">data and is designed for providing input to the Tsyganenko magnetic field </span>
-<span class="sd">models. The later Tsyganenko magnetic field models require subsidiary parameters</span>
-<span class="sd">(G- and W-parameters) that are pre-calculated in the Qin-Denton data. Further,</span>
-<span class="sd">the Qin-Denton data contains no data gaps -- all gaps are filled (for details on</span>
-<span class="sd">the gap filling, see the paper by `Qin et al. &lt;http://dx.doi.org/10.1029/2006SW000296&gt;`_.)</span>
-
-
-<span class="sd">Advanced features</span>
-<span class="sd">-----------------</span>
-
-<span class="sd">Higher resolution data, or custom data sources, can also be managed/accessed </span>
-<span class="sd">with this module, although this is considered an advanced use for this module.</span>
-<span class="sd">This is achieved using custom names for the dbase keyword in get_omni, which</span>
-<span class="sd">must be defined in the SpacePy configuration file (for a user-install on linux,</span>
-<span class="sd">this is ~/.spacepy/spacepy.rc; see :doc:`configuration`).</span>
-<span class="sd">An example of the formatting required is</span>
-
-<span class="sd">qd1min: /usr/somedir/QinDenton/YYYY/QinDenton_YYYYMMDD_1min.txt</span>
-
-<span class="sd">In this example the custom data source name is qd1min. Wildcard substitutions </span>
-<span class="sd">can be made for the year (YYYY), month (MM) and day (DD). Future updates will</span>
-<span class="sd">give more flexibility in data storage model, but currently we assume that all</span>
-<span class="sd">custom data sources follow a convention in which the data files are daily, and</span>
-<span class="sd">the files are organized into folders by year. The year, month and day must all</span>
-<span class="sd">be specified in the filename.</span>
-
-<span class="sd">Currently there are some restrictions on the data format for custom data </span>
-<span class="sd">sources. The stored data must currently be stored as JSON-headed ASCII.</span>
-<span class="sd">If data conversions are required, then a valid dictionary of conversion</span>
-<span class="sd">functions must be supplied via the convert keyword argument. See </span>
-<span class="sd">:func:`~spacepy.datamodel.readJSONheadedASCII` for details.</span>
-<span class="sd">Additionally, by default this will interpolate the data to the requested time </span>
-<span class="sd">ticks. To return only the actual recorded data values for the specified time </span>
-<span class="sd">range set the keyword argument interp to False.</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">bisect</span><span class="o">,</span> <span class="nn">re</span><span class="o">,</span> <span class="nn">os</span>
@@ -141,7 +75,9 @@
 
 <span class="n">__contact__</span> <span class="o">=</span> <span class="s1">&#39;Steve Morley, smorley@lanl.gov&#39;</span>
 
-<div class="viewcode-block" id="get_omni"><a class="viewcode-back" href="../../autosummary/spacepy.omni.get_omni.html#spacepy.omni.get_omni">[docs]</a><span class="k">def</span> <span class="nf">get_omni</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">dbase</span><span class="o">=</span><span class="s1">&#39;QDhourly&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="get_omni">
+<a class="viewcode-back" href="../../autosummary/spacepy.omni.html#spacepy.omni.get_omni">[docs]</a>
+<span class="k">def</span> <span class="nf">get_omni</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">dbase</span><span class="o">=</span><span class="s1">&#39;QDhourly&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Returns Qin-Denton OMNI values, interpolated to any time-base from a default hourly resolution</span>
 
@@ -266,13 +202,13 @@
                 <span class="n">dum</span> <span class="o">=</span> <span class="n">keylist</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">keylist</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">use_t_var</span><span class="p">))</span>
                 <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keylist</span><span class="p">:</span>
                     <span class="k">try</span><span class="p">:</span>
-                        <span class="n">omniout</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">ticks</span><span class="o">.</span><span class="n">RDT</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;RDT&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">left</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">))</span>
+                        <span class="n">omniout</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">ticks</span><span class="o">.</span><span class="n">RDT</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;RDT&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">left</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">))</span>
                         <span class="n">omniout</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">dmcopy</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
                     <span class="k">except</span><span class="p">:</span>
                         <span class="k">try</span><span class="p">:</span>
-                            <span class="n">omniout</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmfilled</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">ticks</span><span class="o">.</span><span class="n">RDT</span><span class="p">),</span> <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">fillval</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">dmcopy</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">))</span>
+                            <span class="n">omniout</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmfilled</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">ticks</span><span class="o">.</span><span class="n">RDT</span><span class="p">),</span> <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">fillval</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">dmcopy</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">))</span>
                             <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
-                                <span class="n">omniout</span><span class="p">[</span><span class="n">key</span><span class="p">][:,</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">ticks</span><span class="o">.</span><span class="n">RDT</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;RDT&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">][:,</span><span class="n">col</span><span class="p">],</span> <span class="n">left</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">)</span>
+                                <span class="n">omniout</span><span class="p">[</span><span class="n">key</span><span class="p">][:,</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">ticks</span><span class="o">.</span><span class="n">RDT</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;RDT&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">][:,</span><span class="n">col</span><span class="p">],</span> <span class="n">left</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
                         <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
                             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Failed to interpolate </span><span class="si">{0}</span><span class="s1"> to new time base, skipping variable&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
                         <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
@@ -382,11 +318,11 @@
     <span class="c1">###print(&#39;QDkeys: {0}\n\nO2keys: {1}&#39;.format(QDkeylist, O2keylist))</span>
     <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">omnivals</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
         <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">O2keylist</span><span class="p">:</span>
-            <span class="n">omniout</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">ticks</span><span class="o">.</span><span class="n">RDT</span><span class="p">,</span> <span class="n">omnivals</span><span class="p">[</span><span class="s1">&#39;RDT_OMNI&#39;</span><span class="p">],</span> <span class="n">omnivals</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">left</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">))</span>
+            <span class="n">omniout</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">ticks</span><span class="o">.</span><span class="n">RDT</span><span class="p">,</span> <span class="n">omnivals</span><span class="p">[</span><span class="s1">&#39;RDT_OMNI&#39;</span><span class="p">],</span> <span class="n">omnivals</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">left</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">))</span>
             <span class="c1">#set metadata -- assume this has been set properly in d/l&#39;d file to match ECT-SOC files</span>
             <span class="n">omniout</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">dmcopy</span><span class="p">(</span><span class="n">omnivals</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">QDkeylist</span><span class="p">:</span>
-            <span class="n">omniout</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">ticks</span><span class="o">.</span><span class="n">RDT</span><span class="p">,</span> <span class="n">omnivals</span><span class="p">[</span><span class="s1">&#39;RDT&#39;</span><span class="p">],</span> <span class="n">omnivals</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">left</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">NaN</span><span class="p">))</span>
+            <span class="n">omniout</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">ticks</span><span class="o">.</span><span class="n">RDT</span><span class="p">,</span> <span class="n">omnivals</span><span class="p">[</span><span class="s1">&#39;RDT&#39;</span><span class="p">],</span> <span class="n">omnivals</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">left</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">))</span>
             <span class="n">omniout</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">dmcopy</span><span class="p">(</span><span class="n">omnivals</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;G3&#39;</span><span class="p">:</span> <span class="c1">#then we have all the Gs</span>
             <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;G1&#39;</span><span class="p">],</span> <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;G2&#39;</span><span class="p">],</span> <span class="n">omniout</span><span class="p">[</span><span class="s1">&#39;G3&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
@@ -416,7 +352,10 @@
     <span class="k">return</span> <span class="n">omniout</span></div>
 
 
-<div class="viewcode-block" id="omnirange"><a class="viewcode-back" href="../../autosummary/spacepy.omni.omnirange.html#spacepy.omni.omnirange">[docs]</a><span class="k">def</span> <span class="nf">omnirange</span><span class="p">(</span><span class="n">dbase</span><span class="o">=</span><span class="s1">&#39;QDhourly&#39;</span><span class="p">):</span>
+
+<div class="viewcode-block" id="omnirange">
+<a class="viewcode-back" href="../../autosummary/spacepy.omni.html#spacepy.omni.omnirange">[docs]</a>
+<span class="k">def</span> <span class="nf">omnirange</span><span class="p">(</span><span class="n">dbase</span><span class="o">=</span><span class="s1">&#39;QDhourly&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Returns datetimes giving start and end times in the OMNI/Qin-Denton data</span>
 
 <span class="sd">    The update function in toolbox retrieves all available hourly Qin-Denton data, </span>
@@ -466,6 +405,7 @@
 
 
 
+
 <span class="c1">#-----------------------------------------------</span>
 
 <span class="c1"># check for omni file during import</span>
@@ -491,11 +431,29 @@
     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
         <span class="s2">&quot;Qin-Denton/OMNI2 data not found in current format.&quot;</span>
         <span class="s2">&quot; This module has limited functionality.&quot;</span>
-        <span class="s2">&quot; Run spacepy.toolbox.update(QDomni=True) to download data.&quot;</span><span class="p">)</span>
+        <span class="s2">&quot; Run spacepy.toolbox.update(QDomni=True) to download data.&quot;</span><span class="p">,</span>
+        <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
             <div class="clearer"></div>
           </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/logo.png" alt="Logo"/>
+            </a></p>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -520,8 +478,8 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2024, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
 </html>

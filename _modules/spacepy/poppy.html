@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.poppy &#8212; SpacePy v0.6.0 Manual</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <title>spacepy.poppy &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
     
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    
-    <link rel="shortcut icon" href="../../_static/spacepy_favicon.ico"/>
+    <script src="../../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <link rel="icon" href="../../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
   </head><body>
@@ -46,24 +42,7 @@
         <li class="nav-item nav-item-this"><a href="">spacepy.poppy</a></li> 
       </ul>
     </div>
-
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="../../index.html">
-              <img class="logo" src="../../_static/logo.png" alt="Logo"/>
-            </a></p>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -147,7 +126,9 @@
 
 <span class="n">__contact__</span> <span class="o">=</span> <span class="s1">&#39;Steve Morley, smorley@lanl.gov&#39;</span>
 
-<div class="viewcode-block" id="PPro"><a class="viewcode-back" href="../../autosummary/spacepy.poppy.PPro.html#spacepy.poppy.PPro">[docs]</a><span class="k">class</span> <span class="nc">PPro</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="PPro">
+<a class="viewcode-back" href="../../autosummary/spacepy.poppy.PPro.html#spacepy.poppy.PPro">[docs]</a>
+<span class="k">class</span> <span class="nc">PPro</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;PoPPy point process object</span>
 
 <span class="sd">    Initialize object with series1 and series2. These should be timeseries of</span>
@@ -155,40 +136,16 @@
 <span class="sd">    Includes method to perform association analysis of input series</span>
 
 <span class="sd">    Output can be nicely plotted with :py:meth:`plot`.</span>
-
-<span class="sd">    .. currentmodule:: spacepy.poppy</span>
-<span class="sd">    </span>
-<span class="sd">    .. autosummary::</span>
-<span class="sd">        ~PPro.aa_ci</span>
-<span class="sd">        ~PPro.assoc</span>
-<span class="sd">        ~PPro.assoc_mult</span>
-<span class="sd">        ci</span>
-<span class="sd">        conf_above</span>
-<span class="sd">        ~PPro.plot</span>
-<span class="sd">        ~PPro.plot_mult</span>
-<span class="sd">        ~PPro.swap</span>
-
-<span class="sd">    .. automethod:: aa_ci</span>
-<span class="sd">    .. automethod:: assoc</span>
-<span class="sd">    .. automethod:: assoc_mult</span>
-
-<span class="sd">    .. attribute:: ci</span>
 <span class="sd">    </span>
 <span class="sd">       Contains the upper and lower confidence limits for the association</span>
 <span class="sd">       number as a function of lag. The first element is the array of lower</span>
 <span class="sd">       limits; the second, the array of upper limits. Not available until</span>
 <span class="sd">       after calling :meth:`aa_ci`.</span>
-
-<span class="sd">    .. attribute:: conf_above</span>
 <span class="sd">    </span>
 <span class="sd">       Contains the confidence that the association number, as a function</span>
 <span class="sd">       of lag, is above the asymptotic association number. (The confidence</span>
 <span class="sd">       of being below is 100 - ``conf_above``.)  Not available until</span>
 <span class="sd">       after calling :meth:`aa_ci`.</span>
-
-<span class="sd">    .. automethod:: plot</span>
-<span class="sd">    .. automethod:: plot_mult</span>
-<span class="sd">    .. automethod:: swap</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1">#NB: P2 is the &quot;master&quot; timescale, P1 gets shifted by lags</span>
     <span class="c1">#Add lag to p1 to reach p2&#39;s timescale, subtract lag from p2 to reach p1&#39;s</span>
@@ -199,12 +156,15 @@
     <span class="n">conf_above</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Confidence that the association number is above the asymptotic&quot;&quot;&quot;</span>
 
+<div class="viewcode-block" id="PPro.__init__">
+<a class="viewcode-back" href="../../autosummary/spacepy.poppy.PPro.html#spacepy.poppy.PPro.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">process1</span><span class="p">,</span> <span class="n">process2</span><span class="p">,</span> <span class="n">lags</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">winhalf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">process1</span> <span class="o">=</span> <span class="n">process1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">process2</span> <span class="o">=</span> <span class="n">process2</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lags</span> <span class="o">=</span> <span class="n">lags</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">winhalf</span> <span class="o">=</span> <span class="n">winhalf</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span></div>
+
 
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;String Representation of PoPPy object&quot;&quot;&quot;</span>
@@ -232,12 +192,17 @@
 
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">process1</span><span class="p">)</span>
 
-<div class="viewcode-block" id="PPro.swap"><a class="viewcode-back" href="../../autosummary/spacepy.poppy.PPro.html#spacepy.poppy.PPro.swap">[docs]</a>    <span class="k">def</span> <span class="nf">swap</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PPro.swap">
+<a class="viewcode-back" href="../../autosummary/spacepy.poppy.PPro.html#spacepy.poppy.PPro.swap">[docs]</a>
+    <span class="k">def</span> <span class="nf">swap</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Swaps process 1 and process 2&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">process1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">process2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">process1</span>
         <span class="k">return</span> <span class="kc">None</span></div>
 
-<div class="viewcode-block" id="PPro.assoc"><a class="viewcode-back" href="../../autosummary/spacepy.poppy.PPro.html#spacepy.poppy.PPro.assoc">[docs]</a>    <span class="k">def</span> <span class="nf">assoc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="PPro.assoc">
+<a class="viewcode-back" href="../../autosummary/spacepy.poppy.PPro.html#spacepy.poppy.PPro.assoc">[docs]</a>
+    <span class="k">def</span> <span class="nf">assoc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform association analysis on input series</span>
 
 <span class="sd">        Parameters</span>
@@ -333,7 +298,10 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">expected</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="k">return</span> <span class="kc">None</span></div>
 
-<div class="viewcode-block" id="PPro.assoc_mult"><a class="viewcode-back" href="../../autosummary/spacepy.poppy.PPro.html#spacepy.poppy.PPro.assoc_mult">[docs]</a>    <span class="k">def</span> <span class="nf">assoc_mult</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">windows</span><span class="p">,</span> <span class="n">inter</span><span class="o">=</span><span class="mi">95</span><span class="p">,</span> <span class="n">n_boots</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="PPro.assoc_mult">
+<a class="viewcode-back" href="../../autosummary/spacepy.poppy.PPro.html#spacepy.poppy.PPro.assoc_mult">[docs]</a>
+    <span class="k">def</span> <span class="nf">assoc_mult</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">windows</span><span class="p">,</span> <span class="n">inter</span><span class="o">=</span><span class="mi">95</span><span class="p">,</span> <span class="n">n_boots</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Association analysis w/confidence interval on multiple windows</span>
 
 <span class="sd">        Using the time sequence and lags stored in this object, perform</span>
@@ -377,7 +345,10 @@
             <span class="n">percentiles</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conf_above</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">ci_low</span><span class="p">,</span> <span class="n">ci_high</span><span class="p">,</span> <span class="n">percentiles</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="PPro.plot_mult"><a class="viewcode-back" href="../../autosummary/spacepy.poppy.PPro.html#spacepy.poppy.PPro.plot_mult">[docs]</a>    <span class="k">def</span> <span class="nf">plot_mult</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">windows</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cbar_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+
+<div class="viewcode-block" id="PPro.plot_mult">
+<a class="viewcode-back" href="../../autosummary/spacepy.poppy.PPro.html#spacepy.poppy.PPro.plot_mult">[docs]</a>
+    <span class="k">def</span> <span class="nf">plot_mult</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">windows</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cbar_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                   <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>
                   <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Lag&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Window Size&#39;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Plots a 2D function of window size and lag</span>
@@ -412,7 +383,10 @@
         <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cax</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">cbar_label</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">fig</span></div>
 
-<div class="viewcode-block" id="PPro.plot"><a class="viewcode-back" href="../../autosummary/spacepy.poppy.PPro.html#spacepy.poppy.PPro.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">asympt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+
+<div class="viewcode-block" id="PPro.plot">
+<a class="viewcode-back" href="../../autosummary/spacepy.poppy.PPro.html#spacepy.poppy.PPro.plot">[docs]</a>
+    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">asympt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
              <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Time lag&#39;</span><span class="p">,</span> <span class="n">xscale</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create basic plot of association analysis.</span>
 
@@ -493,7 +467,7 @@
                 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span>
                     <span class="s1">&#39;Normalized Association Number n(u, h=</span><span class="si">{0}</span><span class="s1">) / n(</span><span class="si">{1}</span><span class="s1">, h=</span><span class="si">{0}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">winhalf</span><span class="p">,</span>
-                    <span class="sa">r</span><span class="s1">&#39;$\mathrm{u\rightarrow\infty}$&#39;</span>
+                    <span class="sa">r</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">mathrm{u\rightarrow\infty}$&#39;</span>
                     <span class="k">if</span> <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;text.usetex&#39;</span><span class="p">]</span> <span class="k">else</span> <span class="s1">&#39;u-&gt;Inf&#39;</span><span class="p">))</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Association Number n(u, h=</span><span class="si">{0}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
@@ -509,7 +483,10 @@
             <span class="k">return</span> <span class="kc">None</span>
         <span class="k">return</span> <span class="n">fig</span></div>
 
-<div class="viewcode-block" id="PPro.aa_ci"><a class="viewcode-back" href="../../autosummary/spacepy.poppy.PPro.html#spacepy.poppy.PPro.aa_ci">[docs]</a>    <span class="k">def</span> <span class="nf">aa_ci</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inter</span><span class="p">,</span> <span class="n">n_boots</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="PPro.aa_ci">
+<a class="viewcode-back" href="../../autosummary/spacepy.poppy.PPro.html#spacepy.poppy.PPro.aa_ci">[docs]</a>
+    <span class="k">def</span> <span class="nf">aa_ci</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inter</span><span class="p">,</span> <span class="n">n_boots</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get bootstrap confidence intervals for association number</span>
 
 <span class="sd">        Requires input of desired confidence interval, e.g.:</span>
@@ -607,12 +584,16 @@
                 <span class="n">conf_above</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">-</span> <span class="n">value_percentile</span><span class="p">(</span><span class="n">assoc_totals</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span>
                                                          <span class="bp">self</span><span class="o">.</span><span class="n">asympt_assoc</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ci</span> <span class="o">=</span> <span class="p">[</span><span class="n">ci_low</span><span class="p">,</span> <span class="n">ci_high</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">conf_above</span> <span class="o">=</span> <span class="n">conf_above</span></div></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conf_above</span> <span class="o">=</span> <span class="n">conf_above</span></div>
+</div>
+
 
 
 <span class="c1">#Functions outside class</span>
 
-<div class="viewcode-block" id="plot_two_ppro"><a class="viewcode-back" href="../../autosummary/spacepy.poppy.plot_two_ppro.html#spacepy.poppy.plot_two_ppro">[docs]</a><span class="k">def</span> <span class="nf">plot_two_ppro</span><span class="p">(</span><span class="n">pprodata</span><span class="p">,</span> <span class="n">pproref</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<div class="viewcode-block" id="plot_two_ppro">
+<a class="viewcode-back" href="../../autosummary/spacepy.poppy.html#spacepy.poppy.plot_two_ppro">[docs]</a>
+<span class="k">def</span> <span class="nf">plot_two_ppro</span><span class="p">(</span><span class="n">pprodata</span><span class="p">,</span> <span class="n">pproref</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                   <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xscale</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>
                   <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">yticks</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Overplots two PPro objects</span>
@@ -710,7 +691,10 @@
         <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="boots_ci"><a class="viewcode-back" href="../../autosummary/spacepy.poppy.boots_ci.html#spacepy.poppy.boots_ci">[docs]</a><span class="k">def</span> <span class="nf">boots_ci</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">inter</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sample_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">usepy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">nretvals</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+
+<div class="viewcode-block" id="boots_ci">
+<a class="viewcode-back" href="../../autosummary/spacepy.poppy.html#spacepy.poppy.boots_ci">[docs]</a>
+<span class="k">def</span> <span class="nf">boots_ci</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">inter</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sample_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">usepy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">nretvals</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Construct bootstrap confidence interval</span>
 
 <span class="sd">    The bootstrap is a statistical tool that uses multiple samples derived from</span>
@@ -831,7 +815,10 @@
     <span class="k">return</span> <span class="n">pul</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pul</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mf">100.0</span> <span class="o">-</span> <span class="n">vp</span></div>
 
 
-<div class="viewcode-block" id="value_percentile"><a class="viewcode-back" href="../../autosummary/spacepy.poppy.value_percentile.html#spacepy.poppy.value_percentile">[docs]</a><span class="k">def</span> <span class="nf">value_percentile</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+
+<div class="viewcode-block" id="value_percentile">
+<a class="viewcode-back" href="../../autosummary/spacepy.poppy.html#spacepy.poppy.value_percentile">[docs]</a>
+<span class="k">def</span> <span class="nf">value_percentile</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Find the percentile of a particular value in a sequence</span>
 
 <span class="sd">    Parameters</span>
@@ -866,6 +853,9 @@
     <span class="k">return</span> <span class="n">idx</span> <span class="o">*</span> <span class="mf">100.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span></div>
 
 
+
+<div class="viewcode-block" id="applyRefractory">
+<a class="viewcode-back" href="../../autosummary/spacepy.poppy.html#spacepy.poppy.applyRefractory">[docs]</a>
 <span class="k">def</span> <span class="nf">applyRefractory</span><span class="p">(</span><span class="n">process1</span><span class="p">,</span> <span class="n">period</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Apply a refractory period to an input discrete event time sequence</span>
 
@@ -919,11 +909,29 @@
 
     <span class="k">if</span> <span class="n">tickt</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">spt</span><span class="o">.</span><span class="n">Ticktock</span><span class="p">(</span><span class="n">keep</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">keep</span><span class="p">)</span> <span class="k">if</span> <span class="n">wasArr</span> <span class="k">else</span> <span class="n">keep</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">keep</span><span class="p">)</span> <span class="k">if</span> <span class="n">wasArr</span> <span class="k">else</span> <span class="n">keep</span></div>
+
 </pre></div>
 
             <div class="clearer"></div>
           </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/logo.png" alt="Logo"/>
+            </a></p>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -948,8 +956,8 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2024, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
 </html>

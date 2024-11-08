@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy &#8212; SpacePy v0.6.0 Manual</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <title>spacepy &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    
-    <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
   </head><body>
@@ -45,24 +41,7 @@
         <li class="nav-item nav-item-this"><a href="">spacepy</a></li> 
       </ul>
     </div>
-
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="../index.html">
-              <img class="logo" src="../_static/logo.png" alt="Logo"/>
-            </a></p>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -89,37 +68,6 @@
 <span class="sd">Most functionality is in spacepy&#39;s submodules. Each module has specific</span>
 <span class="sd">help available:</span>
 
-<span class="sd">.. rubric:: Submodules</span>
-
-<span class="sd">.. autosummary::</span>
-<span class="sd">    :template: clean_module.rst</span>
-
-<span class="sd">    ~spacepy.coordinates</span>
-<span class="sd">    ~spacepy.data_assimilation</span>
-<span class="sd">    ~spacepy.datamodel</span>
-<span class="sd">    ~spacepy.empiricals</span>
-<span class="sd">    ~spacepy.irbempy</span>
-<span class="sd">    ~spacepy.LANLstar</span>
-<span class="sd">    ~spacepy.omni</span>
-<span class="sd">    ~spacepy.poppy</span>
-<span class="sd">    ~spacepy.pybats</span>
-<span class="sd">    ~spacepy.pycdf</span>
-<span class="sd">    ~spacepy.radbelt</span>
-<span class="sd">    ~spacepy.seapy</span>
-<span class="sd">    ~spacepy.time</span>
-<span class="sd">    ~spacepy.toolbox</span>
-<span class="sd">    ~spacepy.ae9ap9</span>
-
-<span class="sd">.. rubric:: Functions</span>
-
-<span class="sd">.. autosummary::</span>
-
-<span class="sd">    deprecated</span>
-<span class="sd">    help</span>
-
-<span class="sd">.. autofunction:: deprecated</span>
-<span class="sd">.. autofunction:: help</span>
-
 <span class="sd">Copyright 2010-2016 Los Alamos National Security, LLC.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
@@ -136,19 +84,40 @@
 <span class="kn">import</span> <span class="nn">webbrowser</span>
 
 
-<div class="viewcode-block" id="help"><a class="viewcode-back" href="../spacepy.html#spacepy.help">[docs]</a><span class="k">def</span> <span class="nf">help</span><span class="p">():</span>
+<div class="viewcode-block" id="help">
+<a class="viewcode-back" href="../autosummary/spacepy.html#spacepy.help">[docs]</a>
+<span class="k">def</span> <span class="nf">help</span><span class="p">(</span><span class="n">keyword</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Launches web browser with SpacePy documentation</span>
 
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    keyword : str, optional</span>
+
+<span class="sd">          .. versionadded:: 0.7.0</span>
+
+<span class="sd">      Search for this keyword. If not specified, opens the front page</span>
+<span class="sd">      of the documentation.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
 <span class="sd">    Online help is always for the latest release of SpacePy.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import spacepy</span>
+<span class="sd">    &gt;&gt;&gt; spacepy.help(&quot;coordinates&quot;)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Opening docs for latest release. Installed SpacePy is </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
         <span class="n">__version__</span><span class="p">))</span>
-    <span class="n">webbrowser</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;https://spacepy.github.io/&#39;</span><span class="p">)</span></div>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://spacepy.github.io/&#39;</span> <span class="k">if</span> <span class="n">keyword</span> <span class="ow">is</span> <span class="kc">None</span>\
+        <span class="k">else</span> <span class="sa">f</span><span class="s1">&#39;https://spacepy.github.io/search.html?q=</span><span class="si">{</span><span class="n">keyword</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">webbrowser</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">)</span></div>
+
 
 
 <span class="c1"># put modules here that you want to be accessible through &#39;from spacepy import *&#39;</span>
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;seapy&quot;</span><span class="p">,</span> <span class="s2">&quot;toolbox&quot;</span><span class="p">,</span> <span class="s2">&quot;poppy&quot;</span><span class="p">,</span> <span class="s2">&quot;coordinates&quot;</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;omni&quot;</span><span class="p">,</span> 
-           <span class="s2">&quot;irbempy&quot;</span><span class="p">,</span> <span class="s2">&quot;empiricals&quot;</span><span class="p">,</span> <span class="s2">&quot;radbelt&quot;</span><span class="p">,</span> <span class="s2">&quot;data_assimilation&quot;</span><span class="p">,</span> <span class="s2">&quot;pycdf&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;irbempy&quot;</span><span class="p">,</span> <span class="s2">&quot;empiricals&quot;</span><span class="p">,</span> <span class="s2">&quot;pycdf&quot;</span><span class="p">,</span>
            <span class="s2">&quot;datamanager&quot;</span><span class="p">,</span> <span class="s2">&quot;datamodel&quot;</span><span class="p">,</span> <span class="s2">&quot;ae9ap9&quot;</span><span class="p">]</span>
 
 <span class="c1"># Make sure the Fortran and other runtime libs from binary wheel are findable</span>
@@ -169,7 +138,7 @@
     <span class="c1">#this is the actual, deprecated function</span>
     <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">_deprecated</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">)</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">func</span><span class="o">.</span><span class="vm">__doc__</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">doclines</span> <span class="o">=</span> <span class="p">[]</span>
@@ -204,7 +173,9 @@
     <span class="n">_deprecated</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">doclines</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">_deprecated</span>
 
-<div class="viewcode-block" id="deprecated"><a class="viewcode-back" href="../spacepy.html#spacepy.deprecated">[docs]</a><span class="k">def</span> <span class="nf">deprecated</span><span class="p">(</span><span class="n">version</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">docstring</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="deprecated">
+<a class="viewcode-back" href="../autosummary/spacepy.html#spacepy.deprecated">[docs]</a>
+<span class="k">def</span> <span class="nf">deprecated</span><span class="p">(</span><span class="n">version</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">docstring</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Decorator to deprecate a function/method</span>
 
 <span class="sd">    Modifies a function so that calls to it raise</span>
@@ -271,6 +242,7 @@
         <span class="n">docstring</span> <span class="o">=</span> <span class="n">message</span>
     <span class="k">return</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">_deprecator</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">docstring</span><span class="p">)</span></div>
 
+
 <span class="c1"># Expose definitions from modules in this package.</span>
 <span class="c1"># since datamodel depends on top level, delay the variable binding</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">datamodel</span>
@@ -278,7 +250,7 @@
 <span class="n">SpaceData</span> <span class="o">=</span> <span class="n">datamodel</span><span class="o">.</span><span class="n">SpaceData</span>
 
 <span class="c1">#package info</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;0.6.0&#39;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;0.7.0&#39;</span>
 <span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;The SpacePy Team&#39;</span>
 <span class="n">__team__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Steve Morley&#39;</span><span class="p">,</span> <span class="s1">&#39;Josef Koller&#39;</span><span class="p">,</span> <span class="s1">&#39;Dan Welling&#39;</span><span class="p">,</span> <span class="s1">&#39;Brian Larsen&#39;</span><span class="p">,</span> <span class="s1">&#39;Jon Niehof&#39;</span><span class="p">,</span> <span class="s1">&#39;Mike Henderson&#39;</span><span class="p">]</span>
 <span class="n">__contact__</span> <span class="o">=</span> <span class="s1">&#39;spacepy@lanl.gov&#39;</span>
@@ -351,9 +323,8 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Write configuration defaults out to a file if they aren&#39;t there&quot;&quot;&quot;</span>
     <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">rcfile</span><span class="p">,</span> <span class="s1">&#39;r+t&#39;</span><span class="p">)</span> <span class="c1">#Avoid race condition, open for read and write</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">startpos</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span>
         <span class="n">rclines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
-        <span class="n">writeme</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
+        <span class="n">writeme</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">defaults</span><span class="p">)</span>
         <span class="c1">#Places where sections start</span>
         <span class="n">secidx</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rclines</span><span class="p">))</span>
                   <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\[[^\[\]]*\]\n$&quot;</span><span class="p">,</span> <span class="n">rclines</span><span class="p">[</span><span class="n">i</span><span class="p">])]</span>
@@ -369,7 +340,6 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">nextsec</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="c1">#Read only this section for lines matching default values</span>
-            <span class="n">present</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">rclines</span><span class="p">[</span><span class="n">thissec</span><span class="p">:</span><span class="n">nextsec</span><span class="p">]:</span>
                 <span class="c1">#For each key, does the line match, commented or not?</span>
                 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">writeme</span><span class="p">:</span>
@@ -377,23 +347,15 @@
                                 <span class="n">l</span><span class="p">):</span>
                         <span class="n">writeme</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
                         <span class="k">break</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">startpos</span><span class="p">)</span> <span class="c1">#Back to start of file</span>
-        <span class="c1">#Scan to just after section header. Text mode, can only seek() to tell()</span>
-        <span class="k">if</span> <span class="n">thissec</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-            <span class="k">while</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;[</span><span class="si">{section}</span><span class="s1">]</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">section</span><span class="o">=</span><span class="n">section</span><span class="p">):</span>
-                <span class="k">pass</span>
-        <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s1">&#39;win32&#39;</span><span class="p">:</span>
-            <span class="c1">#Tickle the file for read/write switch</span>
-            <span class="c1">#https://stackoverflow.com/questions/11176724/python-file-operations</span>
-            <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="c1">#Write default values for anything not read</span>
-        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">writeme</span><span class="p">):</span>
-            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">((</span><span class="s2">&quot;#SpacePy </span><span class="si">{ver}</span><span class="s2"> default </span><span class="si">{key}</span><span class="s2">: </span><span class="si">{value}</span><span class="se">\n</span><span class="s2">&quot;</span>
-                     <span class="s2">&quot;#</span><span class="si">{key}</span><span class="s2">: </span><span class="si">{value}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                         <span class="n">key</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">defaults</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">ver</span><span class="o">=</span><span class="n">__version__</span><span class="p">))</span>
-        <span class="c1">#And write all the remaining lines from the section header to end</span>
-        <span class="k">if</span> <span class="n">writeme</span><span class="p">:</span>
-            <span class="n">f</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">rclines</span><span class="p">[</span><span class="n">thissec</span><span class="o">+</span><span class="mi">1</span><span class="p">:])</span>
+        <span class="c1">#This is what we&#39;ll actually write to the file</span>
+        <span class="n">writeme_verb</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;#SpacePy </span><span class="si">{</span><span class="n">__version__</span><span class="si">}</span><span class="s2"> default </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">defaults</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;#</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">defaults</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">writeme</span><span class="p">)]</span>
+        <span class="c1">#Add writeme to end of this section</span>
+        <span class="n">rclines</span><span class="p">[</span><span class="n">nextsec</span><span class="p">:</span><span class="n">nextsec</span><span class="p">]</span> <span class="o">=</span> <span class="n">writeme_verb</span>
+        <span class="c1">#Write the new contents</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">rclines</span><span class="p">)</span>
     <span class="k">finally</span><span class="p">:</span>
         <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
@@ -402,8 +364,7 @@
 <span class="k">def</span> <span class="nf">_read_config</span><span class="p">(</span><span class="n">rcfile</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Read configuration information from a file&quot;&quot;&quot;</span>
     <span class="k">global</span> <span class="n">config</span>
-    <span class="n">defaults</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;enable_deprecation_warning&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="kc">True</span><span class="p">),</span>
-                <span class="s1">&#39;keepalive&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="kc">True</span><span class="p">),</span>
+    <span class="n">defaults</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;keepalive&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="kc">True</span><span class="p">),</span>
                 <span class="s1">&#39;ncpus&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">multiprocessing</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()),</span>
                 <span class="s1">&#39;qindenton_url&#39;</span><span class="p">:</span> <span class="s1">&#39;http://virbo.org/ftp/QinDenton/hour/merged/latest/WGhour-latest.d.zip&#39;</span><span class="p">,</span>
                 <span class="s1">&#39;qd_daily_url&#39;</span><span class="p">:</span> <span class="s1">&#39;https://rbsp-ect.newmexicoconsortium.org/data_pub/QinDenton/&#39;</span><span class="p">,</span>
@@ -415,8 +376,7 @@
                 <span class="p">}</span>
     <span class="c1">#Functions to cast a config value; if not specified, value is a string</span>
     <span class="n">str2bool</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;yes&#39;</span><span class="p">,</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="s1">&#39;on&#39;</span><span class="p">)</span>
-    <span class="n">caster</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;enable_deprecation_warning&#39;</span><span class="p">:</span> <span class="n">str2bool</span><span class="p">,</span>
-              <span class="s1">&#39;keepalive&#39;</span><span class="p">:</span> <span class="n">str2bool</span><span class="p">,</span>
+    <span class="n">caster</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;keepalive&#39;</span><span class="p">:</span> <span class="n">str2bool</span><span class="p">,</span>
               <span class="s1">&#39;ncpus&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
               <span class="s1">&#39;support_notice&#39;</span><span class="p">:</span> <span class="n">str2bool</span><span class="p">,</span>
               <span class="s1">&#39;enable_old_data_warning&#39;</span><span class="p">:</span> <span class="n">str2bool</span><span class="p">,</span>
@@ -431,8 +391,8 @@
             <span class="n">config</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">items</span><span class="p">(</span><span class="s1">&#39;spacepy&#39;</span><span class="p">))</span>
         <span class="k">except</span> <span class="n">configparser</span><span class="o">.</span><span class="n">NoSectionError</span><span class="p">:</span>
             <span class="n">successful</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="n">config</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">successful</span><span class="p">:</span>  <span class="c1"># Old or bad file structure, wipe it out</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">cp</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
         <span class="n">cp</span><span class="o">.</span><span class="n">add_section</span><span class="p">(</span><span class="s1">&#39;spacepy&#39;</span><span class="p">)</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">rcfile</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">cf</span><span class="p">:</span>
@@ -514,14 +474,27 @@
 <span class="k">if</span> <span class="n">__version__</span> <span class="o">==</span> <span class="s1">&#39;UNRELEASED&#39;</span> <span class="ow">and</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;support_notice&#39;</span><span class="p">]:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;This unreleased version of SpacePy is not supported &#39;</span>
           <span class="s1">&#39;by the SpacePy team.&#39;</span><span class="p">)</span>
-<span class="c1"># Set up a filter to always warn on deprecation</span>
-<span class="k">if</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;enable_deprecation_warning&#39;</span><span class="p">]:</span>
-    <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span>
-                            <span class="s1">&#39;^spacepy&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 </pre></div>
 
             <div class="clearer"></div>
           </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -545,8 +518,8 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2024, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
 </html>

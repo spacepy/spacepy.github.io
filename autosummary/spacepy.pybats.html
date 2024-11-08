@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>spacepy.pybats &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="spacepy.pybats.bats" href="spacepy.pybats.bats.html" />
+    <link rel="prev" title="spacepy.poppy.PPro" href="spacepy.poppy.PPro.html" /> 
+  </head><body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.pybats.bats.html" title="spacepy.pybats.bats"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.poppy.PPro.html" title="spacepy.poppy.PPro"
+             accesskey="P">previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" accesskey="U">spacepy</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.pybats</a></li> 
+      </ul>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-spacepy.pybats">
+<span id="spacepy-pybats"></span><h1>spacepy.pybats<a class="headerlink" href="#module-spacepy.pybats" title="Link to this heading">¶</a></h1>
+<p>Module for reading, manipulating, and visualizing BATS-R-US and SWMF output.</p>
+<p>For more information on the SWMF, please visit the
+<a class="reference external" href="http://csem.engin.umich.edu">Center for Space Environment Modeling</a>.</p>
+<p>For additional documentation <a class="reference internal" href="../pybats.html"><span class="doc">PyBats - SWMF &amp; BATS-R-US Analysis Tools</span></a></p>
+<p>Copyright ©2010 Los Alamos National Security, LLC.</p>
+<p class="rubric">Submodules</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pybats.bats.html#module-spacepy.pybats.bats" title="spacepy.pybats.bats"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bats</span></code></a></p></td>
+<td><p>A PyBats module for handling input, output, and visualization of binary SWMF output files taylored to BATS-R-US-type data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pybats.batsmath.html#module-spacepy.pybats.batsmath" title="spacepy.pybats.batsmath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">batsmath</span></code></a></p></td>
+<td><p>Functions for common math problems such as derivatives, etc.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pybats.dgcpm.html#module-spacepy.pybats.dgcpm" title="spacepy.pybats.dgcpm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dgcpm</span></code></a></p></td>
+<td><p>The PyBats submodule for handling input and output for the Dynamic Global Core Plasma Model (DGCPM), a plasmasphere module of the SWMF.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pybats.dipole.html#module-spacepy.pybats.dipole" title="spacepy.pybats.dipole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dipole</span></code></a></p></td>
+<td><p>Some functions for the generation of a dipole field.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pybats.gitm.html#module-spacepy.pybats.gitm" title="spacepy.pybats.gitm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gitm</span></code></a></p></td>
+<td><p>PyBats submodule for handling input/output for the Global  Ionosphere-Thermosphere Model (GITM), one of the choices for the UA module in the SWMF.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pybats.interact.html#module-spacepy.pybats.interact" title="spacepy.pybats.interact"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interact</span></code></a></p></td>
+<td><p>Tools for creating interactive PyBats GUIs.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pybats.kyoto.html#module-spacepy.pybats.kyoto" title="spacepy.pybats.kyoto"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kyoto</span></code></a></p></td>
+<td><p>kyoto is a tool set for obtaining and handling geomagnetic indices stored at the <a class="reference external" href="http://wdc.kugi.kyoto-u.ac.jp/wdc/Sec3.html">Kyoto World Data Center (WDC) website</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pybats.pwom.html#module-spacepy.pybats.pwom" title="spacepy.pybats.pwom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pwom</span></code></a></p></td>
+<td><p>PyBats submodule for handling input/output for the Polar Wind Outflow Model (PWOM), one of the choices for the PW module in the SWMF.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pybats.qotree.html#module-spacepy.pybats.qotree" title="spacepy.pybats.qotree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qotree</span></code></a></p></td>
+<td><p>A class for building QO trees for <a class="reference internal" href="spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d" title="spacepy.pybats.bats.Bats2d"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bats2d</span></code></a> objects.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pybats.ram.html#module-spacepy.pybats.ram" title="spacepy.pybats.ram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ram</span></code></a></p></td>
+<td><p>A module for reading, handling, and plotting RAM-SCB output.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pybats.rim.html#module-spacepy.pybats.rim" title="spacepy.pybats.rim"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rim</span></code></a></p></td>
+<td><p>Classes, functions, and methods for reading, writing, and plotting output from the Ridley Ionosphere Model (RIM) and the similar legacy code, Ridley Serial.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pybats.trace2d.html#module-spacepy.pybats.trace2d" title="spacepy.pybats.trace2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trace2d</span></code></a></p></td>
+<td><p>A set of routines for fast field line tracing.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Functions</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.add_body" title="spacepy.pybats.add_body"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_body</span></code></a>(ax[, rad, facecolor, show_planet, ...])</p></td>
+<td><p>Creates a circle of radius=self.attrs['rbody'] and returns the MatPlotLib Ellipse patch object for plotting.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.add_planet" title="spacepy.pybats.add_planet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_planet</span></code></a>(ax[, rad, ang, add_night, zorder])</p></td>
+<td><p>Creates a circle of <code class="docutils literal notranslate"><span class="pre">radius=self.para['rbody']</span></code> and returns the MatPlotLib Ellipse patch object for plotting.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.calc_wrapper" title="spacepy.pybats.calc_wrapper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_wrapper</span></code></a>(meth)</p></td>
+<td><p>This is a decorator for <code class="docutils literal notranslate"><span class="pre">self.calc_*</span></code> object methods.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.mhdname_to_tex" title="spacepy.pybats.mhdname_to_tex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mhdname_to_tex</span></code></a>(varname)</p></td>
+<td><p>Convert common MHD variable and unit names into LaTeX-formated strings.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.parse_filename_time" title="spacepy.pybats.parse_filename_time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_filename_time</span></code></a>(filename)</p></td>
+<td><p>Given an SWMF file whose name follows the usual standards (see below), attempt to parse the file name to extract information about the iteration, runtime and date/time at which the file was written.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.parse_tecvars" title="spacepy.pybats.parse_tecvars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_tecvars</span></code></a>(line)</p></td>
+<td><p>Parse the VARIABLES line from a TecPlot-formatted ascii data file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.readarray" title="spacepy.pybats.readarray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readarray</span></code></a>(f[, dtype, inttype])</p></td>
+<td><p>Read an array from an unformatted binary file written out by a Fortran program.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pybats.IdlFile.html#spacepy.pybats.IdlFile" title="spacepy.pybats.IdlFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IdlFile</span></code></a>(filename[, iframe, header, keep_case])</p></td>
+<td><p>An object class that reads/parses an IDL-formatted output file from the SWMF and places it into a <a class="reference internal" href="spacepy.pybats.PbData.html#spacepy.pybats.PbData" title="spacepy.pybats.PbData"><code class="xref py py-class docutils literal notranslate"><span class="pre">spacepy.pybats.PbData</span></code></a> object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pybats.ImfInput.html#spacepy.pybats.ImfInput" title="spacepy.pybats.ImfInput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ImfInput</span></code></a>([filename, load, npoints])</p></td>
+<td><p>A class to read, write, manipulate, and visualize solar wind upstream input files for SWMF simulations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pybats.LogFile.html#spacepy.pybats.LogFile" title="spacepy.pybats.LogFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LogFile</span></code></a>(filename[, starttime, keep_case])</p></td>
+<td><p>An object to read and handle SWMF-type logfiles.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pybats.NgdcIndex.html#spacepy.pybats.NgdcIndex" title="spacepy.pybats.NgdcIndex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NgdcIndex</span></code></a>([filename, load])</p></td>
+<td><p>Many models incorporated into the SWMF rely on National Geophysical Data Center (NGDC) provided index files (especially F10.7 and Kp).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pybats.PbData.html#spacepy.pybats.PbData" title="spacepy.pybats.PbData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PbData</span></code></a>(*args, **kwargs)</p></td>
+<td><p>The base class for all PyBats data container classes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pybats.SatOrbit.html#spacepy.pybats.SatOrbit" title="spacepy.pybats.SatOrbit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SatOrbit</span></code></a>([filename])</p></td>
+<td><p>An class to load, read, write, and handle BATS-R-US satellite orbit input files.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.add_body">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.</span></span><span class="sig-name descname"><span class="pre">add_body</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">facecolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'lightgrey'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_planet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_night</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zorder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">extra_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats.html#add_body"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.add_body" title="Link to this definition">¶</a></dt>
+<dd><p>Creates a circle of radius=self.attrs[‘rbody’] and returns the
+MatPlotLib Ellipse patch object for plotting.  If an axis is specified
+using the “ax” keyword, the patch is added to the plot.
+Default color is light grey; extra keywords are handed to the Ellipse
+generator function.</p>
+<p>Because the body is rarely the size of the planet at the center of
+the modeling domain, add_planet is automatically called.  This can
+be negated by using the show_planet kwarg.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax</strong><span class="classifier">Matplotlib Axes object</span></dt><dd><p>Set the axes on which to place planet.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>rad</strong><span class="classifier">float</span></dt><dd><p>Set radius of the inner boundary.  Defaults to 2.5.</p>
+</dd>
+<dt><strong>facecolor</strong><span class="classifier">string</span></dt><dd><p>Set color of face of inner boundary circle via Matplotlib color
+selectors (name, hex, etc.)  Defaults to ‘lightgrey’.</p>
+</dd>
+<dt><strong>show_planet</strong><span class="classifier">boolean</span></dt><dd><p>Turns on/off planet indicator inside inner boundary.
+Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+</dd>
+<dt><strong>ang</strong><span class="classifier">float</span></dt><dd><p>Set the rotation of the day-night terminator from the y-axis, in degrees
+Defaults to zero (terminator is aligned with Y-axis.)</p>
+</dd>
+<dt><strong>add_night</strong><span class="classifier">boolean</span></dt><dd><p>Add night hemisphere.  Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+</dd>
+<dt><strong>zorder</strong><span class="classifier">int</span></dt><dd><p>Set the matplotlib zorder of the patch to set how other plot
+elements order with the inner boundary patch. Defaults to 1000.
+If a planet is added, it is given a zorder of <code class="docutils literal notranslate"><span class="pre">zorder</span></code> + 5.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.add_planet">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.</span></span><span class="sig-name descname"><span class="pre">add_planet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_night</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zorder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">extra_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats.html#add_planet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.add_planet" title="Link to this definition">¶</a></dt>
+<dd><p>Creates a circle of <code class="docutils literal notranslate"><span class="pre">radius=self.para['rbody']</span></code> and returns the
+MatPlotLib Ellipse patch object for plotting.  If an axis is specified
+using the <em>ax</em> keyword, the patch is added to the plot.</p>
+<p>Unlike the add_body method, the circle is colored half white (dayside)
+and half black (nightside) to coincide with the direction of the
+sun. Additionally, because the size of the planet is not intrinsically
+known to the MHD file, the kwarg “rad”, defaulting to 1.0, sets the
+size of the planet.  <em>add_night</em> can turn off this behavior.</p>
+<p>Extra keywords are handed to the Ellipse generator function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax</strong><span class="classifier">Matplotlib Axes object</span></dt><dd><p>Set the axes on which to place planet.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>rad</strong><span class="classifier">float</span></dt><dd><p>Set radius of planet.  Defaults to 1.</p>
+</dd>
+<dt><strong>ang</strong><span class="classifier">float</span></dt><dd><p>Set the rotation of the day-night terminator from the y-axis, in degrees
+Defaults to zero (terminator is aligned with Y-axis.)</p>
+</dd>
+<dt><strong>add_night</strong><span class="classifier">boolean</span></dt><dd><p>Add night hemisphere.  Defaults to <strong>True</strong></p>
+</dd>
+<dt><strong>zorder</strong><span class="classifier">int</span></dt><dd><p>Set the matplotlib zorder of the patch to set how other plot
+elements order with the inner boundary patch. Defaults to 1000,
+nightside patch is given zorder of <em>zorder+5</em>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.calc_wrapper">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.</span></span><span class="sig-name descname"><span class="pre">calc_wrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meth</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats.html#calc_wrapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.calc_wrapper" title="Link to this definition">¶</a></dt>
+<dd><p>This is a decorator for <code class="docutils literal notranslate"><span class="pre">self.calc_*</span></code> object methods.  It establishes
+<code class="docutils literal notranslate"><span class="pre">self._calcs</span></code>, a list of calcuation functions that have been called, and
+adds the called function to that list to keep track of which calculations
+have already been performed for the object.  If a calculation has already
+been performed, it is skipped in order to reduce effort.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.mhdname_to_tex">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.</span></span><span class="sig-name descname"><span class="pre">mhdname_to_tex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">varname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats.html#mhdname_to_tex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.mhdname_to_tex" title="Link to this definition">¶</a></dt>
+<dd><p>Convert common MHD variable and unit names into LaTeX-formated strings.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.parse_filename_time">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.</span></span><span class="sig-name descname"><span class="pre">parse_filename_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats.html#parse_filename_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.parse_filename_time" title="Link to this definition">¶</a></dt>
+<dd><p>Given an SWMF file whose name follows the usual standards (see below),
+attempt to parse the file name to extract information about the iteration,
+runtime and date/time at which the file was written.  All three are
+returned to the caller in that order.  If any cannot be found in the
+file name, “None” is returned in its place.</p>
+<p>For ‘*’.outs files, ranges of times and iterations can be given in the
+file names.  If this is the case, a list of values will be returned
+for that entry (see third example below).</p>
+<p>Information on the format of time strings contained within SWMF output
+file names can be found in the <a class="reference external" href="http://herot.engin.umich.edu/~gtoth/SWMF/doc/HTML/SWMF/node225.html">SWMF User Manual</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>filename</strong><span class="classifier">string</span></dt><dd><p>An SWMF output file name.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>i_iter</strong><span class="classifier">integer, list of integers, or None</span></dt><dd><p>The iteration at which the file was written, if found.</p>
+</dd>
+<dt><strong>runtime</strong><span class="classifier">float, list of floats, or None</span></dt><dd><p>The run time (in seconds) at which the file was written, if found.</p>
+</dd>
+<dt><strong>time</strong><span class="classifier">datetime.datetime, list of datetimes, or None</span></dt><dd><p>Either a datetime object or <em>None</em>, depending on the success of the
+file name parsing.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">spacepy.pybats</span> <span class="kn">import</span> <span class="n">parse_filename_time</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse_filename_time</span><span class="p">(</span><span class="s1">&#39;z=0_mhd_2_t00050000_n00249620.out&#39;</span><span class="p">)</span>
+<span class="go">(249620, 50000.0, None)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_filename_time</span><span class="p">(</span><span class="s1">&#39;mag_grid_e20130924-232600.out&#39;</span><span class="p">)</span>
+<span class="go">(None, None, datetime.datetime(2013, 9, 24, 23, 26))</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_filename_time</span><span class="p">(</span><span class="s1">&#39;z=0_mhd_2_e20140410-000000-000_20140410-000300-000.outs&#39;</span><span class="p">)</span>
+<span class="go">(None, None, [datetime.datetime(2014, 4, 10, 0, 0), datetime.datetime(2014, 4, 10, 0, 3)])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.parse_tecvars">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.</span></span><span class="sig-name descname"><span class="pre">parse_tecvars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats.html#parse_tecvars"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.parse_tecvars" title="Link to this definition">¶</a></dt>
+<dd><p>Parse the VARIABLES line from a TecPlot-formatted ascii data file.  Create
+a list of name-unit tuples for each variable.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.readarray">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.</span></span><span class="sig-name descname"><span class="pre">readarray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'numpy.float32'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inttype=&lt;class</span> <span class="pre">'numpy.int32'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats.html#readarray"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.readarray" title="Link to this definition">¶</a></dt>
+<dd><p>Read an array from an unformatted binary file written out by a
+Fortran program.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>f</strong><span class="classifier">Binary file object</span></dt><dd><p>The file from which to read the array of values.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>numpy.array</strong><span class="classifier">Numpy array</span></dt><dd><p>Return the data read from file as a 1-dimensional array.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>dtype</strong><span class="classifier">data type</span></dt><dd><p>The data type used for data conversion.</p>
+</dd>
+<dt><strong>inttype</strong><span class="classifier">Numpy integer type</span></dt><dd><p>Set the precision for the integers that store the size of each
+entry.   Defaults to numpy.int32</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.pybats</a><ul>
+<li><a class="reference internal" href="#spacepy.pybats.add_body"><code class="docutils literal notranslate"><span class="pre">add_body()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.add_planet"><code class="docutils literal notranslate"><span class="pre">add_planet()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.calc_wrapper"><code class="docutils literal notranslate"><span class="pre">calc_wrapper()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.mhdname_to_tex"><code class="docutils literal notranslate"><span class="pre">mhdname_to_tex()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.parse_filename_time"><code class="docutils literal notranslate"><span class="pre">parse_filename_time()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.parse_tecvars"><code class="docutils literal notranslate"><span class="pre">parse_tecvars()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.readarray"><code class="docutils literal notranslate"><span class="pre">readarray()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="spacepy.poppy.PPro.html"
+                          title="previous chapter">spacepy.poppy.PPro</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="spacepy.pybats.bats.html"
+                          title="next chapter">spacepy.pybats.bats</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/autosummary/spacepy.pybats.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.pybats.bats.html" title="spacepy.pybats.bats"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.poppy.PPro.html" title="spacepy.poppy.PPro"
+             >previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.pybats</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    </div>
+  </body>
+</html>

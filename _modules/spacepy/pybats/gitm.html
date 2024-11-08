@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>spacepy.pybats.gitm &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/plot_directive.css" />
+    
+    <script src="../../../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+    <link rel="icon" href="../../../_static/spacepy_favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../../../index.html"><img src="../../../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../../../search.html">search</a>|&nbsp;</li>
+       <li><a href="../../../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="../pybats.html" accesskey="U">spacepy.pybats</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.pybats.gitm</a></li> 
+      </ul>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for spacepy.pybats.gitm</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">PyBats submodule for handling input/output for the Global </span>
+<span class="sd">Ionosphere-Thermosphere Model (GITM), one of the choices for the UA module</span>
+<span class="sd">in the SWMF.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c1"># Global imports:</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+<span class="kn">from</span> <span class="nn">spacepy.pybats</span> <span class="kn">import</span> <span class="n">PbData</span>
+<span class="kn">from</span> <span class="nn">spacepy.datamodel</span> <span class="kn">import</span> <span class="n">dmarray</span>
+
+<div class="viewcode-block" id="GitmBin">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.gitm.GitmBin.html#spacepy.pybats.gitm.GitmBin">[docs]</a>
+<span class="k">class</span> <span class="nc">GitmBin</span><span class="p">(</span><span class="n">PbData</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Object to open, manipulate and visualize 1 and 3 dimensional GITM output</span>
+<span class="sd">    stored in binary format.  Object inherits from spacepy.pybats.PbData; see</span>
+<span class="sd">    that documentation for general information on how these objects work.</span>
+
+<span class="sd">    GITM index ordering is [lon, lat, altitude].  For 2D or 1D files, any</span>
+<span class="sd">    dimension that has only one value will have that dimension removed from the</span>
+<span class="sd">    final arrays (e.g., a 2D cut through a single altitude will have the </span>
+<span class="sd">    altitude dimension removed; the final arrays will be lon X lat only.)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+<div class="viewcode-block" id="GitmBin.__init__">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.gitm.GitmBin.html#spacepy.pybats.gitm.GitmBin.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">GitmBin</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="c1"># Init as PbData.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">filename</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_read</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">calc_deg</span><span class="p">()</span></div>
+
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;GITM binary output file </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">_read</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Read binary file; should only be called upon instantiation.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="kn">from</span> <span class="nn">re</span> <span class="kn">import</span> <span class="n">sub</span>
+        <span class="kn">from</span> <span class="nn">spacepy.pybats</span> <span class="kn">import</span> <span class="n">readarray</span>
+        
+        <span class="c1"># Open, read, and parse the file into numpy arrays.</span>
+        <span class="c1"># Note that Fortran writes integer buffers around records, so</span>
+        <span class="c1"># we must parse those as well.</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">],</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">infile</span><span class="p">:</span>
+            <span class="c1"># On the first try, we may fail because of wrong-endianess.</span>
+            <span class="c1"># If that is the case, swap that endian and try again.</span>
+            <span class="n">endian</span><span class="o">=</span><span class="s1">&#39;little&#39;</span>
+
+            <span class="n">inttype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+            <span class="n">EndChar</span><span class="o">=</span><span class="s1">&#39;&lt;&#39;</span>
+            <span class="n">inttype</span><span class="o">.</span><span class="n">newbyteorder</span><span class="p">(</span><span class="n">EndChar</span><span class="p">)</span>
+
+            <span class="c1"># detect double-precision file by checking record length</span>
+            <span class="c1"># of version (stored as float). Simultaneously, test for</span>
+            <span class="c1"># byte ordering:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">RecLen</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span><span class="n">infile</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">inttype</span><span class="p">,</span><span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span><span class="ne">EOFError</span><span class="p">):</span>
+                <span class="n">endian</span><span class="o">=</span><span class="s1">&#39;big&#39;</span>
+                <span class="n">EndChar</span><span class="o">=</span><span class="s1">&#39;&gt;&#39;</span>
+                <span class="n">inttype</span><span class="o">.</span><span class="n">newbyteorder</span><span class="p">(</span><span class="n">EndChar</span><span class="p">)</span>
+                <span class="n">infile</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">RecLen</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span><span class="n">infile</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">inttype</span><span class="p">,</span><span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">infile</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># return to beginning of file.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;endian&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="n">endian</span> <span class="c1"># Store endian order.</span>
+            
+            <span class="c1"># Set data types based on record length from above:</span>
+            <span class="k">if</span> <span class="n">RecLen</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span>
+                <span class="n">floattype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">floattype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+            <span class="n">floattype</span><span class="o">.</span><span class="n">newbyteorder</span><span class="p">(</span><span class="n">EndChar</span><span class="p">)</span>
+
+            <span class="c1"># Get code version:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;version&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">readarray</span><span class="p">(</span><span class="n">infile</span><span class="p">,</span><span class="n">floattype</span><span class="p">,</span><span class="n">inttype</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="c1"># Read grid size information.  Because these three values</span>
+            <span class="c1"># are written at the same time, they get &quot;packed&quot; together and</span>
+            <span class="c1"># must be read together.</span>
+            <span class="n">header_fields_dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">([</span>
+                <span class="p">(</span><span class="s1">&#39;nLon&#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;nLat&#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;nAlt&#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)])</span>
+            <span class="n">header_fields_dtype</span><span class="o">.</span><span class="n">newbyteorder</span><span class="p">(</span><span class="n">EndChar</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;nLon&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;nLat&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;nAlt&#39;</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="n">readarray</span><span class="p">(</span><span class="n">infile</span><span class="p">,</span><span class="n">header_fields_dtype</span><span class="p">,</span><span class="n">inttype</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                
+            <span class="c1"># Read number of variables:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;nVars&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">readarray</span><span class="p">(</span><span class="n">infile</span><span class="p">,</span><span class="n">inttype</span><span class="p">,</span><span class="n">inttype</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="c1"># Collect variable names; decode into usable strings.</span>
+            <span class="n">var</span><span class="o">=</span><span class="p">[]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;nVars&#39;</span><span class="p">]):</span>
+                <span class="n">var</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">readarray</span><span class="p">(</span><span class="n">infile</span><span class="p">,</span><span class="nb">str</span><span class="p">,</span><span class="n">inttype</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+
+            <span class="c1"># Extract time, stored as 7 consecutive integers.</span>
+            <span class="p">(</span><span class="n">yy</span><span class="p">,</span><span class="n">mm</span><span class="p">,</span><span class="n">dd</span><span class="p">,</span><span class="n">hh</span><span class="p">,</span><span class="n">mn</span><span class="p">,</span><span class="n">ss</span><span class="p">,</span><span class="n">ms</span><span class="p">)</span><span class="o">=</span><span class="n">readarray</span><span class="p">(</span><span class="n">infile</span><span class="p">,</span><span class="n">inttype</span><span class="p">,</span><span class="n">inttype</span><span class="p">)</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">yy</span><span class="p">,</span><span class="n">mm</span><span class="p">,</span><span class="n">dd</span><span class="p">,</span><span class="n">hh</span><span class="p">,</span><span class="n">mn</span><span class="p">,</span><span class="n">ss</span><span class="p">,</span><span class="n">ms</span><span class="o">//</span><span class="mi">1000</span><span class="p">)</span>
+
+            <span class="c1"># Read the rest of the data.</span>
+            <span class="n">nTotal</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;nLon&#39;</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;nLat&#39;</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;nAlt&#39;</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">var</span><span class="p">:</span>
+                <span class="c1"># Trim variable names.</span>
+                <span class="n">v</span><span class="o">=</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\[|\]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="bp">self</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">readarray</span><span class="p">(</span><span class="n">infile</span><span class="p">,</span><span class="n">floattype</span><span class="p">,</span><span class="n">inttype</span><span class="p">)</span>
+                <span class="c1"># Reshape arrays, note that ordering in file is Fortran-like.</span>
+                <span class="bp">self</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">=</span><span class="bp">self</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span> 
+                    <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;nLon&#39;</span><span class="p">],</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;nLat&#39;</span><span class="p">],</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;nAlt&#39;</span><span class="p">]),</span>
+                    <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+                <span class="c1"># Reduce dimensionality:</span>
+                <span class="bp">self</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">v</span><span class="p">])</span>
+
+<div class="viewcode-block" id="GitmBin.calc_deg">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.gitm.GitmBin.html#spacepy.pybats.gitm.GitmBin.calc_deg">[docs]</a>
+    <span class="k">def</span> <span class="nf">calc_deg</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Gitm defaults to radians for lat and lon, which is sometimes difficult</span>
+<span class="sd">        to use.  This method creates *dLat* and *dLon*, which is lat and lon</span>
+<span class="sd">        in degrees.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">pi</span>
+        <span class="k">if</span> <span class="s1">&#39;Latitude&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;dLat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Latitude&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">180.0</span><span class="o">/</span><span class="n">pi</span><span class="p">,</span> 
+                                   <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;degrees&#39;</span><span class="p">})</span>
+        <span class="k">if</span> <span class="s1">&#39;Longitude&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;dLon&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Longitude&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">180.0</span><span class="o">/</span><span class="n">pi</span><span class="p">,</span> 
+                                   <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;degrees&#39;</span><span class="p">})</span></div>
+</div>
+
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/logo.png" alt="Logo"/>
+            </a></p>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../../../search.html">search</a>|&nbsp;</li>
+       <li><a href="../../../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="../pybats.html" >spacepy.pybats</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.pybats.gitm</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    </div>
+  </body>
+</html>

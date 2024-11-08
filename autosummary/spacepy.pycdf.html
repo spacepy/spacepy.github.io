@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>spacepy.pycdf &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="spacepy.pycdf.const" href="spacepy.pycdf.const.html" />
+    <link rel="prev" title="spacepy.pybats.SatOrbit" href="spacepy.pybats.SatOrbit.html" /> 
+  </head><body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.pycdf.const.html" title="spacepy.pycdf.const"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.pybats.SatOrbit.html" title="spacepy.pybats.SatOrbit"
+             accesskey="P">previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" accesskey="U">spacepy</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.pycdf</a></li> 
+      </ul>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-spacepy.pycdf">
+<span id="spacepy-pycdf"></span><h1>spacepy.pycdf<a class="headerlink" href="#module-spacepy.pycdf" title="Link to this heading">¶</a></h1>
+<p>Interface to the Common Data Format (CDF) library</p>
+<p>CDF available at <a class="reference external" href="http://cdf.gsfc.nasa.gov/">http://cdf.gsfc.nasa.gov/</a>.</p>
+<p>The interface is intended to be ‘pythonic’ rather than reproducing the
+C interface. To open or close a CDF and access its variables, see the <a class="reference internal" href="spacepy.pycdf.CDF.html#spacepy.pycdf.CDF" title="spacepy.pycdf.CDF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CDF</span></code></a>
+class. Accessing data within the variables is via the <a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Var</span></code></a>
+class. The <a class="reference internal" href="#spacepy.pycdf.lib" title="spacepy.pycdf.lib"><code class="xref py py-data docutils literal notranslate"><span class="pre">lib</span></code></a> object provides access to some routines
+that affect the functionality of the library in general. The
+<a class="reference internal" href="spacepy.pycdf.const.html#module-spacepy.pycdf.const" title="spacepy.pycdf.const"><code class="xref py py-obj docutils literal notranslate"><span class="pre">const</span></code></a> module contains constants useful for accessing
+the underlying library.</p>
+<p>The CDF C library must be properly installed in order to use this
+module. Installing SpacePy from a binary installation provides this
+requirement.</p>
+<p>The CDF distribution provides scripts meant to be called in a user’s
+login scripts, <code class="docutils literal notranslate"><span class="pre">definitions.B</span></code> for bash and <code class="docutils literal notranslate"><span class="pre">definitions.C</span></code> for
+C-shell derivatives. (See the installation instructions which come
+with the CDF library.)  These will set environment variables
+specifying the location of the library; pycdf will respect these
+variables if they are set. Otherwise it will search the standard
+system library path and the default installation locations for the CDF
+library, falling back to the version shipped with the SpacePy binary
+if the library is not found.</p>
+<p>If pycdf has trouble finding the library, try setting <code class="docutils literal notranslate"><span class="pre">CDF_LIB</span></code> before importing
+the module, e.g. if the library is in <code class="docutils literal notranslate"><span class="pre">CDF/lib</span></code> in the user’s home directory:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;CDF_LIB&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;~/CDF/lib&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">spacepy</span> <span class="kn">import</span> <span class="n">pycdf</span>
+</pre></div>
+</div>
+<p>If this works, make the environment setting permanent. Note that on OSX,
+using plists to set the environment may not carry over to Python terminal
+sessions; use <code class="docutils literal notranslate"><span class="pre">.cshrc</span></code> or <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> instead.</p>
+<p>Authors: Jon Niehof</p>
+<p>Institution: University of New Hampshire</p>
+<p>Contact: <a class="reference external" href="mailto:Jonathan&#46;Niehof&#37;&#52;&#48;unh&#46;edu">Jonathan<span>&#46;</span>Niehof<span>&#64;</span>unh<span>&#46;</span>edu</a></p>
+<p>For additional documentation <a class="reference internal" href="../pycdf.html"><span class="doc">pycdf - Python interface to CDF files</span></a></p>
+<p>Copyright 2010-2015 Los Alamos National Security, LLC.</p>
+<p class="rubric">Submodules</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pycdf.const.html#module-spacepy.pycdf.const" title="spacepy.pycdf.const"><code class="xref py py-obj docutils literal notranslate"><span class="pre">const</span></code></a></p></td>
+<td><p>Various constants defined in cdf.h and used in pycdf.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pycdf.istp.html#module-spacepy.pycdf.istp" title="spacepy.pycdf.istp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">istp</span></code></a></p></td>
+<td><p>Support for ISTP-compliant CDFs</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Functions</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pycdf.concatCDF" title="spacepy.pycdf.concatCDF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">concatCDF</span></code></a>(cdfs[, varnames, raw])</p></td>
+<td><p>Concatenate data from multiple CDFs</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pycdf.Attr.html#spacepy.pycdf.Attr" title="spacepy.pycdf.Attr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Attr</span></code></a>(cdf_file, attr_name[, create])</p></td>
+<td><p>An attribute, g or z, for a CDF</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pycdf.AttrList.html#spacepy.pycdf.AttrList" title="spacepy.pycdf.AttrList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AttrList</span></code></a>(cdf_file[, special_entry])</p></td>
+<td><p>Object representing a list of attributes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pycdf.CDF.html#spacepy.pycdf.CDF" title="spacepy.pycdf.CDF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CDF</span></code></a>(pathname[, masterpath, create, ...])</p></td>
+<td><p>Python object representing a CDF file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pycdf.CDFCopy.html#spacepy.pycdf.CDFCopy" title="spacepy.pycdf.CDFCopy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CDFCopy</span></code></a>(cdf)</p></td>
+<td><p>A dictionary-like copy of all data and attributes in a <a class="reference internal" href="spacepy.pycdf.CDF.html#spacepy.pycdf.CDF" title="spacepy.pycdf.CDF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CDF</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pycdf.Library.html#spacepy.pycdf.Library" title="spacepy.pycdf.Library"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Library</span></code></a>([libpath, library])</p></td>
+<td><p>Abstraction of the base CDF C library and its state.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Var</span></code></a>(cdf_file, var_name, *args)</p></td>
+<td><p>A CDF variable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pycdf.VarCopy.html#spacepy.pycdf.VarCopy" title="spacepy.pycdf.VarCopy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VarCopy</span></code></a>(zVar)</p></td>
+<td><p>A list-like copy of the data and attributes in a <a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Var</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pycdf.gAttr.html#spacepy.pycdf.gAttr" title="spacepy.pycdf.gAttr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gAttr</span></code></a>(cdf_file, attr_name[, create])</p></td>
+<td><p>Global Attribute for a CDF</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pycdf.gAttrList.html#spacepy.pycdf.gAttrList" title="spacepy.pycdf.gAttrList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gAttrList</span></code></a>(cdf_file[, special_entry])</p></td>
+<td><p>Object representing <em>all</em> the gAttributes in a CDF.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pycdf.zAttr.html#spacepy.pycdf.zAttr" title="spacepy.pycdf.zAttr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zAttr</span></code></a>(cdf_file, attr_name[, create])</p></td>
+<td><p>zAttribute for zVariables within a CDF.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pycdf.zAttrList.html#spacepy.pycdf.zAttrList" title="spacepy.pycdf.zAttrList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zAttrList</span></code></a>(zvar)</p></td>
+<td><p>Object representing <em>all</em> the zAttributes in a zVariable.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="#spacepy.pycdf.lib" title="spacepy.pycdf.lib"><code class="xref py py-data docutils literal notranslate"><span class="pre">lib</span></code></a></div>
+</div>
+<p class="rubric">Exceptions</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pycdf.CDFError" title="spacepy.pycdf.CDFError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CDFError</span></code></a>(status)</p></td>
+<td><p>Raised for an error in the CDF library.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pycdf.CDFException" title="spacepy.pycdf.CDFException"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CDFException</span></code></a>(status)</p></td>
+<td><p>Base class for errors or warnings in the CDF library.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pycdf.CDFWarning" title="spacepy.pycdf.CDFWarning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CDFWarning</span></code></a>(status)</p></td>
+<td><p>Used for a warning in the CDF library.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pycdf.EpochError" title="spacepy.pycdf.EpochError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EpochError</span></code></a></p></td>
+<td><p>Used for errors in epoch routines</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pycdf.concatCDF">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pycdf.</span></span><span class="sig-name descname"><span class="pre">concatCDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cdfs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">varnames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#concatCDF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.concatCDF" title="Link to this definition">¶</a></dt>
+<dd><p>Concatenate data from multiple CDFs</p>
+<p>Reads data from all specified CDFs in order and returns as if they
+were from a single CDF. The assumption is that the CDFs all have the
+same structure (same variables, each with the same dimensions and
+variance.)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>cdfs</strong><span class="classifier">list of <a class="reference internal" href="spacepy.pycdf.Var.html#spacepy.pycdf.Var" title="spacepy.pycdf.Var"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Var</span></code></a></span></dt><dd><p>Open CDFs, will be read from in order. Must be a list (cannot
+be an iterable, as all files need to be open).</p>
+</dd>
+<dt><strong>varnames</strong><span class="classifier">list of str</span></dt><dd><p>Names of variables to read (default: all variables in first CDF)</p>
+</dd>
+<dt><strong>raw</strong><span class="classifier">bool</span></dt><dd><p>If True, read variables as raw (don’t convert epochs, etc.)
+Default False.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData" title="spacepy.datamodel.SpaceData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpaceData</span></code></a></dt><dd><p>data concatenated from each CDF, with all attributes from first.
+Non-record-varying data is also only from first, and record
+variance is only checked on the first!</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Read all data from all CDFs in the current directory. Note that
+CDFs are closed when their variable goes out of scope.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">glob</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.pycdf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">pycdf</span><span class="o">.</span><span class="n">concatCDF</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="n">spacepy</span><span class="o">.</span><span class="n">pycdf</span><span class="o">.</span><span class="n">CDF</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*.cdf&#39;</span><span class="p">)])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="spacepy.pycdf.CDFError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pycdf.</span></span><span class="sig-name descname"><span class="pre">CDFError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">status</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#CDFError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.CDFError" title="Link to this definition">¶</a></dt>
+<dd><p>Raised for an error in the CDF library.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="spacepy.pycdf.CDFException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pycdf.</span></span><span class="sig-name descname"><span class="pre">CDFException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">status</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#CDFException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.CDFException" title="Link to this definition">¶</a></dt>
+<dd><p>Base class for errors or warnings in the CDF library.</p>
+<p>Not normally used directly, but in subclasses <a class="reference internal" href="#spacepy.pycdf.CDFError" title="spacepy.pycdf.CDFError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CDFError</span></code></a>
+and <a class="reference internal" href="#spacepy.pycdf.CDFWarning" title="spacepy.pycdf.CDFWarning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CDFWarning</span></code></a>.</p>
+<p>Error messages provided by this class are looked up from the underlying
+C library.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="spacepy.pycdf.CDFWarning">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pycdf.</span></span><span class="sig-name descname"><span class="pre">CDFWarning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">status</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pycdf.html#CDFWarning"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.CDFWarning" title="Link to this definition">¶</a></dt>
+<dd><p>Used for a warning in the CDF library.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="spacepy.pycdf.EpochError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pycdf.</span></span><span class="sig-name descname"><span class="pre">EpochError</span></span><a class="reference internal" href="../_modules/spacepy/pycdf.html#EpochError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pycdf.EpochError" title="Link to this definition">¶</a></dt>
+<dd><p>Used for errors in epoch routines</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="spacepy.pycdf.lib">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pycdf.</span></span><span class="sig-name descname"><span class="pre">lib</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;spacepy.pycdf.Library</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#spacepy.pycdf.lib" title="Link to this definition">¶</a></dt>
+<dd><p>Module global library object.</p>
+<p>Initalized at module load time so all classes have ready
+access to the CDF library and a common state. E.g:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">spacepy</span> <span class="kn">import</span> <span class="n">pycdf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pycdf</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">version</span>
+<span class="go">    (3, 3, 0, &#39; &#39;)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.pycdf</a><ul>
+<li><a class="reference internal" href="#spacepy.pycdf.concatCDF"><code class="docutils literal notranslate"><span class="pre">concatCDF()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pycdf.CDFError"><code class="docutils literal notranslate"><span class="pre">CDFError</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pycdf.CDFException"><code class="docutils literal notranslate"><span class="pre">CDFException</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pycdf.CDFWarning"><code class="docutils literal notranslate"><span class="pre">CDFWarning</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pycdf.EpochError"><code class="docutils literal notranslate"><span class="pre">EpochError</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pycdf.lib"><code class="docutils literal notranslate"><span class="pre">lib</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="spacepy.pybats.SatOrbit.html"
+                          title="previous chapter">spacepy.pybats.SatOrbit</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="spacepy.pycdf.const.html"
+                          title="next chapter">spacepy.pycdf.const</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/autosummary/spacepy.pycdf.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.pycdf.const.html" title="spacepy.pycdf.const"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.pybats.SatOrbit.html" title="spacepy.pybats.SatOrbit"
+             >previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.pycdf</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    </div>
+  </body>
+</html>

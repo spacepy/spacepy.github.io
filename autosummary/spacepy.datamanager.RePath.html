@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>spacepy.datamanager.RePath &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="spacepy.datamodel" href="spacepy.datamodel.html" />
+    <link rel="prev" title="spacepy.datamanager.DataManager" href="spacepy.datamanager.DataManager.html" /> 
+  </head><body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.datamodel.html" title="spacepy.datamodel"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.datamanager.DataManager.html" title="spacepy.datamanager.DataManager"
+             accesskey="P">previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.datamanager.html" accesskey="U">spacepy.datamanager</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.datamanager.RePath</a></li> 
+      </ul>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="spacepy-datamanager-repath">
+<h1>spacepy.datamanager.RePath<a class="headerlink" href="#spacepy-datamanager-repath" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="spacepy.datamanager.RePath">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.datamanager.</span></span><span class="sig-name descname"><span class="pre">RePath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamanager.html#RePath"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamanager.RePath" title="Link to this definition">¶</a></dt>
+<dd><p>A path based on a regular expression + time format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>expression</strong><span class="classifier">string</span></dt><dd><p>Regular expression that matches the files desired. Will also recognize
+strftime parameters %w %d %m %y %Y %H %M %s %j %U %W, all zero-pad.
+<a class="reference external" href="https://docs.python.org/2/library/datetime.html#strftime-strptime-behavior">https://docs.python.org/2/library/datetime.html#strftime-strptime-behavior</a>
+Can have subdirectory reference, but separator should be unix-style,
+with no leading slash.
+Matching is normally done against entire string, anchors should NOT
+be included.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.datamanager.RePath.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamanager.html#RePath.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamanager.RePath.__init__" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamanager.RePath.match" title="spacepy.datamanager.RePath.match"><code class="xref py py-obj docutils literal notranslate"><span class="pre">match</span></code></a>(string[, dt, where])</p></td>
+<td><p>Matches a string against a path or part thereof, optionally anchored at a particular date/time</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.datamanager.RePath.path_slice" title="spacepy.datamanager.RePath.path_slice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">path_slice</span></code></a>(path, start[, stop, step, native])</p></td>
+<td><p>Slice a path by elements, as in getitem or []</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamanager.RePath.path_split" title="spacepy.datamanager.RePath.path_split"><code class="xref py py-obj docutils literal notranslate"><span class="pre">path_split</span></code></a>(path[, native])</p></td>
+<td><p>Break a path apart into a list for each path element.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="#spacepy.datamanager.RePath.fmt_to_re" title="spacepy.datamanager.RePath.fmt_to_re"><code class="xref py py-data docutils literal notranslate"><span class="pre">fmt_to_re</span></code></a></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.datamanager.RePath.match">
+<span class="sig-name descname"><span class="pre">match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamanager.html#RePath.match"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamanager.RePath.match" title="Link to this definition">¶</a></dt>
+<dd><p>Matches a string against a path or part thereof, optionally anchored
+at a particular date/time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">re.MatchObject</span></dt><dd><p>The result of the match.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>dt</strong><span class="classifier">datetime.datetime</span></dt><dd><p>The time to specifically match; otherwise matches all files.</p>
+</dd>
+<dt><strong>where</strong><span class="classifier">str</span></dt><dd><p>Where to match: None to match the string to the entire path
+(default); <code class="docutils literal notranslate"><span class="pre">'start'</span></code> to match entire string against the start
+of the path; <code class="docutils literal notranslate"><span class="pre">'end'</span></code> to match entire path against end of string.
+Note this matches the last elements of the string, not just
+the last characters, i.e., <code class="docutils literal notranslate"><span class="pre">oo/bar</span></code> will not match <code class="docutils literal notranslate"><span class="pre">foo/bar</span></code>.
+Similarly, <code class="docutils literal notranslate"><span class="pre">'start'</span></code> matches the first elements of the path,
+i.e., <code class="docutils literal notranslate"><span class="pre">foo/ba</span></code> will not match <code class="docutils literal notranslate"><span class="pre">foo/bar</span></code>
+<code class="docutils literal notranslate"><span class="pre">start</span></code> matches subset of path, i.e., the string is a directory
+that may contain full matches further down the tree. <code class="docutils literal notranslate"><span class="pre">end</span></code>
+matches a subset of the string, i.e, the string is a
+path to a file that would be a complete match except it has
+additional path elements leading. This is the order that tends to
+be useful.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.datamanager.RePath.path_slice">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">path_slice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">native</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamanager.html#RePath.path_slice"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamanager.RePath.path_slice" title="Link to this definition">¶</a></dt>
+<dd><p>Slice a path by elements, as in getitem or []</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Path to slice</p>
+</dd>
+<dt><strong>start</strong><span class="classifier">int</span></dt><dd><p>First path element to return, or the only element if
+stop and step are not specified.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">str</span></dt><dd><p>Selection of the path</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>stop</strong><span class="classifier">int</span></dt><dd><p>First path element to NOT return, i.e., one past the last.
+If <code class="docutils literal notranslate"><span class="pre">stop</span></code> is not specified but <code class="docutils literal notranslate"><span class="pre">step</span></code> is, return to end.</p>
+</dd>
+<dt><strong>step</strong><span class="classifier">int</span></dt><dd><p>Increment between each.</p>
+</dd>
+<dt><strong>native</strong><span class="classifier">bool</span></dt><dd><p>Is this a native path or UNIX-style? (default False, UNIX)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;foo/bar/baz&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">datamanager</span><span class="o">.</span><span class="n">DataManager</span><span class="o">.</span><span class="n">path_slice</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">&quot;bar&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">datamanager</span><span class="o">.</span><span class="n">DataManager</span><span class="o">.</span><span class="n">path_slice</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">&quot;foo/baz&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">datamanager</span><span class="o">.</span><span class="n">DataManager</span><span class="o">.</span><span class="n">path_slice</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">&quot;bar/baz&quot;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.datamanager.RePath.path_split">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">path_split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">native</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamanager.html#RePath.path_split"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamanager.RePath.path_split" title="Link to this definition">¶</a></dt>
+<dd><p>Break a path apart into a list for each path element.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Path to split</p>
+</dd>
+<dt><strong>native</strong><span class="classifier">bool</span></dt><dd><p>Is this a native path or UNIX-style? (default False, UNIX)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">list of str</span></dt><dd><p>One path element (directory or file) per item</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spacepy.datamanager.RePath.fmt_to_re">
+<span class="sig-name descname"><span class="pre">fmt_to_re</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'H':</span> <span class="pre">'[0-5]\\d',</span> <span class="pre">'M':</span> <span class="pre">'[0-5]\\d',</span> <span class="pre">'U':</span> <span class="pre">'[0-5]\\d',</span> <span class="pre">'W':</span> <span class="pre">'[0-5]\\d',</span> <span class="pre">'Y':</span> <span class="pre">'\\d{4}',</span> <span class="pre">'d':</span> <span class="pre">'[0-3]\\d',</span> <span class="pre">'j':</span> <span class="pre">'[0-3]\\d\\d',</span> <span class="pre">'m':</span> <span class="pre">'[0-2]\\d',</span> <span class="pre">'s':</span> <span class="pre">'[0-6]\\d',</span> <span class="pre">'y':</span> <span class="pre">'\\d\\d'}</span></em><a class="headerlink" href="#spacepy.datamanager.RePath.fmt_to_re" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.datamanager.RePath</a><ul>
+<li><a class="reference internal" href="#spacepy.datamanager.RePath"><code class="docutils literal notranslate"><span class="pre">RePath</span></code></a><ul>
+<li><a class="reference internal" href="#spacepy.datamanager.RePath.__init__"><code class="docutils literal notranslate"><span class="pre">RePath.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamanager.RePath.match"><code class="docutils literal notranslate"><span class="pre">RePath.match()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamanager.RePath.path_slice"><code class="docutils literal notranslate"><span class="pre">RePath.path_slice()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamanager.RePath.path_split"><code class="docutils literal notranslate"><span class="pre">RePath.path_split()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamanager.RePath.fmt_to_re"><code class="docutils literal notranslate"><span class="pre">RePath.fmt_to_re</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="spacepy.datamanager.DataManager.html"
+                          title="previous chapter">spacepy.datamanager.DataManager</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="spacepy.datamodel.html"
+                          title="next chapter">spacepy.datamodel</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/autosummary/spacepy.datamanager.RePath.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.datamodel.html" title="spacepy.datamodel"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.datamanager.DataManager.html" title="spacepy.datamanager.DataManager"
+             >previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.datamanager.html" >spacepy.datamanager</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.datamanager.RePath</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    </div>
+  </body>
+</html>

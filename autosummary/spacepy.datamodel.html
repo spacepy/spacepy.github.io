@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>spacepy.datamodel &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="spacepy.datamodel.ISTPArray" href="spacepy.datamodel.ISTPArray.html" />
+    <link rel="prev" title="spacepy.datamanager.RePath" href="spacepy.datamanager.RePath.html" /> 
+  </head><body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.datamodel.ISTPArray.html" title="spacepy.datamodel.ISTPArray"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.datamanager.RePath.html" title="spacepy.datamanager.RePath"
+             accesskey="P">previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" accesskey="U">spacepy</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.datamodel</a></li> 
+      </ul>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-spacepy.datamodel">
+<span id="spacepy-datamodel"></span><h1>spacepy.datamodel<a class="headerlink" href="#module-spacepy.datamodel" title="Link to this heading">¶</a></h1>
+<p>Data model conceptually similar to HDF5 and CDF.</p>
+<p>For more documentation <a class="reference internal" href="../datamodel.html"><span class="doc">Datamodel</span></a></p>
+<p>Authors: Steve Morley and Brian Larsen</p>
+<p>Additional Contributors: Charles Kiyanda and Miles Engel</p>
+<p>Institution: Los Alamos National Laboratory</p>
+<p>Contact: <a class="reference external" href="mailto:smorley&#37;&#52;&#48;lanl&#46;gov">smorley<span>&#64;</span>lanl<span>&#46;</span>gov</a>; <a class="reference external" href="mailto:balarsen&#37;&#52;&#48;lanl&#46;gov">balarsen<span>&#64;</span>lanl<span>&#46;</span>gov</a></p>
+<p>Copyright 2010-2016 Los Alamos National Security, LLC.</p>
+<p class="rubric">Functions</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.convertKeysToStr" title="spacepy.datamodel.convertKeysToStr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convertKeysToStr</span></code></a>(SDobject)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.datamodel.createISTPattrs" title="spacepy.datamodel.createISTPattrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createISTPattrs</span></code></a>(datatype[, ndims, vartype, ...])</p></td>
+<td><p>Return set of unpopulated attributes for ISTP compliant variable</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.dmcopy" title="spacepy.datamodel.dmcopy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dmcopy</span></code></a>(dobj)</p></td>
+<td><p>Generic copy utility to return a copy of a (datamodel) object</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.datamodel.dmfilled" title="spacepy.datamodel.dmfilled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dmfilled</span></code></a>(shape[, fillval, dtype, order, attrs])</p></td>
+<td><p>Return a new dmarray of given shape and type, filled with a specified value (default=0).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.flatten" title="spacepy.datamodel.flatten"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flatten</span></code></a>(dobj)</p></td>
+<td><p>Collapse datamodel to one level deep</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.datamodel.fromCDF" title="spacepy.datamodel.fromCDF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromCDF</span></code></a>(fname)</p></td>
+<td><p>Create a SpacePy datamodel representation of a NASA CDF file</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.fromHDF5" title="spacepy.datamodel.fromHDF5"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromHDF5</span></code></a>(fname, **kwargs)</p></td>
+<td><p>Create a SpacePy datamodel representation of an HDF5 file or netCDF4 file which is HDF5 compliant</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.datamodel.fromNC3" title="spacepy.datamodel.fromNC3"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromNC3</span></code></a>(fname)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.fromRecArray" title="spacepy.datamodel.fromRecArray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromRecArray</span></code></a>(recarr)</p></td>
+<td><p>Takes a numpy recarray and returns each field as a dmarray in a SpaceData container</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.datamodel.readJSONMetadata" title="spacepy.datamodel.readJSONMetadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readJSONMetadata</span></code></a>(fname, **kwargs)</p></td>
+<td><p>Read JSON metadata from an ASCII data file</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.readJSONheadedASCII" title="spacepy.datamodel.readJSONheadedASCII"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readJSONheadedASCII</span></code></a>(fname[, mdata, comment, ...])</p></td>
+<td><p>read JSON-headed ASCII data files into a SpacePy datamodel</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.datamodel.resample" title="spacepy.datamodel.resample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resample</span></code></a>(data[, time, winsize, overlap, ...])</p></td>
+<td><p>resample a SpaceData to a new time interval</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.toCDF" title="spacepy.datamodel.toCDF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toCDF</span></code></a>(fname, SDobject[, skeleton, flatten, ...])</p></td>
+<td><p>Create a CDF file from a SpacePy datamodel representation</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.datamodel.toHDF5" title="spacepy.datamodel.toHDF5"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toHDF5</span></code></a>(fname, SDobject, **kwargs)</p></td>
+<td><p>Create an HDF5 file from a SpacePy datamodel representation</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.toHTML" title="spacepy.datamodel.toHTML"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toHTML</span></code></a>(fname, SDobject[, attrs, varLinks, ...])</p></td>
+<td><p>Create an HTML dump of the structure of a spacedata</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.datamodel.toJSONheadedASCII" title="spacepy.datamodel.toJSONheadedASCII"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toJSONheadedASCII</span></code></a>(fname, insd[, metadata, ...])</p></td>
+<td><p>Write JSON-headed ASCII file of data with metadata from SpaceData object</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.toRecArray" title="spacepy.datamodel.toRecArray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toRecArray</span></code></a>(sdo)</p></td>
+<td><p>Takes a SpaceData and creates a numpy recarray</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.datamodel.unflatten" title="spacepy.datamodel.unflatten"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unflatten</span></code></a>(dobj[, marker])</p></td>
+<td><p>Collapse datamodel to one level deep</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.writeJSONMetadata" title="spacepy.datamodel.writeJSONMetadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeJSONMetadata</span></code></a>(fname, insd[, depend0, ...])</p></td>
+<td><p>Scrape metadata from SpaceData object and make a JSON header</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.datamodel.ISTPArray.html#spacepy.datamodel.ISTPArray" title="spacepy.datamodel.ISTPArray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ISTPArray</span></code></a>()</p></td>
+<td><p>Mixin class for array using ISTP metadata.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.datamodel.ISTPContainer.html#spacepy.datamodel.ISTPContainer" title="spacepy.datamodel.ISTPContainer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ISTPContainer</span></code></a>()</p></td>
+<td><p>Mixin class for containers using ISTP metadata.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.datamodel.MetaMixin.html#spacepy.datamodel.MetaMixin" title="spacepy.datamodel.MetaMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MetaMixin</span></code></a>()</p></td>
+<td><p>Mixin class that adds a 'meta' attribute that acts like 'attrs'</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData" title="spacepy.datamodel.SpaceData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpaceData</span></code></a>(*args, **kwargs)</p></td>
+<td><p>Datamodel class extending dict by adding attributes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.datamodel.dmarray.html#spacepy.datamodel.dmarray" title="spacepy.datamodel.dmarray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dmarray</span></code></a>(input_array[, attrs, dtype])</p></td>
+<td><p>Container for data within a SpaceData object</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Exceptions</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.DMWarning" title="spacepy.datamodel.DMWarning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DMWarning</span></code></a></p></td>
+<td><p>Warnings class for datamodel, subclassed so it can be set to always</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.datamodel.convertKeysToStr">
+<span class="sig-prename descclassname"><span class="pre">spacepy.datamodel.</span></span><span class="sig-name descname"><span class="pre">convertKeysToStr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SDobject</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#convertKeysToStr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.convertKeysToStr" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.datamodel.createISTPattrs">
+<span class="sig-prename descclassname"><span class="pre">spacepy.datamodel.</span></span><span class="sig-name descname"><span class="pre">createISTPattrs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datatype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndims</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vartype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NRV</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#createISTPattrs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.createISTPattrs" title="Link to this definition">¶</a></dt>
+<dd><p>Return set of unpopulated attributes for ISTP compliant variable</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>datatype</strong><span class="classifier">{‘data’, ‘support_data’, ‘metadata’}</span></dt><dd><p>datatype of variable to create metadata for.</p>
+</dd>
+<dt><strong>ndims</strong><span class="classifier">int</span></dt><dd><p>number of dimensions, default=1</p>
+</dd>
+<dt><strong>vartype</strong><span class="classifier">{‘float’, ‘char’, ‘int’, ‘epoch’, ‘tt2000’}</span></dt><dd><p>The type of the variable, default=float</p>
+</dd>
+<dt><strong>units</strong><span class="classifier">str</span></dt><dd><p>The units of the variable, default=’ ‘</p>
+</dd>
+<dt><strong>NRV</strong><span class="classifier">bool</span></dt><dd><p>Is the variable NRV (non-record varying), default=False</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>attrs</strong><span class="classifier">dict</span></dt><dd><p>dictionary of attributes for the variable</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamodel</span> <span class="k">as</span> <span class="nn">dm</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span><span class="o">.</span><span class="n">createISTPattrs</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">ndims</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">vartype</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;MeV&#39;</span><span class="p">)</span>
+<span class="go">{&#39;CATDESC&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;DISPLAY_TYPE&#39;: &#39;spectrogram&#39;,</span>
+<span class="go"> &#39;FIELDNAM&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;FILLVAL&#39;: -1e+31,</span>
+<span class="go"> &#39;FORMAT&#39;: &#39;F18.6&#39;,</span>
+<span class="go"> &#39;LABLAXIS&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;SI_CONVERSION&#39;: &#39; &gt; &#39;,</span>
+<span class="go"> &#39;UNITS&#39;: &#39;MeV&#39;,</span>
+<span class="go"> &#39;VALIDMIN&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;VALIDMAX&#39;: &#39;&#39;,</span>
+<span class="go"> &#39;VAR_TYPE&#39;: &#39;data&#39;,</span>
+<span class="go"> &#39;DEPEND_0&#39;: &#39;Epoch&#39;,</span>
+<span class="go"> &#39;DEPEND_1&#39;: &#39;&#39;}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.datamodel.dmcopy">
+<span class="sig-prename descclassname"><span class="pre">spacepy.datamodel.</span></span><span class="sig-name descname"><span class="pre">dmcopy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dobj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#dmcopy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.dmcopy" title="Link to this definition">¶</a></dt>
+<dd><p>Generic copy utility to return a copy of a (datamodel) object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>dobj</strong><span class="classifier">object</span></dt><dd><p>object to return a copy of</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>copy_obj: object (same type as input)</dt><dd><p>copy of input oibject</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamodel</span> <span class="k">as</span> <span class="nn">dm</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dat</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmarray</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;T&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dat1</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmcopy</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dat1</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;copy&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dat</span> <span class="ow">is</span> <span class="n">dat1</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dat1</span><span class="o">.</span><span class="n">attrs</span>
+<span class="go">{&#39;copy&#39;: True, &#39;units&#39;: &#39;T&#39;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dat</span><span class="o">.</span><span class="n">attrs</span>
+<span class="go">{&#39;units&#39;: &#39;T&#39;}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.datamodel.dmfilled">
+<span class="sig-prename descclassname"><span class="pre">spacepy.datamodel.</span></span><span class="sig-name descname"><span class="pre">dmfilled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fillval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#dmfilled"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.dmfilled" title="Link to this definition">¶</a></dt>
+<dd><p>Return a new dmarray of given shape and type, filled with a specified value (default=0).</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ones.html#numpy.ones" title="(in NumPy v2.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ones</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamodel</span> <span class="k">as</span> <span class="nn">dm</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span><span class="o">.</span><span class="n">dmfilled</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;nT&#39;</span><span class="p">})</span>
+<span class="go">dmarray([ 0.,  0.,  0.,  0.,  0.])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span><span class="o">.</span><span class="n">dmfilled</span><span class="p">((</span><span class="mi">5</span><span class="p">,),</span> <span class="n">fillval</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
+<span class="go">dmarray([1, 1, 1, 1, 1])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span><span class="o">.</span><span class="n">dmfilled</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">fillval</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+<span class="go">dmarray([[ nan],</span>
+<span class="go">       [ nan]])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmfilled</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;nT&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">dmarray([[ nan],</span>
+<span class="go">       [ nan]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">attrs</span>
+<span class="go">{&#39;units&#39;: &#39;nT&#39;}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.datamodel.flatten">
+<span class="sig-prename descclassname"><span class="pre">spacepy.datamodel.</span></span><span class="sig-name descname"><span class="pre">flatten</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dobj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#flatten"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.flatten" title="Link to this definition">¶</a></dt>
+<dd><p>Collapse datamodel to one level deep</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#spacepy.datamodel.unflatten" title="spacepy.datamodel.unflatten"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unflatten</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData.flatten" title="spacepy.datamodel.SpaceData.flatten"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpaceData.flatten</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamodel</span> <span class="k">as</span> <span class="nn">dm</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.toolbox</span> <span class="k">as</span> <span class="nn">tb</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">(</span><span class="n">dog</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">pig</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">(</span><span class="n">fish</span><span class="o">=</span><span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="s1">&#39;carp&#39;</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="s1">&#39;perch&#39;</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;4&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">(</span><span class="n">cat</span> <span class="o">=</span> <span class="s1">&#39;kitty&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;5&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">tree</span><span class="p">()</span>
+<span class="go">+</span>
+<span class="go">|____1</span>
+<span class="go">     |____dog</span>
+<span class="go">     |____pig</span>
+<span class="go">          |____fish</span>
+<span class="go">               |____a</span>
+<span class="go">               |____b</span>
+<span class="go">|____4</span>
+<span class="go">     |____cat</span>
+<span class="go">|____5</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">tree</span><span class="p">()</span>
+<span class="go">+</span>
+<span class="go">|____1&lt;--dog</span>
+<span class="go">|____1&lt;--pig&lt;--fish&lt;--a</span>
+<span class="go">|____1&lt;--pig&lt;--fish&lt;--b</span>
+<span class="go">|____4&lt;--cat</span>
+<span class="go">|____5</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">tree</span><span class="p">()</span>
+<span class="go">+</span>
+<span class="go">|____1&lt;--dog</span>
+<span class="go">|____1&lt;--pig&lt;--fish&lt;--a</span>
+<span class="go">|____1&lt;--pig&lt;--fish&lt;--b</span>
+<span class="go">|____4&lt;--cat</span>
+<span class="go">|____5</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.datamodel.fromCDF">
+<span class="sig-prename descclassname"><span class="pre">spacepy.datamodel.</span></span><span class="sig-name descname"><span class="pre">fromCDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#fromCDF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.fromCDF" title="Link to this definition">¶</a></dt>
+<dd><p>Create a SpacePy datamodel representation of a NASA CDF file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>file</strong><span class="classifier">string</span></dt><dd><p>the name of the cdf file to be loaded into a datamodel</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">spacepy.datamodel.SpaceData</span></dt><dd><p>SpaceData with associated attributes and variables in dmarrays</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="spacepy.pycdf.CDF.html#spacepy.pycdf.CDF.copy" title="spacepy.pycdf.CDF.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pycdf.CDF.copy</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="spacepy.pycdf.istp.VarBundle.html#spacepy.pycdf.istp.VarBundle" title="spacepy.pycdf.istp.VarBundle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pycdf.istp.VarBundle</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamodel</span> <span class="k">as</span> <span class="nn">dm</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">fromCDF</span><span class="p">(</span><span class="s1">&#39;test.cdf&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.datamodel.fromHDF5">
+<span class="sig-prename descclassname"><span class="pre">spacepy.datamodel.</span></span><span class="sig-name descname"><span class="pre">fromHDF5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#fromHDF5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.fromHDF5" title="Link to this definition">¶</a></dt>
+<dd><p>Create a SpacePy datamodel representation of an HDF5 file or netCDF4 file which is HDF5 compliant</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>file</strong><span class="classifier">string</span></dt><dd><p>the name of the HDF5/netCDF4 file to be loaded into a datamodel</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">spacepy.datamodel.SpaceData</span></dt><dd><p>SpaceData with associated attributes and variables in dmarrays</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Zero-sized datasets will break in h5py. This is kluged by returning a
+dmarray containing a None.</p>
+<p>This function is expected to work with any HDF5-compliant files, including
+netCDF4 (not netCDF3) and MatLab save files from v7.3 or later, but some
+datatypes are not supported, e.g., non-string vlen datatypes, and will
+raise a warning.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamodel</span> <span class="k">as</span> <span class="nn">dm</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">fromHDF5</span><span class="p">(</span><span class="s1">&#39;test.hdf&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.datamodel.fromNC3">
+<span class="sig-prename descclassname"><span class="pre">spacepy.datamodel.</span></span><span class="sig-name descname"><span class="pre">fromNC3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#fromNC3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.fromNC3" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.datamodel.fromRecArray">
+<span class="sig-prename descclassname"><span class="pre">spacepy.datamodel.</span></span><span class="sig-name descname"><span class="pre">fromRecArray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">recarr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#fromRecArray"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.fromRecArray" title="Link to this definition">¶</a></dt>
+<dd><p>Takes a numpy recarray and returns each field as a dmarray in a SpaceData container</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>recarr</strong><span class="classifier">numpy record array</span></dt><dd><p>object to parse into SpaceData container</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>sd: spacepy.datamodel.SpaceData</dt><dd><p>dict-like containing arrays of named records in recarr</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamodel</span> <span class="k">as</span> <span class="nn">dm</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="go">array([(1.0, 2), (3.0, 4)], dtype=[(&#39;x&#39;, &#39;&lt;f8&#39;), (&#39;y&#39;, &#39;&lt;i4&#39;)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sd</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">fromRecArray</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sd</span><span class="o">.</span><span class="n">tree</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">+</span>
+<span class="go">|____x (spacepy.datamodel.dmarray (2,))</span>
+<span class="go">|____y (spacepy.datamodel.dmarray (2,))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.datamodel.readJSONMetadata">
+<span class="sig-prename descclassname"><span class="pre">spacepy.datamodel.</span></span><span class="sig-name descname"><span class="pre">readJSONMetadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#readJSONMetadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.readJSONMetadata" title="Link to this definition">¶</a></dt>
+<dd><p>Read JSON metadata from an ASCII data file</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>fname</strong><span class="classifier">str</span></dt><dd><p>Filename to read metadata from</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.5.0: </span>Filename can now be a .gz to indicate the file is gzipped</p>
+</div>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>mdata: spacepy.datamodel.SpaceData</dt><dd><p>SpaceData with the metadata from the file</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>verbose</strong><span class="classifier">bool (optional)</span></dt><dd><p>set verbose output so metadata tree prints on read (default False)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.datamodel.readJSONheadedASCII">
+<span class="sig-prename descclassname"><span class="pre">spacepy.datamodel.</span></span><span class="sig-name descname"><span class="pre">readJSONheadedASCII</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mdata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'#'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">convert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">restrict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#readJSONheadedASCII"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.readJSONheadedASCII" title="Link to this definition">¶</a></dt>
+<dd><p>read JSON-headed ASCII data files into a SpacePy datamodel</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>fname</strong><span class="classifier">str or list</span></dt><dd><p>Filename(s) to read data from</p>
+<blockquote>
+<div><div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.5.0: </span>Filename can now be a .gz to indicate the file is gzipped</p>
+</div>
+</div></blockquote>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>mdata: spacepy.datamodel.SpaceData</dt><dd><p>SpaceData with the data and metadata from the file</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>mdata</strong><span class="classifier">spacepy.datamodel.SpaceData (optional)</span></dt><dd><p>supply metadata object, otherwise is read from fname (default None)</p>
+</dd>
+<dt><strong>comment: str (optional)</strong></dt><dd><p>comment string in file to be read; lines starting with comment are
+ignored (default ‘#’)</p>
+</dd>
+<dt><strong>convert: bool or dict-like (optional)</strong></dt><dd><p>If True, uses common names to try conversion from string. If a dict-
+like then uses the functions specified as the dict values to convert
+each element of ‘key’ to a non-string</p>
+</dd>
+<dt><strong>restrict: list of strings (optional)</strong></dt><dd><p>If present, restrict the variables stored to only those on this list</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.datamodel.resample">
+<span class="sig-prename descclassname"><span class="pre">spacepy.datamodel.</span></span><span class="sig-name descname"><span class="pre">resample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">winsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overlap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">st_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outtimename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Epoch'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#resample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.resample" title="Link to this definition">¶</a></dt>
+<dd><p>resample a SpaceData to a new time interval</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">SpaceData or dmarray</span></dt><dd><p>SpaceData with data to resample or dmarray with data to resample,
+variables can only be 1d or 2d, if time is specified only variables
+the same length as time are resampled, otherwise only variables
+with length equal to the longest length are resampled</p>
+</dd>
+<dt><strong>time</strong><span class="classifier">array-like</span></dt><dd><p>dmarray of times the correspond to the data</p>
+</dd>
+<dt><strong>winsize</strong><span class="classifier">datetime.timedelta</span></dt><dd><p>Time frame to average the data over</p>
+</dd>
+<dt><strong>overlap</strong><span class="classifier">datetime.timedelta</span></dt><dd><p>Overlap in the moving average</p>
+</dd>
+<dt><strong>st_time</strong><span class="classifier">datetime.datetime</span></dt><dd><p>Starting time for the resample, if not specified the time of the first
+data point is used (see spacepy.toolbox.windowMean)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>ans</strong><span class="classifier">SpaceData</span></dt><dd><p>Resampled data, included keys are in the input keys (with the data caveats above)
+and Epoch which contains the output time</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">datetime</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamodel</span> <span class="k">as</span> <span class="nn">dm</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;bar&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmarray</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmarray</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="o">+</span> <span class="mi">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmarray</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">times</span> <span class="o">=</span> <span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2010</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">winsize</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">overlap</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span><span class="o">.</span><span class="n">tree</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go"># +</span>
+<span class="go"># :|____foo (str [3])</span>
+<span class="go"># |____Epoch (spacepy.datamodel.dmarray (4,))</span>
+<span class="go"># |____a (spacepy.datamodel.dmarray (4, 2))</span>
+<span class="go"># :|____DEPEND_0 (str [5])</span>
+<span class="go">#</span>
+<span class="go"># Things to note:</span>
+<span class="go">#    - attributes are preserved</span>
+<span class="go">#    - the output variables have their DEPEND_0 changed to Epoch (or outtimename)</span>
+<span class="go">#    - each dimension of a 2d array is resampled individually</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.datamodel.toCDF">
+<span class="sig-prename descclassname"><span class="pre">spacepy.datamodel.</span></span><span class="sig-name descname"><span class="pre">toCDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SDobject</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skeleton</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flatten</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoNRV</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backward</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TT2000</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#toCDF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.toCDF" title="Link to this definition">¶</a></dt>
+<dd><p>Create a CDF file from a SpacePy datamodel representation</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>fname</strong><span class="classifier">str</span></dt><dd><p>Filename to write to</p>
+</dd>
+<dt><strong>SDobject</strong><span class="classifier">spacepy.datamodel.SpaceData</span></dt><dd><p>SpaceData with associated attributes and variables in dmarrays</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>None</dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>skeleton</strong><span class="classifier">str (optional)</span></dt><dd><p>create new CDF from a skeleton file (default ‘’)</p>
+</dd>
+<dt><strong>flatten</strong><span class="classifier">bool (optional)</span></dt><dd><p>flatten incoming datamodel - if SpaceData objects are nested (default False)</p>
+</dd>
+<dt><strong>overwrite</strong><span class="classifier">bool (optional)</span></dt><dd><p>allow overwrite of an existing target file (default False)</p>
+</dd>
+<dt><strong>autoNRV</strong><span class="classifier">bool (optional)</span></dt><dd><p>attempt automatic identification of non-record varying entries in CDF</p>
+</dd>
+<dt><strong>backward</strong><span class="classifier">bool (optional)</span></dt><dd><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">False</span></code> to create CDF in backward-compatible format; <code class="docutils literal notranslate"><span class="pre">True</span></code></dt><dd><p>to force v3+ compatibility only. (Default: do not change current
+state, see <a class="reference internal" href="spacepy.pycdf.Library.html#spacepy.pycdf.Library.set_backward" title="spacepy.pycdf.Library.set_backward"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_backward()</span></code></a>).</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.5.0: </span>Now supports specifying backward compatible or no change;
+previous versions always wrote v3+ CDFs (even if <code class="docutils literal notranslate"><span class="pre">False</span></code>).</p>
+</div>
+</dd>
+</dl>
+</dd>
+<dt><strong>TT2000</strong><span class="classifier">bool (optional)</span></dt><dd><p>Specify type for variables with names beginning ‘Epoch’. Default
+CDF_EPOCH for backward-compatible CDF (<code class="docutils literal notranslate"><span class="pre">backward</span></code> True) and
+CDF_TT20000 otherwise (<code class="docutils literal notranslate"><span class="pre">backward</span></code> False or unspecified).</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.5.0: </span>Current handling introduced.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.3.0: </span>Always write TT2000 variables (due to change in <a class="reference internal" href="spacepy.pycdf.html#module-spacepy.pycdf" title="spacepy.pycdf"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pycdf</span></code></a>).</p>
+</div>
+</dd>
+<dt><strong>verbose</strong><span class="classifier">bool (optional)</span></dt><dd><p>verbosity flag</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.5.0: </span>Invalid keyword arguments now raise <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.13)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a> rather than being ignored.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.datamodel.toHDF5">
+<span class="sig-prename descclassname"><span class="pre">spacepy.datamodel.</span></span><span class="sig-name descname"><span class="pre">toHDF5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SDobject</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#toHDF5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.toHDF5" title="Link to this definition">¶</a></dt>
+<dd><p>Create an HDF5 file from a SpacePy datamodel representation</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>fname</strong><span class="classifier">str</span></dt><dd><p>Filename to write to</p>
+</dd>
+<dt><strong>SDobject</strong><span class="classifier">spacepy.datamodel.SpaceData</span></dt><dd><p>SpaceData with associated attributes and variables in dmarrays</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>None</dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>overwrite</strong><span class="classifier">bool (optional)</span></dt><dd><p>allow overwrite of an existing target file (default True)</p>
+</dd>
+<dt><strong>mode</strong><span class="classifier">str (optional)</span></dt><dd><p>HDF5 file open mode (a, w, r) (default ‘a’)</p>
+</dd>
+<dt><strong>compression</strong><span class="classifier">str (optional)</span></dt><dd><p>compress all non-scalar variables using this method (default None)
+(gzip, shuffle, fletcher32, szip, lzf)</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.4.0: </span>No longer compresses scalars (which usually fails).</p>
+</div>
+</dd>
+<dt><strong>compression_opts</strong><span class="classifier">str (optional)</span></dt><dd><p>options to the compression, see h5py documentation for more details</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamodel</span> <span class="k">as</span> <span class="nn">dm</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmarray</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100000</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span><span class="o">.</span><span class="n">toHDF5</span><span class="p">(</span><span class="s1">&#39;test_gzip.h5&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s1">&#39;gzip&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span><span class="o">.</span><span class="n">toHDF5</span><span class="p">(</span><span class="s1">&#39;test.h5&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># test_gzip.h5 was 118k, test.h5 was 785k</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.datamodel.toHTML">
+<span class="sig-prename descclassname"><span class="pre">spacepy.datamodel.</span></span><span class="sig-name descname"><span class="pre">toHTML</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SDobject</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">varLinks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">echo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tableTag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'&lt;table</span> <span class="pre">border=&quot;1&quot;&gt;'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#toHTML"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.toHTML" title="Link to this definition">¶</a></dt>
+<dd><p>Create an HTML dump of the structure of a spacedata</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>fname</strong><span class="classifier">str</span></dt><dd><p>Filename to write to</p>
+</dd>
+<dt><strong>SDobject</strong><span class="classifier">spacepy.datamodel.SpaceData</span></dt><dd><p>SpaceData with associated attributes and variables in dmarrays</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>overwrite</strong><span class="classifier">bool (optional)</span></dt><dd><p>allow overwrite of an existing target file (default True)</p>
+</dd>
+<dt><strong>mode</strong><span class="classifier">str (optional)</span></dt><dd><p>HDF5 file open mode (a, w, r) (default ‘a’)</p>
+</dd>
+<dt><strong>echo</strong><span class="classifier">bool</span></dt><dd><p>echo the html to the screen</p>
+</dd>
+<dt><strong>varLinks</strong><span class="classifier">bool</span></dt><dd><p>make the variable name a link to a stub page</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.datamodel.toJSONheadedASCII">
+<span class="sig-prename descclassname"><span class="pre">spacepy.datamodel.</span></span><span class="sig-name descname"><span class="pre">toJSONheadedASCII</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">insd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depend0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#toJSONheadedASCII"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.toJSONheadedASCII" title="Link to this definition">¶</a></dt>
+<dd><p>Write JSON-headed ASCII file of data with metadata from SpaceData object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>fname</strong><span class="classifier">str</span></dt><dd><p>Filename to write to (can also use a file-like object)
+None can be given in conjunction with the returnString keyword to skip writing output</p>
+</dd>
+<dt><strong>insd</strong><span class="classifier">spacepy.datamodel.SpaceData</span></dt><dd><p>SpaceData with associated attributes and variables in dmarrays</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>None</dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>depend0</strong><span class="classifier">str (optional)</span></dt><dd><p>variable name to use to indicate parameter on which other data depend (e.g. Time)</p>
+</dd>
+<dt><strong>order</strong><span class="classifier">list (optional)</span></dt><dd><p>list of key names in order of start column in output JSON file</p>
+</dd>
+<dt><strong>metadata: str or file-like (optional)</strong></dt><dd><p>filename with JSON header to use (or file-like with JSON metadata)</p>
+</dd>
+<dt><strong>delimiter: str</strong></dt><dd><p>delimiter to use in ASCII output (default is whitespace), for tab, use ‘        ‘</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamodel</span> <span class="k">as</span> <span class="nn">dm</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;Global&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;A global attribute&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Var1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmarray</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Local1&#39;</span><span class="p">:</span> <span class="s1">&#39;A local attribute&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Var2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmarray</span><span class="p">([[</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">],[</span><span class="mi">9</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;MVar&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmarray</span><span class="p">([</span><span class="mf">7.8</span><span class="p">],</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Note&#39;</span><span class="p">:</span> <span class="s1">&#39;Metadata&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dm</span><span class="o">.</span><span class="n">toJSONheadedASCII</span><span class="p">(</span><span class="s1">&#39;outFile.txt&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">depend0</span><span class="o">=</span><span class="s1">&#39;Var1&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Var1&#39;</span><span class="p">])</span>
+<span class="go">#Note that not all field names are required, those not given will be listed</span>
+<span class="go">#alphabetically after those that are specified</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.datamodel.toRecArray">
+<span class="sig-prename descclassname"><span class="pre">spacepy.datamodel.</span></span><span class="sig-name descname"><span class="pre">toRecArray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sdo</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#toRecArray"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.toRecArray" title="Link to this definition">¶</a></dt>
+<dd><p>Takes a SpaceData and creates a numpy recarray</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>sdo</strong><span class="classifier">SpaceData</span></dt><dd><p>SpaceData to change to a numpy recarray</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>recarr: numpy record array</dt><dd><p>numpy.recarray object with the same values (attributes are lost)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamodel</span> <span class="k">as</span> <span class="nn">dm</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sd</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sd</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmarray</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sd</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">dmarray</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sd</span><span class="o">.</span><span class="n">tree</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">+</span>
+<span class="go">|____x (spacepy.datamodel.dmarray (2,))</span>
+<span class="go">|____y (spacepy.datamodel.dmarray (2,))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ra</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">toRecArray</span><span class="p">(</span><span class="n">sd</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ra</span><span class="p">,</span> <span class="n">ra</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="go">[(2, 1.0) (4, 2.0)] (numpy.record, [(&#39;y&#39;, &#39;&lt;i8&#39;), (&#39;x&#39;, &#39;&lt;f8&#39;)])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.datamodel.unflatten">
+<span class="sig-prename descclassname"><span class="pre">spacepy.datamodel.</span></span><span class="sig-name descname"><span class="pre">unflatten</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dobj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'&lt;--'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#unflatten"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.unflatten" title="Link to this definition">¶</a></dt>
+<dd><p>Collapse datamodel to one level deep</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamodel</span> <span class="k">as</span> <span class="nn">dm</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.toolbox</span> <span class="k">as</span> <span class="nn">tb</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">(</span><span class="n">dog</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">pig</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">(</span><span class="n">fish</span><span class="o">=</span><span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="s1">&#39;carp&#39;</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="s1">&#39;perch&#39;</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;4&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">SpaceData</span><span class="p">(</span><span class="n">cat</span> <span class="o">=</span> <span class="s1">&#39;kitty&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;5&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">tree</span><span class="p">()</span>
+<span class="go">+</span>
+<span class="go">|____1</span>
+<span class="go">     |____dog</span>
+<span class="go">     |____pig</span>
+<span class="go">          |____fish</span>
+<span class="go">               |____a</span>
+<span class="go">               |____b</span>
+<span class="go">|____4</span>
+<span class="go">     |____cat</span>
+<span class="go">|____5</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">tree</span><span class="p">()</span>
+<span class="go">+</span>
+<span class="go">|____1&lt;--dog</span>
+<span class="go">|____1&lt;--pig&lt;--fish&lt;--a</span>
+<span class="go">|____1&lt;--pig&lt;--fish&lt;--b</span>
+<span class="go">|____4&lt;--cat</span>
+<span class="go">|____5</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">dm</span><span class="o">.</span><span class="n">unflatten</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">tree</span><span class="p">()</span>
+<span class="go">+</span>
+<span class="go">|____1</span>
+<span class="go">     |____dog</span>
+<span class="go">     |____pig</span>
+<span class="go">          |____fish</span>
+<span class="go">               |____a</span>
+<span class="go">               |____b</span>
+<span class="go">|____4</span>
+<span class="go">     |____cat</span>
+<span class="go">|____5</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.datamodel.writeJSONMetadata">
+<span class="sig-prename descclassname"><span class="pre">spacepy.datamodel.</span></span><span class="sig-name descname"><span class="pre">writeJSONMetadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">insd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depend0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">returnString</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#writeJSONMetadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.writeJSONMetadata" title="Link to this definition">¶</a></dt>
+<dd><p>Scrape metadata from SpaceData object and make a JSON header</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>fname</strong><span class="classifier">str</span></dt><dd><p>Filename to write to (can also use a file-like object)
+None can be given in conjunction with the returnString keyword to skip writing output</p>
+</dd>
+<dt><strong>insd</strong><span class="classifier">spacepy.datamodel.SpaceData</span></dt><dd><p>SpaceData with associated attributes and variables in dmarrays</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>None  (unless returnString keyword is True)</dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>depend0</strong><span class="classifier">str (optional)</span></dt><dd><p>variable name to use to indicate parameter on which other data depend (e.g. Time)</p>
+</dd>
+<dt><strong>order</strong><span class="classifier">list (optional)</span></dt><dd><p>list of key names in order of start column in output JSON file</p>
+</dd>
+<dt><strong>verbose: bool (optional)</strong></dt><dd><p>verbose output</p>
+</dd>
+<dt><strong>returnString: bool (optional)</strong></dt><dd><p>return JSON header as string instead of returning None</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="spacepy.datamodel.DMWarning">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.datamodel.</span></span><span class="sig-name descname"><span class="pre">DMWarning</span></span><a class="reference internal" href="../_modules/spacepy/datamodel.html#DMWarning"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.DMWarning" title="Link to this definition">¶</a></dt>
+<dd><p>Warnings class for datamodel, subclassed so it can be set to always</p>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.datamodel</a><ul>
+<li><a class="reference internal" href="#spacepy.datamodel.convertKeysToStr"><code class="docutils literal notranslate"><span class="pre">convertKeysToStr()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamodel.createISTPattrs"><code class="docutils literal notranslate"><span class="pre">createISTPattrs()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamodel.dmcopy"><code class="docutils literal notranslate"><span class="pre">dmcopy()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamodel.dmfilled"><code class="docutils literal notranslate"><span class="pre">dmfilled()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamodel.flatten"><code class="docutils literal notranslate"><span class="pre">flatten()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamodel.fromCDF"><code class="docutils literal notranslate"><span class="pre">fromCDF()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamodel.fromHDF5"><code class="docutils literal notranslate"><span class="pre">fromHDF5()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamodel.fromNC3"><code class="docutils literal notranslate"><span class="pre">fromNC3()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamodel.fromRecArray"><code class="docutils literal notranslate"><span class="pre">fromRecArray()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamodel.readJSONMetadata"><code class="docutils literal notranslate"><span class="pre">readJSONMetadata()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamodel.readJSONheadedASCII"><code class="docutils literal notranslate"><span class="pre">readJSONheadedASCII()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamodel.resample"><code class="docutils literal notranslate"><span class="pre">resample()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamodel.toCDF"><code class="docutils literal notranslate"><span class="pre">toCDF()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamodel.toHDF5"><code class="docutils literal notranslate"><span class="pre">toHDF5()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamodel.toHTML"><code class="docutils literal notranslate"><span class="pre">toHTML()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamodel.toJSONheadedASCII"><code class="docutils literal notranslate"><span class="pre">toJSONheadedASCII()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamodel.toRecArray"><code class="docutils literal notranslate"><span class="pre">toRecArray()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamodel.unflatten"><code class="docutils literal notranslate"><span class="pre">unflatten()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamodel.writeJSONMetadata"><code class="docutils literal notranslate"><span class="pre">writeJSONMetadata()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamodel.DMWarning"><code class="docutils literal notranslate"><span class="pre">DMWarning</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="spacepy.datamanager.RePath.html"
+                          title="previous chapter">spacepy.datamanager.RePath</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="spacepy.datamodel.ISTPArray.html"
+                          title="next chapter">spacepy.datamodel.ISTPArray</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/autosummary/spacepy.datamodel.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.datamodel.ISTPArray.html" title="spacepy.datamodel.ISTPArray"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.datamanager.RePath.html" title="spacepy.datamanager.RePath"
+             >previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.datamodel</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    </div>
+  </body>
+</html>
