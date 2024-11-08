@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>spacepy.empiricals &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="spacepy.igrf" href="spacepy.igrf.html" />
+    <link rel="prev" title="spacepy.datamodel.dmarray" href="spacepy.datamodel.dmarray.html" /> 
+  </head><body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.igrf.html" title="spacepy.igrf"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.datamodel.dmarray.html" title="spacepy.datamodel.dmarray"
+             accesskey="P">previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" accesskey="U">spacepy</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.empiricals</a></li> 
+      </ul>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-spacepy.empiricals">
+<span id="spacepy-empiricals"></span><h1>spacepy.empiricals<a class="headerlink" href="#module-spacepy.empiricals" title="Link to this heading">¶</a></h1>
+<p>Module with some useful empirical models (plasmapause, magnetopause, Lmax)</p>
+<p>Authors: Steve Morley, Josef Koller
+Institution: Los Alamos National Laboratory
+Contact: <a class="reference external" href="mailto:smorley&#37;&#52;&#48;lanl&#46;gov">smorley<span>&#64;</span>lanl<span>&#46;</span>gov</a></p>
+<p>Copyright 2010 Los Alamos National Security, LLC.</p>
+<p class="rubric">Functions</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.empiricals.ShueMP" title="spacepy.empiricals.ShueMP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShueMP</span></code></a>(ticks[, dbase, alpha])</p></td>
+<td><p>Calculates the Shue et al. (1997) subsolar magnetopause radius.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.empiricals.getDststar" title="spacepy.empiricals.getDststar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getDststar</span></code></a>(ticks[, model, dbase])</p></td>
+<td><p>Calculate the pressure-corrected Dst index, Dst*</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.empiricals.getExpectedSWTemp" title="spacepy.empiricals.getExpectedSWTemp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getExpectedSWTemp</span></code></a>(velo[, model, units])</p></td>
+<td><p>Return the expected solar wind temperature based on the bulk velocity</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.empiricals.getLmax" title="spacepy.empiricals.getLmax"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getLmax</span></code></a>(ticks[, model, dbase])</p></td>
+<td><p>calculate a simple empirical model for Lmax - last closed drift-shell</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.empiricals.getMPstandoff" title="spacepy.empiricals.getMPstandoff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getMPstandoff</span></code></a>(ticks[, dbase, alpha])</p></td>
+<td><p>Calculates the Shue et al. (1997) subsolar magnetopause radius.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.empiricals.getMagnetopause" title="spacepy.empiricals.getMagnetopause"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getMagnetopause</span></code></a>(ticks[, LTs, dbase])</p></td>
+<td><p>Calculates the Shue et al. (1997) position in equatorial plane.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.empiricals.getPlasmaPause" title="spacepy.empiricals.getPlasmaPause"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getPlasmaPause</span></code></a>(ticks[, model, LT, omnivals])</p></td>
+<td><p>Plasmapause location model(s)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.empiricals.getSolarProtonSpectra" title="spacepy.empiricals.getSolarProtonSpectra"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getSolarProtonSpectra</span></code></a>([norm, gamma, E0, ...])</p></td>
+<td><p>Returns a SpaceData with energy and fluence spectra of solar particle events</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.empiricals.getSolarRotation" title="spacepy.empiricals.getSolarRotation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getSolarRotation</span></code></a>(ticks[, rtype, fp, reverse])</p></td>
+<td><p>Calculates solar rotation number (Carrington or Bartels) for a given date/time</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.empiricals.getVampolaOrder" title="spacepy.empiricals.getVampolaOrder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getVampolaOrder</span></code></a>(L)</p></td>
+<td><p>Empirical lookup of power for sin^n pitch angle model from Vampola (1996)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.empiricals.get_Lmax" title="spacepy.empiricals.get_Lmax"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_Lmax</span></code></a>(ticks[, model, dbase])</p></td>
+<td><p>calculate a simple empirical model for Lmax - last closed drift-shell</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.empiricals.get_plasma_pause" title="spacepy.empiricals.get_plasma_pause"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_plasma_pause</span></code></a>(ticks[, model, LT, omnivals])</p></td>
+<td><p>Plasmapause location model(s)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.empiricals.omniFromDirectionalFlux" title="spacepy.empiricals.omniFromDirectionalFlux"><code class="xref py py-obj docutils literal notranslate"><span class="pre">omniFromDirectionalFlux</span></code></a>(fluxarr, alphas[, norm])</p></td>
+<td><p>Calculate omnidirectional flux [(s cm^2 kev)^-1] from directional flux [(s sr cm^2 keV)^-1] array</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.empiricals.vampolaPA" title="spacepy.empiricals.vampolaPA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vampolaPA</span></code></a>(omniflux, **kwargs)</p></td>
+<td><p>Pitch angle model of sin^n form</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.empiricals.ShueMP">
+<span class="sig-prename descclassname"><span class="pre">spacepy.empiricals.</span></span><span class="sig-name descname"><span class="pre">ShueMP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dbase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'QDhourly'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spacepy.empiricals.ShueMP" title="Link to this definition">¶</a></dt>
+<dd><p>Calculates the Shue et al. (1997) subsolar magnetopause radius</p>
+<p>Shue et al. (1997), A new functional form to study the solar wind 
+control of the magnetopause size and shape, J. Geophys. Res., 102(A5), 
+9497–9511, doi:10.1029/97JA00196.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ticks</strong><span class="classifier">spacepy.time.Ticktock</span></dt><dd><p>TickTock object of desired times (will be interpolated from hourly OMNI data)
+OR dictionary of form {‘P’: [], ‘Bz’: []}
+Where P is SW ram pressure [nPa] and Bz is IMF Bz (GSM) [nT]</p>
+</dd>
+<dt><strong>alpha</strong><span class="classifier">list</span></dt><dd><p>Used as an optional return value to obtain the flaring angles. To use, assign
+an empty list and pass to this function through the keyword argument. The list 
+will be modified in place, adding the flaring angles for each time step.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">float</span></dt><dd><p>Magnetopause (sub-solar point) standoff distance [Re]</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.time</span> <span class="k">as</span> <span class="nn">spt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.empiricals</span> <span class="k">as</span> <span class="nn">emp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ticks</span> <span class="o">=</span> <span class="n">spt</span><span class="o">.</span><span class="n">tickrange</span><span class="p">(</span><span class="s1">&#39;2002-01-01T12:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;2002-01-04T00:00:00&#39;</span><span class="p">,</span><span class="mf">.25</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">emp</span><span class="o">.</span><span class="n">getMPstandoff</span><span class="p">(</span><span class="n">ticks</span><span class="p">)</span>
+<span class="go">array([ 10.57319537,  10.91327764,  10.75086873,  10.77577207,</span>
+<span class="go">     9.78180261,  11.0374474 ,  11.4065    ,  11.27555451,</span>
+<span class="go">    11.47988573,  11.8202582 ,  11.23834814])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;P&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;Bz&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.4</span><span class="p">]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">emp</span><span class="o">.</span><span class="n">getMPstandoff</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="go">array([ 9.96096838,  8.96790412])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.empiricals.getDststar">
+<span class="sig-prename descclassname"><span class="pre">spacepy.empiricals.</span></span><span class="sig-name descname"><span class="pre">getDststar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'OBrien'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dbase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'QDhourly'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/empiricals.html#getDststar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.empiricals.getDststar" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the pressure-corrected Dst index, Dst*</p>
+<p>We need to add in the references to the models here!</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ticks</strong><span class="classifier">spacepy.time.Ticktock</span></dt><dd><p>TickTock object of desired times (will be interpolated from hourly OMNI data)
+OR dictionary including ‘Pdyn’ and ‘Dst’ keys where data are lists or arrays
+and Dst is in [nT], and Pdyn is in [nPa]</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">float</span></dt><dd><p>Dst* - the pressure corrected Dst index from OMNI [nT]</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Coefficients are applied to the standard formulation e.g. Burton et al., 1975
+of Dst* = Dst - b*sqrt(Pdyn) + c
+The default is the O’Brien and McPherron model (2002).
+Other options are Burton et al. (1975) and Borovsky and Denton (2010)</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.time</span> <span class="k">as</span> <span class="nn">spt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.omni</span> <span class="k">as</span> <span class="nn">om</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.empiricals</span> <span class="k">as</span> <span class="nn">emp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ticks</span> <span class="o">=</span> <span class="n">spt</span><span class="o">.</span><span class="n">tickrange</span><span class="p">(</span><span class="s1">&#39;2000-10-16T00:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;2000-10-31T12:00:00&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mf">24.</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dststar</span> <span class="o">=</span> <span class="n">emp</span><span class="o">.</span><span class="n">getDststar</span><span class="p">(</span><span class="n">ticks</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dststar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">-21.317220132108943</span>
+</pre></div>
+</div>
+<p>User-determined coefficients can also be supplied as a two-element list
+or tuple of the form (b,c), e.g.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dststar</span> <span class="o">=</span> <span class="n">emp</span><span class="o">.</span><span class="n">getDststar</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">11</span><span class="p">))</span> <span class="c1">#b is extreme driving from O&#39;Brien</span>
+</pre></div>
+</div>
+<p>We have chosen the OBrien model as the default here as this was rigorously
+determined from a very long data set and is pertinent to most conditions.
+It is, however, the most conservative correction. Additionally, Siscoe,
+McPherron and Jordanova (2005) argue that the pressure contribution to Dst diminishes
+during magnetic storms.</p>
+<p>To show the relative differences, run the following example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">params</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Burton&#39;</span><span class="p">,</span><span class="s1">&#39;k-&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;OBrien&#39;</span><span class="p">,</span><span class="s1">&#39;r-&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Borovsky&#39;</span><span class="p">,</span><span class="s1">&#39;b-&#39;</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">model</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+<span class="go">        dststar = getDststar(ticks, model=model)</span>
+<span class="go">        plt.plot(ticks.UTC, dststar, col)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.empiricals.getExpectedSWTemp">
+<span class="sig-prename descclassname"><span class="pre">spacepy.empiricals.</span></span><span class="sig-name descname"><span class="pre">getExpectedSWTemp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">velo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'XB15'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'K'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/empiricals.html#getExpectedSWTemp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.empiricals.getExpectedSWTemp" title="Link to this definition">¶</a></dt>
+<dd><p>Return the expected solar wind temperature based on the bulk velocity</p>
+<p>The formulations used by this function are those given by,
+L87  – Lopez, R.E., J. Geophys. Res., 92, 11189-11194, 1987
+BS06 – Borovsky, J.E. and J.T. Steinberg, Geophysical Monograph Series 167, 59-76, 2006
+XB15 – Xu, F. and J.E. Borovsky, J. Geophys. Res., 120, 70-100, 2015</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>velo</strong><span class="classifier">array-like</span></dt><dd><p>Array like of solar wind bulk velocity values [km/s]</p>
+</dd>
+<dt><strong>model</strong><span class="classifier">str [optional]</span></dt><dd><p>Name of model to use. Valid choices are L87, BS06 and XB15. Default is XB15</p>
+</dd>
+<dt><strong>units</strong><span class="classifier">str [optional]</span></dt><dd><p>Units for output temperature, options are eV or K. Default is Kelvin [K]</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>Texp</strong><span class="classifier">array-like</span></dt><dd><p>The expected solar wind temperature given the bulk velocity [K] or [eV]</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.empiricals.getLmax">
+<span class="sig-prename descclassname"><span class="pre">spacepy.empiricals.</span></span><span class="sig-name descname"><span class="pre">getLmax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'JKemp'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dbase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'QDhourly'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/empiricals.html#getLmax"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.empiricals.getLmax" title="Link to this definition">¶</a></dt>
+<dd><p>calculate a simple empirical model for Lmax - last closed drift-shell</p>
+<p>Uses the parametrized Lmax from:
+Koller and Morley (2010)
+‘Magnetopause shadowing effects for radiation belt models during high-speed solar wind streams’
+American Geophysical Union, Fall Meeting 2010, abstract #SM13A-1787</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ticks</strong><span class="classifier">spacepy.time.Ticktock</span></dt><dd><p>Ticktock object of desired times</p>
+</dd>
+<dt><strong>model</strong><span class="classifier">string, optional</span></dt><dd><p>‘JKemp’ (default - empirical model of J. Koller)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">np.ndarray</span></dt><dd><p>Lmax - L* of last closed drift shell</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="spacepy.LANLstar.html#spacepy.LANLstar.LANLmax" title="spacepy.LANLstar.LANLmax"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spacepy.LANLstar.LANLmax</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">spacepy.empiricals</span> <span class="kn">import</span> <span class="n">getLmax</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.time</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">datetime</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ticks</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">tickrange</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">deltadays</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">array([ 7.4928412,  8.3585632,  8.6463423])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.empiricals.getMPstandoff">
+<span class="sig-prename descclassname"><span class="pre">spacepy.empiricals.</span></span><span class="sig-name descname"><span class="pre">getMPstandoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dbase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'QDhourly'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/empiricals.html#getMPstandoff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.empiricals.getMPstandoff" title="Link to this definition">¶</a></dt>
+<dd><p>Calculates the Shue et al. (1997) subsolar magnetopause radius</p>
+<p>Shue et al. (1997), A new functional form to study the solar wind 
+control of the magnetopause size and shape, J. Geophys. Res., 102(A5), 
+9497–9511, doi:10.1029/97JA00196.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ticks</strong><span class="classifier">spacepy.time.Ticktock</span></dt><dd><p>TickTock object of desired times (will be interpolated from hourly OMNI data)
+OR dictionary of form {‘P’: [], ‘Bz’: []}
+Where P is SW ram pressure [nPa] and Bz is IMF Bz (GSM) [nT]</p>
+</dd>
+<dt><strong>alpha</strong><span class="classifier">list</span></dt><dd><p>Used as an optional return value to obtain the flaring angles. To use, assign
+an empty list and pass to this function through the keyword argument. The list 
+will be modified in place, adding the flaring angles for each time step.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">float</span></dt><dd><p>Magnetopause (sub-solar point) standoff distance [Re]</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.time</span> <span class="k">as</span> <span class="nn">spt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.empiricals</span> <span class="k">as</span> <span class="nn">emp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ticks</span> <span class="o">=</span> <span class="n">spt</span><span class="o">.</span><span class="n">tickrange</span><span class="p">(</span><span class="s1">&#39;2002-01-01T12:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;2002-01-04T00:00:00&#39;</span><span class="p">,</span><span class="mf">.25</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">emp</span><span class="o">.</span><span class="n">getMPstandoff</span><span class="p">(</span><span class="n">ticks</span><span class="p">)</span>
+<span class="go">array([ 10.57319537,  10.91327764,  10.75086873,  10.77577207,</span>
+<span class="go">     9.78180261,  11.0374474 ,  11.4065    ,  11.27555451,</span>
+<span class="go">    11.47988573,  11.8202582 ,  11.23834814])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;P&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;Bz&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">2.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.4</span><span class="p">]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">emp</span><span class="o">.</span><span class="n">getMPstandoff</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="go">array([ 9.96096838,  8.96790412])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.empiricals.getMagnetopause">
+<span class="sig-prename descclassname"><span class="pre">spacepy.empiricals.</span></span><span class="sig-name descname"><span class="pre">getMagnetopause</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">LTs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dbase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'QDhourly'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/empiricals.html#getMagnetopause"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.empiricals.getMagnetopause" title="Link to this definition">¶</a></dt>
+<dd><p>Calculates the Shue et al. (1997) position in equatorial plane</p>
+<p>Shue et al. (1997), A new functional form to study the solar wind 
+control of the magnetopause size and shape, J. Geophys. Res., 102(A5), 
+9497–9511, doi:10.1029/97JA00196.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ticks</strong><span class="classifier">spacepy.time.Ticktock</span></dt><dd><p>TickTock object of desired times (will be interpolated from hourly OMNI data)
+OR dictionary of form {‘P’: [], ‘Bz’: []}
+Where P is SW ram pressure [nPa] and Bz is IMF Bz (GSM) [nT]</p>
+</dd>
+<dt><strong>LTs</strong><span class="classifier">array-like</span></dt><dd><p>Array-like of local times for evaluating the magnetopause model. Default is
+6 LT to 18 LT in steps of 20 minutes.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">array</span></dt><dd><p>NxMx2 array of magnetopause positions [Re]
+N is number of timesteps, M is number of local times. The 2 positions
+are the X_GSE and Y_GSE positions of the magnetopause</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.time</span> <span class="k">as</span> <span class="nn">spt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.empiricals</span> <span class="k">as</span> <span class="nn">emp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ticks</span> <span class="o">=</span> <span class="n">spt</span><span class="o">.</span><span class="n">Ticktock</span><span class="p">([</span><span class="s1">&#39;2002-01-01T12:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;2002-01-04T00:00:00&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">localtimes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">13</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">11</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">emp</span><span class="o">.</span><span class="n">getMagnetopause</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">LTs</span><span class="o">=</span><span class="n">localtimes</span><span class="p">)</span>
+<span class="go">array([[[ 10.27674331,  -2.75364507],</span>
+<span class="go">    [ 10.52909163,   0.        ],</span>
+<span class="go">    [ 10.27674331,   2.75364507]],</span>
+<span class="go">   [[ 10.91791834,  -2.9254474 ],</span>
+<span class="go">    [ 11.18712131,   0.        ],</span>
+<span class="go">    [ 10.91791834,   2.9254474 ]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">emp</span><span class="o">.</span><span class="n">getMPstandoff</span><span class="p">(</span><span class="n">ticks</span><span class="p">)</span> <span class="c1">#should give same result as getMagnetopause for 12LT</span>
+<span class="go">array([ 10.52909163,  11.18712131])</span>
+</pre></div>
+</div>
+<p>To plot the magnetopause:
+&gt;&gt;&gt; import numpy as np
+&gt;&gt;&gt; import spacepy.plot as splot
+&gt;&gt;&gt; import matplotlib.pyplot as plt
+&gt;&gt;&gt; localtimes = np.arange(5, 19.1, 0.5)
+&gt;&gt;&gt; mp_pos = emp.getMagnetopause(ticks, localtimes)
+&gt;&gt;&gt; plt.plot(mp_pos[0,:,0], mp_pos[0,:,1])
+&gt;&gt;&gt; ax1 = plt.gca()
+&gt;&gt;&gt; ax1.set_xlim([-5,20])
+&gt;&gt;&gt; ax1.set_xlabel(‘X$_{GSE}$ [R$_E$]’)
+&gt;&gt;&gt; ax1.set_ylabel(‘Y$_{GSE}$ [R$_E$]’)
+&gt;&gt;&gt; splot.dual_half_circle(ax=ax1)
+&gt;&gt;&gt; ax1.axes.set_aspect(‘equal’)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.empiricals.getPlasmaPause">
+<span class="sig-prename descclassname"><span class="pre">spacepy.empiricals.</span></span><span class="sig-name descname"><span class="pre">getPlasmaPause</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'M2002'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">LT</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omnivals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/empiricals.html#getPlasmaPause"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.empiricals.getPlasmaPause" title="Link to this definition">¶</a></dt>
+<dd><p>Plasmapause location model(s)</p>
+<p>CA1992 – Carpenter, D. L., and R. R. Anderson, An ISEE/whistler
+model of equatorial electron density in the magnetosphere,
+J. Geophys. Res., 97, 1097, 1992.
+M2002 – Moldwin, M. B., L. Downward, H. K. Rassoul, R. Amin,
+and R. R. Anderson, A new model of the location of the plasmapause:
+CRRES results, J. Geophys. Res., 107(A11), 1339,
+doi:10.1029/2001JA009211, 2002.
+RT1970 – Rycroft, M. J., and J. O. Thomas, The magnetospheric
+plasmapause and the electron density trough at the alouette i
+orbit, Planetary and Space Science, 18(1), 65-80, 1970</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ticks</strong><span class="classifier">spacepy.time.Ticktock</span></dt><dd><p>TickTock object of desired times</p>
+</dd>
+<dt><strong>Lpp_model</strong><span class="classifier">string, optional</span></dt><dd><p>‘CA1992’ or ‘M2002’ (default)
+CA1992 returns the Carpenter and Anderson model,
+M2002 returns the Moldwin et al. model</p>
+</dd>
+<dt><strong>LT</strong><span class="classifier">int, float</span></dt><dd><p>requested local time sector, ‘all’ is valid option</p>
+</dd>
+<dt><strong>omnivals</strong><span class="classifier">spacepy.datamodel.SpaceData, dict</span></dt><dd><p>dict-like containing UTC (datetimes) and Kp keys</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">float</span></dt><dd><p>Plasmapause radius in Earth radii</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Warns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>RuntimeWarning</dt><dd><p>If the CA1992 model is called with LT as it is not implemented</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.time</span> <span class="k">as</span> <span class="nn">spt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.empiricals</span> <span class="k">as</span> <span class="nn">emp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ticks</span> <span class="o">=</span> <span class="n">spt</span><span class="o">.</span><span class="n">tickrange</span><span class="p">(</span><span class="s1">&#39;2002-01-01T12:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;2002-01-04T00:00:00&#39;</span><span class="p">,</span><span class="mf">.25</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">emp</span><span class="o">.</span><span class="n">getPlasmaPause</span><span class="p">(</span><span class="n">ticks</span><span class="p">)</span>
+<span class="go">array([ 6.42140002,  6.42140002,  6.42140002,  6.42140002,  6.42140002,</span>
+<span class="go">    6.42140002,  6.42140002,  6.26859998,  5.772     ,  5.6574    ,</span>
+<span class="go">    5.6574    ])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.empiricals.getSolarProtonSpectra">
+<span class="sig-prename descclassname"><span class="pre">spacepy.empiricals.</span></span><span class="sig-name descname"><span class="pre">getSolarProtonSpectra</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32000000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-0.96</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">E0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Emin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Emax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">600</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nsteps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/empiricals.html#getSolarProtonSpectra"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.empiricals.getSolarProtonSpectra" title="Link to this definition">¶</a></dt>
+<dd><p>Returns a SpaceData with energy and fluence spectra of solar particle events</p>
+<p>The formulation follows that of:
+Ellison and Ramaty ApJ 298: 400-408, 1985
+dJ/dE = K^{-gamma}exp(-E/E0)</p>
+<p>and the defualt values are the 10/16/2003 SEP event of:
+Mewaldt, R. A., et al. (2005), J. Geophys. Res., 110, A09S18, doi:10.1029/2005JA011038.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">dm.SpaceData</span></dt><dd><p>SpaceData with the energy and fluence values</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>norm</strong><span class="classifier">float</span></dt><dd><p>Normilization factor for the intensity of the SEP event</p>
+</dd>
+<dt><strong>gamma</strong><span class="classifier">float</span></dt><dd><p>Power law index</p>
+</dd>
+<dt><strong>E0</strong><span class="classifier">float</span></dt><dd><p>Expoential scaling factor</p>
+</dd>
+<dt><strong>Emin</strong><span class="classifier">float</span></dt><dd><p>Minimum energy for fit</p>
+</dd>
+<dt><strong>Emax</strong><span class="classifier">float</span></dt><dd><p>Maximum energy for fit</p>
+</dd>
+<dt><strong>nsteps</strong><span class="classifier">int</span></dt><dd><p>The number of log spaced energy steps to return</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.empiricals.getSolarRotation">
+<span class="sig-prename descclassname"><span class="pre">spacepy.empiricals.</span></span><span class="sig-name descname"><span class="pre">getSolarRotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'carrington'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/empiricals.html#getSolarRotation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.empiricals.getSolarRotation" title="Link to this definition">¶</a></dt>
+<dd><p>Calculates solar rotation number (Carrington or Bartels) for a given date/time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ticks</strong><span class="classifier">spacepy.time.Ticktock or datetime.datetime</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>rnumber</strong><span class="classifier">integer or array</span></dt><dd><p>Carrington (or Bartels) rotation number</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.empiricals.getVampolaOrder">
+<span class="sig-prename descclassname"><span class="pre">spacepy.empiricals.</span></span><span class="sig-name descname"><span class="pre">getVampolaOrder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">L</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/empiricals.html#getVampolaOrder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.empiricals.getVampolaOrder" title="Link to this definition">¶</a></dt>
+<dd><p>Empirical lookup of power for sin^n pitch angle model from Vampola (1996)</p>
+<p>Vampola, A.L. Outer zone energetic electron environment update, 
+Final Report of ESA/ESTEC/WMA/P.O. 151351, ESA-ESTEC, Noordwijk, 
+The Netherlands, 1996.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>L</strong><span class="classifier">arraylike or float</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>order</strong><span class="classifier">array</span></dt><dd><p>coefficient for sin^n model corresponding to McIlwain L (computed for OP77?)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Apply Vampola pitch angle model at L=[4, 6.6]</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">spacepy.empiricals</span> <span class="kn">import</span> <span class="n">vampolaPA</span><span class="p">,</span> <span class="n">getVampolaOrder</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">order</span> <span class="o">=</span> <span class="n">getVampolaOrder</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mf">6.6</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">order</span>
+<span class="go">array([ 3.095 ,  1.6402])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vampolaPA</span><span class="p">([</span><span class="mi">3000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">90</span><span class="p">],</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+<span class="go">(array([[ 140.08798878,  192.33572182],</span>
+<span class="go">    [ 409.49143136,  339.57417256]]), [45, 90])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.empiricals.get_Lmax">
+<span class="sig-prename descclassname"><span class="pre">spacepy.empiricals.</span></span><span class="sig-name descname"><span class="pre">get_Lmax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'JKemp'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dbase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'QDhourly'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spacepy.empiricals.get_Lmax" title="Link to this definition">¶</a></dt>
+<dd><p>calculate a simple empirical model for Lmax - last closed drift-shell</p>
+<p>Uses the parametrized Lmax from:
+Koller and Morley (2010)
+‘Magnetopause shadowing effects for radiation belt models during high-speed solar wind streams’
+American Geophysical Union, Fall Meeting 2010, abstract #SM13A-1787</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ticks</strong><span class="classifier">spacepy.time.Ticktock</span></dt><dd><p>Ticktock object of desired times</p>
+</dd>
+<dt><strong>model</strong><span class="classifier">string, optional</span></dt><dd><p>‘JKemp’ (default - empirical model of J. Koller)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">np.ndarray</span></dt><dd><p>Lmax - L* of last closed drift shell</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="spacepy.LANLstar.html#spacepy.LANLstar.LANLmax" title="spacepy.LANLstar.LANLmax"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spacepy.LANLstar.LANLmax</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">spacepy.empiricals</span> <span class="kn">import</span> <span class="n">getLmax</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.time</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">datetime</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ticks</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">tickrange</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">deltadays</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">array([ 7.4928412,  8.3585632,  8.6463423])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.empiricals.get_plasma_pause">
+<span class="sig-prename descclassname"><span class="pre">spacepy.empiricals.</span></span><span class="sig-name descname"><span class="pre">get_plasma_pause</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'M2002'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">LT</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omnivals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spacepy.empiricals.get_plasma_pause" title="Link to this definition">¶</a></dt>
+<dd><p>Plasmapause location model(s)</p>
+<p>CA1992 – Carpenter, D. L., and R. R. Anderson, An ISEE/whistler
+model of equatorial electron density in the magnetosphere,
+J. Geophys. Res., 97, 1097, 1992.
+M2002 – Moldwin, M. B., L. Downward, H. K. Rassoul, R. Amin,
+and R. R. Anderson, A new model of the location of the plasmapause:
+CRRES results, J. Geophys. Res., 107(A11), 1339,
+doi:10.1029/2001JA009211, 2002.
+RT1970 – Rycroft, M. J., and J. O. Thomas, The magnetospheric
+plasmapause and the electron density trough at the alouette i
+orbit, Planetary and Space Science, 18(1), 65-80, 1970</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ticks</strong><span class="classifier">spacepy.time.Ticktock</span></dt><dd><p>TickTock object of desired times</p>
+</dd>
+<dt><strong>Lpp_model</strong><span class="classifier">string, optional</span></dt><dd><p>‘CA1992’ or ‘M2002’ (default)
+CA1992 returns the Carpenter and Anderson model,
+M2002 returns the Moldwin et al. model</p>
+</dd>
+<dt><strong>LT</strong><span class="classifier">int, float</span></dt><dd><p>requested local time sector, ‘all’ is valid option</p>
+</dd>
+<dt><strong>omnivals</strong><span class="classifier">spacepy.datamodel.SpaceData, dict</span></dt><dd><p>dict-like containing UTC (datetimes) and Kp keys</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">float</span></dt><dd><p>Plasmapause radius in Earth radii</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Warns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>RuntimeWarning</dt><dd><p>If the CA1992 model is called with LT as it is not implemented</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.time</span> <span class="k">as</span> <span class="nn">spt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.empiricals</span> <span class="k">as</span> <span class="nn">emp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ticks</span> <span class="o">=</span> <span class="n">spt</span><span class="o">.</span><span class="n">tickrange</span><span class="p">(</span><span class="s1">&#39;2002-01-01T12:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;2002-01-04T00:00:00&#39;</span><span class="p">,</span><span class="mf">.25</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">emp</span><span class="o">.</span><span class="n">getPlasmaPause</span><span class="p">(</span><span class="n">ticks</span><span class="p">)</span>
+<span class="go">array([ 6.42140002,  6.42140002,  6.42140002,  6.42140002,  6.42140002,</span>
+<span class="go">    6.42140002,  6.42140002,  6.26859998,  5.772     ,  5.6574    ,</span>
+<span class="go">    5.6574    ])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.empiricals.omniFromDirectionalFlux">
+<span class="sig-prename descclassname"><span class="pre">spacepy.empiricals.</span></span><span class="sig-name descname"><span class="pre">omniFromDirectionalFlux</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fluxarr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alphas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/empiricals.html#omniFromDirectionalFlux"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.empiricals.omniFromDirectionalFlux" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate omnidirectional flux [(s cm^2 kev)^-1] from directional flux [(s sr cm^2 keV)^-1] array</p>
+<p>J = 2.pi integ(j sin(a) da)
+If kwarg ‘norm’ is True (default), the omni flux is normalized by 4.pi to make it per steradian,
+in line with the PRBEM guidelines</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>fluxarr</strong><span class="classifier">arraylike</span></dt><dd><p>Array of directional flux values</p>
+</dd>
+<dt><strong>alphas</strong><span class="classifier">arraylike</span></dt><dd><p>Array of pitch angles corresponding to fluxarr</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>omniflux</strong><span class="classifier">float</span></dt><dd><p>Omnidirectional flux value</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Roundtrip from omni flux, to directional flux (Vampola model),
+integrate to get back to omni flux.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">spacepy.empiricals</span> <span class="kn">import</span> <span class="n">vampolaPA</span><span class="p">,</span> <span class="n">omniFromDirectionalFlux</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dir_flux</span><span class="p">,</span> <span class="n">pa</span>  <span class="o">=</span> <span class="n">vampolaPA</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">181</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dir_flux</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="n">pa</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="go">(array([  0.00000000e+00,   6.64032473e-04,   1.05986545e-02,</span>
+<span class="go">      5.34380898e-02,   1.67932162e-01,   4.06999226e-01,</span>
+<span class="go">      8.36427502e-01,   1.53325140e+00,   2.58383611e+00,</span>
+<span class="go">      4.08170975e+00]), [0, 2, 4, 6, 8, 10, 12, 14, 16, 18])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">omniFromDirectionalFlux</span><span class="p">(</span><span class="n">dir_flux</span><span class="p">,</span> <span class="n">pa</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">3000.0000008112293</span>
+</pre></div>
+</div>
+<p>Calculate “spin-averaged” flux, giving answer per steradian</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">omniFromDirectionalFlux</span><span class="p">(</span><span class="n">dir_flux</span><span class="p">,</span> <span class="n">pa</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">238.73241470239859</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.empiricals.vampolaPA">
+<span class="sig-prename descclassname"><span class="pre">spacepy.empiricals.</span></span><span class="sig-name descname"><span class="pre">vampolaPA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">omniflux</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/empiricals.html#vampolaPA"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.empiricals.vampolaPA" title="Link to this definition">¶</a></dt>
+<dd><p>Pitch angle model of sin^n form</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>omniflux</strong><span class="classifier">arraylike or float</span></dt><dd><p>omnidirectional number flux data</p>
+</dd>
+<dt><strong>order</strong><span class="classifier">integer or float (optional)</span></dt><dd><p>order of sin^n functional form for distribution (default=2)</p>
+</dd>
+<dt><strong>alphas</strong><span class="classifier">arraylike (optional)</span></dt><dd><p>pitch angles at which to evaluate the differential number flux
+(default is 5 to 90 degrees in 36 steps)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>dnflux</strong><span class="classifier">array</span></dt><dd><p>differential number flux corresponding to pitch angles alphas</p>
+</dd>
+<dt><strong>alphas</strong><span class="classifier">array</span></dt><dd><p>pitch angles at which the differential number flux was evaluated</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Directional number flux integrated over pitch angle from 0 to 90 degrees
+is a factor of 4*pi lower than omnidirectional number flux.</p>
+<p class="rubric">Examples</p>
+<p>Omnidirectional number flux of [3000, 6000]</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">spacepy.empiricals</span> <span class="kn">import</span> <span class="n">vampolaPA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vampolaPA</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">90</span><span class="p">])</span>
+<span class="go">(array([ 179.04931098,  358.09862196]), [45, 90])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="p">,</span> <span class="n">pas</span> <span class="o">=</span> <span class="n">vampolaPA</span><span class="p">([</span><span class="mi">3000</span><span class="p">,</span> <span class="mi">6000</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">90</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pas</span>
+<span class="go">[45, 90]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span>
+<span class="go">array([[ 179.04931098,  358.09862196],</span>
+<span class="go">   [ 358.09862196,  716.19724391]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.empiricals</a><ul>
+<li><a class="reference internal" href="#spacepy.empiricals.ShueMP"><code class="docutils literal notranslate"><span class="pre">ShueMP()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.empiricals.getDststar"><code class="docutils literal notranslate"><span class="pre">getDststar()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.empiricals.getExpectedSWTemp"><code class="docutils literal notranslate"><span class="pre">getExpectedSWTemp()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.empiricals.getLmax"><code class="docutils literal notranslate"><span class="pre">getLmax()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.empiricals.getMPstandoff"><code class="docutils literal notranslate"><span class="pre">getMPstandoff()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.empiricals.getMagnetopause"><code class="docutils literal notranslate"><span class="pre">getMagnetopause()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.empiricals.getPlasmaPause"><code class="docutils literal notranslate"><span class="pre">getPlasmaPause()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.empiricals.getSolarProtonSpectra"><code class="docutils literal notranslate"><span class="pre">getSolarProtonSpectra()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.empiricals.getSolarRotation"><code class="docutils literal notranslate"><span class="pre">getSolarRotation()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.empiricals.getVampolaOrder"><code class="docutils literal notranslate"><span class="pre">getVampolaOrder()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.empiricals.get_Lmax"><code class="docutils literal notranslate"><span class="pre">get_Lmax()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.empiricals.get_plasma_pause"><code class="docutils literal notranslate"><span class="pre">get_plasma_pause()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.empiricals.omniFromDirectionalFlux"><code class="docutils literal notranslate"><span class="pre">omniFromDirectionalFlux()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.empiricals.vampolaPA"><code class="docutils literal notranslate"><span class="pre">vampolaPA()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="spacepy.datamodel.dmarray.html"
+                          title="previous chapter">spacepy.datamodel.dmarray</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="spacepy.igrf.html"
+                          title="next chapter">spacepy.igrf</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/autosummary/spacepy.empiricals.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.igrf.html" title="spacepy.igrf"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.datamodel.dmarray.html" title="spacepy.datamodel.dmarray"
+             >previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.empiricals</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    </div>
+  </body>
+</html>

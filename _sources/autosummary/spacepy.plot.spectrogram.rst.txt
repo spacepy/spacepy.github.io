@@ -1,6 +1,61 @@
-﻿spacepy.plot.spectrogram
+spacepy.plot.spectrogram
 ========================
 
-.. currentmodule:: spacepy.plot
-
 .. automodule:: spacepy.plot.spectrogram
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      simpleSpectrogram
+   
+   
+
+   
+   
+   
+   .. rubric:: Classes
+ 
+   .. autosummary::
+      :toctree:
+   
+      Spectrogram
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+   .. autofunction:: simpleSpectrogram
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   

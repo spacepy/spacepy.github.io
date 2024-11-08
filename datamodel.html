@@ -1,29 +1,25 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>datamodel - easy to use general data model &#8212; SpacePy v0.6.0 Manual</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <title>Datamodel &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
     
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/copybutton.js"></script>
-    
-    <link rel="shortcut icon" href="_static/spacepy_favicon.ico"/>
+    <script src="_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="_static/copybutton.js"></script>
+    <link rel="icon" href="_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="spacepy.datamodel.SpaceData" href="autosummary/spacepy.datamodel.SpaceData.html" />
-    <link rel="prev" title="datamanager - easy access to and manipulation of data" href="datamanager.html" /> 
+    <link rel="next" title="OMNI" href="omni.html" />
+    <link rel="prev" title="Coordinates - Implementation of Coords class functions for coordinate transformations" href="coordinates.html" /> 
   </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
@@ -40,78 +36,45 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="autosummary/spacepy.datamodel.SpaceData.html" title="spacepy.datamodel.SpaceData"
+          <a href="omni.html" title="OMNI"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="datamanager.html" title="datamanager - easy access to and manipulation of data"
+          <a href="coordinates.html" title="Coordinates - Implementation of Coords class functions for coordinate transformations"
              accesskey="P">previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="search.html">search</a>|&nbsp;</li>
        <li><a href="index.html">documentation </a> &raquo;</li>
 
-        <li class="nav-item nav-item-this"><a href="">datamodel - easy to use general data model</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Datamodel</a></li> 
       </ul>
     </div>
-
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="index.html">
-              <img class="logo" src="_static/logo.png" alt="Logo"/>
-            </a></p>
-  <div>
-    <h3><a href="index.html">Table of Contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#">datamodel - easy to use general data model</a><ul>
-<li><a class="reference internal" href="#about-datamodel">About datamodel</a></li>
-<li><a class="reference internal" href="#examples">Examples</a></li>
-<li><a class="reference internal" href="#guide-for-nasa-cdf-users">Guide for NASA CDF users</a></li>
-<li><a class="reference internal" href="#a-quick-guide-to-json-headed-ascii">A quick guide to JSON-headed ASCII</a></li>
-</ul>
-</li>
-</ul>
-
-  </div>
-  <div>
-    <h4>Previous topic</h4>
-    <p class="topless"><a href="datamanager.html"
-                          title="previous chapter">datamanager - easy access to and manipulation of data</a></p>
-  </div>
-  <div>
-    <h4>Next topic</h4>
-    <p class="topless"><a href="autosummary/spacepy.datamodel.SpaceData.html"
-                          title="next chapter">spacepy.datamodel.SpaceData</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/datamodel.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
+  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="module-spacepy.datamodel">
-<span id="datamodel-easy-to-use-general-data-model"></span><h1>datamodel - easy to use general data model<a class="headerlink" href="#module-spacepy.datamodel" title="Permalink to this heading">¶</a></h1>
-<p>The datamodel classes constitute a data model implementation
-meant to mirror the functionality of the data model output from pycdf, though
-implemented slightly differently.</p>
+  <section id="datamodel">
+<h1>Datamodel<a class="headerlink" href="#datamodel" title="Link to this heading">¶</a></h1>
+<p>The SpacePy datamodel module enables easy implementation of a standard data model, using concepts similar to those of HDF5 and NASA CDF.</p>
+<nav class="contents local" id="table-of-contents">
+<p class="topic-title">Table of Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#documentation" id="id1">Documentation</a></p>
+<ul>
+<li><p><a class="reference internal" href="#about-datamodel" id="id2">About datamodel</a></p></li>
+<li><p><a class="reference internal" href="#examples" id="id3">Examples</a></p></li>
+<li><p><a class="reference internal" href="#guide-for-nasa-cdf-users" id="id4">Guide for NASA CDF users</a></p></li>
+<li><p><a class="reference internal" href="#a-quick-guide-to-json-headed-ascii" id="id5">A quick guide to JSON-headed ASCII</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<p>See also the <a class="reference internal" href="autosummary/spacepy.datamodel.html#module-spacepy.datamodel" title="spacepy.datamodel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">full</span> <span class="pre">API</span> <span class="pre">documentation</span></code></a>.</p>
+<section id="documentation">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Documentation</a><a class="headerlink" href="#documentation" title="Link to this heading">¶</a></h2>
 <dl class="simple">
 <dt>This contains the following classes:</dt><dd><ul class="simple">
 <li><p><a class="reference internal" href="autosummary/spacepy.datamodel.dmarray.html#spacepy.datamodel.dmarray" title="spacepy.datamodel.dmarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">dmarray</span></code></a> - numpy arrays that support .attrs for information about the data</p></li>
@@ -125,7 +88,7 @@ implemented slightly differently.</p>
 <p>Contact: <a class="reference external" href="mailto:smorley&#37;&#52;&#48;lanl&#46;gov">smorley<span>&#64;</span>lanl<span>&#46;</span>gov</a>; <a class="reference external" href="mailto:balarsen&#37;&#52;&#48;lanl&#46;gov">balarsen<span>&#64;</span>lanl<span>&#46;</span>gov</a></p>
 <p>Copyright 2010-2016 Los Alamos National Security, LLC.</p>
 <section id="about-datamodel">
-<h2>About datamodel<a class="headerlink" href="#about-datamodel" title="Permalink to this heading">¶</a></h2>
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">About datamodel</a><a class="headerlink" href="#about-datamodel" title="Link to this heading">¶</a></h3>
 <p>The SpacePy datamodel module implements classes that are designed to make implementing a standard
 data model easy. The concepts are very similar to those used in standards like HDF5, netCDF and
 NASA CDF.</p>
@@ -144,11 +107,11 @@ using the function fromHDF5:</p>
 <p>Functions are also available to directly load data and metadata into a
 SpacePy datamodel from NASA CDF as well as JSON-headed ASCII. Writers also
 exist to output a SpacePy datamodel directly to HDF5 or JSON-headed ASCII.
-See <code class="xref py py-obj docutils literal notranslate"><span class="pre">datamodel.fromCDF</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">datamodel.readJSONheadedASCII</span></code>,
-<code class="xref py py-obj docutils literal notranslate"><span class="pre">datamodel.toHDF5</span></code>, and <code class="xref py py-obj docutils literal notranslate"><span class="pre">datamodel.toJSONheadedASCII</span></code> for more details.</p>
+See <a class="reference internal" href="autosummary/spacepy.datamodel.html#spacepy.datamodel.fromCDF" title="spacepy.datamodel.fromCDF"><code class="xref py py-func docutils literal notranslate"><span class="pre">fromCDF()</span></code></a>, <a class="reference internal" href="autosummary/spacepy.datamodel.html#spacepy.datamodel.readJSONheadedASCII" title="spacepy.datamodel.readJSONheadedASCII"><code class="xref py py-func docutils literal notranslate"><span class="pre">readJSONheadedASCII()</span></code></a>,
+<a class="reference internal" href="autosummary/spacepy.datamodel.html#spacepy.datamodel.toHDF5" title="spacepy.datamodel.toHDF5"><code class="xref py py-func docutils literal notranslate"><span class="pre">toHDF5()</span></code></a>, and <a class="reference internal" href="autosummary/spacepy.datamodel.html#spacepy.datamodel.toJSONheadedASCII" title="spacepy.datamodel.toJSONheadedASCII"><code class="xref py py-func docutils literal notranslate"><span class="pre">toJSONheadedASCII()</span></code></a> for more details.</p>
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Link to this heading">¶</a></h3>
 <p>Imagine representing some satellite data within the global attributes might be
 the mission name and the instrument PI, the variables might be the
 instrument counts [n-dimensional array], timestamps[1-dimensional array and an orbit number [scalar].
@@ -163,7 +126,7 @@ Each variable will have one attribute (for this example).</p>
 </div>
 <p>This has now populated a structure that can map directly to a NASA CDF, HDF5 or JSON-headed ASCII file.
 To visualize our datamodel, we can use tree method (which can be applied to any dictionary-like object
-using <a class="reference internal" href="autosummary/spacepy.toolbox.dictree.html#spacepy.toolbox.dictree" title="spacepy.toolbox.dictree"><code class="xref py py-func docutils literal notranslate"><span class="pre">dictree()</span></code></a>).</p>
+using <a class="reference internal" href="autosummary/spacepy.toolbox.html#spacepy.toolbox.dictree" title="spacepy.toolbox.dictree"><code class="xref py py-func docutils literal notranslate"><span class="pre">dictree()</span></code></a>).</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mydata</span><span class="o">.</span><span class="n">tree</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -180,7 +143,7 @@ using <a class="reference internal" href="autosummary/spacepy.toolbox.dictree.ht
 </div>
 </section>
 <section id="guide-for-nasa-cdf-users">
-<h2>Guide for NASA CDF users<a class="headerlink" href="#guide-for-nasa-cdf-users" title="Permalink to this heading">¶</a></h2>
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Guide for NASA CDF users</a><a class="headerlink" href="#guide-for-nasa-cdf-users" title="Link to this heading">¶</a></h3>
 <p>By definition, a NASA CDF only has a single ‘layer’. That is, a CDF contains a series of records
 (stored variables of various types) and a set of attributes that are either global or local in
 scope. Thus to use SpacePy’s datamodel to capture the functionality of CDF the two basic data types
@@ -195,7 +158,7 @@ the following will make life easier:</p>
 </div>
 </section>
 <section id="a-quick-guide-to-json-headed-ascii">
-<h2>A quick guide to JSON-headed ASCII<a class="headerlink" href="#a-quick-guide-to-json-headed-ascii" title="Permalink to this heading">¶</a></h2>
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">A quick guide to JSON-headed ASCII</a><a class="headerlink" href="#a-quick-guide-to-json-headed-ascii" title="Link to this heading">¶</a></h3>
 <p>In many cases it is preferred to have a human-readable ASCII file, rather than a binary file like CDF
 or HDF5. To make it easier to carry all the same metadata that is available in HDF5 or CDF we have
 developed an ASCII data storage format that encodes the metadata using JSON (JavaScript Object Notation).
@@ -249,90 +212,62 @@ writes it to a JSON-headed ASCII file. The contents of the file are then shown.<
 </pre></div>
 </div>
 </section>
-<p class="rubric">Classes</p>
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData" title="spacepy.datamodel.SpaceData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpaceData</span></code></a>(*args, **kwargs)</p></td>
-<td><p>Datamodel class extending dict by adding attributes.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.datamodel.dmarray.html#spacepy.datamodel.dmarray" title="spacepy.datamodel.dmarray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dmarray</span></code></a>(input_array[, attrs, dtype])</p></td>
-<td><p>Container for data within a SpaceData object</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.datamodel.ISTPContainer.html#spacepy.datamodel.ISTPContainer" title="spacepy.datamodel.ISTPContainer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ISTPContainer</span></code></a>()</p></td>
-<td><p>Mixin class for containers using ISTP metadata.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.datamodel.ISTPArray.html#spacepy.datamodel.ISTPArray" title="spacepy.datamodel.ISTPArray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ISTPArray</span></code></a>()</p></td>
-<td><p>Mixin class for array using ISTP metadata.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.datamodel.DMWarning.html#spacepy.datamodel.DMWarning" title="spacepy.datamodel.DMWarning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DMWarning</span></code></a></p></td>
-<td><p>Warnings class for datamodel, subclassed so it can be set to always</p></td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Functions</p>
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.datamodel.convertKeysToStr.html#spacepy.datamodel.convertKeysToStr" title="spacepy.datamodel.convertKeysToStr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convertKeysToStr</span></code></a>(SDobject)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.datamodel.createISTPattrs.html#spacepy.datamodel.createISTPattrs" title="spacepy.datamodel.createISTPattrs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">createISTPattrs</span></code></a>(datatype[, ndims, vartype, ...])</p></td>
-<td><p>Return set of unpopulated attributes for ISTP compliant variable</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.datamodel.dmcopy.html#spacepy.datamodel.dmcopy" title="spacepy.datamodel.dmcopy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dmcopy</span></code></a>(dobj)</p></td>
-<td><p>Generic copy utility to return a copy of a (datamodel) object</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.datamodel.dmfilled.html#spacepy.datamodel.dmfilled" title="spacepy.datamodel.dmfilled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dmfilled</span></code></a>(shape[, fillval, dtype, order, attrs])</p></td>
-<td><p>Return a new dmarray of given shape and type, filled with a specified value (default=0).</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.datamodel.flatten.html#spacepy.datamodel.flatten" title="spacepy.datamodel.flatten"><code class="xref py py-obj docutils literal notranslate"><span class="pre">flatten</span></code></a>(dobj)</p></td>
-<td><p>Collapse datamodel to one level deep</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.datamodel.fromCDF.html#spacepy.datamodel.fromCDF" title="spacepy.datamodel.fromCDF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromCDF</span></code></a>(fname)</p></td>
-<td><p>Create a SpacePy datamodel representation of a NASA CDF file</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.datamodel.fromHDF5.html#spacepy.datamodel.fromHDF5" title="spacepy.datamodel.fromHDF5"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromHDF5</span></code></a>(fname, **kwargs)</p></td>
-<td><p>Create a SpacePy datamodel representation of an HDF5 file or netCDF4 file which is HDF5 compliant</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.datamodel.fromRecArray.html#spacepy.datamodel.fromRecArray" title="spacepy.datamodel.fromRecArray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromRecArray</span></code></a>(recarr)</p></td>
-<td><p>Takes a numpy recarray and returns each field as a dmarray in a SpaceData container</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.datamodel.toCDF.html#spacepy.datamodel.toCDF" title="spacepy.datamodel.toCDF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toCDF</span></code></a>(fname, SDobject[, skeleton, flatten, ...])</p></td>
-<td><p>Create a CDF file from a SpacePy datamodel representation</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.datamodel.toHDF5.html#spacepy.datamodel.toHDF5" title="spacepy.datamodel.toHDF5"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toHDF5</span></code></a>(fname, SDobject, **kwargs)</p></td>
-<td><p>Create an HDF5 file from a SpacePy datamodel representation</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.datamodel.toHTML.html#spacepy.datamodel.toHTML" title="spacepy.datamodel.toHTML"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toHTML</span></code></a>(fname, SDobject[, attrs, varLinks, ...])</p></td>
-<td><p>Create an HTML dump of the structure of a spacedata</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.datamodel.toJSONheadedASCII.html#spacepy.datamodel.toJSONheadedASCII" title="spacepy.datamodel.toJSONheadedASCII"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toJSONheadedASCII</span></code></a>(fname, insd[, metadata, ...])</p></td>
-<td><p>Write JSON-headed ASCII file of data with metadata from SpaceData object</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.datamodel.toRecArray.html#spacepy.datamodel.toRecArray" title="spacepy.datamodel.toRecArray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toRecArray</span></code></a>(sdo)</p></td>
-<td><p>Takes a SpaceData and creates a numpy recarray</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.datamodel.unflatten.html#spacepy.datamodel.unflatten" title="spacepy.datamodel.unflatten"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unflatten</span></code></a>(dobj[, marker])</p></td>
-<td><p>Collapse datamodel to one level deep</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.datamodel.readJSONMetadata.html#spacepy.datamodel.readJSONMetadata" title="spacepy.datamodel.readJSONMetadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readJSONMetadata</span></code></a>(fname, **kwargs)</p></td>
-<td><p>Read JSON metadata from an ASCII data file</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.datamodel.readJSONheadedASCII.html#spacepy.datamodel.readJSONheadedASCII" title="spacepy.datamodel.readJSONheadedASCII"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readJSONheadedASCII</span></code></a>(fname[, mdata, comment, ...])</p></td>
-<td><p>read JSON-headed ASCII data files into a SpacePy datamodel</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.datamodel.resample.html#spacepy.datamodel.resample" title="spacepy.datamodel.resample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resample</span></code></a>(data[, time, winsize, overlap, ...])</p></td>
-<td><p>resample a SpaceData to a new time interval</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.datamodel.writeJSONMetadata.html#spacepy.datamodel.writeJSONMetadata" title="spacepy.datamodel.writeJSONMetadata"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeJSONMetadata</span></code></a>(fname, insd[, depend0, ...])</p></td>
-<td><p>Scrape metadata from SpaceData object and make a JSON header</p></td>
-</tr>
-</tbody>
-</table>
+</section>
 </section>
 
 
             <div class="clearer"></div>
           </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Datamodel</a><ul>
+<li><a class="reference internal" href="#documentation">Documentation</a><ul>
+<li><a class="reference internal" href="#about-datamodel">About datamodel</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#guide-for-nasa-cdf-users">Guide for NASA CDF users</a></li>
+<li><a class="reference internal" href="#a-quick-guide-to-json-headed-ascii">A quick guide to JSON-headed ASCII</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="coordinates.html"
+                          title="previous chapter">Coordinates - Implementation of Coords class functions for coordinate transformations</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="omni.html"
+                          title="next chapter">OMNI</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/datamodel.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -347,22 +282,22 @@ writes it to a JSON-headed ASCII file. The contents of the file are then shown.<
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="autosummary/spacepy.datamodel.SpaceData.html" title="spacepy.datamodel.SpaceData"
+          <a href="omni.html" title="OMNI"
              >next</a> |</li>
         <li class="right" >
-          <a href="datamanager.html" title="datamanager - easy access to and manipulation of data"
+          <a href="coordinates.html" title="Coordinates - Implementation of Coords class functions for coordinate transformations"
              >previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="search.html">search</a>|&nbsp;</li>
        <li><a href="index.html">documentation </a> &raquo;</li>
 
-        <li class="nav-item nav-item-this"><a href="">datamodel - easy to use general data model</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Datamodel</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2024, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
 </html>

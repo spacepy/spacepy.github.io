@@ -1,29 +1,25 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.pybats.dgcpm &#8212; SpacePy v0.6.0 Manual</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <title>spacepy.pybats.dgcpm &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    
-    <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="spacepy.pybats.dipole" href="spacepy.pybats.dipole.html" />
-    <link rel="prev" title="spacepy.pybats.bats.VirtSat" href="spacepy.pybats.bats.VirtSat.html" /> 
+    <link rel="next" title="spacepy.pybats.dgcpm.Lslice" href="spacepy.pybats.dgcpm.Lslice.html" />
+    <link rel="prev" title="spacepy.pybats.batsmath" href="spacepy.pybats.batsmath.html" /> 
   </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
@@ -40,35 +36,105 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.dipole.html" title="spacepy.pybats.dipole"
+          <a href="spacepy.pybats.dgcpm.Lslice.html" title="spacepy.pybats.dgcpm.Lslice"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.bats.VirtSat.html" title="spacepy.pybats.bats.VirtSat"
+          <a href="spacepy.pybats.batsmath.html" title="spacepy.pybats.batsmath"
              accesskey="P">previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pybats.html" accesskey="U">PyBats - SWMF &amp; BATS-R-US Analysis Tools</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" accesskey="U">spacepy.pybats</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.pybats.dgcpm</a></li> 
       </ul>
     </div>
+  
 
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-spacepy.pybats.dgcpm">
+<span id="spacepy-pybats-dgcpm"></span><h1>spacepy.pybats.dgcpm<a class="headerlink" href="#module-spacepy.pybats.dgcpm" title="Link to this heading">¶</a></h1>
+<p>The PyBats submodule for handling input and output for the Dynamic Global
+Core Plasma Model (DGCPM), a plasmasphere module of the SWMF.</p>
+<p class="rubric">Functions</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.dgcpm.refill_flux" title="spacepy.pybats.dgcpm.refill_flux"><code class="xref py py-obj docutils literal notranslate"><span class="pre">refill_flux</span></code></a>(n, L[, tau, chi])</p></td>
+<td><p>Calculate the refill flux of a flux tube of density <em>n</em>, L-shell <em>L</em>, using a refill time constant of <em>tau</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.dgcpm.saturation" title="spacepy.pybats.dgcpm.saturation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">saturation</span></code></a>(L)</p></td>
+<td><p>Return saturation density of a flux tube as a function of L-shell in units of <img class="math" src="../_images/math/21e22dec05e4139d6bf28a6aa80e43e249334538.png" alt="\#/cm^3"/>.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pybats.dgcpm.Lslice.html#spacepy.pybats.dgcpm.Lslice" title="spacepy.pybats.dgcpm.Lslice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Lslice</span></code></a>(filename, *args, **kwargs)</p></td>
+<td><p>Open an L-Slice output file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pybats.dgcpm.MltSlice.html#spacepy.pybats.dgcpm.MltSlice" title="spacepy.pybats.dgcpm.MltSlice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MltSlice</span></code></a>(filename, *args, **kwargs)</p></td>
+<td><p>Open and handle an MLT Slice output file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pybats.dgcpm.PlasmaFile.html#spacepy.pybats.dgcpm.PlasmaFile" title="spacepy.pybats.dgcpm.PlasmaFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlasmaFile</span></code></a>(filename, *args, **kwargs)</p></td>
+<td><p>DGCPM's plasma files contain a plethora of values from the model's 2D plane.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.dgcpm.refill_flux">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.dgcpm.</span></span><span class="sig-name descname"><span class="pre">refill_flux</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Auto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/dgcpm.html#refill_flux"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.dgcpm.refill_flux" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the refill flux of a flux tube of density <em>n</em>, L-shell <em>L</em>,
+using a refill time constant of <em>tau</em>.  If kwarg <em>chi</em> is set to ‘Auto’,
+then zenith angle dependence is calculated using an assumed dipole field.
+To remove this dependence, set <em>chi</em> to a solar zenith angle in degrees.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.dgcpm.saturation">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.dgcpm.</span></span><span class="sig-name descname"><span class="pre">saturation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">L</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/dgcpm.html#saturation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.dgcpm.saturation" title="Link to this definition">¶</a></dt>
+<dd><p>Return saturation density of a flux tube as a function of L-shell in units
+of <img class="math" src="../_images/math/21e22dec05e4139d6bf28a6aa80e43e249334538.png" alt="\#/cm^3"/>. Formula is from Carpenter and Anderson, JGR, 1992.</p>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/logo.png" alt="Logo"/>
             </a></p>
   <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.pybats.dgcpm</a><ul>
+<li><a class="reference internal" href="#spacepy.pybats.dgcpm.refill_flux"><code class="docutils literal notranslate"><span class="pre">refill_flux()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.dgcpm.saturation"><code class="docutils literal notranslate"><span class="pre">saturation()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="spacepy.pybats.bats.VirtSat.html"
-                          title="previous chapter">spacepy.pybats.bats.VirtSat</a></p>
+    <p class="topless"><a href="spacepy.pybats.batsmath.html"
+                          title="previous chapter">spacepy.pybats.batsmath</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="spacepy.pybats.dipole.html"
-                          title="next chapter">spacepy.pybats.dipole</a></p>
+    <p class="topless"><a href="spacepy.pybats.dgcpm.Lslice.html"
+                          title="next chapter">spacepy.pybats.dgcpm.Lslice</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -77,7 +143,7 @@
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -85,25 +151,8 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <section id="module-spacepy.pybats.dgcpm">
-<span id="spacepy-pybats-dgcpm"></span><h1>spacepy.pybats.dgcpm<a class="headerlink" href="#module-spacepy.pybats.dgcpm" title="Permalink to this heading">¶</a></h1>
-<p>The PyBats submodule for handling input and output for the Dynamic Global
-Core Plasma Model (DGCPM), a plasmasphere module of the SWMF.</p>
-</section>
-
-
-            <div class="clearer"></div>
-          </div>
         </div>
       </div>
       <div class="clearer"></div>
@@ -118,23 +167,24 @@ Core Plasma Model (DGCPM), a plasmasphere module of the SWMF.</p>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.dipole.html" title="spacepy.pybats.dipole"
+          <a href="spacepy.pybats.dgcpm.Lslice.html" title="spacepy.pybats.dgcpm.Lslice"
              >next</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.bats.VirtSat.html" title="spacepy.pybats.bats.VirtSat"
+          <a href="spacepy.pybats.batsmath.html" title="spacepy.pybats.batsmath"
              >previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pybats.html" >PyBats - SWMF &amp; BATS-R-US Analysis Tools</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" >spacepy.pybats</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.pybats.dgcpm</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2024, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
 </html>

@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>spacepy.coordinates &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="spacepy.coordinates.Coords" href="spacepy.coordinates.Coords.html" />
+    <link rel="prev" title="spacepy.ae9ap9.Ae9Data" href="spacepy.ae9ap9.Ae9Data.html" /> 
+  </head><body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.coordinates.Coords.html" title="spacepy.coordinates.Coords"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.ae9ap9.Ae9Data.html" title="spacepy.ae9ap9.Ae9Data"
+             accesskey="P">previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" accesskey="U">spacepy</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.coordinates</a></li> 
+      </ul>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-spacepy.coordinates">
+<span id="spacepy-coordinates"></span><h1>spacepy.coordinates<a class="headerlink" href="#module-spacepy.coordinates" title="Link to this heading">¶</a></h1>
+<p>Implementation of Coords class functions for coordinate transformations</p>
+<p>Authors: Steven Morley and Josef Koller
+Institution: Los ALamos National Laboratory
+Contact: <a class="reference external" href="mailto:smorley&#37;&#52;&#48;lanl&#46;gov">smorley<span>&#64;</span>lanl<span>&#46;</span>gov</a></p>
+<p>For additional documentation <a class="reference internal" href="../coordinates.html"><span class="doc">Coordinates - Implementation of Coords class functions for coordinate transformations</span></a></p>
+<p>Copyright 2010-2016 Los Alamos National Security, LLC.</p>
+<p class="rubric">Functions</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.coordinates.car2sph" title="spacepy.coordinates.car2sph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">car2sph</span></code></a>(car_in)</p></td>
+<td><p>Coordinate transformation from Cartesian to spherical</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.coordinates.quaternionConjugate" title="spacepy.coordinates.quaternionConjugate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quaternionConjugate</span></code></a>(Qin[, scalarPos])</p></td>
+<td><p>Given an input quaternion (or array of quaternions), return the conjugate</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.coordinates.quaternionFromMatrix" title="spacepy.coordinates.quaternionFromMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quaternionFromMatrix</span></code></a>(matrix[, scalarPos])</p></td>
+<td><p>Given an input rotation matrix, return the equivalent quaternion</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.coordinates.quaternionMultiply" title="spacepy.coordinates.quaternionMultiply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quaternionMultiply</span></code></a>(Qin1, Qin2[, scalarPos])</p></td>
+<td><p>Given quaternions, return the product, i.e. Qin1*Qin2.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.coordinates.quaternionNormalize" title="spacepy.coordinates.quaternionNormalize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quaternionNormalize</span></code></a>(Qin[, scalarPos])</p></td>
+<td><p>Given an input quaternion (or array of quaternions), return the unit quaternion</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.coordinates.quaternionRotateVector" title="spacepy.coordinates.quaternionRotateVector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quaternionRotateVector</span></code></a>(Qin, Vin[, ...])</p></td>
+<td><p>Given quaternions and vectors, return the vectors rotated by the quaternions</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.coordinates.quaternionToMatrix" title="spacepy.coordinates.quaternionToMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quaternionToMatrix</span></code></a>(Qin[, scalarPos, normalize])</p></td>
+<td><p>Given an input quaternion, return the equivalent rotation matrix.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.coordinates.sph2car" title="spacepy.coordinates.sph2car"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sph2car</span></code></a>(sph_in)</p></td>
+<td><p>Coordinate transformation from spherical to Cartesian</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.coordinates.Coords.html#spacepy.coordinates.Coords" title="spacepy.coordinates.Coords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Coords</span></code></a>(data, dtype, carsph, [units, ticks, ...)</p></td>
+<td><p>A class holding spatial coordinates and enabling transformation between coordinate systems.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="#spacepy.coordinates.DEFAULTS" title="spacepy.coordinates.DEFAULTS"><code class="xref py py-data docutils literal notranslate"><span class="pre">DEFAULTS</span></code></a></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.coordinates.car2sph">
+<span class="sig-prename descclassname"><span class="pre">spacepy.coordinates.</span></span><span class="sig-name descname"><span class="pre">car2sph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">car_in</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/coordinates.html#car2sph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.coordinates.car2sph" title="Link to this definition">¶</a></dt>
+<dd><p>Coordinate transformation from Cartesian to spherical</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>- car_in (list or ndarray)</strong><span class="classifier">coordinate points in (n,3) shape with n coordinate points in</span></dt><dd><p>units of [Re, Re, Re] = [x,y,z]</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>- results (ndarray)</strong><span class="classifier">values after conversion to spherical coordinates in</span></dt><dd><p>radius, latitude, longitude in units of [Re, deg, deg]</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#spacepy.coordinates.sph2car" title="spacepy.coordinates.sph2car"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sph2car</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sph2car</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">array([ 0.70710678,  0.        ,  0.70710678])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.coordinates.quaternionConjugate">
+<span class="sig-prename descclassname"><span class="pre">spacepy.coordinates.</span></span><span class="sig-name descname"><span class="pre">quaternionConjugate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Qin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scalarPos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'last'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/coordinates.html#quaternionConjugate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.coordinates.quaternionConjugate" title="Link to this definition">¶</a></dt>
+<dd><p>Given an input quaternion (or array of quaternions), return the conjugate</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Qin</strong><span class="classifier">array_like</span></dt><dd><p>input quaternion to conjugate</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">array_like</span></dt><dd><p>conjugate quaternion</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#spacepy.coordinates.quaternionMultiply" title="spacepy.coordinates.quaternionMultiply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quaternionMultiply</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.coordinates</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">coordinates</span><span class="o">.</span><span class="n">quaternionConjugate</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mf">0.707</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.707</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> <span class="n">scalarPos</span><span class="o">=</span><span class="s1">&#39;last&#39;</span><span class="p">)</span>
+<span class="go">array([-0.707, -0.   , -0.707,  0.2  ])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.coordinates.quaternionFromMatrix">
+<span class="sig-prename descclassname"><span class="pre">spacepy.coordinates.</span></span><span class="sig-name descname"><span class="pre">quaternionFromMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scalarPos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'last'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/coordinates.html#quaternionFromMatrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.coordinates.quaternionFromMatrix" title="Link to this definition">¶</a></dt>
+<dd><p>Given an input rotation matrix, return the equivalent quaternion</p>
+<p>The output has one fewer axis than the input (the last axis) and the
+shape is otherwise unchanged, allowing multi-dimensional matrix input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>matrix</strong><span class="classifier">array_like</span></dt><dd><p>input rotation matrix or array of matrices</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">array_like</span></dt><dd><p>Quaternions representing the same rotation as the input rotation
+matrices.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>scalarPos</strong><span class="classifier">str</span></dt><dd><p>Location of the scalar component of the output quaternion, either
+‘last’ (default) or ‘first’.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>NotImplementedError</dt><dd><p>for invalid values of <code class="docutils literal notranslate"><span class="pre">scalarPos</span></code></p>
+</dd>
+<dt>ValueError</dt><dd><p>for inputs which are obviously not valid 3D rotation matrices or
+arrays thereof: if the size doesn’t end in (3, 3), if the matrix is
+not orthogonal, or not a proper rotation.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#spacepy.coordinates.quaternionToMatrix" title="spacepy.coordinates.quaternionToMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quaternionToMatrix</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.2.2.</span></p>
+</div>
+<p>No attempt is made to resolve the sign ambiguity; in particular,
+conversions of very similar matrices may result in equivalent quaternions
+with the opposite sign. This may have implications for interpolating a
+sequence of quaternions.</p>
+<p>The conversion of a rotation matrix to a quaternion suffers from some
+of the same disadvantages inherent to rotation matrices, such as potential
+numerical instabilities. Working in quaternion space as much as possible
+is recommended.</p>
+<p>There are several algorithms; the most well-known algorithm for this
+conversion is Shepperd’s <a class="footnote-reference brackets" href="#shepperd" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, although the many “rediscoveries”
+indicate
+it is not sufficiently well-known. This function uses the method of
+Bar-Itzhack <a class="footnote-reference brackets" href="#baritzhack" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> (version 3), which should be resistant to small
+errors in the rotation matrix. As a result, the input checking is quite
+coarse and will likely accept many matrices that do not represent valid
+rotations.</p>
+<p>Also potentially of interest, although not implemented here, is Sarabandi
+and Thomas <a class="footnote-reference brackets" href="#sarabandi" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>.</p>
+<p class="rubric">References</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="shepperd" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>S.W. Shepperd, “Quaternion from rotation matrix,” Journal of
+Guidance and Control, Vol. 1, No. 3, pp. 223-224, 1978,
+<a class="reference external" href="https://doi.org/10.2514/3.55767b">doi:10.2514/3.55767b</a></p>
+</aside>
+<aside class="footnote brackets" id="baritzhack" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>I. Y. Bar-Itzhack, “New method for extracting the
+quaternion from a rotation matrix”, AIAA Journal of Guidance,
+Control and Dynamics, 23 (6): 1085–1087,
+<a class="reference external" href="https://doi.org/10.2514/2.4654">doi:10.2514/2.4654</a></p>
+</aside>
+<aside class="footnote brackets" id="sarabandi" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>S. Sarabandi and F. Thomas, “Accurate Computation of
+Quaternions from Rotation Matrices”, In: Lenarcic J.,
+Parenti-Castelli V. (eds) Advances in Robot Kinematics 2018,
+Springer.
+<a class="reference external" href="https://doi.org/10.1007/978-3-319-93188-3_5">doi:10.1007/978-3-319-93188-3_5</a></p>
+</aside>
+</aside>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.coordinates</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">coordinates</span><span class="o">.</span><span class="n">quaternionFromMatrix</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[[</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">],</span>
+<span class="gp">... </span>     <span class="p">[</span> <span class="mf">0.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">0.</span><span class="p">]])</span>
+<span class="go">array([0.5, 0.5, 0.5, 0.5])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.coordinates.quaternionMultiply">
+<span class="sig-prename descclassname"><span class="pre">spacepy.coordinates.</span></span><span class="sig-name descname"><span class="pre">quaternionMultiply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Qin1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Qin2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scalarPos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'last'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/coordinates.html#quaternionMultiply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.coordinates.quaternionMultiply" title="Link to this definition">¶</a></dt>
+<dd><p>Given quaternions, return the product, i.e. Qin1*Qin2</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Qin1</strong><span class="classifier">array_like</span></dt><dd><p>input quaternion, first position</p>
+</dd>
+<dt><strong>Qin2</strong><span class="classifier">array-like</span></dt><dd><p>input quaternion, second position</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">array_like</span></dt><dd><p>quaternion product</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.coordinates</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vecX</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="c1">#shared X-axis</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vecZ</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="c1">#unshared, but similar, Z-axis</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">quat_eci_to_gsm</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.05395384</span><span class="p">,</span>  <span class="mf">0.07589845</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.15172533</span><span class="p">,</span>  <span class="mf">0.98402634</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">quat_eci_to_gse</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">0.20016056</span><span class="p">,</span>  <span class="mf">0.03445775</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.16611386</span><span class="p">,</span>  <span class="mf">0.96496352</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">quat_gsm_to_eci</span> <span class="o">=</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">coordinates</span><span class="o">.</span><span class="n">quaternionConjugate</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">quat_eci_to_gsm</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">quat_gse_to_gsm</span> <span class="o">=</span> <span class="n">spacepy</span><span class="o">.</span><span class="n">coordinates</span><span class="o">.</span><span class="n">quaternionMultiply</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">quat_gsm_to_eci</span><span class="p">,</span> <span class="n">quat_eci_to_gse</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">coordinates</span><span class="o">.</span><span class="n">quaternionRotateVector</span><span class="p">(</span><span class="n">quat_gse_to_gsm</span><span class="p">,</span> <span class="n">vecX</span><span class="p">)</span>
+<span class="go">array([  1.00000000e+00,   1.06536725e-09,  -1.16892107e-08])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">coordinates</span><span class="o">.</span><span class="n">quaternionRotateVector</span><span class="p">(</span><span class="n">quat_gse_to_gsm</span><span class="p">,</span> <span class="n">vecZ</span><span class="p">)</span>
+<span class="go">array([  1.06802834e-08,  -4.95669027e-01,   8.68511494e-01])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.coordinates.quaternionNormalize">
+<span class="sig-prename descclassname"><span class="pre">spacepy.coordinates.</span></span><span class="sig-name descname"><span class="pre">quaternionNormalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Qin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scalarPos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'last'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/coordinates.html#quaternionNormalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.coordinates.quaternionNormalize" title="Link to this definition">¶</a></dt>
+<dd><p>Given an input quaternion (or array of quaternions), return the unit quaternion</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>vec</strong><span class="classifier">array_like</span></dt><dd><p>input quaternion to normalize</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">array_like</span></dt><dd><p>normalized quaternion</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.coordinates</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">coordinates</span><span class="o">.</span><span class="n">quaternionNormalize</span><span class="p">([</span><span class="mf">0.707</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.707</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+<span class="go">array([ 0.69337122,  0.        ,  0.69337122,  0.19614462])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.coordinates.quaternionRotateVector">
+<span class="sig-prename descclassname"><span class="pre">spacepy.coordinates.</span></span><span class="sig-name descname"><span class="pre">quaternionRotateVector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Qin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Vin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scalarPos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'last'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/coordinates.html#quaternionRotateVector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.coordinates.quaternionRotateVector" title="Link to this definition">¶</a></dt>
+<dd><p>Given quaternions and vectors, return the vectors rotated by the quaternions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Qin</strong><span class="classifier">array_like</span></dt><dd><p>input quaternion to rotate by</p>
+</dd>
+<dt><strong>Vin</strong><span class="classifier">array-like</span></dt><dd><p>input vector to rotate</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">array_like</span></dt><dd><p>rotated vector</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#spacepy.coordinates.quaternionMultiply" title="spacepy.coordinates.quaternionMultiply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quaternionMultiply</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.coordinates</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vec</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">quat_wijk</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">quat_ijkw</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">coordinates</span><span class="o">.</span><span class="n">quaternionRotateVector</span><span class="p">(</span><span class="n">quat_ijkw</span><span class="p">,</span> <span class="n">vec</span><span class="p">)</span>
+<span class="go">array([ 0.,  0., -1.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">coordinates</span><span class="o">.</span><span class="n">quaternionRotateVector</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">quat_wijk</span><span class="p">,</span> <span class="n">vec</span><span class="p">,</span> <span class="n">scalarPos</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)</span>
+<span class="go">array([ 0.,  0., -1.])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.coordinates.quaternionToMatrix">
+<span class="sig-prename descclassname"><span class="pre">spacepy.coordinates.</span></span><span class="sig-name descname"><span class="pre">quaternionToMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Qin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scalarPos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'last'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/coordinates.html#quaternionToMatrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.coordinates.quaternionToMatrix" title="Link to this definition">¶</a></dt>
+<dd><p>Given an input quaternion, return the equivalent rotation matrix.</p>
+<p>The output has one more axis than the input (the last axis) and the
+shape is otherwise unchanged, allowing multi-dimensional quaternion input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Qin</strong><span class="classifier">array_like</span></dt><dd><p>input quaternion or array of quaternions, must be normalized.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">array_like</span></dt><dd><p>Rotation matrix</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>scalarPos</strong><span class="classifier">str</span></dt><dd><p>Location of the scalar component of the input quaternion, either
+‘last’ (default) or ‘first’.</p>
+</dd>
+<dt><strong>normalize</strong><span class="classifier">True</span></dt><dd><p>Normalize input quaternions before conversion (default). If False,
+raises error for non-normalized.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>NotImplementedError</dt><dd><p>for invalid values of <code class="docutils literal notranslate"><span class="pre">scalarPos</span></code>.</p>
+</dd>
+<dt>ValueError</dt><dd><p>for inputs which are not valid normalized quaternions or arrays
+thereof: if the size doesn’t end in (4), if the quaternion is not
+normalized and <code class="docutils literal notranslate"><span class="pre">normalize</span></code> is False.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#spacepy.coordinates.quaternionFromMatrix" title="spacepy.coordinates.quaternionFromMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quaternionFromMatrix</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.2.2.</span></p>
+</div>
+<p>Implementation of the Euler–Rodrigues formula.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.coordinates</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">coordinates</span><span class="o">.</span><span class="n">quaternionToMatrix</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
+<span class="go">array([[ 0.,  0.,  1.],</span>
+<span class="go">       [ 1.,  0.,  0.],</span>
+<span class="go">       [ 0.,  1.,  0.]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.coordinates.sph2car">
+<span class="sig-prename descclassname"><span class="pre">spacepy.coordinates.</span></span><span class="sig-name descname"><span class="pre">sph2car</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sph_in</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/coordinates.html#sph2car"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.coordinates.sph2car" title="Link to this definition">¶</a></dt>
+<dd><p>Coordinate transformation from spherical to Cartesian</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>- sph_in (list or ndarray)</strong><span class="classifier">coordinate points in (n,3) shape with n coordinate points in</span></dt><dd><p>units of [Re, deg, deg] = [r, latitude, longitude]</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>- results (ndarray)</strong><span class="classifier">values after conversion to cartesian coordinates x,y,z</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#spacepy.coordinates.car2sph" title="spacepy.coordinates.car2sph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">car2sph</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sph2car</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">45</span><span class="p">])</span>
+<span class="go">array([ 0.5       ,  0.5       ,  0.70710678])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="spacepy.coordinates.DEFAULTS">
+<span class="sig-prename descclassname"><span class="pre">spacepy.coordinates.</span></span><span class="sig-name descname"><span class="pre">DEFAULTS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">DEFAULTS(use_irbem=False,</span> <span class="pre">ellipsoid={'A':</span> <span class="pre">6378.137,</span> <span class="pre">'iFlat':</span> <span class="pre">298.257223563,</span> <span class="pre">'A2':</span> <span class="pre">40680631.59076899,</span> <span class="pre">'Flat':</span> <span class="pre">0.0033528106647474805,</span> <span class="pre">'E2':</span> <span class="pre">0.0066943799901413165,</span> <span class="pre">'E4':</span> <span class="pre">4.481472345240445e-05,</span> <span class="pre">'1mE2':</span> <span class="pre">0.9933056200098587,</span> <span class="pre">'B':</span> <span class="pre">6356.752314245179,</span> <span class="pre">'B2':</span> <span class="pre">40408299.98466144,</span> <span class="pre">'A2mB2':</span> <span class="pre">272331.60610755533,</span> <span class="pre">'EP2':</span> <span class="pre">0.0067394967422764514},</span> <span class="pre">itol=30)</span></em><a class="headerlink" href="#spacepy.coordinates.DEFAULTS" title="Link to this definition">¶</a></dt>
+<dd><p>DEFAULTS attribute is a named tuple with default values for coordinates module</p>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.coordinates</a><ul>
+<li><a class="reference internal" href="#spacepy.coordinates.car2sph"><code class="docutils literal notranslate"><span class="pre">car2sph()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.coordinates.quaternionConjugate"><code class="docutils literal notranslate"><span class="pre">quaternionConjugate()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.coordinates.quaternionFromMatrix"><code class="docutils literal notranslate"><span class="pre">quaternionFromMatrix()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.coordinates.quaternionMultiply"><code class="docutils literal notranslate"><span class="pre">quaternionMultiply()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.coordinates.quaternionNormalize"><code class="docutils literal notranslate"><span class="pre">quaternionNormalize()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.coordinates.quaternionRotateVector"><code class="docutils literal notranslate"><span class="pre">quaternionRotateVector()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.coordinates.quaternionToMatrix"><code class="docutils literal notranslate"><span class="pre">quaternionToMatrix()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.coordinates.sph2car"><code class="docutils literal notranslate"><span class="pre">sph2car()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.coordinates.DEFAULTS"><code class="docutils literal notranslate"><span class="pre">DEFAULTS</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="spacepy.ae9ap9.Ae9Data.html"
+                          title="previous chapter">spacepy.ae9ap9.Ae9Data</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="spacepy.coordinates.Coords.html"
+                          title="next chapter">spacepy.coordinates.Coords</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/autosummary/spacepy.coordinates.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.coordinates.Coords.html" title="spacepy.coordinates.Coords"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.ae9ap9.Ae9Data.html" title="spacepy.ae9ap9.Ae9Data"
+             >previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.coordinates</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    </div>
+  </body>
+</html>

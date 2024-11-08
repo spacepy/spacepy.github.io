@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.pybats.bats &#8212; SpacePy v0.6.0 Manual</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <title>spacepy.pybats.bats &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../../../_static/plot_directive.css" />
     
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    
-    <link rel="shortcut icon" href="../../../_static/spacepy_favicon.ico"/>
+    <script src="../../../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+    <link rel="icon" href="../../../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
   </head><body>
@@ -47,24 +43,7 @@
         <li class="nav-item nav-item-this"><a href="">spacepy.pybats.bats</a></li> 
       </ul>
     </div>
-
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="../../../index.html">
-              <img class="logo" src="../../../_static/logo.png" alt="Logo"/>
-            </a></p>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -76,21 +55,6 @@
 <span class="sd">A PyBats module for handling input, output, and visualization of</span>
 <span class="sd">binary SWMF output files taylored to BATS-R-US-type data.</span>
 
-<span class="sd">.. currentmodule:: spacepy.pybats.bats</span>
-
-<span class="sd">.. rubric:: Classes</span>
-
-<span class="sd">.. autosummary::</span>
-<span class="sd">    :template: clean_class.rst</span>
-<span class="sd">    :toctree:</span>
-
-<span class="sd">    BatsLog</span>
-<span class="sd">    Stream</span>
-<span class="sd">    Bats2d</span>
-<span class="sd">    Mag</span>
-<span class="sd">    MagFile</span>
-<span class="sd">    GeoIndexFile</span>
-<span class="sd">    VirtSat</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 
@@ -137,9 +101,6 @@
 <span class="sd">    ==========</span>
 <span class="sd">    obj : :class:`~spacepy.pybats.PbData` object</span>
 <span class="sd">       The object on which to act.</span>
-
-<span class="sd">    Other Parameters</span>
-<span class="sd">    ================</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    =======</span>
@@ -198,19 +159,18 @@
 
 <span class="c1"># Classes:</span>
 
-<div class="viewcode-block" id="BatsLog"><a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.BatsLog.html#spacepy.pybats.bats.BatsLog">[docs]</a><span class="k">class</span> <span class="nc">BatsLog</span><span class="p">(</span><span class="n">LogFile</span><span class="p">):</span>
+<div class="viewcode-block" id="BatsLog">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.BatsLog.html#spacepy.pybats.bats.BatsLog">[docs]</a>
+<span class="k">class</span> <span class="nc">BatsLog</span><span class="p">(</span><span class="n">LogFile</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    A specialized version of :class:`~spacepy.pybats.LogFile` that includes</span>
 <span class="sd">    special methods for plotting common BATS-R-US log file values, such as</span>
 <span class="sd">    D$_{ST}$.</span>
 
-<span class="sd">    .. autosummary::</span>
-
-<span class="sd">        ~BatsLog.add_dst_quicklook</span>
-
-<span class="sd">    .. automethod:: add_dst_quicklook</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
+<div class="viewcode-block" id="BatsLog.fetch_obs_dst">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.BatsLog.html#spacepy.pybats.bats.BatsLog.fetch_obs_dst">[docs]</a>
     <span class="k">def</span> <span class="nf">fetch_obs_dst</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Fetch the observed Dst index for the time period covered in the</span>
@@ -240,8 +200,11 @@
             <span class="k">raise</span> <span class="ne">Warning</span><span class="p">(</span><span class="s1">&#39;Failed to fetch Kyoto Dst: &#39;</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">False</span>
 
-        <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
 
+
+<div class="viewcode-block" id="BatsLog.fetch_obs_sym">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.BatsLog.html#spacepy.pybats.bats.BatsLog.fetch_obs_sym">[docs]</a>
     <span class="k">def</span> <span class="nf">fetch_obs_sym</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Fetch the observed SYM-H index for the time period covered in the</span>
@@ -271,9 +234,12 @@
             <span class="k">raise</span> <span class="ne">Warning</span><span class="p">(</span><span class="s1">&#39;Failed to fetch Kyoto Dst: &#39;</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">False</span>
 
-        <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="BatsLog.add_dst_quicklook"><a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.BatsLog.html#spacepy.pybats.bats.BatsLog.add_dst_quicklook">[docs]</a>    <span class="k">def</span> <span class="nf">add_dst_quicklook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span> <span class="n">plot_obs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+
+<div class="viewcode-block" id="BatsLog.add_dst_quicklook">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.BatsLog.html#spacepy.pybats.bats.BatsLog.add_dst_quicklook">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_dst_quicklook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span> <span class="n">plot_obs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                           <span class="n">epoch</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">add_legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">plot_sym</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                           <span class="n">dstvar</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">obs_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;ls&#39;</span><span class="p">:</span> <span class="s1">&#39;-.&#39;</span><span class="p">},</span>
                           <span class="n">sym_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;ls&#39;</span><span class="p">:</span> <span class="s1">&#39;-&#39;</span><span class="p">},</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -368,9 +334,13 @@
         <span class="k">if</span> <span class="n">target</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 
-        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span></div></div>
+        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span></div>
+</div>
 
 
+
+<div class="viewcode-block" id="Extraction">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Extraction.html#spacepy.pybats.bats.Extraction">[docs]</a>
 <span class="k">class</span> <span class="nc">Extraction</span><span class="p">(</span><span class="n">PbData</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    A class for creating and visualizing extractions from other</span>
@@ -399,6 +369,8 @@
 
 <span class="sd">    &#39;&#39;&#39;</span>
 
+<div class="viewcode-block" id="Extraction.__init__">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Extraction.html#spacepy.pybats.bats.Extraction.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">var_list</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="c1"># Initialize as a PbData object.</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Extraction</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -430,8 +402,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_dataset</span> <span class="o">=</span> <span class="n">dataset</span>
 
         <span class="c1"># Extract along trace:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="Extraction.extract">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Extraction.html#spacepy.pybats.bats.Extraction.extract">[docs]</a>
     <span class="k">def</span> <span class="nf">extract</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xpts</span><span class="p">,</span> <span class="n">ypts</span><span class="p">):</span>
         <span class="c1"># Perform actual extraction:</span>
         <span class="kn">from</span> <span class="nn">spacepy.pybats.batsmath</span> <span class="kn">import</span> <span class="n">interp_2d_reg</span>
@@ -466,10 +441,14 @@
             <span class="n">locs</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">qtree</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">locs</span>
             <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_var_list</span><span class="p">:</span>
                 <span class="bp">self</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">pts</span><span class="p">]</span> <span class="o">=</span> <span class="n">interp_2d_reg</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">pts</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">pts</span><span class="p">],</span> <span class="n">xAll</span><span class="p">[</span><span class="n">locs</span><span class="p">],</span>
-                                             <span class="n">yAll</span><span class="p">[</span><span class="n">locs</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">locs</span><span class="p">])</span>
+                                             <span class="n">yAll</span><span class="p">[</span><span class="n">locs</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">locs</span><span class="p">])</span></div>
+</div>
 
 
-<div class="viewcode-block" id="Stream"><a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Stream.html#spacepy.pybats.bats.Stream">[docs]</a><span class="k">class</span> <span class="nc">Stream</span><span class="p">(</span><span class="n">Extraction</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Stream">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Stream.html#spacepy.pybats.bats.Stream">[docs]</a>
+<span class="k">class</span> <span class="nc">Stream</span><span class="p">(</span><span class="n">Extraction</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    A class for streamlines.  Contains all of the information about</span>
 <span class="sd">    the streamline, including extracted variables.</span>
@@ -517,21 +496,10 @@
 <span class="sd">    .. Not really &quot;notes&quot; but need to keep this section from being parsed</span>
 <span class="sd">       as parameters</span>
 
-<span class="sd">    .. rubric:: Methods</span>
-
-<span class="sd">    .. autosummary::</span>
-
-<span class="sd">        ~Stream.set_style</span>
-<span class="sd">        ~Stream.treetrace</span>
-<span class="sd">        ~Stream.trace</span>
-<span class="sd">        ~Stream.plot</span>
-
-<span class="sd">    .. automethod:: set_style</span>
-<span class="sd">    .. automethod:: treetrace</span>
-<span class="sd">    .. automethod:: trace</span>
-<span class="sd">    .. automethod:: plot</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
+<div class="viewcode-block" id="Stream.__init__">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Stream.html#spacepy.pybats.bats.Stream.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bats</span><span class="p">,</span> <span class="n">xstart</span><span class="p">,</span> <span class="n">ystart</span><span class="p">,</span> <span class="n">xfield</span><span class="p">,</span> <span class="n">yfield</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;mag&#39;</span><span class="p">,</span>
                  <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;streamline&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;rk4&#39;</span><span class="p">,</span> <span class="n">var_list</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span>
                  <span class="n">extract</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">maxPoints</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -562,9 +530,12 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;method&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">method</span>
 
         <span class="c1"># Set style</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="n">style</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="n">style</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Stream.set_style"><a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Stream.html#spacepy.pybats.bats.Stream.set_style">[docs]</a>    <span class="k">def</span> <span class="nf">set_style</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">style</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Stream.set_style">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Stream.html#spacepy.pybats.bats.Stream.set_style">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_style</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">style</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Set the line style either using a simple matplotlib-type style</span>
 <span class="sd">        string or using a preset style type.  Current types include:</span>
@@ -593,7 +564,10 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;k&#39;</span></div>
 
-<div class="viewcode-block" id="Stream.treetrace"><a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Stream.html#spacepy.pybats.bats.Stream.treetrace">[docs]</a>    <span class="k">def</span> <span class="nf">treetrace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bats</span><span class="p">,</span> <span class="n">maxPoints</span><span class="o">=</span><span class="mi">20000</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Stream.treetrace">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Stream.html#spacepy.pybats.bats.Stream.treetrace">[docs]</a>
+    <span class="k">def</span> <span class="nf">treetrace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bats</span><span class="p">,</span> <span class="n">maxPoints</span><span class="o">=</span><span class="mi">20000</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Trace through the vector field using the quad tree.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
@@ -709,7 +683,10 @@
             <span class="n">limit</span> <span class="o">=</span> <span class="n">bats</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;rbody&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">.8</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">r</span> <span class="o">&gt;</span> <span class="n">limit</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">r</span> <span class="o">&gt;</span> <span class="n">limit</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="Stream.trace"><a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Stream.html#spacepy.pybats.bats.Stream.trace">[docs]</a>    <span class="k">def</span> <span class="nf">trace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bats</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Stream.trace">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Stream.html#spacepy.pybats.bats.Stream.trace">[docs]</a>
+    <span class="k">def</span> <span class="nf">trace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bats</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Trace through the vector field.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
@@ -741,102 +718,27 @@
             <span class="k">if</span> <span class="p">(</span><span class="n">r1</span> <span class="o">&lt;</span> <span class="n">bats</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;rbody&#39;</span><span class="p">])</span> <span class="ow">and</span> <span class="p">(</span><span class="n">r2</span> <span class="o">&lt;</span> <span class="n">bats</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;rbody&#39;</span><span class="p">]):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">open</span> <span class="o">=</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="Stream.plot"><a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Stream.html#spacepy.pybats.bats.Stream.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Stream.plot">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Stream.html#spacepy.pybats.bats.Stream.plot">[docs]</a>
+    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Add streamline to axes object &quot;ax&quot;.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div></div>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+</div>
 
 
-<div class="viewcode-block" id="Bats2d"><a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d">[docs]</a><span class="k">class</span> <span class="nc">Bats2d</span><span class="p">(</span><span class="n">IdlFile</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Bats2d">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d">[docs]</a>
+<span class="k">class</span> <span class="nc">Bats2d</span><span class="p">(</span><span class="n">IdlFile</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    A child class of :class:`~pybats.IdlFile` tailored to 2D BATS-R-US output.</span>
-
-<span class="sd">    Calculations</span>
-<span class="sd">    ------------</span>
-<span class="sd">    New values can be added via the addition of new keys.  For example,</span>
-<span class="sd">    a user could add radial distance to an equatorial Bats2d object as follows:</span>
-
-<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
-<span class="sd">    &gt;&gt;&gt; from spacepy.pybats import bats</span>
-<span class="sd">    &gt;&gt;&gt; mhd = bats.Bats2d(&#39;tests/data/pybats_test/z=0_sine.out&#39;)</span>
-<span class="sd">    &gt;&gt;&gt; mhd[&#39;rad&#39;] = np.sqrt( mhd[&#39;x&#39;]**2 + mhd[&#39;y&#39;]**2 )</span>
-
-<span class="sd">    Note, however, that if the user switches the data frame in a *.outs file</span>
-<span class="sd">    to access data from a different epoch, these values will need to be</span>
-<span class="sd">    updated.</span>
-
-<span class="sd">    An exception to this is built-in `calc_*` methods, which perform common</span>
-<span class="sd">    MHD/fluid dynamic calculations (i.e., Alfven wave speed, vorticity, and</span>
-<span class="sd">    more.)  These values are updated when the data frame is switched (see the</span>
-<span class="sd">    `switch_frame` method).</span>
-
-<span class="sd">    For example, to calculate number density and the fraction of the total</span>
-<span class="sd">    density for each species in a multi-fluid simulation,</span>
-
-<span class="sd">    &gt;&gt;&gt; mhd = bats.Bats2d(&#39;tests/data/pybats_test/cut_multispecies.out&#39;)</span>
-<span class="sd">    &gt;&gt;&gt; mhd.calc_ndens()</span>
-
-<span class="sd">    In an interactive session, users can tab-complete to explore the possible</span>
-<span class="sd">    built-in calculation methods.</span>
-
-<span class="sd">    Plotting</span>
-<span class="sd">    --------</span>
-<span class="sd">    While users can employ Matplotlib to plot values, a set of built-in</span>
-<span class="sd">    methods are available to expedite plotting.  These are the</span>
-<span class="sd">    `add_&lt;plot type&gt;` methods.  These methods always have the following</span>
-<span class="sd">    keyword arguments that allow users to optionally build more complicated</span>
-<span class="sd">    plots: *target* and *loc*.  The *target* kwarg tells the plotting method</span>
-<span class="sd">    where to place the plot and can either be a Matplotlib figure or axes</span>
-<span class="sd">    object.  If it&#39;s an axes object, *loc* sets the subplot location using</span>
-<span class="sd">    the typical matplotlib syntax (e.g., `loc=121`).  The default behavior is</span>
-<span class="sd">    to create a new figure and axes object.</span>
-
-<span class="sd">    This approach allows a user to over-plot contours, field lines, and</span>
-<span class="sd">    other plot artists as well as combine different subplots onto a single</span>
-<span class="sd">    figure.  Continuing with our example above, let&#39;s plot the grid layout</span>
-<span class="sd">    for our file as well as equatorial pressure and flow streamlines:</span>
-
-<span class="sd">    &gt;&gt;&gt; import matplotlib.pyplot as plt</span>
-<span class="sd">    &gt;&gt;&gt; fig = plt.Figure(figsize=(8,6))</span>
-<span class="sd">    &gt;&gt;&gt; mhd.add_grid_plot(target=fig, loc=121)</span>
-<span class="sd">    &gt;&gt;&gt; mhd.add_contour(&#39;x&#39;,&#39;y&#39;,&#39;p&#39;, target=fig, loc=122)</span>
-<span class="sd">    &gt;&gt;&gt; mhd.add_stream_scatter(&#39;ux&#39;, &#39;uy&#39;, target=fig, loc=122)</span>
-
-<span class="sd">    Useful plotting methods include the following:</span>
-
-<span class="sd">    | Plot Method        | Description                                    |</span>
-<span class="sd">    | ------------------ | ---------------------------------------------- |</span>
-<span class="sd">    | add_grid_plot      | Create a quick-look diagram of the grid layout |</span>
-<span class="sd">    | add_contour        | Create a contour plot of a given variable      |</span>
-<span class="sd">    | add_pcolor         | Add a p-color (no-interpolation contour) plot  |</span>
-<span class="sd">    | add_stream_scatter | Scatter stream traces (any vector field)       |</span>
-<span class="sd">    | add_b_magsphere    | Add magnetic field lines for X-Z plane cuts    |</span>
-<span class="sd">    | add_planet         | Add a simple black/white planet at the origin  |</span>
-<span class="sd">    | add_body           | Add an inner boundary at the origin            |</span>
-
-<span class="sd">    Extracting and Stream Tracing</span>
-<span class="sd">    -----------------------------</span>
-<span class="sd">    Extracting values via interpolation to arbitrary points and creating</span>
-<span class="sd">    stream traces through any vector field (e.g., velocity or magnetic field)</span>
-<span class="sd">    are aided via the use of the following object methods:</span>
-
-<span class="sd">    | Method     | Description                                        |</span>
-<span class="sd">    | ---------- | -------------------------------------------------- |</span>
-<span class="sd">    | extract    | Interpolate to arbitrary points and extract values |</span>
-<span class="sd">    | get_stream | Integrate stream lines through vector fields       |</span>
-
-
-<span class="sd">    Be sure to read the docstring information of :class:`~pybats.IdlFile` to</span>
-<span class="sd">    see how to handle multi-frame files (*.outs) and for a list of critical</span>
-<span class="sd">    attributes.</span>
-
-<span class="sd">    .. versionchanged:: 0.5.0</span>
-
-<span class="sd">       Unstructured data are now presented as in the files. See</span>
-<span class="sd">       `~pybats.IdlFile` for details.</span>
+<span class="sd">    A child class of :class:`~spacepy.pybats.IdlFile` tailored to 2D BATS-R-US output.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="c1"># Init by calling IdlFile init and then building qotree, etc.</span>
+<div class="viewcode-block" id="Bats2d.__init__">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">blocksize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
         <span class="c1"># Stash blocksize as an attribute:</span>
@@ -852,11 +754,14 @@
         <span class="c1"># Behavior of output files changed Jan. 2017:</span>
         <span class="c1"># Check for &#39;r&#39; instead of &#39;rbody&#39; in attrs.</span>
         <span class="k">if</span> <span class="s1">&#39;r&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span> <span class="ow">and</span> <span class="s1">&#39;rbody&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;rbody&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;rbody&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">]</span></div>
 
+
+<div class="viewcode-block" id="Bats2d.switch_frame">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.switch_frame">[docs]</a>
     <span class="k">def</span> <span class="nf">switch_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        For files that have more than one data frame (i.e., `*.outs` files),</span>
+<span class="sd">        For files that have more than one data frame (i.e., ``*.outs`` files),</span>
 <span class="sd">        load data from the *iframe*-th frame into the object replacing what is</span>
 <span class="sd">        currently loaded.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
@@ -865,7 +770,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_qtree</span> <span class="o">=</span> <span class="kc">None</span>
 
         <span class="c1"># Switch frames using parent method:</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">Bats2d</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">switch_frame</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Bats2d</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">switch_frame</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">qtree</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -901,6 +807,8 @@
     <span class="c1"># CALCULATIONS</span>
     <span class="c1">####################</span>
 
+<div class="viewcode-block" id="Bats2d.calc_temp">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.calc_temp">[docs]</a>
     <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_temp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;eV&#39;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -937,8 +845,11 @@
                 <span class="k">continue</span>
             <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;t&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span>
                 <span class="n">conv</span><span class="p">[</span><span class="n">units</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;p&#39;</span><span class="p">]</span><span class="o">/</span><span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">],</span>
-                <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="n">units</span><span class="p">})</span>
+                <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="n">units</span><span class="p">})</span></div>
 
+
+<div class="viewcode-block" id="Bats2d.calc_b">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.calc_b">[docs]</a>
     <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_b</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -959,8 +870,11 @@
 
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bx_hat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;unitless&#39;</span><span class="p">}</span>
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;by_hat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;unitless&#39;</span><span class="p">}</span>
-        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bz_hat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;unitless&#39;</span><span class="p">}</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bz_hat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;unitless&#39;</span><span class="p">}</span></div>
 
+
+<div class="viewcode-block" id="Bats2d.calc_j">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.calc_j">[docs]</a>
     <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_j</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -968,8 +882,11 @@
 <span class="sd">        Retains units of components, stores in self[&#39;j&#39;]</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;j&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jx&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jy&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">2.0</span> <span class="o">+</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jz&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;j&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]}</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;j&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]}</span></div>
 
+
+<div class="viewcode-block" id="Bats2d.calc_uperp">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.calc_uperp">[docs]</a>
     <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_uperp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -1003,8 +920,11 @@
             <span class="n">uz</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;ux&#39;</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;by_hat&#39;</span><span class="p">]</span><span class="o">-</span><span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;uy&#39;</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bx_hat&#39;</span><span class="p">]</span>
 
             <span class="c1"># Get magnitude:</span>
-            <span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;u_perp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">ux</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">uy</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">uz</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+            <span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;u_perp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">ux</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">uy</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">uz</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="Bats2d.calc_upar">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.calc_upar">[docs]</a>
     <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_upar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -1035,8 +955,11 @@
             <span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;u_par&#39;</span><span class="p">]</span> <span class="o">=</span> \
                 <span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;ux&#39;</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bx_hat&#39;</span><span class="p">]</span>   \
                 <span class="o">+</span> <span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;uy&#39;</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;by_hat&#39;</span><span class="p">]</span> \
-                <span class="o">+</span> <span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;uz&#39;</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bz_hat&#39;</span><span class="p">]</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;uz&#39;</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bz_hat&#39;</span><span class="p">]</span></div>
 
+
+<div class="viewcode-block" id="Bats2d.calc_E">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.calc_E">[docs]</a>
     <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_E</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -1065,8 +988,11 @@
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Ez&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;mV/m&#39;</span><span class="p">}</span>
 
         <span class="c1"># Total magnitude.</span>
-        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Ex&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Ey&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Ez&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Ex&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Ey&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Ez&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="Bats2d.calc_ndens">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.calc_ndens">[docs]</a>
     <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_ndens</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -1081,8 +1007,11 @@
 <span class="sd">        &#39;&#39;&#39;</span>
 
         <span class="c1"># Use shared function.</span>
-        <span class="n">_calc_ndens</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">_calc_ndens</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="Bats2d.calc_beta">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.calc_beta">[docs]</a>
     <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_beta</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -1105,8 +1034,11 @@
         <span class="n">temp_b</span><span class="p">[</span><span class="n">temp_b</span> <span class="o">&lt;</span> <span class="mf">1E-8</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="n">mu_naught</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">][</span><span class="n">temp_b</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">]</span>
         <span class="n">temp_beta</span> <span class="o">=</span> <span class="n">mu_naught</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">temp_b</span>
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp_beta</span>
-        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;unitless&#39;</span><span class="p">}</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;unitless&#39;</span><span class="p">}</span></div>
 
+
+<div class="viewcode-block" id="Bats2d.calc_jxb">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.calc_jxb">[docs]</a>
     <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_jxb</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -1133,8 +1065,11 @@
                               <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;nN/m^3&#39;</span><span class="p">})</span>
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jbx&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span>
                                      <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jby&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span>
-                                     <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jbz&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;nN/m^3&#39;</span><span class="p">})</span>
+                                     <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;jbz&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;nN/m^3&#39;</span><span class="p">})</span></div>
 
+
+<div class="viewcode-block" id="Bats2d.calc_alfven">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.calc_alfven">[docs]</a>
     <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_alfven</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -1160,7 +1095,8 @@
         <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">rho_names</span><span class="p">:</span>
             <span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;alfven&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">1E-12</span> <span class="o">/</span>
                                             <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mu_naught</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">]),</span>
-                                            <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;km/s&#39;</span><span class="p">})</span>
+                                            <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;km/s&#39;</span><span class="p">})</span></div>
+
 
     <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">_calc_divmomen</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1205,6 +1141,8 @@
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;divmomx&#39;</span><span class="p">]</span> <span class="o">*=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;rho&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">c1</span><span class="o">*</span><span class="n">c2</span><span class="o">*</span><span class="n">c3</span>
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;divmomz&#39;</span><span class="p">]</span> <span class="o">*=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;rho&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">c1</span><span class="o">*</span><span class="n">c2</span><span class="o">*</span><span class="n">c3</span>
 
+<div class="viewcode-block" id="Bats2d.calc_vort">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.calc_vort">[docs]</a>
     <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_vort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conv</span><span class="o">=</span><span class="mf">1000.</span><span class="o">/</span><span class="n">RE</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -1278,8 +1216,11 @@
 
                 <span class="c1"># Calculate curl</span>
                 <span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="n">w</span><span class="p">][</span><span class="n">leaf</span><span class="o">.</span><span class="n">locs</span><span class="p">]</span> <span class="o">=</span> <span class="n">conv</span> <span class="o">*</span> <span class="p">(</span><span class="n">dx1</span><span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">leaf</span><span class="o">.</span><span class="n">dx</span><span class="p">)</span> <span class="o">-</span>
-                                               <span class="n">dx2</span><span class="p">(</span><span class="n">u2</span><span class="p">,</span> <span class="n">leaf</span><span class="o">.</span><span class="n">dx</span><span class="p">))</span>
+                                               <span class="n">dx2</span><span class="p">(</span><span class="n">u2</span><span class="p">,</span> <span class="n">leaf</span><span class="o">.</span><span class="n">dx</span><span class="p">))</span></div>
 
+
+<div class="viewcode-block" id="Bats2d.calc_gradP">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.calc_gradP">[docs]</a>
     <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_gradP</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -1323,8 +1264,11 @@
         <span class="c1"># Scalar magnitude:</span>
         <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dims</span><span class="p">:</span>
             <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;gradP&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;gradP_&#39;</span><span class="o">+</span><span class="n">d</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
-        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;gradP&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;gradP&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;gradP&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;gradP&#39;</span><span class="p">])</span></div>
 
+
+<div class="viewcode-block" id="Bats2d.calc_utotal">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.calc_utotal">[docs]</a>
     <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_utotal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -1347,7 +1291,8 @@
             <span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;u&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;ux&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span>
                                           <span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;uy&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span>
                                           <span class="bp">self</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="s1">&#39;uz&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span>
-                                  <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="n">units</span><span class="p">})</span>
+                                  <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="n">units</span><span class="p">})</span></div>
+
 
     <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">_calc_Ekin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;eV&#39;</span><span class="p">):</span>
@@ -1380,10 +1325,12 @@
                                      <span class="o">*</span> <span class="n">conv</span> <span class="o">*</span> <span class="n">mass</span><span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()],</span>
                                      <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="n">units</span><span class="p">})</span>
 
+<div class="viewcode-block" id="Bats2d.calc_all">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.calc_all">[docs]</a>
     <span class="k">def</span> <span class="nf">calc_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="p">[]):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Perform all variable calculations (e.g. calculations that</span>
-<span class="sd">        begin with &#39;calc_&#39;).  Any exceptions raised by functions that</span>
+<span class="sd">        begin with &quot;calc&quot;).  Any exceptions raised by functions that</span>
 <span class="sd">        could not be peformed (typicaly from missing variables) are</span>
 <span class="sd">        discarded.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
@@ -1394,11 +1341,14 @@
                     <span class="nb">eval</span><span class="p">(</span><span class="s1">&#39;self.&#39;</span><span class="o">+</span><span class="n">command</span><span class="o">+</span><span class="s1">&#39;()&#39;</span><span class="p">)</span>
                 <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="ne">Warning</span><span class="p">(</span><span class="s1">&#39;Did not perform </span><span class="si">{0}</span><span class="s1">: </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                        <span class="n">command</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">0</span><span class="p">]))</span>
+                        <span class="n">command</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">0</span><span class="p">]))</span></div>
+
 
     <span class="c1">#####################</span>
     <span class="c1"># Other calculations</span>
     <span class="c1">#####################</span>
+<div class="viewcode-block" id="Bats2d.gradP_regular">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.gradP_regular">[docs]</a>
     <span class="k">def</span> <span class="nf">gradP_regular</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cellsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim1range</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim2range</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Calculate pressure gradient on a regular grid.</span>
@@ -1433,8 +1383,11 @@
         <span class="n">dx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resolution</span> <span class="o">*</span> <span class="mf">6378000.0</span>  <span class="c1"># RE to meters</span>
         <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">10E-9</span>               <span class="c1"># nPa to Pa</span>
         <span class="bp">self</span><span class="p">[</span><span class="n">newvars</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="bp">self</span><span class="p">[</span><span class="n">newvars</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>
-        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;gradp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">newvars</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">**</span><span class="mf">2.0</span> <span class="o">+</span> <span class="bp">self</span><span class="p">[</span><span class="n">newvars</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span><span class="o">**</span><span class="mf">2.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;gradp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">newvars</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">**</span><span class="mf">2.0</span> <span class="o">+</span> <span class="bp">self</span><span class="p">[</span><span class="n">newvars</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span><span class="o">**</span><span class="mf">2.0</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="Bats2d.cfl">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.cfl">[docs]</a>
     <span class="k">def</span> <span class="nf">cfl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">xcoord</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">ycoord</span><span class="o">=</span><span class="s1">&#39;z&#39;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculate the CFL number in each cell given time step dt.</span>
@@ -1459,8 +1412,11 @@
 
             <span class="n">cfl</span><span class="p">[</span><span class="n">pts</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">][</span><span class="n">pts</span><span class="p">]</span><span class="o">*</span><span class="n">dt</span><span class="o">/</span><span class="n">child</span><span class="o">.</span><span class="n">dx</span>
 
-        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;cfl&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">cfl</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">})</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;cfl&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">cfl</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">})</span></div>
 
+
+<div class="viewcode-block" id="Bats2d.vth">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.vth">[docs]</a>
     <span class="k">def</span> <span class="nf">vth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m_avg</span><span class="o">=</span><span class="mf">3.1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculate the thermal velocity. m_avg denotes the average ion</span>
@@ -1472,8 +1428,11 @@
         <span class="n">m_avg_kg</span> <span class="o">=</span> <span class="n">m_avg</span><span class="o">*</span><span class="mf">1.6276e-27</span>
         <span class="n">ndensity</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;rho&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">m_avg</span><span class="o">*</span><span class="mf">1e6</span>
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;vth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">]</span><span class="o">*</span><span class="mf">1e-9</span><span class="o">/</span><span class="n">ndensity</span><span class="o">/</span><span class="p">(</span><span class="n">m_avg_kg</span><span class="p">))</span>
-                              <span class="o">/</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;km/s&#39;</span><span class="p">})</span>
+                              <span class="o">/</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;km/s&#39;</span><span class="p">})</span></div>
 
+
+<div class="viewcode-block" id="Bats2d.gyroradius">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.gyroradius">[docs]</a>
     <span class="k">def</span> <span class="nf">gyroradius</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">velocities</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="s1">&#39;vth&#39;</span><span class="p">),</span> <span class="n">m_avg</span><span class="o">=</span><span class="mf">3.1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculate the ion gyroradius in each cell.</span>
@@ -1513,8 +1472,11 @@
         <span class="n">q</span> <span class="o">=</span> <span class="mf">1.6022e-19</span>
 
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;gyroradius&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">m_avg_kg</span><span class="o">*</span><span class="n">v</span><span class="o">/</span><span class="p">(</span><span class="n">q</span><span class="o">*</span><span class="n">B</span><span class="p">)</span><span class="o">/</span><span class="mi">6378000</span><span class="p">,</span>
-                                     <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;Re&#39;</span><span class="p">})</span>
+                                     <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;Re&#39;</span><span class="p">})</span></div>
 
+
+<div class="viewcode-block" id="Bats2d.plasma_freq">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.plasma_freq">[docs]</a>
     <span class="k">def</span> <span class="nf">plasma_freq</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m_avg</span><span class="o">=</span><span class="mf">3.1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculate the ion plasma frequency.</span>
@@ -1528,8 +1490,11 @@
         <span class="n">ndensity</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;rho&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">m_avg</span><span class="o">*</span><span class="mf">1e6</span>
         <span class="n">q</span> <span class="o">=</span> <span class="mf">1.6022e-19</span>
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;plasma_freq&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">ndensity</span><span class="o">*</span><span class="n">q</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">m_avg_kg</span><span class="p">),</span>
-                                      <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;rad/s&#39;</span><span class="p">})</span>
+                                      <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;rad/s&#39;</span><span class="p">})</span></div>
 
+
+<div class="viewcode-block" id="Bats2d.inertial_length">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.inertial_length">[docs]</a>
     <span class="k">def</span> <span class="nf">inertial_length</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m_avg</span><span class="o">=</span><span class="mf">3.1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculate the ion inertial length.</span>
@@ -1548,8 +1513,11 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">calc_alfven</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;inertial_length&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;alfven&#39;</span><span class="p">]</span><span class="o">/</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;plasma_freq&#39;</span><span class="p">]</span>
-                                          <span class="o">/</span> <span class="mi">6378000</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;Re&#39;</span><span class="p">})</span>
+                                          <span class="o">/</span> <span class="mi">6378000</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;Re&#39;</span><span class="p">})</span></div>
 
+
+<div class="viewcode-block" id="Bats2d.regrid">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.regrid">[docs]</a>
     <span class="k">def</span> <span class="nf">regrid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cellsize</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">dim1range</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim2range</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Re-bin data to regular grid of spacing cellsize.  Action is</span>
@@ -1605,11 +1573,14 @@
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;grid&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;npoints&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">grid1</span><span class="p">)</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">grid2</span><span class="p">)</span>
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;grid&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;resolution&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cellsize</span>
         <span class="bp">self</span><span class="p">[</span><span class="n">dims</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">grid1</span>
-        <span class="bp">self</span><span class="p">[</span><span class="n">dims</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">grid2</span>
+        <span class="bp">self</span><span class="p">[</span><span class="n">dims</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">grid2</span></div>
+
 
     <span class="c1">#############################</span>
     <span class="c1"># EXTRACTION/INTERPOLATION</span>
     <span class="c1">#############################</span>
+<div class="viewcode-block" id="Bats2d.extract">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.extract">[docs]</a>
     <span class="k">def</span> <span class="nf">extract</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        For x, y of a 1D curve, extract values along that curve</span>
@@ -1618,11 +1589,14 @@
 <span class="sd">        :class:`~spacepy.pybats.bats.Extraction`.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
 
-        <span class="k">return</span> <span class="n">Extraction</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Extraction</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
 
     <span class="c1">######################</span>
     <span class="c1"># TRACING TOOLS</span>
     <span class="c1">######################</span>
+<div class="viewcode-block" id="Bats2d.get_stream">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.get_stream">[docs]</a>
     <span class="k">def</span> <span class="nf">get_stream</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">xvar</span><span class="p">,</span> <span class="n">yvar</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;rk4&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;mag&#39;</span><span class="p">,</span>
                    <span class="n">maxPoints</span><span class="o">=</span><span class="mi">40000</span><span class="p">,</span> <span class="n">extract</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -1646,11 +1620,14 @@
         <span class="n">stream</span> <span class="o">=</span> <span class="n">Stream</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">xvar</span><span class="p">,</span> <span class="n">yvar</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span>
                         <span class="n">maxPoints</span><span class="o">=</span><span class="n">maxPoints</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">extract</span><span class="o">=</span><span class="n">extract</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">stream</span>
+        <span class="k">return</span> <span class="n">stream</span></div>
+
 
     <span class="c1">######################</span>
     <span class="c1"># VISUALIZATION TOOLS</span>
     <span class="c1">######################</span>
+<div class="viewcode-block" id="Bats2d.add_grid_plot">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.add_grid_plot">[docs]</a>
     <span class="k">def</span> <span class="nf">add_grid_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span> <span class="n">do_label</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                       <span class="n">do_fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_nums</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">show_borders</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                       <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet_r&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;BATS-R-US Grid Layout&#39;</span><span class="p">):</span>
@@ -1675,7 +1652,7 @@
 
 <span class="sd">        Figure and axis, even if none given, are returned.</span>
 
-<span class="sd">         Parameters</span>
+<span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        target : Matplotlib Figure or Axes object</span>
 <span class="sd">           Set plot destination.  Defaults to new figure.</span>
@@ -1726,8 +1703,11 @@
         <span class="k">if</span> <span class="s1">&#39;rbody&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span> <span class="ow">or</span> <span class="s1">&#39;body&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">add_body</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span>
+        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span></div>
 
+
+<div class="viewcode-block" id="Bats2d.add_stream_scatter">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.add_stream_scatter">[docs]</a>
     <span class="k">def</span> <span class="nf">add_stream_scatter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xcomp</span><span class="p">,</span> <span class="n">ycomp</span><span class="p">,</span> <span class="n">nlines</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                            <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;rk4&#39;</span><span class="p">,</span> <span class="n">maxPoints</span><span class="o">=</span><span class="mf">1E6</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                            <span class="n">ylim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">narrow</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">arrsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">arrstyle</span><span class="o">=</span><span class="s1">&#39;-&gt;&#39;</span><span class="p">,</span>
@@ -1737,7 +1717,7 @@
 <span class="sd">        evenly but randomly throughout the plot domain.</span>
 
 <span class="sd">        Lines will be seeded randomly over a given spatial range given by</span>
-<span class="sd">        `xlim` and `ylim` **OR** the range of the axes (if `target` is set to</span>
+<span class="sd">        ``xlim`` and ``ylim`` **OR** the range of the axes (if ``target`` is set to</span>
 <span class="sd">        a non-empty axes object) **OR** over the entire object domain (in that</span>
 <span class="sd">        order).</span>
 
@@ -1780,8 +1760,8 @@
 <span class="sd">        arrsize : int</span>
 <span class="sd">            Set the size, in points, of each directional arrow.  Default is 12.</span>
 
-<span class="sd">        Returns:</span>
-<span class="sd">        --------</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
 <span class="sd">        fig : matplotlib Figure object</span>
 <span class="sd">        ax  : matplotlib Axes object</span>
 <span class="sd">        collect : matplotlib Collection object of trace results</span>
@@ -1865,8 +1845,11 @@
         <span class="k">elif</span> <span class="n">narrow</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">add_arrows</span><span class="p">(</span><span class="n">collect</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">narrow</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">arrsize</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">arrstyle</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">collect</span><span class="p">,</span> <span class="n">start_points</span>
+        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">collect</span><span class="p">,</span> <span class="n">start_points</span></div>
 
+
+<div class="viewcode-block" id="Bats2d.find_earth_lastclosed">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.find_earth_lastclosed">[docs]</a>
     <span class="k">def</span> <span class="nf">find_earth_lastclosed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">360.</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;rk4&#39;</span><span class="p">,</span>
                               <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -2008,8 +1991,11 @@
         <span class="n">night</span> <span class="o">=</span> <span class="n">s1</span>
         <span class="c1"># plt.plot(s1.x, s1.y, &#39;r-&#39;)</span>
 
-        <span class="k">return</span> <span class="n">tilt</span><span class="p">,</span> <span class="n">theta_day</span><span class="p">,</span> <span class="n">theta_night</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">night</span>
+        <span class="k">return</span> <span class="n">tilt</span><span class="p">,</span> <span class="n">theta_day</span><span class="p">,</span> <span class="n">theta_night</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">night</span></div>
 
+
+<div class="viewcode-block" id="Bats2d.add_b_magsphere">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.add_b_magsphere">[docs]</a>
     <span class="k">def</span> <span class="nf">add_b_magsphere</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span>  <span class="n">style</span><span class="o">=</span><span class="s1">&#39;mag&#39;</span><span class="p">,</span>
                         <span class="n">DoLast</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">DoOpen</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                         <span class="n">compX</span><span class="o">=</span><span class="s1">&#39;bx&#39;</span><span class="p">,</span> <span class="n">compY</span><span class="o">=</span><span class="s1">&#39;bz&#39;</span><span class="p">,</span> <span class="n">narrow</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">arrsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
@@ -2034,7 +2020,7 @@
 <span class="sd">        colors and styles lines based on characteristics (e.g., open, closed).</span>
 <span class="sd">        The default is &#39;mag&#39;, which colors open lines black and closed lines</span>
 <span class="sd">        white.  Alternatively, this kwarg works in a similar manner as</span>
-<span class="sd">        it does in :function:`~matplotlib.pyplot.plot`,</span>
+<span class="sd">        it does in :func:`~matplotlib.pyplot.plot`,</span>
 <span class="sd">        i.e., a string code such as &quot;b-&quot; (a solid blue line) or &#39;r:&#39; (a</span>
 <span class="sd">        dotted red line), etc.  Both *colors* and *linestyles* work much</span>
 <span class="sd">        as they do for :class:`~matplotlib.collections.LineCollection`, but</span>
@@ -2232,8 +2218,11 @@
             <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xlim</span><span class="p">)</span>
             <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">collect</span>
+        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">collect</span></div>
 
+
+<div class="viewcode-block" id="Bats2d.add_planet">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.add_planet">[docs]</a>
     <span class="k">def</span> <span class="nf">add_planet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rad</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">ang</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">**</span><span class="n">extra_kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Creates a circle of radius=self.attrs[&#39;rbody&#39;] and returns the</span>
@@ -2262,8 +2251,11 @@
             <span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
             <span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">arch</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">body</span><span class="p">,</span> <span class="n">arch</span>
+        <span class="k">return</span> <span class="n">body</span><span class="p">,</span> <span class="n">arch</span></div>
 
+
+<div class="viewcode-block" id="Bats2d.add_body">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.add_body">[docs]</a>
     <span class="k">def</span> <span class="nf">add_body</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;lightgrey&#39;</span><span class="p">,</span> <span class="n">DoPlanet</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ang</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">extra_kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -2289,8 +2281,11 @@
         <span class="k">if</span> <span class="n">DoPlanet</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">add_planet</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">ang</span><span class="o">=</span><span class="n">ang</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">body</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="Bats2d.add_pcolor">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.add_pcolor">[docs]</a>
     <span class="k">def</span> <span class="nf">add_pcolor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim1</span><span class="p">,</span> <span class="n">dim2</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">zlim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span>
                    <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                    <span class="n">ylim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">add_cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">clabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -2425,8 +2420,11 @@
         <span class="k">if</span> <span class="n">add_body</span> <span class="ow">and</span> <span class="s1">&#39;rbody&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">add_body</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">ang</span><span class="o">=</span><span class="n">ang</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">pcol</span><span class="p">,</span> <span class="n">cbar</span>
+        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">pcol</span><span class="p">,</span> <span class="n">cbar</span></div>
 
+
+<div class="viewcode-block" id="Bats2d.add_contour">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Bats2d.html#spacepy.pybats.bats.Bats2d.add_contour">[docs]</a>
     <span class="k">def</span> <span class="nf">add_contour</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim1</span><span class="p">,</span> <span class="n">dim2</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">nlev</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span>
                     <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                     <span class="n">ylim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">add_cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">clabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -2568,8 +2566,12 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">add_body</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">ang</span><span class="o">=</span><span class="n">ang</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">cont</span><span class="p">,</span> <span class="n">cbar</span></div>
+</div>
 
 
+
+<div class="viewcode-block" id="ShellSlice">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.ShellSlice.html#spacepy.pybats.bats.ShellSlice">[docs]</a>
 <span class="k">class</span> <span class="nc">ShellSlice</span><span class="p">(</span><span class="n">IdlFile</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Shell slices are special MHD outputs where the domain is interpolated</span>
@@ -2579,6 +2581,8 @@
 <span class="sd">    The *Shell* class reads and handles these output types.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
+<div class="viewcode-block" id="ShellSlice.__init__">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.ShellSlice.html#spacepy.pybats.bats.ShellSlice.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
         <span class="kn">from</span> <span class="nn">spacepy.pybats</span> <span class="kn">import</span> <span class="n">parse_filename_time</span>
@@ -2607,8 +2611,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">lon</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span>
             <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">]))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">phi</span> <span class="o">=</span> <span class="n">d2r</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">lon</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="n">d2r</span><span class="o">*</span><span class="p">(</span><span class="mi">90</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">lat</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="n">d2r</span><span class="o">*</span><span class="p">(</span><span class="mi">90</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">lat</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="ShellSlice.calc_urad">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.ShellSlice.html#spacepy.pybats.bats.ShellSlice.calc_urad">[docs]</a>
     <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_urad</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -2618,8 +2625,11 @@
             <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;uy&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phi</span><span class="p">)</span> <span class="o">+</span> \
             <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;uz&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;ur&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">ur</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;ux&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]})</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;ur&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">ur</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;ux&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]})</span></div>
 
+
+<div class="viewcode-block" id="ShellSlice.calc_radflux">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.ShellSlice.html#spacepy.pybats.bats.ShellSlice.calc_radflux">[docs]</a>
     <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_radflux</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">conv</span><span class="o">=</span><span class="mf">1000.</span> <span class="o">*</span> <span class="p">(</span><span class="mf">100.0</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -2636,8 +2646,11 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">calc_urad</span><span class="p">()</span>
 
         <span class="c1"># Calc flux:</span>
-        <span class="bp">self</span><span class="p">[</span><span class="n">var</span><span class="o">+</span><span class="s1">&#39;_rflx&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;ur&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">conv</span>
+        <span class="bp">self</span><span class="p">[</span><span class="n">var</span><span class="o">+</span><span class="s1">&#39;_rflx&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;ur&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">conv</span></div>
 
+
+<div class="viewcode-block" id="ShellSlice.calc_radflu">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.ShellSlice.html#spacepy.pybats.bats.ShellSlice.calc_radflu">[docs]</a>
     <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_radflu</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -2676,8 +2689,11 @@
             <span class="bp">self</span><span class="p">[</span><span class="n">flu</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
                 <span class="p">(</span><span class="n">R</span> <span class="o">*</span> <span class="mf">6371.0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="p">[</span><span class="n">flux</span><span class="p">][</span><span class="n">i</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="o">*</span>
                 <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:])</span> <span class="o">*</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">dtheta</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dphi</span> <span class="o">*</span> <span class="mf">1000.</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dtheta</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dphi</span> <span class="o">*</span> <span class="mf">1000.</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="ShellSlice.add_cont_shell">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.ShellSlice.html#spacepy.pybats.bats.ShellSlice.add_cont_shell">[docs]</a>
     <span class="k">def</span> <span class="nf">add_cont_shell</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">irad</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span>
                        <span class="n">zlim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dolabel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">add_cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                        <span class="n">dofill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">nlev</span><span class="o">=</span><span class="mi">51</span><span class="p">,</span> <span class="n">colat_max</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span>
@@ -2770,10 +2786,14 @@
         <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">xticks</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">lt_labels</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">cnt</span><span class="p">,</span> <span class="n">cbar</span>
+        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">cnt</span><span class="p">,</span> <span class="n">cbar</span></div>
+</div>
 
 
-<div class="viewcode-block" id="Mag"><a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Mag.html#spacepy.pybats.bats.Mag">[docs]</a><span class="k">class</span> <span class="nc">Mag</span><span class="p">(</span><span class="n">PbData</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Mag">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Mag.html#spacepy.pybats.bats.Mag">[docs]</a>
+<span class="k">class</span> <span class="nc">Mag</span><span class="p">(</span><span class="n">PbData</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    A container for data from a single BATS-R-US virtual magnetometer.  These</span>
 <span class="sd">    work just like a typical :class:`spacepy.pybats.PbData` object.  Beyond</span>
@@ -2783,7 +2803,7 @@
 <span class="sd">    in methods :meth:`~spacepy.pybats.bats.Mag.add_comp_plot` and</span>
 <span class="sd">    :meth:`~spacepy.pybats.bats.Mag.calc_dbdt`.</span>
 
-<span class="sd">    Instantiation is best done through :class: `spacepy.pybats.MagFile`</span>
+<span class="sd">    Instantiation is best done through :class:`spacepy.pybats.bats.MagFile`</span>
 <span class="sd">    objects, which load and parse organize many virtual magnetometers from a</span>
 <span class="sd">    single output file into a single object.  However, they can be created</span>
 <span class="sd">    manually, though painfully.  Users must instantiate by handing the</span>
@@ -2796,9 +2816,11 @@
 <span class="sd">    or by using the :meth:`~spacepy.pybats.bats.Mag.parse_gmline` and</span>
 <span class="sd">    :meth:`~spacepy.pybats.bats.Mag.parse_ieline` methods to parse lines of</span>
 <span class="sd">    ascii data from a magnetometer output file.  Finally, the</span>
-<span class="sd">    :meth:`~spacepy.pybats.bats.Mag.recalc` method should be called to</span>
+<span class="sd">    ``spacepy.pybats.bats.Mag.recalc()`` method should be called to</span>
 <span class="sd">    calculate total perturbation.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
+<div class="viewcode-block" id="Mag.__init__">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Mag.html#spacepy.pybats.bats.Mag.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nlines</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">gmvars</span><span class="o">=</span><span class="p">(),</span> <span class="n">ievars</span><span class="o">=</span><span class="p">(),</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Mag</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># Init as PbData.</span>
 
@@ -2813,8 +2835,11 @@
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">gmvars</span><span class="p">:</span>
             <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nlines</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">ievars</span><span class="p">:</span>
-            <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;ie_&#39;</span><span class="o">+</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nlines</span><span class="p">)</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;ie_&#39;</span><span class="o">+</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nlines</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="Mag.parse_gmline">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Mag.html#spacepy.pybats.bats.Mag.parse_gmline">[docs]</a>
     <span class="k">def</span> <span class="nf">parse_gmline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="n">namevar</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Parse a single line from a GM_mag*.out file and put into</span>
@@ -2835,8 +2860,11 @@
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">10</span><span class="p">])</span>
         <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">11</span><span class="p">])</span>
         <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">namevar</span><span class="p">):</span>
-            <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">12</span><span class="p">])</span>
+            <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">12</span><span class="p">])</span></div>
 
+
+<div class="viewcode-block" id="Mag.parse_ieline">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Mag.html#spacepy.pybats.bats.Mag.parse_ieline">[docs]</a>
     <span class="k">def</span> <span class="nf">parse_ieline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="n">namevar</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Parse a single line from a IE_mag*.out file and put into</span>
@@ -2855,7 +2883,8 @@
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">parts</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">namevar</span><span class="p">):</span>
-            <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;ie_&#39;</span><span class="o">+</span><span class="n">key</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">11</span><span class="p">])</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;ie_&#39;</span><span class="o">+</span><span class="n">key</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">11</span><span class="p">])</span></div>
+
 
     <span class="k">def</span> <span class="nf">_recalc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -2898,6 +2927,8 @@
             <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">varmap</span><span class="p">:</span>
                 <span class="bp">self</span><span class="p">[</span><span class="n">varmap</span><span class="p">[</span><span class="n">key</span><span class="p">]]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 
+<div class="viewcode-block" id="Mag.calc_h">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Mag.html#spacepy.pybats.bats.Mag.calc_h">[docs]</a>
     <span class="k">def</span> <span class="nf">calc_h</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Calculate the total horizontal perturbation, &#39;H&#39;, using the pythagorean</span>
@@ -2914,15 +2945,18 @@
             <span class="k">if</span> <span class="n">v</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;dBn&#39;</span><span class="p">:</span>
                 <span class="n">v_east</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;dBn&#39;</span><span class="p">,</span> <span class="s1">&#39;dBe&#39;</span><span class="p">)</span>
                 <span class="bp">self</span><span class="p">[</span><span class="n">v</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;dBn&#39;</span><span class="p">,</span> <span class="s1">&#39;dBh&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span>
-                    <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="bp">self</span><span class="p">[</span><span class="n">v_east</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;nT&#39;</span><span class="p">})</span>
+                    <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="bp">self</span><span class="p">[</span><span class="n">v_east</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;nT&#39;</span><span class="p">})</span></div>
 
+
+<div class="viewcode-block" id="Mag.calc_dbdt">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Mag.html#spacepy.pybats.bats.Mag.calc_dbdt">[docs]</a>
     <span class="k">def</span> <span class="nf">calc_dbdt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Calculate the time derivative of all dB-like variables and save as</span>
-<span class="sd">        &#39;dBdt[direction][component].  For example, the time derivative of</span>
+<span class="sd">        dBdt[direction][component].  For example, the time derivative of</span>
 <span class="sd">        dBeMhd will be saved as dBdteMhd.</span>
 
-<span class="sd">        |dB/dt|_h is also calculated following the convention of</span>
+<span class="sd">        $|dB/dt|_h$ is also calculated following the convention of</span>
 <span class="sd">        Pulkkinen et al, 2013:</span>
 <span class="sd">        $|dB/dt|_H = \\sqrt{(\\dB_N/dt)^2 + (dB_E/dt)^2}$</span>
 
@@ -2961,8 +2995,11 @@
             <span class="bp">self</span><span class="p">[</span><span class="n">new</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="o">-</span><span class="mi">3</span><span class="p">])</span> \
                 <span class="o">/</span> <span class="p">(</span><span class="n">dt</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">dt</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
 
-        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;dBdth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;dBdtn&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;dBdte&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;dBdth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;dBdtn&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;dBdte&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="Mag.add_plot">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Mag.html#spacepy.pybats.bats.Mag.add_plot">[docs]</a>
     <span class="k">def</span> <span class="nf">add_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -3011,8 +3048,11 @@
         <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="n">value</span><span class="p">],</span> <span class="n">style</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">applySmartTimeTicks</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="n">dolabel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span>
+        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span></div>
 
+
+<div class="viewcode-block" id="Mag.add_comp_plot">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.Mag.html#spacepy.pybats.bats.Mag.add_comp_plot">[docs]</a>
     <span class="k">def</span> <span class="nf">add_comp_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">direc</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">add_legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                       <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">2.0</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -3097,9 +3137,13 @@
             <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 
         <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span></div>
+</div>
 
 
-<div class="viewcode-block" id="MagFile"><a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.MagFile.html#spacepy.pybats.bats.MagFile">[docs]</a><span class="k">class</span> <span class="nc">MagFile</span><span class="p">(</span><span class="n">PbData</span><span class="p">):</span>
+
+<div class="viewcode-block" id="MagFile">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.MagFile.html#spacepy.pybats.bats.MagFile">[docs]</a>
+<span class="k">class</span> <span class="nc">MagFile</span><span class="p">(</span><span class="n">PbData</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    BATS-R-US magnetometer files are powerful tools for both research and</span>
 <span class="sd">    operations.  :class:`~spacepy.pybats.bats.MagFile` objects open, parse,</span>
@@ -3133,6 +3177,8 @@
 <span class="sd">    present working directory.  This method is not robust; the user must take</span>
 <span class="sd">    care to ensure that the two files correspond to each other.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
+<div class="viewcode-block" id="MagFile.__init__">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.MagFile.html#spacepy.pybats.bats.MagFile.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">ie_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">find_ie</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
         <span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
@@ -3158,8 +3204,11 @@
         <span class="c1"># Set legacy mode to handle old variable names:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">legacy</span> <span class="o">=</span> <span class="n">find_ie</span> <span class="ow">or</span> <span class="nb">bool</span><span class="p">(</span><span class="n">ie_name</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">readfiles</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">readfiles</span><span class="p">()</span></div>
 
+
+<div class="viewcode-block" id="MagFile.readfiles">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.MagFile.html#spacepy.pybats.bats.MagFile.readfiles">[docs]</a>
     <span class="k">def</span> <span class="nf">readfiles</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Read and parse GM file and IE file (if name given.)</span>
@@ -3268,7 +3317,8 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_recalc</span><span class="p">()</span>
 
         <span class="c1"># Get time res.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">seconds</span> <span class="o">/</span> <span class="mf">60.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">seconds</span> <span class="o">/</span> <span class="mf">60.0</span></div>
+
 
     <span class="k">def</span> <span class="nf">_recalc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -3284,6 +3334,8 @@
         <span class="k">for</span> <span class="n">mag</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;namemag&#39;</span><span class="p">]:</span>
             <span class="bp">self</span><span class="p">[</span><span class="n">mag</span><span class="p">]</span><span class="o">.</span><span class="n">_recalc</span><span class="p">()</span>
 
+<div class="viewcode-block" id="MagFile.calc_h">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.MagFile.html#spacepy.pybats.bats.MagFile.calc_h">[docs]</a>
     <span class="k">def</span> <span class="nf">calc_h</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        For each magnetometer object, calculate the horizontal component of</span>
@@ -3295,14 +3347,17 @@
         <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="s1">&#39;time&#39;</span> <span class="ow">or</span> <span class="n">k</span> <span class="o">==</span> <span class="s1">&#39;iter&#39;</span><span class="p">:</span>
                 <span class="k">continue</span>
-            <span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">calc_h</span><span class="p">()</span>
+            <span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">calc_h</span><span class="p">()</span></div>
 
+
+<div class="viewcode-block" id="MagFile.calc_dbdt">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.MagFile.html#spacepy.pybats.bats.MagFile.calc_dbdt">[docs]</a>
     <span class="k">def</span> <span class="nf">calc_dbdt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        For each magnetometer object, calculate the horizontal component of</span>
 <span class="sd">        the perturbations.</span>
 
-<span class="sd">        |dB/dt|_h is also calculated following the convention of</span>
+<span class="sd">        $|dB/dt|_h$ is also calculated following the convention of</span>
 <span class="sd">        Pulkkinen et al, 2013:</span>
 <span class="sd">        $|dB/dt|_H = \\sqrt{(\\dB_N/dt)^2 + (dB_E/dt)^2}$</span>
 <span class="sd">        &#39;&#39;&#39;</span>
@@ -3310,8 +3365,12 @@
             <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="s1">&#39;time&#39;</span> <span class="ow">or</span> <span class="n">k</span> <span class="o">==</span> <span class="s1">&#39;iter&#39;</span><span class="p">:</span>
                 <span class="k">continue</span>
             <span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">calc_dbdt</span><span class="p">()</span></div>
+</div>
 
 
+
+<div class="viewcode-block" id="MagGridFile">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.MagGridFile.html#spacepy.pybats.bats.MagGridFile">[docs]</a>
 <span class="k">class</span> <span class="nc">MagGridFile</span><span class="p">(</span><span class="n">IdlFile</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Magnetometer grids are a recent addition to BATS-R-US: instead of</span>
@@ -3321,6 +3380,8 @@
 <span class="sd">    class handles the reading, manipulating, and visualization of these files.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
+<div class="viewcode-block" id="MagGridFile.__init__">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.MagGridFile.html#spacepy.pybats.bats.MagGridFile.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="kn">import</span> <span class="nn">re</span>
         <span class="kn">from</span> <span class="nn">spacepy.pybats</span> <span class="kn">import</span> <span class="n">parse_filename_time</span>
@@ -3349,8 +3410,11 @@
             <span class="k">elif</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;grid&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;dims&#39;</span><span class="p">]:</span>
                 <span class="bp">self</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">unit1</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="bp">self</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">unit2</span>
+                <span class="bp">self</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">unit2</span></div>
 
+
+<div class="viewcode-block" id="MagGridFile.calc_h">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.MagGridFile.html#spacepy.pybats.bats.MagGridFile.calc_h">[docs]</a>
     <span class="nd">@calc_wrapper</span>
     <span class="k">def</span> <span class="nf">calc_h</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -3365,8 +3429,11 @@
             <span class="k">if</span> <span class="n">v</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;dBn&#39;</span><span class="p">:</span>
                 <span class="n">v_east</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;dBn&#39;</span><span class="p">,</span> <span class="s1">&#39;dBe&#39;</span><span class="p">)</span>
                 <span class="bp">self</span><span class="p">[</span><span class="n">v</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;dBn&#39;</span><span class="p">,</span> <span class="s1">&#39;dBh&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span>
-                    <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="bp">self</span><span class="p">[</span><span class="n">v_east</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;nT&#39;</span><span class="p">})</span>
+                    <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="bp">self</span><span class="p">[</span><span class="n">v_east</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;nT&#39;</span><span class="p">})</span></div>
 
+
+<div class="viewcode-block" id="MagGridFile.add_contour">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.MagGridFile.html#spacepy.pybats.bats.MagGridFile.add_contour">[docs]</a>
     <span class="k">def</span> <span class="nf">add_contour</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">nlev</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span>
                     <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                     <span class="n">ylim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">add_cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">clabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -3471,8 +3538,11 @@
         <span class="k">if</span> <span class="n">target</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 
-        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">cont</span><span class="p">,</span> <span class="n">cbar</span>
+        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">cont</span><span class="p">,</span> <span class="n">cbar</span></div>
 
+
+<div class="viewcode-block" id="MagGridFile.interp">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.MagGridFile.html#spacepy.pybats.bats.MagGridFile.interp">[docs]</a>
     <span class="k">def</span> <span class="nf">interp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">lons</span><span class="p">,</span> <span class="n">lats</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Interpolate variable *var* to point(s) *lats*, *lons*.  *lats* and</span>
@@ -3485,10 +3555,14 @@
 
         <span class="kn">from</span> <span class="nn">spacepy.pybats.batsmath</span> <span class="kn">import</span> <span class="n">interp_2d_reg</span> <span class="k">as</span> <span class="n">intp</span>
 
-        <span class="k">return</span> <span class="n">intp</span><span class="p">(</span><span class="n">lats</span><span class="p">,</span> <span class="n">lons</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Lat&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Lon&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="n">var</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">intp</span><span class="p">(</span><span class="n">lats</span><span class="p">,</span> <span class="n">lons</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Lat&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Lon&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="n">var</span><span class="p">])</span></div>
+</div>
 
 
-<div class="viewcode-block" id="GeoIndexFile"><a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.GeoIndexFile.html#spacepy.pybats.bats.GeoIndexFile">[docs]</a><span class="k">class</span> <span class="nc">GeoIndexFile</span><span class="p">(</span><span class="n">LogFile</span><span class="p">):</span>
+
+<div class="viewcode-block" id="GeoIndexFile">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.GeoIndexFile.html#spacepy.pybats.bats.GeoIndexFile">[docs]</a>
+<span class="k">class</span> <span class="nc">GeoIndexFile</span><span class="p">(</span><span class="n">LogFile</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Geomagnetic Index files are a specialized BATS-R-US output that contain</span>
 <span class="sd">    geomagnetic indices calculated from simulated ground-based magnetometers.</span>
@@ -3503,6 +3577,8 @@
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s1">&#39;GeoIndexFile object at </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">])</span>
 
+<div class="viewcode-block" id="GeoIndexFile.__init__">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.GeoIndexFile.html#spacepy.pybats.bats.GeoIndexFile.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">keep_case</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Load ascii file located at self.attrs[&#39;file&#39;].</span>
@@ -3521,8 +3597,11 @@
         <span class="k">if</span> <span class="s1">&#39;Lat&#39;</span> <span class="ow">in</span> <span class="n">head</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="n">parts</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;Lat&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
         <span class="k">if</span> <span class="s1">&#39;K9&#39;</span> <span class="ow">in</span> <span class="n">head</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;k9&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="n">parts</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;K9&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;k9&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="n">parts</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;K9&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span></div>
 
+
+<div class="viewcode-block" id="GeoIndexFile.fetch_obs_kp">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.GeoIndexFile.html#spacepy.pybats.bats.GeoIndexFile.fetch_obs_kp">[docs]</a>
     <span class="k">def</span> <span class="nf">fetch_obs_kp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Fetch the observed Kp index for the time period covered in the</span>
@@ -3552,8 +3631,11 @@
             <span class="k">raise</span> <span class="ne">Warning</span><span class="p">(</span><span class="s1">&#39;Failed to fetch Kyoto Kp: &#39;</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">False</span>
 
-        <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
 
+
+<div class="viewcode-block" id="GeoIndexFile.fetch_obs_ae">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.GeoIndexFile.html#spacepy.pybats.bats.GeoIndexFile.fetch_obs_ae">[docs]</a>
     <span class="k">def</span> <span class="nf">fetch_obs_ae</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Fetch the observed AE index for the time period covered in the</span>
@@ -3583,8 +3665,11 @@
             <span class="k">raise</span> <span class="ne">Warning</span><span class="p">(</span><span class="s1">&#39;Failed to fetch Kyoto AE: &#39;</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">False</span>
 
-        <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
 
+
+<div class="viewcode-block" id="GeoIndexFile.add_kp_quicklook">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.GeoIndexFile.html#spacepy.pybats.bats.GeoIndexFile.add_kp_quicklook">[docs]</a>
     <span class="k">def</span> <span class="nf">add_kp_quicklook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                          <span class="n">plot_obs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">add_legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                          <span class="n">obs_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;ls&#39;</span><span class="p">:</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;lw&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -3642,8 +3727,11 @@
 
         <span class="k">if</span> <span class="n">add_legend</span><span class="p">:</span>
             <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span>
+        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span></div>
 
+
+<div class="viewcode-block" id="GeoIndexFile.add_ae_quicklook">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.GeoIndexFile.html#spacepy.pybats.bats.GeoIndexFile.add_ae_quicklook">[docs]</a>
     <span class="k">def</span> <span class="nf">add_ae_quicklook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                          <span class="n">plot_obs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="s1">&#39;AE&#39;</span><span class="p">,</span> <span class="n">add_legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                          <span class="n">obs_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;ls&#39;</span><span class="p">:</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;lw&#39;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">},</span>
@@ -3700,14 +3788,20 @@
             <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span></div>
+</div>
 
 
-<div class="viewcode-block" id="VirtSat"><a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.VirtSat.html#spacepy.pybats.bats.VirtSat">[docs]</a><span class="k">class</span> <span class="nc">VirtSat</span><span class="p">(</span><span class="n">LogFile</span><span class="p">):</span>
+
+<div class="viewcode-block" id="VirtSat">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.VirtSat.html#spacepy.pybats.bats.VirtSat">[docs]</a>
+<span class="k">class</span> <span class="nc">VirtSat</span><span class="p">(</span><span class="n">LogFile</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    A :class:`spacepy.pybats.LogFile` object tailored to virtual satellite</span>
 <span class="sd">    output; includes special satellite-specific plotting methods.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
+<div class="viewcode-block" id="VirtSat.__init__">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.VirtSat.html#spacepy.pybats.bats.VirtSat.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
         <span class="kn">from</span> <span class="nn">re</span> <span class="kn">import</span> <span class="n">findall</span>
@@ -3729,12 +3823,15 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_interp</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">tnum</span> <span class="o">=</span> <span class="n">date2num</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">])</span>
         <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="s1">&#39;xyz&#39;</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_interp</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">tnum</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_interp</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">tnum</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="n">x</span><span class="p">])</span></div>
+
 
     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s1">&#39;Satellite object </span><span class="si">{}</span><span class="s1"> at </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span>
                                                   <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">])</span>
 
+<div class="viewcode-block" id="VirtSat.calc_ndens">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.VirtSat.html#spacepy.pybats.bats.VirtSat.calc_ndens">[docs]</a>
     <span class="k">def</span> <span class="nf">calc_ndens</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Calculate number densities for each fluid.  Species mass is ascertained</span>
@@ -3747,8 +3844,11 @@
 <span class="sd">        *speciesFrac* (e.g. *opFrac*).</span>
 <span class="sd">        &#39;&#39;&#39;</span>
 
-        <span class="n">_calc_ndens</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">_calc_ndens</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="VirtSat.calc_temp">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.VirtSat.html#spacepy.pybats.bats.VirtSat.calc_temp">[docs]</a>
     <span class="k">def</span> <span class="nf">calc_temp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;eV&#39;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Calculate plasma temperature for each fluid.  Number density is</span>
@@ -3784,8 +3884,11 @@
                 <span class="k">continue</span>
             <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;t&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span>
                 <span class="n">conv</span><span class="p">[</span><span class="n">units</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;p&#39;</span><span class="p">]</span><span class="o">/</span><span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">],</span>
-                <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="n">units</span><span class="p">})</span>
+                <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="n">units</span><span class="p">})</span></div>
 
+
+<div class="viewcode-block" id="VirtSat.calc_bmag">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.VirtSat.html#spacepy.pybats.bats.VirtSat.calc_bmag">[docs]</a>
     <span class="k">def</span> <span class="nf">calc_bmag</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Calculates total magnetic field magnitude via:</span>
@@ -3797,8 +3900,11 @@
                                 <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;by&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span>
                                 <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;bz&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
 
+
+<div class="viewcode-block" id="VirtSat.calc_magincl">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.VirtSat.html#spacepy.pybats.bats.VirtSat.calc_magincl">[docs]</a>
     <span class="k">def</span> <span class="nf">calc_magincl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;deg&#39;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Magnetic inclination angle (a.k.a. inclination angle) is defined:</span>
@@ -3823,8 +3929,11 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unrecognized units.  Use &quot;deg&quot; or &quot;rad&quot;&#39;</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
 
+
+<div class="viewcode-block" id="VirtSat.get_position">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.VirtSat.html#spacepy.pybats.bats.VirtSat.get_position">[docs]</a>
     <span class="k">def</span> <span class="nf">get_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        For an arbitrary time, *time*, return a tuple of coordinates for</span>
@@ -3857,8 +3966,11 @@
         <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
             <span class="n">loc</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">loc</span>
+        <span class="k">return</span> <span class="n">loc</span></div>
 
+
+<div class="viewcode-block" id="VirtSat.add_sat_loc">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.VirtSat.html#spacepy.pybats.bats.VirtSat.add_sat_loc">[docs]</a>
     <span class="k">def</span> <span class="nf">add_sat_loc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">plane</span><span class="o">=</span><span class="s1">&#39;XY&#39;</span><span class="p">,</span> <span class="n">dobox</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                     <span class="n">dolabel</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
@@ -3898,8 +4010,11 @@
 
         <span class="c1"># Restore Axes&#39; limits.</span>
         <span class="n">target</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
-        <span class="n">target</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xlim</span><span class="p">)</span>
+        <span class="n">target</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xlim</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="VirtSat.add_orbit_plot">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.bats.VirtSat.html#spacepy.pybats.bats.VirtSat.add_orbit_plot">[docs]</a>
     <span class="k">def</span> <span class="nf">add_orbit_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plane</span><span class="o">=</span><span class="s1">&#39;XY&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span> <span class="n">rbody</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
                        <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">trange</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">add_grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;g.&#39;</span><span class="p">,</span>
                        <span class="n">adjust_axes</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">add_arrow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -3987,10 +4102,29 @@
             <span class="n">add_body</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">rad</span><span class="o">=</span><span class="n">rbody</span><span class="p">,</span> <span class="n">add_night</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;X&#39;</span> <span class="ow">in</span> <span class="n">plane</span><span class="o">.</span><span class="n">upper</span><span class="p">()))</span>
 
         <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span></div>
+</div>
+
 </pre></div>
 
             <div class="clearer"></div>
           </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/logo.png" alt="Logo"/>
+            </a></p>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -4016,8 +4150,8 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2024, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
 </html>

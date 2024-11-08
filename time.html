@@ -1,29 +1,25 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>time - Time conversion, manipulation and implementation of Ticktock class &#8212; SpacePy v0.6.0 Manual</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <title>time - Time conversion, manipulation and implementation of Ticktock class &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
     
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/copybutton.js"></script>
-    
-    <link rel="shortcut icon" href="_static/spacepy_favicon.ico"/>
+    <script src="_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="_static/copybutton.js"></script>
+    <link rel="icon" href="_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="spacepy.time.Ticktock" href="autosummary/spacepy.time.Ticktock.html" />
-    <link rel="prev" title="spacepy.seapy.sea_signif" href="autosummary/spacepy.seapy.sea_signif.html" /> 
+    <link rel="next" title="Writing Pythonic Code" href="pythonic.html" />
+    <link rel="prev" title="pycdf - Python interface to CDF files" href="pycdf.html" /> 
   </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
@@ -40,10 +36,10 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="autosummary/spacepy.time.Ticktock.html" title="spacepy.time.Ticktock"
+          <a href="pythonic.html" title="Writing Pythonic Code"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="autosummary/spacepy.seapy.sea_signif.html" title="spacepy.seapy.sea_signif"
+          <a href="pycdf.html" title="pycdf - Python interface to CDF files"
              accesskey="P">previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
@@ -53,63 +49,26 @@
         <li class="nav-item nav-item-this"><a href="">time - Time conversion, manipulation and implementation of Ticktock class</a></li> 
       </ul>
     </div>
-
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="index.html">
-              <img class="logo" src="_static/logo.png" alt="Logo"/>
-            </a></p>
-  <div>
-    <h3><a href="index.html">Table of Contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#">time - Time conversion, manipulation and implementation of Ticktock class</a><ul>
-<li><a class="reference internal" href="#notes">Notes</a></li>
-<li><a class="reference internal" href="#examples">Examples:</a></li>
-</ul>
-</li>
-</ul>
-
-  </div>
-  <div>
-    <h4>Previous topic</h4>
-    <p class="topless"><a href="autosummary/spacepy.seapy.sea_signif.html"
-                          title="previous chapter">spacepy.seapy.sea_signif</a></p>
-  </div>
-  <div>
-    <h4>Next topic</h4>
-    <p class="topless"><a href="autosummary/spacepy.time.Ticktock.html"
-                          title="next chapter">spacepy.time.Ticktock</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/time.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
+  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="module-spacepy.time">
-<span id="time-time-conversion-manipulation-and-implementation-of-ticktock-class"></span><h1>time - Time conversion, manipulation and implementation of Ticktock class<a class="headerlink" href="#module-spacepy.time" title="Permalink to this heading">¶</a></h1>
-<p>Time conversion, manipulation and implementation of Ticktock class</p>
-<section id="notes">
-<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this heading">¶</a></h2>
+  <section id="time-time-conversion-manipulation-and-implementation-of-ticktock-class">
+<h1>time - Time conversion, manipulation and implementation of Ticktock class<a class="headerlink" href="#time-time-conversion-manipulation-and-implementation-of-ticktock-class" title="Link to this heading">¶</a></h1>
+<section id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Link to this heading">¶</a></h2>
+<nav class="contents local" id="id1">
+<ul class="simple">
+<li><p><a class="reference internal" href="#introduction" id="id2">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#examples" id="id3">Examples</a></p></li>
+</ul>
+</nav>
+<p>See also the <a class="reference internal" href="autosummary/spacepy.time.html#module-spacepy.time" title="spacepy.time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">full</span> <span class="pre">API</span> <span class="pre">documentation</span></code></a>.</p>
+<section id="introduction">
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Introduction</a><a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h3>
 <p>The handling of time, in particular the conversions between representations,
 can be more complicated than it seems on the surface. This can result in
 some surprising behavior, particularly when requiring second-level accuracy and
@@ -169,7 +128,7 @@ second aware timebases: CDF and RDT.</p>
 more details on the exact definitions of time systems used by SpacePy.</p>
 </section>
 <section id="examples">
-<h2>Examples:<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Link to this heading">¶</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.time</span> <span class="k">as</span> <span class="nn">spt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
 </pre></div>
@@ -203,7 +162,8 @@ more details on the exact definitions of time systems used by SpacePy.</p>
 </pre></div>
 </div>
 <p>OR</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dts</span> <span class="o">=</span> <span class="n">spt</span><span class="o">.</span><span class="n">tickrange</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2009</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">),</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2009</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">12</span><span class="p">),</span>     <span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">hours</span><span class="o">=</span><span class="mi">12</span><span class="p">))</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dts</span> <span class="o">=</span> <span class="n">spt</span><span class="o">.</span><span class="n">tickrange</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2009</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">),</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2009</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">12</span><span class="p">),</span> \
+<span class="go">    dt.timedelta(days=2, hours=12))</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dts</span>
@@ -244,47 +204,61 @@ more details on the exact definitions of time systems used by SpacePy.</p>
 </pre></div>
 </div>
 <p>And so on.</p>
-<p>Authors: Steve Morley, Josef Koller, Brian Larsen, Jon Niehof
-Institution: Los Alamos National Laboratory
-Contact: <a class="reference external" href="mailto:smorley&#37;&#52;&#48;lanl&#46;gov">smorley<span>&#64;</span>lanl<span>&#46;</span>gov</a>,</p>
-<p>Copyright 2010 Los Alamos National Security, LLC.</p>
 </section>
-<p class="rubric">Classes</p>
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.time.Ticktock.html#spacepy.time.Ticktock" title="spacepy.time.Ticktock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Ticktock</span></code></a>(data, dtype)</p></td>
-<td><p>Ticktock class holding various time coordinate systems (TAI, UTC, ISO, JD, MJD, GPS, UNX, RDT, CDF, DOY, eDOY, APT)</p></td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Functions</p>
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.time.dtstr2iso.html#spacepy.time.dtstr2iso" title="spacepy.time.dtstr2iso"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtstr2iso</span></code></a>(dtstr[, fmt])</p></td>
-<td><p>Convert a datetime string to a standard format</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.time.doy2date.html#spacepy.time.doy2date" title="spacepy.time.doy2date"><code class="xref py py-obj docutils literal notranslate"><span class="pre">doy2date</span></code></a>(year, doy[, dtobj, flAns])</p></td>
-<td><p>convert integer day-of-year doy into a month and day after <a class="reference external" href="http://pleac.sourceforge.net/pleac_python/datesandtimes.html">http://pleac.sourceforge.net/pleac_python/datesandtimes.html</a></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.time.leapyear.html#spacepy.time.leapyear" title="spacepy.time.leapyear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">leapyear</span></code></a>(year[, numdays])</p></td>
-<td><p>return an array of boolean leap year, a lot faster than the mod method that is normally seen</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.time.randomDate.html#spacepy.time.randomDate" title="spacepy.time.randomDate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">randomDate</span></code></a>(dt1, dt2[, N, tzinfo, sorted])</p></td>
-<td><p>Return a (or many) random datetimes between two given dates</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="autosummary/spacepy.time.sec2hms.html#spacepy.time.sec2hms" title="spacepy.time.sec2hms"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sec2hms</span></code></a>(sec[, rounding, days, dtobj])</p></td>
-<td><p>Convert seconds of day to hours, minutes, seconds</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="autosummary/spacepy.time.tickrange.html#spacepy.time.tickrange" title="spacepy.time.tickrange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tickrange</span></code></a>(start, end, deltadays[, dtype])</p></td>
-<td><p>return a Ticktock range given the start, end, and delta</p></td>
-</tr>
-</tbody>
-</table>
+</section>
 </section>
 
 
             <div class="clearer"></div>
           </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">time - Time conversion, manipulation and implementation of Ticktock class</a><ul>
+<li><a class="reference internal" href="#contents">Contents</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="pycdf.html"
+                          title="previous chapter">pycdf - Python interface to CDF files</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="pythonic.html"
+                          title="next chapter">Writing Pythonic Code</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/time.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -299,10 +273,10 @@ Contact: <a class="reference external" href="mailto:smorley&#37;&#52;&#48;lanl&#
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="autosummary/spacepy.time.Ticktock.html" title="spacepy.time.Ticktock"
+          <a href="pythonic.html" title="Writing Pythonic Code"
              >next</a> |</li>
         <li class="right" >
-          <a href="autosummary/spacepy.seapy.sea_signif.html" title="spacepy.seapy.sea_signif"
+          <a href="pycdf.html" title="pycdf - Python interface to CDF files"
              >previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
@@ -313,8 +287,8 @@ Contact: <a class="reference external" href="mailto:smorley&#37;&#52;&#48;lanl&#
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2024, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
 </html>

@@ -1,29 +1,25 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.pybats.pwom &#8212; SpacePy v0.6.0 Manual</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <title>spacepy.pybats.pwom &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    
-    <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="spacepy.pybats.ram" href="spacepy.pybats.ram.html" />
-    <link rel="prev" title="spacepy.pybats.kyoto" href="spacepy.pybats.kyoto.html" /> 
+    <link rel="next" title="spacepy.pybats.pwom.Efile" href="spacepy.pybats.pwom.Efile.html" />
+    <link rel="prev" title="spacepy.pybats.kyoto.KyotoSym" href="spacepy.pybats.kyoto.KyotoSym.html" /> 
   </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
@@ -40,21 +36,53 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.ram.html" title="spacepy.pybats.ram"
+          <a href="spacepy.pybats.pwom.Efile.html" title="spacepy.pybats.pwom.Efile"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.kyoto.html" title="spacepy.pybats.kyoto"
+          <a href="spacepy.pybats.kyoto.KyotoSym.html" title="spacepy.pybats.kyoto.KyotoSym"
              accesskey="P">previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pybats.html" accesskey="U">PyBats - SWMF &amp; BATS-R-US Analysis Tools</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" accesskey="U">spacepy.pybats</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.pybats.pwom</a></li> 
       </ul>
     </div>
+  
 
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-spacepy.pybats.pwom">
+<span id="spacepy-pybats-pwom"></span><h1>spacepy.pybats.pwom<a class="headerlink" href="#module-spacepy.pybats.pwom" title="Link to this heading">¶</a></h1>
+<p>PyBats submodule for handling input/output for the Polar Wind Outflow Model
+(PWOM), one of the choices for the PW module in the SWMF.</p>
+<p class="rubric">Classes</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pybats.pwom.Efile.html#spacepy.pybats.pwom.Efile" title="spacepy.pybats.pwom.Efile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Efile</span></code></a>(filename[, starttime])</p></td>
+<td><p>Class for loading and parsing ionospheric electrodynamics ascii files.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pybats.pwom.Line.html#spacepy.pybats.pwom.Line" title="spacepy.pybats.pwom.Line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Line</span></code></a>(filename[, starttime])</p></td>
+<td><p>Class for loading a single field line output file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pybats.pwom.Lines.html#spacepy.pybats.pwom.Lines" title="spacepy.pybats.pwom.Lines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Lines</span></code></a>(lines[, starttime])</p></td>
+<td><p>A class for reading and plotting a complete set of PWOM line output files.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
@@ -62,13 +90,13 @@
             </a></p>
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="spacepy.pybats.kyoto.html"
-                          title="previous chapter">spacepy.pybats.kyoto</a></p>
+    <p class="topless"><a href="spacepy.pybats.kyoto.KyotoSym.html"
+                          title="previous chapter">spacepy.pybats.kyoto.KyotoSym</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="spacepy.pybats.ram.html"
-                          title="next chapter">spacepy.pybats.ram</a></p>
+    <p class="topless"><a href="spacepy.pybats.pwom.Efile.html"
+                          title="next chapter">spacepy.pybats.pwom.Efile</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -77,7 +105,7 @@
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -85,25 +113,8 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <section id="module-spacepy.pybats.pwom">
-<span id="spacepy-pybats-pwom"></span><h1>spacepy.pybats.pwom<a class="headerlink" href="#module-spacepy.pybats.pwom" title="Permalink to this heading">¶</a></h1>
-<p>PyBats submodule for handling input/output for the Polar Wind Outflow Model
-(PWOM), one of the choices for the PW module in the SWMF.</p>
-</section>
-
-
-            <div class="clearer"></div>
-          </div>
         </div>
       </div>
       <div class="clearer"></div>
@@ -118,23 +129,24 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.ram.html" title="spacepy.pybats.ram"
+          <a href="spacepy.pybats.pwom.Efile.html" title="spacepy.pybats.pwom.Efile"
              >next</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.kyoto.html" title="spacepy.pybats.kyoto"
+          <a href="spacepy.pybats.kyoto.KyotoSym.html" title="spacepy.pybats.kyoto.KyotoSym"
              >previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pybats.html" >PyBats - SWMF &amp; BATS-R-US Analysis Tools</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" >spacepy.pybats</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.pybats.pwom</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2024, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
 </html>

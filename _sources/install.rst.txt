@@ -100,7 +100,7 @@ This is recommended if dependencies are managed by the OS or manually.
 If installing into the system Python version on Linux (and potentially
 some other cases), you will need to pass the flag
 :option:`--break-system-packages`. Despite the frightening name this is
-usually safe, although in this case is recommended to use
+usually safe, although in this case it is recommended to use
 :option:`--no-build-isolation` :option:`--no-deps` and manage the
 dependencies using the system package manager or conda.
 
@@ -125,16 +125,21 @@ release from `PyPI <https://pypi.org/project/SpacePy/#files>`__
 
 Following the instructions above will compile before the installation,
 if installing from source or a binary installer is not available. If
-this fails, specify a Fortran compiler::
+this fails, specify the name of, or full path to, the Fortran compiler
+with the ``FC`` environment variable, e.g.::
 
-    pip install . --config-setting="--build-option=--fcompiler=gnu95"
+    FC=/usr/local/bin/gfortran pip install .
+    FC=arm64-apple-darwin20.0.0-gfortran pip install .
 
-The supported compiler is ``gnu95`` (the GNU gfortran compiler); ``none``
-can be specified as a "compiler" to skip all Fortran. You can also specify
-the full path to the Fortran 77 compiler with ``--f77exec`` and to the
-Fortran 90 compiler with ``--f90exec``::
+The supported compiler is the current GNU gfortran compiler, also
+called ``gnu95``.
 
-    pip install . --config-setting="--build-option=--fcompiler=gnu95" --config-setting="--build-option=--f77exec=/usr/bin/gfortran" --config-setting="--build-option=--f90exec=/usr/bin/gfortran"
+If defined, the ``LDFLAGS`` environment variable is also honored when
+linking irbem. The contents must be valid ``gfortran`` flags.
+
+If irbem compilation fails, SpacePy will install without :mod:`~spacepy.irbempy`
+support. This can be forced by e.g. setting ``FC`` to
+``/usr/bin/false``.
 
 
 Troubleshooting
@@ -146,10 +151,8 @@ pip failures
 ------------
 If ``pip`` completely fails to build, a common issue is a failure in
 the isolated build environment that ``pip`` sets up. Usually this can
-be addressed by installing numpy first and eschewing the separate
-build environment::
+be addressed by eschewing the separate build environment::
 
-  pip install numpy
   pip install spacepy --no-build-isolation
 
 Another option is manually installing all dependencies (via ``pip``,
@@ -180,19 +183,8 @@ library. Unfortunately ``pip`` will hide these warnings, so they
 manifest when running ``import spacepy.irbempy`` (or some other
 component of SpacePy that uses irbempy).
 
-The error ``ImportError: cannot import name 'irbempylib' from
-partially initialized module 'spacepy.irbempy' (most likely due to a
-circular import)`` means the IRBEM library did not compile at
+The error ``RuntimeError: cannot load IRBEM library; irbempy is not
+available.`` means the IRBEM library did not compile at
 all. This is most likely a compiler issue: either there is no Fortran
 compiler, or, when using conda on :doc:`Mac <install_mac>`, the correct
-SDK version has not been installed. This may also result from
-:ref:`pip caching <install_pip_failures>`.
-
-The error ``RuntimeError: module compiled against API version 0x10 but
-this version of numpy is 0xe`` followed by ``ImportError:
-numpy.core.multiarray failed to import`` means that the version of
-numpy used at installation of SpacePy does not match that used at
-runtime. Check that there is only one version of numpy installed. In
-some cases ``pip`` will install another version of numpy to support
-the build; try installing numpy separately first, and then using the
-``--no-build-isolation`` flag to ``pip``.
+SDK version has not been installed.

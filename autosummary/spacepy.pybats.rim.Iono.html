@@ -1,25 +1,21 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.pybats.rim.Iono &#8212; SpacePy v0.6.0 Manual</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <title>spacepy.pybats.rim.Iono &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    
-    <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="spacepy.pybats.rim.OvalDebugFile" href="spacepy.pybats.rim.OvalDebugFile.html" />
@@ -50,17 +46,236 @@
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pybats.html" >PyBats - SWMF &amp; BATS-R-US Analysis Tools</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="spacepy.pybats.rim.html" accesskey="U">spacepy.pybats.rim</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" >spacepy.pybats</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="spacepy.pybats.rim.html" accesskey="U">spacepy.pybats.rim</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.pybats.rim.Iono</a></li> 
       </ul>
     </div>
+  
 
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="spacepy-pybats-rim-iono">
+<h1>spacepy.pybats.rim.Iono<a class="headerlink" href="#spacepy-pybats-rim-iono" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="spacepy.pybats.rim.Iono">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pybats.rim.</span></span><span class="sig-name descname"><span class="pre">Iono</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">infile</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/rim.html#Iono"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.rim.Iono" title="Link to this definition">¶</a></dt>
+<dd><p>A class for handling 2D output from the Ridley Ionosphere Model.
+Instantiate an object as follows:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">iono</span> <span class="o">=</span> <span class="n">rim</span><span class="o">.</span><span class="n">Iono</span><span class="p">(</span><span class="s1">&#39;filename.idl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>…where filename.idl is the name of a RIM 2D output file.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.rim.Iono.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">infile</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/rim.html#Iono.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.rim.Iono.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Base class for “Data Model” representation data</p>
+<p>Abstract method, reimplement</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>attrs</strong><span class="classifier">dict</span></dt><dd><p>dictionary of the attributes of the SpaceData object</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.rim.Iono.add_cont" title="spacepy.pybats.rim.Iono.add_cont"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_cont</span></code></a>(var[, target, n, maxz, lines, ...])</p></td>
+<td><p>Create a polar contour of variable <em>var</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.rim.Iono.calc_I" title="spacepy.pybats.rim.Iono.calc_I"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_I</span></code></a>()</p></td>
+<td><p>Integrate radial current to get the following values: I:     The total radial current over one hemisphere.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.rim.Iono.calc_j" title="spacepy.pybats.rim.Iono.calc_j"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_j</span></code></a>()</p></td>
+<td><p>Calculate total horizontal current as related values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.rim.Iono.readascii" title="spacepy.pybats.rim.Iono.readascii"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readascii</span></code></a>()</p></td>
+<td><p>Read an ascii &quot;.idl&quot; output file and load the contents into the object.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="#spacepy.pybats.rim.Iono.attrs" title="spacepy.pybats.rim.Iono.attrs"><code class="xref py py-data docutils literal notranslate"><span class="pre">attrs</span></code></a></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.rim.Iono.add_cont">
+<span class="sig-name descname"><span class="pre">add_cont</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_cbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">111</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xticksize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yticksize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_colat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">40</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/rim.html#Iono.add_cont"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.rim.Iono.add_cont" title="Link to this definition">¶</a></dt>
+<dd><p>Create a polar contour of variable <em>var</em>.  Plot will be either drawn
+on a new matplotlib figure and axes, or you can specify a plot target
+using the <em>target</em> kwarg.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>var</strong><span class="classifier">str</span></dt><dd><p>The name of the variable to plot.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>fig</strong><span class="classifier">matplotlib figure object</span></dt><dd></dd>
+<dt><strong>ax</strong><span class="classifier">matplotlib axes object</span></dt><dd></dd>
+<dt><strong>cnt</strong><span class="classifier">matplotlib contour object</span></dt><dd></dd>
+<dt><strong>cb</strong><span class="classifier">matplotlib colorbar object</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>target</strong><span class="classifier">Figure or Axes</span></dt><dd><p>If None (default), a new figure is generated from scratch.
+If a matplotlib Figure object, a new axis is created
+to fill that figure.
+If a matplotlib Axes object, the plot is placed
+into that axis.</p>
+</dd>
+<dt><strong>loc</strong><span class="classifier">int</span></dt><dd><p>Use to specify the subplot placement of the axis
+(e.g. loc=212, etc.) Used if target is a Figure or None.
+Default 111 (single plot).</p>
+</dd>
+<dt><strong>n</strong><span class="classifier">int</span></dt><dd><p>Set number of levels.  Default is 50.  If unfilled lines are
+added (see <em>lines</em> kwarg), multiples of three provide coherence
+between filled and unfilled contours.</p>
+</dd>
+<dt><strong>lines</strong><span class="classifier">bool</span></dt><dd><p>Add unfilled black solid/dashed contours to plot for additional
+contrast.  Default is <strong>True</strong>.</p>
+</dd>
+<dt><strong>maxz</strong><span class="classifier">real</span></dt><dd><p>Set the max/min value for the color bar.  Default is set by data.</p>
+</dd>
+<dt><strong>max_colat</strong><span class="classifier">real</span></dt><dd><p>Set the co-latitude range of the plot, in degrees.  Defaults to 40.</p>
+</dd>
+<dt><strong>cmap</strong><span class="classifier">str</span></dt><dd><p>Set the colormap.  Default is to use Matplotlib’s “Reds” for data
+that is strictly positive and “Seismic” for diverging data.
+Alternatively, legacy Ridley Ionosphere Model color maps can be
+loaded using “l_wr” (white red) or “l_bwr” (blue-white-red),
+where the “l_” prefix indicates legacy and not Matplotlib color maps.</p>
+</dd>
+<dt><strong>add_cbar</strong><span class="classifier">bool</span></dt><dd><p>Add colorbar to plot.  Default is <strong>False</strong> which will
+not add one to the plot.</p>
+</dd>
+<dt><strong>label</strong><span class="classifier">str or None</span></dt><dd><p>Label to place at top of plot.  Defaults to variable name.</p>
+</dd>
+<dt><strong>xticksize</strong><span class="classifier">int</span></dt><dd><p>Size of longitude markers in text points.  Defaults to 12.</p>
+</dd>
+<dt><strong>yticksize</strong><span class="classifier">int</span></dt><dd><p>Size of latitude markers in text points.  Defaults to 12.</p>
+</dd>
+<dt><strong>Extra keywords are passed to the contourf routine.</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.rim.Iono.calc_I">
+<span class="sig-name descname"><span class="pre">calc_I</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/rim.html#Iono.calc_I"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.rim.Iono.calc_I" title="Link to this definition">¶</a></dt>
+<dd><p>Integrate radial current to get the following values:
+I:     The total radial current over one hemisphere.
+Iup:   The total upward current over one hemisphere.
+Idown: The total downward current over one hemisphere.</p>
+<p>Values are stored in the object with the prefix <code class="docutils literal notranslate"><span class="pre">n_</span></code> or <code class="docutils literal notranslate"><span class="pre">s_</span></code>
+to indicate the hemisphere and may be accessed via self[‘n_I’], etc.</p>
+<p>Values are stored in units of mega Amps.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>True</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">rim</span><span class="o">.</span><span class="n">Iono</span><span class="p">(</span><span class="s1">&#39;spacepy/tests/data/pybats_test/it000321_104510_000.idl.gz&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">calc_I</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;n_Iup&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.rim.Iono.calc_j">
+<span class="sig-name descname"><span class="pre">calc_j</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/rim.html#Iono.calc_j"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.rim.Iono.calc_j" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate total horizontal current as related values.  Each will be
+stored into <em>self</em> using the typical key-value approach.  Calculations
+are done for both the northern and southern hemisphere with the
+appropriate prefixes (<code class="docutils literal notranslate"><span class="pre">n_</span></code> and <code class="docutils literal notranslate"><span class="pre">s_</span></code>) applied to each key.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>key</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>j</p></td>
+<td><p>Total horizontal current, $sqrt(jx^2+jy^2+jz^2)$</p></td>
+</tr>
+<tr class="row-odd"><td><p>jphi</p></td>
+<td><p>Azimuthal current, positive values are eastward.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>True</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">rim</span><span class="o">.</span><span class="n">Iono</span><span class="p">(</span><span class="s1">&#39;spacepy/tests/data/pybats_test/it000321_104510_000.idl.gz&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">calc_j</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="s1">&#39;n_jphi&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.rim.Iono.readascii">
+<span class="sig-name descname"><span class="pre">readascii</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/rim.html#Iono.readascii"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.rim.Iono.readascii" title="Link to this definition">¶</a></dt>
+<dd><p>Read an ascii “.idl” output file and load the contents into the object.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spacepy.pybats.rim.Iono.attrs">
+<span class="sig-name descname"><span class="pre">attrs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping" title="(in Python v3.13)"><span class="pre">collections.abc.Mapping</span></a></em><a class="headerlink" href="#spacepy.pybats.rim.Iono.attrs" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/logo.png" alt="Logo"/>
             </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.pybats.rim.Iono</a><ul>
+<li><a class="reference internal" href="#spacepy.pybats.rim.Iono"><code class="docutils literal notranslate"><span class="pre">Iono</span></code></a><ul>
+<li><a class="reference internal" href="#spacepy.pybats.rim.Iono.__init__"><code class="docutils literal notranslate"><span class="pre">Iono.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.rim.Iono.add_cont"><code class="docutils literal notranslate"><span class="pre">Iono.add_cont()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.rim.Iono.calc_I"><code class="docutils literal notranslate"><span class="pre">Iono.calc_I()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.rim.Iono.calc_j"><code class="docutils literal notranslate"><span class="pre">Iono.calc_j()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.rim.Iono.readascii"><code class="docutils literal notranslate"><span class="pre">Iono.readascii()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.rim.Iono.attrs"><code class="docutils literal notranslate"><span class="pre">Iono.attrs</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div>
     <h4>Previous topic</h4>
     <p class="topless"><a href="spacepy.pybats.rim.html"
@@ -78,7 +293,7 @@
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -86,34 +301,8 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <section id="spacepy-pybats-rim-iono">
-<h1>spacepy.pybats.rim.Iono<a class="headerlink" href="#spacepy-pybats-rim-iono" title="Permalink to this heading">¶</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="spacepy.pybats.rim.Iono">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pybats.rim.</span></span><span class="sig-name descname"><span class="pre">Iono</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">infile</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/rim.html#Iono"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.rim.Iono" title="Permalink to this definition">¶</a></dt>
-<dd><p>A class for handling 2D output from the Ridley Ionosphere Model.
-Instantiate an object as follows:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">iono</span> <span class="o">=</span> <span class="n">rim</span><span class="o">.</span><span class="n">Iono</span><span class="p">(</span><span class="s1">&#39;filename.idl&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>…where filename.idl is the name of a RIM 2D output file.</p>
-</dd></dl>
-
-</section>
-
-
-            <div class="clearer"></div>
-          </div>
         </div>
       </div>
       <div class="clearer"></div>
@@ -138,14 +327,15 @@ Instantiate an object as follows:</p>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pybats.html" >PyBats - SWMF &amp; BATS-R-US Analysis Tools</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="spacepy.pybats.rim.html" >spacepy.pybats.rim</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" >spacepy.pybats</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="spacepy.pybats.rim.html" >spacepy.pybats.rim</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.pybats.rim.Iono</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2024, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
 </html>

@@ -1,29 +1,25 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.pybats.rim &#8212; SpacePy v0.6.0 Manual</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <title>spacepy.pybats.rim &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    
-    <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="spacepy.pybats.rim.Iono" href="spacepy.pybats.rim.Iono.html" />
-    <link rel="prev" title="spacepy.pybats.ram" href="spacepy.pybats.ram.html" /> 
+    <link rel="prev" title="spacepy.pybats.ram.WeqFile" href="spacepy.pybats.ram.WeqFile.html" /> 
   </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
@@ -43,27 +39,128 @@
           <a href="spacepy.pybats.rim.Iono.html" title="spacepy.pybats.rim.Iono"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.ram.html" title="spacepy.pybats.ram"
+          <a href="spacepy.pybats.ram.WeqFile.html" title="spacepy.pybats.ram.WeqFile"
              accesskey="P">previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pybats.html" accesskey="U">PyBats - SWMF &amp; BATS-R-US Analysis Tools</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" accesskey="U">spacepy.pybats</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.pybats.rim</a></li> 
       </ul>
     </div>
+  
 
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-spacepy.pybats.rim">
+<span id="spacepy-pybats-rim"></span><h1>spacepy.pybats.rim<a class="headerlink" href="#module-spacepy.pybats.rim" title="Link to this heading">¶</a></h1>
+<p>Classes, functions, and methods for reading, writing, and plotting output
+from the Ridley Ionosphere Model (RIM) and the similar legacy code,
+Ridley Serial.</p>
+<p>Copyright 2010 Los Alamos National Security, LLC.</p>
+<p class="rubric">Functions</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.rim.get_iono_cb" title="spacepy.pybats.rim.get_iono_cb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_iono_cb</span></code></a>([ct_name])</p></td>
+<td><p>Several custom colorbars used by RIM and AMIE have become standard when visualizing data from these models.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.rim.tex_label" title="spacepy.pybats.rim.tex_label"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tex_label</span></code></a>(varname)</p></td>
+<td><p>Many variable names used in the Ridley Ionosphere Model look much better in LaTeX format with their proper Greek letters.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pybats.rim.Iono.html#spacepy.pybats.rim.Iono" title="spacepy.pybats.rim.Iono"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Iono</span></code></a>(infile, *args, **kwargs)</p></td>
+<td><p>A class for handling 2D output from the Ridley Ionosphere Model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pybats.rim.OvalDebugFile.html#spacepy.pybats.rim.OvalDebugFile" title="spacepy.pybats.rim.OvalDebugFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OvalDebugFile</span></code></a>(infile, *args, **kwargs)</p></td>
+<td><p>The auroral oval calculations in RIM may spit out special debug files that are extremely useful.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.rim.get_iono_cb">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.rim.</span></span><span class="sig-name descname"><span class="pre">get_iono_cb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ct_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bwr'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/rim.html#get_iono_cb"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.rim.get_iono_cb" title="Link to this definition">¶</a></dt>
+<dd><p>Several custom colorbars used by RIM and AMIE have become standard when
+visualizing data from these models.  These are ‘blue_white_red’ and
+‘white_red’, used for data that have positive and negative values and
+for data that have only positive values, respectively.  This function
+builds and returns these colorbars when called with the initials of the
+color table name as the only argument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ct_name</strong><span class="classifier">str</span></dt><dd><p>Select the color table.  Can be ‘bwr’ for blue-white-red or ‘wr’ for
+white-red.  Defaults to ‘bwr’.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bwr_map</span> <span class="o">=</span> <span class="n">get_iono_cb</span><span class="p">(</span><span class="s1">&#39;bwr&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wr_map</span>  <span class="o">=</span> <span class="n">get_iono_cb</span><span class="p">(</span><span class="s1">&#39;wr&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.pybats.rim.tex_label">
+<span class="sig-prename descclassname"><span class="pre">spacepy.pybats.rim.</span></span><span class="sig-name descname"><span class="pre">tex_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">varname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/rim.html#tex_label"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.rim.tex_label" title="Link to this definition">¶</a></dt>
+<dd><p>Many variable names used in the Ridley Ionosphere Model look much better
+in LaTeX format with their proper Greek letters.  This function takes
+a variable name, and if it is recognized, returns a properly formatted
+string that uses MatPlotLib’s MathText functionality to display the
+proper characters.  If it is not recognized, the varname is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>varname</strong><span class="classifier">string</span></dt><dd><p>The variable to convert to a LaTeX label.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>&gt;&gt;&gt;tex_label(‘n_phi’)
+‘Phi_{Ionosphere}’
+&gt;&gt;&gt;tex_label(‘Not Recognized’)
+‘Not Recognized’</p>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/logo.png" alt="Logo"/>
             </a></p>
   <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.pybats.rim</a><ul>
+<li><a class="reference internal" href="#spacepy.pybats.rim.get_iono_cb"><code class="docutils literal notranslate"><span class="pre">get_iono_cb()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.rim.tex_label"><code class="docutils literal notranslate"><span class="pre">tex_label()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="spacepy.pybats.ram.html"
-                          title="previous chapter">spacepy.pybats.ram</a></p>
+    <p class="topless"><a href="spacepy.pybats.ram.WeqFile.html"
+                          title="previous chapter">spacepy.pybats.ram.WeqFile</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
@@ -77,7 +174,7 @@
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -85,49 +182,8 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <section id="module-spacepy.pybats.rim">
-<span id="spacepy-pybats-rim"></span><h1>spacepy.pybats.rim<a class="headerlink" href="#module-spacepy.pybats.rim" title="Permalink to this heading">¶</a></h1>
-<p>Classes, functions, and methods for reading, writing, and plotting output
-from the Ridley Ionosphere Model (RIM) and the similar legacy code,
-Ridley Serial.</p>
-<p>Copyright 2010 Los Alamos National Security, LLC.</p>
-<p class="rubric">Classes</p>
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pybats.rim.Iono.html#spacepy.pybats.rim.Iono" title="spacepy.pybats.rim.Iono"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Iono</span></code></a>(infile, *args, **kwargs)</p></td>
-<td><p>A class for handling 2D output from the Ridley Ionosphere Model.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pybats.rim.OvalDebugFile.html#spacepy.pybats.rim.OvalDebugFile" title="spacepy.pybats.rim.OvalDebugFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OvalDebugFile</span></code></a>(infile, *args, **kwargs)</p></td>
-<td><p>The auroral oval calculations in RIM may spit out special debug files that are extremely useful.</p></td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Functions</p>
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.pybats.rim.get_iono_cb.html#spacepy.pybats.rim.get_iono_cb" title="spacepy.pybats.rim.get_iono_cb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_iono_cb</span></code></a>([ct_name])</p></td>
-<td><p>Several custom colorbars used by RIM and AMIE have become standard when visualizing data from these models.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="spacepy.pybats.rim.tex_label.html#spacepy.pybats.rim.tex_label" title="spacepy.pybats.rim.tex_label"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tex_label</span></code></a>(varname)</p></td>
-<td><p>Many variable names used in the Ridley Ionosphere Model look much better in LaTeX format with their proper Greek letters.</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-
-
-            <div class="clearer"></div>
-          </div>
         </div>
       </div>
       <div class="clearer"></div>
@@ -145,20 +201,21 @@ Ridley Serial.</p>
           <a href="spacepy.pybats.rim.Iono.html" title="spacepy.pybats.rim.Iono"
              >next</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.ram.html" title="spacepy.pybats.ram"
+          <a href="spacepy.pybats.ram.WeqFile.html" title="spacepy.pybats.ram.WeqFile"
              >previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pybats.html" >PyBats - SWMF &amp; BATS-R-US Analysis Tools</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" >spacepy.pybats</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.pybats.rim</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2024, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
 </html>

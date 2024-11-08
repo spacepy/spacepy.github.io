@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>spacepy.pybats.ram.PressureFile &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="spacepy.pybats.ram.RamSat" href="spacepy.pybats.ram.RamSat.html" />
+    <link rel="prev" title="spacepy.pybats.ram.PlasmaBoundary" href="spacepy.pybats.ram.PlasmaBoundary.html" /> 
+  </head><body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.pybats.ram.RamSat.html" title="spacepy.pybats.ram.RamSat"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.pybats.ram.PlasmaBoundary.html" title="spacepy.pybats.ram.PlasmaBoundary"
+             accesskey="P">previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" >spacepy.pybats</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="spacepy.pybats.ram.html" accesskey="U">spacepy.pybats.ram</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.pybats.ram.PressureFile</a></li> 
+      </ul>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="spacepy-pybats-ram-pressurefile">
+<h1>spacepy.pybats.ram.PressureFile<a class="headerlink" href="#spacepy-pybats-ram-pressurefile" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.PressureFile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pybats.ram.</span></span><span class="sig-name descname"><span class="pre">PressureFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/ram.html#PressureFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ram.PressureFile" title="Link to this definition">¶</a></dt>
+<dd><p>A class for reading and visualizing pressure_####.in files.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.PressureFile.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/ram.html#PressureFile.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ram.PressureFile.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Base class for “Data Model” representation data</p>
+<p>Abstract method, reimplement</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>attrs</strong><span class="classifier">dict</span></dt><dd><p>dictionary of the attributes of the SpaceData object</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.ram.PressureFile.add_cont_press" title="spacepy.pybats.ram.PressureFile.add_cont_press"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_cont_press</span></code></a>([var, n, target, maxz, minz, ...])</p></td>
+<td><p>Create a polar log-axis contour plot of pressure and add it to <em>target</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.ram.PressureFile.add_pcol_press" title="spacepy.pybats.ram.PressureFile.add_pcol_press"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_pcol_press</span></code></a>([var, target, maxz, minz, ...])</p></td>
+<td><p>Add a pcolor plot of the pressure object to <em>target</em>.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="#spacepy.pybats.ram.PressureFile.attrs" title="spacepy.pybats.ram.PressureFile.attrs"><code class="xref py py-data docutils literal notranslate"><span class="pre">attrs</span></code></a></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.PressureFile.add_cont_press">
+<span class="sig-name descname"><span class="pre">add_cont_press</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'total'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">31</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">111</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_cbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labelsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'inferno'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/ram.html#PressureFile.add_cont_press"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ram.PressureFile.add_cont_press" title="Link to this definition">¶</a></dt>
+<dd><p>Create a polar log-axis contour plot of pressure and add it to
+<em>target</em>.  For speedier plots, use plot_cont_press, which makes its
+own axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>var</strong><span class="classifier">string</span></dt><dd><p>The variable within the object to plot.  Defaults to ‘total’.
+Can be set to other species-specific pressure values.</p>
+</dd>
+<dt><strong>n</strong><span class="classifier">integer</span></dt><dd><p>The number of contours.  Defaults to 31.</p>
+</dd>
+<dt><strong>maxz</strong><span class="classifier">real</span></dt><dd><p>The color bar maximum.  Defaults to 1000.0</p>
+</dd>
+<dt><strong>minz</strong><span class="classifier">real</span></dt><dd><p>The color bar minimum.  Defaults to 1.0.</p>
+</dd>
+<dt><strong>add_cbar</strong><span class="classifier">bool</span></dt><dd><p>Set whether to add a color bar or not.  Defaults to <strong>False</strong>.</p>
+</dd>
+<dt><strong>cmap</strong><span class="classifier">string</span></dt><dd><p>Set name of contour color map to use.  Defaults to ‘inferno’.</p>
+</dd>
+<dt><strong>npa</strong><span class="classifier">bool</span></dt><dd><p>If <strong>True</strong>, plot in units of nanopascal instead of energy density.
+Defaults to <strong>False</strong>.</p>
+</dd>
+<dt><strong>labelsize</strong><span class="classifier">int</span></dt><dd><p>Sets the font size of the labels.  Defaults to 15.</p>
+</dd>
+<dt><strong>title</strong><span class="classifier">string</span></dt><dd><p>Sets the plot title.  Defaults to ‘auto’, using the variable label.</p>
+</dd>
+<dt><strong>target</strong><span class="classifier">Figure or Axes</span></dt><dd><p>If None (default), a new figure is generated from scratch.
+If a matplotlib Figure object, a new axis is created
+to fill that figure.
+If a matplotlib Axes object, the plot is placed
+into that axis.</p>
+</dd>
+<dt><strong>loc</strong><span class="classifier">int</span></dt><dd><p>Use to specify the subplot placement of the axis
+(e.g. loc=212, etc.) Used if target is a Figure or None.
+Default 111 (single plot).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>fig</strong><span class="classifier">matplotlib figure object</span></dt><dd></dd>
+<dt><strong>ax</strong><span class="classifier">matplotlib axes object</span></dt><dd></dd>
+<dt><strong>cont</strong><span class="classifier">matplotlib contour object</span></dt><dd></dd>
+<dt><strong>cbar</strong><span class="classifier">matplotlib colorbar object</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.PressureFile.add_pcol_press">
+<span class="sig-name descname"><span class="pre">add_pcol_press</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'total'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_cbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">111</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labelsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/ram.html#PressureFile.add_pcol_press"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ram.PressureFile.add_pcol_press" title="Link to this definition">¶</a></dt>
+<dd><p>Add a pcolor plot of the pressure object to <em>target</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>var</strong><span class="classifier">string</span></dt><dd><p>The variable within the object to plot.  Defaults to ‘total’.
+Can be set to other species-specific pressure values.</p>
+</dd>
+<dt><strong>maxz</strong><span class="classifier">real</span></dt><dd><p>The color bar maximum.  Defaults to 1000.0</p>
+</dd>
+<dt><strong>minz</strong><span class="classifier">real</span></dt><dd><p>The color bar minimum.  Defaults to 1.0.</p>
+</dd>
+<dt><strong>add_cbar</strong><span class="classifier">bool</span></dt><dd><p>Set whether to add a color bar or not.  Defaults to <strong>False</strong>.</p>
+</dd>
+<dt><strong>labelsize</strong><span class="classifier">int</span></dt><dd><p>Sets the font size of the labels.  Defaults to 15.</p>
+</dd>
+<dt><strong>title</strong><span class="classifier">string</span></dt><dd><p>Sets the plot title.  Defaults to ‘auto’, using the variable label.</p>
+</dd>
+<dt><strong>target</strong><span class="classifier">Figure or Axes</span></dt><dd><p>If None (default), a new figure is generated from scratch.
+If a matplotlib Figure object, a new axis is created
+to fill that figure.
+If a matplotlib Axes object, the plot is placed
+into that axis.</p>
+</dd>
+<dt><strong>loc</strong><span class="classifier">int</span></dt><dd><p>Use to specify the subplot placement of the axis
+(e.g. loc=212, etc.) Used if target is a Figure or None.
+Default 111 (single plot).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>fig</strong><span class="classifier">matplotlib figure object</span></dt><dd></dd>
+<dt><strong>ax</strong><span class="classifier">matplotlib axes object</span></dt><dd></dd>
+<dt><strong>cont</strong><span class="classifier">matplotlib contour object</span></dt><dd></dd>
+<dt><strong>cbar</strong><span class="classifier">matplotlib colorbar object</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.PressureFile.attrs">
+<span class="sig-name descname"><span class="pre">attrs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping" title="(in Python v3.13)"><span class="pre">collections.abc.Mapping</span></a></em><a class="headerlink" href="#spacepy.pybats.ram.PressureFile.attrs" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.pybats.ram.PressureFile</a><ul>
+<li><a class="reference internal" href="#spacepy.pybats.ram.PressureFile"><code class="docutils literal notranslate"><span class="pre">PressureFile</span></code></a><ul>
+<li><a class="reference internal" href="#spacepy.pybats.ram.PressureFile.__init__"><code class="docutils literal notranslate"><span class="pre">PressureFile.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ram.PressureFile.add_cont_press"><code class="docutils literal notranslate"><span class="pre">PressureFile.add_cont_press()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ram.PressureFile.add_pcol_press"><code class="docutils literal notranslate"><span class="pre">PressureFile.add_pcol_press()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ram.PressureFile.attrs"><code class="docutils literal notranslate"><span class="pre">PressureFile.attrs</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="spacepy.pybats.ram.PlasmaBoundary.html"
+                          title="previous chapter">spacepy.pybats.ram.PlasmaBoundary</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="spacepy.pybats.ram.RamSat.html"
+                          title="next chapter">spacepy.pybats.ram.RamSat</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/autosummary/spacepy.pybats.ram.PressureFile.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.pybats.ram.RamSat.html" title="spacepy.pybats.ram.RamSat"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.pybats.ram.PlasmaBoundary.html" title="spacepy.pybats.ram.PlasmaBoundary"
+             >previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" >spacepy.pybats</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="spacepy.pybats.ram.html" >spacepy.pybats.ram</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.pybats.ram.PressureFile</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    </div>
+  </body>
+</html>

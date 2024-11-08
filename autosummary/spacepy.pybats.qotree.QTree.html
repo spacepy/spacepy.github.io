@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>spacepy.pybats.qotree.QTree &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="spacepy.pybats.ram" href="spacepy.pybats.ram.html" />
+    <link rel="prev" title="spacepy.pybats.qotree.Branch" href="spacepy.pybats.qotree.Branch.html" /> 
+  </head><body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.pybats.ram.html" title="spacepy.pybats.ram"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.pybats.qotree.Branch.html" title="spacepy.pybats.qotree.Branch"
+             accesskey="P">previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" >spacepy.pybats</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="spacepy.pybats.qotree.html" accesskey="U">spacepy.pybats.qotree</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.pybats.qotree.QTree</a></li> 
+      </ul>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="spacepy-pybats-qotree-qtree">
+<h1>spacepy.pybats.qotree.QTree<a class="headerlink" href="#spacepy-pybats-qotree-qtree" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="spacepy.pybats.qotree.QTree">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pybats.qotree.</span></span><span class="sig-name descname"><span class="pre">QTree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blocksize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/qotree.html#QTree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.qotree.QTree" title="Link to this definition">¶</a></dt>
+<dd><p>Base class for Quad/Oct tree objects assuming cell-centered grid points
+in a rectangular non-regular layout. QTree works for square blocks
+only (e.g., blocks who have the same number of points in each dimension).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">blocksize</span></code> kwarg sets the size of the blocks.
+As BATS-R-US typically uses a block size of 8 (i.e., blocks are 8x8x8
+points), the default value of <code class="docutils literal notranslate"><span class="pre">blocksize</span></code> is 8.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.qotree.QTree.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blocksize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/qotree.html#QTree.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.qotree.QTree.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Build QO Tree for input grid.  Grid should be a NxM numpy array where
+N is the number of dimensions and M is the number of points.</p>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.qotree.QTree.find_leaf" title="spacepy.pybats.qotree.QTree.find_leaf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_leaf</span></code></a>(x, y[, i])</p></td>
+<td><p>Recursively search for and return the index of the leaf that contains the input point x, y.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.qotree.QTree.keys" title="spacepy.pybats.qotree.QTree.keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keys</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.qotree.QTree.ld" title="spacepy.pybats.qotree.QTree.ld"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ld</span></code></a>(k)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.qotree.QTree.leftdaughter" title="spacepy.pybats.qotree.QTree.leftdaughter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">leftdaughter</span></code></a>(k)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.qotree.QTree.mom" title="spacepy.pybats.qotree.QTree.mom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mom</span></code></a>(k)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.qotree.QTree.plot_res" title="spacepy.pybats.qotree.QTree.plot_res"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_res</span></code></a>(ax[, do_label, do_fill, tag_leafs, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.qotree.QTree.rd" title="spacepy.pybats.qotree.QTree.rd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rd</span></code></a>(k)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.qotree.QTree.rightdaughter" title="spacepy.pybats.qotree.QTree.rightdaughter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rightdaughter</span></code></a>(k)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.qotree.QTree.find_leaf">
+<span class="sig-name descname"><span class="pre">find_leaf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/qotree.html#QTree.find_leaf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.qotree.QTree.find_leaf" title="Link to this definition">¶</a></dt>
+<dd><p>Recursively search for and return the index of the leaf that
+contains the input point x, y.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.qotree.QTree.keys">
+<span class="sig-name descname"><span class="pre">keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/qotree.html#QTree.keys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.qotree.QTree.keys" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.qotree.QTree.ld">
+<span class="sig-name descname"><span class="pre">ld</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spacepy.pybats.qotree.QTree.ld" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.qotree.QTree.leftdaughter">
+<span class="sig-name descname"><span class="pre">leftdaughter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/qotree.html#QTree.leftdaughter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.qotree.QTree.leftdaughter" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.qotree.QTree.mom">
+<span class="sig-name descname"><span class="pre">mom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/qotree.html#QTree.mom"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.qotree.QTree.mom" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.qotree.QTree.plot_res">
+<span class="sig-name descname"><span class="pre">plot_res</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_fill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag_leafs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zlim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'jet_r'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/qotree.html#QTree.plot_res"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.qotree.QTree.plot_res" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.qotree.QTree.rd">
+<span class="sig-name descname"><span class="pre">rd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spacepy.pybats.qotree.QTree.rd" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.qotree.QTree.rightdaughter">
+<span class="sig-name descname"><span class="pre">rightdaughter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/qotree.html#QTree.rightdaughter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.qotree.QTree.rightdaughter" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.pybats.qotree.QTree</a><ul>
+<li><a class="reference internal" href="#spacepy.pybats.qotree.QTree"><code class="docutils literal notranslate"><span class="pre">QTree</span></code></a><ul>
+<li><a class="reference internal" href="#spacepy.pybats.qotree.QTree.__init__"><code class="docutils literal notranslate"><span class="pre">QTree.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.qotree.QTree.find_leaf"><code class="docutils literal notranslate"><span class="pre">QTree.find_leaf()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.qotree.QTree.keys"><code class="docutils literal notranslate"><span class="pre">QTree.keys()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.qotree.QTree.ld"><code class="docutils literal notranslate"><span class="pre">QTree.ld()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.qotree.QTree.leftdaughter"><code class="docutils literal notranslate"><span class="pre">QTree.leftdaughter()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.qotree.QTree.mom"><code class="docutils literal notranslate"><span class="pre">QTree.mom()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.qotree.QTree.plot_res"><code class="docutils literal notranslate"><span class="pre">QTree.plot_res()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.qotree.QTree.rd"><code class="docutils literal notranslate"><span class="pre">QTree.rd()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.qotree.QTree.rightdaughter"><code class="docutils literal notranslate"><span class="pre">QTree.rightdaughter()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="spacepy.pybats.qotree.Branch.html"
+                          title="previous chapter">spacepy.pybats.qotree.Branch</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="spacepy.pybats.ram.html"
+                          title="next chapter">spacepy.pybats.ram</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/autosummary/spacepy.pybats.qotree.QTree.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.pybats.ram.html" title="spacepy.pybats.ram"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.pybats.qotree.Branch.html" title="spacepy.pybats.qotree.Branch"
+             >previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" >spacepy.pybats</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="spacepy.pybats.qotree.html" >spacepy.pybats.qotree</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.pybats.qotree.QTree</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    </div>
+  </body>
+</html>

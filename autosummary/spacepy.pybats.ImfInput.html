@@ -1,25 +1,21 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.pybats.ImfInput &#8212; SpacePy v0.6.0 Manual</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <title>spacepy.pybats.ImfInput &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    
-    <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="spacepy.pybats.LogFile" href="spacepy.pybats.LogFile.html" />
@@ -50,16 +46,345 @@
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pybats.html" accesskey="U">PyBats - SWMF &amp; BATS-R-US Analysis Tools</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" accesskey="U">spacepy.pybats</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.pybats.ImfInput</a></li> 
       </ul>
     </div>
+  
 
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="spacepy-pybats-imfinput">
+<h1>spacepy.pybats.ImfInput<a class="headerlink" href="#spacepy-pybats-imfinput" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="spacepy.pybats.ImfInput">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pybats.</span></span><span class="sig-name descname"><span class="pre">ImfInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npoints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats.html#ImfInput"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ImfInput" title="Link to this definition">¶</a></dt>
+<dd><p>A class to read, write, manipulate, and visualize solar wind upstream
+input files for SWMF simulations.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Kwarg</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>filename</p></td>
+<td><p>Set the input/output file name.</p></td>
+</tr>
+<tr class="row-odd"><td><p>load</p></td>
+<td><p>Read file upon instantiation?  Defaults to <strong>True</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>npoints</p></td>
+<td><p>For empty data sets, sets number of points (default is 0)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.5.0: </span>Default variable names for temperature and density are now ‘t’ and ‘n’.</p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.ImfInput.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npoints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats.html#ImfInput.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ImfInput.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Base class for “Data Model” representation data</p>
+<p>Abstract method, reimplement</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>attrs</strong><span class="classifier">dict</span></dt><dd><p>dictionary of the attributes of the SpaceData object</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.ImfInput.add_pram_bz" title="spacepy.pybats.ImfInput.add_pram_bz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_pram_bz</span></code></a>([target, loc, pcol, bcol, xlim, ...])</p></td>
+<td><p>Plot, on a single set of axes, both ram pressure and IMF Bz for a quick-look summary of an event.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.ImfInput.calc_alf" title="spacepy.pybats.ImfInput.calc_alf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_alf</span></code></a>()</p></td>
+<td><p>Calculate the solar wind Alfven speed in $km/s$.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.ImfInput.calc_alfmach" title="spacepy.pybats.ImfInput.calc_alfmach"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_alfmach</span></code></a>()</p></td>
+<td><p>Calculate the Alvenic Mach number and save as self['machA'].</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.ImfInput.calc_b" title="spacepy.pybats.ImfInput.calc_b"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_b</span></code></a>()</p></td>
+<td><p>Calculate the magnitude of the IMF in nT.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.ImfInput.calc_clock" title="spacepy.pybats.ImfInput.calc_clock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_clock</span></code></a>()</p></td>
+<td><p>Calculate and store IMF clock angle, defined as the angle of the interplanetary magnetic field (IMF) in the GSM Y-Z plane.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.ImfInput.calc_epsilon" title="spacepy.pybats.ImfInput.calc_epsilon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_epsilon</span></code></a>()</p></td>
+<td><p>Calculate the epsilon parameter, an approximation of power input into the magnetosphere.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.ImfInput.calc_pram" title="spacepy.pybats.ImfInput.calc_pram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_pram</span></code></a>()</p></td>
+<td><p>Calculate ram pressure from SW conditions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.ImfInput.calc_u" title="spacepy.pybats.ImfInput.calc_u"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_u</span></code></a>()</p></td>
+<td><p>Calculate the magnitude of the total solar wind bulk velocity.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.ImfInput.quicklook" title="spacepy.pybats.ImfInput.quicklook"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quicklook</span></code></a>([plotvars, timerange, legloc, ...])</p></td>
+<td><p>Generate a quick-look plot of solar wind conditions driving the SWMF.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.ImfInput.read" title="spacepy.pybats.ImfInput.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>(infile)</p></td>
+<td><p>Read an SWMF IMF/solar wind input file into a newly instantiated imfinput object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.ImfInput.varcheck" title="spacepy.pybats.ImfInput.varcheck"><code class="xref py py-obj docutils literal notranslate"><span class="pre">varcheck</span></code></a>()</p></td>
+<td><p>Ensure that the variable list, which gives the order of the variables as they are written to file, correctly corresponds to the variables stored in the ImfInput object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.ImfInput.write" title="spacepy.pybats.ImfInput.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>([outfile])</p></td>
+<td><p>Write the <a class="reference internal" href="#spacepy.pybats.ImfInput" title="spacepy.pybats.ImfInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImfInput</span></code></a> object to file.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="#spacepy.pybats.ImfInput.attrs" title="spacepy.pybats.ImfInput.attrs"><code class="xref py py-data docutils literal notranslate"><span class="pre">attrs</span></code></a></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.ImfInput.add_pram_bz">
+<span class="sig-name descname"><span class="pre">add_pram_bz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">111</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pcol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'#CC3300'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bcol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'#3333CC'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epoch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats.html#ImfInput.add_pram_bz"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ImfInput.add_pram_bz" title="Link to this definition">¶</a></dt>
+<dd><p>Plot, on a single set of axes, both ram pressure and IMF Bz for a
+quick-look summary of an event.</p>
+<p>The figure and main axes object are returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>target</strong><span class="classifier">Figure or Axes</span></dt><dd><p>If None (default), a new figure is generated from scratch.
+If a matplotlib Figure object, a new axis is created
+to fill that figure.
+If a matplotlib Axes object, the plot is placed
+into that axis.</p>
+</dd>
+<dt><strong>loc</strong><span class="classifier">int</span></dt><dd><p>Use to specify the subplot placement of the axis
+(e.g. loc=212, etc.) Used if target is a Figure or None.
+Default 111 (single plot).</p>
+</dd>
+<dt><strong>pcol</strong><span class="classifier">matplotlib color specifier</span></dt><dd><p>Set the line and label color for ram pressure.</p>
+</dd>
+<dt><strong>bcol</strong><span class="classifier">matplotlib color specifier</span></dt><dd><p>Set the line and label color for IMF Bz.</p>
+</dd>
+<dt><strong>xlim</strong><span class="classifier">2-element list of datetimes, optional</span></dt><dd><p>Set the time range for the plot.  Defaults to full range.</p>
+</dd>
+<dt><strong>plim</strong><span class="classifier">2-element list</span></dt><dd><p>Set the y-axis range for dynamic pressure.</p>
+</dd>
+<dt><strong>blim</strong><span class="classifier">2-element list</span></dt><dd><p>Set the y-axis range for IMF Bz.</p>
+</dd>
+<dt><strong>epoch</strong><span class="classifier">datetime.datetime</span></dt><dd><p>Create an epoch marker (vertical line) at time=epoch.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>fig</strong><span class="classifier">matplotlib figure object</span></dt><dd></dd>
+<dt><strong>ax1</strong><span class="classifier">matplotlib axes object for the Pdyn plot.</span></dt><dd></dd>
+<dt><strong>ax2</strong><span class="classifier">matplotlib axes object for the Bz plot.</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.ImfInput.calc_alf">
+<span class="sig-name descname"><span class="pre">calc_alf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats.html#ImfInput.calc_alf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ImfInput.calc_alf" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the solar wind Alfven speed in $km/s$.  Result is stored
+internally as self[‘vAlf’]</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.ImfInput.calc_alfmach">
+<span class="sig-name descname"><span class="pre">calc_alfmach</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats.html#ImfInput.calc_alfmach"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ImfInput.calc_alfmach" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the Alvenic Mach number and save as self[‘machA’].
+Units default to $km/s$.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.ImfInput.calc_b">
+<span class="sig-name descname"><span class="pre">calc_b</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats.html#ImfInput.calc_b"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ImfInput.calc_b" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the magnitude of the IMF in nT.  Store as self[‘b’].</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.ImfInput.calc_clock">
+<span class="sig-name descname"><span class="pre">calc_clock</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats.html#ImfInput.calc_clock"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ImfInput.calc_clock" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate and store IMF clock angle, defined as the angle of the
+interplanetary magnetic field (IMF) in the GSM Y-Z plane. A clock
+angle of zero represents purely northward IMF while 180 represents
+purely southward configuration.</p>
+<p>The resulting value is stored as <code class="docutils literal notranslate"><span class="pre">self['clock']</span></code> in units of degrees.</p>
+<p class="rubric">Notes</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.0.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.ImfInput.calc_epsilon">
+<span class="sig-name descname"><span class="pre">calc_epsilon</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats.html#ImfInput.calc_epsilon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ImfInput.calc_epsilon" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the epsilon parameter, an approximation of power input into
+the magnetosphere. It is Poynting flux ($E      imes B / mu_0$) scaled
+to the solar wind clock angle. Thus, it is an energy flux, or,
+equivalently, power-per-unit area.</p>
+<p>The resultant quantity is stored as <code class="docutils literal notranslate"><span class="pre">self['epsilon']</span></code> and has units
+of $W/m^2$.</p>
+<p>For full details, see Perreault and Akasofu(1978),
+<a class="reference external" href="https://doi.org/10.1111/j.1365-246X.1978.tb05494.x">https://doi.org/10.1111/j.1365-246X.1978.tb05494.x</a>.</p>
+<p class="rubric">Notes</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.6.0.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.ImfInput.calc_pram">
+<span class="sig-name descname"><span class="pre">calc_pram</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats.html#ImfInput.calc_pram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ImfInput.calc_pram" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate ram pressure from SW conditions.  Output units in nPa.
+If object was instantiated via an existing imf file, this value
+is calculated automatically.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.ImfInput.calc_u">
+<span class="sig-name descname"><span class="pre">calc_u</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats.html#ImfInput.calc_u"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ImfInput.calc_u" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the magnitude of the total solar wind bulk velocity.  Store
+internally as self[‘u’].</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.ImfInput.quicklook">
+<span class="sig-name descname"><span class="pre">quicklook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plotvars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timerange</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legloc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'best'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats.html#ImfInput.quicklook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ImfInput.quicklook" title="Link to this definition">¶</a></dt>
+<dd><p>Generate a quick-look plot of solar wind conditions driving the
+SWMF.  Default behavior creates a figure showing the three components
+of IMF, solar wind density, and Earthward velocity. The resulting
+figure will be a paper-sized plot with one axes object per entry in
+<code class="docutils literal notranslate"><span class="pre">plotvars</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">plotvars</span></code> keyword controls the behavior of the resulting plot.
+For example, <code class="docutils literal notranslate"><span class="pre">['rho',</span> <span class="pre">'pram',</span> <span class="pre">['bx','by','bz']]</span></code> will create three
+subplots with the three IMF components on a single axes.</p>
+<p>Additional empty axes can be added by specifying a <code class="docutils literal notranslate"><span class="pre">plotvar</span></code> entry
+that is not a valid key to the <a class="reference internal" href="#spacepy.pybats.ImfInput" title="spacepy.pybats.ImfInput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ImfInput</span></code></a> object. This is useful in
+some circumstances, e.g., cases where the user may want to plot a
+non-solar wind value, such as Dst, from another source. The <code class="docutils literal notranslate"><span class="pre">plotvar</span></code>
+string will be used as the y-axis label.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>plotvars</strong><span class="classifier">list of variable names, optional</span></dt><dd><p>The variables to plot given as a list of ImfInput object keys.
+Use a nested list to plot more than one variable on a single axes
+object.</p>
+</dd>
+<dt><strong>colors</strong><span class="classifier">list of strings, optional</span></dt><dd><p>The colors of the resulting lines as a list of Matplotlib color
+compatible strings (e.g., ‘#000000’, ‘k’, ‘lightgrey’). The shape
+of the list should match that of <code class="docutils literal notranslate"><span class="pre">plotvars</span></code>; if not, <a class="reference internal" href="#spacepy.pybats.ImfInput.quicklook" title="spacepy.pybats.ImfInput.quicklook"><code class="xref py py-obj docutils literal notranslate"><span class="pre">quicklook</span></code></a>
+will fill in with default colors. Any axes with multiple <code class="docutils literal notranslate"><span class="pre">plotvars</span></code>
+specified but only a single color will have that color repeated for
+each line placed on the axes. Default behavior is to use the
+current Matplotlib color cycle.</p>
+</dd>
+<dt><strong>timerange</strong><span class="classifier">array-like of datetimes</span></dt><dd><p>An array-like structure of datetimes marking the time range of
+the resulting plot.</p>
+</dd>
+<dt><strong>title</strong><span class="classifier">str, optional</span></dt><dd><p>Title to place at the top of the figure, defaults to,
+‘Solar Wind Drivers <code class="docutils literal notranslate"><span class="pre">{self.attrs[&quot;coor&quot;]</span></code> Coordinates)’</p>
+</dd>
+<dt><strong>legloc</strong><span class="classifier">str, default=’best’</span></dt><dd><p>Location of any legends place on axes with more than one variable.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>The following examples use the data from the Spacepy test suite.
+Open an IMF object, create the default quicklook plot:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">spacepy.pybats</span> <span class="kn">import</span> <span class="n">ImfInput</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">imf</span> <span class="o">=</span> <span class="n">ImfInput</span><span class="p">(</span><span class="s1">&#39;spacepy/tests/data/pybats_test/imf_single.dat&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">imf</span><span class="o">.</span><span class="n">quicklook</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Create a customized quicklook plot with two axes: one with 3 variables,
+another with 2 variables. Specify custom line colors.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">imf</span> <span class="o">=</span> <span class="n">ImfInput</span><span class="p">(</span><span class="s1">&#39;spacepy/tests/data/pybats_test/imf_multi.dat&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">imf</span><span class="o">.</span><span class="n">quicklook</span><span class="p">([[</span><span class="s1">&#39;bx&#39;</span><span class="p">,</span> <span class="s1">&#39;by&#39;</span><span class="p">,</span> <span class="s1">&#39;bz&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;SwRho&#39;</span><span class="p">,</span> <span class="s1">&#39;IonoRho&#39;</span><span class="p">]],</span>
+<span class="go">                  colors=[[&#39;r&#39;, &#39;g&#39;, &#39;b&#39;], [&#39;orange&#39;, &#39;cyan&#39;]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.ImfInput.read">
+<span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">infile</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats.html#ImfInput.read"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ImfInput.read" title="Link to this definition">¶</a></dt>
+<dd><p>Read an SWMF IMF/solar wind input file into a newly
+instantiated imfinput object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.ImfInput.varcheck">
+<span class="sig-name descname"><span class="pre">varcheck</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats.html#ImfInput.varcheck"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ImfInput.varcheck" title="Link to this definition">¶</a></dt>
+<dd><p>Ensure that the variable list, which gives the order of the
+variables as they are written to file, correctly corresponds
+to the variables stored in the ImfInput object.</p>
+<p>Returns True on success, returns warnings and False on fail.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.ImfInput.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outfile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats.html#ImfInput.write"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ImfInput.write" title="Link to this definition">¶</a></dt>
+<dd><p>Write the <a class="reference internal" href="#spacepy.pybats.ImfInput" title="spacepy.pybats.ImfInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImfInput</span></code></a> object to file.  Kwarg <em>outfile</em> can be
+used to specify the path of the output file; if it is not set,
+<em>self.attrs[‘file’]</em> is used.  If this is not set, default to
+“imfinput.dat”.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spacepy.pybats.ImfInput.attrs">
+<span class="sig-name descname"><span class="pre">attrs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping" title="(in Python v3.13)"><span class="pre">collections.abc.Mapping</span></a></em><a class="headerlink" href="#spacepy.pybats.ImfInput.attrs" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/logo.png" alt="Logo"/>
             </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.pybats.ImfInput</a><ul>
+<li><a class="reference internal" href="#spacepy.pybats.ImfInput"><code class="docutils literal notranslate"><span class="pre">ImfInput</span></code></a><ul>
+<li><a class="reference internal" href="#spacepy.pybats.ImfInput.__init__"><code class="docutils literal notranslate"><span class="pre">ImfInput.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ImfInput.add_pram_bz"><code class="docutils literal notranslate"><span class="pre">ImfInput.add_pram_bz()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ImfInput.calc_alf"><code class="docutils literal notranslate"><span class="pre">ImfInput.calc_alf()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ImfInput.calc_alfmach"><code class="docutils literal notranslate"><span class="pre">ImfInput.calc_alfmach()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ImfInput.calc_b"><code class="docutils literal notranslate"><span class="pre">ImfInput.calc_b()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ImfInput.calc_clock"><code class="docutils literal notranslate"><span class="pre">ImfInput.calc_clock()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ImfInput.calc_epsilon"><code class="docutils literal notranslate"><span class="pre">ImfInput.calc_epsilon()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ImfInput.calc_pram"><code class="docutils literal notranslate"><span class="pre">ImfInput.calc_pram()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ImfInput.calc_u"><code class="docutils literal notranslate"><span class="pre">ImfInput.calc_u()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ImfInput.quicklook"><code class="docutils literal notranslate"><span class="pre">ImfInput.quicklook()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ImfInput.read"><code class="docutils literal notranslate"><span class="pre">ImfInput.read()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ImfInput.varcheck"><code class="docutils literal notranslate"><span class="pre">ImfInput.varcheck()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ImfInput.write"><code class="docutils literal notranslate"><span class="pre">ImfInput.write()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ImfInput.attrs"><code class="docutils literal notranslate"><span class="pre">ImfInput.attrs</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div>
     <h4>Previous topic</h4>
     <p class="topless"><a href="spacepy.pybats.IdlFile.html"
@@ -77,7 +402,7 @@
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -85,68 +410,8 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <section id="spacepy-pybats-imfinput">
-<h1>spacepy.pybats.ImfInput<a class="headerlink" href="#spacepy-pybats-imfinput" title="Permalink to this heading">¶</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="spacepy.pybats.ImfInput">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pybats.</span></span><span class="sig-name descname"><span class="pre">ImfInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">load</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npoints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats.html#ImfInput"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ImfInput" title="Permalink to this definition">¶</a></dt>
-<dd><p>A class to read, write, manipulate, and visualize solar wind upstream
-input files for SWMF simulations.  More about such files can be found
-in the SWMF/BATS-R-US documentation for the #SOLARWINDFILE command.</p>
-<p>Creating an <a class="reference internal" href="#spacepy.pybats.ImfInput" title="spacepy.pybats.ImfInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImfInput</span></code></a> object is simple:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">spacepy</span> <span class="kn">import</span> <span class="n">pybats</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span><span class="o">=</span><span class="n">pybats</span><span class="o">.</span><span class="n">ImfInput</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;test.dat&#39;</span><span class="p">,</span> <span class="n">load</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Upon instantiation, if <em>filename</em> is a valid file AND kwarg <em>load</em> is set
-to boolean True, the contents of <em>filename</em> are loaded into the object
-and no other work needs to be done.</p>
-<p>If <em>filename</em> is False or <em>load</em> is False, a blank <code class="xref py py-class docutils literal notranslate"><span class="pre">ImfInput</span> <span class="pre">file</span></code>
-is created for the user to manipulate.
-The user can set the time array and the
-associated data values (see <em>obj.attrs[‘var’]</em> for a list) to any values
-desired and use the method <em>obj.write()</em> to dump the contents to an SWMF
-formatted input file.  See the documentation for the write method for
-more details.</p>
-<p>Like most <a class="reference internal" href="../pybats.html#module-spacepy.pybats" title="spacepy.pybats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pybats</span></code></a> objects, you may interact with
-<a class="reference internal" href="#spacepy.pybats.ImfInput" title="spacepy.pybats.ImfInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImfInput</span></code></a> objects as if they were specialized dictionaries.
-Access data like so:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-<span class="go">[&#39;bx&#39;, &#39;by&#39;, &#39;bz&#39;, &#39;vx&#39;, &#39;vy&#39;, &#39;vz&#39;, &#39;n&#39;, &#39;t&#39;]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">density</span><span class="o">=</span><span class="n">obj</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>Adding new data entries is equally simple so long as you have the values
-and the name for the values:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s1">&#39;ux&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">obj</span><span class="p">[</span><span class="s1">&#39;uy&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">obj</span><span class="p">[</span><span class="s1">&#39;uz&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">u</span>
-</pre></div>
-</div>
-<p>If new data entries are added as <a class="reference internal" href="spacepy.datamodel.dmarray.html#spacepy.datamodel.dmarray" title="spacepy.datamodel.dmarray"><code class="xref py py-class docutils literal notranslate"><span class="pre">dmarray</span></code></a>
-objects, the <code class="xref py py-obj docutils literal notranslate"><span class="pre">label</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">units</span></code> attributes can be set to enhance plotting.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">spacepy</span> <span class="kn">import</span> <span class="n">datamodel</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s1">&#39;ux&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">obj</span><span class="p">[</span><span class="s1">&#39;uy&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">obj</span><span class="p">[</span><span class="s1">&#39;uz&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">datamodel</span><span class="o">.</span><span class="n">dmarray</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;$km/s$&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;|U|&#39;</span><span class="p">})</span>
-</pre></div>
-</div>
-</dd></dl>
-
-</section>
-
-
-            <div class="clearer"></div>
-          </div>
         </div>
       </div>
       <div class="clearer"></div>
@@ -171,13 +436,14 @@ objects, the <code class="xref py py-obj docutils literal notranslate"><span cla
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pybats.html" >PyBats - SWMF &amp; BATS-R-US Analysis Tools</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" >spacepy.pybats</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.pybats.ImfInput</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2024, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
 </html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>spacepy.time &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="spacepy.time.Ticktock" href="spacepy.time.Ticktock.html" />
+    <link rel="prev" title="spacepy.seapy.SeaBase" href="spacepy.seapy.SeaBase.html" /> 
+  </head><body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.time.Ticktock.html" title="spacepy.time.Ticktock"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.seapy.SeaBase.html" title="spacepy.seapy.SeaBase"
+             accesskey="P">previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" accesskey="U">spacepy</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.time</a></li> 
+      </ul>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-spacepy.time">
+<span id="spacepy-time"></span><h1>spacepy.time<a class="headerlink" href="#module-spacepy.time" title="Link to this heading">¶</a></h1>
+<p>Time conversion, manipulation and implementation of Ticktock class</p>
+<p>Authors: Steve Morley, Josef Koller, Brian Larsen, Jon Niehof
+Institution: Los Alamos National Laboratory
+Contact: <a class="reference external" href="mailto:smorley&#37;&#52;&#48;lanl&#46;gov">smorley<span>&#64;</span>lanl<span>&#46;</span>gov</a>,</p>
+<p>For additional documentation <a class="reference internal" href="../time.html"><span class="doc">time - Time conversion, manipulation and implementation of Ticktock class</span></a></p>
+<p>Copyright 2010 Los Alamos National Security, LLC.</p>
+<p class="rubric">Functions</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.time.doy2date" title="spacepy.time.doy2date"><code class="xref py py-obj docutils literal notranslate"><span class="pre">doy2date</span></code></a>(year, doy[, dtobj, flAns])</p></td>
+<td><p>convert integer day-of-year doy into a month and day after <a class="reference external" href="http://pleac.sourceforge.net/pleac_python/datesandtimes.html">http://pleac.sourceforge.net/pleac_python/datesandtimes.html</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.time.dtstr2iso" title="spacepy.time.dtstr2iso"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dtstr2iso</span></code></a>(dtstr[, fmt])</p></td>
+<td><p>Convert a datetime string to a standard format</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.time.extract_YYYYMMDD" title="spacepy.time.extract_YYYYMMDD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_YYYYMMDD</span></code></a>(filename)</p></td>
+<td><p>go through a string and extract the first valid YYYYMMDD as a datetime</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.time.leapyear" title="spacepy.time.leapyear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">leapyear</span></code></a>(year[, numdays])</p></td>
+<td><p>return an array of boolean leap year, a lot faster than the mod method that is normally seen</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.time.no_tzinfo" title="spacepy.time.no_tzinfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">no_tzinfo</span></code></a>(dt)</p></td>
+<td><p>take in an arraylike of datetime objects and return them without any tzinfo</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.time.randomDate" title="spacepy.time.randomDate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">randomDate</span></code></a>(dt1, dt2[, N, tzinfo, sorted])</p></td>
+<td><p>Return a (or many) random datetimes between two given dates</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.time.sec2hms" title="spacepy.time.sec2hms"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sec2hms</span></code></a>(sec[, rounding, days, dtobj])</p></td>
+<td><p>Convert seconds of day to hours, minutes, seconds</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.time.tickrange" title="spacepy.time.tickrange"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tickrange</span></code></a>(start, end, deltadays[, dtype])</p></td>
+<td><p>return a Ticktock range given the start, end, and delta</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.time.valid_YYYYMMDD" title="spacepy.time.valid_YYYYMMDD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">valid_YYYYMMDD</span></code></a>(inval)</p></td>
+<td><p>if inval is valid YYYYMMDD return True, False otherwise</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Classes</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="spacepy.time.Ticktock.html#spacepy.time.Ticktock" title="spacepy.time.Ticktock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Ticktock</span></code></a>(data, dtype)</p></td>
+<td><p>Ticktock class holding various time coordinate systems (TAI, UTC, ISO, JD, MJD, GPS, UNX, RDT, CDF, DOY, eDOY, APT)</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.time.doy2date">
+<span class="sig-prename descclassname"><span class="pre">spacepy.time.</span></span><span class="sig-name descname"><span class="pre">doy2date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtobj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flAns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/time.html#doy2date"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.time.doy2date" title="Link to this definition">¶</a></dt>
+<dd><p>convert integer day-of-year doy into a month and day
+after <a class="reference external" href="http://pleac.sourceforge.net/pleac_python/datesandtimes.html">http://pleac.sourceforge.net/pleac_python/datesandtimes.html</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>year</strong><span class="classifier">int or array of int</span></dt><dd><p>year</p>
+</dd>
+<dt><strong>doy</strong><span class="classifier">int or array of int</span></dt><dd><p>day of year</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>month</strong><span class="classifier">int or array of int</span></dt><dd><p>month as integer number</p>
+</dd>
+<dt><strong>day</strong><span class="classifier">int or array of int</span></dt><dd><p>as integer number</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="spacepy.time.Ticktock.html#spacepy.time.Ticktock.getDOY" title="spacepy.time.Ticktock.getDOY"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Ticktock.getDOY</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">month</span><span class="p">,</span> <span class="n">day</span> <span class="o">=</span> <span class="n">doy2date</span><span class="p">(</span><span class="mi">2002</span><span class="p">,</span> <span class="mi">186</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dts</span> <span class="o">=</span> <span class="n">doy2date</span><span class="p">([</span><span class="mi">2002</span><span class="p">]</span><span class="o">*</span><span class="mi">4</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">186</span><span class="p">,</span><span class="mi">190</span><span class="p">),</span> <span class="n">dtobj</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.time.dtstr2iso">
+<span class="sig-prename descclassname"><span class="pre">spacepy.time.</span></span><span class="sig-name descname"><span class="pre">dtstr2iso</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtstr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%Y-%m-%dT%H:%M:%S'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/time.html#dtstr2iso"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.time.dtstr2iso" title="Link to this definition">¶</a></dt>
+<dd><p>Convert a datetime string to a standard format</p>
+<p>Attempts to maintain leap second representation while converting
+time strings to the specified format (by default, ISO8601-like.)
+Only handles a single positive leap second; negative leap seconds
+require no special handling and policy is for UTC-UT1 not to
+exceed 0.9.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>dtstr</strong><span class="classifier">sequence of str</span></dt><dd><p>Date + time representation, format is fairly open.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>isostr</strong><span class="classifier">array of str</span></dt><dd><p>Representation of <code class="docutils literal notranslate"><span class="pre">dtstr</span></code> formatted according to <code class="docutils literal notranslate"><span class="pre">fmt</span></code>.
+Always a new sequence even if contents are identical to <code class="docutils literal notranslate"><span class="pre">dtstr</span></code>.</p>
+</dd>
+<dt><strong>UTC</strong><span class="classifier">array of datetime.datetime</span></dt><dd><p>The closest-possible rendering of UTC time before or equal to <code class="docutils literal notranslate"><span class="pre">dtstr</span></code>.</p>
+</dd>
+<dt><strong>offset</strong><span class="classifier">array of int</span></dt><dd><p>Amount (in microseconds) to add to <code class="docutils literal notranslate"><span class="pre">UTC</span></code> to get the real time.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>fmt</strong><span class="classifier">str, optional</span></dt><dd><p>Format appropriate for <a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime.strftime" title="(in Python v3.13)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">strftime()</span></code></a> for
+rendering the output time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.time.extract_YYYYMMDD">
+<span class="sig-prename descclassname"><span class="pre">spacepy.time.</span></span><span class="sig-name descname"><span class="pre">extract_YYYYMMDD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/time.html#extract_YYYYMMDD"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.time.extract_YYYYMMDD" title="Link to this definition">¶</a></dt>
+<dd><p>go through a string and extract the first valid YYYYMMDD as a datetime</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>filename</strong><span class="classifier">str</span></dt><dd><p>string to parse for a YYYYMMDD format</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">(None, datetime.datetime)</span></dt><dd><p>the datetime found in the string or None</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.time.leapyear">
+<span class="sig-prename descclassname"><span class="pre">spacepy.time.</span></span><span class="sig-name descname"><span class="pre">leapyear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numdays</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/time.html#leapyear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.time.leapyear" title="Link to this definition">¶</a></dt>
+<dd><p>return an array of boolean leap year,
+a lot faster than the mod method that is normally seen</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>year</strong><span class="classifier">array_like</span></dt><dd><p>array of years</p>
+</dd>
+<dt><strong>numdays</strong><span class="classifier">boolean (optional)</span></dt><dd><p>optionally return the number of days in the year</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">numpy array</span></dt><dd><p>an array of boolean leap year, or array of number of days</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.time</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spacepy</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">leapyear</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">+</span><span class="mi">1998</span><span class="p">)</span>
+<span class="go">[False, False,  True, False, False, False,  True, False, False,</span>
+<span class="go">      False,  True, False, False, False,  True]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.time.no_tzinfo">
+<span class="sig-prename descclassname"><span class="pre">spacepy.time.</span></span><span class="sig-name descname"><span class="pre">no_tzinfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/time.html#no_tzinfo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.time.no_tzinfo" title="Link to this definition">¶</a></dt>
+<dd><p>take in an arraylike of datetime objects and return them without any tzinfo</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>dt</strong><span class="classifier">iterable</span></dt><dd><p>iterable of datetime.datetime objects</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">list</span></dt><dd><p>list of datetime.datetime without tzinfo</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.time.randomDate">
+<span class="sig-prename descclassname"><span class="pre">spacepy.time.</span></span><span class="sig-name descname"><span class="pre">randomDate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dt1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tzinfo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sorted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/time.html#randomDate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.time.randomDate" title="Link to this definition">¶</a></dt>
+<dd><p>Return a (or many) random datetimes between two given dates</p>
+<p>Convention used is dt1 &lt;= rand &lt; dt2. Leap second times will
+not be returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>dt1</strong><span class="classifier">datetime.datetime</span></dt><dd><p>start date for the the random date</p>
+</dd>
+<dt><strong>dt2</strong><span class="classifier">datetime.datetime</span></dt><dd><p>stop date for the the random date</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">datetime.datetime or numpy.ndarray of datetime.datetime</span></dt><dd><p>the new time for the next call to EventTimer</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>N</strong><span class="classifier">int (optional)</span></dt><dd><p>the number of random dates to generate (defualt=1)</p>
+</dd>
+<dt><strong>tzinfo</strong><span class="classifier">bool (optional)</span></dt><dd><p>maintain the tzinfo of the input datetimes (default=False)</p>
+</dd>
+<dt><strong>sorted</strong><span class="classifier">bool (optional)</span></dt><dd><p>return the times sorted (default=False)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.time.sec2hms">
+<span class="sig-prename descclassname"><span class="pre">spacepy.time.</span></span><span class="sig-name descname"><span class="pre">sec2hms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rounding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">days</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtobj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/time.html#sec2hms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.time.sec2hms" title="Link to this definition">¶</a></dt>
+<dd><p>Convert seconds of day to hours, minutes, seconds</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>sec</strong><span class="classifier">float</span></dt><dd><p>Seconds of day</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">[hours, minutes, seconds] or datetime.timedelta</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>rounding</strong><span class="classifier">boolean</span></dt><dd><p>set for integer seconds</p>
+</dd>
+<dt><strong>days</strong><span class="classifier">boolean</span></dt><dd><p>set to wrap around day (i.e. modulo 86400)</p>
+</dd>
+<dt><strong>dtobj</strong><span class="classifier">boolean</span></dt><dd><p>set to return a timedelta object</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.time.tickrange">
+<span class="sig-prename descclassname"><span class="pre">spacepy.time.</span></span><span class="sig-name descname"><span class="pre">tickrange</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deltadays</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/time.html#tickrange"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.time.tickrange" title="Link to this definition">¶</a></dt>
+<dd><p>return a Ticktock range given the start, end, and delta</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>start</strong><span class="classifier">string or number</span></dt><dd><p>start time (ISO standard string and UTC/datetime do not require a dtype)</p>
+</dd>
+<dt><strong>end</strong><span class="classifier">string or number</span></dt><dd><p>last possible time in series (excluded unless end=start+n*step for integer n)</p>
+</dd>
+<dt><strong>deltadays</strong><span class="classifier">float or timedelta</span></dt><dd><p>step in units of days (float); or datetime timedelta object</p>
+</dd>
+<dt><strong>dtype</strong><span class="classifier">string (optional)</span></dt><dd><p>data type for start, end; e.g. ISO, UTC, RTD, etc. see Ticktock for all options</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">Ticktock instance</span></dt><dd><p>ticks</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="spacepy.time.Ticktock.html#spacepy.time.Ticktock" title="spacepy.time.Ticktock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Ticktock</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ticks</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">tickrange</span><span class="p">(</span><span class="s1">&#39;2002-02-01T00:00:00&#39;</span><span class="p">,</span> <span class="s1">&#39;2002-02-10T00:00:00&#39;</span><span class="p">,</span> <span class="n">deltadays</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ticks</span>
+<span class="go">Ticktock( [&#39;2002-02-01T00:00:00&#39;, &#39;2002-02-02T00:00:00&#39;, &#39;2002-02-03T00:00:00&#39;,</span>
+<span class="go">&#39;2002-02-04T00:00:00&#39;] , dtype=ISO)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spacepy.time.valid_YYYYMMDD">
+<span class="sig-prename descclassname"><span class="pre">spacepy.time.</span></span><span class="sig-name descname"><span class="pre">valid_YYYYMMDD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inval</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/time.html#valid_YYYYMMDD"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.time.valid_YYYYMMDD" title="Link to this definition">¶</a></dt>
+<dd><p>if inval is valid YYYYMMDD return True, False otherwise</p>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.time</a><ul>
+<li><a class="reference internal" href="#spacepy.time.doy2date"><code class="docutils literal notranslate"><span class="pre">doy2date()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.time.dtstr2iso"><code class="docutils literal notranslate"><span class="pre">dtstr2iso()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.time.extract_YYYYMMDD"><code class="docutils literal notranslate"><span class="pre">extract_YYYYMMDD()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.time.leapyear"><code class="docutils literal notranslate"><span class="pre">leapyear()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.time.no_tzinfo"><code class="docutils literal notranslate"><span class="pre">no_tzinfo()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.time.randomDate"><code class="docutils literal notranslate"><span class="pre">randomDate()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.time.sec2hms"><code class="docutils literal notranslate"><span class="pre">sec2hms()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.time.tickrange"><code class="docutils literal notranslate"><span class="pre">tickrange()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.time.valid_YYYYMMDD"><code class="docutils literal notranslate"><span class="pre">valid_YYYYMMDD()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="spacepy.seapy.SeaBase.html"
+                          title="previous chapter">spacepy.seapy.SeaBase</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="spacepy.time.Ticktock.html"
+                          title="next chapter">spacepy.time.Ticktock</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/autosummary/spacepy.time.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.time.Ticktock.html" title="spacepy.time.Ticktock"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.seapy.SeaBase.html" title="spacepy.seapy.SeaBase"
+             >previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.time</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    </div>
+  </body>
+</html>

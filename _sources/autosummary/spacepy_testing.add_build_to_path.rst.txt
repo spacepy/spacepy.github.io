@@ -1,6 +1,6 @@
-﻿spacepy_testing.add_build_to_path
-=================================
+﻿spacepy\_testing.add\_build\_to\_path
+=====================================
 
 .. currentmodule:: spacepy_testing
 
-.. autofunction:: spacepy_testing.add_build_to_path
+.. autofunction:: add_build_to_path

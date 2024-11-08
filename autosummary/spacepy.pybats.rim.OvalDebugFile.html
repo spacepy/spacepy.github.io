@@ -1,28 +1,24 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.pybats.rim.OvalDebugFile &#8212; SpacePy v0.6.0 Manual</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <title>spacepy.pybats.rim.OvalDebugFile &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    
-    <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="spacepy.pybats.rim.get_iono_cb" href="spacepy.pybats.rim.get_iono_cb.html" />
+    <link rel="next" title="spacepy.pybats.trace2d" href="spacepy.pybats.trace2d.html" />
     <link rel="prev" title="spacepy.pybats.rim.Iono" href="spacepy.pybats.rim.Iono.html" /> 
   </head><body>
 
@@ -40,7 +36,7 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.rim.get_iono_cb.html" title="spacepy.pybats.rim.get_iono_cb"
+          <a href="spacepy.pybats.trace2d.html" title="spacepy.pybats.trace2d"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="spacepy.pybats.rim.Iono.html" title="spacepy.pybats.rim.Iono"
@@ -50,17 +46,181 @@
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pybats.html" >PyBats - SWMF &amp; BATS-R-US Analysis Tools</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="spacepy.pybats.rim.html" accesskey="U">spacepy.pybats.rim</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" >spacepy.pybats</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="spacepy.pybats.rim.html" accesskey="U">spacepy.pybats.rim</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.pybats.rim.OvalDebugFile</a></li> 
       </ul>
     </div>
+  
 
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="spacepy-pybats-rim-ovaldebugfile">
+<h1>spacepy.pybats.rim.OvalDebugFile<a class="headerlink" href="#spacepy-pybats-rim-ovaldebugfile" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="spacepy.pybats.rim.OvalDebugFile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pybats.rim.</span></span><span class="sig-name descname"><span class="pre">OvalDebugFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">infile</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/rim.html#OvalDebugFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.rim.OvalDebugFile" title="Link to this definition">¶</a></dt>
+<dd><p>The auroral oval calculations in RIM may spit out special debug files that
+are extremely useful.  This class handles reading and plotting the data
+contained within those files.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.rim.OvalDebugFile.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">infile</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/rim.html#OvalDebugFile.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.rim.OvalDebugFile.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Base class for “Data Model” representation data</p>
+<p>Abstract method, reimplement</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>attrs</strong><span class="classifier">dict</span></dt><dd><p>dictionary of the attributes of the SpaceData object</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.rim.OvalDebugFile.add_oval_line" title="spacepy.pybats.rim.OvalDebugFile.add_oval_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_oval_line</span></code></a>(time, *args, **kwargs)</p></td>
+<td><p>Adds the location of the auroral oval at time <em>time</em> as a line plot on to <em>target</em>, which must be a Matplotlib figure/axes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.rim.OvalDebugFile.get_oval" title="spacepy.pybats.rim.OvalDebugFile.get_oval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_oval</span></code></a>(time[, interp])</p></td>
+<td><p>Given a datetime, <em>time</em>, interpolate the oval position to that time.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="#spacepy.pybats.rim.OvalDebugFile.attrs" title="spacepy.pybats.rim.OvalDebugFile.attrs"><code class="xref py py-data docutils literal notranslate"><span class="pre">attrs</span></code></a></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.rim.OvalDebugFile.add_oval_line">
+<span class="sig-name descname"><span class="pre">add_oval_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/rim.html#OvalDebugFile.add_oval_line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.rim.OvalDebugFile.add_oval_line" title="Link to this definition">¶</a></dt>
+<dd><p>Adds the location of the auroral oval at time <em>time</em> as a line plot on to
+<em>target</em>, which must be a Matplotlib figure/axes.</p>
+<p>If <em>target</em> not given, a new axes object is created.  If <em>target</em> is
+not an existing axes object, a new axes object is created and customized
+to be an ionosphere polar plot.</p>
+<p>Extra arguments/kwargs are sent to <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot" title="(in Matplotlib v3.9.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">integer or datetime</span></dt><dd><p>Sets the time at which to plot the line.  If an integer is used,
+the integer is used to index the internal array naively.  If a
+datetime object is given and is within the bounds of self[‘time’],
+the oval location will be interpolated to <em>time</em>.  Control of the
+interpolation happens via the <em>interp</em> keyword.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>fig</strong><span class="classifier">matplotlib figure object</span></dt><dd></dd>
+<dt><strong>ax</strong><span class="classifier">matplotlib axes object</span></dt><dd></dd>
+<dt><strong>line</strong><span class="classifier">matplotlib line object</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>target</strong><span class="classifier">Figure or Axes</span></dt><dd><p>If None (default), a new figure is generated from scratch.
+If a matplotlib Figure object, a new axis is created
+to fill that figure.
+If a matplotlib Axes object, the plot is placed
+into that axis.</p>
+</dd>
+<dt><strong>loc</strong><span class="classifier">int</span></dt><dd><p>Use to specify the subplot placement of the axis
+(e.g. loc=212, etc.) Used if target is a Figure or None.
+Default 111 (single plot).</p>
+</dd>
+<dt><strong>interp</strong><span class="classifier">bool</span></dt><dd><p>Control the behavior of time interpolation when the <em>time</em> argument
+is given as a datetime object.  Defaults to <strong>True</strong>, meaning that
+oval location is interpolated in time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.rim.OvalDebugFile.get_oval">
+<span class="sig-name descname"><span class="pre">get_oval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/rim.html#OvalDebugFile.get_oval"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.rim.OvalDebugFile.get_oval" title="Link to this definition">¶</a></dt>
+<dd><p>Given a datetime, <em>time</em>, interpolate the oval position to that time.
+If <em>time</em> is outside the range of self[‘time’], an exception will be
+raised.  Linear interpolation is used unless kwarg <em>interp</em> is False.
+In that case, the value of the oval nearest to <em>time</em> will be used
+without interpolation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">datetime.datetime</span></dt><dd><p>The time at which the oval is requested.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>oval</strong><span class="classifier">numpy.ndarray</span></dt><dd><p>Oval location at time <em>time</em> in radians.  Zero corresponds to local
+noon.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>interp</strong><span class="classifier">bool</span></dt><dd><p>Set interpolation behavior.  If <strong>True</strong>, linear interpolation is
+used.  If <strong>False</strong>, the oval location nearest to <em>time</em> is used
+without interpolation.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spacepy.pybats.rim.OvalDebugFile.attrs">
+<span class="sig-name descname"><span class="pre">attrs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping" title="(in Python v3.13)"><span class="pre">collections.abc.Mapping</span></a></em><a class="headerlink" href="#spacepy.pybats.rim.OvalDebugFile.attrs" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/logo.png" alt="Logo"/>
             </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.pybats.rim.OvalDebugFile</a><ul>
+<li><a class="reference internal" href="#spacepy.pybats.rim.OvalDebugFile"><code class="docutils literal notranslate"><span class="pre">OvalDebugFile</span></code></a><ul>
+<li><a class="reference internal" href="#spacepy.pybats.rim.OvalDebugFile.__init__"><code class="docutils literal notranslate"><span class="pre">OvalDebugFile.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.rim.OvalDebugFile.add_oval_line"><code class="docutils literal notranslate"><span class="pre">OvalDebugFile.add_oval_line()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.rim.OvalDebugFile.get_oval"><code class="docutils literal notranslate"><span class="pre">OvalDebugFile.get_oval()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.rim.OvalDebugFile.attrs"><code class="docutils literal notranslate"><span class="pre">OvalDebugFile.attrs</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div>
     <h4>Previous topic</h4>
     <p class="topless"><a href="spacepy.pybats.rim.Iono.html"
@@ -68,8 +228,8 @@
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="spacepy.pybats.rim.get_iono_cb.html"
-                          title="next chapter">spacepy.pybats.rim.get_iono_cb</a></p>
+    <p class="topless"><a href="spacepy.pybats.trace2d.html"
+                          title="next chapter">spacepy.pybats.trace2d</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -78,7 +238,7 @@
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -86,31 +246,8 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <section id="spacepy-pybats-rim-ovaldebugfile">
-<h1>spacepy.pybats.rim.OvalDebugFile<a class="headerlink" href="#spacepy-pybats-rim-ovaldebugfile" title="Permalink to this heading">¶</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="spacepy.pybats.rim.OvalDebugFile">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pybats.rim.</span></span><span class="sig-name descname"><span class="pre">OvalDebugFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">infile</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/rim.html#OvalDebugFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.rim.OvalDebugFile" title="Permalink to this definition">¶</a></dt>
-<dd><p>The auroral oval calculations in RIM may spit out special debug files that
-are extremely useful.  This class handles reading and plotting the data
-contained within those files.</p>
-</dd></dl>
-
-</section>
-
-
-            <div class="clearer"></div>
-          </div>
         </div>
       </div>
       <div class="clearer"></div>
@@ -125,7 +262,7 @@ contained within those files.</p>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.rim.get_iono_cb.html" title="spacepy.pybats.rim.get_iono_cb"
+          <a href="spacepy.pybats.trace2d.html" title="spacepy.pybats.trace2d"
              >next</a> |</li>
         <li class="right" >
           <a href="spacepy.pybats.rim.Iono.html" title="spacepy.pybats.rim.Iono"
@@ -135,14 +272,15 @@ contained within those files.</p>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pybats.html" >PyBats - SWMF &amp; BATS-R-US Analysis Tools</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="spacepy.pybats.rim.html" >spacepy.pybats.rim</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" >spacepy.pybats</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="spacepy.pybats.rim.html" >spacepy.pybats.rim</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.pybats.rim.OvalDebugFile</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2024, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
 </html>

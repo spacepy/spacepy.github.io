@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>spacepy.pybats.qotree &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/plot_directive.css" />
+    
+    <script src="../../../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+    <link rel="icon" href="../../../_static/spacepy_favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../../../index.html"><img src="../../../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../../../search.html">search</a>|&nbsp;</li>
+       <li><a href="../../../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="../pybats.html" accesskey="U">spacepy.pybats</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.pybats.qotree</a></li> 
+      </ul>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for spacepy.pybats.qotree</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">A class for building QO trees for :class:`~spacepy.pybats.bats.Bats2d`</span>
+<span class="sd">objects.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+
+<div class="viewcode-block" id="QTree">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.qotree.QTree.html#spacepy.pybats.qotree.QTree">[docs]</a>
+<span class="k">class</span> <span class="nc">QTree</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Base class for Quad/Oct tree objects assuming cell-centered grid points</span>
+<span class="sd">    in a rectangular non-regular layout. QTree works for square blocks</span>
+<span class="sd">    only (e.g., blocks who have the same number of points in each dimension).</span>
+
+<span class="sd">    The ``blocksize`` kwarg sets the size of the blocks.</span>
+<span class="sd">    As BATS-R-US typically uses a block size of 8 (i.e., blocks are 8x8x8</span>
+<span class="sd">    points), the default value of ``blocksize`` is 8.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+<div class="viewcode-block" id="QTree.__init__">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.qotree.QTree.html#spacepy.pybats.qotree.QTree.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">blocksize</span><span class="o">=</span><span class="mi">8</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Build QO Tree for input grid.  Grid should be a NxM numpy array where</span>
+<span class="sd">        N is the number of dimensions and M is the number of points.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">where</span><span class="p">,</span> <span class="n">lexsort</span><span class="p">,</span> <span class="n">inf</span>
+
+        <span class="c1"># Set size of each block</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">blocksize</span> <span class="o">=</span> <span class="n">blocksize</span>
+
+        <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">npoints</span><span class="p">)</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">shape</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Sorry, QTrees are for 2D grids only.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tree</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1"># Find limits of cell-centered grid.</span>
+        <span class="c1"># Get values and locations of grid max/min</span>
+        <span class="n">minloc</span><span class="p">,</span> <span class="n">xmin</span> <span class="o">=</span> <span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">argmin</span><span class="p">(),</span> <span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+        <span class="n">maxloc</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">argmax</span><span class="p">(),</span> <span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <span class="c1"># Distance from min X value is grid size at that point.</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">((</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">-</span><span class="n">xmin</span><span class="p">)</span><span class="o">**</span><span class="mf">2.</span> <span class="o">+</span> <span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">-</span><span class="n">grid</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:][</span><span class="n">minloc</span><span class="p">])</span><span class="o">**</span><span class="mf">2.</span><span class="p">)</span>
+        <span class="n">ml</span> <span class="o">=</span> <span class="p">(</span><span class="n">where</span><span class="p">(</span><span class="n">r</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="mi">10000</span><span class="p">))</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+        <span class="c1"># Actual min is not cell center, but cell boundary.</span>
+        <span class="n">xmin</span> <span class="o">-=</span> <span class="n">ml</span><span class="o">/</span><span class="mf">2.</span>
+        <span class="c1"># Repeat for Xmax.</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">((</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">-</span><span class="n">xmax</span><span class="p">)</span><span class="o">**</span><span class="mf">2.</span> <span class="o">+</span>
+                 <span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">-</span><span class="n">grid</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:][</span><span class="n">maxloc</span><span class="p">])</span><span class="o">**</span><span class="mf">2.</span><span class="p">)</span>
+        <span class="n">ml</span> <span class="o">=</span> <span class="p">(</span><span class="n">where</span><span class="p">(</span><span class="n">r</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="mi">10000</span><span class="p">))</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+        <span class="n">xmax</span> <span class="o">+=</span> <span class="n">ml</span><span class="o">/</span><span class="mf">2.</span>
+
+        <span class="c1"># Repeat for Ymin/max.</span>
+        <span class="n">minloc</span><span class="p">,</span> <span class="n">ymin</span> <span class="o">=</span> <span class="n">grid</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">argmin</span><span class="p">(),</span> <span class="n">grid</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+        <span class="n">maxloc</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="n">grid</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">argmax</span><span class="p">(),</span> <span class="n">grid</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+        <span class="n">r</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">((</span><span class="n">grid</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">-</span><span class="n">ymin</span><span class="p">)</span><span class="o">**</span><span class="mf">2.</span> <span class="o">+</span> <span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">-</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:][</span><span class="n">minloc</span><span class="p">])</span><span class="o">**</span><span class="mf">2.</span><span class="p">)</span>
+        <span class="n">ml</span> <span class="o">=</span> <span class="p">(</span><span class="n">where</span><span class="p">(</span><span class="n">r</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="mi">10000</span><span class="p">))</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+        <span class="n">ymin</span> <span class="o">-=</span> <span class="n">ml</span><span class="o">/</span><span class="mf">2.</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">((</span><span class="n">grid</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">-</span><span class="n">ymax</span><span class="p">)</span><span class="o">**</span><span class="mf">2.</span> <span class="o">+</span> <span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">-</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:][</span><span class="n">maxloc</span><span class="p">])</span><span class="o">**</span><span class="mf">2.</span><span class="p">)</span>
+        <span class="n">ml</span> <span class="o">=</span> <span class="p">(</span><span class="n">where</span><span class="p">(</span><span class="n">r</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="mi">10000</span><span class="p">))</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+        <span class="n">ymax</span> <span class="o">+=</span> <span class="n">ml</span><span class="o">/</span><span class="mf">2.</span>
+
+        <span class="c1"># Some things all trees should know about themselves.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nleafs</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">aspect_ratio</span> <span class="o">=</span> <span class="p">(</span><span class="n">xmax</span><span class="o">-</span><span class="n">xmin</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">ymax</span><span class="o">-</span><span class="n">ymin</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dx_min</span> <span class="o">=</span> <span class="n">inf</span>  <span class="c1"># Minimum and maximum spacing</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dx_max</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>  <span class="c1"># over all leafs in tree.</span>
+
+        <span class="c1"># Use spatial range of grid to seed root of QTree.</span>
+        <span class="bp">self</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">locs</span> <span class="o">=</span> <span class="n">lexsort</span><span class="p">((</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:],</span> <span class="n">grid</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_spawn_kids</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nbranch</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_spawn_kids</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Internal recursive method for populating tree.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">log2</span><span class="p">,</span> <span class="n">meshgrid</span><span class="p">,</span> <span class="n">mod</span><span class="p">,</span> <span class="n">linspace</span>
+
+        <span class="c1"># Start by limiting locations to within block limits:</span>
+        <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">locs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">locs</span><span class="p">[(</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:][</span><span class="bp">self</span><span class="o">.</span><span class="n">locs</span><span class="p">]</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lim</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span>
+                                 <span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:][</span><span class="bp">self</span><span class="o">.</span><span class="n">locs</span><span class="p">]</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lim</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;</span>
+                                 <span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:][</span><span class="bp">self</span><span class="o">.</span><span class="n">locs</span><span class="p">]</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lim</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">&amp;</span>
+                                 <span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:][</span><span class="bp">self</span><span class="o">.</span><span class="n">locs</span><span class="p">]</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lim</span><span class="p">[</span><span class="mi">3</span><span class="p">])]</span>
+        <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">npts</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">locs</span><span class="o">.</span><span class="n">size</span>
+
+        <span class="c1"># Bats blocks are nPoints by nPoints,</span>
+        <span class="c1"># blocks must have no less than nPts points.</span>
+        <span class="c1"># Stop branching as soon as possible (e.g. combine blocks of like dx).</span>
+        <span class="c1"># Here, npts=self.blocksize**2 * 2^a</span>
+        <span class="c1"># 2^a is the number of complete blocks of size blocksize**2 within the</span>
+        <span class="c1"># current group of points. If &#39;a&#39; is non-integer, we include blocks</span>
+        <span class="c1"># of different grid spacing.</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">log2</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">npts</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">blocksize</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="c1"># Grab some grid information to be used in evaluating current block:</span>
+        <span class="n">xnow</span> <span class="o">=</span> <span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:][</span><span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">locs</span><span class="p">]</span>
+        <span class="n">xmax</span><span class="p">,</span> <span class="n">xmin</span> <span class="o">=</span> <span class="n">xnow</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">xnow</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="n">a</span><span class="p">:</span>
+            <span class="c1"># integer &#39;a&#39; implies correct number of points to be a &quot;leaf&quot;, but</span>
+            <span class="c1"># more investigation required.</span>
+            <span class="c1"># Approximate dx assuming a proper block.</span>
+            <span class="n">dx</span> <span class="o">=</span> <span class="p">(</span><span class="n">xmax</span><span class="o">-</span><span class="n">xmin</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">npts</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+            <span class="c1"># Count points along x=xmax and x=xmin.  These are equal in Leafs.</span>
+            <span class="n">nxmin</span> <span class="o">=</span> <span class="n">xnow</span><span class="p">[</span><span class="n">xnow</span> <span class="o">==</span> <span class="n">xmin</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
+            <span class="n">nxmax</span> <span class="o">=</span> <span class="n">xnow</span><span class="p">[</span><span class="n">xnow</span> <span class="o">==</span> <span class="n">xmax</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
+
+            <span class="c1"># Is block square? Is it integer multiple of other blocks?</span>
+            <span class="n">blksize</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">npts</span><span class="p">))</span>
+            <span class="n">issquare</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">nxmax</span> <span class="o">==</span> <span class="n">nxmin</span> <span class="o">==</span> <span class="n">blksize</span><span class="p">)</span>
+
+            <span class="c1"># Check for uniform grid spacing (only if a &quot;square&quot; block):</span>
+            <span class="n">isuniform</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">if</span> <span class="n">issquare</span><span class="p">:</span>
+                <span class="n">temploc</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">locs</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">blksize</span><span class="p">,</span> <span class="n">blksize</span><span class="p">))</span>
+                <span class="n">xsquare</span> <span class="o">=</span> <span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:][</span><span class="n">temploc</span><span class="p">]</span>
+                <span class="n">ysquare</span> <span class="o">=</span> <span class="n">grid</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:][</span><span class="n">temploc</span><span class="p">]</span>
+                <span class="n">dxblk</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xsquare</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="p">:])</span> <span class="o">-</span> <span class="nb">abs</span><span class="p">(</span><span class="n">xsquare</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:])</span>
+                <span class="n">dyblk</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ysquare</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:])</span> <span class="o">-</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ysquare</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">isuniform</span> <span class="o">=</span> <span class="n">dxblk</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">==</span> <span class="n">dxblk</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> \
+                    <span class="o">==</span> <span class="n">dyblk</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">==</span> <span class="n">dyblk</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+            <span class="c1"># Define leaf as area of constant dx (using approx above)</span>
+            <span class="c1"># or npts=a*blocksize**2 where &quot;a&quot; is an integer.</span>
+            <span class="k">if</span> <span class="n">issquare</span> <span class="ow">and</span> <span class="n">isuniform</span><span class="p">:</span>
+                <span class="c1"># An NxN block can be considered a &quot;leaf&quot; or stopping point</span>
+                <span class="c1"># if above criteria are met.  Leafs must &quot;know&quot; the</span>
+                <span class="c1"># indices of the x,y points located inside of them as a</span>
+                <span class="c1"># grid and also know the bounding coords of the grid cells.</span>
+                <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">isLeaf</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">npts</span><span class="p">))</span>
+
+                <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">locs</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">locs</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">blksize</span><span class="p">,</span> <span class="n">blksize</span><span class="p">))</span>
+                <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">dx</span> <span class="o">=</span> <span class="n">dx</span>
+                <span class="k">if</span> <span class="n">dx</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">dx_max</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">dx_max</span> <span class="o">=</span> <span class="n">dx</span>
+                <span class="k">if</span> <span class="n">dx</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">dx_min</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">dx_min</span> <span class="o">=</span> <span class="n">dx</span>
+                <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">cells</span> <span class="o">=</span> <span class="n">meshgrid</span><span class="p">(</span>
+                    <span class="n">linspace</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lim</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">blksize</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span>
+                    <span class="n">linspace</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lim</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lim</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">blksize</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nleafs</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">return</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">npts</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">blocksize</span><span class="o">**</span><span class="mi">2</span><span class="p">):</span>
+            <span class="c1"># If we do not reach a true leaf but have few points,</span>
+            <span class="c1"># we likely have hit an interface surface.  This is an</span>
+            <span class="c1"># interface region: the space between two blocks of</span>
+            <span class="c1"># different resolution.  Points from **both** resoultions</span>
+            <span class="c1"># are included in the output file.  Create a leaf that uses the</span>
+            <span class="c1"># smaller of the two and discards the rest.</span>
+            <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">isLeaf</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Interfaces are considered leafs</span>
+
+            <span class="c1"># The number of points along each dimension should follow</span>
+            <span class="c1"># this relationship at interface blocks:</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">npts</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">!=</span> <span class="n">a</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;Failure to handle interface &quot;</span> <span class="o">+</span>
+                    <span class="s2">&quot;surface!  Please report to Spacepy devs.&quot;</span><span class="p">)</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+            <span class="c1"># Calculate dx based on this value:</span>
+            <span class="n">dx</span> <span class="o">=</span> <span class="p">(</span><span class="n">xmax</span><span class="o">-</span><span class="n">xmin</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+            <span class="c1"># Refine locs so that only multiples of dx are included:</span>
+            <span class="n">subloc</span> <span class="o">=</span> <span class="n">mod</span><span class="p">(</span><span class="n">xnow</span><span class="o">-</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:][</span><span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">locs</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">dx</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">locs</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">locs</span><span class="p">[</span><span class="n">subloc</span><span class="p">]</span>
+
+            <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">locs</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">locs</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">))</span>
+            <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">dx</span> <span class="o">=</span> <span class="n">dx</span>
+            <span class="k">if</span> <span class="n">dx</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">dx_max</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dx_max</span> <span class="o">=</span> <span class="n">dx</span>
+            <span class="k">if</span> <span class="n">dx</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">dx_min</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dx_min</span> <span class="o">=</span> <span class="n">dx</span>
+            <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">cells</span> <span class="o">=</span> <span class="n">meshgrid</span><span class="p">(</span>
+                    <span class="n">linspace</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lim</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">blksize</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span>
+                    <span class="n">linspace</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lim</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lim</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">blksize</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nleafs</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">return</span>
+
+        <span class="c1"># If above criteria are not met, this block is</span>
+        <span class="c1"># not a constant-resolution zone.</span>
+        <span class="c1"># Subdivide section into four new ones (8 if oct tree)</span>
+        <span class="n">dx</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lim</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="mf">2.0</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">dx</span><span class="p">,</span>
+             <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">dx</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lim</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lim</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lim</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+             <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lim</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">dx</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lim</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">dx</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">rd</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)):</span>
+            <span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">+</span><span class="n">dx</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">+</span><span class="n">dx</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_spawn_kids</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+
+<div class="viewcode-block" id="QTree.find_leaf">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.qotree.QTree.html#spacepy.pybats.qotree.QTree.find_leaf">[docs]</a>
+    <span class="k">def</span> <span class="nf">find_leaf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Recursively search for and return the index of the leaf that</span>
+<span class="sd">        contains the input point x, y.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="n">l</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">lim</span>
+
+        <span class="c1"># if point is in this block...</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="ow">and</span> <span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="n">l</span><span class="p">[</span><span class="mi">3</span><span class="p">]):</span>
+            <span class="c1"># ...and it&#39;s a leaf, return this block.</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">isLeaf</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">i</span>
+            <span class="c1"># ...and it&#39;s a branch, dig deeper.</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">rd</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                    <span class="n">answer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_leaf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="n">j</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">answer</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="n">answer</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
+
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">Branch</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tree</span>
+
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="p">)</span>
+
+<div class="viewcode-block" id="QTree.keys">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.qotree.QTree.html#spacepy.pybats.qotree.QTree.keys">[docs]</a>
+    <span class="k">def</span> <span class="nf">keys</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="QTree.mom">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.qotree.QTree.html#spacepy.pybats.qotree.QTree.mom">[docs]</a>
+    <span class="k">def</span> <span class="nf">mom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">2</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">d</span></div>
+
+
+<div class="viewcode-block" id="QTree.leftdaughter">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.qotree.QTree.html#spacepy.pybats.qotree.QTree.leftdaughter">[docs]</a>
+    <span class="k">def</span> <span class="nf">leftdaughter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">k</span><span class="o">*</span><span class="mi">2</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">-</span> <span class="mi">2</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="o">+</span><span class="mi">2</span></div>
+
+
+<div class="viewcode-block" id="QTree.rightdaughter">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.qotree.QTree.html#spacepy.pybats.qotree.QTree.rightdaughter">[docs]</a>
+    <span class="k">def</span> <span class="nf">rightdaughter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">k</span><span class="o">*</span><span class="mi">2</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">+</span> <span class="mi">1</span></div>
+
+
+    <span class="c1"># convenience:</span>
+    <span class="n">rd</span> <span class="o">=</span> <span class="n">rightdaughter</span>
+    <span class="n">ld</span> <span class="o">=</span> <span class="n">leftdaughter</span>
+
+<div class="viewcode-block" id="QTree.plot_res">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.qotree.QTree.html#spacepy.pybats.qotree.QTree.plot_res">[docs]</a>
+    <span class="k">def</span> <span class="nf">plot_res</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">do_label</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">do_fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">tag_leafs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">zlim</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet_r&#39;</span><span class="p">):</span>
+
+        <span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">import</span> <span class="n">get_cmap</span>
+        <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">patheffects</span>
+        <span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LogNorm</span>
+        <span class="kn">from</span> <span class="nn">matplotlib.cm</span> <span class="kn">import</span> <span class="n">ScalarMappable</span>
+
+        <span class="c1"># Create a color map using either zlim as given or max/min resolution.</span>
+        <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dx_min</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dx_max</span>
+        <span class="k">if</span> <span class="n">vmin</span> <span class="o">==</span> <span class="n">vmax</span><span class="p">:</span>
+            <span class="n">vmin</span> <span class="o">*=</span> <span class="mf">0.9</span>
+            <span class="n">vmax</span> <span class="o">*=</span> <span class="mf">1.1</span>
+        <span class="n">cNorm</span> <span class="o">=</span> <span class="n">LogNorm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">cMap</span> <span class="o">=</span> <span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">get_cmap</span><span class="p">(</span><span class="n">cmap</span><span class="p">),</span> <span class="n">norm</span><span class="o">=</span><span class="n">cNorm</span><span class="p">)</span>
+
+        <span class="n">dx_vals</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">isLeaf</span><span class="p">:</span>
+                <span class="n">color</span> <span class="o">=</span> <span class="n">cMap</span><span class="o">.</span><span class="n">to_rgba</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">dx</span><span class="p">)</span>
+                <span class="n">dx_vals</span><span class="p">[</span><span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">dx</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+                <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">plot_res</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">do_fill</span><span class="o">=</span><span class="n">do_fill</span><span class="p">,</span>
+                                   <span class="n">label</span><span class="o">=</span><span class="n">key</span><span class="o">*</span><span class="n">tag_leafs</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">do_label</span><span class="p">:</span>
+
+            <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Resolution:&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.02</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">],</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span>
+                        <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">dx_vals</span><span class="o">.</span><span class="n">keys</span><span class="p">())):</span>
+                <span class="c1"># dx_int = log2(key)</span>
+                <span class="k">if</span> <span class="n">key</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;1/</span><span class="si">%i</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="o">**-</span><span class="mi">1</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%i</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">key</span>
+                <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1"> $R_</span><span class="se">{{</span><span class="s1">E</span><span class="se">}}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.02</span><span class="p">,</span> <span class="mf">0.87</span><span class="o">-</span><span class="n">i</span><span class="o">*</span><span class="mf">0.1</span><span class="p">],</span>
+                            <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cMap</span><span class="o">.</span><span class="n">to_rgba</span><span class="p">(</span><span class="n">key</span><span class="p">),</span>
+                            <span class="n">size</span><span class="o">=</span><span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+                            <span class="n">path_effects</span><span class="o">=</span><span class="p">[</span><span class="n">patheffects</span><span class="o">.</span><span class="n">withStroke</span><span class="p">(</span>
+                                <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">foreground</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)])</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Branch">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.qotree.Branch.html#spacepy.pybats.qotree.Branch">[docs]</a>
+<span class="k">class</span> <span class="nc">Branch</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Base class for branches/leafs along a QO tree.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+<div class="viewcode-block" id="Branch.__init__">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.qotree.Branch.html#spacepy.pybats.qotree.Branch.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lim</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        lim should be a 4 element list of the</span>
+<span class="sd">        dimensional boundaries of the branch.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isLeaf</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lim</span> <span class="o">=</span> <span class="n">lim</span></div>
+
+
+<div class="viewcode-block" id="Branch.plotbox">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.qotree.Branch.html#spacepy.pybats.qotree.Branch.plotbox">[docs]</a>
+    <span class="k">def</span> <span class="nf">plotbox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">lc</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Plot a box encompassing the branch lim onto</span>
+<span class="sd">        axis &#39;ax&#39;.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="kn">from</span> <span class="nn">matplotlib.collections</span> <span class="kn">import</span> <span class="n">LineCollection</span>
+        <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">array</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lim</span>
+        <span class="n">segs</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">array</span><span class="p">([[</span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">l</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="p">[</span><span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">l</span><span class="p">[</span><span class="mi">2</span><span class="p">]]]),</span>
+            <span class="n">array</span><span class="p">([[</span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">l</span><span class="p">[</span><span class="mi">3</span><span class="p">]],</span> <span class="p">[</span><span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">l</span><span class="p">[</span><span class="mi">3</span><span class="p">]]]),</span>
+            <span class="n">array</span><span class="p">([[</span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">l</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="p">[</span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">l</span><span class="p">[</span><span class="mi">3</span><span class="p">]]]),</span>
+            <span class="n">array</span><span class="p">([[</span><span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">l</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="p">[</span><span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">l</span><span class="p">[</span><span class="mi">3</span><span class="p">]]]))</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># max(0, min(.8, -1/40.*l[2]))</span>
+        <span class="n">coll</span> <span class="o">=</span> <span class="n">LineCollection</span><span class="p">(</span><span class="n">segs</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">lc</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">coll</span><span class="p">)</span></div>
+
+        <span class="c1"># ax.plot(l[0:2], [l[2],l[2]], **kwargs)</span>
+        <span class="c1"># ax.plot(l[0:2], [l[3],l[3]], **kwargs)</span>
+        <span class="c1"># ax.plot([l[0],l[0]], l[2:],  **kwargs)</span>
+        <span class="c1"># ax.plot([l[1],l[1]], l[2:],  **kwargs)</span>
+
+<div class="viewcode-block" id="Branch.plot_res">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.qotree.Branch.html#spacepy.pybats.qotree.Branch.plot_res">[docs]</a>
+    <span class="k">def</span> <span class="nf">plot_res</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">do_fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">isLeaf</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Polygon</span>
+        <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">array</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lim</span>
+        <span class="n">verts</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span>
+                <span class="p">[</span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">l</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="p">[</span><span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">l</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span>
+                <span class="p">[</span><span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">l</span><span class="p">[</span><span class="mi">3</span><span class="p">]],</span> <span class="p">[</span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">l</span><span class="p">[</span><span class="mi">3</span><span class="p">]]])</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># max(0, min(.8, -1/40.*l[2]))</span>
+        <span class="n">poly</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">(</span><span class="n">verts</span><span class="p">,</span> <span class="n">closed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="n">fc</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">do_fill</span><span class="p">,</span>
+                       <span class="n">lw</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">label</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="mf">2.0</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">l</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">-</span><span class="n">l</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">/</span><span class="mf">2.0</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">poly</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/logo.png" alt="Logo"/>
+            </a></p>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../../../search.html">search</a>|&nbsp;</li>
+       <li><a href="../../../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="../pybats.html" >spacepy.pybats</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.pybats.qotree</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    </div>
+  </body>
+</html>

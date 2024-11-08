@@ -1,28 +1,24 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.plot.utils.EventClicker &#8212; SpacePy v0.6.0 Manual</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <title>spacepy.plot.utils.EventClicker &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    
-    <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="spacepy.plot.utils.add_logo" href="spacepy.plot.utils.add_logo.html" />
+    <link rel="next" title="spacepy.poppy" href="spacepy.poppy.html" />
     <link rel="prev" title="spacepy.plot.utils" href="spacepy.plot.utils.html" /> 
   </head><body>
 
@@ -40,7 +36,7 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.plot.utils.add_logo.html" title="spacepy.plot.utils.add_logo"
+          <a href="spacepy.poppy.html" title="spacepy.poppy"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="spacepy.plot.utils.html" title="spacepy.plot.utils"
@@ -50,46 +46,13 @@
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../plot.html" >plot - Plot, various specialized plotting functions and associated utilities</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="spacepy.plot.utils.html" accesskey="U">spacepy.plot.utils</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.plot.html" >spacepy.plot</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="spacepy.plot.utils.html" accesskey="U">spacepy.plot.utils</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.plot.utils.EventClicker</a></li> 
       </ul>
     </div>
-
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="../index.html">
-              <img class="logo" src="../_static/logo.png" alt="Logo"/>
-            </a></p>
-  <div>
-    <h4>Previous topic</h4>
-    <p class="topless"><a href="spacepy.plot.utils.html"
-                          title="previous chapter">spacepy.plot.utils</a></p>
-  </div>
-  <div>
-    <h4>Next topic</h4>
-    <p class="topless"><a href="spacepy.plot.utils.add_logo.html"
-                          title="next chapter">spacepy.plot.utils.add_logo</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/autosummary/spacepy.plot.utils.EventClicker.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -97,10 +60,10 @@
           <div class="body" role="main">
             
   <section id="spacepy-plot-utils-eventclicker">
-<h1>spacepy.plot.utils.EventClicker<a class="headerlink" href="#spacepy-plot-utils-eventclicker" title="Permalink to this heading">¶</a></h1>
+<h1>spacepy.plot.utils.EventClicker<a class="headerlink" href="#spacepy-plot-utils-eventclicker" title="Link to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="spacepy.plot.utils.EventClicker">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.plot.utils.</span></span><span class="sig-name descname"><span class="pre">EventClicker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_phases</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#EventClicker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.plot.utils.EventClicker" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.plot.utils.</span></span><span class="sig-name descname"><span class="pre">EventClicker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_phases</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#EventClicker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.plot.utils.EventClicker" title="Link to this definition">¶</a></dt>
 <dd><p>Presents a provided figure (normally a time series) and provides
 an interface to mark events shown in the plot. The user interface
 is explained in <a class="reference internal" href="#spacepy.plot.utils.EventClicker.analyze" title="spacepy.plot.utils.EventClicker.analyze"><code class="xref py py-meth docutils literal notranslate"><span class="pre">analyze()</span></code></a> and results are returned
@@ -202,6 +165,53 @@ provided subplot will be used. This should usually be correct.</p>
 <span class="go">True</span>
 </pre></div>
 </div>
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.plot.utils.EventClicker.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_phases</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#EventClicker.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.plot.utils.EventClicker.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize EventClicker</p>
+<dl class="field-list simple">
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ax</strong><span class="classifier">maplotlib.axes.AxesSubplot</span></dt><dd><p>The subplot to display and grab data from. If not provided, the
+current subplot is grabbed from gca() (Lookup of the current
+subplot is done when <a class="reference internal" href="#spacepy.plot.utils.EventClicker.analyze" title="spacepy.plot.utils.EventClicker.analyze"><code class="xref py py-meth docutils literal notranslate"><span class="pre">analyze()</span></code></a> is called.)</p>
+</dd>
+<dt><strong>n_phases</strong><span class="classifier">int (optional, default 1)</span></dt><dd><p>number of phases to an event, i.e. number of subevents to mark.
+E.g. for a storm where one wants the onset and the minimum, set
+n_phases to 2 and double click on the onset, then minimum, and
+then the next double-click will be onset of the next storm.</p>
+</dd>
+<dt><strong>interval</strong><span class="classifier">(optional)</span></dt><dd><p>Size of the X window to show. This should be in units that can
+be added to/subtracted from individual elements of x (e.g.
+timedelta if x is a series of datetime.) Defaults to showing
+the entire plot.</p>
+</dd>
+<dt><strong>auto_interval</strong><span class="classifier">boolean (optional)</span></dt><dd><p>Automatically adjust interval based on the average distance
+between selected events. Default is True if interval is not
+specified; False if interval is specified.</p>
+</dd>
+<dt><strong>auto_scale</strong><span class="classifier">boolean (optional, default True):</span></dt><dd><p>Automatically adjust the Y axis to match the data as the X
+axis is panned.</p>
+</dd>
+<dt><strong>ymin</strong><span class="classifier">(optional, default None)</span></dt><dd><p>If auto_scale is True, the bottom of the autoscaled Y axis will
+never be above ymin (i.e. ymin will always be shown on the plot).
+This prevents the autoscaling from blowing up very small features
+in mostly flat portions of the plot. The user can still manually
+zoom in past this point. The autoscaler will always zoom out to
+show the data.</p>
+</dd>
+<dt><strong>ymax</strong><span class="classifier">(optional, default None)</span></dt><dd><p>Similar to ymin, but the top of the Y axis will never be below ymax.</p>
+</dd>
+<dt><strong>line</strong><span class="classifier">matplotlib.lines.Line2D (optional)</span></dt><dd><p>Specify the matplotlib line object to use for autoscaling the
+Y axis. If this is not specified, the first line object on the
+provided subplot will be used. This should usually be correct.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.plot.utils.EventClicker.analyze" title="spacepy.plot.utils.EventClicker.analyze"><code class="xref py py-obj docutils literal notranslate"><span class="pre">analyze</span></code></a>()</p></td>
@@ -217,7 +227,7 @@ provided subplot will be used. This should usually be correct.</p>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="spacepy.plot.utils.EventClicker.analyze">
-<span class="sig-name descname"><span class="pre">analyze</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#EventClicker.analyze"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.plot.utils.EventClicker.analyze" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">analyze</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#EventClicker.analyze"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.plot.utils.EventClicker.analyze" title="Link to this definition">¶</a></dt>
 <dd><p>Displays the figure provided and allows the user to select events.</p>
 <p>All matplot lib controls for zooming, panning, etc. the figure
 remain active.</p>
@@ -251,7 +261,7 @@ the data.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="spacepy.plot.utils.EventClicker.get_events">
-<span class="sig-name descname"><span class="pre">get_events</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#EventClicker.get_events"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.plot.utils.EventClicker.get_events" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_events</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#EventClicker.get_events"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.plot.utils.EventClicker.get_events" title="Link to this definition">¶</a></dt>
 <dd><p>Get back the list of events.</p>
 <p>Call after <a class="reference internal" href="#spacepy.plot.utils.EventClicker.analyze" title="spacepy.plot.utils.EventClicker.analyze"><code class="xref py py-meth docutils literal notranslate"><span class="pre">analyze()</span></code></a>.</p>
 <dl class="field-list simple">
@@ -268,7 +278,7 @@ number, then phase of the event, then (x, y).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="spacepy.plot.utils.EventClicker.get_events_data">
-<span class="sig-name descname"><span class="pre">get_events_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#EventClicker.get_events_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.plot.utils.EventClicker.get_events_data" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_events_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/plot/utils.html#EventClicker.get_events_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.plot.utils.EventClicker.get_events_data" title="Link to this definition">¶</a></dt>
 <dd><p>Get a list of events, “snapped” to the data.</p>
 <p>For each point selected as a phase of an event, selects the point
 from the original data which is closest to the clicked point. Distance
@@ -298,6 +308,56 @@ by event number, then phase of the event, then (x, y).</p>
           </div>
         </div>
       </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.plot.utils.EventClicker</a><ul>
+<li><a class="reference internal" href="#spacepy.plot.utils.EventClicker"><code class="docutils literal notranslate"><span class="pre">EventClicker</span></code></a><ul>
+<li><a class="reference internal" href="#spacepy.plot.utils.EventClicker.__init__"><code class="docutils literal notranslate"><span class="pre">EventClicker.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.plot.utils.EventClicker.analyze"><code class="docutils literal notranslate"><span class="pre">EventClicker.analyze()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.plot.utils.EventClicker.get_events"><code class="docutils literal notranslate"><span class="pre">EventClicker.get_events()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.plot.utils.EventClicker.get_events_data"><code class="docutils literal notranslate"><span class="pre">EventClicker.get_events_data()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="spacepy.plot.utils.html"
+                          title="previous chapter">spacepy.plot.utils</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="spacepy.poppy.html"
+                          title="next chapter">spacepy.poppy</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/autosummary/spacepy.plot.utils.EventClicker.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
       <div class="clearer"></div>
     </div>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -310,7 +370,7 @@ by event number, then phase of the event, then (x, y).</p>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.plot.utils.add_logo.html" title="spacepy.plot.utils.add_logo"
+          <a href="spacepy.poppy.html" title="spacepy.poppy"
              >next</a> |</li>
         <li class="right" >
           <a href="spacepy.plot.utils.html" title="spacepy.plot.utils"
@@ -320,14 +380,15 @@ by event number, then phase of the event, then (x, y).</p>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../plot.html" >plot - Plot, various specialized plotting functions and associated utilities</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="spacepy.plot.utils.html" >spacepy.plot.utils</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.plot.html" >spacepy.plot</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="spacepy.plot.utils.html" >spacepy.plot.utils</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.plot.utils.EventClicker</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2024, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
 </html>

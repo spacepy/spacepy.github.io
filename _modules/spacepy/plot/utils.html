@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.plot.utils &#8212; SpacePy v0.6.0 Manual</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <title>spacepy.plot.utils &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../../../_static/plot_directive.css" />
     
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    
-    <link rel="shortcut icon" href="../../../_static/spacepy_favicon.ico"/>
+    <script src="../../../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+    <link rel="icon" href="../../../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
   </head><body>
@@ -47,24 +43,7 @@
         <li class="nav-item nav-item-this"><a href="">spacepy.plot.utils</a></li> 
       </ul>
     </div>
-
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="../../../index.html">
-              <img class="logo" src="../../../_static/logo.png" alt="Logo"/>
-            </a></p>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -84,33 +63,6 @@
 <span class="sd">Copyright 2012-2014 Los Alamos National Security, LLC.</span>
 
 <span class="sd">.. currentmodule:: spacepy.plot.utils</span>
-
-<span class="sd">Classes</span>
-<span class="sd">-------</span>
-
-<span class="sd">.. autosummary::</span>
-<span class="sd">    :template: clean_class.rst</span>
-<span class="sd">    :toctree:</span>
-
-<span class="sd">    EventClicker</span>
-
-<span class="sd">Functions</span>
-<span class="sd">---------</span>
-
-<span class="sd">.. autosummary::</span>
-<span class="sd">    :toctree:</span>
-
-<span class="sd">    add_logo</span>
-<span class="sd">    annotate_xaxis</span>
-<span class="sd">    applySmartTimeTicks</span>
-<span class="sd">    collapse_vertical</span>
-<span class="sd">    printfig</span>
-<span class="sd">    set_target</span>
-<span class="sd">    shared_ylabel</span>
-<span class="sd">    show_used</span>
-<span class="sd">    smartTimeTicks</span>
-<span class="sd">    timestamp</span>
-<span class="sd">    add_arrows</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="n">__contact__</span> <span class="o">=</span> <span class="s1">&#39;Jonathan Niehof: jniehof@lanl.gov&#39;</span>
@@ -134,7 +86,9 @@
            <span class="s1">&#39;smartTimeTicks&#39;</span><span class="p">,</span> <span class="s1">&#39;get_biggest_clear&#39;</span><span class="p">,</span> <span class="s1">&#39;get_clear&#39;</span><span class="p">,</span> <span class="s1">&#39;get_used_boxes&#39;</span><span class="p">,</span> <span class="s1">&#39;EventClicker&#39;</span><span class="p">,</span>
            <span class="s1">&#39;set_target&#39;</span><span class="p">,</span> <span class="s1">&#39;shared_ylabel&#39;</span><span class="p">,</span> <span class="s1">&#39;show_used&#39;</span><span class="p">,</span> <span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="s1">&#39;add_arrows&#39;</span><span class="p">]</span>
 
-<div class="viewcode-block" id="EventClicker"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.EventClicker.html#spacepy.plot.EventClicker">[docs]</a><span class="k">class</span> <span class="nc">EventClicker</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="EventClicker">
+<a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.EventClicker.html#spacepy.plot.utils.EventClicker">[docs]</a>
+<span class="k">class</span> <span class="nc">EventClicker</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Presents a provided figure (normally a time series) and provides</span>
 <span class="sd">    an interface to mark events shown in the plot. The user interface</span>
@@ -240,21 +194,12 @@
 <span class="sd">    True</span>
 <span class="sd">    &gt;&gt;&gt; clicker.get_events_data() is None #should be nothing</span>
 <span class="sd">    True</span>
-
-
-<span class="sd">    .. autosummary::</span>
-<span class="sd">         ~EventClicker.analyze</span>
-<span class="sd">         ~EventClicker.get_events</span>
-<span class="sd">         ~EventClicker.get_events_data</span>
-
-<span class="sd">    .. codeauthor:: Jon Niehof &lt;jniehof@lanl.gov&gt;</span>
-<span class="sd">    .. automethod:: analyze</span>
-<span class="sd">    .. automethod:: get_events</span>
-<span class="sd">    .. automethod:: get_events_data</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">_colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">]</span>
     <span class="n">_styles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="s1">&#39;dotted&#39;</span><span class="p">]</span>
 
+<div class="viewcode-block" id="EventClicker.__init__">
+<a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.EventClicker.html#spacepy.plot.utils.EventClicker.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_phases</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">auto_interval</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">auto_scale</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize EventClicker</span>
@@ -314,9 +259,12 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_ymax</span> <span class="o">=</span> <span class="n">ymax</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ymin</span> <span class="o">=</span> <span class="n">ymin</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_line</span> <span class="o">=</span> <span class="n">line</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span> <span class="o">=</span> <span class="kc">None</span></div>
 
-<div class="viewcode-block" id="EventClicker.analyze"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.EventClicker.html#spacepy.plot.EventClicker.analyze">[docs]</a>    <span class="k">def</span> <span class="nf">analyze</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="EventClicker.analyze">
+<a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.EventClicker.html#spacepy.plot.utils.EventClicker.analyze">[docs]</a>
+    <span class="k">def</span> <span class="nf">analyze</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Displays the figure provided and allows the user to select events.</span>
 
@@ -423,7 +371,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_cids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">mpl_connect</span><span class="p">(</span><span class="s1">&#39;key_press_event&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_onkeypress</span><span class="p">))</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="EventClicker.get_events"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.EventClicker.html#spacepy.plot.EventClicker.get_events">[docs]</a>    <span class="k">def</span> <span class="nf">get_events</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="EventClicker.get_events">
+<a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.EventClicker.html#spacepy.plot.utils.EventClicker.get_events">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_events</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get back the list of events.</span>
 
 <span class="sd">        Call after :meth:`analyze`.</span>
@@ -440,7 +391,10 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_events</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="EventClicker.get_events_data"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.EventClicker.html#spacepy.plot.EventClicker.get_events_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_events_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="EventClicker.get_events_data">
+<a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.EventClicker.html#spacepy.plot.utils.EventClicker.get_events_data">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_events_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get a list of events, &quot;snapped&quot; to the data.</span>
 
 <span class="sd">        For each point selected as a phase of an event, selects the point</span>
@@ -464,6 +418,7 @@
             <span class="k">return</span> <span class="kc">None</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_events</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span></div>
+
 
     <span class="k">def</span> <span class="nf">_add_event_phase</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xval</span><span class="p">,</span> <span class="n">yval</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a phase of the event&quot;&quot;&quot;</span>
@@ -599,7 +554,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="annotate_xaxis"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.annotate_xaxis.html#spacepy.plot.annotate_xaxis">[docs]</a><span class="k">def</span> <span class="nf">annotate_xaxis</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="annotate_xaxis">
+<a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.html#spacepy.plot.utils.annotate_xaxis">[docs]</a>
+<span class="k">def</span> <span class="nf">annotate_xaxis</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Write text in-line and to the right of the x-axis tick labels</span>
 
@@ -666,7 +624,10 @@
                    <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">props</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="applySmartTimeTicks"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.applySmartTimeTicks.html#spacepy.plot.applySmartTimeTicks">[docs]</a><span class="k">def</span> <span class="nf">applySmartTimeTicks</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">dolimit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dolabel</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+
+<div class="viewcode-block" id="applySmartTimeTicks">
+<a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.html#spacepy.plot.utils.applySmartTimeTicks">[docs]</a>
+<span class="k">def</span> <span class="nf">applySmartTimeTicks</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">dolimit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dolabel</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Given an axis *ax* and a list/array of datetime objects, *time*,</span>
 <span class="sd">    use the smartTimeTicks function to build smart time ticks and</span>
@@ -704,7 +665,10 @@
         <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time from </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()))</span>
     <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="smartTimeTicks"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.smartTimeTicks.html#spacepy.plot.smartTimeTicks">[docs]</a><span class="k">def</span> <span class="nf">smartTimeTicks</span><span class="p">(</span><span class="n">time</span><span class="p">):</span>
+
+<div class="viewcode-block" id="smartTimeTicks">
+<a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.html#spacepy.plot.utils.smartTimeTicks">[docs]</a>
+<span class="k">def</span> <span class="nf">smartTimeTicks</span><span class="p">(</span><span class="n">time</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns major ticks, minor ticks and format for time-based plots</span>
 
@@ -795,7 +759,10 @@
     <span class="k">return</span><span class="p">(</span><span class="n">Mtick</span><span class="p">,</span> <span class="n">mtick</span><span class="p">,</span> <span class="n">fmt</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="set_target"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.set_target.html#spacepy.plot.set_target">[docs]</a><span class="k">def</span> <span class="nf">set_target</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">polar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+
+<div class="viewcode-block" id="set_target">
+<a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.html#spacepy.plot.utils.set_target">[docs]</a>
+<span class="k">def</span> <span class="nf">set_target</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">polar</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Given a *target* on which to plot a figure, determine if that *target*</span>
 <span class="sd">    is **None** or a matplotlib figure or axes object.  Based on the type</span>
@@ -852,7 +819,10 @@
     <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span></div>
 
 
-<div class="viewcode-block" id="collapse_vertical"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.collapse_vertical.html#spacepy.plot.collapse_vertical">[docs]</a><span class="k">def</span> <span class="nf">collapse_vertical</span><span class="p">(</span><span class="n">combine</span><span class="p">,</span> <span class="n">others</span><span class="o">=</span><span class="p">(),</span> <span class="n">leave_axis</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+
+<div class="viewcode-block" id="collapse_vertical">
+<a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.html#spacepy.plot.utils.collapse_vertical">[docs]</a>
+<span class="k">def</span> <span class="nf">collapse_vertical</span><span class="p">(</span><span class="n">combine</span><span class="p">,</span> <span class="n">others</span><span class="o">=</span><span class="p">(),</span> <span class="n">leave_axis</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Collapse the vertical spacing between two or more subplots.</span>
 
@@ -955,7 +925,10 @@
                     <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span> <span class="c1">#no axis line</span></div>
 
 
-<div class="viewcode-block" id="printfig"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.printfig.html#spacepy.plot.printfig">[docs]</a><span class="k">def</span> <span class="nf">printfig</span><span class="p">(</span><span class="n">fignum</span><span class="p">,</span> <span class="n">saveonly</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pngonly</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">clean</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="printfig">
+<a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.html#spacepy.plot.utils.printfig">[docs]</a>
+<span class="k">def</span> <span class="nf">printfig</span><span class="p">(</span><span class="n">fignum</span><span class="p">,</span> <span class="n">saveonly</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pngonly</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">clean</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;save current figure to file and call lpr (print).</span>
 
 <span class="sd">    This routine will create a total of 3 files (png, ps and c.png) in the</span>
@@ -1033,7 +1006,10 @@
     <span class="k">return</span></div>
 
 
-<div class="viewcode-block" id="shared_ylabel"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.shared_ylabel.html#spacepy.plot.shared_ylabel">[docs]</a><span class="k">def</span> <span class="nf">shared_ylabel</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">txt</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+<div class="viewcode-block" id="shared_ylabel">
+<a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.html#spacepy.plot.utils.shared_ylabel">[docs]</a>
+<span class="k">def</span> <span class="nf">shared_ylabel</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">txt</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create a ylabel that spans several subplots</span>
 
@@ -1046,7 +1022,7 @@
 <span class="sd">        The :class:`~matplotlib.axes.Axes` objects (i.e. subplots)</span>
 <span class="sd">        which should share a single label</span>
 <span class="sd">    txt : str</span>
-<span class="sd">        The label to place in the middle of all the `axes` objects.</span>
+<span class="sd">        The label to place in the middle of all the :class:`~matplotlib.axes.Axes` objects.</span>
 
 <span class="sd">    Other Parameters</span>
 <span class="sd">    ================</span>
@@ -1107,7 +1083,10 @@
     <span class="k">return</span> <span class="n">lbl</span></div>
 
 
-<div class="viewcode-block" id="timestamp"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.timestamp.html#spacepy.plot.timestamp">[docs]</a><span class="k">def</span> <span class="nf">timestamp</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="p">(</span><span class="mf">1.003</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="s1">&#39;xx-small&#39;</span><span class="p">,</span> <span class="n">draw</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">strnow</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+
+<div class="viewcode-block" id="timestamp">
+<a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.html#spacepy.plot.utils.timestamp">[docs]</a>
+<span class="k">def</span> <span class="nf">timestamp</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="p">(</span><span class="mf">1.003</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="s1">&#39;xx-small&#39;</span><span class="p">,</span> <span class="n">draw</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">strnow</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
               <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    print a timestamp on the current plot, vertical lower right</span>
@@ -1143,6 +1122,7 @@
         <span class="n">plt</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">ann</span></div>
 
+
 <span class="k">def</span> <span class="nf">_used_boxes_helper</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">renderer</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Recursively-called helper function for get_used_boxes. Internal.&quot;&quot;&quot;</span>
     <span class="n">boxes</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1173,6 +1153,8 @@
         <span class="k">else</span><span class="p">:</span> <span class="c1">#I can&#39;t figure out my size!</span>
             <span class="k">return</span> <span class="kc">None</span>
 
+<div class="viewcode-block" id="get_used_boxes">
+<a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.html#spacepy.plot.utils.get_used_boxes">[docs]</a>
 <span class="k">def</span> <span class="nf">get_used_boxes</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Go through all elements of a figure and find the &quot;boxes&quot; they occupy,</span>
 <span class="sd">    in figure coordinates. Mostly helper for add_logo</span>
@@ -1189,9 +1171,12 @@
              <span class="p">]</span>
     <span class="c1">#Transform to figure</span>
     <span class="n">boxes</span> <span class="o">=</span> <span class="p">[</span><span class="n">fig</span><span class="o">.</span><span class="n">transFigure</span><span class="o">.</span><span class="n">inverted</span><span class="p">()</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">boxes</span><span class="p">]</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">b</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">boxes</span> <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">b</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">boxes</span> <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()]</span></div>
 
 
+
+<div class="viewcode-block" id="filter_boxes">
+<a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.html#spacepy.plot.utils.filter_boxes">[docs]</a>
 <span class="k">def</span> <span class="nf">filter_boxes</span><span class="p">(</span><span class="n">boxes</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;From a list of boxes, exclude those that are completely contained by another&quot;&quot;&quot;</span>
     <span class="c1">#Filter exact overlap (any box before this one have same bounds?)</span>
@@ -1205,9 +1190,12 @@
                 <span class="p">[(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">other</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">other</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="ow">and</span>
                     <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">other</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">other</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
                 <span class="k">for</span> <span class="n">other</span> <span class="ow">in</span> <span class="n">boxes</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">other</span> <span class="ow">is</span> <span class="n">b</span><span class="p">]</span> <span class="c1">#don&#39;t compare to self</span>
-                <span class="p">)]</span>
+                <span class="p">)]</span></div>
 
 
+
+<div class="viewcode-block" id="get_clear">
+<a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.html#spacepy.plot.utils.get_clear">[docs]</a>
 <span class="k">def</span> <span class="nf">get_clear</span><span class="p">(</span><span class="n">boxes</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="s1">&#39;br&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Take a list of boxes which *obstruct* the plot, i.e., don&#39;t overplot</span>
 
@@ -1257,9 +1245,12 @@
         <span class="n">clearbox</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">left</span><span class="p">,</span> <span class="n">bottom</span><span class="p">],</span> <span class="p">[</span><span class="n">right</span><span class="p">,</span> <span class="n">top</span><span class="p">]])</span>
         <span class="n">clearbox</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">clearbox</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="n">clear</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">clearbox</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">filter_boxes</span><span class="p">(</span><span class="n">clear</span><span class="p">)</span> <span class="c1">#and remove overlaps</span>
+    <span class="k">return</span> <span class="n">filter_boxes</span><span class="p">(</span><span class="n">clear</span><span class="p">)</span> <span class="c1">#and remove overlaps</span></div>
 
 
+
+<div class="viewcode-block" id="get_biggest_clear">
+<a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.html#spacepy.plot.utils.get_biggest_clear">[docs]</a>
 <span class="k">def</span> <span class="nf">get_biggest_clear</span><span class="p">(</span><span class="n">boxes</span><span class="p">,</span> <span class="n">fig_aspect</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">img_aspect</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Given a list of boxes with clear space, figure aspect ratio (width/height),</span>
 <span class="sd">    and image aspect ratio (width/height), return the largest clear space</span>
@@ -1281,10 +1272,13 @@
             <span class="c1">#no, take the height, correct for figure aspect, and find the</span>
             <span class="c1">#width the image would have at this height and its aspect ratio.</span>
             <span class="k">return</span> <span class="n">real_height</span> <span class="o">*</span> <span class="n">img_aspect</span>
-    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">boxes</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">effective_width</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">boxes</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">effective_width</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="add_logo"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.add_logo.html#spacepy.plot.add_logo">[docs]</a><span class="k">def</span> <span class="nf">add_logo</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="s1">&#39;br&#39;</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="mf">0.05</span><span class="p">):</span>
+
+<div class="viewcode-block" id="add_logo">
+<a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.html#spacepy.plot.utils.add_logo">[docs]</a>
+<span class="k">def</span> <span class="nf">add_logo</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">fig</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="s1">&#39;br&#39;</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="mf">0.05</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Add an image (logo) to one corner of a plot.</span>
 
@@ -1387,7 +1381,10 @@
     <span class="k">return</span> <span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">axesimg</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="show_used"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.show_used.html#spacepy.plot.show_used">[docs]</a><span class="k">def</span> <span class="nf">show_used</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="show_used">
+<a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.html#spacepy.plot.utils.show_used">[docs]</a>
+<span class="k">def</span> <span class="nf">show_used</span><span class="p">(</span><span class="n">fig</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Show the areas of a figure which are used/occupied by plot elements.</span>
 
@@ -1476,7 +1473,10 @@
                      <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
     <span class="k">return</span> <span class="n">rects</span></div>
 
-<div class="viewcode-block" id="add_arrows"><a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.add_arrows.html#spacepy.plot.add_arrows">[docs]</a><span class="k">def</span> <span class="nf">add_arrows</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;-&gt;&#39;</span><span class="p">,</span> <span class="n">dorestrict</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+
+<div class="viewcode-block" id="add_arrows">
+<a class="viewcode-back" href="../../../autosummary/spacepy.plot.utils.html#spacepy.plot.utils.add_arrows">[docs]</a>
+<span class="k">def</span> <span class="nf">add_arrows</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;-&gt;&#39;</span><span class="p">,</span> <span class="n">dorestrict</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                <span class="n">positions</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Add directional arrows along a plotted line.  Useful for plotting flow</span>
@@ -1627,10 +1627,28 @@
             <span class="c1"># Place an arrow:</span>
             <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]),</span> <span class="n">alpha</span><span class="o">=</span><span class="n">a</span><span class="p">,</span>
                         <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="n">style</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">),</span><span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span></div>
+
 </pre></div>
 
             <div class="clearer"></div>
           </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/logo.png" alt="Logo"/>
+            </a></p>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -1656,8 +1674,8 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2024, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
 </html>

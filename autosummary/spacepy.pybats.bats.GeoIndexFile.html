@@ -1,29 +1,25 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.pybats.bats.GeoIndexFile &#8212; SpacePy v0.6.0 Manual</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <title>spacepy.pybats.bats.GeoIndexFile &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    
-    <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="spacepy.pybats.bats.VirtSat" href="spacepy.pybats.bats.VirtSat.html" />
-    <link rel="prev" title="spacepy.pybats.bats.MagFile" href="spacepy.pybats.bats.MagFile.html" /> 
+    <link rel="next" title="spacepy.pybats.bats.Mag" href="spacepy.pybats.bats.Mag.html" />
+    <link rel="prev" title="spacepy.pybats.bats.Extraction" href="spacepy.pybats.bats.Extraction.html" /> 
   </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
@@ -40,36 +36,180 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.bats.VirtSat.html" title="spacepy.pybats.bats.VirtSat"
+          <a href="spacepy.pybats.bats.Mag.html" title="spacepy.pybats.bats.Mag"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.bats.MagFile.html" title="spacepy.pybats.bats.MagFile"
+          <a href="spacepy.pybats.bats.Extraction.html" title="spacepy.pybats.bats.Extraction"
              accesskey="P">previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pybats.html" >PyBats - SWMF &amp; BATS-R-US Analysis Tools</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="spacepy.pybats.bats.html" accesskey="U">spacepy.pybats.bats</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" >spacepy.pybats</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="spacepy.pybats.bats.html" accesskey="U">spacepy.pybats.bats</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.pybats.bats.GeoIndexFile</a></li> 
       </ul>
     </div>
+  
 
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="spacepy-pybats-bats-geoindexfile">
+<h1>spacepy.pybats.bats.GeoIndexFile<a class="headerlink" href="#spacepy-pybats-bats-geoindexfile" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="spacepy.pybats.bats.GeoIndexFile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pybats.bats.</span></span><span class="sig-name descname"><span class="pre">GeoIndexFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_case</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#GeoIndexFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.bats.GeoIndexFile" title="Link to this definition">¶</a></dt>
+<dd><p>Geomagnetic Index files are a specialized BATS-R-US output that contain
+geomagnetic indices calculated from simulated ground-based magnetometers.
+Currently, the only index instituted is Kp through the faKe_p setup.
+Future work will expand the system to include Dst, AE, etc.</p>
+<p>GeoIndFiles are a specialized subclass of pybats.LogFile.  It includes
+additional methods to quickly visualize the output, perform data-model
+comparisons, and more.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.bats.GeoIndexFile.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_case</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#GeoIndexFile.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.bats.GeoIndexFile.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Load ascii file located at self.attrs[‘file’].</p>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.bats.GeoIndexFile.add_ae_quicklook" title="spacepy.pybats.bats.GeoIndexFile.add_ae_quicklook"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_ae_quicklook</span></code></a>([target, loc, label, ...])</p></td>
+<td><p>Similar to &quot;dst_quicklook&quot;-type functions, this method fetches observed AE indices from the web and plots it alongside the corresponding AE read from the GeoInd file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.bats.GeoIndexFile.add_kp_quicklook" title="spacepy.pybats.bats.GeoIndexFile.add_kp_quicklook"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_kp_quicklook</span></code></a>([target, loc, label, ...])</p></td>
+<td><p>Similar to &quot;dst_quicklook&quot;-type functions, this method fetches observed Kp from the web and plots it alongside the Kp read from the GeoIndex file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.bats.GeoIndexFile.fetch_obs_ae" title="spacepy.pybats.bats.GeoIndexFile.fetch_obs_ae"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fetch_obs_ae</span></code></a>()</p></td>
+<td><p>Fetch the observed AE index for the time period covered in the logfile.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.bats.GeoIndexFile.fetch_obs_kp" title="spacepy.pybats.bats.GeoIndexFile.fetch_obs_kp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fetch_obs_kp</span></code></a>()</p></td>
+<td><p>Fetch the observed Kp index for the time period covered in the logfile.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="#spacepy.pybats.bats.GeoIndexFile.attrs" title="spacepy.pybats.bats.GeoIndexFile.attrs"><code class="xref py py-data docutils literal notranslate"><span class="pre">attrs</span></code></a></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.bats.GeoIndexFile.add_ae_quicklook">
+<span class="sig-name descname"><span class="pre">add_ae_quicklook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">111</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_obs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'c':</span> <span class="pre">'k',</span> <span class="pre">'ls':</span> <span class="pre">'--',</span> <span class="pre">'lw':</span> <span class="pre">1.5}</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#GeoIndexFile.add_ae_quicklook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.bats.GeoIndexFile.add_ae_quicklook" title="Link to this definition">¶</a></dt>
+<dd><p>Similar to “dst_quicklook”-type functions, this method fetches observed
+AE indices from the web and plots it alongside the corresponding
+AE read from the GeoInd file.  Because there are four AE-like indices
+(AL, AU, AE, and AO), the kwarg <em>val</em> specifies which to plot
+(default is AE).</p>
+<p>Usage:
+&gt;&gt;&gt; obj.ae_quicklook(target=SomeMplTarget)
+The target kwarg works like in other PyBats plot functions: it can be
+a figure, an axes, or None, and it determines where the plot is placed.</p>
+<p>Other kwargs customize the line.  Extra kwargs are passed to
+pyplot.plot</p>
+<p>Observed AE can be added via the <em>plot_obs</em> kwarg.  AE is automatically
+fetched from the Kyoto World Data Center via the
+<a class="reference internal" href="spacepy.pybats.kyoto.html#module-spacepy.pybats.kyoto" title="spacepy.pybats.kyoto"><code class="xref py py-mod docutils literal notranslate"><span class="pre">spacepy.pybats.kyoto</span></code></a> module.  The associated
+<a class="reference internal" href="spacepy.pybats.kyoto.KyotoAe.html#spacepy.pybats.kyoto.KyotoAe" title="spacepy.pybats.kyoto.KyotoAe"><code class="xref py py-class docutils literal notranslate"><span class="pre">spacepy.pybats.kyoto.KyotoAe</span></code></a> object, which holds the observed
+AE, is stored as <em>self.obs_kp</em> for future use.
+The observed line can be customized via the <em>obs_kwargs</em> kwarg, which
+is a dictionary of plotting keyword arguments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.bats.GeoIndexFile.add_kp_quicklook">
+<span class="sig-name descname"><span class="pre">add_kp_quicklook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">111</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_obs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'c':</span> <span class="pre">'k',</span> <span class="pre">'ls':</span> <span class="pre">'--',</span> <span class="pre">'lw':</span> <span class="pre">2}</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#GeoIndexFile.add_kp_quicklook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.bats.GeoIndexFile.add_kp_quicklook" title="Link to this definition">¶</a></dt>
+<dd><p>Similar to “dst_quicklook”-type functions, this method fetches observed
+Kp from the web and plots it alongside the Kp read from the GeoIndex
+file.</p>
+<p>Usage:
+&gt;&gt;&gt; obj.kp_quicklook(target=SomeMplTarget)
+The target kwarg works like in other PyBats plot functions: it can be
+a figure, an axes, or None, and it determines where the plot is placed.</p>
+<p>Other kwargs customize the line.  Label defaults to fa$K$e$_{P}$, extra
+kwargs are passed to pyplot.plot.</p>
+<p>Observed Kp can be added via the <em>plot_obs</em> kwarg.  Kp is automatically
+fetched from the Kyoto World Data Center via the
+<a class="reference internal" href="spacepy.pybats.kyoto.html#module-spacepy.pybats.kyoto" title="spacepy.pybats.kyoto"><code class="xref py py-mod docutils literal notranslate"><span class="pre">spacepy.pybats.kyoto</span></code></a> module.  The associated
+<a class="reference internal" href="spacepy.pybats.kyoto.KyotoKp.html#spacepy.pybats.kyoto.KyotoKp" title="spacepy.pybats.kyoto.KyotoKp"><code class="xref py py-class docutils literal notranslate"><span class="pre">spacepy.pybats.kyoto.KyotoKp</span></code></a> object, which holds the observed
+Kp, is stored as <em>self.obs_kp</em> for future use.
+The observed line can be customized via the <em>obs_kwargs</em> kwarg, which
+is a dictionary of plotting keyword arguments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.bats.GeoIndexFile.fetch_obs_ae">
+<span class="sig-name descname"><span class="pre">fetch_obs_ae</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#GeoIndexFile.fetch_obs_ae"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.bats.GeoIndexFile.fetch_obs_ae" title="Link to this definition">¶</a></dt>
+<dd><p>Fetch the observed AE index for the time period covered in the
+logfile.  Return <em>True</em> on success.</p>
+<p>Observed AE is automatically fetched from the Kyoto World Data Center
+via the <a class="reference internal" href="spacepy.pybats.kyoto.html#module-spacepy.pybats.kyoto" title="spacepy.pybats.kyoto"><code class="xref py py-mod docutils literal notranslate"><span class="pre">spacepy.pybats.kyoto</span></code></a> module.  The associated
+<a class="reference internal" href="spacepy.pybats.kyoto.KyotoAe.html#spacepy.pybats.kyoto.KyotoAe" title="spacepy.pybats.kyoto.KyotoAe"><code class="xref py py-class docutils literal notranslate"><span class="pre">spacepy.pybats.kyoto.KyotoAe</span></code></a> object, which holds the observed
+AE, is stored as <em>self.obs_ae</em> for future use.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.bats.GeoIndexFile.fetch_obs_kp">
+<span class="sig-name descname"><span class="pre">fetch_obs_kp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#GeoIndexFile.fetch_obs_kp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.bats.GeoIndexFile.fetch_obs_kp" title="Link to this definition">¶</a></dt>
+<dd><p>Fetch the observed Kp index for the time period covered in the
+logfile.  Return <em>True</em> on success.</p>
+<p>Observed Kp is automatically fetched from the Kyoto World Data Center
+via the <a class="reference internal" href="spacepy.pybats.kyoto.html#module-spacepy.pybats.kyoto" title="spacepy.pybats.kyoto"><code class="xref py py-mod docutils literal notranslate"><span class="pre">spacepy.pybats.kyoto</span></code></a> module.  The associated
+<a class="reference internal" href="spacepy.pybats.kyoto.KyotoKp.html#spacepy.pybats.kyoto.KyotoKp" title="spacepy.pybats.kyoto.KyotoKp"><code class="xref py py-class docutils literal notranslate"><span class="pre">spacepy.pybats.kyoto.KyotoKp</span></code></a> object, which holds the observed
+kp, is stored as <em>self.obs_kp</em> for future use.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spacepy.pybats.bats.GeoIndexFile.attrs">
+<span class="sig-name descname"><span class="pre">attrs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping" title="(in Python v3.13)"><span class="pre">collections.abc.Mapping</span></a></em><a class="headerlink" href="#spacepy.pybats.bats.GeoIndexFile.attrs" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/logo.png" alt="Logo"/>
             </a></p>
   <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.pybats.bats.GeoIndexFile</a><ul>
+<li><a class="reference internal" href="#spacepy.pybats.bats.GeoIndexFile"><code class="docutils literal notranslate"><span class="pre">GeoIndexFile</span></code></a><ul>
+<li><a class="reference internal" href="#spacepy.pybats.bats.GeoIndexFile.__init__"><code class="docutils literal notranslate"><span class="pre">GeoIndexFile.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.bats.GeoIndexFile.add_ae_quicklook"><code class="docutils literal notranslate"><span class="pre">GeoIndexFile.add_ae_quicklook()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.bats.GeoIndexFile.add_kp_quicklook"><code class="docutils literal notranslate"><span class="pre">GeoIndexFile.add_kp_quicklook()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.bats.GeoIndexFile.fetch_obs_ae"><code class="docutils literal notranslate"><span class="pre">GeoIndexFile.fetch_obs_ae()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.bats.GeoIndexFile.fetch_obs_kp"><code class="docutils literal notranslate"><span class="pre">GeoIndexFile.fetch_obs_kp()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.bats.GeoIndexFile.attrs"><code class="docutils literal notranslate"><span class="pre">GeoIndexFile.attrs</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="spacepy.pybats.bats.MagFile.html"
-                          title="previous chapter">spacepy.pybats.bats.MagFile</a></p>
+    <p class="topless"><a href="spacepy.pybats.bats.Extraction.html"
+                          title="previous chapter">spacepy.pybats.bats.Extraction</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="spacepy.pybats.bats.VirtSat.html"
-                          title="next chapter">spacepy.pybats.bats.VirtSat</a></p>
+    <p class="topless"><a href="spacepy.pybats.bats.Mag.html"
+                          title="next chapter">spacepy.pybats.bats.Mag</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -78,7 +218,7 @@
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -86,35 +226,8 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <section id="spacepy-pybats-bats-geoindexfile">
-<h1>spacepy.pybats.bats.GeoIndexFile<a class="headerlink" href="#spacepy-pybats-bats-geoindexfile" title="Permalink to this heading">¶</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="spacepy.pybats.bats.GeoIndexFile">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pybats.bats.</span></span><span class="sig-name descname"><span class="pre">GeoIndexFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_case</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#GeoIndexFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.bats.GeoIndexFile" title="Permalink to this definition">¶</a></dt>
-<dd><p>Geomagnetic Index files are a specialized BATS-R-US output that contain
-geomagnetic indices calculated from simulated ground-based magnetometers.
-Currently, the only index instituted is Kp through the faKe_p setup.
-Future work will expand the system to include Dst, AE, etc.</p>
-<p>GeoIndFiles are a specialized subclass of pybats.LogFile.  It includes
-additional methods to quickly visualize the output, perform data-model
-comparisons, and more.</p>
-</dd></dl>
-
-</section>
-
-
-            <div class="clearer"></div>
-          </div>
         </div>
       </div>
       <div class="clearer"></div>
@@ -129,24 +242,25 @@ comparisons, and more.</p>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.bats.VirtSat.html" title="spacepy.pybats.bats.VirtSat"
+          <a href="spacepy.pybats.bats.Mag.html" title="spacepy.pybats.bats.Mag"
              >next</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.bats.MagFile.html" title="spacepy.pybats.bats.MagFile"
+          <a href="spacepy.pybats.bats.Extraction.html" title="spacepy.pybats.bats.Extraction"
              >previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pybats.html" >PyBats - SWMF &amp; BATS-R-US Analysis Tools</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="spacepy.pybats.bats.html" >spacepy.pybats.bats</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" >spacepy.pybats</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="spacepy.pybats.bats.html" >spacepy.pybats.bats</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.pybats.bats.GeoIndexFile</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2024, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
 </html>

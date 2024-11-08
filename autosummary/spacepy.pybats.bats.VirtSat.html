@@ -1,29 +1,25 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.pybats.bats.VirtSat &#8212; SpacePy v0.6.0 Manual</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <title>spacepy.pybats.bats.VirtSat &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    
-    <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="spacepy.pybats.dgcpm" href="spacepy.pybats.dgcpm.html" />
-    <link rel="prev" title="spacepy.pybats.bats.GeoIndexFile" href="spacepy.pybats.bats.GeoIndexFile.html" /> 
+    <link rel="next" title="spacepy.pybats.batsmath" href="spacepy.pybats.batsmath.html" />
+    <link rel="prev" title="spacepy.pybats.bats.Stream" href="spacepy.pybats.bats.Stream.html" /> 
   </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
@@ -40,36 +36,236 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.dgcpm.html" title="spacepy.pybats.dgcpm"
+          <a href="spacepy.pybats.batsmath.html" title="spacepy.pybats.batsmath"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.bats.GeoIndexFile.html" title="spacepy.pybats.bats.GeoIndexFile"
+          <a href="spacepy.pybats.bats.Stream.html" title="spacepy.pybats.bats.Stream"
              accesskey="P">previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pybats.html" >PyBats - SWMF &amp; BATS-R-US Analysis Tools</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="spacepy.pybats.bats.html" accesskey="U">spacepy.pybats.bats</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" >spacepy.pybats</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="spacepy.pybats.bats.html" accesskey="U">spacepy.pybats.bats</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.pybats.bats.VirtSat</a></li> 
       </ul>
     </div>
+  
 
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="spacepy-pybats-bats-virtsat">
+<h1>spacepy.pybats.bats.VirtSat<a class="headerlink" href="#spacepy-pybats-bats-virtsat" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="spacepy.pybats.bats.VirtSat">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pybats.bats.</span></span><span class="sig-name descname"><span class="pre">VirtSat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#VirtSat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.bats.VirtSat" title="Link to this definition">¶</a></dt>
+<dd><p>A <a class="reference internal" href="spacepy.pybats.LogFile.html#spacepy.pybats.LogFile" title="spacepy.pybats.LogFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">spacepy.pybats.LogFile</span></code></a> object tailored to virtual satellite
+output; includes special satellite-specific plotting methods.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.bats.VirtSat.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#VirtSat.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.bats.VirtSat.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Base class for “Data Model” representation data</p>
+<p>Abstract method, reimplement</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>attrs</strong><span class="classifier">dict</span></dt><dd><p>dictionary of the attributes of the SpaceData object</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.bats.VirtSat.add_orbit_plot" title="spacepy.pybats.bats.VirtSat.add_orbit_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_orbit_plot</span></code></a>([plane, target, loc, rbody, ...])</p></td>
+<td><p>Create a 2D orbit plot in the given plane (e.g. 'XY' or 'ZY').</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.bats.VirtSat.add_sat_loc" title="spacepy.pybats.bats.VirtSat.add_sat_loc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_sat_loc</span></code></a>(time, target[, plane, dobox, ...])</p></td>
+<td><p>For a given axes, <em>target</em>, add the location of the satellite at time <em>time</em> as a circle.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.bats.VirtSat.calc_bmag" title="spacepy.pybats.bats.VirtSat.calc_bmag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_bmag</span></code></a>()</p></td>
+<td><p>Calculates total magnetic field magnitude via: $|B|=sqrt{B_X^2+B_Y^2+B_Z^2}$.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.bats.VirtSat.calc_magincl" title="spacepy.pybats.bats.VirtSat.calc_magincl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_magincl</span></code></a>([units])</p></td>
+<td><p>Magnetic inclination angle (a.k.a.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.bats.VirtSat.calc_ndens" title="spacepy.pybats.bats.VirtSat.calc_ndens"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_ndens</span></code></a>()</p></td>
+<td><p>Calculate number densities for each fluid.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.bats.VirtSat.calc_temp" title="spacepy.pybats.bats.VirtSat.calc_temp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_temp</span></code></a>([units])</p></td>
+<td><p>Calculate plasma temperature for each fluid.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.bats.VirtSat.get_position" title="spacepy.pybats.bats.VirtSat.get_position"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_position</span></code></a>(time)</p></td>
+<td><p>For an arbitrary time, <em>time</em>, return a tuple of coordinates for the satellite's position at that time in GSM coordinates.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="#spacepy.pybats.bats.VirtSat.attrs" title="spacepy.pybats.bats.VirtSat.attrs"><code class="xref py py-data docutils literal notranslate"><span class="pre">attrs</span></code></a></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.bats.VirtSat.add_orbit_plot">
+<span class="sig-name descname"><span class="pre">add_orbit_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plane</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'XY'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">111</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rbody</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trange</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'g.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adjust_axes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_arrow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arrow_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'color':</span> <span class="pre">'g',</span> <span class="pre">'ec':</span> <span class="pre">'k',</span> <span class="pre">'width':</span> <span class="pre">0.05}</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#VirtSat.add_orbit_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.bats.VirtSat.add_orbit_plot" title="Link to this definition">¶</a></dt>
+<dd><p>Create a 2D orbit plot in the given plane (e.g. ‘XY’ or ‘ZY’).
+Extra kwargs are handed to the plot function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>None</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>plane</strong><span class="classifier">string</span></dt><dd><p>Set the plane in which to plot (XY, XZ, etc.)  Defaults to XY.</p>
+</dd>
+<dt><strong>target</strong><span class="classifier">Matplotlib Figure or Axes object</span></dt><dd><p>Set plot destination.  Defaults to new figure.</p>
+</dd>
+<dt><strong>loc</strong><span class="classifier">3-digit integer</span></dt><dd><p>Set subplot location.  Defaults to 111.</p>
+</dd>
+<dt><strong>adjust_axes</strong><span class="classifier">bool</span></dt><dd><p>If True, axes will be customized to best display orbit (equal
+aspect ratio, grid on, planet drawn, etc.).  Defaults to True.</p>
+</dd>
+<dt><strong>style: string</strong></dt><dd><p>A matplotlib line style specifier.  Defaults to ‘g.’.</p>
+</dd>
+<dt><strong>title</strong><span class="classifier">string</span></dt><dd><p>Set title of axes.</p>
+</dd>
+<dt><strong>rbody</strong><span class="classifier">real</span></dt><dd><p>Set radius of model inner boundary.  Defaults to 1.0</p>
+</dd>
+<dt><strong>trange</strong><span class="classifier">list of datetimes</span></dt><dd><p>Set the time range to plot.  Defaults to None, or entire dataset.</p>
+</dd>
+<dt><strong>add_grid</strong><span class="classifier">bool</span></dt><dd><p>Turn on or off grid style of axes.  Default is True.</p>
+</dd>
+<dt><strong>add_arrow</strong><span class="classifier">bool</span></dt><dd><p>Add arrow at end of orbit path to indicate direction.
+Default is True.</p>
+</dd>
+<dt><strong>arrow_kwargs</strong><span class="classifier">dict</span></dt><dd><p>Dictionary of arrow kwargs.  Defaults to match line style.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.bats.VirtSat.add_sat_loc">
+<span class="sig-name descname"><span class="pre">add_sat_loc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plane</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'XY'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dobox</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dolabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'k'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#VirtSat.add_sat_loc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.bats.VirtSat.add_sat_loc" title="Link to this definition">¶</a></dt>
+<dd><p>For a given axes, <em>target</em>, add the location of the satellite at
+time <em>time</em> as a circle.  If kwarg <em>dolabel</em> is True, the satellite’s
+name will be used to label the dot.  Optional kwargs are any accepted
+by matplotlib.axes.Axes.plot.  The kwarg <em>plane</em> specifies the plane
+of the plot, e.g., ‘XY’, ‘YZ’, etc.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.bats.VirtSat.calc_bmag">
+<span class="sig-name descname"><span class="pre">calc_bmag</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#VirtSat.calc_bmag"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.bats.VirtSat.calc_bmag" title="Link to this definition">¶</a></dt>
+<dd><p>Calculates total magnetic field magnitude via:
+$|B|=sqrt{B_X^2+B_Y^2+B_Z^2}$.  Results stored as variable name <em>b</em>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.bats.VirtSat.calc_magincl">
+<span class="sig-name descname"><span class="pre">calc_magincl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'deg'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#VirtSat.calc_magincl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.bats.VirtSat.calc_magincl" title="Link to this definition">¶</a></dt>
+<dd><p>Magnetic inclination angle (a.k.a. inclination angle) is defined:
+$Theta = sin^{-1}(B_Z/B)$.  It is a crucial value when examining
+magnetic dynamics about geosychronous orbit, the tail, and other
+locations.</p>
+<p>This function calculates the magnetic inclination for the Virtual
+Satellite object and saves it as <em>b_incl</em>.  Units default to degrees;
+the keyword <strong>units</strong> can be changed to ‘rad’ to change this.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.bats.VirtSat.calc_ndens">
+<span class="sig-name descname"><span class="pre">calc_ndens</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#VirtSat.calc_ndens"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.bats.VirtSat.calc_ndens" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate number densities for each fluid.  Species mass is ascertained
+via recognition of fluid name (e.g. OpRho is clearly oxygen).  A full
+list of recognized fluids/species can be found by exploring the
+dictionary <em>mass</em> found in <a class="reference internal" href="spacepy.pybats.bats.html#module-spacepy.pybats.bats" title="spacepy.pybats.bats"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bats</span></code></a>.  Composition is
+also calculated as percent of total number density.</p>
+<p>New values are saved using the keys <em>speciesN</em> (e.g. <em>opN</em>) and
+<em>speciesFrac</em> (e.g. <em>opFrac</em>).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.bats.VirtSat.calc_temp">
+<span class="sig-name descname"><span class="pre">calc_temp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'eV'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#VirtSat.calc_temp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.bats.VirtSat.calc_temp" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate plasma temperature for each fluid.  Number density is
+calculated using <em>calc_ndens</em> if it hasn’t been done so already.</p>
+<p>Temperature is obtained via density and pressure through the simple
+relationship P=nkT.</p>
+<p>Use the units kwarg to set output units.  Current choices are
+KeV, eV, and K.  Default is eV.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.bats.VirtSat.get_position">
+<span class="sig-name descname"><span class="pre">get_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#VirtSat.get_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.bats.VirtSat.get_position" title="Link to this definition">¶</a></dt>
+<dd><p>For an arbitrary time, <em>time</em>, return a tuple of coordinates for
+the satellite’s position at that time in GSM coordinates.</p>
+<p><em>time</em> should be type datetime.datetime, matplotlib.dates.date2num
+output (i.e., number of days (fraction part represents hours,
+minutes, seconds) since 0001-01-01 00:00:00 UTC, <em>plus</em> <em>one</em>), or
+a sequence of either.
+The satellite’s position is interpolated (linearly) to <em>time</em>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spacepy.pybats.bats.VirtSat.attrs">
+<span class="sig-name descname"><span class="pre">attrs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping" title="(in Python v3.13)"><span class="pre">collections.abc.Mapping</span></a></em><a class="headerlink" href="#spacepy.pybats.bats.VirtSat.attrs" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../_static/logo.png" alt="Logo"/>
             </a></p>
   <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.pybats.bats.VirtSat</a><ul>
+<li><a class="reference internal" href="#spacepy.pybats.bats.VirtSat"><code class="docutils literal notranslate"><span class="pre">VirtSat</span></code></a><ul>
+<li><a class="reference internal" href="#spacepy.pybats.bats.VirtSat.__init__"><code class="docutils literal notranslate"><span class="pre">VirtSat.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.bats.VirtSat.add_orbit_plot"><code class="docutils literal notranslate"><span class="pre">VirtSat.add_orbit_plot()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.bats.VirtSat.add_sat_loc"><code class="docutils literal notranslate"><span class="pre">VirtSat.add_sat_loc()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.bats.VirtSat.calc_bmag"><code class="docutils literal notranslate"><span class="pre">VirtSat.calc_bmag()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.bats.VirtSat.calc_magincl"><code class="docutils literal notranslate"><span class="pre">VirtSat.calc_magincl()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.bats.VirtSat.calc_ndens"><code class="docutils literal notranslate"><span class="pre">VirtSat.calc_ndens()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.bats.VirtSat.calc_temp"><code class="docutils literal notranslate"><span class="pre">VirtSat.calc_temp()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.bats.VirtSat.get_position"><code class="docutils literal notranslate"><span class="pre">VirtSat.get_position()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.bats.VirtSat.attrs"><code class="docutils literal notranslate"><span class="pre">VirtSat.attrs</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="spacepy.pybats.bats.GeoIndexFile.html"
-                          title="previous chapter">spacepy.pybats.bats.GeoIndexFile</a></p>
+    <p class="topless"><a href="spacepy.pybats.bats.Stream.html"
+                          title="previous chapter">spacepy.pybats.bats.Stream</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="spacepy.pybats.dgcpm.html"
-                          title="next chapter">spacepy.pybats.dgcpm</a></p>
+    <p class="topless"><a href="spacepy.pybats.batsmath.html"
+                          title="next chapter">spacepy.pybats.batsmath</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -78,7 +274,7 @@
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -86,30 +282,8 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <section id="spacepy-pybats-bats-virtsat">
-<h1>spacepy.pybats.bats.VirtSat<a class="headerlink" href="#spacepy-pybats-bats-virtsat" title="Permalink to this heading">¶</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="spacepy.pybats.bats.VirtSat">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pybats.bats.</span></span><span class="sig-name descname"><span class="pre">VirtSat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/bats.html#VirtSat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.bats.VirtSat" title="Permalink to this definition">¶</a></dt>
-<dd><p>A <a class="reference internal" href="spacepy.pybats.LogFile.html#spacepy.pybats.LogFile" title="spacepy.pybats.LogFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">spacepy.pybats.LogFile</span></code></a> object tailored to virtual satellite
-output; includes special satellite-specific plotting methods.</p>
-</dd></dl>
-
-</section>
-
-
-            <div class="clearer"></div>
-          </div>
         </div>
       </div>
       <div class="clearer"></div>
@@ -124,24 +298,25 @@ output; includes special satellite-specific plotting methods.</p>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.dgcpm.html" title="spacepy.pybats.dgcpm"
+          <a href="spacepy.pybats.batsmath.html" title="spacepy.pybats.batsmath"
              >next</a> |</li>
         <li class="right" >
-          <a href="spacepy.pybats.bats.GeoIndexFile.html" title="spacepy.pybats.bats.GeoIndexFile"
+          <a href="spacepy.pybats.bats.Stream.html" title="spacepy.pybats.bats.Stream"
              >previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../pybats.html" >PyBats - SWMF &amp; BATS-R-US Analysis Tools</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="spacepy.pybats.bats.html" >spacepy.pybats.bats</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" >spacepy.pybats</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="spacepy.pybats.bats.html" >spacepy.pybats.bats</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.pybats.bats.VirtSat</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2024, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
 </html>

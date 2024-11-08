@@ -1,29 +1,25 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.datamodel.ISTPContainer &#8212; SpacePy v0.6.0 Manual</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <title>spacepy.datamodel.ISTPContainer &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    
-    <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="spacepy.datamodel.ISTPArray" href="spacepy.datamodel.ISTPArray.html" />
-    <link rel="prev" title="spacepy.datamodel.dmarray" href="spacepy.datamodel.dmarray.html" /> 
+    <link rel="next" title="spacepy.datamodel.MetaMixin" href="spacepy.datamodel.MetaMixin.html" />
+    <link rel="prev" title="spacepy.datamodel.ISTPArray" href="spacepy.datamodel.ISTPArray.html" /> 
   </head><body>
 
 <div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
@@ -40,55 +36,22 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.datamodel.ISTPArray.html" title="spacepy.datamodel.ISTPArray"
+          <a href="spacepy.datamodel.MetaMixin.html" title="spacepy.datamodel.MetaMixin"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="spacepy.datamodel.dmarray.html" title="spacepy.datamodel.dmarray"
+          <a href="spacepy.datamodel.ISTPArray.html" title="spacepy.datamodel.ISTPArray"
              accesskey="P">previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../datamodel.html" accesskey="U">datamodel - easy to use general data model</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.datamodel.html" accesskey="U">spacepy.datamodel</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.datamodel.ISTPContainer</a></li> 
       </ul>
     </div>
-
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="../index.html">
-              <img class="logo" src="../_static/logo.png" alt="Logo"/>
-            </a></p>
-  <div>
-    <h4>Previous topic</h4>
-    <p class="topless"><a href="spacepy.datamodel.dmarray.html"
-                          title="previous chapter">spacepy.datamodel.dmarray</a></p>
-  </div>
-  <div>
-    <h4>Next topic</h4>
-    <p class="topless"><a href="spacepy.datamodel.ISTPArray.html"
-                          title="next chapter">spacepy.datamodel.ISTPArray</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/autosummary/spacepy.datamodel.ISTPContainer.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -96,50 +59,63 @@
           <div class="body" role="main">
             
   <section id="spacepy-datamodel-istpcontainer">
-<h1>spacepy.datamodel.ISTPContainer<a class="headerlink" href="#spacepy-datamodel-istpcontainer" title="Permalink to this heading">¶</a></h1>
+<h1>spacepy.datamodel.ISTPContainer<a class="headerlink" href="#spacepy-datamodel-istpcontainer" title="Link to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="spacepy.datamodel.ISTPContainer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.datamodel.</span></span><span class="sig-name descname"><span class="pre">ISTPContainer</span></span><a class="reference internal" href="../_modules/spacepy/datamodel.html#ISTPContainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.ISTPContainer" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.datamodel.</span></span><span class="sig-name descname"><span class="pre">ISTPContainer</span></span><a class="reference internal" href="../_modules/spacepy/datamodel.html#ISTPContainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.ISTPContainer" title="Link to this definition">¶</a></dt>
 <dd><p>Mixin class for containers using ISTP metadata.</p>
 <p>Container types like <a class="reference internal" href="spacepy.datamodel.SpaceData.html#spacepy.datamodel.SpaceData" title="spacepy.datamodel.SpaceData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpaceData</span></code></a> provide all these methods; they assume
 attributes of the container and the arrays it contains use the
 <a class="reference external" href="https://spdf.gsfc.nasa.gov/sp_use_of_cdf.html">ISTP metadata standard</a>
 and are unlikely to give good results if that is not the case.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 0.5.0.</span></p>
+<p><span class="versionmodified added">Added in version 0.5.0.</span></p>
 </div>
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.datamodel.ISTPContainer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spacepy.datamodel.ISTPContainer.__init__" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.fromDataFrame" title="spacepy.datamodel.ISTPContainer.fromDataFrame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fromDataFrame</span></code></a>(df[, copy])</p></td>
 <td><p>Convert from Pandas DataFrame</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.lineplot" title="spacepy.datamodel.ISTPContainer.lineplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lineplot</span></code></a>(vname[, target])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.get_deltas" title="spacepy.datamodel.ISTPContainer.get_deltas"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_deltas</span></code></a>(vname)</p></td>
+<td><p>Return deltas for an array</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.lineplot" title="spacepy.datamodel.ISTPContainer.lineplot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lineplot</span></code></a>(vname[, target])</p></td>
 <td><p>Line plot of a value (array) from this container</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.main_vars" title="spacepy.datamodel.ISTPContainer.main_vars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">main_vars</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.main_vars" title="spacepy.datamodel.ISTPContainer.main_vars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">main_vars</span></code></a>()</p></td>
 <td><p>Return names of the 'main' variables in this container.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.plot" title="spacepy.datamodel.ISTPContainer.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([vnames, fig])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.plot" title="spacepy.datamodel.ISTPContainer.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([vnames, fig])</p></td>
 <td><p>Plot one or more values (arrays) from this container</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.spectrogram" title="spacepy.datamodel.ISTPContainer.spectrogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spectrogram</span></code></a>(vname[, target])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.spectrogram" title="spacepy.datamodel.ISTPContainer.spectrogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spectrogram</span></code></a>(vname[, target])</p></td>
 <td><p>Spectrogram plot of a value (array) from this container</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.toDataFrame" title="spacepy.datamodel.ISTPContainer.toDataFrame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toDataFrame</span></code></a>([vname, copy])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.toDataFrame" title="spacepy.datamodel.ISTPContainer.toDataFrame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">toDataFrame</span></code></a>([vname, copy])</p></td>
 <td><p>Convert to Pandas DataFrame</p></td>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Attributes</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.attrs" title="spacepy.datamodel.ISTPContainer.attrs"><code class="xref py py-data docutils literal notranslate"><span class="pre">attrs</span></code></a></div>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="spacepy.datamodel.ISTPContainer.fromDataFrame">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fromDataFrame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#ISTPContainer.fromDataFrame"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.ISTPContainer.fromDataFrame" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fromDataFrame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#ISTPContainer.fromDataFrame"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.ISTPContainer.fromDataFrame" title="Link to this definition">¶</a></dt>
 <dd><p>Convert from Pandas DataFrame</p>
-<p>Converts a Pandas <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame</span></code></a> to ISTP-compliant type.
-<a class="reference external" href="https://numpy.org/doc/stable/reference/constants.html#numpy.nan" title="(in NumPy v1.26)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nan</span></code></a> are replaced with fill.</p>
+<p>Converts a Pandas <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame</span></code></a> to ISTP-compliant type.
+<a class="reference external" href="https://numpy.org/doc/stable/reference/constants.html#numpy.nan" title="(in NumPy v2.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nan</span></code></a> are replaced with fill.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>df</strong><span class="classifier"><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame</span></code></a></span></dt><dd><p>Data frame to convert</p>
+<dt><strong>df</strong><span class="classifier"><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame</span></code></a></span></dt><dd><p>Data frame to convert</p>
 </dd>
 </dl>
 </dd>
@@ -153,7 +129,7 @@ required to represent the DataFrame are used.</p>
 </dd>
 <dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>copy</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, default <code class="docutils literal notranslate"><span class="pre">True</span></code></span></dt><dd><p>Copy data from the DataFrame. If <code class="docutils literal notranslate"><span class="pre">False</span></code>, changes to the
+<dt><strong>copy</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, default <code class="docutils literal notranslate"><span class="pre">True</span></code></span></dt><dd><p>Copy data from the DataFrame. If <code class="docutils literal notranslate"><span class="pre">False</span></code>, changes to the
 output may affect the DataFrame. In some cases a copy
 may be made even if <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 </dd>
@@ -162,44 +138,73 @@ may be made even if <code class="docutils literal notranslate"><span class="pre"
 </dl>
 <p class="rubric">Notes</p>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 0.6.0.</span></p>
+<p><span class="versionmodified added">Added in version 0.6.0.</span></p>
 </div>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="spacepy.datamodel.ISTPContainer.lineplot">
-<span class="sig-name descname"><span class="pre">lineplot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#ISTPContainer.lineplot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.ISTPContainer.lineplot" title="Permalink to this definition">¶</a></dt>
-<dd><p>Line plot of a value (array) from this container</p>
+<dt class="sig sig-object py" id="spacepy.datamodel.ISTPContainer.get_deltas">
+<span class="sig-name descname"><span class="pre">get_deltas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#ISTPContainer.get_deltas"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.ISTPContainer.get_deltas" title="Link to this definition">¶</a></dt>
+<dd><p>Return deltas for an array</p>
+<p>Returns ISTP delta values. These may be uncertainties or may
+be e.g. bin widths; interpretation is undefined.</p>
+<p>Invalid values are replaced with <a class="reference external" href="https://numpy.org/doc/stable/reference/constants.html#numpy.nan" title="(in NumPy v2.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nan</span></code></a>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>vname</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>The key into this container of the value to plot (i.e.,
-the name of the variable).</p>
-</dd>
-<dt><strong>target</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.8.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a> or <a class="reference external" href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v3.8.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.figure.Figure</span></code></a>, optional</span></dt><dd><p>Where to draw the plot. Default is to create a new figure with
-a single subplot. If <code class="docutils literal notranslate"><span class="pre">Axes</span></code>, will draw into that subplot (and
-will not draw a legend or figure title); if <code class="docutils literal notranslate"><span class="pre">Figure</span></code>, will
-make a single subplot (and not set figure title). Handled by
-<a class="reference internal" href="spacepy.plot.utils.set_target.html#spacepy.plot.utils.set_target" title="spacepy.plot.utils.set_target"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_target</span></code></a>.</p>
+<dt><strong>vname</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>The key into this container of the value to get delta
+(i.e.,  the name of the variable).</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl>
-<dt><strong>ax</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.8.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a></span></dt><dd><p>The subplot on which the variable was plotted</p>
+<dt><strong>deltas</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code></a> of <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ndarray</span></code></a></span></dt><dd><p>Deltas for <code class="docutils literal notranslate"><span class="pre">vname</span></code>. Empty if no deltas available;
+one-element if symmetric; two-element if not symmetric.</p>
 </dd>
 </dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 0.5.0.</span></p>
+<p><span class="versionmodified added">Added in version 0.5.0.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.datamodel.ISTPContainer.lineplot">
+<span class="sig-name descname"><span class="pre">lineplot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#ISTPContainer.lineplot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.ISTPContainer.lineplot" title="Link to this definition">¶</a></dt>
+<dd><p>Line plot of a value (array) from this container</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>vname</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>The key into this container of the value to plot (i.e.,
+the name of the variable).</p>
+</dd>
+<dt><strong>target</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.9.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a> or <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="(in Matplotlib v3.9.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.figure.Figure</span></code></a>, optional</span></dt><dd><p>Where to draw the plot. Default is to create a new figure with
+a single subplot. If <code class="docutils literal notranslate"><span class="pre">Axes</span></code>, will draw into that subplot (and
+will not draw a legend or figure title); if <code class="docutils literal notranslate"><span class="pre">Figure</span></code>, will
+make a single subplot (and not set figure title). Handled by
+<a class="reference internal" href="spacepy.plot.utils.html#spacepy.plot.utils.set_target" title="spacepy.plot.utils.set_target"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_target</span></code></a>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl>
+<dt><strong>ax</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.9.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a></span></dt><dd><p>The subplot on which the variable was plotted</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.5.0.</span></p>
 </div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="spacepy.datamodel.ISTPContainer.main_vars">
-<span class="sig-name descname"><span class="pre">main_vars</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#ISTPContainer.main_vars"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.ISTPContainer.main_vars" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">main_vars</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#ISTPContainer.main_vars"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.ISTPContainer.main_vars" title="Link to this definition">¶</a></dt>
 <dd><p>Return names of the ‘main’ variables in this container.</p>
 <p>These are variables that are likely to be of direct interest, rather
 than dependencies and support data. They are chosen primarily by
@@ -208,29 +213,29 @@ attribute is present it must be <code class="docutils literal notranslate"><span
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></dt><dd></dd>
+<dt><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></dt><dd></dd>
 </dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 0.5.0.</span></p>
+<p><span class="versionmodified added">Added in version 0.5.0.</span></p>
 </div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="spacepy.datamodel.ISTPContainer.plot">
-<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vnames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#ISTPContainer.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.ISTPContainer.plot" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vnames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#ISTPContainer.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.ISTPContainer.plot" title="Link to this definition">¶</a></dt>
 <dd><p>Plot one or more values (arrays) from this container</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>vnames</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional.</span></dt><dd><p>The key into this container of the value(s) to plot (i.e.,
+<dt><strong>vnames</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code></a> of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional.</span></dt><dd><p>The key into this container of the value(s) to plot (i.e.,
 the name of the variable). If not specified, plots all
 ‘main’ variables which are not dependencies of others;
 see <a class="reference internal" href="#spacepy.datamodel.ISTPContainer.main_vars" title="spacepy.datamodel.ISTPContainer.main_vars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">main_vars</span></code></a>.</p>
 </dd>
-<dt><strong>fig</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v3.8.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.figure.Figure</span></code></a>, optional</span></dt><dd><p>Where to draw the plot. Default is to create a new figure. If
+<dt><strong>fig</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="(in Matplotlib v3.9.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.figure.Figure</span></code></a>, optional</span></dt><dd><p>Where to draw the plot. Default is to create a new figure. If
 given, subplots will be added to this figure (it should start
 empty).</p>
 </dd>
@@ -238,7 +243,7 @@ empty).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl>
-<dt><strong>fig</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v3.8.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.figure.Figure</span></code></a></span></dt><dd><p>The figure on which the variables were plotted</p>
+<dt><strong>fig</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="(in Matplotlib v3.9.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.figure.Figure</span></code></a></span></dt><dd><p>The figure on which the variables were plotted</p>
 </dd>
 </dl>
 </dd>
@@ -254,7 +259,7 @@ empty).</p>
 </div>
 <p class="rubric">Notes</p>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 0.5.0.</span></p>
+<p><span class="versionmodified added">Added in version 0.5.0.</span></p>
 </div>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamodel</span>
@@ -285,60 +290,60 @@ empty).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="spacepy.datamodel.ISTPContainer.spectrogram">
-<span class="sig-name descname"><span class="pre">spectrogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#ISTPContainer.spectrogram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.ISTPContainer.spectrogram" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">spectrogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#ISTPContainer.spectrogram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.ISTPContainer.spectrogram" title="Link to this definition">¶</a></dt>
 <dd><p>Spectrogram plot of a value (array) from this container</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>vname</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>The key into this container of the value to plot (i.e.,
+<dt><strong>vname</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>The key into this container of the value to plot (i.e.,
 the name of the variable).</p>
 </dd>
-<dt><strong>target</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.8.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a> or <a class="reference external" href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="(in Matplotlib v3.8.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.figure.Figure</span></code></a>, optional</span></dt><dd><p>Where to draw the plot. Default is to create a new figure with
+<dt><strong>target</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.9.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a> or <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="(in Matplotlib v3.9.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.figure.Figure</span></code></a>, optional</span></dt><dd><p>Where to draw the plot. Default is to create a new figure with
 a single subplot. If <code class="docutils literal notranslate"><span class="pre">Axes</span></code>, will draw into that subplot (and
 will not set figure title); if <code class="docutils literal notranslate"><span class="pre">Figure</span></code>, will make a single
 subplot (and not set figure title). Handled by
-<a class="reference internal" href="spacepy.plot.utils.set_target.html#spacepy.plot.utils.set_target" title="spacepy.plot.utils.set_target"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_target</span></code></a>.</p>
+<a class="reference internal" href="spacepy.plot.utils.html#spacepy.plot.utils.set_target" title="spacepy.plot.utils.set_target"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_target</span></code></a>.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl>
-<dt><strong>ax</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.8.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a></span></dt><dd><p>The subplot on which the variable was plotted</p>
+<dt><strong>ax</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.9.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a></span></dt><dd><p>The subplot on which the variable was plotted</p>
 </dd>
 </dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 0.5.0.</span></p>
+<p><span class="versionmodified added">Added in version 0.5.0.</span></p>
 </div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="spacepy.datamodel.ISTPContainer.toDataFrame">
-<span class="sig-name descname"><span class="pre">toDataFrame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#ISTPContainer.toDataFrame"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.ISTPContainer.toDataFrame" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">toDataFrame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/datamodel.html#ISTPContainer.toDataFrame"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.datamodel.ISTPContainer.toDataFrame" title="Link to this definition">¶</a></dt>
 <dd><p>Convert to Pandas DataFrame</p>
 <p>Converts one variable (and its dependencies) to a Pandas
-<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame</span></code></a>. Invalid values are replaced with <a class="reference external" href="https://numpy.org/doc/stable/reference/constants.html#numpy.nan" title="(in NumPy v1.26)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nan</span></code></a>.</p>
+<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame</span></code></a>. Invalid values are replaced with <a class="reference external" href="https://numpy.org/doc/stable/reference/constants.html#numpy.nan" title="(in NumPy v2.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nan</span></code></a>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>vname</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</span></dt><dd><p>The key into this container of the value to convert
+<dt><strong>vname</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, optional</span></dt><dd><p>The key into this container of the value to convert
 (i.e.,  the name of the variable). Strongly recommended;
 if not specified, will try to find one using <a class="reference internal" href="#spacepy.datamodel.ISTPContainer.main_vars" title="spacepy.datamodel.ISTPContainer.main_vars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">main_vars</span></code></a>,
-and raise <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValueError</span></code></a> if there is more than one candidate.</p>
+and raise <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValueError</span></code></a> if there is more than one candidate.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame</span></code></a></dt><dd><p>Data from the array named by <code class="docutils literal notranslate"><span class="pre">vname</span></code> and its dependencies.</p>
+<dt><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataFrame</span></code></a></dt><dd><p>Data from the array named by <code class="docutils literal notranslate"><span class="pre">vname</span></code> and its dependencies.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
-<dt><strong>copy</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, default <code class="docutils literal notranslate"><span class="pre">True</span></code></span></dt><dd><p>Copy data to the DataFrame. If <code class="docutils literal notranslate"><span class="pre">False</span></code>, changes to the
+<dt><strong>copy</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code></a>, default <code class="docutils literal notranslate"><span class="pre">True</span></code></span></dt><dd><p>Copy data to the DataFrame. If <code class="docutils literal notranslate"><span class="pre">False</span></code>, changes to the
 DataFrame may affect the source data. In some cases a copy
 may be made even if <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 </dd>
@@ -347,7 +352,7 @@ may be made even if <code class="docutils literal notranslate"><span class="pre"
 </dl>
 <p class="rubric">Notes</p>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 0.6.0.</span></p>
+<p><span class="versionmodified added">Added in version 0.6.0.</span></p>
 </div>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">spacepy.datamodel</span>
@@ -360,6 +365,11 @@ may be made even if <code class="docutils literal notranslate"><span class="pre"
 </div>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spacepy.datamodel.ISTPContainer.attrs">
+<span class="sig-name descname"><span class="pre">attrs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping" title="(in Python v3.13)"><span class="pre">Mapping</span></a></em><a class="headerlink" href="#spacepy.datamodel.ISTPContainer.attrs" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 </section>
@@ -367,6 +377,61 @@ may be made even if <code class="docutils literal notranslate"><span class="pre"
 
             <div class="clearer"></div>
           </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.datamodel.ISTPContainer</a><ul>
+<li><a class="reference internal" href="#spacepy.datamodel.ISTPContainer"><code class="docutils literal notranslate"><span class="pre">ISTPContainer</span></code></a><ul>
+<li><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.__init__"><code class="docutils literal notranslate"><span class="pre">ISTPContainer.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.fromDataFrame"><code class="docutils literal notranslate"><span class="pre">ISTPContainer.fromDataFrame()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.get_deltas"><code class="docutils literal notranslate"><span class="pre">ISTPContainer.get_deltas()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.lineplot"><code class="docutils literal notranslate"><span class="pre">ISTPContainer.lineplot()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.main_vars"><code class="docutils literal notranslate"><span class="pre">ISTPContainer.main_vars()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.plot"><code class="docutils literal notranslate"><span class="pre">ISTPContainer.plot()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.spectrogram"><code class="docutils literal notranslate"><span class="pre">ISTPContainer.spectrogram()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.toDataFrame"><code class="docutils literal notranslate"><span class="pre">ISTPContainer.toDataFrame()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.datamodel.ISTPContainer.attrs"><code class="docutils literal notranslate"><span class="pre">ISTPContainer.attrs</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="spacepy.datamodel.ISTPArray.html"
+                          title="previous chapter">spacepy.datamodel.ISTPArray</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="spacepy.datamodel.MetaMixin.html"
+                          title="next chapter">spacepy.datamodel.MetaMixin</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/autosummary/spacepy.datamodel.ISTPContainer.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -381,23 +446,24 @@ may be made even if <code class="docutils literal notranslate"><span class="pre"
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.datamodel.ISTPArray.html" title="spacepy.datamodel.ISTPArray"
+          <a href="spacepy.datamodel.MetaMixin.html" title="spacepy.datamodel.MetaMixin"
              >next</a> |</li>
         <li class="right" >
-          <a href="spacepy.datamodel.dmarray.html" title="spacepy.datamodel.dmarray"
+          <a href="spacepy.datamodel.ISTPArray.html" title="spacepy.datamodel.ISTPArray"
              >previous</a> |</li>
         <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
         <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../datamodel.html" >datamodel - easy to use general data model</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.datamodel.html" >spacepy.datamodel</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.datamodel.ISTPContainer</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2024, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
 </html>

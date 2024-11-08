@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>spacepy.pybats.dgcpm &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/plot_directive.css" />
+    
+    <script src="../../../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+    <link rel="icon" href="../../../_static/spacepy_favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../../../index.html"><img src="../../../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../../../search.html">search</a>|&nbsp;</li>
+       <li><a href="../../../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="../pybats.html" accesskey="U">spacepy.pybats</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.pybats.dgcpm</a></li> 
+      </ul>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for spacepy.pybats.dgcpm</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">The PyBats submodule for handling input and output for the Dynamic Global</span>
+<span class="sd">Core Plasma Model (DGCPM), a plasmasphere module of the SWMF.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">spacepy.plot</span> <span class="kn">import</span> <span class="n">applySmartTimeTicks</span><span class="p">,</span> <span class="n">set_target</span>
+<span class="kn">from</span> <span class="nn">spacepy.pybats</span> <span class="kn">import</span> <span class="n">PbData</span>
+
+
+<span class="k">def</span> <span class="nf">_adjust_dialplot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">rad</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;12&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Ram output is often visualized with equatorial dial plots.  This</span>
+<span class="sd">    function quickly adjusts those plots to give a uniform, clean</span>
+<span class="sd">    look and feel.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="nb">max</span><span class="p">,</span> <span class="n">pi</span>
+    <span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">MultipleLocator</span>
+
+    <span class="kn">from</span> <span class="nn">spacepy.pybats.ram</span> <span class="kn">import</span> <span class="n">add_body_polar</span>
+
+    <span class="c1"># Constrain range of plot:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">rad</span><span class="p">)])</span>
+
+    <span class="c1"># Set MLT labels:</span>
+    <span class="n">lt_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;06&#39;</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="s1">&#39;18&#39;</span><span class="p">,</span> <span class="s1">&#39;00&#39;</span><span class="p">]</span>
+    <span class="n">xticks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">xticks</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">lt_labels</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+    <span class="c1"># Set L labels and grid.  Turn off label at L=0.</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+    <span class="n">labs</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">()]</span>
+    <span class="k">if</span> <span class="n">labelsize</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">labs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">labelsize</span><span class="p">,</span>
+                           <span class="n">backgroundcolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">()</span>
+        <span class="n">labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">()</span>
+    <span class="n">labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># Turn on grid.</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Change background color so labels stand out.</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">add_body_polar</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="saturation">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.dgcpm.html#spacepy.pybats.dgcpm.saturation">[docs]</a>
+<span class="k">def</span> <span class="nf">saturation</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Return saturation density of a flux tube as a function of L-shell in units</span>
+<span class="sd">    of :math:`\\#/cm^3`. Formula is from Carpenter and Anderson, JGR, 1992.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">return</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3145</span><span class="o">*</span><span class="n">L</span> <span class="o">+</span> <span class="mf">3.9043</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="refill_flux">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.dgcpm.html#spacepy.pybats.dgcpm.refill_flux">[docs]</a>
+<span class="k">def</span> <span class="nf">refill_flux</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">chi</span><span class="o">=</span><span class="s1">&#39;Auto&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Calculate the refill flux of a flux tube of density *n*, L-shell *L*,</span>
+<span class="sd">    using a refill time constant of *tau*.  If kwarg *chi* is set to &#39;Auto&#39;,</span>
+<span class="sd">    then zenith angle dependence is calculated using an assumed dipole field.</span>
+<span class="sd">    To remove this dependence, set *chi* to a solar zenith angle in degrees.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">if</span> <span class="n">chi</span> <span class="o">==</span> <span class="s1">&#39;Auto&#39;</span><span class="p">:</span>
+        <span class="n">chi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">2.</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">L</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">chi</span> <span class="o">*=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">180.0</span>
+
+    <span class="c1"># Convenient values:</span>
+    <span class="n">vmin</span> <span class="o">=</span> <span class="mf">1879379699284659.0</span>  <span class="c1"># Taken right from pbo.f!</span>
+    <span class="n">Lmin</span> <span class="o">=</span> <span class="mf">1.29762044</span>
+
+    <span class="c1"># Start with fmax.</span>
+    <span class="n">fmax</span> <span class="o">=</span> <span class="mf">2.</span><span class="o">*</span><span class="n">vmin</span><span class="o">*</span><span class="n">Lmin</span><span class="o">*</span><span class="n">saturation</span><span class="p">(</span><span class="n">Lmin</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">tau</span><span class="o">*</span><span class="mf">24.</span><span class="o">*</span><span class="mf">3600.0</span><span class="p">)</span>
+
+    <span class="c1"># Calculate refill rate.</span>
+    <span class="n">nsat</span> <span class="o">=</span> <span class="n">saturation</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+    <span class="n">flux</span> <span class="o">=</span> <span class="p">(</span><span class="n">nsat</span><span class="o">-</span><span class="n">n</span><span class="p">)</span><span class="o">/</span><span class="n">nsat</span> <span class="o">*</span> <span class="n">fmax</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">chi</span><span class="p">)</span> <span class="o">*</span> <span class="n">L</span><span class="o">**-</span><span class="mi">3</span>
+
+    <span class="k">return</span> <span class="n">flux</span></div>
+
+
+
+<div class="viewcode-block" id="PlasmaFile">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.dgcpm.PlasmaFile.html#spacepy.pybats.dgcpm.PlasmaFile">[docs]</a>
+<span class="k">class</span> <span class="nc">PlasmaFile</span><span class="p">(</span><span class="n">PbData</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    DGCPM&#39;s plasma files contain a plethora of values from the model&#39;s 2D plane.</span>
+<span class="sd">    This class produces objects that load the data and sort it into a PyBats</span>
+<span class="sd">    data object.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+<div class="viewcode-block" id="PlasmaFile.__init__">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.dgcpm.PlasmaFile.html#spacepy.pybats.dgcpm.PlasmaFile.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Reads the data; sorts into arrays.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+        <span class="kn">import</span> <span class="nn">gzip</span>
+        <span class="kn">from</span> <span class="nn">spacepy.datamodel</span> <span class="kn">import</span> <span class="n">dmarray</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">PlasmaFile</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># Init as PbData.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">filename</span>
+
+        <span class="c1"># Some visualization defaults.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_default_cmaps</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;n&#39;</span><span class="p">:</span><span class="s1">&#39;Greens_r&#39;</span><span class="p">,</span> <span class="s1">&#39;pot&#39;</span><span class="p">:</span><span class="s1">&#39;bwr&#39;</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_default_zlims</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;n&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">],</span> <span class="s1">&#39;pot&#39;</span><span class="p">:[</span><span class="o">-</span><span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">]}</span>
+
+        <span class="c1"># Set units and variable names.</span>
+        <span class="c1"># Some units are not what are actually in the file; see conversions</span>
+        <span class="c1"># below (i.e. density defaults to m^-3, but that&#39;s unweildy.)</span>
+        <span class="n">units</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;cm^{-3}&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;R_E&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;R_E&#39;</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s1">&#39;b_open&#39;</span><span class="p">,</span> <span class="s1">&#39;boolean&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;theta&#39;</span><span class="p">,</span> <span class="s1">&#39;degrees&#39;</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s1">&#39;phi&#39;</span><span class="p">,</span> <span class="s1">&#39;degrees&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;pot&#39;</span><span class="p">,</span> <span class="s1">&#39;kV&#39;</span><span class="p">,),</span> <span class="p">(</span><span class="s1">&#39;corot&#39;</span><span class="p">,</span> <span class="s1">&#39;kV&#39;</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s1">&#39;vr&#39;</span><span class="p">,</span> <span class="s1">&#39;m/s&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;vphi&#39;</span><span class="p">,</span> <span class="s1">&#39;m/s&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;m^-3&#39;</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s1">&#39;fluxphi&#39;</span><span class="p">,</span> <span class="s1">&#39;m^{-3}s^{-1}&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;fluxr&#39;</span><span class="p">,</span> <span class="s1">&#39;m^{-3}s^{-1}&#39;</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s1">&#39;totaln&#39;</span><span class="p">,</span> <span class="s1">&#39;#&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;vol&#39;</span><span class="p">,</span> <span class="s1">&#39;km^3&#39;</span><span class="p">)]</span>
+        <span class="n">units</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">units</span><span class="p">)</span>
+
+        <span class="c1"># Open file; unzip if necessary.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="o">==</span> <span class="s1">&#39;.gz&#39;</span><span class="p">:</span>
+            <span class="n">infile</span> <span class="o">=</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">],</span> <span class="s1">&#39;rt&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">infile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">],</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Read the header of the file.</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="n">infile</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="n">nLat</span><span class="p">,</span> <span class="n">nLon</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                                  <span class="s1">&#39;T=%Y%m</span><span class="si">%d</span><span class="s1">_%H%M%S_000&#39;</span><span class="p">)</span>
+        <span class="n">varlist</span> <span class="o">=</span> <span class="n">infile</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">2</span><span class="p">:]</span>
+
+        <span class="c1"># Create containers for data:</span>
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">varlist</span><span class="p">:</span>
+            <span class="n">unit</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">units</span> <span class="k">else</span> <span class="n">units</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
+            <span class="bp">self</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nLat</span><span class="p">,</span> <span class="n">nLon</span><span class="p">)),</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="n">unit</span><span class="p">})</span>
+
+        <span class="c1"># Read rest of file and sort data into arrays:</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">infile</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
+            <span class="n">parts</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+            <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">parts</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">parts</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span>
+            <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">varlist</span><span class="p">,</span> <span class="n">parts</span><span class="p">):</span>
+                <span class="bp">self</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+
+        <span class="c1"># That&#39;s it for our file.</span>
+        <span class="n">infile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+        <span class="c1"># Create some &quot;helper&quot; variables:</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;degrees&#39;</span><span class="p">})</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;phi&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span> <span class="p">:],</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;degrees&#39;</span><span class="p">})</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;mlt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span><span class="o">/</span><span class="mf">15.0</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;hours&#39;</span><span class="p">})</span>
+
+        <span class="c1"># Calculate L-Shell for convenience.</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">180.</span><span class="p">)</span><span class="o">**-</span><span class="mi">2</span><span class="p">,</span>
+                            <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;R_E&#39;</span><span class="p">})</span>
+
+        <span class="c1"># Sometimes, SI units aren&#39;t the best.</span>
+        <span class="k">if</span> <span class="s1">&#39;n&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span> <span class="o">/=</span> <span class="mf">100.0</span><span class="o">**</span><span class="mi">3</span>
+        <span class="k">if</span> <span class="s1">&#39;pot&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;pot&#39;</span><span class="p">]</span> <span class="o">/=</span> <span class="mf">1000.0</span>
+        <span class="k">if</span> <span class="s1">&#39;corot&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;corot&#39;</span><span class="p">]</span> <span class="o">/=</span> <span class="mf">1000.0</span>
+
+        <span class="c1"># Some other useful attributes.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;dLat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;dLon&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;dL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="PlasmaFile.calc_E">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.dgcpm.PlasmaFile.html#spacepy.pybats.dgcpm.PlasmaFile.calc_E">[docs]</a>
+    <span class="k">def</span> <span class="nf">calc_E</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Differentiate the equatorial electric potential to arrive at electric field</span>
+<span class="sd">        (stored using keys &#39;Er&#39;, &#39;Ephi&#39;, and &#39;E&#39;).</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="kn">from</span> <span class="nn">spacepy.datamodel</span> <span class="kn">import</span> <span class="n">dmarray</span>
+        <span class="kn">from</span> <span class="nn">spacepy.pybats.batsmath</span> <span class="kn">import</span> <span class="n">d_dx</span><span class="p">,</span> <span class="n">d_dy</span>
+
+        <span class="n">conv</span> <span class="o">=</span> <span class="mf">1.0E6</span><span class="o">/</span><span class="mf">6371000.0</span>  <span class="c1"># Unit conversion: kV -&gt; mV, 1/Re -&gt; 1/m.</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">]))</span>
+
+        <span class="n">Er</span> <span class="o">=</span> <span class="n">d_dy</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;pot&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">conv</span><span class="p">,</span>   <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;dL&#39;</span><span class="p">])</span>
+        <span class="n">Ephi</span> <span class="o">=</span> <span class="n">d_dx</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;pot&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">conv</span><span class="o">/</span><span class="n">L</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;dLon&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">180.0</span><span class="p">)</span>
+        <span class="n">E</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Er</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">Ephi</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;mV/m&#39;</span><span class="p">})</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Er&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">Er</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;mV/m&#39;</span><span class="p">})</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;Ephi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">Ephi</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;mV/m&#39;</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="PlasmaFile.add_pcolor">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.dgcpm.PlasmaFile.html#spacepy.pybats.dgcpm.PlasmaFile.add_pcolor">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_pcolor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">zlim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                   <span class="n">Lmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">add_cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">clabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dolog</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                   <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Create a polar pcolor plot of variable *var* and add it to *target*.</span>
+<span class="sd">        Extra keyword arguments are handed to matplotlib&#39;s pcolor command.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ==========</span>
+<span class="sd">        var : string</span>
+<span class="sd">             The variable within the object to plot.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        =======</span>
+<span class="sd">        fig : matplotlib figure object</span>
+<span class="sd">        ax  : matplotlib axes object</span>
+<span class="sd">        cont : matplotlib contour object</span>
+<span class="sd">        cbar : matplotlib colorbar object</span>
+
+<span class="sd">        Other Parameters</span>
+<span class="sd">        ================</span>
+<span class="sd">        zlim : two-element list or array</span>
+<span class="sd">             Set the color bar range.  Some variables have default ranges.</span>
+<span class="sd">             Others will use max and min of *var*.</span>
+<span class="sd">        Lmax : real</span>
+<span class="sd">             Set the radial extent of the plot.</span>
+<span class="sd">        add_cbar : bool</span>
+<span class="sd">             Set whether to add a color bar or not.  Defaults to **False**.</span>
+<span class="sd">        dolog : bool</span>
+<span class="sd">             If **True**, use a log scale to plot *var*.</span>
+<span class="sd">             Defaults to **False**.</span>
+<span class="sd">        labelsize : int</span>
+<span class="sd">             Sets the font size of the labels.  Defaults to 14.</span>
+<span class="sd">        title : string</span>
+<span class="sd">             Sets the plot title.</span>
+<span class="sd">             Defaults to &#39;auto&#39;, using the variable label.</span>
+<span class="sd">        clabel : string</span>
+<span class="sd">             Set label for the color bar.</span>
+<span class="sd">             Defaults to *var* and associated units.</span>
+<span class="sd">        target : Figure or Axes</span>
+<span class="sd">             If None (default), a new figure is generated from scratch.</span>
+<span class="sd">             If a matplotlib Figure object, a new axis is created</span>
+<span class="sd">             to fill that figure.</span>
+<span class="sd">             If a matplotlib Axes object, the plot is placed</span>
+<span class="sd">             into that axis.</span>
+<span class="sd">        loc : int</span>
+<span class="sd">            Use to specify the subplot placement of the axis</span>
+<span class="sd">            (e.g. loc=212, etc.) Used if target is a Figure or None.</span>
+<span class="sd">            Default 111 (single plot).</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">linspace</span><span class="p">,</span> <span class="n">pi</span>
+        <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+        <span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LogNorm</span>
+
+        <span class="c1"># Set ax and fig based on given target.</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">set_target</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">10.5</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">polar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># Get max/min if none given.</span>
+        <span class="k">if</span> <span class="n">zlim</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">var</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_zlims</span><span class="p">:</span>
+                <span class="n">zlim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_zlims</span><span class="p">[</span><span class="n">var</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">zlim</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="bp">self</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()]</span>
+            <span class="k">if</span> <span class="n">dolog</span> <span class="ow">and</span> <span class="n">zlim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">zlim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="mf">0.0001</span><span class="p">,</span> <span class="n">zlim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">])</span>
+
+        <span class="c1"># Logarithmic scale?</span>
+        <span class="k">if</span> <span class="n">dolog</span><span class="p">:</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">zlim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="n">var</span><span class="p">],</span> <span class="mf">1.01</span><span class="o">*</span><span class="n">zlim</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">norm</span> <span class="o">=</span> <span class="n">LogNorm</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">var</span><span class="p">]</span>
+            <span class="n">norm</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Set up proper meshes.</span>
+        <span class="n">nL</span><span class="p">,</span> <span class="n">nPhi</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">]),</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">])</span>
+        <span class="n">dL</span><span class="p">,</span> <span class="n">dPhi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;dL&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;dLon&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mf">180.0</span>
+        <span class="n">phi</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="n">dPhi</span><span class="o">/</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.</span><span class="o">*</span><span class="n">pi</span><span class="o">-</span><span class="n">dPhi</span><span class="o">/</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">nPhi</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="n">pi</span><span class="o">/</span><span class="mf">2.</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">dL</span><span class="o">/</span><span class="mf">2.0</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">dL</span><span class="o">/</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">nL</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># Set default color tables based on variable plotted.</span>
+        <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;cmap&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">)</span> <span class="ow">and</span> <span class="n">var</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_cmaps</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;cmap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_cmaps</span><span class="p">[</span><span class="n">var</span><span class="p">]</span>
+
+        <span class="c1"># -------Plot away------</span>
+        <span class="c1"># Mesh:</span>
+        <span class="n">pcol</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">zlim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vmax</span><span class="o">=</span><span class="n">zlim</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                             <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="c1"># Add cbar if requested:</span>
+        <span class="k">if</span> <span class="n">add_cbar</span><span class="p">:</span>
+            <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">pcol</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">.8</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">clabel</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">clabel</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> ($</span><span class="si">%s</span><span class="s2">$)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">])</span>
+            <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">clabel</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cbar</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Adjust plot appropriately.</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">Lmax</span><span class="p">:</span>
+            <span class="c1"># Default to inside ghost cells.</span>
+            <span class="n">Lmax</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">title</span><span class="p">:</span>
+                <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(),</span>
+                             <span class="n">position</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+        <span class="n">_adjust_dialplot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">Lmax</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="n">labelsize</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">pcol</span><span class="p">,</span> <span class="n">cbar</span></div>
+
+
+<div class="viewcode-block" id="PlasmaFile.add_contour">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.dgcpm.PlasmaFile.html#spacepy.pybats.dgcpm.PlasmaFile.add_contour">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_contour</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">zlim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                    <span class="n">Lmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">add_cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">clabel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dolog</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">nLev</span><span class="o">=</span><span class="mi">31</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Create a polar contour plot of variable *var* and add it to *target*.</span>
+<span class="sd">        Extra keyword arguments are handed to matplotlib&#39;s contourf command.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ==========</span>
+<span class="sd">        var : string</span>
+<span class="sd">             The variable within the object to plot.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        =======</span>
+<span class="sd">        fig : matplotlib figure object</span>
+<span class="sd">        ax  : matplotlib axes object</span>
+<span class="sd">        cont : matplotlib contour object</span>
+<span class="sd">        cbar : matplotlib colorbar object</span>
+
+<span class="sd">        Other Parameters</span>
+<span class="sd">        ================</span>
+<span class="sd">        nLev : int</span>
+<span class="sd">             Sets the number of contour levels.  Defaults to 31.</span>
+<span class="sd">        zlim : two-element list or array</span>
+<span class="sd">             Set the color bar range.  Some variables have default ranges.  Others</span>
+<span class="sd">             will use max and min of *var*.</span>
+<span class="sd">        Lmax : real</span>
+<span class="sd">             Set the radial extent of the plot.</span>
+<span class="sd">        add_cbar : bool</span>
+<span class="sd">             Set whether to add a color bar or not.  Defaults to **False**.</span>
+<span class="sd">        dolog : bool</span>
+<span class="sd">             If **True**, use a log scale to plot *var*.  Defaults to **False**.</span>
+<span class="sd">        labelsize : int</span>
+<span class="sd">             Sets the font size of the labels.  Defaults to 14.</span>
+<span class="sd">        title : string</span>
+<span class="sd">             Sets the plot title.  Defaults to &#39;auto&#39;, using the variable label.</span>
+<span class="sd">        clabel : string</span>
+<span class="sd">             Set label for the color bar.  Defaults to *var* and associated units.</span>
+<span class="sd">        target : Figure or Axes</span>
+<span class="sd">             If None (default), a new figure is generated from scratch.</span>
+<span class="sd">             If a matplotlib Figure object, a new axis is created</span>
+<span class="sd">             to fill that figure.</span>
+<span class="sd">             If a matplotlib Axes object, the plot is placed</span>
+<span class="sd">             into that axis.</span>
+<span class="sd">        loc : int</span>
+<span class="sd">            Use to specify the subplot placement of the axis</span>
+<span class="sd">            (e.g. loc=212, etc.) Used if target is a Figure or None.</span>
+<span class="sd">            Default 111 (single plot).</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+        <span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LogNorm</span>
+        <span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">LogLocator</span>
+
+        <span class="c1"># Set ax and fig based on given target.</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">set_target</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">10.5</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">polar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># Set function based on boolean &quot;filled&quot;:</span>
+        <span class="k">if</span> <span class="n">filled</span><span class="p">:</span>
+            <span class="n">contour</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contourf</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">contour</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span>
+
+        <span class="c1"># Get max/min if none given.</span>
+        <span class="k">if</span> <span class="n">zlim</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">var</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_zlims</span><span class="p">:</span>
+                <span class="n">zlim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_zlims</span><span class="p">[</span><span class="n">var</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">zlim</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="bp">self</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()]</span>
+            <span class="k">if</span> <span class="n">dolog</span> <span class="ow">and</span> <span class="n">zlim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">zlim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="mf">0.0001</span><span class="p">,</span> <span class="n">zlim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">])</span>
+
+        <span class="c1"># Create levels and set norm based on dolog.</span>
+        <span class="k">if</span> <span class="n">dolog</span><span class="p">:</span>
+            <span class="n">levs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">zlim</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+                                            <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">zlim</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">nLev</span><span class="p">))</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">zlim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="n">var</span><span class="p">],</span> <span class="mf">1.01</span><span class="o">*</span><span class="n">zlim</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">z</span><span class="p">[</span><span class="n">z</span> <span class="o">&gt;</span> <span class="n">zlim</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">zlim</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">norm</span> <span class="o">=</span> <span class="n">LogNorm</span><span class="p">()</span>
+            <span class="n">lct</span> <span class="o">=</span> <span class="n">LogLocator</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">levs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">zlim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">zlim</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">nLev</span><span class="p">)</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">var</span><span class="p">]</span>
+            <span class="n">norm</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">lct</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Allow results to cross phi=360.</span>
+        <span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mf">360.0</span><span class="p">]))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">180.</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">2.</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">z</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">z</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]])</span><span class="o">.</span><span class="n">transpose</span><span class="p">()),</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># Set default color tables based on variable plotted.</span>
+        <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;cmap&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s1">&#39;colors&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">)</span> <span class="ow">and</span> \
+                <span class="p">(</span><span class="n">var</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_cmaps</span><span class="p">):</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;cmap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_cmaps</span><span class="p">[</span><span class="n">var</span><span class="p">]</span>
+
+        <span class="c1"># -------Plot away------</span>
+        <span class="c1"># Contour:</span>
+        <span class="n">cont</span> <span class="o">=</span> <span class="n">contour</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">],</span> <span class="n">z</span><span class="p">,</span> <span class="n">levs</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="c1"># Add cbar if requested:</span>
+        <span class="k">if</span> <span class="n">add_cbar</span><span class="p">:</span>
+            <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cont</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">.8</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">lct</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">clabel</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">clabel</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2"> ($</span><span class="si">{</span><span class="bp">self</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">$)&quot;</span>
+            <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">clabel</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cbar</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Adjust plot appropriately.</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">Lmax</span><span class="p">:</span>
+            <span class="c1"># Default to inside ghost cells.</span>
+            <span class="n">Lmax</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">title</span><span class="p">:</span>
+                <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(),</span>
+                             <span class="n">position</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+        <span class="n">_adjust_dialplot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">Lmax</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="n">labelsize</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">cont</span><span class="p">,</span> <span class="n">cbar</span></div>
+
+
+<div class="viewcode-block" id="PlasmaFile.add_separatrix">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.dgcpm.PlasmaFile.html#spacepy.pybats.dgcpm.PlasmaFile.add_separatrix">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_separatrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span> <span class="n">Lmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                       <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Attempts to locate the separatrix (separator between closed and</span>
+<span class="sd">        open drift paths) by finding the minimum velocity in the domain and</span>
+<span class="sd">        tracing the path of constant potential that passes through that point.</span>
+<span class="sd">        The figure, axes, and contour object containing the separatrix line</span>
+<span class="sd">        are returned to the user.</span>
+
+<span class="sd">        If kwarg **target** is None (default), a new figure is</span>
+<span class="sd">        generated from scratch.  If target is a matplotlib Figure</span>
+<span class="sd">        object, a new axis is created to fill that figure at subplot</span>
+<span class="sd">        location **loc**.  If **target** is a matplotlib Axes object,</span>
+<span class="sd">        the plot is placed into that axis.</span>
+
+<span class="sd">        Four values are returned: the matplotlib Figure and Axes objects,</span>
+<span class="sd">        the matplotlib contour object, and the matplotlib colorbar object</span>
+<span class="sd">        (defaults to *False* if not used.)</span>
+
+<span class="sd">        Kwargs that set line characteristics behave in the typical matplotlib</span>
+<span class="sd">        manner (i.e. &quot;colors&quot; can be set to either a color name or a</span>
+<span class="sd">        hexidecimal specifier.)</span>
+
+<span class="sd">        =========== ==========================================================</span>
+<span class="sd">        Kwarg       Description</span>
+<span class="sd">        ----------- ----------------------------------------------------------</span>
+<span class="sd">        target      Set plot destination.  Defaults to new figure.</span>
+<span class="sd">        loc         Set subplot location.  Defaults to 111.</span>
+<span class="sd">        linewidths  Set width of plotted line.  Defaults to 3.0.</span>
+<span class="sd">        colors      Set color of line.  Defaults to &#39;orange&#39;.</span>
+<span class="sd">        linestyles  Set line style.  Defaults to &#39;dashed&#39;.</span>
+<span class="sd">        ----------- ----------------------------------------------------------</span>
+<span class="sd">        =========== ==========================================================</span>
+
+
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">pi</span>
+
+        <span class="c1"># Set default line behavior.</span>
+        <span class="k">if</span> <span class="s1">&#39;linewidths&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;linewidths&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.0</span>
+        <span class="k">if</span> <span class="s1">&#39;colors&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;colors&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;orange&#39;</span>
+        <span class="k">if</span> <span class="s1">&#39;linestyles&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;linestyles&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;solid&#39;</span>
+
+        <span class="c1"># Set ax and fig based on given target.</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">set_target</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">10.5</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">polar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">doAdjust</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">target</span> <span class="o">==</span> <span class="n">ax</span>
+
+        <span class="c1"># Find the stagnation point by looking for E = 0.</span>
+        <span class="c1"># Get the potential value at that spot.</span>
+        <span class="c1"># Exclude near-boundary points and limit azimuthal extent.</span>
+        <span class="k">if</span> <span class="s1">&#39;E&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">calc_E</span><span class="p">()</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">)[</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">9.75</span><span class="p">]</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">)[(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">250.</span><span class="p">)</span> <span class="o">&amp;</span>
+                                        <span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">360.</span><span class="p">)]</span>
+        <span class="n">pmin</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;pot&#39;</span><span class="p">][</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">i</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+                                                  <span class="n">j</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">j</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">min</span><span class="p">()][</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="c1"># Create a contour that only follows that potential curve.</span>
+        <span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mf">360.0</span><span class="p">]))</span> <span class="o">*</span> <span class="n">pi</span><span class="o">/</span><span class="mf">180.</span> <span class="o">-</span> <span class="n">pi</span><span class="o">/</span><span class="mf">2.</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;pot&#39;</span><span class="p">],</span>
+                            <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;pot&#39;</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">]])</span><span class="o">.</span><span class="n">transpose</span><span class="p">()),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">cnt</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">],</span> <span class="n">z</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="n">pmin</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="c1"># Adjust plot appropriately.</span>
+        <span class="k">if</span> <span class="n">doAdjust</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">Lmax</span><span class="p">:</span>
+                <span class="c1"># Default to inside ghost cells.</span>
+                <span class="n">Lmax</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">title</span><span class="p">:</span>
+                    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(),</span>
+                                 <span class="n">position</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+            <span class="n">_adjust_dialplot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">Lmax</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+        <span class="c1"># Return bits to user.</span>
+        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">cnt</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="MltSlice">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.dgcpm.MltSlice.html#spacepy.pybats.dgcpm.MltSlice">[docs]</a>
+<span class="k">class</span> <span class="nc">MltSlice</span><span class="p">(</span><span class="n">PbData</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Open and handle an MLT Slice output file.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+<div class="viewcode-block" id="MltSlice.__init__">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.dgcpm.MltSlice.html#spacepy.pybats.dgcpm.MltSlice.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Reads the data; sorts into arrays.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+        <span class="kn">from</span> <span class="nn">spacepy.datamodel</span> <span class="kn">import</span> <span class="n">dmarray</span>
+        <span class="kn">from</span> <span class="nn">matplotlib.dates</span> <span class="kn">import</span> <span class="n">date2num</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">MltSlice</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># Init as PbData.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">filename</span>
+
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Parse header.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;mlt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">),</span>
+                            <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;$R_E$&#39;</span><span class="p">})</span>
+
+        <span class="c1"># Parse remainder of file.</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">])]),</span>
+                            <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;cm^{-3}&#39;</span><span class="p">})</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">))</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+                                          <span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">4</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">5</span><span class="p">]),</span>
+                                          <span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">7</span><span class="p">:]</span>
+
+        <span class="c1"># Some &quot;hidden&quot; variables for plotting.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dtime</span> <span class="o">=</span> <span class="n">date2num</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dy</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="MltSlice.add_lut">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.dgcpm.MltSlice.html#spacepy.pybats.dgcpm.MltSlice.add_lut">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_lut</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greens_r&#39;</span><span class="p">,</span> <span class="n">zlim</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">],</span>
+                <span class="n">add_cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">clabel</span><span class="o">=</span><span class="s1">&#39;Density $cm^{-3}$&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;full&#39;</span><span class="p">,</span>
+                <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ntick</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Plot log(density) as a contour against L-Shell (y-axis) and</span>
+<span class="sd">        universal time (x-axis) using the PyBats *target* method of other</span>
+<span class="sd">        standard plotting methods.  Four items are returned: the Matplotlib</span>
+<span class="sd">        Figure, Axes, Mesh, and ColorBar objects used (if cbar is set to</span>
+<span class="sd">        **False**, the returned ColorBar object is simply set to **False**.)</span>
+
+<span class="sd">        ========== =======================================================</span>
+<span class="sd">        Kwarg      Description</span>
+<span class="sd">        ---------- -------------------------------------------------------</span>
+<span class="sd">        target     Select plot destination.  Defaults to new figure/axis.</span>
+<span class="sd">        loc        The location of any generated subplots.  Default is 111.</span>
+<span class="sd">        add_cbar   Toggles the automatic colorbar.  Default is**True**.</span>
+<span class="sd">        cmap       Selects Matplotlib color table.  Defaults to *Greens_r*.</span>
+<span class="sd">        zlim       Limits for z-axis.  Defaults to [0.1, 1000]</span>
+<span class="sd">        clabel     Sets colorbar label.  Defaults to units.</span>
+<span class="sd">        xlabel     Sets x-axis labels, use &#39;full&#39;, &#39;ticks&#39;, or **None**.</span>
+<span class="sd">        title      Sets axis title; defaults to **None**.</span>
+<span class="sd">        grid       Show white dotted grid?  Defaults to **True**</span>
+<span class="sd">        ntick      Number of attempted cbar ticks.  Defaults to 5.</span>
+<span class="sd">        ========== =======================================================</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+        <span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LogNorm</span>
+
+        <span class="c1"># Set ax and fig based on given target.</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">set_target</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">)</span>
+
+        <span class="c1"># Enforce values to be within limits.</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">zlim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">],</span> <span class="mf">1.01</span><span class="o">*</span><span class="n">zlim</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">z</span><span class="p">[</span><span class="n">z</span> <span class="o">&gt;</span> <span class="n">zlim</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">zlim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># Create plot:</span>
+        <span class="n">mesh</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dtime</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">],</span> <span class="n">z</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span>
+                             <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="n">cmap</span><span class="p">),</span> <span class="n">norm</span><span class="o">=</span><span class="n">LogNorm</span><span class="p">(),</span>
+                             <span class="n">vmin</span><span class="o">=</span><span class="n">zlim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vmax</span><span class="o">=</span><span class="n">zlim</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="c1"># Use LT ticks and markers on y-axis:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;L-Shell&#39;</span><span class="p">)</span>
+
+        <span class="c1"># White ticks, slightly thicker:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span>
+
+        <span class="c1"># Grid marks:</span>
+        <span class="k">if</span> <span class="n">grid</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">title</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">xlabel</span> <span class="o">==</span> <span class="s1">&#39;full&#39;</span><span class="p">:</span>
+            <span class="c1"># Both ticks and label.</span>
+            <span class="n">applySmartTimeTicks</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="n">dolabel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">xlabel</span> <span class="o">==</span> <span class="s1">&#39;ticks&#39;</span><span class="p">:</span>
+            <span class="c1"># Ticks, but no date label.</span>
+            <span class="n">applySmartTimeTicks</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="n">dolabel</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># A blank x-axis is often useful.</span>
+            <span class="n">applySmartTimeTicks</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="n">dolabel</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="c1"># Add cbar as necessary:</span>
+        <span class="k">if</span> <span class="n">add_cbar</span><span class="p">:</span>
+            <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.85</span><span class="p">)</span>
+            <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">clabel</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cbar</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">cbar</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Lslice">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.dgcpm.Lslice.html#spacepy.pybats.dgcpm.Lslice">[docs]</a>
+<span class="k">class</span> <span class="nc">Lslice</span><span class="p">(</span><span class="n">PbData</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Open an L-Slice output file.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+<div class="viewcode-block" id="Lslice.__init__">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.dgcpm.Lslice.html#spacepy.pybats.dgcpm.Lslice.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Reads the data; sorts into arrays.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+        <span class="kn">from</span> <span class="nn">spacepy.datamodel</span> <span class="kn">import</span> <span class="n">dmarray</span>
+        <span class="kn">from</span> <span class="nn">matplotlib.dates</span> <span class="kn">import</span> <span class="n">date2num</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">Lslice</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># Init as PbData.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">filename</span>
+
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Parse header.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;mlt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">),</span>
+                              <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;Hours&#39;</span><span class="p">})</span>
+
+        <span class="c1"># Parse remainder of file.</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;mlt&#39;</span><span class="p">])]),</span>
+                            <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="s1">&#39;cm^{-3}&#39;</span><span class="p">})</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">))</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+                                          <span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">4</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">5</span><span class="p">]),</span>
+                                          <span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">7</span><span class="p">:]</span>
+
+        <span class="c1"># Some &quot;hidden&quot; variables for plotting.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dtime</span> <span class="o">=</span> <span class="n">date2num</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dy</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;mlt&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;mlt&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;mlt&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_dy</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dy</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Lslice.add_ltut">
+<a class="viewcode-back" href="../../../autosummary/spacepy.pybats.dgcpm.Lslice.html#spacepy.pybats.dgcpm.Lslice.add_ltut">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_ltut</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greens_r&#39;</span><span class="p">,</span> <span class="n">zlim</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">],</span>
+                 <span class="n">add_cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">clabel</span><span class="o">=</span><span class="s1">&#39;Density $cm^{-3}$&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;full&#39;</span><span class="p">,</span>
+                 <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ntick</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Plot log(density) as a contour against local time (y-axis) and</span>
+<span class="sd">        universal time (x-axis) using the PyBats *target* method of other</span>
+<span class="sd">        standard plotting methods.  Four items are returned: the Matplotlib</span>
+<span class="sd">        Figure, Axes, Mesh, and ColorBar objects used (if cbar is set to</span>
+<span class="sd">        **False**, the returned ColorBar object is simply set to **False**.)</span>
+
+<span class="sd">        ========== =======================================================</span>
+<span class="sd">        Kwarg      Description</span>
+<span class="sd">        ---------- -------------------------------------------------------</span>
+<span class="sd">        target     Select plot destination.  Defaults to new figure/axis.</span>
+<span class="sd">        loc        The location of any generated subplots.  Default is 111.</span>
+<span class="sd">        add_cbar   Toggles the automatic colorbar.  Default is**True**.</span>
+<span class="sd">        cmap       Selects Matplotlib color table.  Defaults to *Greens_r*.</span>
+<span class="sd">        zlim       Limits for z-axis.  Defaults to [0.1, 1000]</span>
+<span class="sd">        ylim       Sets the MLT range on the y-axis.  Defaults to [4,20].</span>
+<span class="sd">        clabel     Sets colorbar label.  Defaults to units.</span>
+<span class="sd">        xlabel     Sets x-axis labels, use &#39;full&#39;, &#39;ticks&#39;, or **None**.</span>
+<span class="sd">        title      Sets axis title; defaults to **None**.</span>
+<span class="sd">        grid       Show white dotted grid?  Defaults to **True**</span>
+<span class="sd">        ntick      Number of attempted cbar ticks.  Defaults to 5.</span>
+<span class="sd">        ========== =======================================================</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+        <span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LogNorm</span>
+
+        <span class="c1"># Set ax and fig based on given target.</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">set_target</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">)</span>
+        <span class="c1"># Enforce values to be within limits.</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">zlim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">],</span> <span class="mf">1.01</span><span class="o">*</span><span class="n">zlim</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">z</span><span class="p">[</span><span class="n">z</span> <span class="o">&gt;</span> <span class="n">zlim</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">zlim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># Create plot:</span>
+        <span class="n">mesh</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dtime</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span>
+                             <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="n">cmap</span><span class="p">),</span> <span class="n">norm</span><span class="o">=</span><span class="n">LogNorm</span><span class="p">(),</span>
+                             <span class="n">vmin</span><span class="o">=</span><span class="n">zlim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vmax</span><span class="o">=</span><span class="n">zlim</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="c1"># Use LT ticks and markers on y-axis:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">18</span><span class="p">])</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s1">&#39;Dawn&#39;</span><span class="p">,</span> <span class="s1">&#39;Noon&#39;</span><span class="p">,</span> <span class="s1">&#39;Dusk&#39;</span><span class="p">])</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
+
+        <span class="c1"># White ticks, slightly thicker:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span>
+
+        <span class="c1"># Grid marks:</span>
+        <span class="k">if</span> <span class="n">grid</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">title</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">xlabel</span> <span class="o">==</span> <span class="s1">&#39;full&#39;</span><span class="p">:</span>
+            <span class="c1"># Both ticks and label.</span>
+            <span class="n">applySmartTimeTicks</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="n">dolabel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">xlabel</span> <span class="o">==</span> <span class="s1">&#39;ticks&#39;</span><span class="p">:</span>
+            <span class="c1"># Ticks, but no date label.</span>
+            <span class="n">applySmartTimeTicks</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="n">dolabel</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># A blank x-axis is often useful.</span>
+            <span class="n">applySmartTimeTicks</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="n">dolabel</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="c1"># Add cbar as necessary:</span>
+        <span class="k">if</span> <span class="n">add_cbar</span><span class="p">:</span>
+            <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.85</span><span class="p">)</span>
+            <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">clabel</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cbar</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">cbar</span></div>
+</div>
+
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/logo.png" alt="Logo"/>
+            </a></p>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../../../search.html">search</a>|&nbsp;</li>
+       <li><a href="../../../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="../pybats.html" >spacepy.pybats</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.pybats.dgcpm</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    </div>
+  </body>
+</html>

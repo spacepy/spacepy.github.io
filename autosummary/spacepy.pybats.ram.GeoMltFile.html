@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>spacepy.pybats.ram.GeoMltFile &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="spacepy.pybats.ram.IonoPotScb" href="spacepy.pybats.ram.IonoPotScb.html" />
+    <link rel="prev" title="spacepy.pybats.ram.EfieldFile" href="spacepy.pybats.ram.EfieldFile.html" /> 
+  </head><body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.pybats.ram.IonoPotScb.html" title="spacepy.pybats.ram.IonoPotScb"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.pybats.ram.EfieldFile.html" title="spacepy.pybats.ram.EfieldFile"
+             accesskey="P">previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" >spacepy.pybats</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="spacepy.pybats.ram.html" accesskey="U">spacepy.pybats.ram</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.pybats.ram.GeoMltFile</a></li> 
+      </ul>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="spacepy-pybats-ram-geomltfile">
+<h1>spacepy.pybats.ram.GeoMltFile<a class="headerlink" href="#spacepy-pybats-ram-geomltfile" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.GeoMltFile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pybats.ram.</span></span><span class="sig-name descname"><span class="pre">GeoMltFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scrub</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compressed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/ram.html#GeoMltFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ram.GeoMltFile" title="Link to this definition">¶</a></dt>
+<dd><p>GeoMltFile is a class to open, read, manipulate and write files that
+contain LANL geosynchronous multi-satellite averaged, MLT-interpolated
+fluxes.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.GeoMltFile.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scrub</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compressed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/ram.html#GeoMltFile.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ram.GeoMltFile.__init__" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.ram.GeoMltFile.get_index_from_time" title="spacepy.pybats.ram.GeoMltFile.get_index_from_time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_index_from_time</span></code></a>(epoch)</p></td>
+<td><p>Given a UTC time (datetime or Ticktock), return nearest index</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.ram.GeoMltFile.plot_epoch_flux" title="spacepy.pybats.ram.GeoMltFile.plot_epoch_flux"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_epoch_flux</span></code></a>([epoch, target, loc, title])</p></td>
+<td><p>Plot fluxes (j(E, MLT)) for a single time</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.ram.GeoMltFile.read" title="spacepy.pybats.ram.GeoMltFile.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>([compressed])</p></td>
+<td><p>Load contents from <em>self.filename</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.pybats.ram.GeoMltFile.scrub" title="spacepy.pybats.ram.GeoMltFile.scrub"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scrub</span></code></a>([lastflux])</p></td>
+<td><p>GeoMlt files often have bad data througout in the form of negative or zero fluxes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.ram.GeoMltFile.timeseries_append" title="spacepy.pybats.ram.GeoMltFile.timeseries_append"><code class="xref py py-obj docutils literal notranslate"><span class="pre">timeseries_append</span></code></a>(other)</p></td>
+<td><p>If <em>other</em> is of the same type as self, and both have a 'time' entry, append all arrays within <em>other</em> that have the same size as 'time' to the corresponding arrays within self.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.GeoMltFile.get_index_from_time">
+<span class="sig-name descname"><span class="pre">get_index_from_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/ram.html#GeoMltFile.get_index_from_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ram.GeoMltFile.get_index_from_time" title="Link to this definition">¶</a></dt>
+<dd><p>Given a UTC time (datetime or Ticktock), return nearest index</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>epoch</strong><span class="classifier">datetime.datetime or spacepy.time.Ticktock</span></dt><dd><p>Time as a supported type (UTC as datetime.datetime or
+spacepy.time.Ticktock). The nearest index to this time
+will be looked up and returned.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>idx</strong><span class="classifier">integer</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.GeoMltFile.plot_epoch_flux">
+<span class="sig-name descname"><span class="pre">plot_epoch_flux</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">111</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/ram.html#GeoMltFile.plot_epoch_flux"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ram.GeoMltFile.plot_epoch_flux" title="Link to this definition">¶</a></dt>
+<dd><p>Plot fluxes (j(E, MLT)) for a single time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>epoch</strong><span class="classifier">integer or datetime or spacepy.time.Ticktock</span></dt><dd><p>If integer, the index corresponding to the time to be plotted.
+If a supported time type (datetime or Ticktock), the nearest
+index will be looked up and selected.</p>
+</dd>
+<dt><strong>target</strong><span class="classifier">object</span></dt><dd><p>Target for plotting. If kwarg <em>target</em> is <strong>None</strong> (default),
+a new figure is generated. If <em>target</em> is a matplotlib Figure
+object, a new axis is created to fill that figure at subplot
+location <em>loc</em> (defaults to 111). If target is a matplotlib
+Axes object, the plot is placed into that axis at subplot
+location <em>loc</em>.</p>
+</dd>
+<dt><strong>loc</strong><span class="classifier">integer</span></dt><dd><p>Designator for axis location. See description of target.</p>
+</dd>
+<dt><strong>title: str or None</strong></dt><dd><p>If not None, specifies the axis title.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>fig</strong><span class="classifier">object</span></dt><dd><p>A matplotlib figure object on which to plot.</p>
+</dd>
+<dt><strong>ax</strong><span class="classifier">object</span></dt><dd><p>A matplotlib subplot object on which to plot.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.GeoMltFile.read">
+<span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compressed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/ram.html#GeoMltFile.read"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ram.GeoMltFile.read" title="Link to this definition">¶</a></dt>
+<dd><p>Load contents from <em>self.filename</em>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.GeoMltFile.scrub">
+<span class="sig-name descname"><span class="pre">scrub</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lastflux</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/ram.html#GeoMltFile.scrub"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ram.GeoMltFile.scrub" title="Link to this definition">¶</a></dt>
+<dd><p>GeoMlt files often have bad data througout in the form of negative
+or zero fluxes.  In RAM-SCB, these are replaced with the last good
+data value.  This function “scrubs” the data in the same manner as
+RAM-SCB.  The kwarg <em>lastflux</em> may be given as a nLT x nE numpy array
+of the last good fluxes, e.g. the correct values at the epoch directly
+preceeding the first epoch of this file.  These will be used if the
+first time entry of the file contains bad values.  If not given, bad
+values at the first time entry will be set to zero.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.GeoMltFile.timeseries_append">
+<span class="sig-name descname"><span class="pre">timeseries_append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/ram.html#GeoMltFile.timeseries_append"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ram.GeoMltFile.timeseries_append" title="Link to this definition">¶</a></dt>
+<dd><p>If <em>other</em> is of the same type as self, and both have a ‘time’
+entry, append all arrays within <em>other</em> that have the same size as
+‘time’ to the corresponding arrays within self.  This is useful
+for combining time series data of consecutive data.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.pybats.ram.GeoMltFile</a><ul>
+<li><a class="reference internal" href="#spacepy.pybats.ram.GeoMltFile"><code class="docutils literal notranslate"><span class="pre">GeoMltFile</span></code></a><ul>
+<li><a class="reference internal" href="#spacepy.pybats.ram.GeoMltFile.__init__"><code class="docutils literal notranslate"><span class="pre">GeoMltFile.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ram.GeoMltFile.get_index_from_time"><code class="docutils literal notranslate"><span class="pre">GeoMltFile.get_index_from_time()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ram.GeoMltFile.plot_epoch_flux"><code class="docutils literal notranslate"><span class="pre">GeoMltFile.plot_epoch_flux()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ram.GeoMltFile.read"><code class="docutils literal notranslate"><span class="pre">GeoMltFile.read()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ram.GeoMltFile.scrub"><code class="docutils literal notranslate"><span class="pre">GeoMltFile.scrub()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ram.GeoMltFile.timeseries_append"><code class="docutils literal notranslate"><span class="pre">GeoMltFile.timeseries_append()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="spacepy.pybats.ram.EfieldFile.html"
+                          title="previous chapter">spacepy.pybats.ram.EfieldFile</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="spacepy.pybats.ram.IonoPotScb.html"
+                          title="next chapter">spacepy.pybats.ram.IonoPotScb</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/autosummary/spacepy.pybats.ram.GeoMltFile.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.pybats.ram.IonoPotScb.html" title="spacepy.pybats.ram.IonoPotScb"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.pybats.ram.EfieldFile.html" title="spacepy.pybats.ram.EfieldFile"
+             >previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" >spacepy.pybats</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="spacepy.pybats.ram.html" >spacepy.pybats.ram</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.pybats.ram.GeoMltFile</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    </div>
+  </body>
+</html>

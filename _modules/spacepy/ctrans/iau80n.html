@@ -1,24 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>spacepy.ctrans.iau80n &#8212; SpacePy v0.6.0 Manual</title>
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <title>spacepy.ctrans.iau80n &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../../../_static/plot_directive.css" />
     
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    
-    <link rel="shortcut icon" href="../../../_static/spacepy_favicon.ico"/>
+    <script src="../../../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+    <link rel="icon" href="../../../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
   </head><body>
@@ -47,24 +43,7 @@
         <li class="nav-item nav-item-this"><a href="">spacepy.ctrans.iau80n</a></li> 
       </ul>
     </div>
-
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="../../../index.html">
-              <img class="logo" src="../../../_static/logo.png" alt="Logo"/>
-            </a></p>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -73,21 +52,6 @@
             
   <h1>Source code for spacepy.ctrans.iau80n</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;IAU 1980 Nutation model</span>
-
-<span class="sd">Functions</span>
-<span class="sd">---------</span>
-<span class="sd">.. autosummary::</span>
-<span class="sd">    :toctree:</span>
-<span class="sd">    :template: clean_function.rst</span>
-
-<span class="sd">    nutation</span>
-
-<span class="sd">Data</span>
-<span class="sd">----</span>
-<span class="sd">.. autosummary::</span>
-<span class="sd">   :toctree:</span>
-
-<span class="sd">   coeff80</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">fmod</span><span class="p">,</span> <span class="n">fsum</span>
@@ -202,7 +166,9 @@
                     <span class="p">])</span>
 <span class="sd">&quot;&quot;&quot;IAU 1980 nutation coefficients&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="nutation"><a class="viewcode-back" href="../../../autosummary/spacepy.ctrans.iau80n.nutation.html#spacepy.ctrans.iau80n.nutation">[docs]</a><span class="k">def</span> <span class="nf">nutation</span><span class="p">(</span><span class="n">TT_JC</span><span class="p">,</span> <span class="n">const</span><span class="p">,</span> <span class="n">nTerms</span><span class="o">=</span><span class="mi">106</span><span class="p">):</span>
+<div class="viewcode-block" id="nutation">
+<a class="viewcode-back" href="../../../autosummary/spacepy.ctrans.iau80n.html#spacepy.ctrans.iau80n.nutation">[docs]</a>
+<span class="k">def</span> <span class="nf">nutation</span><span class="p">(</span><span class="n">TT_JC</span><span class="p">,</span> <span class="n">const</span><span class="p">,</span> <span class="n">nTerms</span><span class="o">=</span><span class="mi">106</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Calculate dPsi and dEps for IAU80 nutation model&#39;&#39;&#39;</span>
     <span class="n">nl</span> <span class="o">=</span> <span class="n">coeff80</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="n">nlp</span> <span class="o">=</span> <span class="n">coeff80</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
@@ -254,10 +220,28 @@
     <span class="n">dPsi</span> <span class="o">=</span> <span class="n">psiSum</span> <span class="o">/</span> <span class="mi">10000</span>
     <span class="n">dEps</span> <span class="o">=</span> <span class="n">epsSum</span> <span class="o">/</span> <span class="mi">10000</span>
     <span class="k">return</span> <span class="n">dPsi</span><span class="p">,</span> <span class="n">dEps</span></div>
+
 </pre></div>
 
             <div class="clearer"></div>
           </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/logo.png" alt="Logo"/>
+            </a></p>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -283,8 +267,8 @@
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2024, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
 </html>

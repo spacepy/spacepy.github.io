@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>spacepy.pybats.ram.BoundaryGroup &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="spacepy.pybats.ram.Currents" href="spacepy.pybats.ram.Currents.html" />
+    <link rel="prev" title="spacepy.pybats.ram.BoundaryFluxFile" href="spacepy.pybats.ram.BoundaryFluxFile.html" /> 
+  </head><body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../index.html"><img src="../_static/spacepy_logo.jpg" border="0" alt="spacepy_logo"/></a>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.pybats.ram.Currents.html" title="spacepy.pybats.ram.Currents"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.pybats.ram.BoundaryFluxFile.html" title="spacepy.pybats.ram.BoundaryFluxFile"
+             accesskey="P">previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" >spacepy.pybats</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="spacepy.pybats.ram.html" accesskey="U">spacepy.pybats.ram</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.pybats.ram.BoundaryGroup</a></li> 
+      </ul>
+    </div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="spacepy-pybats-ram-boundarygroup">
+<h1>spacepy.pybats.ram.BoundaryGroup<a class="headerlink" href="#spacepy-pybats-ram-boundarygroup" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.BoundaryGroup">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.pybats.ram.</span></span><span class="sig-name descname"><span class="pre">BoundaryGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/ram.html#BoundaryGroup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ram.BoundaryGroup" title="Link to this definition">¶</a></dt>
+<dd><p>A class that collects many <a class="reference internal" href="spacepy.pybats.ram.PlasmaBoundary.html#spacepy.pybats.ram.PlasmaBoundary" title="spacepy.pybats.ram.PlasmaBoundary"><code class="xref py py-class docutils literal notranslate"><span class="pre">PlasmaBoundary</span></code></a> objects together to
+work as a coherent group.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.BoundaryGroup.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/ram.html#BoundaryGroup.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ram.BoundaryGroup.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Base class for “Data Model” representation data</p>
+<p>Abstract method, reimplement</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>attrs</strong><span class="classifier">dict</span></dt><dd><p>dictionary of the attributes of the SpaceData object</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.pybats.ram.BoundaryGroup.add_ltut" title="spacepy.pybats.ram.BoundaryGroup.add_ltut"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_ltut</span></code></a>(var[, target, loc, cmap, zlim, ...])</p></td>
+<td><p>Plot variable <em>var</em> as a contour against local time (y-axis) and universal time (x-axis) using the PyBats <em>target</em> method of other standard plotting methods.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="#spacepy.pybats.ram.BoundaryGroup.attrs" title="spacepy.pybats.ram.BoundaryGroup.attrs"><code class="xref py py-data docutils literal notranslate"><span class="pre">attrs</span></code></a></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.BoundaryGroup.add_ltut">
+<span class="sig-name descname"><span class="pre">add_ltut</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">111</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'inferno'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zlim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_cbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ntick</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/pybats/ram.html#BoundaryGroup.add_ltut"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.pybats.ram.BoundaryGroup.add_ltut" title="Link to this definition">¶</a></dt>
+<dd><p>Plot variable <em>var</em> as a contour against local time (y-axis) and
+universal time (x-axis) using the PyBats <em>target</em> method of other
+standard plotting methods.  Four items are returned: the Matplotlib
+Figure, Axes, Mesh, and ColorBar objects used (if add_cbar is set to
+<strong>False</strong>, the returned ColorBar object is simply set to <strong>False</strong>.)</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kwarg</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>target</p></td>
+<td><p>Select plot destination.  Defaults to new figure/axis.</p></td>
+</tr>
+<tr class="row-odd"><td><p>loc</p></td>
+<td><p>The location of any generated subplots.  Default is 111.</p></td>
+</tr>
+<tr class="row-even"><td><p>add_cbar</p></td>
+<td><p>Toggles the automatic colorbar.  Default is**True**.</p></td>
+</tr>
+<tr class="row-odd"><td><p>cmap</p></td>
+<td><p>Selects Matplotlib color table.  Defaults to <em>inferno</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p>zlim</p></td>
+<td><p>Limits for z-axis.  Defaults to best-guess.</p></td>
+</tr>
+<tr class="row-odd"><td><p>clabel</p></td>
+<td><p>Sets colorbar label.  Defaults to <em>var</em> units.</p></td>
+</tr>
+<tr class="row-even"><td><p>xlabel</p></td>
+<td><p>Sets x-axis limits, use ‘full’, ‘ticks’, or <strong>None</strong>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>title</p></td>
+<td><p>Sets axis title; defaults to <strong>None</strong>.</p></td>
+</tr>
+<tr class="row-even"><td><p>grid</p></td>
+<td><p>Show white dotted grid?  Defaults to <strong>True</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>ntick</p></td>
+<td><p>Number of attempted cbar ticks.  Defaults to 5.</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spacepy.pybats.ram.BoundaryGroup.attrs">
+<span class="sig-name descname"><span class="pre">attrs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping" title="(in Python v3.13)"><span class="pre">collections.abc.Mapping</span></a></em><a class="headerlink" href="#spacepy.pybats.ram.BoundaryGroup.attrs" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.pybats.ram.BoundaryGroup</a><ul>
+<li><a class="reference internal" href="#spacepy.pybats.ram.BoundaryGroup"><code class="docutils literal notranslate"><span class="pre">BoundaryGroup</span></code></a><ul>
+<li><a class="reference internal" href="#spacepy.pybats.ram.BoundaryGroup.__init__"><code class="docutils literal notranslate"><span class="pre">BoundaryGroup.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ram.BoundaryGroup.add_ltut"><code class="docutils literal notranslate"><span class="pre">BoundaryGroup.add_ltut()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.pybats.ram.BoundaryGroup.attrs"><code class="docutils literal notranslate"><span class="pre">BoundaryGroup.attrs</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="spacepy.pybats.ram.BoundaryFluxFile.html"
+                          title="previous chapter">spacepy.pybats.ram.BoundaryFluxFile</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="spacepy.pybats.ram.Currents.html"
+                          title="next chapter">spacepy.pybats.ram.Currents</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/autosummary/spacepy.pybats.ram.BoundaryGroup.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spacepy.pybats.ram.Currents.html" title="spacepy.pybats.ram.Currents"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="spacepy.pybats.ram.BoundaryFluxFile.html" title="spacepy.pybats.ram.BoundaryFluxFile"
+             >previous</a> |</li>
+        <li><a href="https://spacepy.github.io/"">homepage</a>|&nbsp;</li>
+        <li><a href="https://github.com/spacepy/spacepy">development</a>|&nbsp;</li>
+        <li><a href="../search.html">search</a>|&nbsp;</li>
+       <li><a href="../index.html">documentation </a> &raquo;</li>
+
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.pybats.html" >spacepy.pybats</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="spacepy.pybats.ram.html" >spacepy.pybats.ram</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spacepy.pybats.ram.BoundaryGroup</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    </div>
+  </body>
+</html>

@@ -1,6 +1,52 @@
-﻿spacepy.pybats.gitm
+spacepy.pybats.gitm
 ===================
 
-.. currentmodule:: spacepy.pybats.gitm
-
 .. automodule:: spacepy.pybats.gitm
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+   .. rubric:: Classes
+ 
+   .. autosummary::
+      :toctree:
+   
+      GitmBin
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   

@@ -1,28 +1,24 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>spacepy.seapy.Sea2d &#8212; SpacePy v0.6.0 Manual</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <title>spacepy.seapy.Sea2d &#8212; SpacePy v0.7.0 Manual</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=92e3d466" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    
-    <link rel="shortcut icon" href="../_static/spacepy_favicon.ico"/>
+    <script src="../_static/documentation_options.js?v=fe7df9b0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <link rel="icon" href="../_static/spacepy_favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="spacepy.seapy.seadict" href="spacepy.seapy.seadict.html" />
+    <link rel="next" title="spacepy.seapy.SeaBase" href="spacepy.seapy.SeaBase.html" />
     <link rel="prev" title="spacepy.seapy.Sea" href="spacepy.seapy.Sea.html" /> 
   </head><body>
 
@@ -40,7 +36,7 @@
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.seapy.seadict.html" title="spacepy.seapy.seadict"
+          <a href="spacepy.seapy.SeaBase.html" title="spacepy.seapy.SeaBase"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="spacepy.seapy.Sea.html" title="spacepy.seapy.Sea"
@@ -50,45 +46,12 @@
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../seapy.html" accesskey="U">SeaPy - Superposed Epoch in Python</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.seapy.html" accesskey="U">spacepy.seapy</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.seapy.Sea2d</a></li> 
       </ul>
     </div>
-
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="../index.html">
-              <img class="logo" src="../_static/logo.png" alt="Logo"/>
-            </a></p>
-  <div>
-    <h4>Previous topic</h4>
-    <p class="topless"><a href="spacepy.seapy.Sea.html"
-                          title="previous chapter">spacepy.seapy.Sea</a></p>
-  </div>
-  <div>
-    <h4>Next topic</h4>
-    <p class="topless"><a href="spacepy.seapy.seadict.html"
-                          title="next chapter">spacepy.seapy.seadict</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/autosummary/spacepy.seapy.Sea2d.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
-      </div>
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -96,10 +59,10 @@
           <div class="body" role="main">
             
   <section id="spacepy-seapy-sea2d">
-<h1>spacepy.seapy.Sea2d<a class="headerlink" href="#spacepy-seapy-sea2d" title="Permalink to this heading">¶</a></h1>
+<h1>spacepy.seapy.Sea2d<a class="headerlink" href="#spacepy-seapy-sea2d" title="Link to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="spacepy.seapy.Sea2d">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.seapy.</span></span><span class="sig-name descname"><span class="pre">Sea2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/seapy.html#Sea2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.seapy.Sea2d" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spacepy.seapy.</span></span><span class="sig-name descname"><span class="pre">Sea2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/seapy.html#Sea2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.seapy.Sea2d" title="Link to this definition">¶</a></dt>
 <dd><p>SeaPy 2D Superposed epoch analysis object</p>
 <p>Initialize object with data (n element vector), times(y*n array), 
 epochs, window (half-width), delta (optional), and 
@@ -128,48 +91,26 @@ given as serial time)</p>
 </dl>
 <p class="rubric">Notes</p>
 <p>Output can be nicely plotted with <a class="reference internal" href="#spacepy.seapy.Sea2d.plot" title="spacepy.seapy.Sea2d.plot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot()</span></code></a>, or for multiple
-objects use the <a class="reference internal" href="spacepy.seapy.multisea.html#spacepy.seapy.multisea" title="spacepy.seapy.multisea"><code class="xref py py-func docutils literal notranslate"><span class="pre">multisea()</span></code></a> function</p>
+objects use the <a class="reference internal" href="spacepy.seapy.html#spacepy.seapy.multisea" title="spacepy.seapy.multisea"><code class="xref py py-func docutils literal notranslate"><span class="pre">multisea()</span></code></a> function</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.seapy.Sea2d.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/seapy.html#Sea2d.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.seapy.Sea2d.__init__" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.seapy.Sea2d.sea" title="spacepy.seapy.Sea2d.sea"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sea</span></code></a>([storedata, quartiles, ci, mad, ...])</p></td>
-<td><p>Perform 2D superposed epoch analysis on data in object</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.seapy.Sea2d.plot" title="spacepy.seapy.Sea2d.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([xquan, yquan, xunits, yunits, zunits, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spacepy.seapy.Sea2d.plot" title="spacepy.seapy.Sea2d.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([xquan, yquan, xunits, yunits, zunits, ...])</p></td>
 <td><p>Method called to create basic plot of 2D superposed epoch analysis.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spacepy.seapy.Sea2d.sea" title="spacepy.seapy.Sea2d.sea"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sea</span></code></a>([storedata, quartiles, ci, mad, ...])</p></td>
+<td><p>Perform 2D superposed epoch analysis on data in object</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py method">
-<dt class="sig sig-object py" id="spacepy.seapy.Sea2d.sea">
-<span class="sig-name descname"><span class="pre">sea</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">storedata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quartiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ci</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ci_quan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/seapy.html#Sea2d.sea"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.seapy.Sea2d.sea" title="Permalink to this definition">¶</a></dt>
-<dd><p>Perform 2D superposed epoch analysis on data in object</p>
-<p>Uses object attributes obj.data, obj.times, obj.epochs, obj.delta,
-obj.window, all of which must be available on instantiation.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>storedata</strong><span class="classifier">boolean</span></dt><dd><p>saves matrix of epoch windows as obj.datacube (default = False)</p>
-</dd>
-<dt><strong>quartiles</strong><span class="classifier">list</span></dt><dd><p>calculates the inter-quartile range to show the spread
-(and is default);</p>
-</dd>
-<dt><strong>ci</strong><span class="classifier">float</span></dt><dd><p>will find the bootstrapped confidence interval
-(and requires ci_quan to be set)</p>
-</dd>
-<dt><strong>mad</strong><span class="classifier">float</span></dt><dd><p>will use the median absolute deviation for the spread;</p>
-</dd>
-<dt><strong>ci_quan</strong><span class="classifier">string</span></dt><dd><p>can be set to ‘median’ or ‘mean’</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>A basic plot can be raised with <a class="reference internal" href="#spacepy.seapy.Sea2d.plot" title="spacepy.seapy.Sea2d.plot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot()</span></code></a></p>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="spacepy.seapy.Sea2d.plot">
-<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xquan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Time</span> <span class="pre">Since</span> <span class="pre">Epoch'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yquan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xunits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yunits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zunits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">usrlimy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zlog</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/seapy.html#Sea2d.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.seapy.Sea2d.plot" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xquan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Time</span> <span class="pre">Since</span> <span class="pre">Epoch'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yquan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xunits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yunits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zunits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">usrlimy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zlog</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/seapy.html#Sea2d.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.seapy.Sea2d.plot" title="Link to this definition">¶</a></dt>
 <dd><p>Method called to create basic plot of 2D superposed epoch analysis.</p>
 <p>Uses object attributes created by <a class="reference internal" href="#spacepy.seapy.Sea2d.sea" title="spacepy.seapy.Sea2d.sea"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sea()</span></code></a>.</p>
 <dl class="field-list simple">
@@ -198,6 +139,34 @@ obj.window, all of which must be available on instantiation.</p>
 ‘Quantity Entered By User [Units]’</p>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="spacepy.seapy.Sea2d.sea">
+<span class="sig-name descname"><span class="pre">sea</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">storedata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quartiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ci</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ci_quan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'median'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/spacepy/seapy.html#Sea2d.sea"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spacepy.seapy.Sea2d.sea" title="Link to this definition">¶</a></dt>
+<dd><p>Perform 2D superposed epoch analysis on data in object</p>
+<p>Uses object attributes obj.data, obj.times, obj.epochs, obj.delta,
+obj.window, all of which must be available on instantiation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Other Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>storedata</strong><span class="classifier">boolean</span></dt><dd><p>saves matrix of epoch windows as obj.datacube (default = False)</p>
+</dd>
+<dt><strong>quartiles</strong><span class="classifier">list</span></dt><dd><p>calculates the inter-quartile range to show the spread
+(and is default);</p>
+</dd>
+<dt><strong>ci</strong><span class="classifier">float</span></dt><dd><p>will find the bootstrapped confidence interval
+(and requires ci_quan to be set)</p>
+</dd>
+<dt><strong>mad</strong><span class="classifier">float</span></dt><dd><p>will use the median absolute deviation for the spread;</p>
+</dd>
+<dt><strong>ci_quan</strong><span class="classifier">string</span></dt><dd><p>can be set to ‘median’ or ‘mean’</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>A basic plot can be raised with <a class="reference internal" href="#spacepy.seapy.Sea2d.plot" title="spacepy.seapy.Sea2d.plot"><code class="xref py py-meth docutils literal notranslate"><span class="pre">plot()</span></code></a></p>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -205,6 +174,55 @@ obj.window, all of which must be available on instantiation.</p>
 
             <div class="clearer"></div>
           </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">spacepy.seapy.Sea2d</a><ul>
+<li><a class="reference internal" href="#spacepy.seapy.Sea2d"><code class="docutils literal notranslate"><span class="pre">Sea2d</span></code></a><ul>
+<li><a class="reference internal" href="#spacepy.seapy.Sea2d.__init__"><code class="docutils literal notranslate"><span class="pre">Sea2d.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.seapy.Sea2d.plot"><code class="docutils literal notranslate"><span class="pre">Sea2d.plot()</span></code></a></li>
+<li><a class="reference internal" href="#spacepy.seapy.Sea2d.sea"><code class="docutils literal notranslate"><span class="pre">Sea2d.sea()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="spacepy.seapy.Sea.html"
+                          title="previous chapter">spacepy.seapy.Sea</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="spacepy.seapy.SeaBase.html"
+                          title="next chapter">spacepy.seapy.SeaBase</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/autosummary/spacepy.seapy.Sea2d.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -219,7 +237,7 @@ obj.window, all of which must be available on instantiation.</p>
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="spacepy.seapy.seadict.html" title="spacepy.seapy.seadict"
+          <a href="spacepy.seapy.SeaBase.html" title="spacepy.seapy.SeaBase"
              >next</a> |</li>
         <li class="right" >
           <a href="spacepy.seapy.Sea.html" title="spacepy.seapy.Sea"
@@ -229,13 +247,14 @@ obj.window, all of which must be available on instantiation.</p>
         <li><a href="../search.html">search</a>|&nbsp;</li>
        <li><a href="../index.html">documentation </a> &raquo;</li>
 
-          <li class="nav-item nav-item-1"><a href="../seapy.html" >SeaPy - Superposed Epoch in Python</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="spacepy.html" >spacepy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="spacepy.seapy.html" >spacepy.seapy</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">spacepy.seapy.Sea2d</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2011-2024, The SpacePy Team.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2011-2024, The SpacePy Team.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
     </div>
   </body>
 </html>
